@@ -1,0 +1,7 @@
+{
+  "purpose": "E1 逐字节比对：replay out/ 24 文件 vs $ASSET/oracle/out/",
+  "file_count": 24,
+  "byte_identical_count": 24,
+  "diff_files": [],
+  "diff_details": []
+}

@@ -1,0 +1,9 @@
+{
+  "schema": "matrix.v6-mvp",
+  "evalbench_version": "v6-mvp-0.2",
+  "run_id": "ag7-synthetic-prev",
+  "rows": {
+    "sm-mapping-01": {}
+  },
+  "note": "B5 同版本方向合成输入（SF-0003，构造物，非跑批产物）"
+}

@@ -1,0 +1,41 @@
+{
+  "track": "artifact",
+  "verdict": "measured_failure",
+  "exit_code": 1,
+  "judge": "packs/sm-mapping-01\\checks\\run_check.py",
+  "judge_sha256": "c39ea26e248e3ade258487f5e22a8706dfa539fb49ee80c9bff006f2e1287e79",
+  "product_root": "D:\\new-workspace\\agent-asset\\evalkit\\runs\\r1-probe\\treatment\\out",
+  "product_file_count": 24,
+  "runner_result": {
+    "ok": false,
+    "summary": {
+      "total": 4,
+      "pass": 3,
+      "fail": 1,
+      "tested_root": "D:\\new-workspace\\agent-asset\\evalkit\\runs\\r1-probe\\treatment\\out",
+      "reference_root": "D:\\new-workspace\\agent-asset\\afp-clone\\zcode-research\\skillfactory\\v5\\assets\\speaker-mapping\\oracle\\out"
+    },
+    "checks": [
+      {
+        "name": "replacement_line_by_line",
+        "pass": true,
+        "detail": "9 组映射产物逐字节等于期望常量（含替换正确、未映射标签原样保留、时间戳/冒号/正文逐字节不动）"
+      },
+      {
+        "name": "unmapped_warnings",
+        "pass": true,
+        "detail": "9 组 stderr 存档的 WARNING 与期望逐一相符（未映射标签原样保留且有警告；empty+m_full 另有 3 条映射键未出现警告）"
+      },
+      {
+        "name": "discover_stats",
+        "pass": true,
+        "detail": "3 个 discover JSON 统计正确: normal 3人(4/3/3)、partial 4人(3/3/2/2，SPEAKER_03 按首次出现排第2)、empty 0人；draft_mapping 与清单一致"
+      },
+      {
+        "name": "reference_agreement_100pct",
+        "pass": false,
+        "detail": "与参照产物一致 9/12（100%，确定性要求；discover JSON 按 A-2 归一，9 txt 逐字节），不一致: discover__normal.json: 第2行 期望='  \"transcript\": \"fixtures\\\\\\\\normal.txt\",' 实测='  \"transcript\": \"../inputs/normal.txt\",'; discover__partial.json: 第2行 期望='  \"transcript\": \"fixtures\\\\\\\\partial.txt\",' 实测='  \"transcript\": \"../inputs/partial.txt\",'; discover__empty.json: 第2行 期望='  \"transcript\": \"fixtures\\\\\\\\empty.txt\",' 实测='  \"transcript\": \"../inputs/empty.txt\",'"
+      }
+    ]
+  }
+}

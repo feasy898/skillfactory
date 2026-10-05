@@ -1,0 +1,31 @@
+{
+  "dwf_actor_columns": [
+    "id",
+    "run_id",
+    "site_id",
+    "ordinal",
+    "name",
+    "persona_json",
+    "resolved_model",
+    "session_id",
+    "time_created",
+    "time_updated"
+  ],
+  "dwf_actor_has_cwd_column": false,
+  "declared_token_set": [
+    "actor_cwd",
+    "actorCwd",
+    "perActorCwd",
+    "per_actor_cwd",
+    "actorWorkingDirectory",
+    "actor_working_directory",
+    "actorDir",
+    "actor_dir",
+    "actorPath",
+    "actor_path"
+  ],
+  "token_hits": {},
+  "perActorCwdFieldFound": false,
+  "vendor_bundle": "C:\\Users\\Administrator\\AppData\\Roaming\\npm\\node_modules\\zcode-app-cli\\vendor\\zcode.cjs",
+  "note": "A hit would only mean the string exists somewhere in a 14.8MB bundle; a functional per-actor cwd would additionally require the field to reach dwf_actor / the actor runtime. Absent column plus absent per-actor directory field: static negative."
+}

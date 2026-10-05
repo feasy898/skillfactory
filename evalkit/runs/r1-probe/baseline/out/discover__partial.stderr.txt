@@ -1,0 +1,1 @@
+INFO: 写出 discover__partial.json（共 10 行，发现说话人 4 种，发言 10 条）

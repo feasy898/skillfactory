@@ -1,0 +1,19 @@
+{
+  "purpose": "C1 保内容改名证据：inputs/ 改名前逐文件 sha256",
+  "dir_listing": [
+    "empty.txt",
+    "m_empty.json",
+    "m_full.json",
+    "m_partial.json",
+    "normal.txt",
+    "partial.txt"
+  ],
+  "sha256": {
+    "empty.txt": "899763bcdaf82c2fb1fc01e9feaf294a410477386a5f5ee1a0956220dc5cc3e5",
+    "m_empty.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "m_full.json": "e3ae17169409f84ef166f23f4b7de79c847cafbbd9c1e6df86e4938a4ad34ae8",
+    "m_partial.json": "a7717c28797d4164969f67cea02c17a1e5132f8a3f06f779b3007fe62b110963",
+    "normal.txt": "d7a6ea6e43e4b62865651a77270176e272c5bfaadfeae501bc66ec98f41762bc",
+    "partial.txt": "387d1000a774cb060e1693a470e18f1a7b428fd41a14dec0d3cc36409a3ddfcc"
+  }
+}

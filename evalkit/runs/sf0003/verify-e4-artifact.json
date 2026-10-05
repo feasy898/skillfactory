@@ -1,0 +1,41 @@
+{
+  "track": "artifact",
+  "verdict": "measured_failure",
+  "exit_code": 1,
+  "judge": "packs/sm-mapping-01\\checks\\run_check.py",
+  "judge_sha256": "c39ea26e248e3ade258487f5e22a8706dfa539fb49ee80c9bff006f2e1287e79",
+  "product_root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\1\\nc-sf0003-e4-jq53vr3_\\out",
+  "product_file_count": 24,
+  "runner_result": {
+    "ok": false,
+    "summary": {
+      "total": 4,
+      "pass": 2,
+      "fail": 2,
+      "tested_root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\1\\nc-sf0003-e4-jq53vr3_\\out",
+      "reference_root": "D:\\new-workspace\\agent-asset\\afp-clone\\zcode-research\\skillfactory\\v5\\assets\\speaker-mapping\\oracle\\out"
+    },
+    "checks": [
+      {
+        "name": "replacement_line_by_line",
+        "pass": false,
+        "detail": "不一致 1/9: normal__m_full.txt: 第1行 期望='[00:00:05] 王总: 各位下午好，现在开始本周的项目例会，先同步一下进度。' 实测='[00:00:05]!王总: 各位下午好，现在开始本周的项目例会，先同步一下进度。'"
+      },
+      {
+        "name": "unmapped_warnings",
+        "pass": true,
+        "detail": "9 组 stderr 存档的 WARNING 与期望逐一相符（未映射标签原样保留且有警告；empty+m_full 另有 3 条映射键未出现警告）"
+      },
+      {
+        "name": "discover_stats",
+        "pass": true,
+        "detail": "3 个 discover JSON 统计正确: normal 3人(4/3/3)、partial 4人(3/3/2/2，SPEAKER_03 按首次出现排第2)、empty 0人；draft_mapping 与清单一致"
+      },
+      {
+        "name": "reference_agreement_100pct",
+        "pass": false,
+        "detail": "与参照产物一致 11/12（100%，确定性要求；discover JSON 按 A-2 归一，9 txt 逐字节），不一致: normal__m_full.txt: 第1行 期望='[00:00:05] 王总: 各位下午好，现在开始本周的项目例会，先同步一下进度。' 实测='[00:00:05]!王总: 各位下午好，现在开始本周的项目例会，先同步一下进度。'"
+      }
+    ]
+  }
+}

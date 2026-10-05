@@ -1,0 +1,23 @@
+{
+  "available": true,
+  "session_id": "sess_18d61286-5e53-4701-94a7-b49fc08b285c",
+  "session": {
+    "directory": "D:\\new-workspace\\agent-asset\\planning\\reports\\sf0004-probes\\arms\\trt-1-m1",
+    "task_type": "interactive",
+    "version": "0.16.9"
+  },
+  "directory_matches_arm": true,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 22718,
+      "ot": 13,
+      "dur": 3679,
+      "n": 1
+    }
+  ],
+  "tool_usage": []
+}

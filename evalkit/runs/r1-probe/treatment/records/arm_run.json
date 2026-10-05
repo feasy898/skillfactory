@@ -1,0 +1,15 @@
+{
+  "arm": "treatment",
+  "run_label": "r1",
+  "family_requested": "glm",
+  "timeout_s": 1800,
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 399956,
+  "started_at_ms": 1791028935740,
+  "session_id": "sess_40cdadf1-1168-4913-8970-3d12e799c467",
+  "model_id_observed": "GLM-5.3",
+  "stdout_bytes": 2782,
+  "stderr_bytes": 231,
+  "stderr_head": "ZCode Built-in skipped (not-due)\nZCode Built-in skipped (not-due)\nZCode Built-in skipped (not-due)\nZCode Built-in skipped (not-due)\nZCode Built-in skipped (not-due)\nZCode Built-in skipped (not-due)\nZCode Built-in skipped (not-due)\n"
+}

@@ -1,0 +1,9 @@
+{
+  "track": "artifact",
+  "device": "original_runner",
+  "runner_path": "D:\\new-workspace\\agent-asset\\afp-clone\\zcode-research\\skillfactory\\v5\\assets\\speaker-mapping\\eval\\runner.py",
+  "runner_sha256": "e4a2ca240e6765338992047bc1e9283fd250eb9d103a299746ab24c4e5ee662a",
+  "argv": [],
+  "exit_code": 0,
+  "stdout": "{\n  \"ok\": true,\n  \"summary\": {\n    \"total\": 4,\n    \"pass\": 4,\n    \"fail\": 0,\n    \"tested_root\": \"D:\\\\new-workspace\\\\agent-asset\\\\afp-clone\\\\zcode-research\\\\skillfactory\\\\v5\\\\assets\\\\speaker-mapping\\\\oracle\\\\out\",\n    \"reference_root\": \"D:\\\\new-workspace\\\\agent-asset\\\\afp-clone\\\\zcode-research\\\\skillfactory\\\\v5\\\\assets\\\\speaker-mapping\\\\oracle\\\\out\"\n  },\n  \"checks\": [\n    {\n      \"name\": \"replacement_line_by_line\",\n      \"pass\": true,\n      \"detail\": \"9 组映射产物逐字节等于期望常量（含替换正确、未映射标签原样保留、时间戳/冒号/正文逐字节不动）\"\n    },\n    {\n      \"name\": \"unmapped_warnings\",\n      \"pass\": true,\n      \"detail\": \"9 组 stderr 存档的 WARNING 与期望逐一相符（未映射标签原样保留且有警告；empty+m_full 另有 3 条映射键未出现警告）\"\n    },\n    {\n      \"name\": \"discover_stats\",\n      \"pass\": true,\n      \"detail\": \"3 个 discover JSON 统计正确: normal 3人(4/3/3)、partial 4人(3/3/2/2，SPEAKER_03 按首次出现排第2)、empty 0人；draft_mapping 与清单一致\"\n    },\n    {\n      \"name\": \"reference_agreement_100pct\",\n      \"pass\": true,\n      \"detail\": \"与参照产物一致 12/12（100%，确定性要求；discover JSON 按 A-2 归一，9 txt 逐字节）\"\n    }\n  ]\n}\n"
+}

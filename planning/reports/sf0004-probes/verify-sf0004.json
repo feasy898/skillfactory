@@ -1,0 +1,294 @@
+{
+  "tool": "verify_sf0004.py",
+  "run_ts": "2026-10-04T03:07:37+0800",
+  "decision_recomputed": "D1",
+  "a_verdict_recomputed": "Viable",
+  "b_verdict_recomputed": "Undetermined",
+  "gate_count": 31,
+  "passed": 30,
+  "failed": [
+    "D8"
+  ],
+  "all_pass": false,
+  "gates": [
+    {
+      "id": "G-G1",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "05c732ced6829c203dbc79c0e6d3ab2df16d0dab475cd63972c1d65ce52623cb",
+      "note": "G1 closing guard pass=True"
+    },
+    {
+      "id": "G-G2",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "05c732ced6829c203dbc79c0e6d3ab2df16d0dab475cd63972c1d65ce52623cb",
+      "note": "G2 closing guard pass=True"
+    },
+    {
+      "id": "G-G3",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "05c732ced6829c203dbc79c0e6d3ab2df16d0dab475cd63972c1d65ce52623cb",
+      "note": "G3 closing guard pass=True"
+    },
+    {
+      "id": "G-G4",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "05c732ced6829c203dbc79c0e6d3ab2df16d0dab475cd63972c1d65ce52623cb",
+      "note": "G4 closing guard pass=True"
+    },
+    {
+      "id": "G-G5",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "05c732ced6829c203dbc79c0e6d3ab2df16d0dab475cd63972c1d65ce52623cb",
+      "note": "G5 closing guard pass=True"
+    },
+    {
+      "id": "G1-opening",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "05c732ced6829c203dbc79c0e6d3ab2df16d0dab475cd63972c1d65ce52623cb",
+      "note": "opening freeze observation recorded (transcript provenance, see file honesty_note)"
+    },
+    {
+      "id": "G6",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "05c732ced6829c203dbc79c0e6d3ab2df16d0dab475cd63972c1d65ce52623cb",
+      "note": "secret scan selfcheck exit=0 scan exit=0"
+    },
+    {
+      "id": "G7",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "05c732ced6829c203dbc79c0e6d3ab2df16d0dab475cd63972c1d65ce52623cb",
+      "note": "reserved-name hits=[] holdout-numbering hits=[]"
+    },
+    {
+      "id": "P1",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "3dca9d769962715e0987fba99c61a6c60fd2b925a50e1e7cbc6bd286de99c5a8",
+      "note": "preregister 5 candidates; executed ['M1-paired-provider-config-env']; executed subset of candidates=True"
+    },
+    {
+      "id": "P2",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "9397502c3599f5b979e79ca87ac8444526dfec651912988dd17286a1c7e79945",
+      "note": "five PRAGMA tables present; dwf_actor has no cwd column (card fact confirmed, not substituted)"
+    },
+    {
+      "id": "P3",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "d5c4a1360bf692c135957939535f14dd20889d0f9fb8ed15008d42bc09cceccf",
+      "note": "GLM-5.3 anchor row present (positive control), count=17732"
+    },
+    {
+      "id": "P4",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "6757631ca5812bb7a2315c808666b82fe39c0a350aa56286dcab5f9d3241d822",
+      "note": "kimi version=2.1.1; config structure redacted (no api_key values)"
+    },
+    {
+      "id": "A-ctl",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "82e5708c5206fa4db95709e4faeb55eda7239953cd72e28dc5268db0d0a1b6c9",
+      "note": "control arm landed GLM-5.3 @ account:bigmodel-individual-coding-plan, directory_match=True"
+    },
+    {
+      "id": "A-trt-1-m1",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "09224bb58d45c0387bf54fa73dceb58dce26099b28e5b16065215940c77ca890",
+      "note": "treatment arm landed Minimax-M3.1-Flash-Preview @ minimax (verbatim target match=True)"
+    },
+    {
+      "id": "A-restore",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "994b2a54c920e275f2c89f0e1cd843a9dc378c41350f1a13c2ef411bce1020e6",
+      "note": "mechanism withdrawn, bare headless returned to GLM-5.3"
+    },
+    {
+      "id": "K1",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "77bbf3ed584555aa42d4b60ea2d39d675aa8ef16b5d2e257a2d32d04220db557",
+      "note": "step head exit=0 status=unobservable (fail-closed: no model id field in stream => unobservable)"
+    },
+    {
+      "id": "K2",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "32da1c47d23b432889715581628950c6957086f2d9c7d52153c05394111ad381",
+      "note": "broker head status=skipped-no-token token_present=False"
+    },
+    {
+      "id": "B0a",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "aff111e8a477d39f7512ca6c3f42dc3b3b123dc0e71adbe9f717aa7b74aafb61",
+      "note": "history_silent=True runs_total=458 max_distinct_dir=1"
+    },
+    {
+      "id": "B0b",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "8f0e594f2ac3d357ebd4d99eda373a8e9300c09b3cfb875731664989e960dc10",
+      "note": "perActorCwdFieldFound=False dwf_actor_has_cwd_column=False"
+    },
+    {
+      "id": "B0c",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "8bbe535a3c39c8ffb140e941ce387f6052234f1b9704c2a73fe62b3b7280a464",
+      "note": "classification=untested_catalog_unavailable"
+    },
+    {
+      "id": "B1",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "05c732ced6829c203dbc79c0e6d3ab2df16d0dab475cd63972c1d65ce52623cb",
+      "note": "B1 correctly not run (activation table: a_verdict=Viable)"
+    },
+    {
+      "id": "D1",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "05c732ced6829c203dbc79c0e6d3ab2df16d0dab475cd63972c1d65ce52623cb",
+      "note": "ledger rows=20 five_fields=True unique_ids=True full_sha_recheck=True gate_types_valid=True"
+    },
+    {
+      "id": "D2",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "05c732ced6829c203dbc79c0e6d3ab2df16d0dab475cd63972c1d65ce52623cb",
+      "note": "DT-v1 block normalized-equal=True table_id=SF-0004-DT-v1"
+    },
+    {
+      "id": "D3",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "05c732ced6829c203dbc79c0e6d3ab2df16d0dab475cd63972c1d65ce52623cb",
+      "note": "recomputed a=Viable b=Undetermined decision=D1 | self-reported a=Viable b=Undetermined decision=D1 | 3x3 selftest=True"
+    },
+    {
+      "id": "D4",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "05c732ced6829c203dbc79c0e6d3ab2df16d0dab475cd63972c1d65ce52623cb",
+      "note": "rejected entries=4 all_four_fields=True evidence_refs_exist=True covers_B_and_C=True"
+    },
+    {
+      "id": "D5",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "05c732ced6829c203dbc79c0e6d3ab2df16d0dab475cd63972c1d65ce52623cb",
+      "note": "negative_space items=6 O5=True R3=True O7=True"
+    },
+    {
+      "id": "D6",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "05c732ced6829c203dbc79c0e6d3ab2df16d0dab475cd63972c1d65ce52623cb",
+      "note": "glm_pin_changed=False glm_landing=account:bigmodel-individual-coding-plan/GLM-5.3 startable=True planner_confirm=True"
+    },
+    {
+      "id": "D7",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "05c732ced6829c203dbc79c0e6d3ab2df16d0dab475cd63972c1d65ce52623cb",
+      "note": "quality_track verdict=unjudgeable score=None (must be null) for decision=D1"
+    },
+    {
+      "id": "D8",
+      "command": "",
+      "exit_code": 1,
+      "passed": false,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "05c732ced6829c203dbc79c0e6d3ab2df16d0dab475cd63972c1d65ce52623cb",
+      "note": "probe_not_arm_all=True model_calls=5/7 per_family={'glm': 2, 'minimax': 1, 'step': 1} total_tokens=69094/200000 db_lookup=True arms_clean=True max_single_session_input=23143/8192 (cap_ok=False)"
+    },
+    {
+      "id": "D9",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "4dae4374e1a11fd349b1a1bcfad048abaafef4a24242c059abae989075e596ab",
+      "note": "MT-6 counterprobe passed=True"
+    },
+    {
+      "id": "D10",
+      "command": "",
+      "exit_code": 0,
+      "passed": true,
+      "ts": "2026-10-04T03:07:37+0800",
+      "evidence_sha256": "05c732ced6829c203dbc79c0e6d3ab2df16d0dab475cd63972c1d65ce52623cb",
+      "note": "missing_sections=[] WS4-PRE_count=1 (must be 1) decision_in_report=True"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "task": "SF-0003",
+  "branch": "B",
+  "checked_at": "2026-10-03T21:45:45+08:00",
+  "baseline_dir": "D:\\new-workspace\\agent-asset\\evalkit\\baseline",
+  "baseline_dir_listing": [],
+  "v6-mvp-0.1_baseline_files_readable_by_aggregator": 0,
+  "voided_count": 0,
+  "voided": [],
+  "reason": "O-6【已裁定】触发「bump evalbench 版本、旧基线作废」；实测 baseline/ 目录为空（无任何 <family>/<version>.json 基线文件，含 r1-probe 轮——该轮为管线验证信号，从未写入 baseline/），无可作废对象，故走决策表分支 B：voided_count=0 显式记录。可被聚合器读到的 v6-mvp-0.1 基线数 == 0 断言同时成立。",
+  "invalidated_run": "runs/r1-probe（见同目录 INVALIDATED.md，citable:false）"
+}

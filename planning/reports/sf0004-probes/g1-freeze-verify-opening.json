@@ -1,0 +1,13 @@
+{
+  "gate": "G1",
+  "phase": "opening",
+  "command": "python harness/freeze_device.py verify  (cwd=$EK)",
+  "cwd": "D:\\new-workspace\\agent-asset\\evalkit",
+  "exit_code": 0,
+  "stdout_verbatim": "装置钉版一致：16 个关键文件 sha256 全对",
+  "ts": "2026-10-04T01:53+0800",
+  "provenance": "recorded_from_session_stdout",
+  "re_derivable": false,
+  "honesty_note": "This file is a transcript record of the opening run as observed in the executing session. It is NOT a re-derivation and must not be read as one. The closing run (g1-freeze-verify-closing.json) re-proves the same invariant from the live tree, and because the card's G3/G4 diffs came back empty this card wrote nothing into evalkit, so opening and closing freeze state are the same state. Planner re-verification should rely on the closing row.",
+  "paired_closing_evidence": "g1-freeze-verify-closing.json"
+}

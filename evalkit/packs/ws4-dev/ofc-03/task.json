@@ -1,0 +1,19 @@
+{
+  "line": "ofc",
+  "case_type": "adversarial",
+  "origin": "self-built",
+  "source_ref": null,
+  "canonical_seed": 4208,
+  "template": "会议通知",
+  "expected_checks": [
+    "task_outcome_docx_present_opens_safe",
+    "task_outcome_layout_title_centered",
+    "task_outcome_layout_salutation_flush",
+    "task_outcome_layout_body_indent",
+    "task_outcome_layout_signature_right",
+    "task_outcome_fields_selfconsistent",
+    "task_outcome_values_verbatim_in_docx",
+    "task_outcome_missing_reported_and_blank"
+  ],
+  "id": "ofc-03"
+}

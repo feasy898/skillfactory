@@ -1,0 +1,10 @@
+{
+  "arm": "treatment",
+  "run_label": "r1",
+  "run_id": "r1-probe",
+  "model_id": "GLM-5.3",
+  "provider_base_url": "builtin:bigmodel-coding-plan (zcode 内部，CLI 不暴露 baseURL)",
+  "cli_runtime": "zcode-app-cli 3.14.4-30 / zcode-runtime 0.16.9",
+  "date": "2026-10-03",
+  "reasoning_variant": "default(max)"
+}

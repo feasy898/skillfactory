@@ -1,0 +1,11 @@
+{
+  "run_id": "r1-probe",
+  "run_dir": "D:\\new-workspace\\agent-asset\\evalkit\\runs\\r1-probe",
+  "arms": {
+    "baseline": "D:\\new-workspace\\agent-asset\\evalkit\\runs\\r1-probe\\baseline",
+    "treatment": "D:\\new-workspace\\agent-asset\\evalkit\\runs\\r1-probe\\treatment"
+  },
+  "treatment_skill_mount": "D:\\new-workspace\\agent-asset\\evalkit\\runs\\r1-probe\\treatment\\.zcode\\skills\\speaker-mapping",
+  "baseline_has_skill": false,
+  "pack": "D:\\new-workspace\\agent-asset\\evalkit\\packs\\sm-mapping-01"
+}

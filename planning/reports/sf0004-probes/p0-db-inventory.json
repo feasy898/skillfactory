@@ -1,0 +1,98 @@
+{
+  "source_db": "C:\\Users\\Administrator\\.zcode\\cli\\db\\db.sqlite",
+  "anchor_expected": "GLM-5.3 row must be present (positive control)",
+  "group_by": [
+    "model_id",
+    "provider_id"
+  ],
+  "total_rows": 153326,
+  "rows": [
+    {
+      "model_id": "GLM-5.3-Flash",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "count": 95104,
+      "input_tokens": 12276387311,
+      "output_tokens": 87957554
+    },
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "count": 17732,
+      "input_tokens": 4074123411,
+      "output_tokens": 15773476
+    },
+    {
+      "model_id": "GLM-5.3-Flash",
+      "provider_id": "builtin:bigmodel-coding-plan",
+      "count": 8534,
+      "input_tokens": 928447026,
+      "output_tokens": 9255231
+    },
+    {
+      "model_id": "GLM-5.3-Flash",
+      "provider_id": "account:bigmodel-start-plan",
+      "count": 5671,
+      "input_tokens": 695291087,
+      "output_tokens": 5851223
+    },
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "count": 5392,
+      "input_tokens": 478220862,
+      "output_tokens": 4498687
+    },
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "builtin:bigmodel-coding-plan",
+      "count": 5089,
+      "input_tokens": 1162744699,
+      "output_tokens": 2917882
+    },
+    {
+      "model_id": "MiniMax-M3",
+      "provider_id": "minimax",
+      "count": 4967,
+      "input_tokens": 942394702,
+      "output_tokens": 2996098
+    },
+    {
+      "model_id": "step-5-preview",
+      "provider_id": "new-provider",
+      "count": 4822,
+      "input_tokens": 934779467,
+      "output_tokens": 4516696
+    },
+    {
+      "model_id": "step-router-v1",
+      "provider_id": "new-provider",
+      "count": 3323,
+      "input_tokens": 222591589,
+      "output_tokens": 2415781
+    },
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-offpeak-idle-plan",
+      "count": 1403,
+      "input_tokens": 71452335,
+      "output_tokens": 887002
+    },
+    {
+      "model_id": "GLM-5.3-Flash",
+      "provider_id": "account:bigmodel-offpeak-idle-plan",
+      "count": 1273,
+      "input_tokens": 109863503,
+      "output_tokens": 1326726
+    },
+    {
+      "model_id": "MiniMax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "count": 16,
+      "input_tokens": 220415,
+      "output_tokens": 4511
+    }
+  ],
+  "glm53_row_present": true,
+  "glm53_row_count": 17732,
+  "glm53flash_row_count": 95104
+}

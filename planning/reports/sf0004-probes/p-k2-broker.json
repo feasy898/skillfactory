@@ -1,0 +1,17 @@
+{
+  "gate": "K2",
+  "channel": "kimi broker head (higress-broker/MiniMax-M3.1-Flash-Preview)",
+  "status": "skipped-no-token",
+  "token_present": false,
+  "token_env_names_checked": {
+    "MINIMAX_API_KEY": false,
+    "HIGRESS_BROKER_API_KEY": false,
+    "VAULT_TOKEN": false,
+    "BROKER_TOKEN": false,
+    "MINIMAX_TOKEN": false,
+    "SF0004_BROKER_TOKEN": false
+  },
+  "reason": "no planner-minted short-term broker token present in the process environment (env-name scan only; no value read). Per card §4 this is an explicit non-failure row and does not block the decision.",
+  "config_sha256": "e16fee6fa522a4edcf29ed1b88db3ab354a2341bcab26273b736c052b6b08422",
+  "ts": "2026-10-04T01:58:55+0800"
+}

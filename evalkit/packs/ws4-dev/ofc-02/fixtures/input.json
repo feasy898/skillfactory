@@ -1,0 +1,60 @@
+{
+  "template": "请示函",
+  "title": "关于瑞和结算引擎建设经费的请示",
+  "fields": [
+    {
+      "name": "主送单位",
+      "required": true,
+      "kind": "text",
+      "value": "公司领导班子"
+    },
+    {
+      "name": "事由",
+      "required": true,
+      "kind": "text",
+      "value": "关于瑞和结算引擎建设经费的请示"
+    },
+    {
+      "name": "申请事项",
+      "required": true,
+      "kind": "text",
+      "value": "采购《瑞和结算引擎运维服务》（含二期扩容）"
+    },
+    {
+      "name": "资金额度",
+      "required": true,
+      "kind": "text",
+      "value": "8.6万元"
+    },
+    {
+      "name": "资金来源",
+      "required": true,
+      "kind": "text",
+      "value": null
+    },
+    {
+      "name": "联系人",
+      "required": true,
+      "kind": "text",
+      "value": "吴丽娜"
+    },
+    {
+      "name": "联系电话",
+      "required": true,
+      "kind": "text",
+      "value": null
+    },
+    {
+      "name": "落款单位",
+      "required": true,
+      "kind": "text",
+      "value": "瑞和信息质量组"
+    },
+    {
+      "name": "落款日期",
+      "required": true,
+      "kind": "text",
+      "value": "2026年8月24日"
+    }
+  ]
+}

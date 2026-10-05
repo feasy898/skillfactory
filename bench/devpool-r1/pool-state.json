@@ -1,0 +1,812 @@
+{
+  "pool": "ws4-dev",
+  "built_by": "SF-0005 · worker-glm-bd",
+  "generated_at": "2026-10-04T08:07:31+08:00",
+  "evalbench_version": "v6-mvp-0.3",
+  "counts": {
+    "tasks": 8,
+    "built": 8,
+    "ready": 0,
+    "case_type": {
+      "positive": 4,
+      "near-negative": 2,
+      "adversarial": 2
+    },
+    "origin": {
+      "self-built": 5,
+      "public-variant": 3
+    },
+    "line": {
+      "mm": 2,
+      "hot": 3,
+      "ofc": 3
+    }
+  },
+  "signoff_ledger": "全 8 题 d1/d3 signoff 恒 null = WAITING_OWNER（ofc 3 题 D3 另为 WAITING_WS3）；READY 翻绿条件=owner D1 签署（mm/hot ≥5 题即满足卡 B 兜底门）",
+  "tasks": [
+    {
+      "id": "mm-01",
+      "pack": "evalkit/packs/ws4-dev/mm-01",
+      "line": "mm",
+      "case_type": "positive",
+      "origin": "self-built",
+      "source_ref": null,
+      "status": "built",
+      "ready": false,
+      "canonical_seed": 4201,
+      "pack_files_sha256": {
+        "brief.md": "80ff3b1c5dd7e6d7621e79de7855f7e23e0f69d3706f25d5f76d97f1f2ae7cfa",
+        "rubric.md": "f42d39281d842a35f36cdc56924f86b5a2d84b9c15cba243ef18db2749b714ec",
+        "task.json": "11db359900f2d6aaf36135fbdc7c3694c11993b106a7aa6a893fb8ff4af9d8bc",
+        "gen_oracle.py": "d5b7a3dc986a9807d5989753a163b78d85cd49857200441c5f9fe8b312f22690",
+        "checks/run_check.py": "d89fae1b65e7e99d5b21bfc9429f0a707c9fabf6f9b9f6defc9afc86ca1e0b8a",
+        "runner_contract.json": "b13fa1e312c59a982dbc7ce8984ad43a117893322f4864c84c853045c6bbcc75",
+        "fixtures/transcript.txt": "9b8b67c818ad1ead829c8900414394a0b47e41df789dcc35f78111b8b0778cde"
+      },
+      "d1_record": {
+        "stage": "D1 来源→题面（人工必须过；本记录为 worker 起草，待 owner 签署）",
+        "source": {
+          "origin": "self-built",
+          "source_ref": null,
+          "desensitize_rule": "自建题面，实体全部 nonce 化"
+        },
+        "self_checks": {
+          "sc1_来源合法": {
+            "claim": "来源=自建或公开规范/法条，脱敏+nonce 改写，无版权与隐私风险",
+            "evidence": "source_ref 见上",
+            "status": "drafted-awaiting-owner"
+          },
+          "sc2_可机判": {
+            "claim": "输出契约可机判（L2 检查清单逐项落 checks/run_check.py）",
+            "evidence": "selftest BQ-8 红绿两态全过（见 d2_record.selftest）",
+            "status": "machine-green"
+          },
+          "sc3_两臂公平": {
+            "claim": "两臂 brief 逐字相同（包内单一 brief.md，跑批时 make_arms 复制），无资产暗示",
+            "evidence": "pack_checks EI-7 扫描零命中（pool-state.build_evidence）",
+            "status": "machine-green"
+          },
+          "sc4_资产名零泄漏": {
+            "claim": "brief/黄金输入零资产名与暗示句式",
+            "evidence": "pack_checks EI-7 scan_hits=0；GE-4 grep 三个 dist 资产名零命中",
+            "status": "machine-green"
+          }
+        },
+        "signoff": {
+          "签署人": null,
+          "日期": null,
+          "被签对象sha256": null
+        }
+      },
+      "d2_record": {
+        "stage": "D2 题面→实例+oracle（纯机械，同种子逐字节复现+生成器红绿自检）",
+        "seed": 4201,
+        "nonce_set": "A",
+        "generated_at": "2026-10-04T08:07:31+08:00",
+        "outputs_sha256": {
+          "fixtures/transcript.txt": "9b8b67c818ad1ead829c8900414394a0b47e41df789dcc35f78111b8b0778cde",
+          "oracle/summary.json": "4c82acdccb7e76963dc6dc18c90e5cbf7e4c98c40ab2eadcbfe98dd2eef3bea5",
+          "oracle/纪要.docx": "d71695e987604e5bd2a5e7e125717d1673df6ba92cf55f6cfdd677f254efd065"
+        },
+        "selftest": {
+          "exit": 0,
+          "selftest_pass": true,
+          "covers": "BQ-8 红绿两态 / BQ-9 nonce 交叉红 / BQ-10 同种子逐字节 / fixtures 漂移守卫"
+        }
+      },
+      "d3_record": {
+        "stage": "D3 判分器化（人工金标对拍 ≥95%；人工必须过）",
+        "self_loop": {
+          "task": "mm-01",
+          "mode": "self_loop",
+          "checker_exit_on_machine_oracle": 0,
+          "agreement": "1.0",
+          "self_loop": true,
+          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 完成态恒为 WAITING_OWNER/WAITING_WS3"
+        },
+        "real_gate_exit": 3,
+        "state": "WAITING_OWNER",
+        "message": "WAITING_OWNER：mm-01 人工金标未注入（期望目录 bench/devpool-r1/goldens/mm-01/，每样本一子目录：product/ 产物 + verdict.json {expected_pass, annotator}）；对拍准确率/召回 ≥95% 才可签 D3；金标未注入即 fail-closed，绝不静默通过。",
+        "real_result": null,
+        "signoff": {
+          "签署人": null,
+          "日期": null,
+          "被签对象sha256": null
+        }
+      },
+      "d4_record": {
+        "stage": "D4 校准入池（难度带分拣）",
+        "band": null,
+        "band_reason": "首轮未标定：0 模型调用无臂数据，难度带（treatment 通过率锚）须待基线轮（SF-0006）后分拣",
+        "first_round_distribution": "8 题全带外（built 未标定）；题型分布=positive 4 / near-negative 2 / adversarial 2",
+        "sorter": "分拣规则（PLAN §3.2）：>90% 进轮换池、60-90% 迭代池、<60% 归因五分类；阈值卡 B 后可注入"
+      }
+    },
+    {
+      "id": "mm-02",
+      "pack": "evalkit/packs/ws4-dev/mm-02",
+      "line": "mm",
+      "case_type": "near-negative",
+      "origin": "public-variant",
+      "source_ref": "公开规范条目：《党政机关公文处理工作条例》（中办发〔2012〕14号，公开发布）「纪要」文种定义 + GB/T 9704-2012《党政机关公文格式》（国家标准全文公开系统 openstd.samr.gov.cn，条目号 GB/T 9704-2012）；题面内容 100% 自写，实体全部 nonce 化改写，零原文复制",
+      "status": "built",
+      "ready": false,
+      "canonical_seed": 4202,
+      "pack_files_sha256": {
+        "brief.md": "eecf24f3afe9364746ff9c8e3db7f44cf5528b854bdf596a2ad6e8462b95dd65",
+        "rubric.md": "d8bb098d510fc66b3652baf54f03faa14d239940566d53824eea757ab93078e2",
+        "task.json": "a9668a5b7c88aa009cd34c2e36adc72b40ae86b9bcb9b1a021c8432a82a3296d",
+        "gen_oracle.py": "3e929f103c53770342a3f7d22869fef9a6e647e6700b25a088ebf369cb6e993f",
+        "checks/run_check.py": "9a659231e4208f15ec19c1c315979db729fce114631aea75bf913e8c97c1bf55",
+        "runner_contract.json": "b13fa1e312c59a982dbc7ce8984ad43a117893322f4864c84c853045c6bbcc75",
+        "fixtures/transcript.txt": "00320a0cc18a7ab6818ecca7ce2dbfdca5246e058f9f342a9fcd20029093e280"
+      },
+      "d1_record": {
+        "stage": "D1 来源→题面（人工必须过；本记录为 worker 起草，待 owner 签署）",
+        "source": {
+          "origin": "public-variant",
+          "source_ref": "公开规范条目：《党政机关公文处理工作条例》（中办发〔2012〕14号，公开发布）「纪要」文种定义 + GB/T 9704-2012《党政机关公文格式》（国家标准全文公开系统 openstd.samr.gov.cn，条目号 GB/T 9704-2012）；题面内容 100% 自写，实体全部 nonce 化改写，零原文复制",
+          "desensitize_rule": "公开变体三题：内容 100% 自写，实体全部 nonce 化改写，零原文复制"
+        },
+        "self_checks": {
+          "sc1_来源合法": {
+            "claim": "来源=自建或公开规范/法条，脱敏+nonce 改写，无版权与隐私风险",
+            "evidence": "source_ref 见上",
+            "status": "drafted-awaiting-owner"
+          },
+          "sc2_可机判": {
+            "claim": "输出契约可机判（L2 检查清单逐项落 checks/run_check.py）",
+            "evidence": "selftest BQ-8 红绿两态全过（见 d2_record.selftest）",
+            "status": "machine-green"
+          },
+          "sc3_两臂公平": {
+            "claim": "两臂 brief 逐字相同（包内单一 brief.md，跑批时 make_arms 复制），无资产暗示",
+            "evidence": "pack_checks EI-7 扫描零命中（pool-state.build_evidence）",
+            "status": "machine-green"
+          },
+          "sc4_资产名零泄漏": {
+            "claim": "brief/黄金输入零资产名与暗示句式",
+            "evidence": "pack_checks EI-7 scan_hits=0；GE-4 grep 三个 dist 资产名零命中",
+            "status": "machine-green"
+          }
+        },
+        "signoff": {
+          "签署人": null,
+          "日期": null,
+          "被签对象sha256": null
+        }
+      },
+      "d2_record": {
+        "stage": "D2 题面→实例+oracle（纯机械，同种子逐字节复现+生成器红绿自检）",
+        "seed": 4202,
+        "nonce_set": "A",
+        "generated_at": "2026-10-04T08:07:31+08:00",
+        "outputs_sha256": {
+          "fixtures/transcript.txt": "00320a0cc18a7ab6818ecca7ce2dbfdca5246e058f9f342a9fcd20029093e280",
+          "oracle/summary.json": "47c2354f77d4bf3144dce6b095fd522f61ad0f88ec17229d61ae78327a87e556",
+          "oracle/纪要.docx": "7f64550368cfd37982373d2635f3b749f6c9f1cc743f86084160ef6efa862284"
+        },
+        "selftest": {
+          "exit": 0,
+          "selftest_pass": true,
+          "covers": "BQ-8 红绿两态 / BQ-9 nonce 交叉红 / BQ-10 同种子逐字节 / fixtures 漂移守卫"
+        }
+      },
+      "d3_record": {
+        "stage": "D3 判分器化（人工金标对拍 ≥95%；人工必须过）",
+        "self_loop": {
+          "task": "mm-02",
+          "mode": "self_loop",
+          "checker_exit_on_machine_oracle": 0,
+          "agreement": "1.0",
+          "self_loop": true,
+          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 完成态恒为 WAITING_OWNER/WAITING_WS3"
+        },
+        "real_gate_exit": 3,
+        "state": "WAITING_OWNER",
+        "message": "WAITING_OWNER：mm-02 人工金标未注入（期望目录 bench/devpool-r1/goldens/mm-02/，每样本一子目录：product/ 产物 + verdict.json {expected_pass, annotator}）；对拍准确率/召回 ≥95% 才可签 D3；金标未注入即 fail-closed，绝不静默通过。",
+        "real_result": null,
+        "signoff": {
+          "签署人": null,
+          "日期": null,
+          "被签对象sha256": null
+        }
+      },
+      "d4_record": {
+        "stage": "D4 校准入池（难度带分拣）",
+        "band": null,
+        "band_reason": "首轮未标定：0 模型调用无臂数据，难度带（treatment 通过率锚）须待基线轮（SF-0006）后分拣",
+        "first_round_distribution": "8 题全带外（built 未标定）；题型分布=positive 4 / near-negative 2 / adversarial 2",
+        "sorter": "分拣规则（PLAN §3.2）：>90% 进轮换池、60-90% 迭代池、<60% 归因五分类；阈值卡 B 后可注入"
+      }
+    },
+    {
+      "id": "hot-01",
+      "pack": "evalkit/packs/ws4-dev/hot-01",
+      "line": "hot",
+      "case_type": "positive",
+      "origin": "public-variant",
+      "source_ref": "公开规范页：抖音创作者服务中心公开规范（creator.douyin.com，社区公约/内容规范）+《中华人民共和国广告法》第九条绝对化用语条款（公开法条）；题面/卖点全部自写+nonce 改写，零原文复制",
+      "status": "built",
+      "ready": false,
+      "canonical_seed": 4203,
+      "pack_files_sha256": {
+        "brief.md": "000ccae8ec3875a44e36aa253dfd629323cc63dfe3c0f2b76c5fefbb48f9fda7",
+        "rubric.md": "7e125d5a75fd339efa4c1839fc18fa4abaac903593304454aec759938ca8d6be",
+        "task.json": "0eec59246dc17d4852510d68ad30bad3c155745c60ff4c1f56f6d582057e544a",
+        "gen_oracle.py": "f5f5fd068f62e8cd3bbce88c01185d82ecdf454daf9ea39e4bc0f9697f7dd263",
+        "checks/run_check.py": "60fdb49c40284c7e27938e508d1497c0bb5dcca2d7d22461c54465921923d794",
+        "runner_contract.json": "d3133f01353b7298a33aa01c654a45fa8d1d8417f9e28ccef43dfd309df22b4e",
+        "fixtures/input.json": "d3a0ab3fd87c26a854a15a3f47fa417fe1c921fa024ca53a797750eaa93911c8"
+      },
+      "d1_record": {
+        "stage": "D1 来源→题面（人工必须过；本记录为 worker 起草，待 owner 签署）",
+        "source": {
+          "origin": "public-variant",
+          "source_ref": "公开规范页：抖音创作者服务中心公开规范（creator.douyin.com，社区公约/内容规范）+《中华人民共和国广告法》第九条绝对化用语条款（公开法条）；题面/卖点全部自写+nonce 改写，零原文复制",
+          "desensitize_rule": "公开变体三题：内容 100% 自写，实体全部 nonce 化改写，零原文复制"
+        },
+        "self_checks": {
+          "sc1_来源合法": {
+            "claim": "来源=自建或公开规范/法条，脱敏+nonce 改写，无版权与隐私风险",
+            "evidence": "source_ref 见上",
+            "status": "drafted-awaiting-owner"
+          },
+          "sc2_可机判": {
+            "claim": "输出契约可机判（L2 检查清单逐项落 checks/run_check.py）",
+            "evidence": "selftest BQ-8 红绿两态全过（见 d2_record.selftest）",
+            "status": "machine-green"
+          },
+          "sc3_两臂公平": {
+            "claim": "两臂 brief 逐字相同（包内单一 brief.md，跑批时 make_arms 复制），无资产暗示",
+            "evidence": "pack_checks EI-7 扫描零命中（pool-state.build_evidence）",
+            "status": "machine-green"
+          },
+          "sc4_资产名零泄漏": {
+            "claim": "brief/黄金输入零资产名与暗示句式",
+            "evidence": "pack_checks EI-7 scan_hits=0；GE-4 grep 三个 dist 资产名零命中",
+            "status": "machine-green"
+          }
+        },
+        "signoff": {
+          "签署人": null,
+          "日期": null,
+          "被签对象sha256": null
+        }
+      },
+      "d2_record": {
+        "stage": "D2 题面→实例+oracle（纯机械，同种子逐字节复现+生成器红绿自检）",
+        "seed": 4203,
+        "nonce_set": "A",
+        "generated_at": "2026-10-04T08:07:31+08:00",
+        "outputs_sha256": {
+          "fixtures/input.json": "d3a0ab3fd87c26a854a15a3f47fa417fe1c921fa024ca53a797750eaa93911c8",
+          "oracle/structure.json": "85c9c9f78de55dc2c3f4276884d53be03ae1492e01199a407d239675f573713e",
+          "oracle/骨架.md": "05c3779fc0c76fe6a6008ebbc882bad6fdb8b3b5452e2e7d25b4d12bc16d387c"
+        },
+        "selftest": {
+          "exit": 0,
+          "selftest_pass": true,
+          "covers": "BQ-8 红绿两态 / BQ-9 nonce 交叉红 / BQ-10 同种子逐字节 / fixtures 漂移守卫"
+        }
+      },
+      "d3_record": {
+        "stage": "D3 判分器化（人工金标对拍 ≥95%；人工必须过）",
+        "self_loop": {
+          "task": "hot-01",
+          "mode": "self_loop",
+          "checker_exit_on_machine_oracle": 0,
+          "agreement": "1.0",
+          "self_loop": true,
+          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 完成态恒为 WAITING_OWNER/WAITING_WS3"
+        },
+        "real_gate_exit": 3,
+        "state": "WAITING_OWNER",
+        "message": "WAITING_OWNER：hot-01 人工金标未注入（期望目录 bench/devpool-r1/goldens/hot-01/，每样本一子目录：product/ 产物 + verdict.json {expected_pass, annotator}）；对拍准确率/召回 ≥95% 才可签 D3；金标未注入即 fail-closed，绝不静默通过。",
+        "real_result": null,
+        "signoff": {
+          "签署人": null,
+          "日期": null,
+          "被签对象sha256": null
+        }
+      },
+      "d4_record": {
+        "stage": "D4 校准入池（难度带分拣）",
+        "band": null,
+        "band_reason": "首轮未标定：0 模型调用无臂数据，难度带（treatment 通过率锚）须待基线轮（SF-0006）后分拣",
+        "first_round_distribution": "8 题全带外（built 未标定）；题型分布=positive 4 / near-negative 2 / adversarial 2",
+        "sorter": "分拣规则（PLAN §3.2）：>90% 进轮换池、60-90% 迭代池、<60% 归因五分类；阈值卡 B 后可注入"
+      }
+    },
+    {
+      "id": "hot-02",
+      "pack": "evalkit/packs/ws4-dev/hot-02",
+      "line": "hot",
+      "case_type": "positive",
+      "origin": "self-built",
+      "source_ref": null,
+      "status": "built",
+      "ready": false,
+      "canonical_seed": 4204,
+      "pack_files_sha256": {
+        "brief.md": "1f3fbb26f166485f0aa367e55535ec9d2676da145e5db091244444b985a5b420",
+        "rubric.md": "42a6ebb8775711a4e551f5fcad4fa0c07a94b98d48f94eb3915547562cb8d1de",
+        "task.json": "fcef2b5398d714d7a73a64beada0e86c286d1488d59361150f7072755b3cd6c5",
+        "gen_oracle.py": "b416b846cd8f17d8fa4ef362e75c29fefb44d61e843b44eb2255ff243a079178",
+        "checks/run_check.py": "d2afafc0766e2fe6f22d8f5d765b8513144bdf13fec07a7af643a0c2db6f800e",
+        "runner_contract.json": "d3133f01353b7298a33aa01c654a45fa8d1d8417f9e28ccef43dfd309df22b4e",
+        "fixtures/input.json": "835248a452b5a022fe9decf07e8eb409a3cecb2762a5e44bb06ebdcb70cb2c55"
+      },
+      "d1_record": {
+        "stage": "D1 来源→题面（人工必须过；本记录为 worker 起草，待 owner 签署）",
+        "source": {
+          "origin": "self-built",
+          "source_ref": null,
+          "desensitize_rule": "自建题面，实体全部 nonce 化"
+        },
+        "self_checks": {
+          "sc1_来源合法": {
+            "claim": "来源=自建或公开规范/法条，脱敏+nonce 改写，无版权与隐私风险",
+            "evidence": "source_ref 见上",
+            "status": "drafted-awaiting-owner"
+          },
+          "sc2_可机判": {
+            "claim": "输出契约可机判（L2 检查清单逐项落 checks/run_check.py）",
+            "evidence": "selftest BQ-8 红绿两态全过（见 d2_record.selftest）",
+            "status": "machine-green"
+          },
+          "sc3_两臂公平": {
+            "claim": "两臂 brief 逐字相同（包内单一 brief.md，跑批时 make_arms 复制），无资产暗示",
+            "evidence": "pack_checks EI-7 扫描零命中（pool-state.build_evidence）",
+            "status": "machine-green"
+          },
+          "sc4_资产名零泄漏": {
+            "claim": "brief/黄金输入零资产名与暗示句式",
+            "evidence": "pack_checks EI-7 scan_hits=0；GE-4 grep 三个 dist 资产名零命中",
+            "status": "machine-green"
+          }
+        },
+        "signoff": {
+          "签署人": null,
+          "日期": null,
+          "被签对象sha256": null
+        }
+      },
+      "d2_record": {
+        "stage": "D2 题面→实例+oracle（纯机械，同种子逐字节复现+生成器红绿自检）",
+        "seed": 4204,
+        "nonce_set": "A",
+        "generated_at": "2026-10-04T08:07:31+08:00",
+        "outputs_sha256": {
+          "fixtures/input.json": "835248a452b5a022fe9decf07e8eb409a3cecb2762a5e44bb06ebdcb70cb2c55",
+          "oracle/structure.json": "505d82cfc54beb6fc5f8b56116d8601636852558a9aab3b56aeec14fe834a60e",
+          "oracle/骨架.md": "a9be3e155b6ca2fab584152c1244ba3eda821cd3390d0b426c9d49db91f6a006"
+        },
+        "selftest": {
+          "exit": 0,
+          "selftest_pass": true,
+          "covers": "BQ-8 红绿两态 / BQ-9 nonce 交叉红 / BQ-10 同种子逐字节 / fixtures 漂移守卫"
+        }
+      },
+      "d3_record": {
+        "stage": "D3 判分器化（人工金标对拍 ≥95%；人工必须过）",
+        "self_loop": {
+          "task": "hot-02",
+          "mode": "self_loop",
+          "checker_exit_on_machine_oracle": 0,
+          "agreement": "1.0",
+          "self_loop": true,
+          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 完成态恒为 WAITING_OWNER/WAITING_WS3"
+        },
+        "real_gate_exit": 3,
+        "state": "WAITING_OWNER",
+        "message": "WAITING_OWNER：hot-02 人工金标未注入（期望目录 bench/devpool-r1/goldens/hot-02/，每样本一子目录：product/ 产物 + verdict.json {expected_pass, annotator}）；对拍准确率/召回 ≥95% 才可签 D3；金标未注入即 fail-closed，绝不静默通过。",
+        "real_result": null,
+        "signoff": {
+          "签署人": null,
+          "日期": null,
+          "被签对象sha256": null
+        }
+      },
+      "d4_record": {
+        "stage": "D4 校准入池（难度带分拣）",
+        "band": null,
+        "band_reason": "首轮未标定：0 模型调用无臂数据，难度带（treatment 通过率锚）须待基线轮（SF-0006）后分拣",
+        "first_round_distribution": "8 题全带外（built 未标定）；题型分布=positive 4 / near-negative 2 / adversarial 2",
+        "sorter": "分拣规则（PLAN §3.2）：>90% 进轮换池、60-90% 迭代池、<60% 归因五分类；阈值卡 B 后可注入"
+      }
+    },
+    {
+      "id": "hot-03",
+      "pack": "evalkit/packs/ws4-dev/hot-03",
+      "line": "hot",
+      "case_type": "near-negative",
+      "origin": "self-built",
+      "source_ref": null,
+      "status": "built",
+      "ready": false,
+      "canonical_seed": 4205,
+      "pack_files_sha256": {
+        "brief.md": "e8e6b8145c5e9fb2751a3719fe880ca0846dd125f0d808433d1d99a4c406a64d",
+        "rubric.md": "93737bc103dc2f42bd7c911cf7e5495a43b3cd5d88d23204014deee181a2812d",
+        "task.json": "8646e8babb2c8c24d1e6b6bb1f0835372054edfb1872e70b8749800b85208ed4",
+        "gen_oracle.py": "cee54624978629b67eccbc2f69dacd7952885956cd366d0724b13dbec551d556",
+        "checks/run_check.py": "bc7dd27326a2d092e60969e8e8b30143dac4f842ea78baafe3ef037f4b1130c4",
+        "runner_contract.json": "d3133f01353b7298a33aa01c654a45fa8d1d8417f9e28ccef43dfd309df22b4e",
+        "fixtures/input.json": "c6ce8cc4701fb061d3271cb7e299adecad3b8f6184d76e8955bc3a7cbbad6674"
+      },
+      "d1_record": {
+        "stage": "D1 来源→题面（人工必须过；本记录为 worker 起草，待 owner 签署）",
+        "source": {
+          "origin": "self-built",
+          "source_ref": null,
+          "desensitize_rule": "自建题面，实体全部 nonce 化"
+        },
+        "self_checks": {
+          "sc1_来源合法": {
+            "claim": "来源=自建或公开规范/法条，脱敏+nonce 改写，无版权与隐私风险",
+            "evidence": "source_ref 见上",
+            "status": "drafted-awaiting-owner"
+          },
+          "sc2_可机判": {
+            "claim": "输出契约可机判（L2 检查清单逐项落 checks/run_check.py）",
+            "evidence": "selftest BQ-8 红绿两态全过（见 d2_record.selftest）",
+            "status": "machine-green"
+          },
+          "sc3_两臂公平": {
+            "claim": "两臂 brief 逐字相同（包内单一 brief.md，跑批时 make_arms 复制），无资产暗示",
+            "evidence": "pack_checks EI-7 扫描零命中（pool-state.build_evidence）",
+            "status": "machine-green"
+          },
+          "sc4_资产名零泄漏": {
+            "claim": "brief/黄金输入零资产名与暗示句式",
+            "evidence": "pack_checks EI-7 scan_hits=0；GE-4 grep 三个 dist 资产名零命中",
+            "status": "machine-green"
+          }
+        },
+        "signoff": {
+          "签署人": null,
+          "日期": null,
+          "被签对象sha256": null
+        }
+      },
+      "d2_record": {
+        "stage": "D2 题面→实例+oracle（纯机械，同种子逐字节复现+生成器红绿自检）",
+        "seed": 4205,
+        "nonce_set": "A",
+        "generated_at": "2026-10-04T08:07:31+08:00",
+        "outputs_sha256": {
+          "fixtures/input.json": "c6ce8cc4701fb061d3271cb7e299adecad3b8f6184d76e8955bc3a7cbbad6674",
+          "oracle/structure.json": "00e3a01e68638129920e42b4365410c7960c4cd149e1832ee7a6992b1c9fea15",
+          "oracle/骨架.md": "35768ced955de4befc3827055ae1d1dc0b912ee546f5e640d2dac24ff309e223"
+        },
+        "selftest": {
+          "exit": 0,
+          "selftest_pass": true,
+          "covers": "BQ-8 红绿两态 / BQ-9 nonce 交叉红 / BQ-10 同种子逐字节 / fixtures 漂移守卫"
+        }
+      },
+      "d3_record": {
+        "stage": "D3 判分器化（人工金标对拍 ≥95%；人工必须过）",
+        "self_loop": {
+          "task": "hot-03",
+          "mode": "self_loop",
+          "checker_exit_on_machine_oracle": 0,
+          "agreement": "1.0",
+          "self_loop": true,
+          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 完成态恒为 WAITING_OWNER/WAITING_WS3"
+        },
+        "real_gate_exit": 3,
+        "state": "WAITING_OWNER",
+        "message": "WAITING_OWNER：hot-03 人工金标未注入（期望目录 bench/devpool-r1/goldens/hot-03/，每样本一子目录：product/ 产物 + verdict.json {expected_pass, annotator}）；对拍准确率/召回 ≥95% 才可签 D3；金标未注入即 fail-closed，绝不静默通过。",
+        "real_result": null,
+        "signoff": {
+          "签署人": null,
+          "日期": null,
+          "被签对象sha256": null
+        }
+      },
+      "d4_record": {
+        "stage": "D4 校准入池（难度带分拣）",
+        "band": null,
+        "band_reason": "首轮未标定：0 模型调用无臂数据，难度带（treatment 通过率锚）须待基线轮（SF-0006）后分拣",
+        "first_round_distribution": "8 题全带外（built 未标定）；题型分布=positive 4 / near-negative 2 / adversarial 2",
+        "sorter": "分拣规则（PLAN §3.2）：>90% 进轮换池、60-90% 迭代池、<60% 归因五分类；阈值卡 B 后可注入"
+      }
+    },
+    {
+      "id": "ofc-01",
+      "pack": "evalkit/packs/ws4-dev/ofc-01",
+      "line": "ofc",
+      "case_type": "positive",
+      "origin": "self-built",
+      "source_ref": null,
+      "status": "built",
+      "ready": false,
+      "canonical_seed": 4206,
+      "pack_files_sha256": {
+        "brief.md": "39abc11962e2ba3ad6511496071ac5fc1c05d22f9ac71f402435d4c0ceb69cb3",
+        "rubric.md": "10dcf693dc5da5a21d287508849b00896489ac09097f20352dd9a3dbd970e761",
+        "task.json": "dbf31e6df882c631023a9c0e89df1385e0a38b8660829e7662e9c0e2e65b9c21",
+        "gen_oracle.py": "68590e5c7252569220db61b7bad56fd2d1c0d75ecedd8bac56d76717c5b191df",
+        "checks/run_check.py": "3be0838c91f36e48e98b54e481f06ef979c89248f3351e3f970fc89830ee66b1",
+        "runner_contract.json": "277fe05ae9154c12c8e15c4bf8d33476d912016ff7276cc877dfb92fedebca69",
+        "fixtures/input.json": "e57d20df24a68ffeac6876b816f32632c511c9a60e5bd250b29870e87da37274"
+      },
+      "d1_record": {
+        "stage": "D1 来源→题面（人工必须过；本记录为 worker 起草，待 owner 签署）",
+        "source": {
+          "origin": "self-built",
+          "source_ref": null,
+          "desensitize_rule": "自建题面，实体全部 nonce 化"
+        },
+        "self_checks": {
+          "sc1_来源合法": {
+            "claim": "来源=自建或公开规范/法条，脱敏+nonce 改写，无版权与隐私风险",
+            "evidence": "source_ref 见上",
+            "status": "drafted-awaiting-owner"
+          },
+          "sc2_可机判": {
+            "claim": "输出契约可机判（L2 检查清单逐项落 checks/run_check.py）",
+            "evidence": "selftest BQ-8 红绿两态全过（见 d2_record.selftest）",
+            "status": "machine-green"
+          },
+          "sc3_两臂公平": {
+            "claim": "两臂 brief 逐字相同（包内单一 brief.md，跑批时 make_arms 复制），无资产暗示",
+            "evidence": "pack_checks EI-7 扫描零命中（pool-state.build_evidence）",
+            "status": "machine-green"
+          },
+          "sc4_资产名零泄漏": {
+            "claim": "brief/黄金输入零资产名与暗示句式",
+            "evidence": "pack_checks EI-7 scan_hits=0；GE-4 grep 三个 dist 资产名零命中",
+            "status": "machine-green"
+          }
+        },
+        "signoff": {
+          "签署人": null,
+          "日期": null,
+          "被签对象sha256": null
+        }
+      },
+      "d2_record": {
+        "stage": "D2 题面→实例+oracle（纯机械，同种子逐字节复现+生成器红绿自检）",
+        "seed": 4206,
+        "nonce_set": "A",
+        "generated_at": "2026-10-04T08:07:31+08:00",
+        "outputs_sha256": {
+          "fixtures/input.json": "e57d20df24a68ffeac6876b816f32632c511c9a60e5bd250b29870e87da37274",
+          "oracle/fields.json": "8d643d9a7366678344540364eac8f17092e2e5ddd305e259ac349ae33ec7f4e3",
+          "oracle/文书.docx": "41b7edf305f3f70ec6e6e0fe582d4a7843be8b163195f06878b17ccdb8313a78"
+        },
+        "selftest": {
+          "exit": 0,
+          "selftest_pass": true,
+          "covers": "BQ-8 红绿两态 / BQ-9 nonce 交叉红 / BQ-10 同种子逐字节 / fixtures 漂移守卫"
+        }
+      },
+      "d3_record": {
+        "stage": "D3 判分器化（人工金标对拍 ≥95%；人工必须过）",
+        "self_loop": {
+          "task": "ofc-01",
+          "mode": "self_loop",
+          "checker_exit_on_machine_oracle": 0,
+          "agreement": "1.0",
+          "self_loop": true,
+          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 完成态恒为 WAITING_OWNER/WAITING_WS3"
+        },
+        "real_gate_exit": 3,
+        "state": "WAITING_WS3",
+        "message": "WAITING_WS3：ofc-01 的金标对拍属 WS3 范畴（PLAN 独立工作流，owner 或委托 0.5-1 人日）；金标未注入，fail-closed 不放行。",
+        "real_result": null,
+        "signoff": {
+          "签署人": null,
+          "日期": null,
+          "被签对象sha256": null
+        }
+      },
+      "d4_record": {
+        "stage": "D4 校准入池（难度带分拣）",
+        "band": null,
+        "band_reason": "首轮未标定：0 模型调用无臂数据，难度带（treatment 通过率锚）须待基线轮（SF-0006）后分拣",
+        "first_round_distribution": "8 题全带外（built 未标定）；题型分布=positive 4 / near-negative 2 / adversarial 2",
+        "sorter": "分拣规则（PLAN §3.2）：>90% 进轮换池、60-90% 迭代池、<60% 归因五分类；阈值卡 B 后可注入"
+      }
+    },
+    {
+      "id": "ofc-02",
+      "pack": "evalkit/packs/ws4-dev/ofc-02",
+      "line": "ofc",
+      "case_type": "adversarial",
+      "origin": "public-variant",
+      "source_ref": "公开国标：GB/T 9704-2012《党政机关公文格式》（国家标准全文公开系统 openstd.samr.gov.cn，条目号 GB/T 9704-2012）——标题居中/称谓顶格/正文缩进/落款右对齐版式判据源自公开国标与公文通行版式；题面内容自写+nonce 化",
+      "status": "built",
+      "ready": false,
+      "canonical_seed": 4207,
+      "pack_files_sha256": {
+        "brief.md": "4f99385ce80951d027e17d9b0b11988a178b6f82adc1b3ddf1fe5c8e8588512f",
+        "rubric.md": "221c4eba99b33b95ec440e731741a9f75053a44efb937fc22bc2d30c0d5a2a45",
+        "task.json": "9a81a2569e626663ec7786951cdc5d1f26c7f4b79e5dd086b728024176d0b22e",
+        "gen_oracle.py": "08a82ef603c14431d776f13bd868a6ed47ad43001988da9856ef679e81c45706",
+        "checks/run_check.py": "3c8f9da24e23ee36acbccbcaa917ed4f003ea1e9b618d4207c5b251d447b1b14",
+        "runner_contract.json": "277fe05ae9154c12c8e15c4bf8d33476d912016ff7276cc877dfb92fedebca69",
+        "fixtures/input.json": "7a17c43ce9999c9e3be08d5eb87a3c2816b6570d981b900a0bb1fc35ff49bba5"
+      },
+      "d1_record": {
+        "stage": "D1 来源→题面（人工必须过；本记录为 worker 起草，待 owner 签署）",
+        "source": {
+          "origin": "public-variant",
+          "source_ref": "公开国标：GB/T 9704-2012《党政机关公文格式》（国家标准全文公开系统 openstd.samr.gov.cn，条目号 GB/T 9704-2012）——标题居中/称谓顶格/正文缩进/落款右对齐版式判据源自公开国标与公文通行版式；题面内容自写+nonce 化",
+          "desensitize_rule": "公开变体三题：内容 100% 自写，实体全部 nonce 化改写，零原文复制"
+        },
+        "self_checks": {
+          "sc1_来源合法": {
+            "claim": "来源=自建或公开规范/法条，脱敏+nonce 改写，无版权与隐私风险",
+            "evidence": "source_ref 见上",
+            "status": "drafted-awaiting-owner"
+          },
+          "sc2_可机判": {
+            "claim": "输出契约可机判（L2 检查清单逐项落 checks/run_check.py）",
+            "evidence": "selftest BQ-8 红绿两态全过（见 d2_record.selftest）",
+            "status": "machine-green"
+          },
+          "sc3_两臂公平": {
+            "claim": "两臂 brief 逐字相同（包内单一 brief.md，跑批时 make_arms 复制），无资产暗示",
+            "evidence": "pack_checks EI-7 扫描零命中（pool-state.build_evidence）",
+            "status": "machine-green"
+          },
+          "sc4_资产名零泄漏": {
+            "claim": "brief/黄金输入零资产名与暗示句式",
+            "evidence": "pack_checks EI-7 scan_hits=0；GE-4 grep 三个 dist 资产名零命中",
+            "status": "machine-green"
+          }
+        },
+        "signoff": {
+          "签署人": null,
+          "日期": null,
+          "被签对象sha256": null
+        }
+      },
+      "d2_record": {
+        "stage": "D2 题面→实例+oracle（纯机械，同种子逐字节复现+生成器红绿自检）",
+        "seed": 4207,
+        "nonce_set": "A",
+        "generated_at": "2026-10-04T08:07:31+08:00",
+        "outputs_sha256": {
+          "fixtures/input.json": "7a17c43ce9999c9e3be08d5eb87a3c2816b6570d981b900a0bb1fc35ff49bba5",
+          "oracle/fields.json": "e0fe9e456a31b61bd418c17c0a5d5d2ec600d2161c9b308aa23ec567741d0a94",
+          "oracle/文书.docx": "06b8ead1650c575492981b6502b6fce2efbb74d75355cc0f85abf619af887433"
+        },
+        "selftest": {
+          "exit": 0,
+          "selftest_pass": true,
+          "covers": "BQ-8 红绿两态 / BQ-9 nonce 交叉红 / BQ-10 同种子逐字节 / fixtures 漂移守卫"
+        }
+      },
+      "d3_record": {
+        "stage": "D3 判分器化（人工金标对拍 ≥95%；人工必须过）",
+        "self_loop": {
+          "task": "ofc-02",
+          "mode": "self_loop",
+          "checker_exit_on_machine_oracle": 0,
+          "agreement": "1.0",
+          "self_loop": true,
+          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 完成态恒为 WAITING_OWNER/WAITING_WS3"
+        },
+        "real_gate_exit": 3,
+        "state": "WAITING_WS3",
+        "message": "WAITING_WS3：ofc-02 的金标对拍属 WS3 范畴（PLAN 独立工作流，owner 或委托 0.5-1 人日）；金标未注入，fail-closed 不放行。",
+        "real_result": null,
+        "signoff": {
+          "签署人": null,
+          "日期": null,
+          "被签对象sha256": null
+        }
+      },
+      "d4_record": {
+        "stage": "D4 校准入池（难度带分拣）",
+        "band": null,
+        "band_reason": "首轮未标定：0 模型调用无臂数据，难度带（treatment 通过率锚）须待基线轮（SF-0006）后分拣",
+        "first_round_distribution": "8 题全带外（built 未标定）；题型分布=positive 4 / near-negative 2 / adversarial 2",
+        "sorter": "分拣规则（PLAN §3.2）：>90% 进轮换池、60-90% 迭代池、<60% 归因五分类；阈值卡 B 后可注入"
+      }
+    },
+    {
+      "id": "ofc-03",
+      "pack": "evalkit/packs/ws4-dev/ofc-03",
+      "line": "ofc",
+      "case_type": "adversarial",
+      "origin": "self-built",
+      "source_ref": null,
+      "status": "built",
+      "ready": false,
+      "canonical_seed": 4208,
+      "pack_files_sha256": {
+        "brief.md": "28fbfe16f1002455febd5326450326de4aca3dad9c06c1578d0e2b1ce499c919",
+        "rubric.md": "04f5c9b2a3dc02850696767975c2ceef6b7b0f5b84212b111a1a4ff23e41c3b2",
+        "task.json": "5e81905a99b91d6930ba51816a6353c45b9920566992563c72e2f2387065d77b",
+        "gen_oracle.py": "75fce73eac85fa40b4cce6a8218ce35e665f675ce8238264d9688a199f4de187",
+        "checks/run_check.py": "03260bb11bdf4059532564046c2c408c96099119fd4d68a1ca4faf35af17826b",
+        "runner_contract.json": "277fe05ae9154c12c8e15c4bf8d33476d912016ff7276cc877dfb92fedebca69",
+        "fixtures/input.json": "cd12e74e7a10adfd9cb547bfb05422a32f6ec179a9c57da2c1a1b7a3f2d34e03"
+      },
+      "d1_record": {
+        "stage": "D1 来源→题面（人工必须过；本记录为 worker 起草，待 owner 签署）",
+        "source": {
+          "origin": "self-built",
+          "source_ref": null,
+          "desensitize_rule": "自建题面，实体全部 nonce 化"
+        },
+        "self_checks": {
+          "sc1_来源合法": {
+            "claim": "来源=自建或公开规范/法条，脱敏+nonce 改写，无版权与隐私风险",
+            "evidence": "source_ref 见上",
+            "status": "drafted-awaiting-owner"
+          },
+          "sc2_可机判": {
+            "claim": "输出契约可机判（L2 检查清单逐项落 checks/run_check.py）",
+            "evidence": "selftest BQ-8 红绿两态全过（见 d2_record.selftest）",
+            "status": "machine-green"
+          },
+          "sc3_两臂公平": {
+            "claim": "两臂 brief 逐字相同（包内单一 brief.md，跑批时 make_arms 复制），无资产暗示",
+            "evidence": "pack_checks EI-7 扫描零命中（pool-state.build_evidence）",
+            "status": "machine-green"
+          },
+          "sc4_资产名零泄漏": {
+            "claim": "brief/黄金输入零资产名与暗示句式",
+            "evidence": "pack_checks EI-7 scan_hits=0；GE-4 grep 三个 dist 资产名零命中",
+            "status": "machine-green"
+          }
+        },
+        "signoff": {
+          "签署人": null,
+          "日期": null,
+          "被签对象sha256": null
+        }
+      },
+      "d2_record": {
+        "stage": "D2 题面→实例+oracle（纯机械，同种子逐字节复现+生成器红绿自检）",
+        "seed": 4208,
+        "nonce_set": "A",
+        "generated_at": "2026-10-04T08:07:31+08:00",
+        "outputs_sha256": {
+          "fixtures/input.json": "cd12e74e7a10adfd9cb547bfb05422a32f6ec179a9c57da2c1a1b7a3f2d34e03",
+          "oracle/fields.json": "fdbd9b5210d1ed238a17cc2614ad7e61208bdc3a3d9432eab5e673cb4dcf2867",
+          "oracle/文书.docx": "55b8c7bb878fa4117e27e62415b2bd4d6f97af6e7d87ec0b2227ad766a50d167"
+        },
+        "selftest": {
+          "exit": 0,
+          "selftest_pass": true,
+          "covers": "BQ-8 红绿两态 / BQ-9 nonce 交叉红 / BQ-10 同种子逐字节 / fixtures 漂移守卫"
+        }
+      },
+      "d3_record": {
+        "stage": "D3 判分器化（人工金标对拍 ≥95%；人工必须过）",
+        "self_loop": {
+          "task": "ofc-03",
+          "mode": "self_loop",
+          "checker_exit_on_machine_oracle": 0,
+          "agreement": "1.0",
+          "self_loop": true,
+          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 完成态恒为 WAITING_OWNER/WAITING_WS3"
+        },
+        "real_gate_exit": 3,
+        "state": "WAITING_WS3",
+        "message": "WAITING_WS3：ofc-03 的金标对拍属 WS3 范畴（PLAN 独立工作流，owner 或委托 0.5-1 人日）；金标未注入，fail-closed 不放行。",
+        "real_result": null,
+        "signoff": {
+          "签署人": null,
+          "日期": null,
+          "被签对象sha256": null
+        }
+      },
+      "d4_record": {
+        "stage": "D4 校准入池（难度带分拣）",
+        "band": null,
+        "band_reason": "首轮未标定：0 模型调用无臂数据，难度带（treatment 通过率锚）须待基线轮（SF-0006）后分拣",
+        "first_round_distribution": "8 题全带外（built 未标定）；题型分布=positive 4 / near-negative 2 / adversarial 2",
+        "sorter": "分拣规则（PLAN §3.2）：>90% 进轮换池、60-90% 迭代池、<60% 归因五分类；阈值卡 B 后可注入"
+      }
+    }
+  ]
+}

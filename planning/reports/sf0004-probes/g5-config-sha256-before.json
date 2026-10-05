@@ -1,0 +1,17 @@
+{
+  "ZCFG": {
+    "path": "C:\\Users\\Administrator\\.zcode\\cli\\config.json",
+    "exists": true,
+    "sha256": "ec5c268a9046b7c69d8312108fac31b3b56da0d413d3b20afef083a0ff9733e2"
+  },
+  "V2CFG": {
+    "path": "C:\\Users\\Administrator\\.zcode\\v2\\provider_config.json",
+    "exists": true,
+    "sha256": "7d3e81e8c100ac705394043dc2ba487e18a873137cef7c8b26b441ca17a9c346"
+  },
+  "KCFG": {
+    "path": "C:\\Users\\Administrator\\.kimi-code\\config.toml",
+    "exists": true,
+    "sha256": "e16fee6fa522a4edcf29ed1b88db3ab354a2341bcab26273b736c052b6b08422"
+  }
+}

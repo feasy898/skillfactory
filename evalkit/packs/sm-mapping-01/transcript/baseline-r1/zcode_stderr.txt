@@ -1,0 +1,74 @@
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+ZCode Built-in skipped (not-due)
+APICallError [AI_APICallError]: Cannot connect to API: Connect Timeout Error (attempted addresses: 47.86.179.135:443, 240b:4001:139:8ad9:438d:afcb:857c:41bb:443, 47.86.227.136:443, 240b:4001:139:8a16:a3f3:9de5:1428:a524:443, timeout: 10000ms)
+    at handleFetchError (C:\Users\Administrator\AppData\Roaming\npm\node_modules\zcode-app-cli\vendor\zcode.cjs:2033:6018)
+    at postToApi (C:\Users\Administrator\AppData\Roaming\npm\node_modules\zcode-app-cli\vendor\zcode.cjs:2037:22843)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async gIs.doStream (C:\Users\Administrator\AppData\Roaming\npm\node_modules\zcode-app-cli\vendor\zcode.cjs:2038:51208)
+    at async fn (C:\Users\Administrator\AppData\Roaming\npm\node_modules\zcode-app-cli\vendor\zcode.cjs:2105:15517)
+    at async C:\Users\Administrator\AppData\Roaming\npm\node_modules\zcode-app-cli\vendor\zcode.cjs:2100:964
+    at async _retryWithExponentialBackoff (C:\Users\Administrator\AppData\Roaming\npm\node_modules\zcode-app-cli\vendor\zcode.cjs:2100:5143)
+    at async streamStep (C:\Users\Administrator\AppData\Roaming\npm\node_modules\zcode-app-cli\vendor\zcode.cjs:2105:14640)
+    at async fn (C:\Users\Administrator\AppData\Roaming\npm\node_modules\zcode-app-cli\vendor\zcode.cjs:2105:20970)
+    at async C:\Users\Administrator\AppData\Roaming\npm\node_modules\zcode-app-cli\vendor\zcode.cjs:2100:964 {
+  cause: ConnectTimeoutError: Connect Timeout Error (attempted addresses: 47.86.179.135:443, 240b:4001:139:8ad9:438d:afcb:857c:41bb:443, 47.86.227.136:443, 240b:4001:139:8a16:a3f3:9de5:1428:a524:443, timeout: 10000ms)
+      at onConnectTimeout (node:internal/deps/undici/undici:2761:28)
+      at Immediate._onImmediate (node:internal/deps/undici/undici:2727:35)
+      at process.processImmediate (node:internal/timers:484:21)
+      at process.callbackTrampoline (node:internal/async_hooks:130:17) {
+    code: 'UND_ERR_CONNECT_TIMEOUT',
+    [Symbol(undici.error.UND_ERR)]: true,
+    [Symbol(undici.error.UND_ERR_CONNECT_TIMEOUT)]: true
+  },
+  url: 'https://open.bigmodel.cn/api/anthropic/v1/messages',
+  requestBodyValues: {
+    model: 'GLM-5.3',
+    max_tokens: 4096,
+    temperature: undefined,
+    top_k: undefined,
+    top_p: undefined,
+    stop_sequences: undefined,
+    metadata: {
+      user_id: '{"device_id":"773498ef-ca99-4d7a-bda3-ce51a7f3533f","account_uuid":"","session_id":"34022dd7-4983-4389-93c1-b98a8bd0b6a9"}'
+    },
+    system: [ [Object], [Object], [Object] ],
+    messages: [
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object]
+    ],
+    tools: [
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object]
+    ],
+    tool_choice: { type: 'auto', disable_parallel_tool_use: undefined },
+    stream: true
+  },
+  statusCode: undefined,
+  responseHeaders: undefined,
+  responseBody: undefined,
+  isRetryable: true,
+  data: undefined,
+  [Symbol(vercel.ai.error)]: true,
+  [Symbol(vercel.ai.error.AI_APICallError)]: true
+}
+ZCode Built-in skipped (not-due)

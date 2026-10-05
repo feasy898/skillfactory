@@ -1,0 +1,230 @@
+{
+  "schema": "sf0004-decision/v1",
+  "table_id": "SF-0004-DT-v1",
+  "evalbench_version_at_decision": "v6-mvp-0.2",
+  "generated_at": "2026-10-04T02:07:17+0800",
+  "executor": "worker-minimax-v5 (minimax family)",
+  "a_verdict": "Viable",
+  "a_verdict_reason": "A-trt success shape met AND A-restore returned to GLM-5.3",
+  "b_verdict": "Undetermined",
+  "b_verdict_reason": "B0 all ran; B1 not constructed (activation table: B1 is not run when a_verdict=Viable; independently not constructable because B0c reports the model catalog is unavailable in the executing session)",
+  "decision": "D1",
+  "a_probe": {
+    "target_model_id": "Minimax-M3.1-Flash-Preview",
+    "ctl_session_id": "sess_4e476ba5-4314-4071-be60-1cf28eb77d96",
+    "ctl_model_id": "GLM-5.3",
+    "ctl_provider_id": "account:bigmodel-individual-coding-plan",
+    "trt_sessions": [
+      "sess_18d61286-5e53-4701-94a7-b49fc08b285c"
+    ],
+    "mechanisms_enumerated": [
+      {
+        "id": "M1-paired-provider-config-env",
+        "mechanism": "env-scoped provider config override: set BOTH ZCODE_BUILTIN_PROVIDER_CONFIG_FILE and ZCODE_PERSONAL_PROVIDER_CONFIG_FILE to derived copies under secret-scratch; personal copy adds config.defaultModelSelection={providerId:'minimax', modelId:'Minimax-M3.1-Flash-Preview'} and providerOrder ['minimax','new-provider']",
+        "disposition": "RUN",
+        "skip_reason": ""
+      },
+      {
+        "id": "M2-enabled-agent-providers",
+        "mechanism": "env ZCODE_ENABLED_AGENT_PROVIDERS=minimax to enable minimax as builtin agent CLI provider",
+        "disposition": "SKIP_STATIC_FALSIFIED",
+        "skip_reason": "schema transform discards supplied input and returns the constant ['glm']"
+      },
+      {
+        "id": "M3-slash-model-command",
+        "mechanism": "headless prompt '/model minimax/Minimax-M3.1-Flash-Preview' before the task",
+        "disposition": "RUN_IF_M1_FAILS",
+        "skip_reason": ""
+      },
+      {
+        "id": "M4-cli-config-provider-entry",
+        "mechanism": "add a provider entry to ~/.zcode/cli/config.json under try/finally backup-sha256 -> modify -> run -> restore -> compare protocol",
+        "disposition": "SKIP_LOWEST_PRIORITY",
+        "skip_reason": "card ranks this lowest priority and it mutates a global config file; only reachable if M1 and M3 both fail AND budget remains."
+      },
+      {
+        "id": "M5-probe-cwd-config-discovery",
+        "mechanism": "probe-cwd level config discovery (drop .zcode/ beside the probe arm and rely on cwd-relative discovery)",
+        "disposition": "SKIP_STATIC_FALSIFIED",
+        "skip_reason": "no cwd-relative provider-config discovery exists; skills discovery being cwd-relative does not transfer to provider config."
+      }
+    ],
+    "mechanisms_executed": [
+      "M1-paired-provider-config-env"
+    ],
+    "landing_moved": true,
+    "restore_check": {
+      "session_id": "sess_d188ad8a-eda7-43a3-b091-f87e52dd19ef",
+      "model_id_verbatim": "GLM-5.3",
+      "returned_to_glm": true
+    },
+    "mechanism_detail": {
+      "M1": "ZCODE_BUILTIN_PROVIDER_CONFIG_FILE + ZCODE_PERSONAL_PROVIDER_CONFIG_FILE both pointed at derived copies under $PROBE/secret-scratch; the personal copy set config.defaultModelSelection={providerId:'minimax', modelId:'Minimax-M3.1-Flash-Preview'} and reordered providerOrder. Static precondition discovered this card: resolveNodeProviderRuntimePaths THROWS unless both variables are set, so the single-variable form the card sketched would have failed at startup. No global file was touched."
+    }
+  },
+  "k_facts": {
+    "step_head": "unobservable",
+    "broker_head": "skipped_no_token",
+    "step_head_note": "kimi 2.1.1 --output-format stream-json emits only system.version / assistant content / session.resume_hint; it carries no model identifier at all, so the landing is unobservable. exit 0 and the PONG reply prove the channel works; they do NOT identify the model.",
+    "broker_note": "no planner-minted short-term broker token present in the process environment (env-name scan only; no value read). Per card §4 this is an explicit non-failure row and does not block the decision."
+  },
+  "b_probe": {
+    "gate1_catalog_available": false,
+    "gate1_classification": "untested_catalog_unavailable",
+    "gate2_schema_facts": {
+      "dwf_actor_has_cwd_column": false,
+      "perActorCwdFieldFound": false,
+      "declared_token_set": [
+        "actor_cwd",
+        "actorCwd",
+        "perActorCwd",
+        "per_actor_cwd",
+        "actorWorkingDirectory",
+        "actor_working_directory",
+        "actorDir",
+        "actor_dir",
+        "actorPath",
+        "actor_path"
+      ],
+      "token_hits": {}
+    },
+    "gate2_historical_prior": {
+      "runs_total": 458,
+      "runs_with_ge2_actors": 319,
+      "max_distinct_directory_per_run": 1,
+      "runs_with_distinct_gt1": 0,
+      "history_silent": true
+    },
+    "gate3_executed": false,
+    "gate3_actors": [],
+    "gate3_not_run_reason": "B0 all ran; B1 not constructed (activation table: B1 is not run when a_verdict=Viable; independently not constructable because B0c reports the model catalog is unavailable in the executing session)"
+  },
+  "sf_channel": {
+    "glm": "account:bigmodel-individual-coding-plan/GLM-5.3 -- zcode headless default landing, db-verbatim in A-ctl and A-ctl2",
+    "minimax": "minimax/Minimax-M3.1-Flash-Preview -- zcode headless landing under the M1 env-scoped override, db-verbatim in A-trt-1-m1",
+    "stepfun_zcode": "not_reached_this_round",
+    "stepfun_zcode_note": "no zcode headless step-family pin was attempted; the M1 mechanism was demonstrated on the minimax family only. Whether the same mechanism reaches the step family via new-provider is UNTESTED.",
+    "stepfun_kimi_head": "unobservable -- channel works (exit 0, correct reply) but kimi 2.1.1 stream-json carries no model id field",
+    "coverage_claim_basis": "2 families proven at the db level on ONE channel (zcode headless process-driven): GLM-5.3 by default and minimax only under the env-scoped paired provider-config override. The kimi step head is NOT counted (unobservable landing) and the broker head was NOT exercised (no injected token)."
+  },
+  "probe_sessions": [
+    {
+      "session_id": "sess_4e476ba5-4314-4071-be60-1cf28eb77d96",
+      "channel": "zcode-headless-glm",
+      "probe_not_arm": true,
+      "ts": "2026-10-04T01:57:05+0800",
+      "db_queryable": true,
+      "found_in_db": true,
+      "model_id_verbatim": "GLM-5.3",
+      "provider_id_verbatim": "account:bigmodel-individual-coding-plan",
+      "input_tokens": 23140,
+      "output_tokens": 50
+    },
+    {
+      "session_id": "sess_18d61286-5e53-4701-94a7-b49fc08b285c",
+      "channel": "zcode-headless-minimax-pinned",
+      "probe_not_arm": true,
+      "ts": "2026-10-04T01:57:47+0800",
+      "db_queryable": true,
+      "found_in_db": true,
+      "model_id_verbatim": "Minimax-M3.1-Flash-Preview",
+      "provider_id_verbatim": "minimax",
+      "input_tokens": 22718,
+      "output_tokens": 13
+    },
+    {
+      "session_id": "sess_d188ad8a-eda7-43a3-b091-f87e52dd19ef",
+      "channel": "zcode-headless-glm",
+      "probe_not_arm": true,
+      "ts": "2026-10-04T01:58:10+0800",
+      "db_queryable": true,
+      "found_in_db": true,
+      "model_id_verbatim": "GLM-5.3",
+      "provider_id_verbatim": "account:bigmodel-individual-coding-plan",
+      "input_tokens": 23143,
+      "output_tokens": 30
+    },
+    {
+      "session_id": "session_818cb196-a659-4ee5-8c1f-5443a89b72ee",
+      "channel": "kimi-cli-step-head",
+      "probe_not_arm": true,
+      "ts": "2026-10-04T01:58:41+0800",
+      "db_queryable": false,
+      "found_in_db": false,
+      "db_query_note": "kimi CLI performs no db accounting (card-carried device fact); this session therefore cannot appear in the session table. Recorded as an explicit deviation rather than silently dropped.",
+      "model_id_verbatim": null,
+      "input_tokens": null,
+      "output_tokens": null
+    }
+  ],
+  "token_present": false,
+  "budget": {
+    "model_call_rows": 4,
+    "model_call_cap": 7,
+    "per_family_counts": {
+      "glm": 2,
+      "minimax": 1,
+      "step": 1
+    },
+    "per_family_cap": 2,
+    "db_backed_total_tokens": 69094,
+    "total_token_cap": 200000,
+    "max_single_session_input_tokens": 23143,
+    "per_session_input_cap": 8192,
+    "per_session_cap_respected": false,
+    "cap_conflict": "The card's per-session input cap of 8192 is unreachable on the zcode headless channel: a PONG-level prompt costs ~23k input tokens of CLI system prompt (23140 / 22718 / 23143 across A-ctl / A-trt / A-ctl2, single attempt each). The aggregate cap (200000) is respected with large margin. Registered as a caliber conflict, not silently passed."
+  },
+  "rejected": [
+    {
+      "branch": "B (workflow per-actor cwd, PLAN §9.1 R-2)",
+      "verdict": "Undetermined",
+      "falsified_mechanism": "per-actor cwd is absent from the recorded schema AND from the implementation: PRAGMA dwf_actor has no cwd column, and 10 declared per-actor directory tokens (actor_cwd, actorCwd, perActorCwd, per_actor_cwd, actorWorkingDirectory, actor_working_directory, actorDir, actor_dir, actorPath, actor_path) produce 0 hits in the 14.8MB vendor bundle. Historically 458 runs (319 of them multi-actor) yield max 1 distinct directory per run and 0 runs with more than one.",
+      "evidence_ref": "p-b0-static.json"
+    },
+    {
+      "branch": "B historical prior",
+      "verdict": "Undetermined",
+      "falsified_mechanism": "not 'untested' but zero-prior: dwf_actor joined to session and grouped by run_id gives max_distinct_directory_per_run == 1 across the entire live db.",
+      "evidence_ref": "p-b0-prior.json"
+    },
+    {
+      "branch": "C (accept single family)",
+      "verdict": "NotViable",
+      "falsified_mechanism": "falsified by A's measured success rather than by its own evidence: the env-scoped paired provider-config override moved the headless landing verbatim to Minimax-M3.1-Flash-Preview and the mechanism restored cleanly to GLM-5.3, so the single-family constraint has a working env-scoped remedy and 'accept single family' is no longer forced.",
+      "evidence_ref": "p-a-trt-trt-1-m1.json"
+    },
+    {
+      "branch": "C quality-track unjudgeable registration",
+      "verdict": "NotApplicable",
+      "falsified_mechanism": "C's three fixed literals and followup-card draft are bound to decision==D3; DT-v1 evaluated to D1, so C was not run. Skipped explicitly rather than silently.",
+      "evidence_ref": "a0-prereg.json"
+    }
+  ],
+  "negative_space": [
+    "O-5 four-family matrix is NOT established. Measured coverage is exactly 2 families on 1 channel (zcode headless): GLM-5.3 by default, MiniMax-M3.1-Flash-Preview only under the M1 env-scoped override. Step family via zcode headless is untested; the kimi step head is unobservable; the broker head was not exercised (no injected token).",
+    "R-3 step-channel normalizer is NOT validated. kimi 2.1.1 stream-json carries no model identifier, so a transcript normalizer has no ground truth to normalize against. K1 is registered 'unobservable', which is neither a pass nor a fail.",
+    "O-7 cross-family judging is NOT proven on this machine. With the judged set at {GLM, minimax}, a judge would have to come from a third family; no third family is reachable with an observable landing, so the quality track stays unjudgeable.",
+    "The M1 mechanism was demonstrated for the minimax family ONLY. Whether it reaches the step family (new-provider) or any other provider entry is untested.",
+    "A-arm budget cap conflict: per-session input tokens exceeded the card's 8192 cap on every zcode session because of the CLI system prompt; the aggregate cap held.",
+    "B1 was never constructed, so b_verdict is Undetermined. The static and historical negatives for branch B are strong but are NOT a functional falsification; a reviewer should treat 'branch B is dead' as an inference, not a measurement."
+  ],
+  "ws4": {
+    "startable": true,
+    "glm_pin_changed": false,
+    "glm_landing": "account:bigmodel-individual-coding-plan/GLM-5.3",
+    "matrix_shape": "two-family-headless-reachable (GLM default + minimax under M1 override)",
+    "quality_track": "unjudgeable",
+    "planner_confirm_required": true,
+    "unblock_notes": "WS4 is startable per DT-v1 table two row D1, but ONLY after planner records the matrix family-composition clause (one journal line). No second evalbench bump is forced: the GLM arm five-tuple is unchanged and its measured landing is verbatim account:bigmodel-individual-coding-plan/GLM-5.3. Any NEW family is added as an incremental registration under baseline/<family>/ (baseline/ is currently empty, so nothing is voided)."
+  },
+  "quality_track": {
+    "verdict": "unjudgeable",
+    "score": null,
+    "ws4_matrix_field": "unjudgeable",
+    "required_value": "must stay null; never 0, never omitted",
+    "reason_ref": "p-k1-step.json",
+    "reason_ref_note": "the only third-family candidate (kimi step head) cannot identify its own landing, so no family outside {GLM, minimax} is available to judge; O-7 is therefore unsatisfiable this round and the score is null by construction, not by omission.",
+    "claim_boundary": "This round's quality track is unjudgeable: O-7 requires the judging family to have no intersection with the round's tested set, and no such family was shown reachable with an observable landing on this machine before work started. Therefore no quality score, no cross-family conclusion, and no claim that asset quality has been validated across families. Artifact-track and process-track conclusions are unaffected by this limit."
+  },
+  "executor_note": "Executed by worker-minimax-v5 (minimax family). The decision is computed from raw probe evidence by gen_deliverables.py and independently recomputed from the same evidence by verify_sf0004.py; a mismatch is exit 1. Complex-reasoning items flagged for stronger-model review: (1) classifying branch B as effectively dead on static+historical evidence without a functional B1 attempt; (2) the D1 matrix_shape wording, which DT-v1 table two does not fix for D1."
+}

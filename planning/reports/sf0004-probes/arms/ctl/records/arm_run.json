@@ -1,0 +1,38 @@
+{
+  "gate": "ctl",
+  "mechanism": null,
+  "ts": "2026-10-04T01:57:05+0800",
+  "started_at_ms": 1791050212501,
+  "command_shape": [
+    "zcode",
+    "-p",
+    "<prompt>",
+    "--cwd",
+    "<arm>",
+    "--json"
+  ],
+  "prompt_is_pong_level": true,
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 13354,
+  "session_id": "sess_4e476ba5-4314-4071-be60-1cf28eb77d96",
+  "db": {
+    "available": true,
+    "session_row_found": true,
+    "directory_match": true,
+    "arm_dir": "D:\\new-workspace\\agent-asset\\planning\\reports\\sf0004-probes\\arms\\ctl",
+    "session_directory": "D:\\new-workspace\\agent-asset\\planning\\reports\\sf0004-probes\\arms\\ctl",
+    "model_id_verbatim": "GLM-5.3",
+    "provider_id_verbatim": "account:bigmodel-individual-coding-plan",
+    "model_usage_rows": 1,
+    "input_tokens": 23140,
+    "output_tokens": 50,
+    "task_type": "interactive"
+  },
+  "landing_moved": false,
+  "success_shape": true,
+  "expected": "GLM-5.3 / provider contains bigmodel",
+  "stdout_head": "{\n  \"sessionId\": \"sess_4e476ba5-4314-4071-be60-1cf28eb77d96\",\n  \"traceId\": \"d81f88fb-14dc-48ff-b540-7f308e071f10\",\n  \"turnId\": \"turn_e27350ca-5f5b-49fa-8cf2-38100959512d\",\n  \"response\": \"PONG-SF0004-ctl\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 1,\n    \"inputTokens\": 23140,\n    \"outputTokens\": 50,\n    \"totalTokens\": 23190,\n    \"cacheReadTokens\": 15680,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 61,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 23190,\n    \"contextUsed\": 23190,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "stderr_head": "ZCode Built-in skipped (not-due)\n",
+  "global_config_modified": false
+}

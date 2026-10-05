@@ -1,0 +1,13 @@
+{
+  "gate": "MT-6",
+  "ts": "2026-10-04T02:07:25+0800",
+  "mutated_field": "table_id",
+  "sha256_before": "316a4db5d36e16ffce931629862512a61ff9ba496e346897ed72db833ed6a293",
+  "counterprobe_passed": true,
+  "mutated_verifier_exit_code": 1,
+  "mutated_verifier_stdout": "{\n  \"all_pass\": false,\n  \"failed\": [\n    \"D2\",\n    \"D8\"\n  ],\n  \"decision\": \"D1\",\n  \"gates\": 31\n}",
+  "went_red": true,
+  "sha256_after": "316a4db5d36e16ffce931629862512a61ff9ba496e346897ed72db833ed6a293",
+  "restored_identical": true,
+  "restored_verifier_exit_code": 1
+}

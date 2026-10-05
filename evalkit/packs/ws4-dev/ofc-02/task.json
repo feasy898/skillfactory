@@ -1,0 +1,19 @@
+{
+  "line": "ofc",
+  "case_type": "adversarial",
+  "origin": "public-variant",
+  "source_ref": "公开国标：GB/T 9704-2012《党政机关公文格式》（国家标准全文公开系统 openstd.samr.gov.cn，条目号 GB/T 9704-2012）——标题居中/称谓顶格/正文缩进/落款右对齐版式判据源自公开国标与公文通行版式；题面内容自写+nonce 化",
+  "canonical_seed": 4207,
+  "template": "请示函",
+  "expected_checks": [
+    "task_outcome_docx_present_opens_safe",
+    "task_outcome_layout_title_centered",
+    "task_outcome_layout_salutation_flush",
+    "task_outcome_layout_body_indent",
+    "task_outcome_layout_signature_right",
+    "task_outcome_fields_selfconsistent",
+    "task_outcome_values_verbatim_in_docx",
+    "task_outcome_missing_reported_and_blank"
+  ],
+  "id": "ofc-02"
+}

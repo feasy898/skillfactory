@@ -1,0 +1,30 @@
+{
+  "pack": "D:\\new-workspace\\agent-asset\\evalkit\\packs\\sm-mapping-01",
+  "arms": [
+    "runs/sf0003-fix/baseline",
+    "runs/sf0003-fix/treatment"
+  ],
+  "results": [
+    {
+      "name": "EI-7 brief 公平",
+      "pass": true,
+      "gaps": [],
+      "input_dir_name": "fixtures",
+      "scan_hits": []
+    },
+    {
+      "name": "EI-9 臂间输入树公平",
+      "pass": true,
+      "gaps": [],
+      "note": "未提供 model_pin，五元组比对跳过（开跑后由 run_arm 落盘）"
+    },
+    {
+      "name": "EI-20 任务包 conformance",
+      "pass": true,
+      "gaps": [],
+      "input_dir_name": "fixtures",
+      "note": "未提供 model_pin，五元组齐备性跳过（开跑后由 run_arm 落盘）"
+    }
+  ],
+  "pass": true
+}

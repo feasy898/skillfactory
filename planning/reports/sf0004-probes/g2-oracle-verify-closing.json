@@ -1,0 +1,11 @@
+{
+  "command": "python harness/oracle_gate.py verify --record $PROBE/oracle-before.json",
+  "exit_code": 0,
+  "stdout": "{\n  \"root\": \"D:\\\\new-workspace\\\\agent-asset\\\\afp-clone\\\\zcode-research\\\\skillfactory\\\\v5\\\\assets\\\\speaker-mapping\\\\oracle\",\n  \"baseline_tree_sha256\": \"e3086e10c9cd4f1415792333b89479536a2a96624b543215d5f6465525ceeacc\",\n  \"current_tree_sha256\": \"e3086e10c9cd4f1415792333b89479536a2a96624b543215d5f6465525ceeacc\",\n  \"baseline_file_count\": 31,\n  \"current_file_count\": 31,\n  \"unchanged\": true,\n  \"changed_paths\": [],\n  \"missing_paths\": [],\n  \"extra_paths\": [],\n  \"abort\": false\n}",
+  "stderr": "",
+  "unchanged": true,
+  "baseline_tree_sha256": "e3086e10c9cd4f1415792333b89479536a2a96624b543215d5f6465525ceeacc",
+  "current_tree_sha256": "e3086e10c9cd4f1415792333b89479536a2a96624b543215d5f6465525ceeacc",
+  "file_count": 31,
+  "pass": true
+}

@@ -1,0 +1,10 @@
+{
+  "command": "git -C afp-clone status --porcelain (closing) vs opening",
+  "exit_code": 0,
+  "before_count": 20,
+  "after_count": 20,
+  "added": [],
+  "removed": [],
+  "frozen_area_intersection": [],
+  "pass": true
+}

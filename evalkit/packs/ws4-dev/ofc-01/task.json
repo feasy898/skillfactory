@@ -1,0 +1,18 @@
+{
+  "line": "ofc",
+  "case_type": "positive",
+  "origin": "self-built",
+  "source_ref": null,
+  "canonical_seed": 4206,
+  "template": "周报",
+  "expected_checks": [
+    "task_outcome_docx_present_opens_safe",
+    "task_outcome_layout_title_centered",
+    "task_outcome_layout_body_indent",
+    "task_outcome_layout_signature_right",
+    "task_outcome_fields_selfconsistent",
+    "task_outcome_values_verbatim_in_docx",
+    "task_outcome_missing_reported_and_blank"
+  ],
+  "id": "ofc-01"
+}

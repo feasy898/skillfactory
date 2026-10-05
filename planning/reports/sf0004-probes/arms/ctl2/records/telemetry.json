@@ -1,0 +1,23 @@
+{
+  "available": true,
+  "session_id": "sess_d188ad8a-eda7-43a3-b091-f87e52dd19ef",
+  "session": {
+    "directory": "D:\\new-workspace\\agent-asset\\planning\\reports\\sf0004-probes\\arms\\ctl2",
+    "task_type": "interactive",
+    "version": "0.16.9"
+  },
+  "directory_matches_arm": true,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 23143,
+      "ot": 30,
+      "dur": 2468,
+      "n": 1
+    }
+  ],
+  "tool_usage": []
+}

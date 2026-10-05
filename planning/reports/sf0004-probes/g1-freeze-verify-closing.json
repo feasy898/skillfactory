@@ -1,0 +1,7 @@
+{
+  "command": "python harness/freeze_device.py verify (cwd=$EK)",
+  "exit_code": 0,
+  "stdout": "装置钉版一致：16 个关键文件 sha256 全对",
+  "stderr": "",
+  "pass": true
+}

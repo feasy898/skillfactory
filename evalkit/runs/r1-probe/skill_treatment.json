@@ -1,0 +1,191 @@
+{
+  "cwd": "D:\\new-workspace\\agent-asset\\evalkit\\runs\\r1-probe\\treatment",
+  "diagnostics": [],
+  "skills": [
+    {
+      "description": "Use when a task needs a native desktop app's own UI or the OS. For anything inside a web page, use Browser Use. Main agent only.",
+      "directory": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\computer-use\\0.6.3\\skills\\computer-use",
+      "name": "computer-use",
+      "path": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\computer-use\\0.6.3\\skills\\computer-use\\SKILL.md",
+      "pluginName": "computer-use",
+      "qualifiedName": "computer-use:computer-use",
+      "rootPath": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\computer-use\\0.6.3\\skills",
+      "scope": "system",
+      "source": "plugin"
+    },
+    {
+      "description": "Use when opening, navigating, inspecting, testing, clicking, typing, filling, screenshotting, or verifying web pages and local HTTP targets (localhost, 127.0.0.1, ::1) inside ZCode, including browser/web-UI automation, rendered-page scraping, frontend checks, and visible page-state reading. Prefer this over Computer Use for anything that stays inside a web page, unless the user explicitly asks for Computer Use. Main agent only.",
+      "directory": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\browser-use\\0.5.1\\skills\\control-browser",
+      "name": "control-browser",
+      "path": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\browser-use\\0.5.1\\skills\\control-browser\\SKILL.md",
+      "pluginName": "browser-use",
+      "qualifiedName": "browser-use:control-browser",
+      "rootPath": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\browser-use\\0.5.1\\skills",
+      "scope": "system",
+      "source": "plugin"
+    },
+    {
+      "description": "Use to diagnose and fix ZCode custom slash-command (/command) configuration problems in the ZCode client. Applies when a command is missing, is overridden by a higher-precedence command of the same name, has a frontmatter parse error, is dropped for having an empty body, has an invalid name, does not substitute $ARGUMENTS/$1, uses a colon rather than a slash for nested names, has a misspelled frontmatter key, or disappears because the plugin providing it is disabled. Provides the discovery order, how to inspect commands in the client, common pitfalls, and a step-by-step localization and repair workflow.",
+      "directory": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\zcode-guide\\0.3.0\\skills\\diagnosing-commands",
+      "name": "diagnosing-commands",
+      "path": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\zcode-guide\\0.3.0\\skills\\diagnosing-commands\\SKILL.md",
+      "pluginName": "zcode-guide",
+      "qualifiedName": "zcode-guide:diagnosing-commands",
+      "rootPath": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\zcode-guide\\0.3.0\\skills",
+      "scope": "system",
+      "source": "plugin"
+    },
+    {
+      "description": "Use to diagnose and fix ZCode hook configuration problems in the ZCode client. Applies when a hook does not trigger, an event name is wrong, a matcher does not match a tool name, a script is not executable, template variables are not expanded, a timeout unit is mistaken (seconds versus milliseconds), the command and process field styles are mixed, a hook's JSON output fails validation, a hook blocks the session unexpectedly, or configuration-file hooks are not enabled. Provides configuration sources, the hooks.json schema, how to inspect hooks in the client, and a step-by-step localization and repair workflow.",
+      "directory": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\zcode-guide\\0.3.0\\skills\\diagnosing-hooks",
+      "name": "diagnosing-hooks",
+      "path": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\zcode-guide\\0.3.0\\skills\\diagnosing-hooks\\SKILL.md",
+      "pluginName": "zcode-guide",
+      "qualifiedName": "zcode-guide:diagnosing-hooks",
+      "rootPath": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\zcode-guide\\0.3.0\\skills",
+      "scope": "system",
+      "source": "plugin"
+    },
+    {
+      "description": "Use to diagnose and fix ZCode MCP (Model Context Protocol) server configuration problems in the ZCode client. Applies when an MCP server will not connect, its tools (mcp__server__tool) do not appear, it shows as disabled or failed, connections time out, a command cannot be found, template variables are not expanded, or a server defined in a configuration file has no effect. Provides configuration locations, how to inspect status in Settings, common pitfalls, and a step-by-step localization and repair workflow.",
+      "directory": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\zcode-guide\\0.3.0\\skills\\diagnosing-mcp",
+      "name": "diagnosing-mcp",
+      "path": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\zcode-guide\\0.3.0\\skills\\diagnosing-mcp\\SKILL.md",
+      "pluginName": "zcode-guide",
+      "qualifiedName": "zcode-guide:diagnosing-mcp",
+      "rootPath": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\zcode-guide\\0.3.0\\skills",
+      "scope": "system",
+      "source": "plugin"
+    },
+    {
+      "description": "Use to diagnose and fix ZCode plugin and marketplace problems in the ZCode client. Applies when a plugin is not listed, adding a marketplace or installing a plugin fails, a plugin is enabled but its skills or commands are missing, a built-in plugin still appears after being disabled, a plugin is not enabled as expected, a plugin.json manifest has a parse error, a plugin name is invalid, a dependency is unresolved or blocked across marketplaces, or a sensitive configuration value cannot be entered in the interface. Provides the plugin lifecycle, manifest schema, how to manage plugins in the client, and a step-by-step localization and repair workflow.",
+      "directory": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\zcode-guide\\0.3.0\\skills\\diagnosing-plugins",
+      "name": "diagnosing-plugins",
+      "path": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\zcode-guide\\0.3.0\\skills\\diagnosing-plugins\\SKILL.md",
+      "pluginName": "zcode-guide",
+      "qualifiedName": "zcode-guide:diagnosing-plugins",
+      "rootPath": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\zcode-guide\\0.3.0\\skills",
+      "scope": "system",
+      "source": "plugin"
+    },
+    {
+      "description": "Use to diagnose and fix ZCode skill configuration problems in the ZCode client. Applies when a skill is not discovered, is installed but does not trigger automatically, is shadowed by a higher-precedence skill of the same name, is disabled by configuration, has a SKILL.md frontmatter error, fails to load because its description is too long, or disappears because the plugin providing it is disabled. Provides the discovery order, how to inspect skills in the client, common pitfalls, and a step-by-step localization and repair workflow.",
+      "directory": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\zcode-guide\\0.3.0\\skills\\diagnosing-skills",
+      "name": "diagnosing-skills",
+      "path": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\zcode-guide\\0.3.0\\skills\\diagnosing-skills\\SKILL.md",
+      "pluginName": "zcode-guide",
+      "qualifiedName": "zcode-guide:diagnosing-skills",
+      "rootPath": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\zcode-guide\\0.3.0\\skills",
+      "scope": "system",
+      "source": "plugin"
+    },
+    {
+      "description": "Complete DOCX document creation, editing, and analysis capabilities with support for revisions, comments, formatting preservation, and text extraction. Also handles Word format conversion: legacy .doc → .docx, DOCX → PDF, DOCX → images (PNG/JPG) for visual review or previews, and DOCX → Markdown/plain text extraction. Use for creating new documents, modifying content, handling revisions, adding comments, other professional Word document tasks, or when the user asks to convert, export, or render a Word document to another format (e.g. 'Word转PDF', 'doc转docx', 'export this docx as PDF/images').",
+      "directory": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\documents\\0.1.7\\skills\\docx",
+      "name": "docx",
+      "path": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\documents\\0.1.7\\skills\\docx\\SKILL.md",
+      "pluginName": "documents",
+      "qualifiedName": "documents:docx",
+      "rootPath": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\documents\\0.1.7\\skills",
+      "scope": "system",
+      "source": "plugin"
+    },
+    {
+      "description": "Use when writing, debugging, or resubmitting a dynamic-workflow script for the CreateWorkflow tool: choosing subagent topology, typing subagent results, fanning out over files or git, gating loops on world.run commands, testing pieces with EvalWorkflowSnippet, planner-reviewer loops, confirming findings before reporting them, report() salvage, the report shape a run returns, publishing artifacts the user opens, and handling a backgrounded run.",
+      "directory": "C:\\Users\\Administrator\\AppData\\Roaming\\npm\\node_modules\\zcode-app-cli\\vendor\\packages\\bundled-skills\\skills\\dynamic-workflows",
+      "name": "dynamic-workflows",
+      "path": "C:\\Users\\Administrator\\AppData\\Roaming\\npm\\node_modules\\zcode-app-cli\\vendor\\packages\\bundled-skills\\skills\\dynamic-workflows\\SKILL.md",
+      "rootPath": "C:\\Users\\Administrator\\AppData\\Roaming\\npm\\node_modules\\zcode-app-cli\\vendor\\packages\\bundled-skills\\skills",
+      "scope": "system",
+      "source": "bundled",
+      "whenToUse": "Only for CreateWorkflow scripts. A single delegation or a few independent lookups belong to the Agent tool instead."
+    },
+    {
+      "description": "Professional PDF toolkit covering four production workflows: reports, creative visuals, academic LaTeX, and existing PDF processing. Routes automatically by document type and supports reports, posters, papers, resumes, extraction, merging, splitting, and form filling. Use this skill for any conversion whose output is a PDF: Office → PDF (.docx/.doc/.pptx/.ppt/.xlsx/.xls/.odt/.odp/.ods/.rtf/.csv/.txt → PDF), HTML → PDF, and LaTeX/.tex → PDF; also PDF → images, PDF → text, and PDF → tables when reading a PDF apart. Trigger when the user asks to convert, export, render, print, or turn a file into a PDF, or to merge/split/extract from one — including phrasings like 'Word转PDF', 'PPT转PDF', 'Excel转PDF', 'html转pdf', '导出为PDF', 'save/export as PDF', or 'PDF转图片/文字'.",
+      "directory": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\pdf\\0.1.7\\skills\\pdf",
+      "name": "pdf",
+      "path": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\pdf\\0.1.7\\skills\\pdf\\SKILL.md",
+      "pluginName": "pdf",
+      "qualifiedName": "pdf:pdf",
+      "rootPath": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\pdf\\0.1.7\\skills",
+      "scope": "system",
+      "source": "plugin"
+    },
+    {
+      "description": "Create or update ZCode plugin source and a local test marketplace, then guide the user to add, install, update and try it in the app. Use for new plugins or changes to an existing plugin's capabilities, manifest or local distribution.",
+      "directory": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\plugin-creator\\0.1.1\\skills\\plugin-creator",
+      "name": "plugin-creator",
+      "path": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\plugin-creator\\0.1.1\\skills\\plugin-creator\\SKILL.md",
+      "pluginName": "plugin-creator",
+      "qualifiedName": "plugin-creator:plugin-creator",
+      "rootPath": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\plugin-creator\\0.1.1\\skills",
+      "scope": "system",
+      "source": "plugin"
+    },
+    {
+      "description": "Use this skill any time a presentation file is the primary input or output. Covers: creating new .pptx decks from scratch or from an outline/document (pptxgenjs / python-pptx); editing and restyling an existing .pptx; reading and extracting text/structure from a deck (markitdown); and rendering a deck to PDF (LibreOffice) or to per-slide PNG images (pdftoppm) for previews, thumbnails, or visual review. Trigger when the user references a .pptx file by name or path, says 'make/build a deck, slides, presentation, PPT, 幻灯片, 演示文稿, 汇报/路演材料', or asks to convert, export, render, or preview slides as PDF or images (e.g. 'PPT转PDF', 'ppt导出图片', 'turn these slides into a PDF').",
+      "directory": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\presentations\\0.1.7\\skills\\pptx",
+      "name": "pptx",
+      "path": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\presentations\\0.1.7\\skills\\pptx\\SKILL.md",
+      "pluginName": "presentations",
+      "qualifiedName": "presentations:pptx",
+      "rootPath": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\presentations\\0.1.7\\skills",
+      "scope": "system",
+      "source": "plugin"
+    },
+    {
+      "description": "Create new skills, edit existing skills, and iterate wording. Use when writing SKILL.md from scratch, improving existing skills, turning repeated workflows into reusable skills, or refining skill descriptions to improve trigger reliability.",
+      "directory": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\skill-creator\\0.1.0\\skills\\skill-creator",
+      "name": "skill-creator",
+      "path": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\skill-creator\\0.1.0\\skills\\skill-creator\\SKILL.md",
+      "pluginName": "skill-creator",
+      "qualifiedName": "skill-creator:skill-creator",
+      "rootPath": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\skill-creator\\0.1.0\\skills",
+      "scope": "system",
+      "source": "plugin"
+    },
+    {
+      "description": "把 diarization 转写稿中的 SPEAKER_XX 标签映射为真实人名。人机协作三步：discover 机器扫描 → 人工确认填名 → apply 机器替换；只换标签 span，时间戳/冒号/正文/行尾逐字节不动，未映射标签原样保留并警告，绝不猜名替换。",
+      "directory": "D:\\new-workspace\\agent-asset\\evalkit\\runs\\r1-probe\\treatment\\.zcode\\skills\\speaker-mapping",
+      "name": "speaker-mapping",
+      "path": "D:\\new-workspace\\agent-asset\\evalkit\\runs\\r1-probe\\treatment\\.zcode\\skills\\speaker-mapping\\SKILL.md",
+      "rootPath": "D:\\new-workspace\\agent-asset\\evalkit\\runs\\r1-probe\\treatment\\.zcode\\skills",
+      "scope": "project",
+      "source": "zcode"
+    },
+    {
+      "description": "Use the browser automation tooling available in the session to test web frontends interactively in a purely GUI-based, black-box manner: simulate real user clicks, text input, scrolling, and other actions; use screenshots for visual verification and read-only DOM inspection for cross-validation; and produce a final test report. Suitable for verifying whether web functionality works correctly, reproducing frontend bugs, checking interaction feedback and layout styling, or conducting exploratory testing of a page. Use this skill when the user asks to test a webpage/frontend feature, verify UI behavior, reproduce a page bug, or provides only a URL and asks you to “test it.”",
+      "directory": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\browser-use\\0.5.1\\skills\\web-gui-tester",
+      "name": "web-gui-tester",
+      "path": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\browser-use\\0.5.1\\skills\\web-gui-tester\\SKILL.md",
+      "pluginName": "browser-use",
+      "qualifiedName": "browser-use:web-gui-tester",
+      "rootPath": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\browser-use\\0.5.1\\skills",
+      "scope": "system",
+      "source": "plugin"
+    },
+    {
+      "description": "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .csv, or .tsv file; create a new spreadsheet from scratch or from other data sources; analyze data and output results as an Excel file with charts; convert between tabular file formats (CSV/TSV/JSON/PDF-table → XLSX, or XLSX → CSV/JSON); clean, merge, pivot, or transform tabular data. Trigger especially when the user references a spreadsheet file by name or path, says 'make a table/report/model', mentions Excel/CSV/数据分析/报表/汇总, asks to convert or export a spreadsheet (e.g. 'csv转excel', 'json转表格', 'export as CSV'), or wants data visualization inside a spreadsheet.",
+      "directory": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\spreadsheets\\0.1.7\\skills\\xlsx",
+      "name": "xlsx",
+      "path": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\spreadsheets\\0.1.7\\skills\\xlsx\\SKILL.md",
+      "pluginName": "spreadsheets",
+      "qualifiedName": "spreadsheets:xlsx",
+      "rootPath": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\spreadsheets\\0.1.7\\skills",
+      "scope": "system",
+      "source": "plugin"
+    },
+    {
+      "description": "Use when configuring ZCode's extension resources (MCP servers, slash commands, skills, hooks, and plugins) or instruction files such as AGENTS.md in the ZCode client. Explains where each resource is configured at the user and workspace scope, the discovery order, precedence, and merge rules, plus guidance on which location to choose. Use when someone asks how to add an MCP server, command, skill, hook, plugin, or AGENTS.md instructions, where a configuration file lives, why a configuration is not taking effect, or needs routing to a specific diagnostic skill.",
+      "directory": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\zcode-guide\\0.3.0\\skills\\zcode-configuration-guide",
+      "name": "zcode-configuration-guide",
+      "path": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\zcode-guide\\0.3.0\\skills\\zcode-configuration-guide\\SKILL.md",
+      "pluginName": "zcode-guide",
+      "qualifiedName": "zcode-guide:zcode-configuration-guide",
+      "rootPath": "C:\\Users\\Administrator\\.zcode\\cli\\plugins\\cache\\zcode-plugins-official\\zcode-guide\\0.3.0\\skills",
+      "scope": "system",
+      "source": "plugin"
+    }
+  ],
+  "totalDiscovered": 17
+}

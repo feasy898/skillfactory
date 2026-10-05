@@ -1,0 +1,15 @@
+{
+  "db": "C:/Users/Administrator/.zcode/cli/db/db.sqlite",
+  "open_mode": "mode=ro (URI)",
+  "query": "select a.run_id, count(*), count(distinct s.directory), sum(case when s.directory is null then 1 else 0 end) from dwf_actor a left join session s on s.id = a.session_id group by a.run_id",
+  "query_caliber": "dwf_actor JOIN session GROUP BY run_id count(distinct directory); NO time-window approximation used",
+  "runs_total": 458,
+  "runs_with_ge2_actors": 319,
+  "max_distinct_directory_per_run": 1,
+  "runs_with_distinct_gt1": 0,
+  "history_silent": true,
+  "dwf_actor_rows_total": 2834,
+  "actors_with_null_session_directory": 401,
+  "runs_with_multiple_directories": [],
+  "card_fact_check": "card asserts runs with distinct directory>1 == 0 (471 runs); live db has grown since the card was written"
+}

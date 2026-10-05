@@ -1,0 +1,55 @@
+{
+  "ok": true,
+  "summary": {
+    "total": 7,
+    "pass": 7,
+    "fail": 0,
+    "tested_root": "D:\\new-workspace\\agent-asset\\afp-clone\\zcode-research\\skillfactory\\v5\\assets\\zctl-mcp",
+    "reference_root": "D:\\new-workspace\\agent-asset\\afp-clone\\zcode-research\\skillfactory\\v5\\assets\\zctl-mcp\\oracle"
+  },
+  "checks": [
+    {
+      "name": "server_info",
+      "passed": true,
+      "detail": "serverInfo 一致：zctl-mcp@1.0.0"
+    },
+    {
+      "name": "tool_set_exact",
+      "passed": true,
+      "detail": "4 工具恰等：['zctl_help', 'zctl_offpeak_availability', 'zctl_offpeak_status', 'zctl_reset_status']"
+    },
+    {
+      "name": "tool_contract:zctl_help",
+      "passed": true,
+      "detail": "关键词齐备；required=[]"
+    },
+    {
+      "name": "tool_contract:zctl_offpeak_availability",
+      "passed": true,
+      "detail": "关键词齐备；required=[]"
+    },
+    {
+      "name": "tool_contract:zctl_offpeak_status",
+      "passed": true,
+      "detail": "关键词齐备；required=['ticket_id']"
+    },
+    {
+      "name": "tool_contract:zctl_reset_status",
+      "passed": true,
+      "detail": "关键词齐备；required=[]"
+    },
+    {
+      "name": "mutating_tools_absent",
+      "passed": true,
+      "detail": "变更类工具零暴露（reset use/offpeak take/settle 均不在列）"
+    }
+  ],
+  "tools_seen": {
+    "tools": [
+      "zctl_help",
+      "zctl_offpeak_availability",
+      "zctl_offpeak_status",
+      "zctl_reset_status"
+    ]
+  }
+}

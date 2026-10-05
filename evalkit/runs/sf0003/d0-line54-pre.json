@@ -1,0 +1,7 @@
+{
+  "purpose": "D0 点态证据（开工时比对，非收尾时态）：SKILL.md:54 行开工前 sha256 与文本",
+  "pre_edit_line54_sha256": "c861cf0da1a82f716a48899af9b443b9abba223e8bbff2fb6981e7dec3b6fda8",
+  "pre_edit_text": "| `INFO: 写出 …（共 N 行，替换 X 处，未映射 Y 种）` | 汇总信息 | — |",
+  "comparison": "与 SF-0001 报告 §4.3 所记旧文本逐字一致 → 判定：开工时未改（预期），由本卡（SF-0003）修复",
+  "line_ending_pre_edit": "LF（0/74 CRLF；任务卡写 CRLF 系笔误，实测为 LF，本卡按保留原 LF 处理）"
+}

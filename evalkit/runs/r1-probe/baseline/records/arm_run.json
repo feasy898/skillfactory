@@ -1,0 +1,15 @@
+{
+  "arm": "baseline",
+  "run_label": "r1",
+  "family_requested": "glm",
+  "timeout_s": 1800,
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 349685,
+  "started_at_ms": 1791028930678,
+  "session_id": "sess_34022dd7-4983-4389-93c1-b98a8bd0b6a9",
+  "model_id_observed": "GLM-5.3",
+  "stdout_bytes": 2883,
+  "stderr_bytes": 3768,
+  "stderr_head": "ZCode Built-in skipped (not-due)\nZCode Built-in skipped (not-due)\nZCode Built-in skipped (not-due)\nZCode Built-in skipped (not-due)\nZCode Built-in skipped (not-due)\nAPICallError [AI_APICallError]: Cannot connect to API: Connect Timeout Error (attempted addresses: 47.86.179.135:443, 240b:4001:139:8ad9:438d:afcb:857c:41bb:443, 47.86.227.136:443, 240b:4001:139:8a16:a3f3:9de5:1428:a524:443, timeout: 10000ms)\n    at handleFetchError (C:\\Users\\Administrator\\AppData\\Roaming\\npm\\node_modules\\zcode-app-cli\\vendor\\zcode.cjs:2033:6018)\n    at postToApi (C:\\Users\\Administrator\\AppData\\Roaming\\npm\\node_modules\\zcode-app-cli\\vendor\\zcode.cjs:2037:22843)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async gIs.doStream (C:\\Users\\Administrator\\AppData\\Roaming\\npm\\node_modules\\zcode-app-cli\\vendor\\zcode.cjs:2038:51208)\n    at async fn (C:\\Users\\Administrator\\AppData\\Roaming\\npm\\node_modules\\zcode-app-cli\\vendor\\zcode.cjs:2105:15517)\n    at async C:\\Users\\Administrator\\AppData\\Roaming\\npm\\node_modules\\zcode-app-cli\\vendor\\zcode.cjs:2100:964\n    at async _retryWithExponentialBackoff (C:\\Users\\Administrator\\AppData\\Roaming\\npm\\node_modules\\zcode-app-cli\\vendor\\zcode.cjs:2100:5143)\n    at async streamStep (C:\\Users\\Administrator\\AppData\\Roaming\\npm\\node_modules\\zcode-app-cli\\vendor\\zcode.cjs:2105:14640)\n    at async fn (C:\\Users\\Administrator\\AppData\\Roaming\\npm\\node_modules\\zcode-app-cli\\vendor\\zcode.cjs:2105:20970)\n    at async C:\\Users\\Administrator\\AppData\\Roaming\\npm\\node_modules\\zcode-app-cli\\vendor\\zcode.cjs:2100:964 {\n  cause: ConnectTimeoutError: Connect Timeout Error (attempted addresses: 47.86.179.135:443, 240b:4001:139:8ad9:438d:afcb:857c:41bb:443, 47.86.227.136:443, 240b:4001:139:8a16:a3f3:9de5:1428:a524:443, timeout: 10000ms)\n      at onConnectTimeout (node:internal/deps/undici/undici:2761:28)\n      at Immediate._onImmediate (node:internal/deps/undici/undici:2727:35)\n      at process.processImmediate (node:internal/timers:484:21)\n"
+}

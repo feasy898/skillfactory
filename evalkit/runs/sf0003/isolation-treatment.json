@@ -1,0 +1,21 @@
+{
+  "arms": {
+    "runs/sf0003-fix/treatment": {
+      "hits": [
+        {
+          "path": ".zcode/skills/speaker-mapping/SKILL.md",
+          "kind": "forbidden_file",
+          "detail": "SKILL.md"
+        },
+        {
+          "path": ".zcode/skills/speaker-mapping/map_speakers.py",
+          "kind": "forbidden_file",
+          "detail": "map_speakers.py"
+        }
+      ],
+      "hit_count": 2,
+      "pass": false
+    }
+  },
+  "total_hits": 2
+}

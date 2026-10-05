@@ -1,0 +1,11 @@
+{
+  "run_id": "sf0003-fix",
+  "run_dir": "D:\\new-workspace\\agent-asset\\evalkit\\runs\\sf0003-fix",
+  "arms": {
+    "baseline": "D:\\new-workspace\\agent-asset\\evalkit\\runs\\sf0003-fix\\baseline",
+    "treatment": "D:\\new-workspace\\agent-asset\\evalkit\\runs\\sf0003-fix\\treatment"
+  },
+  "treatment_skill_mount": "D:\\new-workspace\\agent-asset\\evalkit\\runs\\sf0003-fix\\treatment\\.zcode\\skills\\speaker-mapping",
+  "baseline_has_skill": false,
+  "pack": "D:\\new-workspace\\agent-asset\\evalkit\\packs\\sm-mapping-01"
+}

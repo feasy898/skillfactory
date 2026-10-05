@@ -1,0 +1,10 @@
+{
+  "arms": {
+    "runs/sf0003-fix/baseline": {
+      "hits": [],
+      "hit_count": 0,
+      "pass": true
+    }
+  },
+  "total_hits": 0
+}

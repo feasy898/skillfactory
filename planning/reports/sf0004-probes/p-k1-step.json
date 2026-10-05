@@ -1,0 +1,26 @@
+{
+  "gate": "K1",
+  "channel": "kimi CLI head",
+  "requested_model_id_verbatim": "stepfun-step-plan/step-3.7-flash",
+  "ts": "2026-10-04T01:58:41+0800",
+  "exit_code": 0,
+  "wall_ms": 8604,
+  "stdout_nonempty": true,
+  "stdout_bytes": 365,
+  "stderr_head": "",
+  "model_self_reported": null,
+  "status": "unobservable",
+  "stream_file": "D:\\new-workspace\\agent-asset\\planning\\reports\\sf0004-probes\\p-k1-stream.jsonl",
+  "stream_sha256": "79e90eddf67a3328552570edcd13952cd5e2d1b10ff53c2572903d28b89151f4",
+  "token_present": false,
+  "token_env_names_checked": {
+    "MINIMAX_API_KEY": false,
+    "HIGRESS_BROKER_API_KEY": false,
+    "VAULT_TOKEN": false,
+    "BROKER_TOKEN": false,
+    "MINIMAX_TOKEN": false,
+    "SF0004_BROKER_TOKEN": false
+  },
+  "r3_note": "kimi CLI has no db accounting; landing is observable only via stream self-report. This probe does NOT validate the R-3 normalizer itself.",
+  "config_sha256": "e16fee6fa522a4edcf29ed1b88db3ab354a2341bcab26273b736c052b6b08422"
+}

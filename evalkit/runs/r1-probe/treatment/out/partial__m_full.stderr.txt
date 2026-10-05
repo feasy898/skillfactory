@@ -1,0 +1,2 @@
+WARNING: 未映射说话人标签 "SPEAKER_03"，出现 3 次，已原样保留
+INFO: 写出 partial__m_full.txt（共 10 行，替换 7 处，未映射 1 种）

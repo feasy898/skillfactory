@@ -1,0 +1,20 @@
+{
+  "line": "mm",
+  "case_type": "near-negative",
+  "origin": "public-variant",
+  "source_ref": "公开规范条目：《党政机关公文处理工作条例》（中办发〔2012〕14号，公开发布）「纪要」文种定义 + GB/T 9704-2012《党政机关公文格式》（国家标准全文公开系统 openstd.samr.gov.cn，条目号 GB/T 9704-2012）；题面内容 100% 自写，实体全部 nonce 化改写，零原文复制",
+  "canonical_seed": 4202,
+  "no_timestamp_input": true,
+  "expected_checks": [
+    "task_outcome_docx_present_opens",
+    "task_outcome_three_sections",
+    "task_outcome_entries_parseable",
+    "task_outcome_todo_table_header",
+    "task_outcome_entries_traceable_to_input",
+    "task_outcome_entry_owner_from_input",
+    "task_outcome_todo_rows_traceable",
+    "task_outcome_summary_selfconsistent",
+    "task_outcome_no_fabricated_timestamp"
+  ],
+  "id": "mm-02"
+}

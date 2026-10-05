@@ -1,0 +1,48 @@
+{
+  "template": "周报",
+  "title": "运营部工作周报",
+  "fields": [
+    {
+      "name": "部门",
+      "required": true,
+      "kind": "text",
+      "value": "运营部"
+    },
+    {
+      "name": "填报人",
+      "required": true,
+      "kind": "text",
+      "value": "张建国"
+    },
+    {
+      "name": "周期",
+      "required": true,
+      "kind": "text",
+      "value": "2026年10月第2周"
+    },
+    {
+      "name": "本周工作内容",
+      "required": true,
+      "kind": "text",
+      "value": "望舒客服工作台一期联调完成，压测通过率99.2%，遗留问题3个已登记"
+    },
+    {
+      "name": "下周工作计划",
+      "required": true,
+      "kind": "text",
+      "value": "启动望舒客服工作台灰度放量，并完成数据口径核对"
+    },
+    {
+      "name": "问题与需协调事项",
+      "required": true,
+      "kind": "text",
+      "value": "需要综合办协调测试环境两台"
+    },
+    {
+      "name": "报送日期",
+      "required": true,
+      "kind": "text",
+      "value": "2026年7月19日"
+    }
+  ]
+}

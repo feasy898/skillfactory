@@ -1,0 +1,112 @@
+{
+  "task": "SF-0004",
+  "registered_before_first_model_call": true,
+  "target_provider_id": "minimax",
+  "target_model_id": "Minimax-M3.1-Flash-Preview",
+  "target_model_id_source": "verbatim from ~/.zcode/v2/provider_config.json modelConfigRules (providerId=minimax, modelId=Minimax-M3.1-Flash-Preview, enabled=true); matches db model_usage literal 'Minimax-M3.1-Flash-Preview' (5392 rows)",
+  "success_shape": {
+    "exit_code": 0,
+    "session_directory_equals_arm_dir": true,
+    "model_usage_joinable": true,
+    "model_id_verbatim": "Minimax-M3.1-Flash-Preview",
+    "provider_id_lowercased_contains": "minimax"
+  },
+  "budget_cap_model_calls": {
+    "zcode_headless": 3,
+    "ctl": 1,
+    "trt_attempts": 2
+  },
+  "global_config_policy": "no global config is modified; scratch derived copies live under $PROBE\\secret-scratch and are deleted with an existence assertion",
+  "candidates": [
+    {
+      "id": "M1-paired-provider-config-env",
+      "mechanism": "env-scoped provider config override: set BOTH ZCODE_BUILTIN_PROVIDER_CONFIG_FILE and ZCODE_PERSONAL_PROVIDER_CONFIG_FILE to derived copies under secret-scratch; personal copy adds config.defaultModelSelection={providerId:'minimax', modelId:'Minimax-M3.1-Flash-Preview'} and providerOrder ['minimax','new-provider']",
+      "planned_cmd": "python $PROBE\\p_zcode_head.py --label trt-1-m1 --mech m1 --cwd-dir $PROBE\\arms\\trt-1-m1 (spawns zcode.cmd/.exe/node+zcode.js with MSYS_NO_PATHCONV=1 and the two env vars)",
+      "criterion": "exit 0 AND session.directory==arm dir AND model_usage joinable AND model_id verbatim == 'Minimax-M3.1-Flash-Preview' AND provider_id lowercased contains 'minimax'",
+      "cost": "1 model call",
+      "mutates_global_config": false,
+      "static_evidence": [
+        "resolveNodeProviderRuntimePaths_pairing_rule",
+        "builtin_minimax_template_exists",
+        "headless_model_flag_absent"
+      ],
+      "planned": "RUN"
+    },
+    {
+      "id": "M2-enabled-agent-providers",
+      "mechanism": "env ZCODE_ENABLED_AGENT_PROVIDERS=minimax to enable minimax as builtin agent CLI provider",
+      "planned_cmd": "(not executed)",
+      "criterion": "N/A - statically falsified before spending a model call",
+      "cost": "0 model calls",
+      "mutates_global_config": false,
+      "static_evidence": [
+        "ZCODE_ENABLED_AGENT_PROVIDERS_schema"
+      ],
+      "planned": "SKIP_STATIC_FALSIFIED",
+      "skip_reason": "schema transform discards supplied input and returns the constant ['glm']"
+    },
+    {
+      "id": "M3-slash-model-command",
+      "mechanism": "headless prompt '/model minimax/Minimax-M3.1-Flash-Preview' before the task",
+      "planned_cmd": "python $PROBE\\p_zcode_head.py --label trt-2-m3 --mech m3 --cwd-dir $PROBE\\arms\\trt-2-m3",
+      "criterion": "same success shape as M1",
+      "cost": "1 model call (only if M1 fails)",
+      "mutates_global_config": false,
+      "static_evidence": [
+        "headless_model_flag_absent"
+      ],
+      "planned": "RUN_IF_M1_FAILS",
+      "prior": "SF-0001 §4.1 already measured /model as a client-side selector that does not route model processing; retained as the second attempt for exhaustiveness."
+    },
+    {
+      "id": "M4-cli-config-provider-entry",
+      "mechanism": "add a provider entry to ~/.zcode/cli/config.json under try/finally backup-sha256 -> modify -> run -> restore -> compare protocol",
+      "planned_cmd": "(not executed)",
+      "criterion": "N/A",
+      "cost": "0 model calls",
+      "mutates_global_config": true,
+      "static_evidence": [],
+      "planned": "SKIP_LOWEST_PRIORITY",
+      "skip_reason": "card ranks this lowest priority and it mutates a global config file; only reachable if M1 and M3 both fail AND budget remains."
+    },
+    {
+      "id": "M5-probe-cwd-config-discovery",
+      "mechanism": "probe-cwd level config discovery (drop .zcode/ beside the probe arm and rely on cwd-relative discovery)",
+      "planned_cmd": "(not executed)",
+      "criterion": "N/A - statically falsified before spending a model call",
+      "cost": "0 model calls",
+      "mutates_global_config": false,
+      "static_evidence": [
+        "cwd_relative_provider_config_discovery"
+      ],
+      "planned": "SKIP_STATIC_FALSIFIED",
+      "skip_reason": "no cwd-relative provider-config discovery exists; skills discovery being cwd-relative does not transfer to provider config."
+    }
+  ],
+  "static_evidence": {
+    "resolveNodeProviderRuntimePaths_pairing_rule": {
+      "literal": "ZCode Built-in \\u4E0E Personal Provider Config",
+      "occurrences": 4,
+      "finding": "resolveNodeProviderRuntimePaths throws unless BOTH ZCODE_BUILTIN_PROVIDER_CONFIG_FILE and ZCODE_PERSONAL_PROVIDER_CONFIG_FILE are provided; single-variable use is an immediate startup error."
+    },
+    "ZCODE_ENABLED_AGENT_PROVIDERS_schema": {
+      "literal": "gir=m.array(zO).transform(()=>[...qpe])",
+      "occurrences": 1,
+      "finding": "The env var is parsed then transformed to the constant default ['glm']; supplied input is DISCARDED. Mechanism is statically dead -> no model call spent."
+    },
+    "cwd_relative_provider_config_discovery": {
+      "literal": "process.cwd()",
+      "occurrences": 32,
+      "finding": "personalFilePath resolves from environmentConfigRoot (~/.zcode/v2); no cwd-relative provider-config discovery path was found in the bundle scan. Skills discovery IS cwd-relative (SF-0001 R-1) but provider config is not."
+    },
+    "builtin_minimax_template_exists": {
+      "literal": "\"minimax\"",
+      "occurrences": 0,
+      "finding": "vendor/provider/zcode-builtin.json carries a templateRule templateId=minimax, so minimax is a known builtin template, not an unknown provider."
+    },
+    "headless_model_flag_absent": {
+      "note": "zcode 0.16.9 --help full option list contains no --model; /model is a client-side session selector (SF-0001 §4.1)."
+    }
+  },
+  "executed_mechanisms": []
+}

@@ -1,0 +1,274 @@
+{
+  "kimi_exe": "D:\\tools\\bin\\kimi.exe",
+  "kimi_exists": true,
+  "kimi_sha256": "28096756410623f0413607b10872dc16fe8c037c87b005821030daba569a32d4",
+  "version_probe": {
+    "--version": {
+      "exit_code": 0,
+      "stdout": "2.1.1",
+      "stderr": ""
+    },
+    "version": {
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "unknown command 'version'. See 'kimi --help'."
+    }
+  },
+  "config_path": "C:\\Users\\Administrator\\.kimi-code\\config.toml",
+  "config_sha256": "e16fee6fa522a4edcf29ed1b88db3ab354a2341bcab26273b736c052b6b08422",
+  "config_structure_redacted": {
+    "default_model": "stepfun-step-plan/step-3.7-flash",
+    "providers": {
+      "managed:kimi-code": {
+        "type": "kimi",
+        "api_key": "<REDACTED:absent>",
+        "base_url": "https://api.kimi.com/coding/v1",
+        "oauth": {
+          "storage": "file",
+          "key": "oauth/kimi-code"
+        }
+      },
+      "stepfun-step-plan": {
+        "base_url": "https://api.stepfun.com/step_plan/v1",
+        "type": "openai",
+        "api_key": "<REDACTED:present>"
+      },
+      "higress-broker": {
+        "base_url": "http://127.0.0.1:18310/v1",
+        "type": "openai",
+        "api_key": "<REDACTED:present>"
+      }
+    },
+    "models": {
+      "kimi-code/kimi-for-coding": {
+        "provider": "managed:kimi-code",
+        "model": "kimi-for-coding",
+        "max_context_size": 1048576,
+        "capabilities": [
+          "thinking",
+          "always_thinking",
+          "image_in",
+          "video_in",
+          "tool_use"
+        ],
+        "display_name": "K2.8 Preview",
+        "support_efforts": [
+          "low",
+          "high",
+          "max"
+        ],
+        "default_effort": "max"
+      },
+      "kimi-code/kimi-for-coding-highspeed": {
+        "provider": "managed:kimi-code",
+        "model": "kimi-for-coding-highspeed",
+        "max_context_size": 262144,
+        "capabilities": [
+          "thinking",
+          "always_thinking",
+          "image_in",
+          "video_in",
+          "tool_use"
+        ],
+        "display_name": "K2.7 Code Highspeed"
+      },
+      "kimi-code/k3": {
+        "provider": "managed:kimi-code",
+        "model": "k3",
+        "max_context_size": 1048576,
+        "capabilities": [
+          "thinking",
+          "always_thinking",
+          "image_in",
+          "video_in",
+          "tool_use"
+        ],
+        "display_name": "K3",
+        "support_efforts": [
+          "low",
+          "high",
+          "max"
+        ],
+        "default_effort": "high"
+      },
+      "kimi-code/k3-256k": {
+        "provider": "managed:kimi-code",
+        "model": "k3-256k",
+        "max_context_size": 262144,
+        "capabilities": [
+          "thinking",
+          "always_thinking",
+          "image_in",
+          "tool_use"
+        ],
+        "display_name": "K3-256k",
+        "support_efforts": [
+          "low",
+          "high",
+          "max"
+        ],
+        "default_effort": "high"
+      },
+      "stepfun-step-plan/step-3.7-flash": {
+        "provider": "stepfun-step-plan",
+        "model": "step-3.7-flash",
+        "max_context_size": 256000,
+        "max_input_size": 256000,
+        "max_output_size": 256000,
+        "capabilities": [
+          "image_in",
+          "video_in",
+          "thinking",
+          "tool_use"
+        ],
+        "display_name": "Step 3.7 Flash",
+        "reasoning_key": "reasoning_content"
+      },
+      "stepfun-step-plan/step-3.5-flash": {
+        "provider": "stepfun-step-plan",
+        "model": "step-3.5-flash",
+        "max_context_size": 256000,
+        "max_input_size": 256000,
+        "max_output_size": 256000,
+        "capabilities": [
+          "thinking",
+          "tool_use"
+        ],
+        "display_name": "Step 3.5 Flash",
+        "reasoning_key": "reasoning_content"
+      },
+      "stepfun-step-plan/step-3.5-flash-2603": {
+        "provider": "stepfun-step-plan",
+        "model": "step-3.5-flash-2603",
+        "max_context_size": 256000,
+        "max_input_size": 256000,
+        "max_output_size": 256000,
+        "capabilities": [
+          "thinking",
+          "tool_use"
+        ],
+        "display_name": "Step 3.5 Flash 2603",
+        "reasoning_key": "reasoning_content"
+      },
+      "stepfun-step-plan/step-router-v1": {
+        "provider": "stepfun-step-plan",
+        "model": "step-router-v1",
+        "max_context_size": 256000,
+        "max_input_size": 256000,
+        "max_output_size": 256000,
+        "capabilities": [
+          "tool_use"
+        ],
+        "display_name": "Step Router v1"
+      },
+      "stepfun-step-plan/step-5-preview": {
+        "provider": "stepfun-step-plan",
+        "model": "step-5-preview",
+        "max_context_size": 256000,
+        "max_input_size": 256000,
+        "max_output_size": 256000,
+        "capabilities": [
+          "thinking",
+          "tool_use"
+        ],
+        "display_name": "Step 5 Preview",
+        "reasoning_key": "reasoning_content"
+      },
+      "higress-broker/MiniMax-M3.1-Flash-Preview": {
+        "provider": "higress-broker",
+        "model": "MiniMax-M3.1-Flash-Preview",
+        "max_context_size": 512000,
+        "capabilities": [
+          "tool_use",
+          "thinking"
+        ],
+        "display_name": "MiniMax M3.1 Flash (broker)"
+      },
+      "higress-broker/step-router": {
+        "provider": "higress-broker",
+        "model": "step-router",
+        "max_context_size": 256000,
+        "capabilities": [
+          "tool_use"
+        ],
+        "display_name": "Step Router v1 (gateway fallback)"
+      }
+    },
+    "thinking": {
+      "enabled": true,
+      "effort": "max"
+    },
+    "services": {
+      "moonshot_search": {
+        "base_url": "https://api.kimi.com/coding/v1/search",
+        "api_key": "<REDACTED:absent>",
+        "oauth": {
+          "storage": "file",
+          "key": "oauth/kimi-code"
+        }
+      },
+      "moonshot_fetch": {
+        "base_url": "https://api.kimi.com/coding/v1/fetch",
+        "api_key": "<REDACTED:absent>",
+        "oauth": {
+          "storage": "file",
+          "key": "oauth/kimi-code"
+        }
+      }
+    },
+    "secondary_model": {
+      "default_model": "kimi-code/kimi-for-coding"
+    }
+  },
+  "identifiers_only": {
+    "default_model": "stepfun-step-plan/step-3.7-flash",
+    "providers.managed:kimi-code.type": "kimi",
+    "providers.managed:kimi-code.api_key": "<REDACTED:present>",
+    "providers.managed:kimi-code.base_url": "https://api.kimi.com/coding/v1",
+    "providers.stepfun-step-plan.base_url": "https://api.stepfun.com/step_plan/v1",
+    "providers.stepfun-step-plan.type": "openai",
+    "providers.stepfun-step-plan.api_key": "<REDACTED:present>",
+    "providers.higress-broker.base_url": "http://127.0.0.1:18310/v1",
+    "providers.higress-broker.type": "openai",
+    "providers.higress-broker.api_key": "<REDACTED:present>",
+    "models.kimi-code/kimi-for-coding.provider": "managed:kimi-code",
+    "models.kimi-code/kimi-for-coding.model": "kimi-for-coding",
+    "models.kimi-code/kimi-for-coding.display_name": "K2.8 Preview",
+    "models.kimi-code/kimi-for-coding-highspeed.provider": "managed:kimi-code",
+    "models.kimi-code/kimi-for-coding-highspeed.model": "kimi-for-coding-highspeed",
+    "models.kimi-code/kimi-for-coding-highspeed.display_name": "K2.7 Code Highspeed",
+    "models.kimi-code/k3.provider": "managed:kimi-code",
+    "models.kimi-code/k3.model": "k3",
+    "models.kimi-code/k3.display_name": "K3",
+    "models.kimi-code/k3-256k.provider": "managed:kimi-code",
+    "models.kimi-code/k3-256k.model": "k3-256k",
+    "models.kimi-code/k3-256k.display_name": "K3-256k",
+    "models.stepfun-step-plan/step-3.7-flash.provider": "stepfun-step-plan",
+    "models.stepfun-step-plan/step-3.7-flash.model": "step-3.7-flash",
+    "models.stepfun-step-plan/step-3.7-flash.display_name": "Step 3.7 Flash",
+    "models.stepfun-step-plan/step-3.5-flash.provider": "stepfun-step-plan",
+    "models.stepfun-step-plan/step-3.5-flash.model": "step-3.5-flash",
+    "models.stepfun-step-plan/step-3.5-flash.display_name": "Step 3.5 Flash",
+    "models.stepfun-step-plan/step-3.5-flash-2603.provider": "stepfun-step-plan",
+    "models.stepfun-step-plan/step-3.5-flash-2603.model": "step-3.5-flash-2603",
+    "models.stepfun-step-plan/step-3.5-flash-2603.display_name": "Step 3.5 Flash 2603",
+    "models.stepfun-step-plan/step-router-v1.provider": "stepfun-step-plan",
+    "models.stepfun-step-plan/step-router-v1.model": "step-router-v1",
+    "models.stepfun-step-plan/step-router-v1.display_name": "Step Router v1",
+    "models.stepfun-step-plan/step-5-preview.provider": "stepfun-step-plan",
+    "models.stepfun-step-plan/step-5-preview.model": "step-5-preview",
+    "models.stepfun-step-plan/step-5-preview.display_name": "Step 5 Preview",
+    "models.higress-broker/MiniMax-M3.1-Flash-Preview.provider": "higress-broker",
+    "models.higress-broker/MiniMax-M3.1-Flash-Preview.model": "MiniMax-M3.1-Flash-Preview",
+    "models.higress-broker/MiniMax-M3.1-Flash-Preview.display_name": "MiniMax M3.1 Flash (broker)",
+    "models.higress-broker/step-router.provider": "higress-broker",
+    "models.higress-broker/step-router.model": "step-router",
+    "models.higress-broker/step-router.display_name": "Step Router v1 (gateway fallback)",
+    "services.moonshot_search.base_url": "https://api.kimi.com/coding/v1/search",
+    "services.moonshot_search.api_key": "<REDACTED:present>",
+    "services.moonshot_fetch.base_url": "https://api.kimi.com/coding/v1/fetch",
+    "services.moonshot_fetch.api_key": "<REDACTED:present>",
+    "secondary_model.default_model": "kimi-code/kimi-for-coding"
+  },
+  "secret_policy": "api_key/token/secret/password values never recorded; only presence booleans"
+}

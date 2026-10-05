@@ -1,0 +1,16 @@
+{
+  "track": "quality",
+  "arm": "baseline",
+  "run_label": "r1",
+  "verdict": "unjudgeable",
+  "score": null,
+  "reason": "MVP 无跨族裁判可用（O-7 要求裁判族与被测集无交集；本轮被测集=GLM 族，本机可用的第二族通道在 headless 下未打通）。按 EVAL-SPEC §3.1-1 出不可判，不出分；不得用单裁判自偏好冒充质量信号。",
+  "rubric": "D:\\new-workspace\\agent-asset\\evalkit\\packs\\sm-mapping-01\\rubric.md",
+  "rubric_dims": [
+    "交付形态正确",
+    "只换标签的不变式",
+    "告警忠实",
+    "扫描草稿可用",
+    "过程可复现"
+  ]
+}

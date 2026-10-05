@@ -1,0 +1,53 @@
+{
+  "purpose": "S4/E1 · 0 模型 replay：按 brief 新条款复刻全量 12 条命令（cwd=scratch 根；生成器=原版 oracle/map_speakers.py 的 scratch 副本；参数形态=--transcript \"fixtures/…\" --out \"out/…\"）",
+  "commands": [
+    {
+      "cmd": "python \"map_speakers.py\" \"--transcript\" \"fixtures/normal.txt\" \"--mapping\" \"fixtures/m_full.json\" \"--out\" \"out/normal__m_full.txt\"",
+      "exit_code": 0
+    },
+    {
+      "cmd": "python \"map_speakers.py\" \"--transcript\" \"fixtures/normal.txt\" \"--mapping\" \"fixtures/m_partial.json\" \"--out\" \"out/normal__m_partial.txt\"",
+      "exit_code": 0
+    },
+    {
+      "cmd": "python \"map_speakers.py\" \"--transcript\" \"fixtures/normal.txt\" \"--mapping\" \"fixtures/m_empty.json\" \"--out\" \"out/normal__m_empty.txt\"",
+      "exit_code": 0
+    },
+    {
+      "cmd": "python \"map_speakers.py\" \"--transcript\" \"fixtures/partial.txt\" \"--mapping\" \"fixtures/m_full.json\" \"--out\" \"out/partial__m_full.txt\"",
+      "exit_code": 0
+    },
+    {
+      "cmd": "python \"map_speakers.py\" \"--transcript\" \"fixtures/partial.txt\" \"--mapping\" \"fixtures/m_partial.json\" \"--out\" \"out/partial__m_partial.txt\"",
+      "exit_code": 0
+    },
+    {
+      "cmd": "python \"map_speakers.py\" \"--transcript\" \"fixtures/partial.txt\" \"--mapping\" \"fixtures/m_empty.json\" \"--out\" \"out/partial__m_empty.txt\"",
+      "exit_code": 0
+    },
+    {
+      "cmd": "python \"map_speakers.py\" \"--transcript\" \"fixtures/empty.txt\" \"--mapping\" \"fixtures/m_full.json\" \"--out\" \"out/empty__m_full.txt\"",
+      "exit_code": 0
+    },
+    {
+      "cmd": "python \"map_speakers.py\" \"--transcript\" \"fixtures/empty.txt\" \"--mapping\" \"fixtures/m_partial.json\" \"--out\" \"out/empty__m_partial.txt\"",
+      "exit_code": 0
+    },
+    {
+      "cmd": "python \"map_speakers.py\" \"--transcript\" \"fixtures/empty.txt\" \"--mapping\" \"fixtures/m_empty.json\" \"--out\" \"out/empty__m_empty.txt\"",
+      "exit_code": 0
+    },
+    {
+      "cmd": "python \"map_speakers.py\" \"--discover\" \"--transcript\" \"fixtures/normal.txt\" \"--out\" \"out/discover__normal.json\"",
+      "exit_code": 0
+    },
+    {
+      "cmd": "python \"map_speakers.py\" \"--discover\" \"--transcript\" \"fixtures/partial.txt\" \"--out\" \"out/discover__partial.json\"",
+      "exit_code": 0
+    },
+    {
+      "cmd": "python \"map_speakers.py\" \"--discover\" \"--transcript\" \"fixtures/empty.txt\" \"--out\" \"out/discover__empty.json\"",
+      "exit_code": 0
+    }
+  ]
+}

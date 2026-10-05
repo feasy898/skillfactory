@@ -1,0 +1,11 @@
+PASS NC-1    在 oracle 副本下原地跑生成器（复刻 K-3 D3）
+PASS NC-2    --store 指向 oracle/out/_work/store.json 后加词（复刻 D4）
+PASS NC-3    从 nc-3 目录用绝对路径 --out 产出（复刻 D2）
+PASS NC-4    漏/错 CLI 参数：输入文件不存在（复刻 D1）
+PASS NC-5    注入一次 rate_limited 后成功
+PASS NC-6    注入连续 2 次 stream_idle_timeout
+PASS NC-7    3 族全绿 + 1 族全崩
+PASS NC-8    人为把某臂产物做坏
+PASS NC-CTRL 无植入（正常臂/绿路）
+
+负控全红 + 正常臂不误报: 成立（9/9）

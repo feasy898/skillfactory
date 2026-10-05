@@ -1,0 +1,38 @@
+{
+  "gate": "trt-1-m1",
+  "mechanism": "m1",
+  "ts": "2026-10-04T01:57:47+0800",
+  "started_at_ms": 1791050254300,
+  "command_shape": [
+    "zcode",
+    "-p",
+    "<prompt>",
+    "--cwd",
+    "<arm>",
+    "--json"
+  ],
+  "prompt_is_pong_level": true,
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 13095,
+  "session_id": "sess_18d61286-5e53-4701-94a7-b49fc08b285c",
+  "db": {
+    "available": true,
+    "session_row_found": true,
+    "directory_match": true,
+    "arm_dir": "D:\\new-workspace\\agent-asset\\planning\\reports\\sf0004-probes\\arms\\trt-1-m1",
+    "session_directory": "D:\\new-workspace\\agent-asset\\planning\\reports\\sf0004-probes\\arms\\trt-1-m1",
+    "model_id_verbatim": "Minimax-M3.1-Flash-Preview",
+    "provider_id_verbatim": "minimax",
+    "model_usage_rows": 1,
+    "input_tokens": 22718,
+    "output_tokens": 13,
+    "task_type": "interactive"
+  },
+  "landing_moved": true,
+  "success_shape": true,
+  "expected": "Minimax-M3.1-Flash-Preview / provider contains minimax",
+  "stdout_head": "{\n  \"sessionId\": \"sess_18d61286-5e53-4701-94a7-b49fc08b285c\",\n  \"traceId\": \"a7b5dbcf-d6e5-430d-b6cc-11e2a569a2ec\",\n  \"turnId\": \"turn_1b11d548-1ae2-4caa-8509-a01c84b2025d\",\n  \"response\": \"PONG-SF0004-trt-1-m1\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 1,\n    \"inputTokens\": 22718,\n    \"outputTokens\": 13,\n    \"totalTokens\": 22731,\n    \"cacheReadTokens\": 188,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 12,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 22731,\n    \"contextUsed\": 22731,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "stderr_head": "",
+  "global_config_modified": false
+}

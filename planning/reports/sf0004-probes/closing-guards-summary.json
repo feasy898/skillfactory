@@ -1,0 +1,84 @@
+{
+  "results": {
+    "G1": {
+      "command": "python harness/freeze_device.py verify (cwd=$EK)",
+      "exit_code": 0,
+      "stdout": "装置钉版一致：16 个关键文件 sha256 全对",
+      "stderr": "",
+      "pass": true
+    },
+    "G2": {
+      "command": "python harness/oracle_gate.py verify --record $PROBE/oracle-before.json",
+      "exit_code": 0,
+      "stdout": "{\n  \"root\": \"D:\\\\new-workspace\\\\agent-asset\\\\afp-clone\\\\zcode-research\\\\skillfactory\\\\v5\\\\assets\\\\speaker-mapping\\\\oracle\",\n  \"baseline_tree_sha256\": \"e3086e10c9cd4f1415792333b89479536a2a96624b543215d5f6465525ceeacc\",\n  \"current_tree_sha256\": \"e3086e10c9cd4f1415792333b89479536a2a96624b543215d5f6465525ceeacc\",\n  \"baseline_file_count\": 31,\n  \"current_file_count\": 31,\n  \"unchanged\": true,\n  \"changed_paths\": [],\n  \"missing_paths\": [],\n  \"extra_paths\": [],\n  \"abort\": false\n}",
+      "stderr": "",
+      "unchanged": true,
+      "baseline_tree_sha256": "e3086e10c9cd4f1415792333b89479536a2a96624b543215d5f6465525ceeacc",
+      "current_tree_sha256": "e3086e10c9cd4f1415792333b89479536a2a96624b543215d5f6465525ceeacc",
+      "file_count": 31,
+      "pass": true
+    },
+    "G3": {
+      "command": "git -C afp-clone status --porcelain (closing) vs opening",
+      "exit_code": 0,
+      "before_count": 20,
+      "after_count": 20,
+      "added": [],
+      "removed": [],
+      "frozen_area_intersection": [],
+      "pass": true
+    },
+    "G4": {
+      "root": "D:\\new-workspace\\agent-asset\\evalkit",
+      "before_count": 591,
+      "after_count": 591,
+      "added": [],
+      "removed": [],
+      "pass": true
+    },
+    "G5": {
+      "before": {
+        "ZCFG": {
+          "path": "C:\\Users\\Administrator\\.zcode\\cli\\config.json",
+          "exists": true,
+          "sha256": "ec5c268a9046b7c69d8312108fac31b3b56da0d413d3b20afef083a0ff9733e2"
+        },
+        "V2CFG": {
+          "path": "C:\\Users\\Administrator\\.zcode\\v2\\provider_config.json",
+          "exists": true,
+          "sha256": "7d3e81e8c100ac705394043dc2ba487e18a873137cef7c8b26b441ca17a9c346"
+        },
+        "KCFG": {
+          "path": "C:\\Users\\Administrator\\.kimi-code\\config.toml",
+          "exists": true,
+          "sha256": "e16fee6fa522a4edcf29ed1b88db3ab354a2341bcab26273b736c052b6b08422"
+        }
+      },
+      "after": {
+        "ZCFG": {
+          "path": "C:\\Users\\Administrator\\.zcode\\cli\\config.json",
+          "sha256": "ec5c268a9046b7c69d8312108fac31b3b56da0d413d3b20afef083a0ff9733e2"
+        },
+        "V2CFG": {
+          "path": "C:\\Users\\Administrator\\.zcode\\v2\\provider_config.json",
+          "sha256": "7d3e81e8c100ac705394043dc2ba487e18a873137cef7c8b26b441ca17a9c346"
+        },
+        "KCFG": {
+          "path": "C:\\Users\\Administrator\\.kimi-code\\config.toml",
+          "sha256": "e16fee6fa522a4edcf29ed1b88db3ab354a2341bcab26273b736c052b6b08422"
+        }
+      },
+      "all_equal": true,
+      "pass": true,
+      "note": "no try/finally temporary modification was declared or needed; M1 used env-scoped derived copies under secret-scratch, never the global files, so no config-restore.json is required."
+    }
+  },
+  "pass": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true,
+    "G5": true
+  },
+  "all_pass": true
+}

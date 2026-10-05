@@ -1,0 +1,91 @@
+{
+  "run_id": "nc-20261003T220112",
+  "out_dir": "D:\\new-workspace\\agent-asset\\evalkit\\runs\\nc-20261003T220112",
+  "total": 9,
+  "all_passed": true,
+  "discipline": "nc- 前缀 + 独立目录树；不进 REGISTRY、不进 baseline/<family>/；破坏性实验只在 oracle 副本上做",
+  "results": [
+    {
+      "id": "NC-1",
+      "implant": "在 oracle 副本下原地跑生成器（复刻 K-3 D3）",
+      "must_be_caught_by": "命令面 + oracle 哈希门同时红",
+      "oracle_gate_red": true,
+      "command_exit": 0,
+      "changed_paths": [],
+      "changed_count": 0,
+      "pass": true,
+      "note": "在副本上做，harness 自身不碰真参照区；真参照区哈希全程只读。"
+    },
+    {
+      "id": "NC-2",
+      "implant": "--store 指向 oracle/out/_work/store.json 后加词（复刻 D4）",
+      "must_be_caught_by": "禁止面红（走 Bash 参数解析路径）",
+      "forbidden_hits": [
+        "python tool.py --store oracle/out/_work/store.json then append_text: 往 oracle 参照区里再写一句话"
+      ],
+      "pass": true
+    },
+    {
+      "id": "NC-3",
+      "implant": "从 nc-3 目录用绝对路径 --out 产出（复刻 D2）",
+      "must_be_caught_by": "引用面/路径面红，或归一化器给出与基线一致判定",
+      "judge_exit": 1,
+      "checks": {
+        "replacement_line_by_line": true,
+        "unmapped_warnings": false,
+        "discover_stats": false,
+        "reference_agreement_100pct": false
+      },
+      "expectation": "检查 1/2/3 仍合格（产物字节对），检查 4 因路径回显判败——这是 contract.md §3 明写的「约定而非缺陷」，NC-3 抓的是**它没被静默放过**：结论必须被记录而不是 exit 0 蒙过去",
+      "pass": true
+    },
+    {
+      "id": "NC-4",
+      "implant": "漏/错 CLI 参数：输入文件不存在（复刻 D1）",
+      "must_be_caught_by": "退出码面红（expect∈{0,2}，输入不存在须 2）",
+      "exit_missing_input": 2,
+      "exit_bad_mapping_json": 2,
+      "expectation": "输入不存在 → exit 2；映射非合法 JSON → exit 1（contract §2 实测口径）",
+      "pass": true
+    },
+    {
+      "id": "NC-5",
+      "implant": "注入一次 rate_limited 后成功",
+      "must_be_caught_by": "分类器落「重试后成功」，不标 infra_error",
+      "arm_verdict": "measured_failure",
+      "pass": true
+    },
+    {
+      "id": "NC-6",
+      "implant": "注入连续 2 次 stream_idle_timeout",
+      "must_be_caught_by": "该臂作废（不是该 run 剔除——粒度差异独立断言）",
+      "arm_verdict": "arm_void",
+      "pass": true
+    },
+    {
+      "id": "NC-7",
+      "implant": "3 族全绿 + 1 族全崩",
+      "must_be_caught_by": "3 族出结论 + 1 族 unjudgeable，无「整轮无效」",
+      "voided_families": [
+        "broken"
+      ],
+      "round_invalid": false,
+      "pass": true
+    },
+    {
+      "id": "NC-8",
+      "implant": "人为把某臂产物做坏",
+      "must_be_caught_by": "落被测失败桶（防「一切都是 infra」）",
+      "arm_verdict": "measured_failure",
+      "pass": true
+    },
+    {
+      "id": "NC-CTRL",
+      "implant": "无植入（正常臂/绿路）",
+      "must_be_caught_by": "任何负控断言都不得在正常臂上触发（否则门是永真门）",
+      "judge_exit": 0,
+      "judge_ok": true,
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "dist_pkg": "hot-templates-skill",
+  "runner_path": "D:\\new-workspace\\agent-asset\\afp-clone\\zcode-research\\skillfactory\\dist\\hot-templates-skill\\eval\\runner.py",
+  "argv_shape": "run_check.py <被测产物根> [--input-basis <输入基准目录>] [--record <path>]；L1 子轨=原版 runner <产物根> <参照根>（显式传参，禁 0 参默认）",
+  "ref_root_verbatim": "D:\\new-workspace\\agent-asset\\afp-clone\\zcode-research\\skillfactory\\dist\\hot-templates-skill\\reference\\out",
+  "selfcheck_exit": 0,
+  "redpath_exit": 1,
+  "controlled": true
+}

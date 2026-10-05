@@ -1,0 +1,30 @@
+{
+  "track": "process",
+  "verdict": "pass",
+  "tool_usage_rows": 22,
+  "session_directory_matches_arm": true,
+  "checks": [
+    {
+      "name": "命令面(D1/D3/D4)",
+      "pass": true,
+      "gaps": [],
+      "scanned_commands": 15
+    },
+    {
+      "name": "退出码面(D1)",
+      "pass": true,
+      "gaps": [],
+      "scanned": 22
+    },
+    {
+      "name": "引引面(D5 路径存在)",
+      "pass": true,
+      "gaps": []
+    },
+    {
+      "name": "禁止面(不得读/写参照区)",
+      "pass": true,
+      "gaps": []
+    }
+  ]
+}

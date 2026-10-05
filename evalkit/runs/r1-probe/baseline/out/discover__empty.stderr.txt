@@ -1,0 +1,1 @@
+INFO: 写出 discover__empty.json（共 7 行，发现说话人 0 种，发言 0 条）

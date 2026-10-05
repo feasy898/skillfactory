@@ -1,0 +1,26 @@
+{
+  "gate": "B0c",
+  "available": false,
+  "model_ids": [],
+  "reason": "a model catalog is not addressable from this session: no ListModels-equivalent tool in the worker session and no model-listing subcommand in kimi 2.1.1; zcode headless exposes only the client-side /model selector",
+  "classification": "untested_catalog_unavailable",
+  "probes": [
+    {
+      "probe": "kimi CLI subcommand census",
+      "result": "no_catalog_enumeration",
+      "detail": "kimi 2.1.1 exposes -m <alias> (alias resolved from config.toml) and subcommands export/fork/provider/session/acp/web; there is no model-listing / ListModels command. Observed subcommands are config-driven aliases, not a queryable catalog."
+    },
+    {
+      "probe": "worker session tool inventory",
+      "result": "no_listmodels_tool",
+      "detail": "this worker session (kimi CLI shell + vault-broker channel) exposes no ListModels or model-catalog tool; the model catalog is not addressable from the executing session."
+    },
+    {
+      "probe": "zcode headless CLI",
+      "result": "no_catalog_enumeration",
+      "detail": "zcode 0.16.9 --help exposes /model as a client-side session selector; headless -p has no model enumeration surface (SF-0001 §4.1 + this card's A-ctl/A-trt measurements)."
+    }
+  ],
+  "ts": "2026-10-04T02:00:16+0800",
+  "consequence": "B1 is not constructed; recorded as not_run + untested_catalog_unavailable (non-failure). This is R-8 scope measurement留档."
+}
