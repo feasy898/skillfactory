@@ -28,9 +28,10 @@ import contextlib
 # 所以资产树要从 evalkit 上一级找。用 __file__ 相对定位，整目录搬迁后不用改代码。
 PACK_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))      # .../packs/sm-mapping-01
 EVALKIT = os.path.dirname(os.path.dirname(PACK_DIR))                      # .../evalkit
-WORKSPACE = os.path.dirname(EVALKIT)                                      # .../agent-asset
+# 拆仓迁移(2026-10-05)：产线根=本仓根(evalkit 上一级)，SF_ROOT 可覆盖
+WORKSPACE = os.environ.get("SF_ROOT") or os.path.dirname(EVALKIT)         # .../skillfactory
 ASSET_ROOT = os.path.join(
-    WORKSPACE, "afp-clone", "zcode-research", "skillfactory", "v5", "assets", "speaker-mapping")
+    WORKSPACE, "v5", "assets", "speaker-mapping")
 RUNNER_PATH = os.path.join(ASSET_ROOT, "eval", "runner.py")
 
 

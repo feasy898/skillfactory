@@ -276,11 +276,19 @@ def bp_group():
     all_ok, d9 = True, []
 
     def make_junction(link, target):
-        proc = subprocess.run(
-            ["cmd", "/c", "mklink", "/J", link, target],
-            capture_output=True, text=True, encoding="utf-8", errors="replace",
-            timeout=30)
-        return proc.returncode == 0
+        # 平台分支（2026-10-05 Linux 化）：junction 是 Windows 目录链接；
+        # Linux/macOS 用 symlink 等价替代（runner 只需 root/reference 可达）。
+        if os.name == "nt":
+            proc = subprocess.run(
+                ["cmd", "/c", "mklink", "/J", link, target],
+                capture_output=True, text=True, encoding="utf-8", errors="replace",
+                timeout=30)
+            return proc.returncode == 0
+        try:
+            os.symlink(target, link, target_is_directory=True)
+            return True
+        except OSError:
+            return False
 
     empty = os.path.join(WORK, "empty")
     fresh(empty)
@@ -300,8 +308,12 @@ def bp_group():
                 g = run_runner(root, ref, ref)
                 r = run_runner(root, empty, ref)
             finally:
-                if linked and os.path.isdir(junction):
-                    os.rmdir(junction)  # junction 本体删除，不递归源
+                if linked and (os.path.isdir(junction) or os.path.islink(junction)):
+                    # Windows junction 用 rmdir(不递归源)；POSIX symlink 用 remove
+                    if os.path.islink(junction):
+                        os.remove(junction)
+                    else:
+                        os.rmdir(junction)
             if not (gcode == 0 and g.returncode == 0 and r.returncode == 1):
                 all_ok = False
                 d9.append("%s/%s g05=%d green=%d red=%d"

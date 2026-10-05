@@ -23,11 +23,12 @@ import sys
 import tempfile
 
 EVALKIT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ASSET = os.path.join(EVALKIT, "..", "afp-clone", "zcode-research", "skillfactory",
-                     "v5", "assets", "speaker-mapping")
+# 拆仓迁移(2026-10-05)：产线根 = 本仓根（原 afp-clone/zcode-research/skillfactory 布局已拆为独立仓）。
+# SF_ROOT 可覆盖（默认取 evalkit 上一级 = 仓根）。
+PROD_ROOT = os.environ.get("SF_ROOT") or os.path.normpath(os.path.join(EVALKIT, ".."))
+AFP = PROD_ROOT  # git porcelain/资源定位统一走产线根
+ASSET = os.path.join(PROD_ROOT, "v5", "assets", "speaker-mapping")
 ASSET = os.path.normpath(ASSET)
-AFP = os.path.normpath(os.path.join(EVALKIT, "..", "afp-clone"))
-PROD_ROOT = os.path.join(AFP, "zcode-research", "skillfactory")
 RUNS = os.path.join(EVALKIT, "runs", "sf0003")
 ORACLE_SHA = "e3086e10c9cd4f1415792333b89479536a2a96624b543215d5f6465525ceeacc"
 ORACLE_FILES = 31
@@ -53,8 +54,11 @@ OLD_VER = "v6-mvp-0" + ".1"  # 动态构造：本文件不得含旧版号字面�
 
 # 本卡声明的装置侧改动清单（F5：keyfiles 变更集必须恰等此集）
 DECLARED_CHANGED = {"evaluators/aggregate.py", "evaluators/process_track.py",
-                    "harness/make_arms.py", "harness/pack_checks.py", "harness/run_all.py"}
-DECLARED_NEW = {"harness/doc_consistency.py", "harness/verify_sf0003.py"}
+                    "harness/make_arms.py", "harness/pack_checks.py", "harness/run_all.py",
+                    "nc/run_nc.py", "packs/sm-mapping-01/checks/run_check.py"}  # +拆仓路径解耦(2026-10-05)
+DECLARED_NEW = {"harness/doc_consistency.py", "harness/verify_sf0003.py",
+                "harness/ws4_d3_gate.py", "harness/ws4_gen.py",
+                "harness/ws4_judge.py", "harness/ws4_pool_state.py"}  # ws4 四件=S0 后 WS4 批次装置(拆仓前既有, 2026-10-05 补声明)
 
 RESULTS = []
 
@@ -113,7 +117,7 @@ def a_group():
          rc == 0 and j.get("tree_sha256") == ORACLE_SHA and j.get("file_count") == ORACLE_FILES,
          out, "tree_sha256==ORACLE_SHA256 且 %d 文件" % ORACLE_FILES)
     rc, out, _ = git(["diff", "--exit-code", "--",
-                      "zcode-research/skillfactory/v5/assets/speaker-mapping/eval/runner.py"])
+                      "v5/assets/speaker-mapping/eval/runner.py"])
     gate("A3", "git -C <afp-clone> diff --exit-code -- $ASSET/eval/runner.py", rc == 0, "",
          "runner 零改动")
     rc, out, _ = git(["status", "--porcelain"])
@@ -261,14 +265,14 @@ def d_group():
          t.count("INFO: 写出 out/<file>（共 N 行，替换标签 X 处，未映射标签 Y 种）") == 1
          and t.count("替换 X 处，未映射 Y 种") == 0, "ok", "新文本恰 1、旧文本绝迹")
     rc, out, _ = git(["diff", "--numstat", "--",
-                      "zcode-research/skillfactory/v5/assets/speaker-mapping/package/SKILL.md"])
+                      "v5/assets/speaker-mapping/package/SKILL.md"])
     rc2, out2, _ = git(["status", "--porcelain", "--",
-                        "zcode-research/skillfactory/v5/assets/speaker-mapping/"])
+                        "v5/assets/speaker-mapping/"])
     before = set(json.load(io.open(os.path.join(RUNS, "porcelain-before.json"), encoding="utf-8"))["lines"])
     cur = set(l for l in out2.splitlines() if l.strip())
     delta = sorted(cur - before)
-    ok = out.strip() == "1\t1\tzcode-research/skillfactory/v5/assets/speaker-mapping/package/SKILL.md" \
-        and delta == [" M zcode-research/skillfactory/v5/assets/speaker-mapping/package/SKILL.md"]
+    ok = out.strip() == "1\t1\tv5/assets/speaker-mapping/package/SKILL.md" \
+        and delta == [" M v5/assets/speaker-mapping/package/SKILL.md"]
     gate("D2", "git numstat + status（差分口径：ASSET 子树本卡新增 == 恰该一行）", ok,
          out.strip() + " | delta=" + json.dumps(delta), "numstat 恰 1 1；新增改动面收死为 SKILL.md 一行")
     data = open(sk, "rb").read()
@@ -389,7 +393,7 @@ def f_group():
     gate("F5", "freeze 三段式终态：verify 绿 + keyfiles 变更集恰等声明清单", ok,
          "changed=%s new=%s" % (sorted(changed), sorted(new)),
          "变更集恰等（changed 5 + new 2；多一项即红）")
-    gate("F6", "test ! -d <afp-clone>/zcode-research/skillfactory/v6",
+    gate("F6", "test ! -d <afp-clone>/v6",
          not os.path.isdir(os.path.join(PROD_ROOT, "v6")), "",
          "v6 目录不存在（未升格，O-17 时机属 M1 阶段门）")
 

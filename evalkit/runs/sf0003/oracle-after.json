@@ -1,5 +1,5 @@
 {
-  "root": "D:\\new-workspace\\agent-asset\\afp-clone\\zcode-research\\skillfactory\\v5\\assets\\speaker-mapping\\oracle",
+  "root": "/home/pan-ding/workspace/skill工厂/skillfactory/v5/assets/speaker-mapping/oracle",
   "file_count": 31,
   "tree_sha256": "e3086e10c9cd4f1415792333b89479536a2a96624b543215d5f6465525ceeacc",
   "basis": "text LF-normalized (CRLF->LF) + sha256; binary raw bytes + sha256",

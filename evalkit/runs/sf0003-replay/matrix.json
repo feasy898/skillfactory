@@ -1,7 +1,7 @@
 {
   "schema": "matrix.v6-mvp",
   "layer": "dev",
-  "evalbench_version": "v6-mvp-0.2",
+  "evalbench_version": "v6-mvp-0.3",
   "run_id": "sf0003-replay",
   "rows": {
     "sm-mapping-01": {}

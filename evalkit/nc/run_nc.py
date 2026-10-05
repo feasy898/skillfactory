@@ -64,9 +64,9 @@ def main(argv):
     args = ap.parse_args(argv)
 
     evalkit = args.evalkit
-    workspace = os.path.dirname(evalkit)
-    asset = os.path.join(workspace, "afp-clone", "zcode-research", "skillfactory",
-                         "v5", "assets", "speaker-mapping")
+    # 拆仓迁移(2026-10-05)：资产根默认=evalkit 上一级(本仓根)，SF_ROOT 可覆盖
+    workspace = os.environ.get("SF_ROOT") or os.path.dirname(evalkit)
+    asset = os.path.join(workspace, "v5", "assets", "speaker-mapping")
     oracle = os.path.join(asset, "oracle")
     if not os.path.isdir(oracle):
         print("oracle 树不存在: %s" % oracle, file=sys.stderr)

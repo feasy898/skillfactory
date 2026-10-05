@@ -1,0 +1,287 @@
+{
+  "task": "SF-0003",
+  "generated_at": "2026-10-05T22:58:59+08:00",
+  "pass": false,
+  "total": 34,
+  "failed": [
+    "A1",
+    "B5",
+    "D2",
+    "F4",
+    "F5"
+  ],
+  "gates": [
+    {
+      "id": "A1",
+      "command": "python harness/freeze_device.py verify",
+      "exit_code": 1,
+      "ts": "2026-10-05T22:58:57+08:00",
+      "evidence_sha256": "cb510e678c113cd21e0d6cb9749d255335e32154ed3c841b895c3b87b4b9c58a",
+      "detail": "装置漂移（判分器/阈值被改？）:\n  changed    harness/verify_sf0003.py\n  changed    nc/run_nc.py\n  changed    packs/sm-mapping-01/checks/run_check.py\n"
+    },
+    {
+      "id": "A2",
+      "command": "python harness/oracle_gate.py hash --root $ASSET/oracle --record runs/sf0003/oracle-after.json",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "239e4c8a9d69c073df23d97a6fa153c0ad637f0dbbcf2f691215a4f7eb1e3e68",
+      "detail": "tree_sha256==ORACLE_SHA256 且 31 文件"
+    },
+    {
+      "id": "A3",
+      "command": "git -C <afp-clone> diff --exit-code -- $ASSET/eval/runner.py",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "",
+      "detail": "runner 零改动"
+    },
+    {
+      "id": "A4",
+      "command": "git -C <afp-clone> status --porcelain（差分口径：本卡新增条目 ∩ 六封存区 == ∅）",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "0455e66fdb3bef4383994d6feca0cdb7c93258d321e6f59c3be3803f3b77cba7",
+      "detail": "本卡新增改动面 0 条落在封存区；既有 chenmai8 D/T 条目为 Windows checkout 的 symlink(mode 120000) 物化差异，S0 基线快照在案"
+    },
+    {
+      "id": "B1",
+      "command": "grep -n 'v6-mvp-0.2' evaluators/aggregate.py ; grep -rn 'v6-mvp-0.1' {evaluators,harness,packs,nc,README.md}",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "6157315f339448b95d07e766ebec66113fb7e0b95449738c138bc9392b0f2566",
+      "detail": "默认值已改；旧版号零残留"
+    },
+    {
+      "id": "B2",
+      "command": "python harness/run_all.py --help",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "73386c7eb7d290db3fa3bce962a68fd35e48f3ae730e0947cabe0bd6b50c1102",
+      "detail": "usage 输出含 --evalbench-version（透传已加；add_help=False 故 --help 走 usage 通道）"
+    },
+    {
+      "id": "B3",
+      "command": "test -f runs/sf0003-baseline-void.json + baseline/ 旧版号基线计数",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "50fcfb71a54891f52d15e2e5a8f1724fcd070f119dc7c7e894c289a9142dbe1c",
+      "detail": "分支 B：voided_count=0+理由非空+目录清单落盘；聚合器可读旧版号基线数==0"
+    },
+    {
+      "id": "B4",
+      "command": "test -f runs/r1-probe/INVALIDATED.md && grep -c 'O-6\\|不得引用'",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "aad212d44de2feaf6cd5786a4c7a28945c3ee31c75d35454630f8aaca8b23e33",
+      "detail": "O-6/不得引用/citable:false 各≥1"
+    },
+    {
+      "id": "B5",
+      "command": "aggregate.py --delta-from <prev>（混版本 / 同版本 双向）",
+      "exit_code": 1,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "edb631f20ed4b775ba1df78c31367f03595bf174becd44890d302f86fdaa0873",
+      "detail": "混版本 exit≠0 报「版本」零输出；同版本 exit 0 delta_vs_prev=null"
+    },
+    {
+      "id": "B6",
+      "command": "test -f evalkit/CHANGELOG.md + 读 v6-mvp-0.2 节",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "97f2f163a9813936c977ef0b2f08fcf9fb76eba29f8345bf2f7b87b5c2e59e75",
+      "detail": "≥3 条 fixed，五字段齐，复现命令引用在位"
+    },
+    {
+      "id": "B7",
+      "command": "grep -n 'O-6' <PLAN.md> 的 O-6 行 + grep -n 'GLM-5.3' evalkit/README.md",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "44f0db83c7f84b0e44b7d7604eb0614d0ac52b8cf5387f825b441436f2060550",
+      "detail": "O-6 行【已裁定】+落点全串；README 已知限制节同步为已裁定态"
+    },
+    {
+      "id": "C1",
+      "command": "test -d packs/sm-mapping-01/fixtures && test ! -e .../inputs && sha256 对账",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "58f3104eb8dc5dc4cc8800e72b03f40ea509349197ca5e5220517a4f34fc4df1",
+      "detail": "恰 6 项且逐文件 sha256==改名前（保内容改名）"
+    },
+    {
+      "id": "C2",
+      "command": "grep 三形态/旧条款/资产名 brief.md",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "82a6ff92950eddb657d8fc88874f8b3c0683156323ee304461cc4548b93e2ca1",
+      "detail": "三形态各≥1；旧条款 0；资产名/暗示 0（EI-7）"
+    },
+    {
+      "id": "C3",
+      "command": "grep -rn '\"inputs\"' harness evaluators nc packs/.../checks ; grep '\"fixtures\"'",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "656190a646ee366efebdb39a9f59d3454443f233caf5243b53217b62ad6cdc5d",
+      "detail": "带引号 inputs 字面仅存于 pack_checks 双名兼容；带引号 fixtures 计数≥2"
+    },
+    {
+      "id": "C4",
+      "command": "make_arms(记录) → isolation baseline(复跑) → treatment(记录) → pack_checks(记录 pass)",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "f33b3fe75b7788af74756d68184edf4bb054c90817fdc8115d21b6eeb6914561",
+      "detail": "四条 exit 0；treatment 命中 2=设计内阳性对照（README 口径）"
+    },
+    {
+      "id": "C5",
+      "command": "test -f packs/sm-mapping-01/PACK-DEVIATIONS.md + 读内容",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "78d4bbdef008105a6fccb31d0504444708db221c8c79e36c36bfe4ea548e2503",
+      "detail": "四要素齐 + 建议回写条款文本在位"
+    },
+    {
+      "id": "D0",
+      "command": "SKILL.md:54 行 sha256 vs SF-0001 §4.3 记录（点态证据 runs/sf0003/d0-line54-pre.json）",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "eb39b2ecf216b6fe06ee9906b129bb814842123c12fd2b4525e032568be86f25",
+      "detail": "开工时未改（预期），本卡修；实测行尾 LF（卡写 CRLF 系笔误）"
+    },
+    {
+      "id": "D1",
+      "command": "grep -cF 新文本==1 且 旧文本==0 $ASSET/package/SKILL.md",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df",
+      "detail": "新文本恰 1、旧文本绝迹"
+    },
+    {
+      "id": "D2",
+      "command": "git numstat + status（差分口径：ASSET 子树本卡新增 == 恰该一行）",
+      "exit_code": 1,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "eac98e5d6c5057b146983f583063176019826b87043133edd513c338c1df49dd",
+      "detail": "numstat 恰 1 1；新增改动面收死为 SKILL.md 一行"
+    },
+    {
+      "id": "D3",
+      "command": "行尾检查（实测 LF 全一致；卡文 CRLF 系笔误，见 D0 证据）",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "2640c6d2865f5fb266c88a9ac097190932ea32951eddc7fdd7c53e8f2731a7df",
+      "detail": "无混行；改动未引入第二种行尾"
+    },
+    {
+      "id": "D4",
+      "command": "python harness/doc_consistency.py --asset $ASSET/package --selfcheck",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "00826c466b3158c8cf28fbdcbddc5d047dbaf13f35026898e4a1ba782b761c00",
+      "detail": "实跑工具 stderr ↔ 文档模板占位符归一同构；变异红→复原绿（MT-2）"
+    },
+    {
+      "id": "D4b",
+      "command": "D4 自检后复跑 D1 断言（字节复原校验）",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df",
+      "detail": "selfcheck 复原后新文本仍恰 1"
+    },
+    {
+      "id": "D5",
+      "command": "grep -rlF '替换 X 处' <skillfactory 产线根>",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "b5de09b9ae2b4d0aed4b1270f8638f6e42c443605e6ab7876c0bd0b7bce748bf",
+      "detail": "speaker-mapping 包内零命中；dist/build 零命中；其余命中=['planning/reports/SF-0003-evalkit-fix-report.md', 'planning/reports/SF-0001-ws1-report.md', 'evalkit/CHANGELOG.md', 'evalkit/packs/sm-mapping-01/transcript/treatment-r1/zcode_stdout.json', 'evalkit/packs/sm-mapping-01/transcript/baseline-r1/zcode_stdout.json', 'evalkit/runs/r1-probe/treatment/brief.md', 'evalkit/runs/r1-probe/baseline/brief.md', 'evalkit/runs/sf0003/verify-post-split.json', 'evalkit/runs/sf0003/verify-sf0003.json', 'evalkit/runs/sf0003/d0-line54-pre.json', 'evalkit/harness/verify_sf0003.py', 'evalkit/harness/doc_consistency.py']（历史报告引用旧文本，登记不修）"
+    },
+    {
+      "id": "E1",
+      "command": "24 文件逐字节比对 + artifact_track --reference $ASSET/oracle/out",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "b7595bf0942ee5a1e79f11ec668f5b7071472ff385a5bacccbddf13dbf808cc2",
+      "detail": "24/24 逐字节一致；4/4 PASS——检查 4 首次转绿（显式 --reference，与 run_all 同参形态）"
+    },
+    {
+      "id": "E2",
+      "command": "读 runs/sf0003-replay/diff.json 差异集 → 决策表",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "320c64d7225cbe1ecc29d98e9d9d9ed57c69a2012e75b52c4f29498f592744ee",
+      "detail": "逐字节一致 → 归一规则数=0 收工（无 normalization.json 需求）"
+    },
+    {
+      "id": "E3",
+      "command": "NC-A：fixtures→fixturesX 重跑（证据 nc-sf0003-e3/artifact_track.json）",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "e7817dce713d3fc684358d32c58fc2ff297eecede4feefd43d1c5003d320ae2f",
+      "detail": "目录名改动 → 检查 4 红（门未放水）"
+    },
+    {
+      "id": "E4",
+      "command": "NC-B：任一产物 .txt 改 1 字节重跑 E1",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "a7016d58ab9138241aed5aca3d00e160084f05bad1f013bcef82d8bc37ec16fd",
+      "detail": "检查 4 红（门未放水）"
+    },
+    {
+      "id": "E5",
+      "command": "报告「回显语义」必答（replay 附带产出实测）",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "9db4d4117de1c318ac2b68b50111319e58491c2c7e0f69099195cf965ee117bc",
+      "detail": "结论：归一回显——工具经 str(Path()) 把传入的 `/` 形态按 OS 分隔符归一（Windows 回显 `\\`），故斜杠参数产出与基线逐字节一致"
+    },
+    {
+      "id": "F1",
+      "command": "run_check.py 绿路 / 空目录红路",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:58+08:00",
+      "evidence_sha256": "e191ac8d40e4fef09bb020d51ba76639be118ae86d7f0e08951a56f6b41ade56",
+      "detail": "exit 0 / exit 1 双向成立"
+    },
+    {
+      "id": "F2",
+      "command": "python nc/run_nc.py",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:59+08:00",
+      "evidence_sha256": "02a87f1b75196ea5a54cd4619459db284a6314c87b0bbd46b146b05fe10c4814",
+      "detail": "9/9 成立、exit 0（负控未退化）"
+    },
+    {
+      "id": "F3",
+      "command": "python harness/oracle_gate.py verify --record runs/sf0003/oracle-before.json",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:59+08:00",
+      "evidence_sha256": "7f7411b4ed7abd576faaca37d69294fea8954fa4da0fc6c5d78b1b2bfe414612",
+      "detail": "unchanged=true"
+    },
+    {
+      "id": "F4",
+      "command": "python evaluators/aggregate.py --run-dir runs/sf0003-replay --pack ... + json 回读",
+      "exit_code": 1,
+      "ts": "2026-10-05T22:58:59+08:00",
+      "evidence_sha256": "31afaaba7a66a71d315a46b6fd0d8499efb633dbef61592d4c48f010835456b5",
+      "detail": "必填键齐；delta_vs_prev==null（AG-4）"
+    },
+    {
+      "id": "F5",
+      "command": "freeze 三段式终态：verify 绿 + keyfiles 变更集恰等声明清单",
+      "exit_code": 1,
+      "ts": "2026-10-05T22:58:59+08:00",
+      "evidence_sha256": "cbec05a93720291c80ca4182180504647578093eb338b58519d0681d28041d29",
+      "detail": "变更集恰等（changed 5 + new 2；多一项即红）"
+    },
+    {
+      "id": "F6",
+      "command": "test ! -d <afp-clone>/zcode-research/skillfactory/v6",
+      "exit_code": 0,
+      "ts": "2026-10-05T22:58:59+08:00",
+      "evidence_sha256": "",
+      "detail": "v6 目录不存在（未升格，O-17 时机属 M1 阶段门）"
+    }
+  ]
+}

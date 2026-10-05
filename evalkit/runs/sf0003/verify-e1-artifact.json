@@ -2,9 +2,9 @@
   "track": "artifact",
   "verdict": "pass",
   "exit_code": 0,
-  "judge": "packs/sm-mapping-01\\checks\\run_check.py",
-  "judge_sha256": "c39ea26e248e3ade258487f5e22a8706dfa539fb49ee80c9bff006f2e1287e79",
-  "product_root": "D:\\new-workspace\\agent-asset\\evalkit\\runs\\sf0003-replay\\out",
+  "judge": "packs/sm-mapping-01/checks/run_check.py",
+  "judge_sha256": "2ef485730e95f6296c1b3a12b165e064450a9ae2012d74dd9ef77d6b6f094283",
+  "product_root": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0003-replay/out",
   "product_file_count": 24,
   "runner_result": {
     "ok": true,
@@ -12,8 +12,8 @@
       "total": 4,
       "pass": 4,
       "fail": 0,
-      "tested_root": "D:\\new-workspace\\agent-asset\\evalkit\\runs\\sf0003-replay\\out",
-      "reference_root": "D:\\new-workspace\\agent-asset\\afp-clone\\zcode-research\\skillfactory\\v5\\assets\\speaker-mapping\\oracle\\out"
+      "tested_root": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0003-replay/out",
+      "reference_root": "/home/pan-ding/workspace/skill工厂/skillfactory/v5/assets/speaker-mapping/oracle/out"
     },
     "checks": [
       {
