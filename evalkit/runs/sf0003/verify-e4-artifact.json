@@ -4,7 +4,7 @@
   "exit_code": 1,
   "judge": "packs/sm-mapping-01/checks/run_check.py",
   "judge_sha256": "2ef485730e95f6296c1b3a12b165e064450a9ae2012d74dd9ef77d6b6f094283",
-  "product_root": "/tmp/nc-sf0003-e4-aknr9fma/out",
+  "product_root": "/tmp/nc-sf0003-e4-njsqkg92/out",
   "product_file_count": 24,
   "runner_result": {
     "ok": false,
@@ -12,7 +12,7 @@
       "total": 4,
       "pass": 2,
       "fail": 2,
-      "tested_root": "/tmp/nc-sf0003-e4-aknr9fma/out",
+      "tested_root": "/tmp/nc-sf0003-e4-njsqkg92/out",
       "reference_root": "/home/pan-ding/workspace/skill工厂/skillfactory/v5/assets/speaker-mapping/oracle/out"
     },
     "checks": [

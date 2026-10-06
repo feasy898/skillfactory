@@ -48,8 +48,10 @@ def main(argv):
     ap.add_argument("--families", default="glm")
     ap.add_argument("--skip-arms", action="store_true")
     ap.add_argument("--out", dest="out_dir", default=None)
-    ap.add_argument("--evalbench-version", default="v6-mvp-0.2",
-                    help="透传给 evaluators/aggregate.py（B2；O-6【已裁定】后的当前版本，SF-0003）")
+    ap.add_argument("--evalbench-version", default="v6-mvp-0.3",
+                    help="透传给 evaluators/aggregate.py（声明面=aggregate.py default；"
+                         "SF-0003 加透传时钉 0.2，SF-0005 bump 0.3 后此处残留旧值，"
+                         "2026-10-06 遗留小项①一行同步对齐）")
     args = ap.parse_args(argv)
     if not args.run_id:
         print("用法: python run_all.py --run-id <id> [--skip-arms]", file=sys.stderr)

@@ -8,6 +8,9 @@ exit 0 当且仅当全部绿。**逐条命令仍是唯一真值源，本文件�
 
 升卡史：2026-10-06 卡面版本锚 0.2→0.3（B5 prev 改运行时自生成、F4 断言对齐、
 D2 诚实降级 historical——卡时点改动已 commit 落盘，见 CHANGELOG v6-mvp-0.3 FIX-C1）。
+2026-10-06 再升格：INTENT §6 遗留小项①②（run_all.py 透传 default 对齐 0.3、freeze glob
+递归化覆盖 packs/ws4-dev 嵌套 wrapper）——DECLARED_CHANGED +freeze_device、DECLARED_NEW
++8 个嵌套 run_check（改前留档 runs/sf0003/verify-pre-x4.json + keyfiles-pre-x4.sha256）。
 
 用法：python harness/verify_sf0003.py [--out runs/sf0003/verify-sf0003.json]
 """
@@ -60,12 +63,24 @@ OLD_VER = "v6-mvp-0" + ".1"  # 动态构造：本文件不得含旧版号字面�
 CUR_VERSION = "v6-mvp-" + "0.3"  # 动态构造同 OLD_VER：防 B1 残留扫描自指（harness/ 在扫描面内）
 
 # 本卡声明的装置侧改动清单（F5：keyfiles 变更集必须恰等此集）
+# 2026-10-06 升格执行 INTENT §6 遗留小项①②（planner 升格授权；改前留档
+# runs/sf0003/verify-pre-x4.json + keyfiles-pre-x4.sha256，升卡前 34 门全绿）：
+#   ① run_all.py --evalbench-version default 0.2→0.3（声明面对齐，已在 CHANGED 内）；
+#   ② freeze_device.py KEY_GLOBS 递归化（新增入 CHANGED）+ 钉版面新增 8 个
+#     packs/ws4-dev/<题>/checks/run_check.py 嵌套 wrapper（入 NEW，见 DECLARED_NEW 注）。
 DECLARED_CHANGED = {"evaluators/aggregate.py", "evaluators/process_track.py",
+                    "harness/freeze_device.py",
                     "harness/make_arms.py", "harness/pack_checks.py", "harness/run_all.py",
-                    "nc/run_nc.py", "packs/sm-mapping-01/checks/run_check.py"}  # +拆仓路径解耦(2026-10-05)
+                    "nc/run_nc.py", "packs/sm-mapping-01/checks/run_check.py"}  # +拆仓路径解耦(2026-10-05)；+freeze_device(2026-10-06 遗留小项②)
 DECLARED_NEW = {"harness/doc_consistency.py", "harness/verify_sf0003.py",
                 "harness/ws4_d3_gate.py", "harness/ws4_gen.py",
                 "harness/ws4_judge.py", "harness/ws4_pool_state.py"}  # ws4 四件=S0 后 WS4 批次装置(拆仓前既有, 2026-10-05 补声明)
+# 2026-10-06 遗留小项②：freeze glob 递归化后，packs/ws4-dev 8 题的嵌套 run_check.py wrapper
+# 首次进入钉版面（S0 时被单层 glob 漏冻——本卡 F5 的「new」必须含它们，否则 verify 恒红）
+DECLARED_NEW |= {"packs/ws4-dev/hot-01/checks/run_check.py", "packs/ws4-dev/hot-02/checks/run_check.py",
+                 "packs/ws4-dev/hot-03/checks/run_check.py", "packs/ws4-dev/mm-01/checks/run_check.py",
+                 "packs/ws4-dev/mm-02/checks/run_check.py", "packs/ws4-dev/ofc-01/checks/run_check.py",
+                 "packs/ws4-dev/ofc-02/checks/run_check.py", "packs/ws4-dev/ofc-03/checks/run_check.py"}
 
 RESULTS = []
 
@@ -115,7 +130,8 @@ def grep_count(pattern, path, fixed=True):
 def a_group():
     rc, out, _ = run([sys.executable, "harness/freeze_device.py", "verify"])
     gate("A1", "python harness/freeze_device.py verify", rc == 0, out,
-         "装置钉版绿（20 关键文件；开工时旧指纹绿为点态证据，见报告）" if rc == 0 else out)
+         "装置钉版绿（28 关键文件；2026-10-06 遗留小项② glob 递归化，新增 8 个 "
+         "packs/ws4-dev 嵌套 wrapper 入钉版面）" if rc == 0 else out)
     rc, out, _ = run([sys.executable, "harness/oracle_gate.py", "hash",
                       "--root", os.path.join(ASSET, "oracle"),
                       "--record", os.path.join(RUNS, "oracle-after.json")])

@@ -6,6 +6,12 @@
 写成 keyfiles.sha256，**相对路径**（旧版 19 条绝对 Linux 路径 + oracle/out 零覆盖，
 实测不可照抄，轨迹10 C5）。`verify` 前后各跑一次，不一致即 fail。
 
+2026-10-06（INTENT §6 遗留小项②升格执行）：glob 单层不覆盖嵌套 wrapper——
+`packs/*/checks/run_check.py` 只命中 packs 第一层（sm-mapping-01），packs/ws4-dev/<题>/
+两层下的 8 个嵌套 run_check.py wrapper 全部漏冻（改判分面不触发 verify 红）。改为
+`**` 递归形态 + glob(recursive=True)，单层/多层均覆盖；钉版面新增文件按装置协议
+登记进 verify_sf0003.py 的 DECLARED_NEW 声明面（改前留档 runs/sf0003/keyfiles-pre-x4.sha256）。
+
 用法：
     python freeze_device.py freeze --evalkit <根>
     python freeze_device.py verify --evalkit <根> [--record <keyfiles.sha256>]
@@ -19,10 +25,10 @@ import os
 import sys
 
 KEY_GLOBS = [
-    "packs/*/checks/run_check.py",
-    "evaluators/*.py",
-    "harness/*.py",
-    "nc/*.py",
+    "packs/**/checks/run_check.py",
+    "evaluators/**/*.py",
+    "harness/**/*.py",
+    "nc/**/*.py",
 ]
 
 
@@ -35,7 +41,7 @@ def collect(evalkit):
     import glob
     out = {}
     for g in KEY_GLOBS:
-        for p in sorted(glob.glob(os.path.join(evalkit, g))):
+        for p in sorted(glob.glob(os.path.join(evalkit, g), recursive=True)):
             rel = os.path.relpath(p, evalkit).replace(os.sep, "/")
             if "__pycache__" in rel:
                 continue

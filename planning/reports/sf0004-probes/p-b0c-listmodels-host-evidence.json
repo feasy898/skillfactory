@@ -1,0 +1,11 @@
+{
+  "tool": "ListModels",
+  "invoked_by": "workflow subagent session「sf四小项工程师」（本复测脚本的同会话驱动者），zcode workflow 宿主",
+  "ts": "2026-10-06T19:52:36+0800",
+  "arguments": {},
+  "catalog_ok": false,
+  "model_ids": [],
+  "raw_error": "model_catalog_unavailable: this session cannot list models — the host did not provide a model catalog. This is a capability gap, not an empty configuration. Omit `subagent_model` on CreateWorkflow and AmendWorkflow; the workflow's subagents will run on the session model.",
+  "raw_error_sha256": "6376be5cb4141d7878a850b7e49cb3d82eae2a4065fca4fffeca821a900fd77e",
+  "note": "证据链：ListModels 为宿主注入会话的真实工具面；调用真实发生（非推断），返回错误原文逐字落盘，零密钥零 token。"
+}

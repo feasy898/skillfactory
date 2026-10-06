@@ -1,0 +1,48 @@
+{
+  "gate": "B0c",
+  "retest": true,
+  "host": "Linux /home/pan-ding（zcode 3.14.4 electron；无 kimi CLI）",
+  "original_probe": "b0c_catalog.py @ 2026-10-04 kimi 2.1.1 worker 会话（available=false，留档不改）",
+  "available": false,
+  "model_ids": [],
+  "classification": "untested_catalog_unavailable",
+  "probes": [
+    {
+      "probe": "P1 kimi CLI census",
+      "host": "linux/home-pan-ding",
+      "kimi_binary": null,
+      "result": "cli_absent_on_host",
+      "detail": "本宿主 PATH 上无 kimi CLI（shutil.which('kimi')=None）；kimi 2.1.1 无模型枚举子命令的实测（SF-0004 B0c 探针1）无法在本宿主重跑，按缺席登记，不计入 available。"
+    },
+    {
+      "probe": "P2 session ListModels invocation",
+      "host": "workflow-subagent-session",
+      "result": "model_catalog_unavailable",
+      "detail": "会话实调 ListModels 工具（证据 sha256=6376be5cb4141d7878a850b7e49cb3d82eae2a4065fca4fffeca821a900fd77e，调用时间 2026-10-06T19:52:36+0800）：model_catalog_unavailable: this session cannot list models — the host did not provide a model catalog. This is a capability gap, not an empty configuration. Omit `subagent_model` on CreateWorkflow and",
+      "evidence_file": "p-b0c-listmodels-host-evidence.json"
+    },
+    {
+      "probe": "P3 zcode CLI census",
+      "host": "linux/home-pan-ding",
+      "zcode_binary": "/usr/bin/zcode",
+      "zcode_version_observed": "3.14.4",
+      "result": "no_catalog_enumeration",
+      "detail": "本宿主 zcode（electron 壳，实测启动日志 version=3.14.4）--help/--version 只出桌面壳启动日志、无 usage 文本与模型枚举面；headless -p 面未在本宿主实测（跑它会花真实模型调用，超本复测零成本边界）。不计入 available。"
+    },
+    {
+      "probe": "P4 host provider_config structural echo",
+      "path": "~/.zcode/v2/provider_config.json",
+      "exists": true,
+      "result": "defaultModelSelection_null",
+      "detail": "defaultModelSelection=None（只登记键态与 providerOrder 键名清单，不落任何凭据值）",
+      "providerOrder": [
+        "new-provider",
+        "minimax",
+        "new-provider-2"
+      ]
+    }
+  ],
+  "ts": "2026-10-06T19:52:39+0800",
+  "consequence": "门 3 第二台宿主数据点：模型目录仍不可寻址（本次是「工具在、目录缺」——宿主未提供目录，错误字面 model_catalog_unavailable）。B1 维持 not_run（0 模型调用）；SF-0004 b_verdict=Undetermined 不变，「B 死」仍只是静态+历史推断，现有两台宿主（kimi worker 会话、zcode workflow 宿主会话）的门 3 实测都不支持把它升格为实测结论。R-8 的「宿主范围未知」收窄为：已测 2 台宿主均无目录。",
+  "budget": "0 model calls（全部探针零模型成本；未 spawn 任何 headless 会话）"
+}

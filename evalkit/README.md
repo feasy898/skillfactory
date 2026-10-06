@@ -53,7 +53,7 @@ python nc/run_nc.py
 | `harness/pack_checks.py` | 前置三断言：brief 公平 / 输入树公平 / 任务包 conformance | EI-7 EI-9 EI-20 |
 | `harness/make_arms.py` | 建 treatment/baseline 两棵臂树 | PLAN §5.4 步 1 |
 | `harness/run_arm.py` | 臂驱动：一臂一进程 + 分族超时 + records 落盘 + db 遥测 join | EI-0、§5.2、§5.6 |
-| `harness/freeze_device.py` | 装置钉版（keyfiles.sha256，相对路径） | EI-23 |
+| `harness/freeze_device.py` | 装置钉版（keyfiles.sha256，相对路径；glob 递归，覆盖 packs/ws4-dev 嵌套 wrapper——2026-10-06 遗留小项②） | EI-23 |
 | `evaluators/artifact_track.py` | 产物轨（零模型，每次必跑） | §5.3 |
 | `evaluators/process_track.py` | 过程轨四断言 | EI-10..EI-14 |
 | `evaluators/quality_track.py` | 质量轨（无跨族裁判时显式 unjudgeable，**不出分**） | §5.3、O-7 |
@@ -88,6 +88,46 @@ python nc/run_nc.py
   prev 基准（runs/sf0003/ag7-prev-same.json）改由 verify 运行时按卡面锚自生成，不再用 0.2 时代
   静态文件。**装置再 bump（0.4+）时 B5/F4 会诚实转红，须随附升卡**；D2 已诚实降级为 historical
   断言（卡时点改动已由 5654f83 commit 落盘，改以 ac18867 基线↔HEAD git 史断言）。
+
+## 模型钉版 M1：env 覆盖成对契约（SF-0004 A 支实测 · 2026-10-06 文档化入装置）
+
+> 出处：SF-0004 报告 §3/§11.3「配置文档化另开卡」项（INTENT §6 遗留小项④升格执行）。
+> 机制预登记：`planning/reports/sf0004-probes/a0-prereg.json`（M1-paired-provider-config-env）。
+
+**M1 是什么**：不动全局配置、不换凭据，把 zcode headless 的模型落点钉到非 GLM 族的
+env-scoped 覆盖机制——跑批矩阵「Minimax-M3.1-Flash-Preview（M1 钉版臂）」的实现来源。
+
+**成对契约（下一个跑批的人最易踩的坑：单给即启动失败）**
+
+- 必须同时设置 `ZCODE_BUILTIN_PROVIDER_CONFIG_FILE` 与 `ZCODE_PERSONAL_PROVIDER_CONFIG_FILE`，
+  两个变量都指向**派生副本**（不是全局配置本体）；
+- 只给其一：`resolveNodeProviderRuntimePaths` 启动即抛错「ZCode Built-in 与 Personal
+  Provider Config 路径必须同时提供」（SF-0004 §3 实测硬前置；卡文草拟的单变量形态不可用）；
+- personal 副本差异恰两处：`config.defaultModelSelection={providerId:'minimax',
+  modelId:'Minimax-M3.1-Flash-Preview'}`（**大小写敏感**、与 db 字面一致；db 另有
+  `MiniMax-…` 拼法勿混用）+ `providerOrder:['minimax','new-provider']`。
+
+**实测结果（A 支，每臂 1 模型调用，2026-10-04）**
+
+- A-trt-1（M1 成对 env）：exit 0、session.directory==臂目录、model_usage 可 join、
+  落点逐字 `Minimax-M3.1-Flash-Preview` @ `minimax`（`p-a-trt-trt-1-m1.json`）；
+- 撤除机制（删派生副本）后裸跑：逐字回 `GLM-5.3`——M1 不破坏既有 GLM 钉版（`p-a-ctl2.json`）；
+- 全局配置零改动：`cli/config.json`、`v2/provider_config.json` sha256 收工前后逐字节相等；
+  派生副本用后即删并断言不存在（SF-0004 §9）。
+
+**结构性原因（默认为何回落 GLM）**：personal v2 配置 `defaultModelSelection=null`，
+headless 遂回落 builtin GLM。两台宿主实测一致：Windows 宿主（SF-0004 §12 发现③）与本机
+Linux 宿主（`sf0004-probes/b0c_retest_host.py` P4，2026-10-06）。
+
+**覆盖面（措辞不得宽于证据，SF-0004 §8）**：M1 只在 minimax 族实测过；step 族
+（new-provider）未测；只覆盖 zcode headless 进程驱动一条通道；kimi step 头不可观测、
+不并入。是否扩族/入矩阵的族构成由 planner 显式确认，不在本文档代拍。
+
+**宿主目录可得性（B 支门 3 复测，2026-10-06）**：模型目录在本机两台宿主会话均不可寻址
+（kimi 2.1.1 worker 会话无 ListModels 工具；zcode workflow 宿主会话 ListModels 实调返回
+`model_catalog_unavailable`——工具面在、宿主未提供目录）。工作流 `subagent_model` 钉版
+前置未满足，B1 维持 not_run（0 模型调用）；证据
+`planning/reports/sf0004-probes/p-b0-catalog-host-retest.json`。
 
 ## 落盘纪律（Windows 事故族）
 

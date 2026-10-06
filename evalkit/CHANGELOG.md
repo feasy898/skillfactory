@@ -23,12 +23,29 @@
   （v6-mvp-0.1 旧 matrix 对 0.3 拒绝并列）
 - 已知残留（登记待 planner 裁）：`harness/run_all.py:51` 透传参数 default 仍钉 v6-mvp-0.2
   （SF-0006 开工门 GP-4 前需一行同步或由卡 B 编排器显式传参）；README.md:78 为历史叙述不改。
+  （→ 已收口：2026-10-06 INTENT §6 遗留小项①升格执行，见本节 FIX-C2。）
 
 ### removed
 
 - 无（本版无退役题；WS4 题池为新增，饱和退役机制待基线轮后启用）。
 
-### fixed（卡面 · 升卡收口 2026-10-06 · 非装置版本变更，版本号保持 0.3）
+### added（遗留小项③④升格执行 · 2026-10-06）
+
+**ADD-2｜M1 成对 env 契约文档化入装置 + B 支宿主复测留档（INTENT §6 遗留小项④③）**
+- 题号：SF-0004 报告 §11.3「配置文档化另开卡」+ §11.1「B 支宿主复测门 3」（planner 2026-10-06 升格）
+- 变更：`README.md` 新增「模型钉版 M1：env 覆盖成对契约」节（成对变量、单给即抛错的
+  `resolveNodeProviderRuntimePaths` 硬前置、personal 副本两处差异、A 支实测落点与复原、
+  `defaultModelSelection=null` 结构性原因双宿主实测、覆盖面=仅 minimax 族/headless 单通道、
+  B0c 复测结论）；新探针 `planning/reports/sf0004-probes/b0c_retest_host.py` +
+  证据 `p-b0-catalog-host-retest.json`、`p-b0c-listmodels-host-evidence.json`
+  （原 b0c_catalog.py / p-b0-catalog.json 留档不改）
+- 类型：added（文档+复测探针，零判分器改动）
+- 判定人：planner 升格（INTENT §6.6 → 2026-10-06 执行）
+- 复现命令：`python planning/reports/sf0004-probes/b0c_retest_host.py` → exit 0，
+  available=false / untested_catalog_unavailable（本机第二台宿主：zcode workflow 宿主会话
+  ListModels 实调 model_catalog_unavailable，B1 维持 not_run，0 模型调用）
+
+### fixed（卡面+装置一行同步 · 升卡收口 2026-10-06 · 非装置版本变更，版本号保持 0.3）
 
 **FIX-C1｜验收卡版本锚随装置 bump 漂红（B5/F4 恒红的卡侧根因）**
 - 题号：SF-0003 遗留红收口（verify_sf0003 31/34 时代红 B5/F4/D2；升卡授权=装置协议
@@ -44,6 +61,32 @@
 - 判定人：planner 升卡协议（2026-10-06，B5/F4 装置版本演进 0.2→0.3 卡未随）
 - 复现命令：`python harness/verify_sf0003.py`（升卡前红 B5/D2/F4=31/34，升卡后 34 门全绿；
   基线留档 runs/sf0003/verify-upgrade-pre.json，终态 runs/sf0003/verify-post-split6.json）
+
+**FIX-C2｜run_all.py 版本透传钉旧值（ADD-1 已知残留收口，INTENT §6 遗留小项①）**
+- 题号：INTENT §6.6 遗留工程小项①（验收发现升格，planner 2026-10-06）；承接本节 ADD-1 已知残留行
+- 旧文本：`harness/run_all.py:51` `ap.add_argument("--evalbench-version", default="v6-mvp-0.2", …)`
+- 新文本：default 改 `"v6-mvp-0.3"`（help 注明声明面=aggregate.py default、本行 2026-10-06 一行同步）；
+  一键复跑 `run_all.py` 不再透传旧版号给 aggregate.py
+- 缺陷类型：口径残留缺陷（编排器透传面与装置声明面漂移；非判分器语义变更——
+  run_all.py 侧无判分逻辑，且显式传参路径本就可用）
+- 判定人：planner 升格（INTENT §6.6 → 2026-10-06 执行）
+- 复现命令：`python harness/run_all.py --help`（usage 含 `--evalbench-version`）+
+  `grep -n 'v6-mvp-0.3' harness/run_all.py` 恰 1 处 default；改前留档
+  runs/sf0003/verify-pre-x4.json（34 门全绿）+ keyfiles-pre-x4.sha256
+
+**FIX-C3｜freeze glob 单层不覆盖嵌套 wrapper（INTENT §6 遗留小项②）**
+- 题号：INTENT §6.6 遗留工程小项②（验收发现升格，planner 2026-10-06）
+- 旧文本：`harness/freeze_device.py` `KEY_GLOBS=["packs/*/checks/run_check.py", …]` +
+  `glob.glob(...)` 单层——`packs/ws4-dev/<题>/checks/run_check.py` 两层深的 8 个嵌套
+  wrapper 判分面全部漏冻（改它们不触发装置 verify 红）
+- 新文本：KEY_GLOBS 改 `**` 递归形态 + `glob.glob(..., recursive=True)`；钉版面 20→28 文件
+  （+8 = packs/ws4-dev 8 题嵌套 wrapper；收集面差分实测恰好 +8、零丢失）；verify_sf0003.py
+  DECLARED 声明面同步（DECLARED_CHANGED +freeze_device、DECLARED_NEW +8，F5 恰等语义不变）
+- 缺陷类型：装置钉版覆盖缺陷（EI-23 冻结面漏嵌套层；修冻结面本身，不改任何判分阈值）
+- 判定人：planner 升格（INTENT §6.6 → 2026-10-06 执行；升格授权=装置协议 freeze/DECLARED 声明面）
+- 复现命令：`python harness/freeze_device.py freeze && python harness/freeze_device.py verify`
+  （28 个关键文件全对）；改前钉版面留档 runs/sf0003/keyfiles-pre-x4.sha256（20 条），
+  升格前基线 runs/sf0003/verify-pre-x4.json（34 门全绿）
 
 ---
 
