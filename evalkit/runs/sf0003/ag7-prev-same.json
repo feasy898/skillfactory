@@ -1,9 +1,9 @@
 {
   "schema": "matrix.v6-mvp",
-  "evalbench_version": "v6-mvp-0.2",
+  "evalbench_version": "v6-mvp-0.3",
   "run_id": "ag7-synthetic-prev",
   "rows": {
     "sm-mapping-01": {}
   },
-  "note": "B5 同版本方向合成输入（SF-0003，构造物，非跑批产物）"
+  "note": "B5 同版本方向合成输入（SF-0003，构造物，非跑批产物）；由 verify_sf0003.py 于 B5 运行时按卡面锚定版本自生成（升卡 2026-10-06：v6-mvp-0.2→v6-mvp-0.3，原 0.2 静态锚随装置 bump 漂红）"
 }

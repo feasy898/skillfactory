@@ -25,13 +25,8 @@
     "text": "utf-8 + LF",
     "binary": "byte-identical"
   },
-  "file_count": 14,
+  "file_count": 13,
   "files": [
-    {
-      "path": ".mimosa/hook-state/sess_cad6cf65-998b-4978-90a1-c14811e0c101.json",
-      "sha256": "485e530bcb9d91166110e1c1067f80086f67dddf7507c1c79fb3d3404910a383",
-      "bytes": 218
-    },
     {
       "path": "CHANGELOG.md",
       "sha256": "0397c0fe17b74a58eb4499712fde8c5adfe8b00148f7ddba74f4905b584cbcd6",

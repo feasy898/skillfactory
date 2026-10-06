@@ -28,6 +28,23 @@
 
 - 无（本版无退役题；WS4 题池为新增，饱和退役机制待基线轮后启用）。
 
+### fixed（卡面 · 升卡收口 2026-10-06 · 非装置版本变更，版本号保持 0.3）
+
+**FIX-C1｜验收卡版本锚随装置 bump 漂红（B5/F4 恒红的卡侧根因）**
+- 题号：SF-0003 遗留红收口（verify_sf0003 31/34 时代红 B5/F4/D2；升卡授权=装置协议
+  freeze/DECLARED 声明面，改前留档见 runs/sf0003/verify-upgrade-pre.json）
+- 旧文本：`harness/verify_sf0003.py` B5/F4 断言锚 `v6-mvp-0.2` 字面；B5 pos 侧 prev 基准
+  用 0.2 时代静态文件 `runs/sf0003/ag7-prev-same.json`（evalbench_version=v6-mvp-0.2）
+- 新文本：卡面锚改 `CUR_VERSION`（v6-mvp-0.3，与 `evaluators/aggregate.py:70` 装置声明面
+  同步）；B5 prev 基准改由 verify 运行时按卡面锚自生成（静态文件随跑刷新并注记升卡）；
+  D2 卡时点门诚实降级 historical（点态已由 5654f83 commit 落盘，改以 ac18867 基线↔HEAD
+  git 史断言：开工前行 sha==d0 证据 c861cf0d…、package/ 子树 numstat 恰 1 1）
+- 缺陷类型：卡面锚定缺陷（验收卡时态≠装置时态）——非判分器语义变更，装置钉版 re-freeze
+  仅 verify_sf0003.py 一行指纹更新（F5 变更集仍恰等 DECLARED 声明清单）
+- 判定人：planner 升卡协议（2026-10-06，B5/F4 装置版本演进 0.2→0.3 卡未随）
+- 复现命令：`python harness/verify_sf0003.py`（升卡前红 B5/D2/F4=31/34，升卡后 34 门全绿；
+  基线留档 runs/sf0003/verify-upgrade-pre.json，终态 runs/sf0003/verify-post-split6.json）
+
 ---
 
 ## v6-mvp-0.2 · 2026-10-03（SF-0003 · worker-glm-m4）

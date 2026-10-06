@@ -23,13 +23,8 @@
     "text": "utf-8 + LF",
     "binary": "byte-identical"
   },
-  "file_count": 15,
+  "file_count": 14,
   "files": [
-    {
-      "path": ".mimosa/hook-state/sess_dwf-dwfrun-b97e21dd-3a2e-4415-87ea-f076bfde01e5-actor_1_1.json",
-      "sha256": "cd64de0d53e6ce0bf2bd0ea3a28369d26a53855ac63e137fdd7519d937c90c94",
-      "bytes": 218
-    },
     {
       "path": "CHANGELOG.md",
       "sha256": "8aa7d155bacbccfb91d0a3702a986da380947b88822e84f1b65b9f966d9bf1e1",

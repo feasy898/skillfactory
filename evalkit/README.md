@@ -83,6 +83,11 @@ python nc/run_nc.py
   `MSYS_NO_PATHCONV=1`，否则模型收到的是 `C:/Program Files/Git/skill`（PLAN R-7 同族坑）。
 - **Git Bash `/` 转换**同族：一切 spawn 子进程的脚本都要透传 `MSYS_NO_PATHCONV=1`。
 - `pack_checks.py` 的资产名扫描是**兜底不是防线**（TESTS EI-7 原文：负例句式库首版覆盖有限，标 [假设]）。
+- **验收卡版本锚随装置 bump 漂红（升卡 2026-10-06 收口）**：`verify_sf0003.py` 的 B5/F4 版本断言
+  锚定卡面常量 `CUR_VERSION`（现 **v6-mvp-0.3**，与 `aggregate.py` 声明面同步）；B5 的同版本
+  prev 基准（runs/sf0003/ag7-prev-same.json）改由 verify 运行时按卡面锚自生成，不再用 0.2 时代
+  静态文件。**装置再 bump（0.4+）时 B5/F4 会诚实转红，须随附升卡**；D2 已诚实降级为 historical
+  断言（卡时点改动已由 5654f83 commit 落盘，改以 ac18867 基线↔HEAD git 史断言）。
 
 ## 落盘纪律（Windows 事故族）
 

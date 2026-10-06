@@ -6,6 +6,9 @@
 exit 0 当且仅当全部绿。**逐条命令仍是唯一真值源，本文件只是汇总器**（planner 验收时亲复跑）。
 点态门（A1 开工时旧指纹、D0 行比对、C4 建臂四连、E3 目录名负控）按其落盘证据文件断言。
 
+升卡史：2026-10-06 卡面版本锚 0.2→0.3（B5 prev 改运行时自生成、F4 断言对齐、
+D2 诚实降级 historical——卡时点改动已 commit 落盘，见 CHANGELOG v6-mvp-0.3 FIX-C1）。
+
 用法：python harness/verify_sf0003.py [--out runs/sf0003/verify-sf0003.json]
 """
 
@@ -51,6 +54,10 @@ BASE_KEYFILES = {
     "packs/sm-mapping-01/checks/run_check.py": "c39ea26e248e3ade258487f5e22a8706dfa539fb49ee80c9bff006f2e1287e79",
 }
 OLD_VER = "v6-mvp-0" + ".1"  # 动态构造：本文件不得含旧版号字面量（否则 B1 残留扫描自指）
+# 卡面锚定版本（升卡 2026-10-06：0.2→0.3）。声明面真值源=evaluators/aggregate.py:70
+# `--evalbench-version` default（装置侧现版本，v6-mvp-0.3，SF-0005 ADD-1）；
+# B5/F4 断言锚此常量。装置再 bump 时须再升卡（B5/F4 会诚实转红提醒）。
+CUR_VERSION = "v6-mvp-" + "0.3"  # 动态构造同 OLD_VER：防 B1 残留扫描自指（harness/ 在扫描面内）
 
 # 本卡声明的装置侧改动清单（F5：keyfiles 变更集必须恰等此集）
 DECLARED_CHANGED = {"evaluators/aggregate.py", "evaluators/process_track.py",
@@ -108,7 +115,7 @@ def grep_count(pattern, path, fixed=True):
 def a_group():
     rc, out, _ = run([sys.executable, "harness/freeze_device.py", "verify"])
     gate("A1", "python harness/freeze_device.py verify", rc == 0, out,
-         "装置钉版绿（14+2 关键文件；开工时旧指纹绿为点态证据，见报告）" if rc == 0 else out)
+         "装置钉版绿（20 关键文件；开工时旧指纹绿为点态证据，见报告）" if rc == 0 else out)
     rc, out, _ = run([sys.executable, "harness/oracle_gate.py", "hash",
                       "--root", os.path.join(ASSET, "oracle"),
                       "--record", os.path.join(RUNS, "oracle-after.json")])
@@ -161,7 +168,9 @@ def b_group():
     gate("B4", "test -f runs/r1-probe/INVALIDATED.md && grep -c 'O-6\\|不得引用'",
          os.path.isfile(inv) and txt.count("O-6") >= 1 and txt.count("不得引用") >= 1
          and txt.count("citable: false") >= 1, txt[:300], "O-6/不得引用/citable:false 各≥1")
-    # B5 双向
+    # B5 双向（升卡 2026-10-06：卡面锚 0.2→0.3。pos 侧 prev 基准不再用 0.2 时代静态文件——
+    # 装置 bump 后静态锚对不上新默认版本，AG-7 会把「同版本」误判成跨版本致 pos_ok 恒假
+    # （31/34 时代 B5 红根因）；改为本门运行时按卡面锚定版本自生成合成 prev）
     neg_out = os.path.join(RUNS, "verify-b5-neg.json")
     if os.path.exists(neg_out):
         os.remove(neg_out)
@@ -172,14 +181,26 @@ def b_group():
     pos_out = os.path.join(RUNS, "verify-b5-pos.json")
     if os.path.exists(pos_out):
         os.remove(pos_out)
+    prev_same = os.path.join(RUNS, "ag7-prev-same.json")
+    with io.open(prev_same, "w", encoding="utf-8", newline="\n") as f:
+        f.write(json.dumps({
+            "schema": "matrix.v6-mvp",
+            "evalbench_version": CUR_VERSION,
+            "run_id": "ag7-synthetic-prev",
+            "rows": {"sm-mapping-01": {}},
+            "note": "B5 同版本方向合成输入（SF-0003，构造物，非跑批产物）；"
+                    "由 verify_sf0003.py 于 B5 运行时按卡面锚定版本自生成"
+                    "（升卡 2026-10-06：v6-mvp-0.2→%s，原 0.2 静态锚随装置 bump 漂红）" % CUR_VERSION,
+        }, ensure_ascii=False, indent=2) + "\n")
     rc2, _, _ = run([sys.executable, "evaluators/aggregate.py", "--run-dir", "runs/r1-probe",
                      "--pack", "packs/sm-mapping-01", "--out", pos_out,
-                     "--delta-from", os.path.join(RUNS, "ag7-prev-same.json")])
+                     "--delta-from", prev_same])
     pos = json.load(io.open(pos_out, encoding="utf-8")) if os.path.exists(pos_out) else {}
     pos_ok = rc2 == 0 and pos.get("delta_vs_prev", {}).get("sm-mapping-01") is None \
-        and pos.get("evalbench_version") == "v6-mvp-0.2"
+        and pos.get("evalbench_version") == CUR_VERSION
     gate("B5", "aggregate.py --delta-from <prev>（混版本 / 同版本 双向）", neg_ok and pos_ok,
-         err.strip()[:300], "混版本 exit≠0 报「版本」零输出；同版本 exit 0 delta_vs_prev=null")
+         err.strip()[:300], "混版本 exit≠0 报「版本」零输出；同版本 exit 0 delta_vs_prev=null"
+         "（prev 按卡面锚 %s 运行时自生成，升卡 2026-10-06）" % CUR_VERSION)
     ch = io.open(os.path.join(EVALKIT, "CHANGELOG.md"), encoding="utf-8").read()
     sec = ch.split("## v6-mvp-0.2", 1)[1].split("## " + OLD_VER, 1)[0]
     fixed_n = len(re.findall(r"^\*\*FIX-\d+｜", sec, re.M))
@@ -264,17 +285,27 @@ def d_group():
     gate("D1", "grep -cF 新文本==1 且 旧文本==0 $ASSET/package/SKILL.md",
          t.count("INFO: 写出 out/<file>（共 N 行，替换标签 X 处，未映射标签 Y 种）") == 1
          and t.count("替换 X 处，未映射 Y 种") == 0, "ok", "新文本恰 1、旧文本绝迹")
-    rc, out, _ = git(["diff", "--numstat", "--",
-                      "v5/assets/speaker-mapping/package/SKILL.md"])
-    rc2, out2, _ = git(["status", "--porcelain", "--",
-                        "v5/assets/speaker-mapping/"])
-    before = set(json.load(io.open(os.path.join(RUNS, "porcelain-before.json"), encoding="utf-8"))["lines"])
-    cur = set(l for l in out2.splitlines() if l.strip())
-    delta = sorted(cur - before)
-    ok = out.strip() == "1\t1\tv5/assets/speaker-mapping/package/SKILL.md" \
-        and delta == [" M v5/assets/speaker-mapping/package/SKILL.md"]
-    gate("D2", "git numstat + status（差分口径：ASSET 子树本卡新增 == 恰该一行）", ok,
-         out.strip() + " | delta=" + json.dumps(delta), "numstat 恰 1 1；新增改动面收死为 SKILL.md 一行")
+    # D2（升卡 2026-10-06 诚实降级为 historical 断言并注明）：卡时点态「工作区未 commit、
+    # numstat 对 HEAD 恰一行」已随 5654f83（WIP 快照，2026-10-05）commit 落盘而永久消失，
+    # 原判据对已提交树恒红（31/34 时代 D2 红根因）。断言不变、时态换历史，真值源=git 史：
+    #   (a) 开工前行态在史可考：ac18867 blob SKILL.md 第 54 行（去行尾）sha256
+    #       == runs/sf0003/d0-line54-pre.json 的 pre_edit_line54_sha256；
+    #   (b) 卡面净改动面收死恰一行：ac18867..HEAD 在 package/ 子树 numstat == 恰 SKILL.md 1 1
+    #       （该行变更即 5654f83 落盘的本卡 FIX-3）。
+    d0j = json.load(io.open(os.path.join(RUNS, "d0-line54-pre.json"), encoding="utf-8"))
+    rc_h, hist, _ = git(["show", "ac18867:v5/assets/speaker-mapping/package/SKILL.md"])
+    hlines = hist.split("\n")
+    sha54 = sha_b(hlines[53].encode("utf-8")) if len(hlines) >= 54 else ""
+    rc_n, numstat, _ = git(["diff", "--numstat", "ac18867", "HEAD", "--",
+                            "v5/assets/speaker-mapping/package/"])
+    ok = rc_h == 0 and rc_n == 0 \
+        and sha54 == d0j.get("pre_edit_line54_sha256") \
+        and numstat.strip() == "1\t1\tv5/assets/speaker-mapping/package/SKILL.md"
+    gate("D2", "git show ac18867:…/SKILL.md 行54 sha vs d0 证据 + git diff --numstat ac18867 HEAD -- package/"
+               "（historical：点态已 commit，断言改以 git 史为真值源）", ok,
+         "line54_sha=%s numstat=%r" % (sha54[:12], numstat.strip()),
+         "historical 降级（升卡 2026-10-06 注明）：卡时点工作区改动已由 5654f83 WIP 快照 commit 落盘；"
+         "「新增改动面收死为 SKILL.md 一行」改以 ac18867 基线↔HEAD git 史断言，开工前行 sha 与 d0 证据一致")
     data = open(sk, "rb").read()
     crlf = data.count(b"\r\n")
     lone_lf = data.count(b"\n") - crlf
@@ -376,8 +407,10 @@ def f_group():
            "delta_vs_prev", "delta_note", "cross_family_comparable", "cross_family_note"]
     gate("F4", "python evaluators/aggregate.py --run-dir runs/sf0003-replay --pack ... + json 回读",
          rc == 0 and not [k for k in req if k not in m]
-         and m["delta_vs_prev"]["sm-mapping-01"] is None and m["evalbench_version"] == "v6-mvp-0.2",
-         "keys ok, delta_vs_prev=null, v6-mvp-0.2", "必填键齐；delta_vs_prev==null（AG-4）")
+         and m["delta_vs_prev"]["sm-mapping-01"] is None and m["evalbench_version"] == CUR_VERSION,
+         "keys ok, delta_vs_prev=null, %s" % CUR_VERSION,
+         "必填键齐；delta_vs_prev==null（AG-4）；版本断言锚卡面 %s（升卡 2026-10-06："
+         "0.2 时代锚随装置 bump 漂红，对齐 aggregate.py 声明面）" % CUR_VERSION)
     rc, out, _ = run([sys.executable, "harness/freeze_device.py", "verify"])
     cur = {}
     for line in io.open(os.path.join(EVALKIT, "harness", "keyfiles.sha256"), encoding="utf-8"):
@@ -392,7 +425,8 @@ def f_group():
         and not (declared - set(cur)) and not (set(BASE_KEYFILES) - set(cur))
     gate("F5", "freeze 三段式终态：verify 绿 + keyfiles 变更集恰等声明清单", ok,
          "changed=%s new=%s" % (sorted(changed), sorted(new)),
-         "变更集恰等（changed 5 + new 2；多一项即红）")
+         "变更集恰等（changed=DECLARED_CHANGED %d 项 + new=DECLARED_NEW %d 项；多一项即红）"
+         % (len(DECLARED_CHANGED), len(DECLARED_NEW)))
     gate("F6", "test ! -d <afp-clone>/v6",
          not os.path.isdir(os.path.join(PROD_ROOT, "v6")), "",
          "v6 目录不存在（未升格，O-17 时机属 M1 阶段门）")
