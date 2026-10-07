@@ -1,0 +1,7 @@
+{
+  "expected_pass": false,
+  "annotator": "owner 委托 alpha 代行",
+  "annotator_kind": "delegated-signing-model",
+  "product_sha256": "2d38043e864dac159c47802f7bdb5eba4db5d0c9390c2ef5d6fcf3b0addc0276",
+  "source": "handmade:deadline-replaced-by-vague-word"
+}

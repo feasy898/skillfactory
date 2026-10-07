@@ -1,0 +1,7 @@
+{
+  "expected_pass": false,
+  "annotator": "owner 委托 alpha 代行",
+  "annotator_kind": "delegated-signing-model",
+  "product_sha256": "494ba74f422f4ff4323c1e6acd0bb04d06ca6efc4d5d6eff250f87c9e0283c58",
+  "source": "handmade:cta-without-action-word"
+}
