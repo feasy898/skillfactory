@@ -1,0 +1,13 @@
+PASS K5A-01  引用 0 处，悬空 0 []
+PASS K5A-02  exit=0 留位）
+[PASS] HY-5 产物无 oracle/reference/违禁目录；MANIFEST.json 9 份均含版本+sha256 指纹
+
+==== 总计 28 条：PASS 28 / FAIL 0 ====
+report -> /home/pan-ding/workspace/skill工厂/skillfactory/dist/build/ws2-checks-report.json
+
+PASS K5A-03  canonical diff 为空
+PASS K5A-04  9 份 EVALUATION.md 披露口径第 1–5 条齐且无 .mimosa 实体
+PASS K5A-05  dist/build 无 reference/oracle 目录
+PASS K5A-06  文件不存在且 tickets 已不再引用
+PASS K5A-07  publish-approval.md 不存在
+== SF-0007 门槛: 7/7 PASS
