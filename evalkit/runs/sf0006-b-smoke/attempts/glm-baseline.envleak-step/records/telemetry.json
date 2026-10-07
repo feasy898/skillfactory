@@ -1,0 +1,20 @@
+{
+  "available": true,
+  "session_id": "sess_f70a03f6-3f62-47b8-bfe7-425e7c948ff1",
+  "session": {
+    "directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-mm01-glm/baseline"
+  },
+  "directory_matches_arm": true,
+  "model_usage": [
+    {
+      "model_id": "step-5-preview",
+      "provider_id": "new-provider",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 579052,
+      "ot": 11453,
+      "dur": 141522,
+      "n": 20
+    }
+  ]
+}

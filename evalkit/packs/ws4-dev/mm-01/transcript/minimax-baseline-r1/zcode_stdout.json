@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_9dfb6c3e-3e1e-411f-b000-6cf3df5f6698",
+  "traceId": "c39de622-9f75-4ffc-9aad-628ccf0ffa36",
+  "turnId": "turn_6119e0d1-3303-4a42-9036-8bd5e3231bbf",
+  "response": "任务已完成。\n\n## 交付物\n- `out/纪要.docx`：标题「星帆订单系统项目例会纪要」，三节标题逐字为「一、决议事项」「二、待办事项」「三、风险与关注」\n- `out/summary.json`：四键计数\n- `build_minutes.py`：生成脚本（含「转写稿逐字溯源」自检断言）\n\n## 条目内容（全部为转写稿逐字片段）\n\n**决议事项**（2 条）\n1. 【决议事项 · 赵静怡】星帆订单系统整体进度正常，会议同意按原计划推进，里程碑保持不变\n2. 【决议事项 · 黄雨桐】会议同意星帆订单系统项目预算300万元，走专项列支，由市场部跟进执行\n\n**待办事项**（表格，2 行）\n\n| 事项 | 负责人 | 期限 |\n| --- | --- | --- |\n| 完成复盘纪要并同步给财务部 | 黄雨桐 | 本周五前 |\n| 把数据迁移脚本整理成7月4日归档 | 徐静怡 | 7月4日 |\n\n**风险与关注**（2 条）\n1. 【风险与关注 · 吴志远】财务部侧存在履约风险，去年高峰期出现过积压，今年需要提前准备预案\n2. 【风险与关注 · 赵静怡】灰度放量方案的数据口径尚未对齐，复盘前需要补齐基线数据\n\n## summary.json\n```json\n{\"决议事项\": 2, \"待办事项\": 2, \"风险与关注\": 2, \"合计\": 6}\n```\n\n## 纪律遵循\n- 所有「决议事项」「风险与关注」条目内容、待办表格中的「事项」「负责人」「期限」均在转写稿中可逐字定位（脚本内 `must_be_in_transcript` 自检断言通过）\n- 所有「相关人/负责人」均为转写稿中实际出现的说话人（赵静怡、黄雨桐、徐静怡、吴志远）\n- 未引入转写稿之外的任何决议、待办、风险、人名或时间- 标题与节标题文字逐字符合 brief 要求",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 18,
+    "inputTokens": 425953,
+    "outputTokens": 5430,
+    "totalTokens": 431383,
+    "cacheReadTokens": 398883,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 965,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 431383,
+    "contextUsed": 27656,
+    "contextWindow": 200000
+  }
+}

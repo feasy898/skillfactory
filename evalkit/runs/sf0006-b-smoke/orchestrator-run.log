@@ -1,0 +1,12 @@
+{
+  "arm_procs": 4,
+  "retries": 0,
+  "redline_event": false,
+  "stop_reason": null,
+  "scratch_purged": true
+}
+glm-baseline         exit=1 model=None provider=None pin=unobserved dir_match=None
+glm-treatment        exit=1 model=None provider=None pin=unobserved dir_match=None
+minimax-baseline     exit=0 model=MiniMax-M3 provider=minimax pin=drift dir_match=True
+minimax-treatment    exit=0 model=MiniMax-M3 provider=minimax pin=drift dir_match=True
+orchestrator exit=1

@@ -1,0 +1,32 @@
+{
+  "name": "glm-baseline",
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": null,
+  "command_shape": [
+    "zcode",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py:33-35>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-mm01-glm/baseline",
+    "--json"
+  ],
+  "exit_code": 1,
+  "timed_out": false,
+  "wall_ms": 602,
+  "started_at_ms": 1791406000798,
+  "session_id": null,
+  "directory_matches_arm": null,
+  "session_directory": null,
+  "model_id_observed": null,
+  "provider_id_observed": null,
+  "model_usage_rows": 0,
+  "model_usage": [],
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "stdout_bytes": 0,
+  "stderr_bytes": 140,
+  "stderr_head": "无法定位 CLI ZCode Built-in Provider Config：/opt/ZCode/resources/glm/provider/zcode-builtin.json, /config/provider/zcode-builtin.json\n",
+  "stdout_tail": "",
+  "rate_limited_detected": false
+}

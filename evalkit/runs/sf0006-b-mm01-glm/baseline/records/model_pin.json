@@ -1,0 +1,14 @@
+{
+  "arm": "baseline",
+  "run_label": "r1",
+  "run_id": "sf0006-b-smoke",
+  "model_id": "UNOBSERVED",
+  "provider_base_url": "UNOBSERVED",
+  "cli_runtime": "zcode-app-cli 3.14.4-30 / zcode-runtime 0.16.9",
+  "date": "2026-10-08",
+  "reasoning_variant": "default(max)",
+  "judge_sha256": "d89fae1b65e7e99d5b21bfc9429f0a707c9fabf6f9b9f6defc9afc86ca1e0b8a",
+  "family": "glm",
+  "mechanism": "default",
+  "note": "B-01 实测钉版：model_id/provider_base_url 抄 db model_usage join 落点（逐字）"
+}

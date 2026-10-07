@@ -1,0 +1,7 @@
+{
+  "oracle_root": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke/oracle/mm-01-rep1/oracle",
+  "commonpath_ok": true,
+  "gen_fixtures_tree_sha256": "d997a7509413f467c1baf0e9267735565c5d71e2019bc58e9f4cf2eb12d26b82",
+  "pack_fixtures_tree_sha256": "d997a7509413f467c1baf0e9267735565c5d71e2019bc58e9f4cf2eb12d26b82",
+  "rep1_nonce_A_match": true
+}

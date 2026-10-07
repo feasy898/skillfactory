@@ -1,0 +1,11 @@
+{
+  "run_id": "sf0006-b-mm01-minimax",
+  "run_dir": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-mm01-minimax",
+  "arms": {
+    "baseline": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-mm01-minimax/baseline",
+    "treatment": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-mm01-minimax/treatment"
+  },
+  "treatment_skill_mount": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-mm01-minimax/treatment/.zcode/skills/meeting-minutes",
+  "baseline_has_skill": false,
+  "pack": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/packs/ws4-dev/mm-01"
+}

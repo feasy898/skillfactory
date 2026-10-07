@@ -1,0 +1,16 @@
+[2026-10-08 04:34:09.692] [pid:3871158] [main] [crash-capture] configured remoteCrashReporterEnabled=true stagingDir=/home/pan-ding/.zcode/v2/crash/live archiveDir=/home/pan-ding/.zcode/v2/crash/archive
+[2026-10-08 04:34:09.785] [pid:3871158] [main] [deep-link] 注册协议成功 { scheme: 'zcode' }
+[2026-10-08 04:34:09.787] [pid:3871158] [main] [deep-link] Linux 系统级 desktop entry 已存在 {
+  systemDesktopEntryPath: '/usr/share/applications/zcode.desktop',
+  desktopFilePath: '/home/pan-ding/.local/share/applications/zcode.desktop'
+}
+[2026-10-08 04:34:09.806] [pid:3871158] [main] [deep-link] Linux 用户级协议注册成功 {
+  desktopFilePath: '/home/pan-ding/.local/share/applications/zcode.desktop',
+  executablePath: '/opt/ZCode/zcode',
+  args: [],
+  changed: false,
+  systemDesktopEntryPath: '/usr/share/applications/zcode.desktop'
+}
+[2026-10-08 04:34:09.819] [pid:3871158] [main] [arms] electron initialized env=prod version=3.14.4
+[2026-10-08 04:34:09.897] [pid:3871158] [main] [startup] runtime process env prepared asynchronously id=1 in 198ms
+[2026-10-08 04:34:09.932] [pid:3871158] [main] [keep-awake] powerSaveBlocker started id=0

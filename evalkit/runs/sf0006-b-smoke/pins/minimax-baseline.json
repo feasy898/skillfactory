@@ -1,0 +1,11 @@
+{
+  "arm": "baseline",
+  "run_label": "r1",
+  "run_id": "sf0006-b-smoke",
+  "model_id": "Minimax-M3.1-Flash-Preview",
+  "provider_base_url": "minimax",
+  "cli_runtime": "zcode-app-cli 3.14.4-30 / zcode-runtime 0.16.9",
+  "date": "2026-10-08",
+  "reasoning_variant": "default(max)",
+  "note": "prerun declared sample pin (pack_checks EI-9 输入); B-01 以 db join 实测落点核对"
+}

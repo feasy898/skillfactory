@@ -1,0 +1,7 @@
+{
+  "event": "spawn#2 glm-baseline 携宿主 env 运行（观测臂，测得 step-5-preview @ new-provider）",
+  "detail": "编排器 env=dict(os.environ) 继承了 zcode 宿主注入的 ZCODE_BUILTIN_PROVIDER_CONFIG_FILE / ZCODE_PERSONAL_PROVIDER_CONFIG_FILE（实测两者指向磁盘全局默认文件本体，sha256 与开工记录一致）。glm 臂语义要求裸跑（SF-0004 A-ctl 形态：不注入成对变量）。该臂落点 step-5-preview @ new-provider，模型真实完成任务（out/ 有产物），B-01 比对触发红线停跑。",
+  "disposition": "恢复臂树后以 env 消毒版（剔除三个 ZCODE provider 覆盖变量）重跑 glm-baseline 定谳漂移归属：若仍漂移=宿主全局默认真漂移，红线成立；若回 GLM-5.3=漂移由 env 传递路径引入，红线撤销并以该次作为正式 glm-baseline。本臂不计入正式结果，按 P5『超额的臂进程不计入结果』作预检损耗全额披露。",
+  "arm_records": "attempts/glm-baseline.envleak-step/records/arm_run.json",
+  "ts": "2026-10-08T04:44+08:00"
+}

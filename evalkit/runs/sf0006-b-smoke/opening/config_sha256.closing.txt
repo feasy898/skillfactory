@@ -1,0 +1,2 @@
+23ee2edb2034606a6d2a3663faa821577d94c9a4ff03d9a03d1ef59de369402d  /home/pan-ding/.zcode/cli/config.json
+eb363959959585dea1c872e18abdce98fcb6a54ba0c4fa2e6f25051a9ad553ce  /home/pan-ding/.zcode/v2/provider_config.json

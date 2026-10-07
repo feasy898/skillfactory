@@ -1,0 +1,29 @@
+{
+  "pack": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/packs/ws4-dev/mm-01",
+  "arms": [
+    "evalkit/runs/sf0006-b-mm01-glm/baseline",
+    "evalkit/runs/sf0006-b-mm01-glm/treatment"
+  ],
+  "results": [
+    {
+      "name": "EI-7 brief 公平",
+      "pass": true,
+      "gaps": [],
+      "input_dir_name": "fixtures",
+      "scan_hits": []
+    },
+    {
+      "name": "EI-9 臂间输入树公平",
+      "pass": true,
+      "gaps": []
+    },
+    {
+      "name": "EI-20 任务包 conformance",
+      "pass": true,
+      "gaps": [],
+      "input_dir_name": "fixtures",
+      "pack_shape": "task-pack (ws4-dev)"
+    }
+  ],
+  "pass": true
+}

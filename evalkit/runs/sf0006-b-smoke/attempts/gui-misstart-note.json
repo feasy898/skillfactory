@@ -1,0 +1,6 @@
+{
+  "event": "spawn#1 GUI 误启动（装置入口错误，非臂执行）",
+  "detail": "编排器首版以 /usr/bin/zcode（electron 桌面 binary）为入口：-p 被解释为 GUI 参数，桌面应用初始化后立即退出（stdout 1159 字节 GUI 日志，无 session、无 model_usage、0 token 模型调用）。该进程未进入臂语义（无 headless 会话、无模型调用），不计入 P5 的 4 个臂进程模型预算，但如实留痕：transcript 见 attempts/glm-baseline.gui-misstart-transcript/，records 见 attempts/glm-baseline.gui-misstart-records/。",
+  "fix": "入口改为 node + /opt/ZCode/resources/glm/zcode.cjs（shebang node 的 CLI bundle，--version 实测 0.16.9）；红线判定修正：仅 model_usage 有行且落点不匹配才判 drift，unobserved 归 infra_error 不停跑。",
+  "ts": "2026-10-08T04:36+08:00"
+}

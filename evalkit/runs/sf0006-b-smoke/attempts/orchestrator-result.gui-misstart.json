@@ -1,0 +1,47 @@
+{
+  "arm_procs": 1,
+  "retries": 0,
+  "cap": 4,
+  "budget_ok": true,
+  "redline_event": true,
+  "stop_reason": "glm 臂落点漂移（B-01 红线，SF-0004 DT-v1）：停跑后续臂",
+  "scratch_purged": true,
+  "scratch_path": "/tmp/sf0006b-m1-scratch",
+  "arms": [
+    {
+      "name": "glm-baseline",
+      "family": "glm",
+      "arm": "baseline",
+      "mechanism": null,
+      "command_shape": [
+        "zcode",
+        "-p",
+        "<PROMPT 逐字同 run_arm.py:33-35>",
+        "--cwd",
+        "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-mm01-glm/baseline",
+        "--json"
+      ],
+      "exit_code": 0,
+      "timed_out": false,
+      "wall_ms": 1954,
+      "started_at_ms": 1791405249002,
+      "session_id": null,
+      "directory_matches_arm": null,
+      "session_directory": null,
+      "model_id_observed": null,
+      "provider_id_observed": null,
+      "model_usage_rows": 0,
+      "model_usage": [],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "stdout_bytes": 1159,
+      "stderr_bytes": 172,
+      "stderr_head": "(node:3871158) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `zcode --trace-warnings ...` to show where the warning was created)\n",
+      "stdout_tail": "[2026-10-08 04:34:09.692] [pid:3871158] [main] [crash-capture] configured remoteCrashReporterEnabled=true stagingDir=/home/pan-ding/.zcode/v2/crash/live archiveDir=/home/pan-ding/.zcode/v2/crash/archive\n[2026-10-08 04:34:09.785] [pid:3871158] [main] [deep-link] 注册协议成功 { scheme: 'zcode' }\n[2026-10-08 04:34:09.787] [pid:3871158] [main] [deep-link] Linux 系统级 desktop entry 已存在 {\n  systemDesktopEntryPath: '/usr/share/applications/zcode.desktop',\n  desktopFilePath: '/home/pan-ding/.local/share/applications/zcode.desktop'\n}\n[2026-10-08 04:34:09.806] [pid:3871158] [main] [deep-link] Linux 用户级协议注册成功 {\n  desktopFilePath: '/home/pan-ding/.local/share/applications/zcode.desktop',\n  executablePath: '/opt/ZCode/zcode',\n  args: [],\n  changed: false,\n  systemDesktopEntryPath: '/usr/share/applications/zcode.desktop'\n}\n[2026-10-08 04:34:09.819] [pid:3871158] [main] [arms] electron initialized env=prod version=3.14.4\n[2026-10-08 04:34:09.897] [pid:3871158] [main] [startup] runtime process env prepared asynchronously id=1 in 198ms\n[2026-10-08 04:34:09.932] [pid:3871158] [main] [keep-awake] powerSaveBlocker started id=0\n",
+      "rate_limited_detected": false,
+      "pin_verdict": "unobserved",
+      "attempted": true
+    }
+  ],
+  "finished_at": "2026-10-08T04:34:12+0800"
+}

@@ -1,0 +1,43 @@
+{
+  "name": "minimax-treatment",
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m1",
+  "command_shape": [
+    "zcode",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py:33-35>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-mm01-minimax/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 125751,
+  "started_at_ms": 1791406072226,
+  "session_id": "sess_9aa98deb-5703-4f58-bf80-ff38c9e2ddd5",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-mm01-minimax/treatment",
+  "model_id_observed": "MiniMax-M3",
+  "provider_id_observed": "minimax",
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "MiniMax-M3",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 910245,
+      "ot": 13537,
+      "dur": 117452,
+      "n": 30
+    }
+  ],
+  "input_tokens": 910245,
+  "output_tokens": 13537,
+  "stdout_bytes": 2588,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "sessionId\": \"sess_9aa98deb-5703-4f58-bf80-ff38c9e2ddd5\",\n  \"traceId\": \"80d7da26-6e7d-4bc1-8799-778c55f684d6\",\n  \"turnId\": \"turn_91cdee6e-93ea-42c7-b6d2-d6c443be15b0\",\n  \"response\": \"任务完成。已交付两份产物到 `out/`：\\n\\n**`out/纪要.docx`**（标题：星帆订单系统项目例会纪要）\\n\\n- **一、决议事项**（2 条，编号条目，格式 `N. 【决议事项 · 相关人】内容`）\\n  1. 【决议事项 · 赵静怡】星帆订单系统整体进度正常，会议同意按原计划推进，里程碑保持不变\\n  2. 【决议事项 · 黄雨桐】会议同意星帆订单系统项目预算300万元，走专项列支，由市场部跟进执行\\n\\n- **二、待办事项**（3 列表格：事项 / 负责人 / 期限，2 行）\\n  - 黄雨桐在本周五前完成复盘纪要并同步给财务部 ｜ 黄雨桐 ｜ 本周五前\\n  - 徐静怡负责把数据迁移脚本整理成7月4日归档 ｜ 徐静怡 ｜ 7月4日\\n\\n- **三、风险与关注**（2 条，编号条目）\\n  1. 【风险与关注 · 吴志远】财务部侧存在履约风险，去年高峰期出现过积压，今年需要提前准备预案\\n  2. 【风险与关注 · 赵静怡】灰度放量方案的数据口径尚未对齐，复盘前需要补齐基线数据\\n\\n**`out/summary.json`**：`{\\\"决议事项\\\": 2, \\\"待办事项\\\": 2, \\\"风险与关注\\\": 2, \\\"合计\\\": 6}`\\n\\n**关键决策说明**：虽然 `meeting-minutes` skill 提供了脚本入口，但其默认输出格式 `【hh:mm · 说话人】内容` 与 brief 要求的 `【类别 · 相关人】内容` 不符，且 skill 按关键词匹配分类（会把\\\"议定下来\\\"算成决议、把\\\"需要提前准备预案\\\"按\\\"需要\\\"先于\\\"风险\\\"匹配误归待办、并漏掉没有关键词的\\\"完成复盘纪要\\\"一句），与 brief 的语义分类及逐字引用纪律冲突。所以我按 brief 规格手工生成：每条内容都在转写稿中按行逐字溯源通过，所有相关人姓名（赵静怡、黄雨桐、徐静怡、吴志远）均出自转写稿，时间字面值（本周五前、7月4日）也直接取自原文。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 30,\n    \"inputTokens\": 910245,\n    \"outputTokens\": 13537,\n    \"totalTokens\": 923782,\n    \"cacheReadTokens\": 867717,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 2745,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 923782,\n    \"contextUsed\": 43151,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "rate_limited_detected": false
+}

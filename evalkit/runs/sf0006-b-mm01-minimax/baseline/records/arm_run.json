@@ -1,0 +1,43 @@
+{
+  "name": "minimax-baseline",
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m1",
+  "command_shape": [
+    "zcode",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py:33-35>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-mm01-minimax/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 64183,
+  "started_at_ms": 1791406006040,
+  "session_id": "sess_9dfb6c3e-3e1e-411f-b000-6cf3df5f6698",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-mm01-minimax/baseline",
+  "model_id_observed": "MiniMax-M3",
+  "provider_id_observed": "minimax",
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "MiniMax-M3",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 425953,
+      "ot": 5430,
+      "dur": 57566,
+      "n": 18
+    }
+  ],
+  "input_tokens": 425953,
+  "output_tokens": 5430,
+  "stdout_bytes": 2462,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "{\n  \"sessionId\": \"sess_9dfb6c3e-3e1e-411f-b000-6cf3df5f6698\",\n  \"traceId\": \"c39de622-9f75-4ffc-9aad-628ccf0ffa36\",\n  \"turnId\": \"turn_6119e0d1-3303-4a42-9036-8bd5e3231bbf\",\n  \"response\": \"任务已完成。\\n\\n## 交付物\\n- `out/纪要.docx`：标题「星帆订单系统项目例会纪要」，三节标题逐字为「一、决议事项」「二、待办事项」「三、风险与关注」\\n- `out/summary.json`：四键计数\\n- `build_minutes.py`：生成脚本（含「转写稿逐字溯源」自检断言）\\n\\n## 条目内容（全部为转写稿逐字片段）\\n\\n**决议事项**（2 条）\\n1. 【决议事项 · 赵静怡】星帆订单系统整体进度正常，会议同意按原计划推进，里程碑保持不变\\n2. 【决议事项 · 黄雨桐】会议同意星帆订单系统项目预算300万元，走专项列支，由市场部跟进执行\\n\\n**待办事项**（表格，2 行）\\n\\n| 事项 | 负责人 | 期限 |\\n| --- | --- | --- |\\n| 完成复盘纪要并同步给财务部 | 黄雨桐 | 本周五前 |\\n| 把数据迁移脚本整理成7月4日归档 | 徐静怡 | 7月4日 |\\n\\n**风险与关注**（2 条）\\n1. 【风险与关注 · 吴志远】财务部侧存在履约风险，去年高峰期出现过积压，今年需要提前准备预案\\n2. 【风险与关注 · 赵静怡】灰度放量方案的数据口径尚未对齐，复盘前需要补齐基线数据\\n\\n## summary.json\\n```json\\n{\\\"决议事项\\\": 2, \\\"待办事项\\\": 2, \\\"风险与关注\\\": 2, \\\"合计\\\": 6}\\n```\\n\\n## 纪律遵循\\n- 所有「决议事项」「风险与关注」条目内容、待办表格中的「事项」「负责人」「期限」均在转写稿中可逐字定位（脚本内 `must_be_in_transcript` 自检断言通过）\\n- 所有「相关人/负责人」均为转写稿中实际出现的说话人（赵静怡、黄雨桐、徐静怡、吴志远）\\n- 未引入转写稿之外的任何决议、待办、风险、人名或时间- 标题与节标题文字逐字符合 brief 要求\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 18,\n    \"inputTokens\": 425953,\n    \"outputTokens\": 5430,\n    \"totalTokens\": 431383,\n    \"cacheReadTokens\": 398883,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 965,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 431383,\n    \"contextUsed\": 27656,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "rate_limited_detected": false
+}

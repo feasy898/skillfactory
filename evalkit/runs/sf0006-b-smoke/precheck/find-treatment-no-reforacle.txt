@@ -1,0 +1,4 @@
+== find reference/oracle in evalkit/runs/sf0006-b-mm01-glm/treatment:
+exit=0 (输出须为空)
+== find reference/oracle in evalkit/runs/sf0006-b-mm01-minimax/treatment:
+exit=0 (输出须为空)

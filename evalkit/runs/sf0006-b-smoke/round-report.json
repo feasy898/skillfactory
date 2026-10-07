@@ -1,0 +1,348 @@
+{
+  "card": "SF-0006",
+  "layer": "B",
+  "run_id": "sf0006-b-smoke",
+  "matrix": "mm-01 × {glm, minimax} × {baseline, treatment} × n=1（rep1，nonce A canonical 种子）",
+  "base_commit": "29e0a2589266252b63122703de0e80132a507164",
+  "opened_at": "2026-10-08T04:30:34+08:00",
+  "closed_at": "2026-10-08T04:57:21+0800",
+  "verdict_type": "layer-B-smoke",
+  "not_an_acceptance": "本报告只出 B 层冒烟信号，不含任何验收结论；citable 概念属 C 层（C-10），本层不设",
+  "layers": {
+    "A": {
+      "status": "passed",
+      "evidence": [
+        "evalkit/runs/sf0006-a/gate-sf0006a-final.out（8/8 PASS，A-13/A-14 SKIP 由 B 层实测复验）",
+        "提交 efcf91c：gate_sf0006b 11/11 PASS（A-07 对拍 5 题 accuracy 1.0 / A-08 / A-09 / A-10）",
+        "提交 29e0a25：A 层收官门槛运行产物入库"
+      ]
+    },
+    "B": {
+      "status": "failed_infra",
+      "root_causes": [
+        "RC1（GLM 红线，B-01/DT-v1）：宿主默认 headless 落点实测 step-5-preview @ new-provider（spawn#2，模型真实完成 mm-01 任务），≠ 契约 GLM-5.3 @ account:bigmodel-individual-coding-plan。根因：宿主全局 ~/.zcode/v2/provider_config.json（mtime 2026-10-07 00:59，晚于 SF-0004 的 2026-10-04 实测）defaultModelSelection=null 且 providerOrder[0]=new-provider，本机 CLI 默认选择逻辑落到 providerOrder 首位。SF-0004 时代同配置形态回落 builtin GLM 的结论在当前宿主不再成立。",
+        "RC2（GLM 裸跑不可启动）：Linux /opt/ZCode 桌面布局下，CLI（/opt/ZCode/resources/glm/zcode.cjs，runtime --version 实测 0.16.9）无 ZCODE_BUILTIN_PROVIDER_CONFIG_FILE 时 bundled 路径探测（<入口目录>/provider/zcode-builtin.json 与 <入口上5级>/config/provider/zcode-builtin.json）两级全落空，启动即退 exit 1。即本宿主 headless 结构性依赖该 env（宿主恒注入指向 runtime active 副本）；SF-0004 A-ctl『裸 headless』形态在 Windows npm 布局成立、在本机布局不成立。",
+        "RC3（minimax 模型级钉版不生效）：M1 成对 env 派生副本（defaultModelSelection={minimax, Minimax-M3.1-Flash-Preview} + providerOrder 置顶）在 provider 层生效（两臂实测 provider_id=minimax，B-02 join 成立），但模型层落 personal modelOrder[0]=MiniMax-M3，defaultModelSelection.modelId 未被本机 CLI 尊重（无尝试/回落痕迹，全程 MiniMax-M3）。SF-0004 实测钉中 Minimax-M3.1-Flash-Preview 的是 zcode-app-cli 3.14.4-30 npm CLI（Windows）；本机为 /opt/ZCode 3.14.4 内嵌 runtime 0.16.9，行为不同。"
+      ],
+      "note": "三根因均属宿主环境/通道装置面（zcode CLI 布局与宿主全局 provider 配置），无一出自 evalkit 装置（make_arms/pack_checks/oracle_gate/pack 面全部按预期工作）或被测资产；故 failed_infra 而非 failed_device"
+    },
+    "C": {
+      "status": "not_run",
+      "reason": "B 层非 passed（B-06：C 层不开跑）；ls evalkit/runs/sf0006-b-smoke/C 不存在"
+    }
+  },
+  "redline_event": true,
+  "redline_detail": "GLM 臂落点漂移（spawn#2 实测 step-5-preview @ new-provider ≠ account:bigmodel-individual-coding-plan/GLM-5.3），按 B-01/SF-0004 DT-v1 通用红线置顶披露；bump 与旧基线作废属 planner 层动作，本卡不代拍",
+  "budget": {
+    "cap": "P5：B 层 ≤4 个臂进程，每臂 rate_limited 退避重试 ≤1",
+    "spawns": [
+      {
+        "n": 1,
+        "what": "GUI 误启动（/usr/bin/zcode electron binary 吞掉 -p）",
+        "model_call": false,
+        "counts_as_arm": false,
+        "evidence": "attempts/gui-misstart-note.json"
+      },
+      {
+        "n": 2,
+        "what": "glm-baseline 携宿主 env 观测臂（测得 step-5-preview 漂移红线；被宿主 ZCODE_* env 污染，非裸跑语义，不计入正式结果）",
+        "model_call": true,
+        "counts_as_arm": false,
+        "evidence": "attempts/glm-baseline.envleak-step/"
+      },
+      {
+        "n": 3,
+        "what": "glm-baseline 正式臂（env 消毒裸跑）",
+        "model_call": true,
+        "counts_as_arm": true
+      },
+      {
+        "n": 4,
+        "what": "glm-treatment 正式臂",
+        "model_call": true,
+        "counts_as_arm": true
+      },
+      {
+        "n": 5,
+        "what": "minimax-baseline 正式臂（M1 成对 env）",
+        "model_call": true,
+        "counts_as_arm": true
+      },
+      {
+        "n": 6,
+        "what": "minimax-treatment 正式臂（M1 成对 env）",
+        "model_call": true,
+        "counts_as_arm": true
+      }
+    ],
+    "model_calls_total": 5,
+    "counted_arm_procs": 4,
+    "verdict_vs_cap": "正式臂 4 = P5 上限 4；另发生 1 次真实模型调用的预检观测臂（spawn#2，因 env 污染无臂语义不计臂）与 1 次 0-token GUI 误启动，全额披露。预算刚性超限即停：此后未再发起任何模型调用",
+    "retries": "0 次 rate_limited 退避重试（db model_usage 无 rate_limited 行）"
+  },
+  "b01_pin": {
+    "glm_required": "GLM-5.3 @ account:bigmodel-individual-coding-plan（逐字大小写敏感）",
+    "glm_observed": "step-5-preview @ new-provider（携宿主 env 观测臂 spawn#2）；正式臂因 CLI 启动失败 unobserved",
+    "glm_verdict": "fail (redline)",
+    "minimax_required": "Minimax-M3.1-Flash-Preview @ minimax（逐字大小写敏感）",
+    "minimax_observed": "MiniMax-M3 @ minimax（两正式臂一致）",
+    "minimax_verdict": "fail (drift: provider 对、模型逐字不符)"
+  },
+  "b02_telemetry": {
+    "minimax_baseline": {
+      "ok": true,
+      "session_id": "sess_9dfb6c3e-3e1e-411f-b000-6cf3df5f6698"
+    },
+    "minimax_treatment": {
+      "ok": true,
+      "session_id": "sess_9aa98deb-5703-4f58-bf80-ff38c9e2ddd5"
+    },
+    "glm_baseline": {
+      "ok": false,
+      "reason": "无 session（CLI 启动失败）"
+    },
+    "glm_treatment": {
+      "ok": false,
+      "reason": "无 session（CLI 启动失败）"
+    },
+    "verify_script": "precheck/b02-db-join-verify.json（独立 sqlite ro join 复核）"
+  },
+  "b03_m1_contract": {
+    "paired_env_var_names_injected": [
+      "ZCODE_BUILTIN_PROVIDER_CONFIG_FILE",
+      "ZCODE_PERSONAL_PROVIDER_CONFIG_FILE"
+    ],
+    "paired_env_values_not_recorded": true,
+    "derived_copy_purged": true,
+    "derived_copy_path": "/tmp/sf0006b-m1-scratch（test ! -e 成立）",
+    "cli_config_sha256_opening": "23ee2edb2034606a6d2a3663faa821577d94c9a4ff03d9a03d1ef59de369402d",
+    "cli_config_sha256_closing": "23ee2edb2034606a6d2a3663faa821577d94c9a4ff03d9a03d1ef59de369402d",
+    "v2_provider_config_sha256_opening": "eb363959959585dea1c872e18abdce98fcb6a54ba0c4fa2e6f25051a9ad553ce",
+    "v2_provider_config_sha256_closing": "eb363959959585dea1c872e18abdce98fcb6a54ba0c4fa2e6f25051a9ad553ce",
+    "byte_identical": true
+  },
+  "b04_oracle": {
+    "record": "oracle/mm-01-rep1.json",
+    "tree_sha256": "d1d3a52fbc53b5f042da3355c95ca877c2d1f91a3ca56e69f2040e9493264a7f",
+    "verify_exit": 0,
+    "commonpath_ok": true,
+    "rep1_nonce_A_match": true,
+    "rep1_fixtures_tree_sha256": "d997a7509413f467c1baf0e9267735565c5d71e2019bc58e9f4cf2eb12d26b82"
+  },
+  "b05_secrets": {
+    "pattern": "SF-0006 卡 B-05 条正则逐字（四类凭据前缀 + sk- 长随机串 + AKIA 数字段 + xox 系列）；字面量不写入本报告以免自触发密钥扫描",
+    "grep_exit": 1,
+    "hits": 0
+  },
+  "freeze_verify": {
+    "exit": 0,
+    "files": 44,
+    "when": "B 层收工（跑批期钉版面零漂移）"
+  },
+  "precheck": {
+    "isolation_baseline_exit": 0,
+    "treatment_find_reference_oracle": "empty (×2)",
+    "pack_checks_ei7_ei9_ei20": "exit 0 ×2 族（precheck/pack-checks-glm.json / pack-checks-minimax.json）"
+  },
+  "arms": [
+    {
+      "arm": "glm-baseline",
+      "family": "glm",
+      "arm_kind": "baseline",
+      "arm_dir": "evalkit/runs/sf0006-b-mm01-glm/baseline",
+      "spawned": true,
+      "exit_code": 1,
+      "timed_out": false,
+      "session_id": null,
+      "model_id_observed": null,
+      "provider_id_observed": null,
+      "model_usage_rows": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "wall_ms": 602,
+      "pin_verdict": "unobserved",
+      "model_pin_json_keys": [
+        "arm",
+        "cli_runtime",
+        "date",
+        "family",
+        "judge_sha256",
+        "mechanism",
+        "model_id",
+        "note",
+        "provider_base_url",
+        "reasoning_variant",
+        "run_id",
+        "run_label"
+      ],
+      "classify": {
+        "bucket": "infra_error",
+        "buckets_detail": [
+          "infra_error"
+        ],
+        "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）"
+      },
+      "reason": "B 层正式臂（spawn#5，env 消毒裸跑）：CLI bundled 路径探测在 /opt/ZCode 布局两级全落空，启动即退（exit 1，无 session/无 model_usage，原始报错『无法定位 CLI ZCode Built-in Provider Config：/opt/ZCode/resources/glm/provider/zcode-builtin.json, /config/provider/zcode-builtin.json』留痕 transcript）。classify_run(kind=harness_crash)=infra_error。",
+      "b02_join": {
+        "ok": false,
+        "session_id": null,
+        "db_directory": null,
+        "directory_eq_armdir": null,
+        "model_usage_rows": null
+      }
+    },
+    {
+      "arm": "glm-treatment",
+      "family": "glm",
+      "arm_kind": "treatment",
+      "arm_dir": "evalkit/runs/sf0006-b-mm01-glm/treatment",
+      "spawned": true,
+      "exit_code": 1,
+      "timed_out": false,
+      "session_id": null,
+      "model_id_observed": null,
+      "provider_id_observed": null,
+      "model_usage_rows": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "wall_ms": 635,
+      "pin_verdict": "unobserved",
+      "model_pin_json_keys": [
+        "arm",
+        "cli_runtime",
+        "date",
+        "family",
+        "judge_sha256",
+        "mechanism",
+        "model_id",
+        "note",
+        "provider_base_url",
+        "reasoning_variant",
+        "run_id",
+        "run_label"
+      ],
+      "classify": {
+        "bucket": "infra_error",
+        "buckets_detail": [
+          "infra_error"
+        ],
+        "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）"
+      },
+      "reason": "同 glm-baseline 同因同判：infra_error（同一次编排运行、同一 CLI 入口失败模式；treatment 挂载 .zcode/skills/meeting-minutes 合规变体在位）。",
+      "b02_join": {
+        "ok": false,
+        "session_id": null,
+        "db_directory": null,
+        "directory_eq_armdir": null,
+        "model_usage_rows": null
+      }
+    },
+    {
+      "arm": "minimax-baseline",
+      "family": "minimax",
+      "arm_kind": "baseline",
+      "arm_dir": "evalkit/runs/sf0006-b-mm01-minimax/baseline",
+      "spawned": true,
+      "exit_code": 0,
+      "timed_out": false,
+      "session_id": "sess_9dfb6c3e-3e1e-411f-b000-6cf3df5f6698",
+      "model_id_observed": "MiniMax-M3",
+      "provider_id_observed": "minimax",
+      "model_usage_rows": 1,
+      "input_tokens": 425953,
+      "output_tokens": 5430,
+      "wall_ms": 64183,
+      "pin_verdict": "drift",
+      "model_pin_json_keys": [
+        "arm",
+        "cli_runtime",
+        "date",
+        "family",
+        "judge_sha256",
+        "mechanism",
+        "model_id",
+        "note",
+        "provider_base_url",
+        "reasoning_variant",
+        "run_id",
+        "run_label"
+      ],
+      "classify": {
+        "bucket": "measured_failure",
+        "buckets_detail": [
+          "measured_failure"
+        ],
+        "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）"
+      },
+      "reason": "臂进程完成（exit 0，session join 成立，model_usage 18 行 completed），进程级 classify_run(kind=ok)=measured_failure；但 B-01 钉版逐字比对 fail：实测 MiniMax-M3@minimax ≠ 目标 Minimax-M3.1-Flash-Preview@minimax——M1 成对 env 的 provider 层生效、模型层未生效（落 personal modelOrder[0]，defaultModelSelection.modelId 未被本机 /opt/ZCode CLI 尊重），pin_verdict=drift。",
+      "b02_join": {
+        "ok": true,
+        "session_id": "sess_9dfb6c3e-3e1e-411f-b000-6cf3df5f6698",
+        "db_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-mm01-minimax/baseline",
+        "directory_eq_armdir": true,
+        "model_usage_rows": 18
+      }
+    },
+    {
+      "arm": "minimax-treatment",
+      "family": "minimax",
+      "arm_kind": "treatment",
+      "arm_dir": "evalkit/runs/sf0006-b-mm01-minimax/treatment",
+      "spawned": true,
+      "exit_code": 0,
+      "timed_out": false,
+      "session_id": "sess_9aa98deb-5703-4f58-bf80-ff38c9e2ddd5",
+      "model_id_observed": "MiniMax-M3",
+      "provider_id_observed": "minimax",
+      "model_usage_rows": 1,
+      "input_tokens": 910245,
+      "output_tokens": 13537,
+      "wall_ms": 125751,
+      "pin_verdict": "drift",
+      "model_pin_json_keys": [
+        "arm",
+        "cli_runtime",
+        "date",
+        "family",
+        "judge_sha256",
+        "mechanism",
+        "model_id",
+        "note",
+        "provider_base_url",
+        "reasoning_variant",
+        "run_id",
+        "run_label"
+      ],
+      "classify": {
+        "bucket": "measured_failure",
+        "buckets_detail": [
+          "measured_failure"
+        ],
+        "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）"
+      },
+      "reason": "同 minimax-baseline：进程级 measured_failure（exit 0，join 成立，30 行 completed，treatment 产物 out/ 在臂内），B-01 钉版逐字比对 fail（MiniMax-M3 ≠ Minimax-M3.1-Flash-Preview），pin_verdict=drift。",
+      "b02_join": {
+        "ok": true,
+        "session_id": "sess_9aa98deb-5703-4f58-bf80-ff38c9e2ddd5",
+        "db_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-mm01-minimax/treatment",
+        "directory_eq_armdir": true,
+        "model_usage_rows": 30
+      }
+    }
+  ],
+  "artifacts": {
+    "run_dirs": [
+      "evalkit/runs/sf0006-b-mm01-glm/",
+      "evalkit/runs/sf0006-b-mm01-minimax/"
+    ],
+    "smoke_dir": "evalkit/runs/sf0006-b-smoke/",
+    "minimax_products_in_arm": "minimax 两臂 out/ 为真实臂产物（MiniMax-M3 完成 mm-01 任务），B 层不判产物（C-02 归 C 层）"
+  },
+  "notCovered": [
+    "C 层 40 臂基线轮全部未跑（B-06）",
+    "GLM 默认臂在本宿主的修复路径（宿主全局 provider 配置恢复/显式 GLM 钉版机制）未测，需 planner 裁定 bump 与基线作废后另卡处理",
+    "M1 机制模型级钉版在本机 /opt/ZCode CLI 的适配（defaultModelSelection.modelId 为何被忽略、是否需 modelOrder 置顶或其它 schema）未测——预算刚性超限即停，未再消耗调用",
+    "产物轨 checker 复算、质量轨、delta 聚合（C-02..C-08）全部未跑",
+    "D3 金标状态不变：pool-state 既有标注为受托模型标注（delegated-signing-model，非人工）"
+  ]
+}

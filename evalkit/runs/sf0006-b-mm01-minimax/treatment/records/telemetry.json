@@ -1,0 +1,20 @@
+{
+  "available": true,
+  "session_id": "sess_9aa98deb-5703-4f58-bf80-ff38c9e2ddd5",
+  "session": {
+    "directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-mm01-minimax/treatment"
+  },
+  "directory_matches_arm": true,
+  "model_usage": [
+    {
+      "model_id": "MiniMax-M3",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 910245,
+      "ot": 13537,
+      "dur": 117452,
+      "n": 30
+    }
+  ]
+}

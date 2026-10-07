@@ -1,0 +1,34 @@
+{
+  "glm-baseline": {
+    "arm": "glm-baseline",
+    "telemetry_file": true,
+    "session_id": null,
+    "b02_join_ok": false
+  },
+  "glm-treatment": {
+    "arm": "glm-treatment",
+    "telemetry_file": true,
+    "session_id": null,
+    "b02_join_ok": false
+  },
+  "minimax-baseline": {
+    "arm": "minimax-baseline",
+    "telemetry_file": true,
+    "session_id": "sess_9dfb6c3e-3e1e-411f-b000-6cf3df5f6698",
+    "db_session_found": true,
+    "db_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-mm01-minimax/baseline",
+    "directory_eq_armdir": true,
+    "model_usage_rows": 18,
+    "b02_join_ok": true
+  },
+  "minimax-treatment": {
+    "arm": "minimax-treatment",
+    "telemetry_file": true,
+    "session_id": "sess_9aa98deb-5703-4f58-bf80-ff38c9e2ddd5",
+    "db_session_found": true,
+    "db_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-mm01-minimax/treatment",
+    "directory_eq_armdir": true,
+    "model_usage_rows": 30,
+    "b02_join_ok": true
+  }
+}
