@@ -1,7 +1,7 @@
 {
   "pool": "ws4-dev",
   "built_by": "SF-0005 · worker-glm-bd",
-  "generated_at": "2026-10-08T02:30:07+08:00",
+  "generated_at": "2026-10-08T03:06:36+08:00",
   "evalbench_version": "v6-mvp-0.3",
   "counts": {
     "tasks": 8,
@@ -82,7 +82,7 @@
         "stage": "D2 题面→实例+oracle（纯机械，同种子逐字节复现+生成器红绿自检）",
         "seed": 4201,
         "nonce_set": "A",
-        "generated_at": "2026-10-08T02:30:07+08:00",
+        "generated_at": "2026-10-08T03:06:36+08:00",
         "outputs_sha256": {
           "fixtures/transcript.txt": "9b8b67c818ad1ead829c8900414394a0b47e41df789dcc35f78111b8b0778cde",
           "oracle/summary.json": "4c82acdccb7e76963dc6dc18c90e5cbf7e4c98c40ab2eadcbfe98dd2eef3bea5",
@@ -180,7 +180,7 @@
         "stage": "D2 题面→实例+oracle（纯机械，同种子逐字节复现+生成器红绿自检）",
         "seed": 4202,
         "nonce_set": "A",
-        "generated_at": "2026-10-08T02:30:07+08:00",
+        "generated_at": "2026-10-08T03:06:36+08:00",
         "outputs_sha256": {
           "fixtures/transcript.txt": "00320a0cc18a7ab6818ecca7ce2dbfdca5246e058f9f342a9fcd20029093e280",
           "oracle/summary.json": "47c2354f77d4bf3144dce6b095fd522f61ad0f88ec17229d61ae78327a87e556",
@@ -278,7 +278,7 @@
         "stage": "D2 题面→实例+oracle（纯机械，同种子逐字节复现+生成器红绿自检）",
         "seed": 4203,
         "nonce_set": "A",
-        "generated_at": "2026-10-08T02:30:07+08:00",
+        "generated_at": "2026-10-08T03:06:36+08:00",
         "outputs_sha256": {
           "fixtures/input.json": "d3a0ab3fd87c26a854a15a3f47fa417fe1c921fa024ca53a797750eaa93911c8",
           "oracle/structure.json": "85c9c9f78de55dc2c3f4276884d53be03ae1492e01199a407d239675f573713e",
@@ -376,7 +376,7 @@
         "stage": "D2 题面→实例+oracle（纯机械，同种子逐字节复现+生成器红绿自检）",
         "seed": 4204,
         "nonce_set": "A",
-        "generated_at": "2026-10-08T02:30:07+08:00",
+        "generated_at": "2026-10-08T03:06:36+08:00",
         "outputs_sha256": {
           "fixtures/input.json": "835248a452b5a022fe9decf07e8eb409a3cecb2762a5e44bb06ebdcb70cb2c55",
           "oracle/structure.json": "505d82cfc54beb6fc5f8b56116d8601636852558a9aab3b56aeec14fe834a60e",
@@ -474,7 +474,7 @@
         "stage": "D2 题面→实例+oracle（纯机械，同种子逐字节复现+生成器红绿自检）",
         "seed": 4205,
         "nonce_set": "A",
-        "generated_at": "2026-10-08T02:30:07+08:00",
+        "generated_at": "2026-10-08T03:06:36+08:00",
         "outputs_sha256": {
           "fixtures/input.json": "c6ce8cc4701fb061d3271cb7e299adecad3b8f6184d76e8955bc3a7cbbad6674",
           "oracle/structure.json": "00e3a01e68638129920e42b4365410c7960c4cd149e1832ee7a6992b1c9fea15",
@@ -572,7 +572,7 @@
         "stage": "D2 题面→实例+oracle（纯机械，同种子逐字节复现+生成器红绿自检）",
         "seed": 4206,
         "nonce_set": "A",
-        "generated_at": "2026-10-08T02:30:07+08:00",
+        "generated_at": "2026-10-08T03:06:36+08:00",
         "outputs_sha256": {
           "fixtures/input.json": "e57d20df24a68ffeac6876b816f32632c511c9a60e5bd250b29870e87da37274",
           "oracle/fields.json": "8d643d9a7366678344540364eac8f17092e2e5ddd305e259ac349ae33ec7f4e3",
@@ -670,7 +670,7 @@
         "stage": "D2 题面→实例+oracle（纯机械，同种子逐字节复现+生成器红绿自检）",
         "seed": 4207,
         "nonce_set": "A",
-        "generated_at": "2026-10-08T02:30:07+08:00",
+        "generated_at": "2026-10-08T03:06:36+08:00",
         "outputs_sha256": {
           "fixtures/input.json": "7a17c43ce9999c9e3be08d5eb87a3c2816b6570d981b900a0bb1fc35ff49bba5",
           "oracle/fields.json": "e0fe9e456a31b61bd418c17c0a5d5d2ec600d2161c9b308aa23ec567741d0a94",
@@ -768,7 +768,7 @@
         "stage": "D2 题面→实例+oracle（纯机械，同种子逐字节复现+生成器红绿自检）",
         "seed": 4208,
         "nonce_set": "A",
-        "generated_at": "2026-10-08T02:30:07+08:00",
+        "generated_at": "2026-10-08T03:06:36+08:00",
         "outputs_sha256": {
           "fixtures/input.json": "cd12e74e7a10adfd9cb547bfb05422a32f6ec179a9c57da2c1a1b7a3f2d34e03",
           "oracle/fields.json": "fdbd9b5210d1ed238a17cc2614ad7e61208bdc3a3d9432eab5e673cb4dcf2867",

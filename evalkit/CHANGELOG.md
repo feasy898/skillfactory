@@ -145,6 +145,27 @@
   通用形态回归：`--pack packs/sm-mapping-01` 仍查原五件；verify_sf0003 34 门不回退
   （pack_checks 本就在 DECLARED_CHANGED 声明面，F5 变更集恰等不变）
 
+**FIX-C7｜freeze glob 不覆盖 gen_oracle.py 与 runner_contract.json（A-04 钉版面扩容）**
+- 题号：SF-0006 A-04（owner-delegated-signing-20261008 §三修订条款；红先证据=修订版
+  门槛 97467b8 后实跑：keyfiles 中 gen_oracle.py 计 0/8、runner_contract.json 计 0/8）
+- 旧文本：`harness/freeze_device.py` `KEY_GLOBS=["packs/**/checks/run_check.py", …]`——
+  8 题的生成器 gen_oracle.py 与判分器契约 runner_contract.json 全部漏冻（改生成器种子/
+  契约红绿记录不触发装置 verify 红；D1 签署勘误后两件定性为装置面，改由钉版管辖）
+- 新文本：KEY_GLOBS 增加 `packs/ws4-dev/*/gen_oracle.py` 与
+  `packs/ws4-dev/*/runner_contract.json` 两条；re-freeze 后钉版面 28→44 文件
+  （+16 收集面差分实测恰 +16、零丢失）；verify_sf0003.py DECLARED 声明面同步
+  （DECLARED_NEW +16，freeze_device 本在 DECLARED_CHANGED，F5 恰等语义不变）
+- 缺陷类型：装置钉版覆盖缺陷（EI-23 冻结面漏装置面两件；修冻结面本身，不改任何
+  生成器种子与判分阈值）
+- 判定人：alpha 测试卡 A-04（owner 委托签署 2026-10-08 修订条款）
+- 复现命令：`grep -cE 'packs/ws4-dev/[^/]+/gen_oracle\.py' harness/keyfiles.sha256` ==8、
+  `grep -cE 'packs/ws4-dev/[^/]+/runner_contract\.json' harness/keyfiles.sha256` ==8、
+  `python harness/freeze_device.py verify` exit 0（44 个关键文件全对）、
+  `python harness/verify_sf0003.py` exit 0（34 门全绿）；改前留档
+  runs/sf0006-a/keyfiles-pre-sf0006a-delta1.sha256（28 条）+
+  verify-sf0003-pre-sf0006a-delta1.out（34 门全绿）+
+  freeze-verify-pre-sf0006a-delta1.out（28 文件全对）
+
 ---
 
 ## v6-mvp-0.2 · 2026-10-03（SF-0003 · worker-glm-m4）

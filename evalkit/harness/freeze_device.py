@@ -12,6 +12,14 @@
 `**` 递归形态 + glob(recursive=True)，单层/多层均覆盖；钉版面新增文件按装置协议
 登记进 verify_sf0003.py 的 DECLARED_NEW 声明面（改前留档 runs/sf0003/keyfiles-pre-x4.sha256）。
 
+2026-10-08（SF-0006 A-04 钉版面扩容，owner-delegated-signing-20261008 §三）：D1 签署
+勘误后 gen_oracle.py 与 runner_contract.json 定性为装置面（题面四类文件之外），改由
+freeze_device 钉版管辖，但 KEY_GLOBS 此前只收 checks/run_check.py——8 题的生成器与
+判分器契约全部漏冻（改生成器种子/契约红绿记录不触发 verify 红）。KEY_GLOBS 增加
+`packs/ws4-dev/*/gen_oracle.py` 与 `packs/ws4-dev/*/runner_contract.json` 两条，钉版面
+28→44；改前留档 runs/sf0006-a/keyfiles-pre-sf0006a-delta1.sha256（28 条）+
+verify-sf0003-pre-sf0006a-delta1.out（34 门全绿），DECLARED_NEW 声明面同步 +16。
+
 用法：
     python freeze_device.py freeze --evalkit <根>
     python freeze_device.py verify --evalkit <根> [--record <keyfiles.sha256>]
@@ -26,6 +34,8 @@ import sys
 
 KEY_GLOBS = [
     "packs/**/checks/run_check.py",
+    "packs/ws4-dev/*/gen_oracle.py",
+    "packs/ws4-dev/*/runner_contract.json",
     "evaluators/**/*.py",
     "harness/**/*.py",
     "nc/**/*.py",

@@ -11,6 +11,11 @@ D2 诚实降级 historical——卡时点改动已 commit 落盘，见 CHANGELOG
 2026-10-06 再升格：INTENT §6 遗留小项①②（run_all.py 透传 default 对齐 0.3、freeze glob
 递归化覆盖 packs/ws4-dev 嵌套 wrapper）——DECLARED_CHANGED +freeze_device、DECLARED_NEW
 +8 个嵌套 run_check（改前留档 runs/sf0003/verify-pre-x4.json + keyfiles-pre-x4.sha256）。
+2026-10-08 SF-0006 A-04 钉版面扩容：D1 签署勘误后 gen_oracle.py 与 runner_contract.json
+定性为装置面，改由 freeze_device 钉版管辖（KEY_GLOBS +2 条）——DECLARED_NEW +16
+（8 题 gen_oracle.py + 8 份 runner_contract.json；改前留档
+runs/sf0006-a/verify-sf0003-pre-sf0006a-delta1.out 34 门全绿 +
+keyfiles-pre-sf0006a-delta1.sha256 28 条）。
 
 用法：python harness/verify_sf0003.py [--out runs/sf0003/verify-sf0003.json]
 """
@@ -81,6 +86,17 @@ DECLARED_NEW |= {"packs/ws4-dev/hot-01/checks/run_check.py", "packs/ws4-dev/hot-
                  "packs/ws4-dev/hot-03/checks/run_check.py", "packs/ws4-dev/mm-01/checks/run_check.py",
                  "packs/ws4-dev/mm-02/checks/run_check.py", "packs/ws4-dev/ofc-01/checks/run_check.py",
                  "packs/ws4-dev/ofc-02/checks/run_check.py", "packs/ws4-dev/ofc-03/checks/run_check.py"}
+# 2026-10-08 SF-0006 A-04：D1 签署勘误后 gen_oracle.py 与 runner_contract.json 定性为装置面
+# （runner_contract.json/A-03 重生成、gen_oracle.py/A-02 红绿自检均属装置），改由 freeze_device
+# 钉版管辖——freeze glob +2 条后 16 个文件首次进入钉版面（F5 的「new」必须含它们，否则恒红）
+DECLARED_NEW |= {"packs/ws4-dev/hot-01/gen_oracle.py", "packs/ws4-dev/hot-02/gen_oracle.py",
+                 "packs/ws4-dev/hot-03/gen_oracle.py", "packs/ws4-dev/mm-01/gen_oracle.py",
+                 "packs/ws4-dev/mm-02/gen_oracle.py", "packs/ws4-dev/ofc-01/gen_oracle.py",
+                 "packs/ws4-dev/ofc-02/gen_oracle.py", "packs/ws4-dev/ofc-03/gen_oracle.py",
+                 "packs/ws4-dev/hot-01/runner_contract.json", "packs/ws4-dev/hot-02/runner_contract.json",
+                 "packs/ws4-dev/hot-03/runner_contract.json", "packs/ws4-dev/mm-01/runner_contract.json",
+                 "packs/ws4-dev/mm-02/runner_contract.json", "packs/ws4-dev/ofc-01/runner_contract.json",
+                 "packs/ws4-dev/ofc-02/runner_contract.json", "packs/ws4-dev/ofc-03/runner_contract.json"}
 
 RESULTS = []
 
@@ -130,8 +146,9 @@ def grep_count(pattern, path, fixed=True):
 def a_group():
     rc, out, _ = run([sys.executable, "harness/freeze_device.py", "verify"])
     gate("A1", "python harness/freeze_device.py verify", rc == 0, out,
-         "装置钉版绿（28 关键文件；2026-10-06 遗留小项② glob 递归化，新增 8 个 "
-         "packs/ws4-dev 嵌套 wrapper 入钉版面）" if rc == 0 else out)
+         "装置钉版绿（44 关键文件；2026-10-06 遗留小项② glob 递归化 +8 嵌套 wrapper、"
+         "2026-10-08 SF-0006 A-04 钉版面扩容 +16：8 题 gen_oracle.py 与 8 份 "
+         "runner_contract.json 入钉版面）" if rc == 0 else out)
     rc, out, _ = run([sys.executable, "harness/oracle_gate.py", "hash",
                       "--root", os.path.join(ASSET, "oracle"),
                       "--record", os.path.join(RUNS, "oracle-after.json")])

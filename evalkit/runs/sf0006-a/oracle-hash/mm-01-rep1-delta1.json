@@ -1,0 +1,28 @@
+{
+  "root": "/tmp/sf0006a-d1/mm01-rep1/oracle",
+  "file_count": 4,
+  "tree_sha256": "917863080e9c2fd1f979052a794463ffeb36e153cbbf2dafcdf8c6486e970301",
+  "basis": "text LF-normalized (CRLF->LF) + sha256; binary raw bytes + sha256",
+  "files": [
+    {
+      "path": "fixtures/transcript.txt",
+      "bytes": 771,
+      "sha256": "9b8b67c818ad1ead829c8900414394a0b47e41df789dcc35f78111b8b0778cde"
+    },
+    {
+      "path": "manifest.json",
+      "bytes": 364,
+      "sha256": "f9ed4196b608963ef6026741e3013e3d069535915ddbc5a035470a7924b96cb2"
+    },
+    {
+      "path": "oracle/summary.json",
+      "bytes": 84,
+      "sha256": "4c82acdccb7e76963dc6dc18c90e5cbf7e4c98c40ab2eadcbfe98dd2eef3bea5"
+    },
+    {
+      "path": "oracle/纪要.docx",
+      "bytes": 37325,
+      "sha256": "d71695e987604e5bd2a5e7e125717d1673df6ba92cf55f6cfdd677f254efd065"
+    }
+  ]
+}

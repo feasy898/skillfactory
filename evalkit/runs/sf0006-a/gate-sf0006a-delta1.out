@@ -1,0 +1,22 @@
+PASS A-01  evalkit/**/*.py afp-clone 零命中
+PASS A-01b  白名单外新增=无 存量改写=0 被调用命中=1
+PASS A-02  8/8 SELFTEST PASS
+PASS A-03  8 份 contract 指向本仓且红绿记录齐
+PASS A-04  freeze=0 changelog 1->4 sf0003=0(全绿34门) keyfiles gen=8/8 rc=8/8
+PASS A-05  exit=0 d1/d3/ready 保持=True 已签=True ok(self=0 red=1) d2.selftest=True d3.exit=3(WAITING_WS3)
+pool-state -> /home/pan-ding/workspace/skill工厂/skillfactory/bench/devpool-r1/pool-state.json （ready=0）
+
+PASS A-06  32 个题面文件与 c5b4ca0 快照逐一相等，fixtures 集合无增删
+PASS A-11  nc=0 classify=0 错 CLI 参数：输入文件不存在（复刻 D1）
+PASS NC-5    注入一次 rate_limited 后成功
+PASS NC-6    注入连续 2 次 stream_idle_timeout
+PASS NC-7    3 族全绿 + 1 族全崩
+PASS NC-8    人为把某臂产物做坏
+PASS NC-CTRL 无植入（正常臂/绿路）
+
+负控全红 + 正常臂不误报: 成立（9/9）
+
+PASS A-12  泄漏=0 文件数=20 []
+SKIP A-13  由开发方按卡面命令执行并汇报退出码；B 层冒烟将实测复验 nonce 矩阵
+SKIP A-14  由开发方按卡面命令执行并汇报退出码；B-04 将用 oracle_gate verify 实测复验
+== SF-0006 A 层门槛: 9/9 PASS
