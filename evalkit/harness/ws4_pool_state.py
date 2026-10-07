@@ -11,8 +11,16 @@
      d1/d3 signoff，不得把已签署记录冲回 null；
    - d2_record：canonical 种子 + 生成时间 + 生成树逐文件 sha256（纯机械，自足）；
    - d3_record：D3 门实测（自环 + fail-closed 出口）+ signoff（未签=null，已签则继承）；
+     mm/hot 金标标注渠道登记 annotator_kind="delegated-signing-model"（A-10；
+     ofc 三题金标属 WS3 未注入，不带该字段）；
    - d4_record：难度带 null（首轮未标定）+ 首轮分布记录（全带外，卡面允许）。
-   status=built、ready=false（READY≥5 需 owner D1 签署后由 planner 翻绿）。
+   status=built；ready 由盘上记录派生（SF-0006-D3FIX 修4，A-10 口径）：
+     ready = d1 signoff 签署人非 null ∧ 该题 D3 真实对拍达标（real_gate_exit=0 且
+     real_result.accuracy≥0.95）∧ d3 signoff 三字段非 null ∧ line∈{mm,hot}；
+     counts.ready 同步；禁止手改 pool-state.json。
+   generated_at（pool 级与 d2 级）重跑继承既有值：重跑幂等（A-10 门 preserved
+     前后全量比对；A-05 签署/就绪保全的时态面收口——eef8056 时代「仅 generated_at
+     重算」的重跑副作用不再产生）。
 
 用法：python ws4_pool_state.py [--evalbench-version v6-mvp-0.3]
 """
@@ -56,11 +64,11 @@ def d1_record(cfg, prev_signoff=None):
     }
 
 
-def d3_record(task_id, prev_signoff=None):
+def d3_record(task_id, line, prev_signoff=None):
     import ws4_d3_gate
     selfloop = ws4_d3_gate.self_loop(task_id)
     code, real = ws4_d3_gate.real_mode(task_id)
-    return {
+    rec = {
         "stage": "D3 判分器化（人工金标对拍 ≥95%；人工必须过）",
         "self_loop": selfloop,
         "real_gate_exit": code,
@@ -69,6 +77,26 @@ def d3_record(task_id, prev_signoff=None):
         "real_result": real if code != 3 else None,
         "signoff": dict(prev_signoff) if prev_signoff else dict(SIGNOFF_NULL),
     }
+    if line in ("mm", "hot"):  # A-10：mm/hot 金标标注渠道=受托模型（ofc 金标属 WS3 未注入）
+        rec["annotator_kind"] = "delegated-signing-model"
+    return rec
+
+
+def derive_ready(line, d1_signoff, d3_rec):
+    """SF-0006-D3FIX 修4（A-10 口径，owner-delegated-signing-20261008 §三）：
+    ready 只能由本脚本从盘上记录派生——D1 已签 ∧ D3 真实对拍达标
+    （real_gate_exit=0 且 real_result.accuracy≥0.95）∧ D3 已签（三字段非 null）
+    ∧ line∈{mm,hot}（ofc 金标对拍属 WS3，恒不翻绿）。禁止手改 pool-state.json。"""
+    d1_ok = bool((d1_signoff or {}).get("签署人"))
+    d3s = d3_rec.get("signoff") or {}
+    d3_signed = all(d3s.get(k) for k in ("签署人", "日期", "被签对象sha256"))
+    rr = d3_rec.get("real_result") or {}
+    try:
+        acc = float(rr.get("accuracy") or 0.0)
+    except (TypeError, ValueError):
+        acc = 0.0
+    d3_real_ok = d3_rec.get("real_gate_exit") == 0 and acc >= 0.95
+    return bool(d1_ok and d3_signed and d3_real_ok and line in ("mm", "hot"))
 
 
 def main(argv):
@@ -79,18 +107,24 @@ def main(argv):
     import ws4_gen
     import ws4_judge
 
-    now = datetime.datetime.now().astimezone().isoformat(timespec="seconds")
-    # 签署保全（SF-0006 A-05）：重建前读取既有 pool-state.json，已落盘的 d1/d3
-    # signoff 逐题继承；文件缺失或损坏视为无历史（全部按未签 null 重建）。
+    # 签署保全（SF-0006 A-05）+ 重跑幂等（A-10 门 preserved 前后全量比对）：
+    # 重建前读取既有 pool-state.json，已落盘的 d1/d3 signoff 逐题继承，generated_at
+    # 沿用既有值（重跑不改时间戳——eef8056 时代「仅 generated_at 重算」的副作用收口）；
+    # 文件缺失或损坏视为无历史（按未签 null、当前时刻重建）。
     prev_tasks = {}
+    prev_generated_at = None
     pool_path = os.path.join(BENCH, "pool-state.json")
     if os.path.isfile(pool_path):
         try:
             with io.open(pool_path, encoding="utf-8") as f:
-                prev_tasks = {t.get("id"): t for t in json.load(f).get("tasks", [])}
+                prev_pool = json.load(f)
+            prev_tasks = {t.get("id"): t for t in prev_pool.get("tasks", [])}
+            prev_generated_at = prev_pool.get("generated_at")
         except (ValueError, OSError) as exc:
             print("warn: 既有 pool-state.json 不可读，签署继承跳过: %s" % exc, file=sys.stderr)
             prev_tasks = {}
+            prev_generated_at = None
+    now = prev_generated_at or datetime.datetime.now().astimezone().isoformat(timespec="seconds")
 
     def prev_signoff_of(tid, record_key):
         rec = (prev_tasks.get(tid) or {}).get(record_key) or {}
@@ -113,16 +147,18 @@ def main(argv):
         st = subprocess.run([sys.executable, os.path.join(pack, "gen_oracle.py"), "--selftest"],
                             capture_output=True, text=True, env=dict(os.environ, PYTHONIOENCODING="utf-8"))
         selftest_pass = "SELFTEST PASS" in st.stdout
+        d2_generated_at = (((prev_tasks.get(tid) or {}).get("d2_record") or {})
+                           .get("generated_at")) or now  # 重跑幂等：沿用既有时间戳
         d2 = {
             "stage": "D2 题面→实例+oracle（纯机械，同种子逐字节复现+生成器红绿自检）",
             "seed": cfg["canonical_seed"], "nonce_set": "A",
-            "generated_at": now,
+            "generated_at": d2_generated_at,
             "outputs_sha256": manifest["sha256"],
             "selftest": {"exit": st.returncode, "selftest_pass": selftest_pass,
                          "covers": "BQ-8 红绿两态 / BQ-9 nonce 交叉红 / BQ-10 同种子逐字节 / fixtures 漂移守卫"},
         }
 
-        d3 = d3_record(tid, prev_signoff_of(tid, "d3_record"))
+        d3 = d3_record(tid, cfg["line"], prev_signoff_of(tid, "d3_record"))
 
         d4 = {
             "stage": "D4 校准入池（难度带分拣）",
@@ -147,37 +183,44 @@ def main(argv):
             if os.path.isfile(fp):
                 pack_files["fixtures/" + fn] = hashlib.sha256(open(fp, "rb").read()).hexdigest()
 
+        d1 = d1_record(cfg, prev_signoff_of(tid, "d1_record"))
+        # ready 派生（SF-0006-D3FIX 修4，A-10 口径）：只能由盘上记录推导，禁止手改
+        ready_val = derive_ready(cfg["line"], d1["signoff"], d3)
         tasks_out.append({
             "id": tid, "pack": "evalkit/packs/ws4-dev/%s" % tid, "line": cfg["line"],
             "case_type": cfg["case_type"], "origin": cfg["origin"],
             "source_ref": cfg.get("source_ref"),
-            "status": "built", "ready": False,
+            "status": "built", "ready": ready_val,
             "canonical_seed": cfg["canonical_seed"],
             "pack_files_sha256": pack_files,
-            "d1_record": d1_record(cfg, prev_signoff_of(tid, "d1_record")),
+            "d1_record": d1,
             "d2_record": d2,
             "d3_record": d3,
             "d4_record": d4,
         })
-        print("%s: contract+l1 ok(self=%s red=%s) d2.selftest=%s d3.exit=%s(%s)" %
-              (tid, l1["selfcheck_exit"], l1["redpath_exit"], selftest_pass, d3["real_gate_exit"], d3["state"]))
+        print("%s: contract+l1 ok(self=%s red=%s) d2.selftest=%s d3.exit=%s(%s) ready=%s" %
+              (tid, l1["selfcheck_exit"], l1["redpath_exit"], selftest_pass,
+               d3["real_gate_exit"], d3["state"], ready_val))
 
     pool = {
         "pool": "ws4-dev",
         "built_by": "SF-0005 · worker-glm-bd",
         "generated_at": now,
         "evalbench_version": args.evalbench_version,
-        "counts": {"tasks": len(tasks_out), "built": len(tasks_out), "ready": 0,
+        "counts": {"tasks": len(tasks_out), "built": len(tasks_out),
+                   "ready": sum(1 for t in tasks_out if t["ready"]),
                    "case_type": {"positive": 4, "near-negative": 2, "adversarial": 2},
                    "origin": {"self-built": 5, "public-variant": 3},
                    "line": {"mm": 2, "hot": 3, "ofc": 3}},
         "signoff_ledger": "d1/d3 signoff 重建时继承已落盘签署（A-05 签署保全），未签者保持 null=WAITING"
-                          "（ofc 3 题 D3 另为 WAITING_WS3）；"
-                          "READY 翻绿条件=owner D1 签署（mm/hot ≥5 题即满足卡 B 兜底门）",
+                          "（ofc 3 题 D3 另为 WAITING_WS3）；ready 由盘上记录派生（SF-0006-D3FIX 修4，"
+                          "A-10 口径：D1 已签 ∧ D3 真实对拍达标 ∧ D3 已签 ∧ line∈{mm,hot}），"
+                          "禁止手改 pool-state.json",
         "tasks": tasks_out,
     }
     write_json(os.path.join(BENCH, "pool-state.json"), pool)
-    print("pool-state -> %s （ready=0）" % os.path.join(BENCH, "pool-state.json"))
+    print("pool-state -> %s （ready=%d）" % (os.path.join(BENCH, "pool-state.json"),
+                                             sum(1 for t in tasks_out if t["ready"])))
     return 0
 
 

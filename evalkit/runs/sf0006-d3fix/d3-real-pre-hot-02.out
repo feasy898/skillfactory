@@ -1,0 +1,15 @@
+对拍未达 95%：{"task": "hot-02", "mode": "real", "samples": 14, "agree": 12, "accuracy": 0.8571428571428571, "mismatches": ["manifest.json: 样本结构缺件（verdict.json/product/）", "s07: checker=True 金标=False", "s14: checker=True 金标=False"]}
+{
+  "d3_gate": {
+    "task": "hot-02",
+    "mode": "real",
+    "samples": 14,
+    "agree": 12,
+    "accuracy": 0.8571428571428571,
+    "mismatches": [
+      "manifest.json: 样本结构缺件（verdict.json/product/）",
+      "s07: checker=True 金标=False",
+      "s14: checker=True 金标=False"
+    ]
+  }
+}

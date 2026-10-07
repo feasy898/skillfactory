@@ -248,15 +248,18 @@ def judge_hot(product_root, basis, cfg):
     checks.append(check("task_outcome_artifacts_present", True,
                         "骨架.md %d 字符 / structure.json ok" % len(md)))
 
-    # 结构自洽：顶层键 + points 记账 + element_count
-    miss_keys = [k for k in HOT_TOP_KEYS if k not in sj]
+    # 结构自洽：顶层键序（题面明文「顶层键依次为…」——SF-0006-D3FIX 修1：由仅查存在
+    # 收紧为查存在且依序）+ points 记账 + used 锚输入基准 + element_count
+    keys_ok = list(sj.keys()) == HOT_TOP_KEYS
     used, unused = sj.get("points_used", []), sj.get("points_unused", [])
     acc_ok = sorted(used + unused) == sorted(points) and sj.get("points_input_count") == len(points)
+    used_ok = used == points[:slots]  # 修2：used 以输入 points 为基准（对齐 L1 runner 口径）
     ec_ok = sj.get("element_count") == len(sj.get("elements", []))
     checks.append(check("task_outcome_structure_selfconsistent",
-                        not miss_keys and acc_ok and ec_ok,
-                        "缺键=%s points记账=%s element_count=%s(%s/%s)" %
-                        (miss_keys, acc_ok, ec_ok, sj.get("element_count"), len(sj.get("elements", [])))))
+                        keys_ok and acc_ok and used_ok and ec_ok,
+                        "键序=%s points记账=%s used==points[:%d]=%s element_count=%s(%s/%s)" %
+                        (keys_ok, acc_ok, slots, used_ok,
+                         ec_ok, sj.get("element_count"), len(sj.get("elements", [])))))
 
     # 冻结要素名序
     names = [e.get("name", "") for e in sj.get("elements", [])]
@@ -284,14 +287,15 @@ def judge_hot(product_root, basis, cfg):
         det = "引入len=%d 总结len=%d" % (len(intro), len(summary_e))
     checks.append(check("task_outcome_platform_shape_rules", ok, det))
 
-    # 卖点填充（每个槽位含对应卖点或占位）
+    # 卖点填充（每个槽位含对应卖点或占位；SF-0006-D3FIX 修2：基准由产物自声明 used[i]
+    # 改为输入 points[i]——产物同步打乱 used 不再自证通过；占位分支按 len(points) 判断）
     bad_slots = []
     for i in range(slots):
         slot = [v for k, v in elems_by_name.items() if k in
                 ("价值点%d" % (i + 1), "要点%d" % (i + 1), "论点%d" % (i + 1))]
         content = slot[0] if slot else ""
-        if i < len(used):
-            if used[i] not in content:
+        if i < min(len(points), slots):
+            if points[i] not in content:
                 bad_slots.append("槽%d未含卖点" % (i + 1))
         else:
             if ("【占位:价值点%d】" % (i + 1)) not in content:

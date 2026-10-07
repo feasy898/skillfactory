@@ -166,6 +166,43 @@
   verify-sf0003-pre-sf0006a-delta1.out（34 门全绿）+
   freeze-verify-pre-sf0006a-delta1.out（28 文件全对）
 
+**FIX-C8｜ws4 判分面四处缺陷（D3 开卷裁决 6 分歧全 checker 责任，SF-0006-D3FIX 第 1 轮）**
+- 题号：SF-0006 D3（alpha 开卷裁决 2026-10-08 定谳：mm-01/mm-02/hot-01/hot-02/hot-03
+  5 题 D3 真实对拍修前全 exit 1，红证据=runs/sf0006-d3fix/d3-real-pre-*.out——
+  mm 两题纯 manifest 误报；hot 三题 12/14 另有 s07 键序乱、s14 points_used 换序两份
+  误判，金标 expected_pass=false 而 checker=true）
+- 旧文本→新文本（四处，均 checker 责任，不动 goldens 标注与 pool-state 签署）：
+  ① `harness/ws4_judge.py` judge_hot 结构自洽只查顶层键存在（miss_keys）→ 收紧为
+  `list(sj.keys()) == HOT_TOP_KEYS` 键序断言（题面明文「顶层键依次为…」；
+  三道 hot 题共用 judge_hot，修一处覆盖三题）；
+  ② 同文件槽位判定拿产物自声明 used[i] 当基准（产物同步打乱即自证通过）→ 改以
+  输入 points[i] 为基准（`i < min(len(points), slots)` 比对 `points[i] in content`，
+  占位分支按 len(points) 判断），并在 structure_selfconsistent 加
+  `used == points[:slots]`（与 L1 runner dist/hot-templates-skill/eval/runner.py
+  expected_used 口径对齐）；
+  ③ `harness/ws4_d3_gate.py` real 模式 `os.listdir(golden_root)` 把
+  goldens/<task>/manifest.json 登记文件当样本条目报「样本结构缺件」→ 样本枚举只认
+  目录（以 product/ 存在为准），文件条目跳过；
+  ④ `harness/ws4_pool_state.py` ready/counts.ready 字面量 false/0 → 按修订卡 A-10
+  派生（d1 signoff 签署人非 null ∧ 该题 d3 真实对拍达标 real_gate_exit=0 且
+  real_result.accuracy≥0.95 ∧ d3 signoff 三字段非 null ∧ line∈{mm,hot}），
+  counts.ready 同步，mm/hot d3_record 登记 annotator_kind="delegated-signing-model"，
+  generated_at 重跑继承既有值（重跑幂等——A-10 门 preserved 前后全量比对成立，
+  eef8056 时代「仅 generated_at 重算」副作用收口）；禁止手改 pool-state.json。
+- 缺陷类型：判分器口径缺陷 ×3（键序漏检/基准自证/枚举误报）+ 装置派生缺陷 ×1
+  （ready 字面量）；不改任何生成器种子与判分阈值语义面（oracle 键序/槽位本为口径，
+  8 题 canonical oracle 修后 checker 仍全绿）
+- 判定人：alpha 开卷裁决（2026-10-08，owner 委托）；执行=dev GLM-5.3-Flash
+- 复现命令：`python harness/ws4_d3_gate.py --task hot-01 --real` → 修前 exit 1
+  （12/14+manifest 误报）修后 exit 0（14/14 accuracy=1.0；5 题同验全 0）；
+  `python packs/ws4-dev/<题>/gen_oracle.py --selftest` 8 题 exit 0；
+  `python harness/ws4_pool_state.py` 连跑两次 exit 0 且 pool-state.json 前后全量相等、
+  ready 全 false（D3 未签；派生翻绿待 d3 signoff 落盘后由本脚本产生）；
+  `python harness/freeze_device.py verify` exit 0（44 全对，变更集恰等三文件）；
+  `python harness/verify_sf0003.py` exit 0（34 门全绿）；改前留档
+  runs/sf0006-d3fix/{freeze-verify-pre,keyfiles-pre,verify-sf0003-pre}*-sf0006-d3fix.*
+  + d3-real-pre-*.out（5 题 exit 1）
+
 ---
 
 ## v6-mvp-0.2 · 2026-10-03（SF-0003 · worker-glm-m4）

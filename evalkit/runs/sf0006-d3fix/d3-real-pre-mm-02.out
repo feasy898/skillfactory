@@ -1,0 +1,13 @@
+对拍未达 95%：{"task": "mm-02", "mode": "real", "samples": 12, "agree": 12, "accuracy": 1.0, "mismatches": ["manifest.json: 样本结构缺件（verdict.json/product/）"]}
+{
+  "d3_gate": {
+    "task": "mm-02",
+    "mode": "real",
+    "samples": 12,
+    "agree": 12,
+    "accuracy": 1.0,
+    "mismatches": [
+      "manifest.json: 样本结构缺件（verdict.json/product/）"
+    ]
+  }
+}

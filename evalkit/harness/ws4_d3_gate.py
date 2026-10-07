@@ -67,6 +67,10 @@ def real_mode(task_id):
     mismatches = []
     for sample in sorted(os.listdir(golden_root)):
         sdir = os.path.join(golden_root, sample)
+        if not os.path.isdir(sdir):
+            # SF-0006-D3FIX 修3：样本枚举只认目录（以 product/ 存在为准）——
+            # manifest.json 等登记文件不是样本条目，跳过、不报缺件
+            continue
         vpath = os.path.join(sdir, "verdict.json")
         pdir = os.path.join(sdir, "product")
         if not (os.path.isfile(vpath) and os.path.isdir(pdir)):
