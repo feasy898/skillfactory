@@ -6,7 +6,7 @@
   "counts": {
     "tasks": 8,
     "built": 8,
-    "ready": 0,
+    "ready": 5,
     "case_type": {
       "positive": 4,
       "near-negative": 2,
@@ -32,7 +32,7 @@
       "origin": "self-built",
       "source_ref": null,
       "status": "built",
-      "ready": false,
+      "ready": true,
       "canonical_seed": 4201,
       "pack_files_sha256": {
         "brief.md": "80ff3b1c5dd7e6d7621e79de7855f7e23e0f69d3706f25d5f76d97f1f2ae7cfa",
@@ -116,9 +116,9 @@
           "mismatches": []
         },
         "signoff": {
-          "签署人": null,
-          "日期": null,
-          "被签对象sha256": null
+          "签署人": "owner 委托 alpha 代行",
+          "日期": "2026-10-08",
+          "被签对象sha256": "711ed99dc2b4503230ed7c29d8631b10107862bba66679648f29357b83eecaff"
         },
         "annotator_kind": "delegated-signing-model"
       },
@@ -138,7 +138,7 @@
       "origin": "public-variant",
       "source_ref": "公开规范条目：《党政机关公文处理工作条例》（中办发〔2012〕14号，公开发布）「纪要」文种定义 + GB/T 9704-2012《党政机关公文格式》（国家标准全文公开系统 openstd.samr.gov.cn，条目号 GB/T 9704-2012）；题面内容 100% 自写，实体全部 nonce 化改写，零原文复制",
       "status": "built",
-      "ready": false,
+      "ready": true,
       "canonical_seed": 4202,
       "pack_files_sha256": {
         "brief.md": "eecf24f3afe9364746ff9c8e3db7f44cf5528b854bdf596a2ad6e8462b95dd65",
@@ -222,9 +222,9 @@
           "mismatches": []
         },
         "signoff": {
-          "签署人": null,
-          "日期": null,
-          "被签对象sha256": null
+          "签署人": "owner 委托 alpha 代行",
+          "日期": "2026-10-08",
+          "被签对象sha256": "4d68116dc0335377ad3fc708bded37076d501b3bbc7e80495affbace2c2083e3"
         },
         "annotator_kind": "delegated-signing-model"
       },
@@ -244,7 +244,7 @@
       "origin": "public-variant",
       "source_ref": "公开规范页：抖音创作者服务中心公开规范（creator.douyin.com，社区公约/内容规范）+《中华人民共和国广告法》第九条绝对化用语条款（公开法条）；题面/卖点全部自写+nonce 改写，零原文复制",
       "status": "built",
-      "ready": false,
+      "ready": true,
       "canonical_seed": 4203,
       "pack_files_sha256": {
         "brief.md": "000ccae8ec3875a44e36aa253dfd629323cc63dfe3c0f2b76c5fefbb48f9fda7",
@@ -328,9 +328,9 @@
           "mismatches": []
         },
         "signoff": {
-          "签署人": null,
-          "日期": null,
-          "被签对象sha256": null
+          "签署人": "owner 委托 alpha 代行",
+          "日期": "2026-10-08",
+          "被签对象sha256": "8662add9ec76115426275fb0a9e0f057390dcf642e322a6b9feba52b2cd7a912"
         },
         "annotator_kind": "delegated-signing-model"
       },
@@ -350,7 +350,7 @@
       "origin": "self-built",
       "source_ref": null,
       "status": "built",
-      "ready": false,
+      "ready": true,
       "canonical_seed": 4204,
       "pack_files_sha256": {
         "brief.md": "1f3fbb26f166485f0aa367e55535ec9d2676da145e5db091244444b985a5b420",
@@ -434,9 +434,9 @@
           "mismatches": []
         },
         "signoff": {
-          "签署人": null,
-          "日期": null,
-          "被签对象sha256": null
+          "签署人": "owner 委托 alpha 代行",
+          "日期": "2026-10-08",
+          "被签对象sha256": "f266cdbb2890b1f5aeba5e4061189c5089dc642a775fe03ab2c70ee1be9e68c1"
         },
         "annotator_kind": "delegated-signing-model"
       },
@@ -456,7 +456,7 @@
       "origin": "self-built",
       "source_ref": null,
       "status": "built",
-      "ready": false,
+      "ready": true,
       "canonical_seed": 4205,
       "pack_files_sha256": {
         "brief.md": "e8e6b8145c5e9fb2751a3719fe880ca0846dd125f0d808433d1d99a4c406a64d",
@@ -540,9 +540,9 @@
           "mismatches": []
         },
         "signoff": {
-          "签署人": null,
-          "日期": null,
-          "被签对象sha256": null
+          "签署人": "owner 委托 alpha 代行",
+          "日期": "2026-10-08",
+          "被签对象sha256": "27e30aed3f3f99c9da20b1d4960bb8aac14b863b19505c1abb43117d4505acc6"
         },
         "annotator_kind": "delegated-signing-model"
       },
