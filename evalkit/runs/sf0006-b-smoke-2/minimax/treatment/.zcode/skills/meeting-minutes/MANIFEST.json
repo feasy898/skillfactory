@@ -1,0 +1,110 @@
+{
+  "manifest_version": "1",
+  "skill": "meeting-minutes",
+  "skill_version": "1.0.0",
+  "variant": "standard",
+  "source_pkg": "meeting-minutes-skill",
+  "built_by": "build.py v1.1.0",
+  "transforms": {
+    "frontmatter": [
+      "top.version -> metadata.version",
+      "top.permissions -> metadata.permissions"
+    ],
+    "text_normalization": "utf-8 decode; CRLF/CR -> LF (text files only)",
+    "excluded": [
+      "./reference",
+      "eval/__pycache__"
+    ],
+    "stripped": [
+      "README.md"
+    ],
+    "added": [
+      "MANIFEST.json"
+    ],
+    "reference_ref_rewrite": {
+      "rule": "literal 'reference/' -> 'canonical 参照区／'（SF-0007 K5A-01；签署②(b) 改写说明路径）",
+      "files": [
+        "EVALUATION.md",
+        "MANIFEST.md",
+        "SKILL.md"
+      ]
+    },
+    "disclosure_append": {
+      "target": "EVALUATION.md",
+      "marker": "SF-0007 disclosure v1",
+      "basis": "REGISTRY「对外必须随附的披露口径」1–5 条（SF-0007 K5A-04）"
+    }
+  },
+  "normalizations": {
+    "text": "utf-8 + LF",
+    "binary": "byte-identical"
+  },
+  "file_count": 13,
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "8aa7d155bacbccfb91d0a3702a986da380947b88822e84f1b65b9f966d9bf1e1",
+      "bytes": 1425
+    },
+    {
+      "path": "EVALUATION.md",
+      "sha256": "907d15b3fba935b08408ae02d4319efbee36a680b2f709578b637e12c190335e",
+      "bytes": 5930
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "fc1d71276934d21069136891d65c1ba29b0d3a96db751a2fdd8c8f308d0fed59",
+      "bytes": 1069
+    },
+    {
+      "path": "MANIFEST.md",
+      "sha256": "fe7489b2510bed0f2ac4c488b64f5092fa6f5c452eaad4318bc0ee687b940bf2",
+      "bytes": 1047
+    },
+    {
+      "path": "SKILL.md",
+      "sha256": "0b04eae2b6121e12616c1aa69711c3416ff2fd5fdd73398831d28ed9de94aff5",
+      "bytes": 6616
+    },
+    {
+      "path": "eval/golden.json",
+      "sha256": "b3be400ae3b4984a1537d4909b9ea379246d8b978d3c8a179c90182c5c854315",
+      "bytes": 4182
+    },
+    {
+      "path": "eval/runner.py",
+      "sha256": "51721efdf7fcb33bca866746c72e52ca3294eb8bd43a2e5d44402793788ab872",
+      "bytes": 11304
+    },
+    {
+      "path": "references/classification-rules.md",
+      "sha256": "4347864b3586e900170a88e5b3a53889107352852ada33a3335172b668ab70fc",
+      "bytes": 2991
+    },
+    {
+      "path": "references/docx-and-summary.md",
+      "sha256": "595000dac3ec67e09ed0c6b5b972dd5ffd334a566ecdd9f9225fd50d10813763",
+      "bytes": 3502
+    },
+    {
+      "path": "references/extraction-heuristics.md",
+      "sha256": "0c6a997ee56e4d1bd24c68689d0f6f7754fefd0af177eb79cf219e5c2fe6626c",
+      "bytes": 3385
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "dfea9cd01250f46caa09e7e7041e7105cd29d5383c7c3d3fff4a8dd24e79509b",
+      "bytes": 19
+    },
+    {
+      "path": "scripts/gen_docx.py",
+      "sha256": "2b252735a79a4e5df887b2ef079a9584510873167492cbe79b10c8cb9b823f0e",
+      "bytes": 639
+    },
+    {
+      "path": "scripts/minutes.py",
+      "sha256": "630068f4d33206e863cf0f53d6111b6056fe481c25fffd030da8dd783e513f80",
+      "bytes": 10153
+    }
+  ]
+}

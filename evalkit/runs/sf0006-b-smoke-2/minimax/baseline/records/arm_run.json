@@ -1,0 +1,47 @@
+{
+  "name": "minimax-baseline",
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/minimax/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 21492,
+  "started_at_ms": 1791409857290,
+  "session_id": "sess_d0d57543-05cc-4da6-8a27-78691ca06fb9",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/minimax/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": "enabled",
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 186440,
+      "ot": 3025,
+      "dur": 16518,
+      "n": 9
+    }
+  ],
+  "input_tokens": 186440,
+  "output_tokens": 3025,
+  "stdout_bytes": 2691,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": ".\\n- **三、风险与关注** — 2 numbered items:\\n  - 吴志远: 财务部侧存在履约风险，去年高峰期出现过积压，今年需要提前准备预案\\n  - 赵静怡: 灰度放量方案的数据口径尚未对齐，复盘前需要补齐基线数据\\n\\n`out/summary.json` — `{\\\"决议事项\\\": 2, \\\"待办事项\\\": 2, \\\"风险与关注\\\": 2, \\\"合计\\\": 6}`.\\n\\n**How I verified it**: I wrote a checker that reads the generated docx back and confirms every one of the four numbered item strings and both table 事项 cells appears verbatim in `fixtures/transcript.txt`, that every 相关人/负责人 is one of the five speakers who actually spoke (主持人、赵静怡、黄雨桐、徐静怡、吴志远), that the three section headings match byte-for-byte in the right order, and that the summary counts equal the actual item counts. All passed. No content was summarized or paraphrased — I took each item whole from one transcript line.\\n\\nOne environment note worth flagging: the brief says python-docx is installed, but it isn't in the system `python3`. I used the interpreter at `/tmp/sfvenv/bin/python`, which has it. The generator is saved as `build_minutes.py` in the working directory so the docx can be regenerated with that interpreter.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 9,\n    \"inputTokens\": 186440,\n    \"outputTokens\": 3025,\n    \"totalTokens\": 189465,\n    \"cacheReadTokens\": 163469,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 412,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 189465,\n    \"contextUsed\": 23645,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "mechanism_note": "M2 成对 env + defaultModelSelection.options.reasoningLevel + providerOrder 置顶",
+  "transcript_dir": "evalkit/packs/ws4-dev/mm-01/transcript/minimax-baseline-r2"
+}

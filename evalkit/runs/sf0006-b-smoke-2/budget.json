@@ -1,0 +1,69 @@
+{
+  "cap_counted_arms": 4,
+  "retry_cap_per_arm": 1,
+  "counted_arm_procs": 4,
+  "retry_procs": 0,
+  "model_calls": 4,
+  "entries": [
+    {
+      "slot": 1,
+      "arm": "glm-baseline",
+      "kind": "arm",
+      "ts_intent": "05:43:04",
+      "status": "done",
+      "model_call": true,
+      "exit_code": 0,
+      "session_id": "sess_7ae90637-702a-4f36-a62c-595e1ed0fefd",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      }
+    },
+    {
+      "slot": 2,
+      "arm": "glm-treatment",
+      "kind": "arm",
+      "ts_intent": "05:45:59",
+      "status": "done",
+      "model_call": true,
+      "exit_code": 0,
+      "session_id": "sess_579a5c71-3654-4fd8-a580-d25d13031230",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      }
+    },
+    {
+      "slot": 3,
+      "arm": "minimax-baseline",
+      "kind": "arm",
+      "ts_intent": "05:50:57",
+      "status": "done",
+      "model_call": true,
+      "exit_code": 0,
+      "session_id": "sess_d0d57543-05cc-4da6-8a27-78691ca06fb9",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      }
+    },
+    {
+      "slot": 4,
+      "arm": "minimax-treatment",
+      "kind": "arm",
+      "ts_intent": "05:51:20",
+      "status": "done",
+      "model_call": true,
+      "exit_code": 0,
+      "session_id": "sess_08d4efa0-9668-45f2-a09e-d4cae746c8e5",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      }
+    }
+  ]
+}

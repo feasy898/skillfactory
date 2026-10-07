@@ -1,0 +1,11 @@
+{
+  "run_id": "glm",
+  "run_dir": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/glm",
+  "arms": {
+    "baseline": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/glm/baseline",
+    "treatment": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/glm/treatment"
+  },
+  "treatment_skill_mount": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/glm/treatment/.zcode/skills/meeting-minutes",
+  "baseline_has_skill": false,
+  "pack": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/packs/ws4-dev/mm-01"
+}

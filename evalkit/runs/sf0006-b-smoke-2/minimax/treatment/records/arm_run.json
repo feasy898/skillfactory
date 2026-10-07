@@ -1,0 +1,47 @@
+{
+  "name": "minimax-treatment",
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/minimax/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 89881,
+  "started_at_ms": 1791409880794,
+  "session_id": "sess_08d4efa0-9668-45f2-a09e-d4cae746c8e5",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/minimax/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": "enabled",
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 520517,
+      "ot": 9588,
+      "dur": 83712,
+      "n": 19
+    }
+  ],
+  "input_tokens": 520517,
+  "output_tokens": 9588,
+  "stdout_bytes": 3337,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "d 3/3/0.\\n\\nI generated to the brief instead, classifying semantically: decision statements → 决议, action items assigned to a named person → 待办, risk statements → 风险. I excluded two lines as non-substantive: the host's 09:26 opener (\\\"人到齐就开始\\\") and the 09:37 closing remark (\\\"好，这几项就议定下来\\\"), which carries no resolution of its own.\\n\\nTwo environment notes: `python-docx` is not in the default `python` on PATH despite the brief saying so — it lives in `/home/pan-ding/venvs/shenbao`, which is what I used. The skill also references `eval/runner.py` with a canonical reference area; that file does not exist in this run directory, so I wrote `verify_minutes.py` instead, which checks the brief's acceptance criteria directly (structure, exact section headings, entry format and numbering, verbatim traceability including speaker match, and summary/docx count agreement) and exits 0.\\n\\nDeliverables are `out/纪要.docx` and `out/summary.json`; `build_minutes.py` and `verify_minutes.py` are left alongside them so the run is reproducible.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 19,\n    \"inputTokens\": 520517,\n    \"outputTokens\": 9588,\n    \"totalTokens\": 530105,\n    \"cacheReadTokens\": 483133,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 754,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 530105,\n    \"contextUsed\": 38188,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "mechanism_note": "M2 成对 env + defaultModelSelection.options.reasoningLevel + providerOrder 置顶",
+  "transcript_dir": "evalkit/packs/ws4-dev/mm-01/transcript/minimax-treatment-r2"
+}

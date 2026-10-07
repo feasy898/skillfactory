@@ -1,0 +1,335 @@
+{
+  "card": "SF-0006",
+  "layer": "B",
+  "run_id": "sf0006-b-smoke-2",
+  "matrix": "mm-01 × {glm, minimax} × {baseline, treatment} × n=1（rep1，nonce A canonical 种子）",
+  "base_commit": "d64a88b4d37a8fa495fcdd79ff075ea17c4da8bf",
+  "opened_at": "2026-10-08T05:41+08:00",
+  "closed_at": "2026-10-08T05:59:17+0800",
+  "verdict_type": "layer-B-smoke",
+  "not_an_acceptance": "本报告只出 B 层冒烟信号，不含任何验收结论；citable 概念属 C 层（C-10），本层不设",
+  "rerun_note": "第 2 轮重跑。第 1 轮 failed_infra 留痕原样保留于 evalkit/runs/sf0006-b-smoke/（未动）；本轮钉版机制改用钉版探针实测验证的双机制（evalkit/runs/sf0006-pin-probe/，提交 d64a88b）：minimax=M2、glm=M4，关键修复=defaultModelSelection.options.reasoningLevel 必填（runtime 0.16.9 质量门对缺失整体弃用，SF-0004 失效根因）",
+  "layers": {
+    "A": {
+      "status": "passed",
+      "evidence": [
+        "evalkit/runs/sf0006-a/gate-sf0006a-final.out：8/8 PASS（A-13/A-14 SKIP 由本层实测复验）",
+        "提交 efcf91c：gate_sf0006b 11/11 PASS（A-07 对拍 5 题 accuracy 1.0 / A-08 构成 / A-09 历史唯一 / A-10 派生断言）",
+        "提交 29e0a25：A 层收官门槛运行产物入库"
+      ]
+    },
+    "B": {
+      "status": "passed",
+      "gates": {
+        "B-01": {
+          "verdict": "pass",
+          "detail": "4 份 records/model_pin.json 五键齐；db model_usage join 实测落点逐字核对：glm 两臂==GLM-5.3 @ account:bigmodel-individual-coding-plan（variant=max），minimax 两臂==Minimax-M3.1-Flash-Preview @ minimax（variant=enabled）；redline_event=false（无 GLM 漂移）"
+        },
+        "B-02": {
+          "verdict": "pass",
+          "detail": "独立复核 b02_verify.py exit 0（precheck/b02-db-join-verify.json）：每臂 telemetry.json 含 session_id；db session.directory==臂目录绝对路径；model_usage 每 session ≥1 行（4/4 all_ok）"
+        },
+        "B-03": {
+          "verdict": "pass",
+          "detail": "minimax/glm 臂启动 env 均含成对变量 ZCODE_BUILTIN_PROVIDER_CONFIG_FILE+ZCODE_PERSONAL_PROVIDER_CONFIG_FILE（glm 另加 ZCODE_DATA_BASE_DIR；只记变量名不记值）；收工 sha256 与开工逐字节相等（三份全局文件）；scratch /tmp/sf0006b2-pin-scratch test ! -e 成立（precheck/b03-compare.txt）"
+        },
+        "B-04": {
+          "verdict": "pass",
+          "detail": "oracle_gate.py verify exit 0（unchanged=true，tree 91786308…）；oracle 根与 4 臂目录 os.path.commonpath 断言互不为子路径（编排器入口断言）"
+        },
+        "B-05": {
+          "verdict": "pass",
+          "detail": "grep -rEn 四类凭据模式 evalkit/runs/sf0006-b-smoke-2 exit 1（零命中）；跑后与收稿前各复跑一次均 exit 1"
+        },
+        "B-06": {
+          "verdict": "not_triggered",
+          "detail": "B 层 passed，模型层失败留痕条款未触发；每臂仍按卡给出 classify 三桶归类与 reason"
+        }
+      }
+    },
+    "C": {
+      "status": "not_run",
+      "reason": "本轮为 B 层冒烟（P5 预算 4 臂已用满）；C 层基线轮（5 题 × 2 族 × 2 臂 × 2 rep ≤40 臂）按卡另开跑批；ls evalkit/runs/sf0006-b-smoke-2/C 不存在"
+    }
+  },
+  "redline_event": false,
+  "budget": {
+    "cap": "P5：B 层 ≤4 个臂进程，每臂 rate_limited 退避重试 ≤1",
+    "counted_arm_procs": 4,
+    "retry_procs": 0,
+    "model_calls": 4,
+    "verdict_vs_cap": "正式臂 4 = P5 上限 4；rate_limited 退避重试 0 次（无 rate_limited 行）；超额未发生",
+    "ledger": "budget.json（spawn 前记账 pending、spawn 后按 db model_usage 实测回填）"
+  },
+  "b01_pin": {
+    "glm_required": "GLM-5.3 @ account:bigmodel-individual-coding-plan（逐字大小写敏感）",
+    "glm_observed": "GLM-5.3 @ account:bigmodel-individual-coding-plan（两臂一致，variant=max）",
+    "glm_verdict": "pass",
+    "minimax_required": "Minimax-M3.1-Flash-Preview @ minimax（逐字大小写敏感）",
+    "minimax_observed": "Minimax-M3.1-Flash-Preview @ minimax（两臂一致，variant=enabled）",
+    "minimax_verdict": "pass",
+    "variant_enrichment": "records/variant-enrichment.json（run_arm.pull_telemetry 聚合列未带 variant，从 db 独立补查回填；只增不改）"
+  },
+  "b02_telemetry": {
+    "all_ok": true,
+    "verify_script": "precheck/b02-db-join-verify.json（b02_verify.py 独立 sqlite ro join 复核）",
+    "sessions": {
+      "glm-baseline": "sess_7ae90637-702a-4f36-a62c-595e1ed0fefd",
+      "glm-treatment": "sess_579a5c71-3654-4fd8-a580-d25d13031230",
+      "minimax-baseline": "sess_d0d57543-05cc-4da6-8a27-78691ca06fb9",
+      "minimax-treatment": "sess_08d4efa0-9668-45f2-a09e-d4cae746c8e5"
+    }
+  },
+  "b03_m1_contract": {
+    "paired_env_var_names_injected": [
+      "ZCODE_BUILTIN_PROVIDER_CONFIG_FILE",
+      "ZCODE_PERSONAL_PROVIDER_CONFIG_FILE"
+    ],
+    "glm_extra_env_var_names": [
+      "ZCODE_DATA_BASE_DIR"
+    ],
+    "paired_env_values_not_recorded": true,
+    "cli_config_sha256_opening": "23ee2edb2034606a6d2a3663faa821577d94c9a4ff03d9a03d1ef59de369402d",
+    "cli_config_sha256_closing": "23ee2edb2034606a6d2a3663faa821577d94c9a4ff03d9a03d1ef59de369402d",
+    "v2_provider_config_sha256_opening": "eb363959959585dea1c872e18abdce98fcb6a54ba0c4fa2e6f25051a9ad553ce",
+    "v2_provider_config_sha256_closing": "eb363959959585dea1c872e18abdce98fcb6a54ba0c4fa2e6f25051a9ad553ce",
+    "v2_credentials_sha256_opening": "d10d11231c6ce2986a940f2b55baea0ea9a68552db0fe95f084e821776740821",
+    "v2_credentials_sha256_closing": "d10d11231c6ce2986a940f2b55baea0ea9a68552db0fe95f084e821776740821",
+    "byte_identical": true,
+    "global_credentials_untouched": true,
+    "derived_copy_purged": true,
+    "derived_copy_path": "/tmp/sf0006b2-pin-scratch（test ! -e 成立）",
+    "evidence": "precheck/b03-compare.txt；凭据值全程不回显不进仓（scratch 派生自检值仅验证非空）"
+  },
+  "b04_oracle": {
+    "record": "oracle/mm-01-rep1.json",
+    "tree_sha256": "917863080e9c2fd1f979052a794463ffeb36e153cbbf2dafcdf8c6486e970301",
+    "verify_exit": 0,
+    "unchanged": true,
+    "commonpath_ok": true,
+    "rep1_nonce_A_match": true,
+    "rep1_fixtures_tree_sha256": "d997a7509413f467c1baf0e9267735565c5d71e2019bc58e9f4cf2eb12d26b82",
+    "note": "oracle 树由 gen_oracle.py 默认 canonical 种子生成（seed=4201 nonce=A，3 files + manifest），开跑前 oracle_gate hash 登记哈希基线（A-14 口径）；fixtures 树哈希与包内 canonical fixtures 逐字相等（A-13 rep1 口径），且与第 1 轮 rep1 相同（确定性复现）"
+  },
+  "b05_secrets": {
+    "pattern": "SF-0006 卡 B-05 条正则逐字（四类凭据前缀 + sk- 长随机串 + AKIA 数字段 + xox 系列）；字面量不写入本报告以免自触发密钥扫描",
+    "grep_exit": 1,
+    "hits": 0
+  },
+  "freeze_verify": {
+    "opening_exit": 0,
+    "closing_exit": 0,
+    "files": 44,
+    "opening_evidence": "precheck/freeze-verify-opening.out",
+    "closing_evidence": "precheck/freeze-verify-closing.out",
+    "when": "跑批期钉版面零漂移（A-04：B 层收工再执行一次 freeze verify）"
+  },
+  "precheck": {
+    "isolation_baseline_exit": "0 ×2（glm/minimax baseline 臂）",
+    "treatment_find_reference_oracle": "empty（×2 treatment 臂，find -type d \\( -name reference -o -name oracle \\) 0 行）",
+    "pack_checks_ei7_ei9_ei20": "exit 0 ×2 族（precheck/pack-checks-glm.json / pack-checks-minimax.json）",
+    "derivation_selfcheck_zero_model": "spawn 前对 M2/M4 派生做零模型自检（defaultModelSelection 结构、identity 条目注入、builtin 副本逐字节一致），验后 scratch 即删，不消耗臂预算"
+  },
+  "arms": [
+    {
+      "arm": "glm-baseline",
+      "family": "glm",
+      "arm_kind": "baseline",
+      "arm_dir": "evalkit/runs/sf0006-b-smoke-2/glm/baseline",
+      "mechanism": "M4：M2 成对 env（defaultModelSelection={account:bigmodel-individual-coding-plan, GLM-5.3, options:{reasoningLevel:\"max\"}} + providerOrder 置顶）+ ZCODE_DATA_BASE_DIR=<scratch>/glm/zcode-data（凭据逐条目原样拷贝 + 注入明文 account-provider:…:identity 条目，值从 api-key 条目名解析，不回显不进仓）",
+      "spawned": true,
+      "exit_code": 0,
+      "timed_out": false,
+      "wall_ms": 172870,
+      "session_id": "sess_7ae90637-702a-4f36-a62c-595e1ed0fefd",
+      "model_id_observed": "GLM-5.3",
+      "provider_id_observed": "account:bigmodel-individual-coding-plan",
+      "variant_observed": null,
+      "model_usage_rows": 1,
+      "input_tokens": 443467,
+      "output_tokens": 13186,
+      "pin_required": "GLM-5.3 @ account:bigmodel-individual-coding-plan（逐字大小写敏感）",
+      "pin_verdict": "pass",
+      "model_pin_json": "records/model_pin.json 五键齐（model_id/provider_base_url/cli_runtime/date/reasoning_variant）",
+      "classify": {
+        "bucket": "measured_failure",
+        "buckets_detail": [
+          "measured_failure"
+        ],
+        "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+        "events_in": []
+      },
+      "reason": "正式臂 spawn（P5 预算 1/4）：M4 钉版，进程 exit 0，db model_usage 实测 GLM-5.3 @ account:bigmodel-individual-coding-plan（variant=max），逐字命中契约落点；session.directory==臂目录，产物 out/纪要.docx+summary.json 在位。臂健康度 classify_run（装置原函数，空事件表）→ measured_failure（三桶口径=正常计分，非失败义）。产物轨冒烟复算 5/8（溯源类 3 检未过，非本层门）。",
+      "b02_join": {
+        "arm_dir": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/glm/baseline",
+        "telemetry_exists": true,
+        "session_id": "sess_7ae90637-702a-4f36-a62c-595e1ed0fefd",
+        "has_session_id": true,
+        "db_session_found": true,
+        "db_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/glm/baseline",
+        "directory_eq_armdir": true,
+        "model_usage_rows": 16,
+        "ok": true
+      },
+      "artifact_smoke_nongate": {
+        "checks_passed": "5/8",
+        "note": "run_check.py 复算（--input-basis oracle/mm-01-rep1）：四臂一致通过结构类 5 检，失败集中在不可溯源/编造相关人 3 检；此为 C 层基线信号如实记录，非 B 层门",
+        "detail_file": "precheck/artifact-smoke-glm-baseline.json"
+      },
+      "transcript_dir": null
+    },
+    {
+      "arm": "glm-treatment",
+      "family": "glm",
+      "arm_kind": "treatment",
+      "arm_dir": "evalkit/runs/sf0006-b-smoke-2/glm/treatment",
+      "mechanism": "M4：M2 成对 env（defaultModelSelection={account:bigmodel-individual-coding-plan, GLM-5.3, options:{reasoningLevel:\"max\"}} + providerOrder 置顶）+ ZCODE_DATA_BASE_DIR=<scratch>/glm/zcode-data（凭据逐条目原样拷贝 + 注入明文 account-provider:…:identity 条目，值从 api-key 条目名解析，不回显不进仓）",
+      "spawned": true,
+      "exit_code": 0,
+      "timed_out": false,
+      "wall_ms": 296244,
+      "session_id": "sess_579a5c71-3654-4fd8-a580-d25d13031230",
+      "model_id_observed": "GLM-5.3",
+      "provider_id_observed": "account:bigmodel-individual-coding-plan",
+      "variant_observed": null,
+      "model_usage_rows": 1,
+      "input_tokens": 847313,
+      "output_tokens": 21849,
+      "pin_required": "GLM-5.3 @ account:bigmodel-individual-coding-plan（逐字大小写敏感）",
+      "pin_verdict": "pass",
+      "model_pin_json": "records/model_pin.json 五键齐（model_id/provider_base_url/cli_runtime/date/reasoning_variant）",
+      "classify": {
+        "bucket": "measured_failure",
+        "buckets_detail": [
+          "measured_failure"
+        ],
+        "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+        "events_in": []
+      },
+      "reason": "正式臂 spawn（P5 预算 2/4）：同 M4 钉版，exit 0，实测 GLM-5.3 @ account:bigmodel-individual-coding-plan（variant=max）逐字命中；treatment 树挂 dist/build/standard/meeting-minutes 合规变体（.zcode/skills），baseline 无；产物在位，classify measured_failure，产物轨冒烟 5/8（非本层门）。",
+      "b02_join": {
+        "arm_dir": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/glm/treatment",
+        "telemetry_exists": true,
+        "session_id": "sess_579a5c71-3654-4fd8-a580-d25d13031230",
+        "has_session_id": true,
+        "db_session_found": true,
+        "db_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/glm/treatment",
+        "directory_eq_armdir": true,
+        "model_usage_rows": 20,
+        "ok": true
+      },
+      "artifact_smoke_nongate": {
+        "checks_passed": "5/8",
+        "note": "run_check.py 复算（--input-basis oracle/mm-01-rep1）：四臂一致通过结构类 5 检，失败集中在不可溯源/编造相关人 3 检；此为 C 层基线信号如实记录，非 B 层门",
+        "detail_file": "precheck/artifact-smoke-glm-treatment.json"
+      },
+      "transcript_dir": null
+    },
+    {
+      "arm": "minimax-baseline",
+      "family": "minimax",
+      "arm_kind": "baseline",
+      "arm_dir": "evalkit/runs/sf0006-b-smoke-2/minimax/baseline",
+      "mechanism": "M2：成对 env（ZCODE_BUILTIN_PROVIDER_CONFIG_FILE=builtin 原样副本 8bd8070d… + ZCODE_PERSONAL_PROVIDER_CONFIG_FILE=personal 派生副本：defaultModelSelection={minimax, Minimax-M3.1-Flash-Preview, options:{reasoningLevel:\"enabled\"}} + providerOrder 置顶 minimax）",
+      "spawned": true,
+      "exit_code": 0,
+      "timed_out": false,
+      "wall_ms": 21492,
+      "session_id": "sess_d0d57543-05cc-4da6-8a27-78691ca06fb9",
+      "model_id_observed": "Minimax-M3.1-Flash-Preview",
+      "provider_id_observed": "minimax",
+      "variant_observed": null,
+      "model_usage_rows": 1,
+      "input_tokens": 186440,
+      "output_tokens": 3025,
+      "pin_required": "Minimax-M3.1-Flash-Preview @ minimax（逐字大小写敏感）",
+      "pin_verdict": "pass",
+      "model_pin_json": "records/model_pin.json 五键齐（model_id/provider_base_url/cli_runtime/date/reasoning_variant）",
+      "classify": {
+        "bucket": "measured_failure",
+        "buckets_detail": [
+          "measured_failure"
+        ],
+        "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+        "events_in": []
+      },
+      "reason": "正式臂 spawn（P5 预算 3/4）：M2 钉版，exit 0，实测 Minimax-M3.1-Flash-Preview @ minimax（variant=enabled）逐字命中（第 1 轮同位臂落 MiniMax-M3，本轮 reasoningLevel 修复后命中目标模型）；产物在位，classify measured_failure，产物轨冒烟 5/8（非本层门）。",
+      "b02_join": {
+        "arm_dir": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/minimax/baseline",
+        "telemetry_exists": true,
+        "session_id": "sess_d0d57543-05cc-4da6-8a27-78691ca06fb9",
+        "has_session_id": true,
+        "db_session_found": true,
+        "db_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/minimax/baseline",
+        "directory_eq_armdir": true,
+        "model_usage_rows": 9,
+        "ok": true
+      },
+      "artifact_smoke_nongate": {
+        "checks_passed": "5/8",
+        "note": "run_check.py 复算（--input-basis oracle/mm-01-rep1）：四臂一致通过结构类 5 检，失败集中在不可溯源/编造相关人 3 检；此为 C 层基线信号如实记录，非 B 层门",
+        "detail_file": "precheck/artifact-smoke-minimax-baseline.json"
+      },
+      "transcript_dir": null
+    },
+    {
+      "arm": "minimax-treatment",
+      "family": "minimax",
+      "arm_kind": "treatment",
+      "arm_dir": "evalkit/runs/sf0006-b-smoke-2/minimax/treatment",
+      "mechanism": "M2：成对 env（ZCODE_BUILTIN_PROVIDER_CONFIG_FILE=builtin 原样副本 8bd8070d… + ZCODE_PERSONAL_PROVIDER_CONFIG_FILE=personal 派生副本：defaultModelSelection={minimax, Minimax-M3.1-Flash-Preview, options:{reasoningLevel:\"enabled\"}} + providerOrder 置顶 minimax）",
+      "spawned": true,
+      "exit_code": 0,
+      "timed_out": false,
+      "wall_ms": 89881,
+      "session_id": "sess_08d4efa0-9668-45f2-a09e-d4cae746c8e5",
+      "model_id_observed": "Minimax-M3.1-Flash-Preview",
+      "provider_id_observed": "minimax",
+      "variant_observed": null,
+      "model_usage_rows": 1,
+      "input_tokens": 520517,
+      "output_tokens": 9588,
+      "pin_required": "Minimax-M3.1-Flash-Preview @ minimax（逐字大小写敏感）",
+      "pin_verdict": "pass",
+      "model_pin_json": "records/model_pin.json 五键齐（model_id/provider_base_url/cli_runtime/date/reasoning_variant）",
+      "classify": {
+        "bucket": "measured_failure",
+        "buckets_detail": [
+          "measured_failure"
+        ],
+        "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+        "events_in": []
+      },
+      "reason": "正式臂 spawn（P5 预算 4/4）：同 M2 钉版，exit 0，实测 Minimax-M3.1-Flash-Preview @ minimax（variant=enabled）逐字命中；treatment 挂合规变体；产物在位，classify measured_failure，产物轨冒烟 5/8（非本层门）。",
+      "b02_join": {
+        "arm_dir": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/minimax/treatment",
+        "telemetry_exists": true,
+        "session_id": "sess_08d4efa0-9668-45f2-a09e-d4cae746c8e5",
+        "has_session_id": true,
+        "db_session_found": true,
+        "db_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/minimax/treatment",
+        "directory_eq_armdir": true,
+        "model_usage_rows": 19,
+        "ok": true
+      },
+      "artifact_smoke_nongate": {
+        "checks_passed": "5/8",
+        "note": "run_check.py 复算（--input-basis oracle/mm-01-rep1）：四臂一致通过结构类 5 检，失败集中在不可溯源/编造相关人 3 检；此为 C 层基线信号如实记录，非 B 层门",
+        "detail_file": "precheck/artifact-smoke-minimax-treatment.json"
+      },
+      "transcript_dir": null
+    }
+  ],
+  "smoke_signal_nongate": {
+    "artifact_track": "四臂 run_check.py 复算均 5/8：结构类 5 检全过（docx 可开、三节标题齐、决议/风险条数、表头、summary 计数），失败集中在溯源类 3 检（不可溯源/编造相关人/事项不可溯源），treatment 挂合规变体后同位未过——如实记录为 C 层基线信号，本层不据此判门",
+    "quality_track": "unjudgeable（SF-0004：异族裁判不可满足，quality_score 恒 null）"
+  },
+  "not_covered": [
+    "C 层基线轮（40 臂、聚合工具 P6、matrix/delta 口径）——本轮不开跑",
+    "rep2 / nonce B（A-13 跨重复断言）——本轮 n=1，冒烟不含",
+    "mm-02/hot-01/hot-02/hot-03 与 ofc 三题——冒烟矩阵仅 mm-01",
+    "产物轨与 D3 金标对拍在真实臂产物上的达标性——属 C 层判据",
+    "kimi/step 族与 MiniMax-M3（INTENT §6-4 未决，不入矩阵）",
+    "REGISTRY.md——本卡不写（C-10 归属断言）"
+  ]
+}

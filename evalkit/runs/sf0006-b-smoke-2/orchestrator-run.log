@@ -1,0 +1,12 @@
+{
+  "counted_arm_procs": 4,
+  "retry_procs": 0,
+  "model_calls": 4,
+  "redline_event": false,
+  "stop_reason": null,
+  "scratch_purged": true
+}
+glm-baseline         exit=0 model=GLM-5.3 provider=account:bigmodel-individual-coding-plan variant=None pin=pass dir_match=True
+glm-treatment        exit=0 model=GLM-5.3 provider=account:bigmodel-individual-coding-plan variant=None pin=pass dir_match=True
+minimax-baseline     exit=0 model=Minimax-M3.1-Flash-Preview provider=minimax variant=None pin=pass dir_match=True
+minimax-treatment    exit=0 model=Minimax-M3.1-Flash-Preview provider=minimax variant=None pin=pass dir_match=True

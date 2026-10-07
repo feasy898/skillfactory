@@ -1,0 +1,21 @@
+{
+  "reason": "run_arm.pull_telemetry 聚合列未带 variant；从 db model_usage 独立补查每臂 session 的 variant 实测值回填（只增 observed 字段与 reasoning_variant，不改原始行）",
+  "enriched": {
+    "glm-baseline": {
+      "session_id": "sess_7ae90637-702a-4f36-a62c-595e1ed0fefd",
+      "variant": "max"
+    },
+    "glm-treatment": {
+      "session_id": "sess_579a5c71-3654-4fd8-a580-d25d13031230",
+      "variant": "max"
+    },
+    "minimax-baseline": {
+      "session_id": "sess_d0d57543-05cc-4da6-8a27-78691ca06fb9",
+      "variant": "enabled"
+    },
+    "minimax-treatment": {
+      "session_id": "sess_08d4efa0-9668-45f2-a09e-d4cae746c8e5",
+      "variant": "enabled"
+    }
+  }
+}

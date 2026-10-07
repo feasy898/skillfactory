@@ -1,0 +1,47 @@
+{
+  "glm-baseline": {
+    "arm_dir": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/glm/baseline",
+    "telemetry_exists": true,
+    "session_id": "sess_7ae90637-702a-4f36-a62c-595e1ed0fefd",
+    "has_session_id": true,
+    "db_session_found": true,
+    "db_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/glm/baseline",
+    "directory_eq_armdir": true,
+    "model_usage_rows": 16,
+    "ok": true
+  },
+  "glm-treatment": {
+    "arm_dir": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/glm/treatment",
+    "telemetry_exists": true,
+    "session_id": "sess_579a5c71-3654-4fd8-a580-d25d13031230",
+    "has_session_id": true,
+    "db_session_found": true,
+    "db_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/glm/treatment",
+    "directory_eq_armdir": true,
+    "model_usage_rows": 20,
+    "ok": true
+  },
+  "minimax-baseline": {
+    "arm_dir": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/minimax/baseline",
+    "telemetry_exists": true,
+    "session_id": "sess_d0d57543-05cc-4da6-8a27-78691ca06fb9",
+    "has_session_id": true,
+    "db_session_found": true,
+    "db_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/minimax/baseline",
+    "directory_eq_armdir": true,
+    "model_usage_rows": 9,
+    "ok": true
+  },
+  "minimax-treatment": {
+    "arm_dir": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/minimax/treatment",
+    "telemetry_exists": true,
+    "session_id": "sess_08d4efa0-9668-45f2-a09e-d4cae746c8e5",
+    "has_session_id": true,
+    "db_session_found": true,
+    "db_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-b-smoke-2/minimax/treatment",
+    "directory_eq_armdir": true,
+    "model_usage_rows": 19,
+    "ok": true
+  },
+  "all_ok": true
+}

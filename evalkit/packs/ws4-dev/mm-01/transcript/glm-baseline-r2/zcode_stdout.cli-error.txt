@@ -1,0 +1,27 @@
+AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.
+{
+  "sessionId": "sess_7ae90637-702a-4f36-a62c-595e1ed0fefd",
+  "traceId": "ad552f1f-4e23-4ab5-85a2-a3386ff9c3ab",
+  "turnId": "turn_0da4debe-d957-4591-b103-43b43c2dc436",
+  "response": "任务完成。两份交付物已就位并通过全部校验：\n\n**`out/纪要.docx`**（一页式三节纪要）\n- 首段标题：**星帆订单系统项目例会会议纪要**（居中）\n- **一、决议事项**（2 条，逐字取自转写稿）：赵静怡的「按原计划推进，里程碑保持不变」、黄雨桐的「预算300万元，走专项列支」\n- **二、待办事项**（表格，事项/负责人/期限三列）：完成复盘纪要并同步给财务部｜黄雨桐｜本周五前；把数据迁移脚本整理成7月4日归档｜徐静怡｜7月4日\n- **三、风险与关注**（2 条）：吴志远的「财务部履约风险」、赵静怡的「灰度放量数据口径未对齐」\n\n**`out/summary.json`**：`{\"决议事项\": 2, \"待办事项\": 2, \"风险与关注\": 2, \"合计\": 6}`，四键逐字如规范，计数与 docx 实际条目一致。\n\n**质量保障**\n1. 构建脚本内置逐字断言——每条决议/风险内容、待办事项、期限均在写入前强制校验为转写稿原文子串，相关人/负责人强制属于说话人集合（主持人、赵静怡、黄雨桐、徐静怡、吴志远），任何非逐字内容会直接构建失败；\n2. 独立复核脚本 `verify_minutes.py` 重新打开 docx 逐项检查节标题逐字、条目格式 `N. 【类别 · 相关人】内容`、编号连续、表头三列逐字及 summary.json 计数——全部 PASS；\n3. LibreOffice 渲染成图后经视觉评审（visual-judge）验收通过：标题/层级/表格边框/中文字形无任何问题。\n\n生成与校验脚本（`build_minutes.py`、`verify_minutes.py`）保留在任务目录，可复现。注：转写稿 8 句中，主持人的开场与收尾两句（非实质内容）及两条待办原句不计入决议/风险条目，会议中主持人未作出独立决议。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 16,
+    "inputTokens": 443467,
+    "outputTokens": 13186,
+    "totalTokens": 456653,
+    "cacheReadTokens": 424768,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 8345,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 456653,
+    "contextUsed": 34561,
+    "contextWindow": 200000
+  }
+}
