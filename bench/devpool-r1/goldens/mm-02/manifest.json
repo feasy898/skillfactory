@@ -1,0 +1,58 @@
+{
+  "task": "mm-02",
+  "round": "SF-0006-P2a-r1",
+  "prepared_by": "开发方（SF-0006 P2(a) 第 1 轮；expected_pass 判定由受托签署模型盲态另行出具，本文件不含任何判定）",
+  "canonical_seed": 4202,
+  "oracle_tree_sha256": "8cb8daf258341833017392b8c4663c93421cb337804640533dc278a9728f3813",
+  "sample_count": 12,
+  "samples": {
+    "s01": {
+      "source": "oracle:gen_oracle.py(seed=4202,nonce=A)",
+      "note": "同种子 canonical 复现树（生成树 oracle/ 子树原样，不含生成器 manifest）"
+    },
+    "s02": {
+      "source": "corruption:fabricated_entry",
+      "note": "ws4_gen.corrupt 从同种子 oracle 子树注入 fabricated_entry（evalkit/harness/ws4_gen.py CORRUPTIONS 损坏库）"
+    },
+    "s03": {
+      "source": "corruption:drop_section_heading",
+      "note": "ws4_gen.corrupt 从同种子 oracle 子树注入 drop_section_heading（evalkit/harness/ws4_gen.py CORRUPTIONS 损坏库）"
+    },
+    "s04": {
+      "source": "corruption:summary_count_wrong",
+      "note": "ws4_gen.corrupt 从同种子 oracle 子树注入 summary_count_wrong（evalkit/harness/ws4_gen.py CORRUPTIONS 损坏库）"
+    },
+    "s05": {
+      "source": "corruption:todo_header_broken",
+      "note": "ws4_gen.corrupt 从同种子 oracle 子树注入 todo_header_broken（evalkit/harness/ws4_gen.py CORRUPTIONS 损坏库）"
+    },
+    "s06": {
+      "source": "handmade:retitle-reorder-singleline-summary",
+      "note": "标题改写为自拟新题；决议两条互换顺序；summary.json 改为单行 JSON"
+    },
+    "s07": {
+      "source": "handmade:two-digit-index-row-swap-blankpara",
+      "note": "条目编号改两位数字风格；标题后加一个空段；待办表格两行互换顺序；summary.json 键序按码位重排"
+    },
+    "s08": {
+      "source": "handmade:section-blankpara-risk-reorder",
+      "note": "标题改写；节标题之间加空段；风险两条互换顺序；summary.json 键序重排"
+    },
+    "s09": {
+      "source": "handmade:owner-replaced-by-dept-name",
+      "note": "第 2 条决议的相关人栏改为条目正文中出现过的部门名（转写稿说话人集合之外的称谓）"
+    },
+    "s10": {
+      "source": "handmade:deadline-replaced-by-vague-word",
+      "note": "第 1 条待办的期限栏改为模糊词（该条事项原文中不含该词，原期限另有所载）"
+    },
+    "s11": {
+      "source": "handmade:summary-extra-key",
+      "note": "summary.json 在四个键之外追加第 5 个键"
+    },
+    "s12": {
+      "source": "oracle:gen_oracle.py(seed=4202,nonce=B)",
+      "note": "同种子 nonce-B 交叉实例的 oracle 树（产物对应另一套实例输入；对拍以包内 fixtures 为基准）"
+    }
+  }
+}

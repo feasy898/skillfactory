@@ -1,0 +1,58 @@
+{
+  "task": "hot-01",
+  "round": "SF-0006-P2a-r1",
+  "prepared_by": "开发方（SF-0006 P2(a) 第 1 轮；expected_pass 判定由受托签署模型盲态另行出具，本文件不含任何判定）",
+  "canonical_seed": 4203,
+  "oracle_tree_sha256": "c8a9134325f203180c411e1cd4c653ab2794cda0dfbc6d11b5cee75c1b8461a9",
+  "sample_count": 12,
+  "samples": {
+    "s01": {
+      "source": "oracle:gen_oracle.py(seed=4203,nonce=A)",
+      "note": "同种子 canonical 复现树（生成树 oracle/ 子树原样，不含生成器 manifest）"
+    },
+    "s02": {
+      "source": "corruption:banned_word",
+      "note": "ws4_gen.corrupt 从同种子 oracle 子树注入 banned_word（evalkit/harness/ws4_gen.py CORRUPTIONS 损坏库）"
+    },
+    "s03": {
+      "source": "corruption:points_accounting",
+      "note": "ws4_gen.corrupt 从同种子 oracle 子树注入 points_accounting（evalkit/harness/ws4_gen.py CORRUPTIONS 损坏库）"
+    },
+    "s04": {
+      "source": "corruption:artifact_missing",
+      "note": "ws4_gen.corrupt 从同种子 oracle 子树注入 artifact_missing（evalkit/harness/ws4_gen.py CORRUPTIONS 损坏库）"
+    },
+    "s05": {
+      "source": "corruption:template_residue",
+      "note": "ws4_gen.corrupt 从同种子 oracle 子树注入 template_residue（evalkit/harness/ws4_gen.py CORRUPTIONS 损坏库）"
+    },
+    "s06": {
+      "source": "handmade:full-copy-rewrite",
+      "note": "钩子/痛点/行动号召整体改写；三个价值点更换引导句式（卖点保持逐字）"
+    },
+    "s07": {
+      "source": "handmade:keyorder-retitle-hook-cta",
+      "note": "structure.json 顶层键按码位重排；骨架.md 首行标题改写；钩子与行动号召文案改写"
+    },
+    "s08": {
+      "source": "handmade:slot-prefix-and-cta-reword",
+      "note": "三个价值点改用新引导句式（卖点保持逐字）；行动号召改写并更换行动词"
+    },
+    "s09": {
+      "source": "handmade:cta-without-action-word",
+      "note": "行动号召文案替换为不含关注/评论/私信/点击四词的新句"
+    },
+    "s10": {
+      "source": "handmade:hook-below-minlength",
+      "note": "钩子文案替换为 4 字短句"
+    },
+    "s11": {
+      "source": "handmade:slot2-paraphrased-point",
+      "note": "价值点2 的内容替换为对应卖点的概括转述（非逐字）"
+    },
+    "s12": {
+      "source": "oracle:gen_oracle.py(seed=4203,nonce=B)",
+      "note": "同种子 nonce-B 交叉实例的 oracle 树（产物对应另一套实例输入；对拍以包内 fixtures 为基准）"
+    }
+  }
+}

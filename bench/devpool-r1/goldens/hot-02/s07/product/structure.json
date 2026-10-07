@@ -1,0 +1,46 @@
+{
+  "element_count": 6,
+  "elements": [
+    {
+      "content": "6个旧物改造技巧📌",
+      "name": "标题"
+    },
+    {
+      "content": "这篇笔记整理了我在旧物改造上亲测有效的3个习惯",
+      "name": "开头"
+    },
+    {
+      "content": "要点1：按25分钟专注加5分钟休息的节奏执行",
+      "name": "要点1"
+    },
+    {
+      "content": "要点2：用四象限法给云岭数据看板相关任务排优先级",
+      "name": "要点2"
+    },
+    {
+      "content": "要点3：每周日晚固定30分钟复盘本周得失",
+      "name": "要点3"
+    },
+    {
+      "content": "#生活整理 #自律打卡 #亲测有效 #干货分享",
+      "name": "标签"
+    }
+  ],
+  "placeholder_stats": {
+    "filled": 3,
+    "placeholders": 0,
+    "slots": 3
+  },
+  "platform": "xhs",
+  "platform_name": "图文笔记",
+  "points_input_count": 3,
+  "points_unused": [],
+  "points_used": [
+    "按25分钟专注加5分钟休息的节奏执行",
+    "用四象限法给云岭数据看板相关任务排优先级",
+    "每周日晚固定30分钟复盘本周得失"
+  ],
+  "structure_name": "数字标题 + 开头 + 要点×3 + 标签",
+  "template_version": "1.0",
+  "topic": "旧物改造"
+}

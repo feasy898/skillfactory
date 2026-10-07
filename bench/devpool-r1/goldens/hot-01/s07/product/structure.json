@@ -1,0 +1,46 @@
+{
+  "element_count": 6,
+  "elements": [
+    {
+      "content": "宿舍收纳坚持三周的3个笨办法",
+      "name": "钩子"
+    },
+    {
+      "content": "很多人宿舍收纳总是三天打鱼两天晒网，不是不努力，是没有抓手",
+      "name": "痛点"
+    },
+    {
+      "content": "方法1：每周日晚固定30分钟复盘本周得失",
+      "name": "价值点1"
+    },
+    {
+      "content": "方法2：用四象限法给望舒客服工作台相关任务排优先级",
+      "name": "价值点2"
+    },
+    {
+      "content": "方法3：按25分钟专注加5分钟休息的节奏执行",
+      "name": "价值点3"
+    },
+    {
+      "content": "先点个关注再走，下期拆解进阶版",
+      "name": "行动号召"
+    }
+  ],
+  "placeholder_stats": {
+    "filled": 3,
+    "placeholders": 0,
+    "slots": 3
+  },
+  "platform": "dy",
+  "platform_name": "短视频口播稿",
+  "points_input_count": 3,
+  "points_unused": [],
+  "points_used": [
+    "每周日晚固定30分钟复盘本周得失",
+    "用四象限法给望舒客服工作台相关任务排优先级",
+    "按25分钟专注加5分钟休息的节奏执行"
+  ],
+  "structure_name": "3秒钩子 + 痛点 + 价值点×3 + 行动号召",
+  "template_version": "1.0",
+  "topic": "宿舍收纳"
+}

@@ -1,0 +1,46 @@
+{
+  "template_version": "1.0",
+  "platform": "xhs",
+  "platform_name": "图文笔记",
+  "structure_name": "数字标题 + 开头 + 要点×3 + 标签",
+  "topic": "旧物改造",
+  "points_input_count": 3,
+  "points_used": [
+    "按25分钟专注加5分钟休息的节奏执行",
+    "用四象限法给云岭数据看板相关任务排优先级",
+    "每周日晚固定30分钟复盘本周得失"
+  ],
+  "points_unused": [],
+  "element_count": 6,
+  "elements": [
+    {
+      "name": "标题",
+      "content": "5个旧物改造上手小习惯💡"
+    },
+    {
+      "name": "开头",
+      "content": "这批旧物改造思路都是我反复试出来的，照着做就行"
+    },
+    {
+      "name": "要点1",
+      "content": "第1条：按25分钟专注加5分钟休息的节奏执行"
+    },
+    {
+      "name": "要点2",
+      "content": "第2条：用四象限法给云岭数据看板相关任务排优先级"
+    },
+    {
+      "name": "要点3",
+      "content": "第3条：每周日晚固定30分钟复盘本周得失"
+    },
+    {
+      "name": "标签",
+      "content": "#旧物新生 #动手改造 #居家妙招 #生活灵感"
+    }
+  ],
+  "placeholder_stats": {
+    "slots": 3,
+    "filled": 3,
+    "placeholders": 0
+  }
+}
