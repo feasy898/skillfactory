@@ -216,3 +216,23 @@ hot-templates-skill    → rating A（5/5），15:48:32
 - FunASR 彩排缺音频环境（沿袭）；hot-templates 盲评加厚缺模型配额（沿袭）；
 - zctl-mcp / acceptor-agent 盲评加厚与体检裁定待补（新增）；dist 三包实物补迁或换候选待 owner 裁定（新增，K-5）；
 - zctl-mcp 对 zcode.z.ai 真实端到端调用待真机（上游 zctl 同款欠账）。
+
+---
+
+## 2026-10-08 追加登记：owner 委托签署裁定回写（SF-0009 · ③④ · 只追加，不改上方任何既有行）
+
+> 依据：`evidence/owner-delegated-signing-20261008.md`（owner 委托 new-provider-2/alpha 代行审阅，签署人=owner 委托 alpha 代行，2026-10-08）。本节为该签署第一节③④两项裁定的台账回写：③ reference/ 留证据记账、④ 体检形态豁免注记。全程零模型，只追加，不改上方任何既有行。
+
+### ③ canonical 源包 reference/ 目录处置——留证据（原样不动，只记账）
+
+- 裁定：三包 canonical 源包的 `reference/` 原样不动，性质为 **oracle 性质参照物**（devpool L1 子轨与 canonical runner 自检的判定基准），只记账、不删除；「迁正」暂缓，待源包升版时随版本一并裁定。
+- 分发纪律：canonical 顶层原始包**禁止直接对外分发**，只能经 `dist/build.py` 声明变换出合规变体（build 变体已剔除 reference/，答案不随分发面暴露）。
+- 锚定值（签署文件 2026-10-08 实读，HEAD cfad437）：`dist/meeting-minutes-skill/reference` = `0c4c1c91dc1e1ce0a5f15af39896f49d3db317d7`、`dist/office-templates-skill/reference` = `99ead1a5887201f8faec07aee6918fc3752e89e2`、`dist/hot-templates-skill/reference` = `7debb3aabdaa0d891fa309159e76880c772f369f`，三包 reference/ 共 60 个受控文件；本登记落盘时复测三个 tree id 与上述逐一相符、`git status --porcelain -- dist/*/reference` 输出为空。
+- 将来迁正须同步修改 ws4_judge.py 的 ref_root、build.py、canonical SKILL.md 命令说明与相关测试，并重跑 run_checks.py 与 devpool selftest，以退出码为证（签署附加条件原文转录）。
+
+### ④ 体检形态豁免注记（五件；显式记档，不作为质量污点）
+
+- 裁定：zctl-mcp、acceptor-agent、hotwords、deploy-pack、speaker-mapping 五件按「体检不适用（形态不符）」**形态豁免**，不作为质量污点；豁免只去掉污点标签，不等于体检 A，五件状态维持「内部就绪」、不进 dist；WS9 分形态体检器（含 MCP 协议合规检查与 agent 定义格式检查）建成后必须用对应形态的体检器补检并在本台账追加结果。
+- 口径更正（如实）：zctl-mcp 与 acceptor-agent 在台账原文（上方 2026-10-02 节两行）登记即为「**未体检**（待 owner 裁定形态豁免）」——该两件的体检状态是未体检，v3 healthcheck 从未对这两件出过 2/5 评级；2/5 评级属 v5 另三件（hotwords/deploy-pack/speaker-mapping，上方 2026-10-01 节）的记录，其 3 失分项本就是形态错配（该节注 1 原文「3 失分项属形态错配」），现按④裁同一先例（B 表 mcp-office-pack「体检器 5 项不适用」）改注为形态错配豁免。
+- 豁免不升级状态：五件**不进 dist/**、不改变上方任何一行的状态口径；确定性门（绿路 0 / 红空目录 1 / 用法错 2）本登记落盘时在 zctl-mcp 与 acceptor-agent 的临时副本复测均成立（三态 0/1/2），hotwords/deploy-pack/speaker-mapping 三件维持 2026-10-01/02 实测记录不变。
+- 既有欠账照旧保留：zctl-mcp/acceptor-agent 盲评加厚（现 n=2）与 zctl-mcp 真机端到端调用欠账不因本豁免消除（上方注 A2 原口径）；WS9 分形态体检器建成后补检并回写本台账。
