@@ -45,16 +45,15 @@ def git(*args):
     return run(["git", "-C", ROOT, *args])
 
 
-# A-01 拆仓残留路径清零
+# A-01 拆仓残留路径清零（evalkit 全量 Python 文件；冷读复核发现 run_all.py:23 亦拼接，
+# 只查 5 文件会假绿，2026-10-08 收紧为全量扫描）
 bad = []
-for rel in ["evalkit/harness/ws4_judge.py", "evalkit/harness/ws4_gen.py",
-            "evalkit/harness/ws4_d3_gate.py", "evalkit/harness/ws4_pool_state.py"]:
-    p = ROOT / rel
-    if not p.exists():
-        bad.append(rel + ":missing")
-    elif "afp-clone" in p.read_text(encoding="utf-8", errors="replace"):
-        bad.append(rel)
-check("A-01", not bad, ";".join(bad) or "afp-clone 零命中")
+for p in sorted((ROOT / "evalkit").rglob("*.py")):
+    if "__pycache__" in p.parts:
+        continue
+    if "afp-clone" in p.read_text(encoding="utf-8", errors="replace"):
+        bad.append(str(p.relative_to(ROOT)))
+check("A-01", not bad, ";".join(bad[:6]) or "evalkit/**/*.py afp-clone 零命中")
 
 # A-02 8 题生成器红绿自检（真实仓布局）
 fails = []
