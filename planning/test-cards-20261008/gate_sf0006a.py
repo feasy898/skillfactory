@@ -56,6 +56,28 @@ for p in sorted((ROOT / "evalkit").rglob("*.py")):
         bad.append(str(p.relative_to(ROOT)))
 check("A-01", not bad, ";".join(bad[:6]) or "evalkit/**/*.py afp-clone 零命中")
 
+# A-01 补充（alpha 修订同步，2026-10-08）：evalkit 外白名单、存量不改写、存量不被调用
+WHITELIST = {
+    "planning/reports/sf0004-probes/build_ledger.py",
+    "planning/reports/sf0004-probes/close_guards.py",
+    "planning/reports/sf0004-probes/gen_deliverables.py",
+    "planning/reports/sf0004-probes/snap_open.py",
+    "v5/assets/speaker-mapping/out/fix_student.py",
+}
+rg = run(["git", "-C", ROOT, "grep", "--untracked", "-l", "afp-clone", "--",
+          "*.py", "*.sh", "*.ps1", "*.js", "*.mjs", "*.ts", ":!evalkit"])
+outside = {l.strip() for l in (rg.stdout or "").splitlines() if l.strip()}
+extra = {f for f in outside - WHITELIST
+         if not f.startswith("planning/test-cards-20261008/gate_")}
+ok_out = rg.returncode in (0, 1) and not extra
+dn = run(["git", "-C", ROOT, "diff", "--quiet", "c5b4ca0", "--",
+          "planning/reports/sf0004-probes", "v5/assets/speaker-mapping/out"])
+call = run(["grep", "-rIlE", "sf0004-probes|speaker-mapping/out", str(ROOT / "evalkit"),
+            "--include=*.py"])
+check("A-01b", ok_out and dn.returncode == 0 and call.returncode == 1,
+      "白名单外新增=%s 存量改写=%s 被调用命中=%s" % (
+          sorted(extra)[:3] or "无", dn.returncode, call.returncode))
+
 # A-02 8 题生成器红绿自检（真实仓布局）
 fails = []
 for t in IDS:
@@ -90,35 +112,76 @@ head_cl = git("show", base + ":evalkit/CHANGELOG.md")
 before = head_cl.stdout.count("ws4_judge.py") if head_cl.returncode == 0 else 0
 now = (ROOT / "evalkit/CHANGELOG.md").read_text(encoding="utf-8").count("ws4_judge.py")
 r3 = run([VPY, ROOT / "evalkit/harness/verify_sf0003.py"], cwd=ROOT, timeout=1800)
-ok4 = r1.returncode == 0 and now >= before + 1 and r3.returncode == 0 and "34" in (r3.stdout or "")
+kf = (ROOT / "evalkit/harness/keyfiles.sha256")
+n_gen = len(re.findall(r"packs/ws4-dev/[^/]+/gen_oracle\.py", kf.read_text(encoding="utf-8"))) if kf.exists() else 0
+n_rc = len(re.findall(r"packs/ws4-dev/[^/]+/runner_contract\.json", kf.read_text(encoding="utf-8"))) if kf.exists() else 0
+m = re.search(r"全绿（(\d+) 门", r3.stdout or "")
+ok4 = (r1.returncode == 0 and now >= before + 1 and r3.returncode == 0
+       and m is not None and int(m.group(1)) >= 34
+       and n_gen == 8 and n_rc == 8)
 check("A-04", ok4,
-      "freeze=%s changelog %d->%d sf0003=%s %s" % (r1.returncode, before, now, r3.returncode,
-                                                   ((r3.stderr or "") + (r3.stdout or ""))[-160:]))
+      "freeze=%s changelog %d->%d sf0003=%s(全绿%s门) keyfiles gen=%d/8 rc=%d/8"
+      % (r1.returncode, before, now, r3.returncode,
+         m.group(1) if m else "?", n_gen, n_rc))
 
-# A-05 签署保全：重跑 ws4_pool_state.py 不得冲掉 signoff
+# A-05 签署与就绪保全（alpha 修订同步）：d1/d3 signoff 与 ready/counts.ready 前后一致
 ps = ROOT / "bench/devpool-r1/pool-state.json"
 snap = json.loads(ps.read_text(encoding="utf-8"))
+
+
+def state_of(d):
+    return {
+        "d1": [t["d1_record"]["signoff"] for t in d["tasks"]],
+        "d3": [t["d3_record"]["signoff"] for t in d["tasks"]],
+        "ready": [t.get("ready") for t in d["tasks"]],
+        "counts_ready": d["counts"]["ready"],
+    }
+
+
+before_state = state_of(snap)
 r = run([VPY, ROOT / "evalkit/harness/ws4_pool_state.py"], cwd=ROOT, timeout=600)
 after = json.loads(ps.read_text(encoding="utf-8"))
-same = all(after["tasks"][i]["d1_record"]["signoff"] == snap["tasks"][i]["d1_record"]["signoff"]
-           for i in range(len(snap["tasks"])))
+after_state = state_of(after)
+same = before_state == after_state
 signed = all((t["d1_record"]["signoff"] or {}).get("签署人") for t in after["tasks"])
 check("A-05", r.returncode == 0 and same and signed,
-      "exit=%s 保持=%s 已签=%s %s" % (r.returncode, same, signed, ((r.stderr or "") + (r.stdout or ""))[-160:]))
+      "exit=%s d1/d3/ready 保持=%s 已签=%s %s" % (r.returncode, same, signed, ((r.stderr or "") + (r.stdout or ""))[-160:]))
 
-# A-06 签署对象与现物一致（brief 哈希 = signoff；题面四类文件 = pool-state 清单）
-bad = []
-for t in after["tasks"]:
-    pack = ROOT / t["pack"]
-    so = (t["d1_record"]["signoff"] or {})
-    h = hashlib.sha256((pack / "brief.md").read_bytes()).hexdigest()
-    if h != so.get("被签对象sha256"):
-        bad.append(t["id"] + ":brief-mismatch")
-    for rel, sha in t["pack_files_sha256"].items():
-        f = pack / rel
-        if not f.exists() or hashlib.sha256(f.read_bytes()).hexdigest() != sha:
-            bad.append("%s:%s" % (t["id"], rel))
-check("A-06", not bad, ";".join(bad) or "8 题签署哈希与现物一致")
+# A-06 签署对象与现物一致（alpha 修订同步）：唯一对拍基准 = 签署落盘提交 c5b4ca0 的
+# pool-state 快照（不得读工作树 pool-state.json——ws4_pool_state.py:137-148 重跑会按现盘重算，自证假绿）
+rsnap = run(["git", "-C", ROOT, "show", "c5b4ca0:bench/devpool-r1/pool-state.json"])
+try:
+    snap0 = json.loads(rsnap.stdout)
+    bad = []
+    if len(snap0["tasks"]) != len(after["tasks"]):
+        bad.append("题数不一致")
+    for t0, tw in zip(snap0["tasks"], after["tasks"]):
+        pack = ROOT / t0["pack"]
+        sha0 = t0["pack_files_sha256"]
+        h = hashlib.sha256((pack / "brief.md").read_bytes()).hexdigest()
+        so = (tw["d1_record"]["signoff"] or {}).get("被签对象sha256")
+        if not (h == so == sha0.get("brief.md")):
+            bad.append(t0["id"] + ":brief")
+        for rel, s in sha0.items():
+            if rel == "brief.md":
+                continue
+            if rel.startswith("fixtures/"):
+                f = pack / rel
+                if not f.exists() or hashlib.sha256(f.read_bytes()).hexdigest() != s:
+                    bad.append("%s:%s" % (t0["id"], rel))
+            # rubric/task.json 已含于上面 fixtures 同式的逐一比对：
+            if rel in ("rubric.md", "task.json"):
+                f = pack / rel
+                if not f.exists() or hashlib.sha256(f.read_bytes()).hexdigest() != s:
+                    bad.append("%s:%s" % (t0["id"], rel))
+        disk_fx = {str(p.relative_to(pack)) for p in (pack / "fixtures").rglob("*") if p.is_file()}
+        snap_fx = {k for k in sha0 if k.startswith("fixtures/")}
+        if disk_fx != snap_fx:
+            bad.append("%s:fixtures集合增删" % t0["id"])
+    check("A-06", rsnap.returncode == 0 and not bad,
+          ";".join(bad[:6]) or "32 个题面文件与 c5b4ca0 快照逐一相等，fixtures 集合无增删")
+except Exception as e:
+    check("A-06", False, "快照读取/解析失败: %s" % e)
 
 # A-11 负控与分类器阳性对照
 scratch = tempfile.mkdtemp(prefix="sf0006a-nc-")

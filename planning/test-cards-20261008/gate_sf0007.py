@@ -76,21 +76,31 @@ d3 = git("diff", "--stat", base + "..HEAD", "--",
          "dist/meeting-minutes-skill", "dist/office-templates-skill", "dist/hot-templates-skill")
 check("K5A-03", d3.stdout.strip() == "", "canonical diff 为空" if d3.stdout.strip() == "" else d3.stdout[:200])
 
-# K5A-04 披露口径写进 9 份变体 EVALUATION.md
+# K5A-04 披露口径写进 9 份变体 EVALUATION.md（alpha 修订同步：覆盖 ②(c) 第 1–5 条全部）
 bad = []
 for variant in ["standard", "claude-code", "learner"]:
-    for pkg, extra in [("meeting-minutes", []), ("office-templates", ["single_round_signal"]),
-                       ("hot-templates", ["release-candidate"])]:
+    for pkg, extra in [("meeting-minutes", ["majority", ("勘误", "修正")]),
+                       ("office-templates", ["single_round_signal"]),
+                       ("hot-templates", ["release-candidate", "复检"])]:
         ev = build / variant / pkg / "EVALUATION.md"
         if not ev.exists():
             bad.append("%s/%s:missing" % (variant, pkg))
             continue
         txt = ev.read_text(encoding="utf-8", errors="replace")
-        need = ["synthetic-passed", "real-verified", "效率门"] + extra
+        need = ["synthetic-passed", "real-verified", "效率门", ".mimosa"]
         for kw in need:
             if kw not in txt:
                 bad.append("%s/%s:%s" % (variant, pkg, kw))
-check("K5A-04", not bad, ";".join(bad) or "9 份 EVALUATION.md 披露口径齐")
+        for kw in extra:
+            if isinstance(kw, tuple):
+                if not any(k in txt for k in kw):
+                    bad.append("%s/%s:%s" % (variant, pkg, "/".join(kw)))
+            elif kw not in txt:
+                bad.append("%s/%s:%s" % (variant, pkg, kw))
+mim = [str(p.relative_to(ROOT)) for p in build.rglob(".mimosa")]
+if mim:
+    bad.append(".mimosa 实存:" + ";".join(mim[:3]))
+check("K5A-04", not bad, ";".join(bad) or "9 份 EVALUATION.md 披露口径第 1–5 条齐且无 .mimosa 实体")
 
 # K5A-05 变体中不得出现参照物或 oracle 目录
 leaks = [str(p.relative_to(ROOT)) for p in build.rglob("*")
