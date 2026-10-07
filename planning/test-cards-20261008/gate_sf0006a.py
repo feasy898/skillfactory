@@ -84,7 +84,9 @@ check("A-03", not bad, ";".join(bad) or "8 份 contract 指向本仓且红绿记
 # A-04 钉版协议：freeze verify + CHANGELOG 登记 + verify_sf0003 不回退
 r1 = run([VPY, ROOT / "evalkit/harness/freeze_device.py", "verify", "--evalkit", ROOT / "evalkit"],
          cwd=ROOT, timeout=600)
-head_cl = git("show", "HEAD:evalkit/CHANGELOG.md")
+base_file = ROOT / "planning/test-cards-20261008/base_commit.txt"
+base = base_file.read_text(encoding="utf-8").strip() if base_file.exists() else "HEAD"
+head_cl = git("show", base + ":evalkit/CHANGELOG.md")
 before = head_cl.stdout.count("ws4_judge.py") if head_cl.returncode == 0 else 0
 now = (ROOT / "evalkit/CHANGELOG.md").read_text(encoding="utf-8").count("ws4_judge.py")
 r3 = run([VPY, ROOT / "evalkit/harness/verify_sf0003.py"], cwd=ROOT, timeout=1800)
