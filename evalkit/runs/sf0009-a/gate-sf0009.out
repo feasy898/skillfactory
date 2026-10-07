@@ -1,0 +1,8 @@
+PASS R-01  删行=0 增行=20
+PASS R-02  reference/=红 禁止直接对外分发=红 签署文件路径=红
+PASS R-03  三个 tree id 相符且工作区干净
+PASS R-04  五件名称/形态豁免/未体检口径
+PASS R-05  dist 顶层增删=0 可分发措辞=True healthcheck diff=True
+PASS R-06[zctl-mcp]  green=0 red=1 usage=2
+PASS R-06[acceptor-agent]  green=0 red=1 usage=2
+== SF-0009 门槛: 7/7 PASS

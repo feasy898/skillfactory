@@ -9,6 +9,7 @@ A-13/A-14 本轮不机检（由开发方按卡面命令执行并在汇报中给�
 import hashlib
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
