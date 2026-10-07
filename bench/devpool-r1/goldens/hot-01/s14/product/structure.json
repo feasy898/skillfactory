@@ -1,0 +1,46 @@
+{
+  "template_version": "1.0",
+  "platform": "dy",
+  "platform_name": "短视频口播稿",
+  "structure_name": "3秒钩子 + 痛点 + 价值点×3 + 行动号召",
+  "topic": "宿舍收纳",
+  "points_input_count": 3,
+  "points_used": [
+    "按25分钟专注加5分钟休息的节奏执行",
+    "每周日晚固定30分钟复盘本周得失",
+    "用四象限法给望舒客服工作台相关任务排优先级"
+  ],
+  "points_unused": [],
+  "element_count": 6,
+  "elements": [
+    {
+      "name": "钩子",
+      "content": "别再乱塞了，宿舍收纳先立这3条规矩"
+    },
+    {
+      "name": "痛点",
+      "content": "一收纳就复乱？问题往往出在顺序和节奏上"
+    },
+    {
+      "name": "价值点1",
+      "content": "规矩1：按25分钟专注加5分钟休息的节奏执行"
+    },
+    {
+      "name": "价值点2",
+      "content": "规矩2：每周日晚固定30分钟复盘本周得失"
+    },
+    {
+      "name": "价值点3",
+      "content": "规矩3：用四象限法给望舒客服工作台相关任务排优先级"
+    },
+    {
+      "name": "行动号召",
+      "content": "点击主页合集，跟着做一遍就知道管不管用"
+    }
+  ],
+  "placeholder_stats": {
+    "slots": 3,
+    "filled": 3,
+    "placeholders": 0
+  }
+}

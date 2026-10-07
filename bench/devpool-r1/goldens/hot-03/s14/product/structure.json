@@ -1,0 +1,41 @@
+{
+  "template_version": "1.0",
+  "platform": "wx",
+  "platform_name": "公众号文章",
+  "structure_name": "引入 + 论点×3 + 总结",
+  "topic": "家常快手菜",
+  "points_input_count": 2,
+  "points_used": [
+    "把25分钟专注法写进每日安排",
+    "用四象限法给青澜会员中台相关任务排优先级"
+  ],
+  "points_unused": [],
+  "element_count": 5,
+  "elements": [
+    {
+      "name": "引入",
+      "content": "聊点半小时就能端上桌的快手思路，照着排就行"
+    },
+    {
+      "name": "论点1",
+      "content": "先安排：把25分钟专注法写进每日安排"
+    },
+    {
+      "name": "论点2",
+      "content": "再排程：用四象限法给青澜会员中台相关任务排优先级"
+    },
+    {
+      "name": "论点3",
+      "content": "【占位:价值点3】这条选题留到下篇笔记再展开"
+    },
+    {
+      "name": "总结",
+      "content": "先把这两步跑顺，第三条补上就成套了"
+    }
+  ],
+  "placeholder_stats": {
+    "slots": 3,
+    "filled": 2,
+    "placeholders": 1
+  }
+}
