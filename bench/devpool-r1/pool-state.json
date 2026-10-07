@@ -73,9 +73,9 @@
           }
         },
         "signoff": {
-          "签署人": null,
-          "日期": null,
-          "被签对象sha256": null
+          "签署人": "owner 委托 alpha 代行",
+          "日期": "2026-10-08",
+          "被签对象sha256": "80ff3b1c5dd7e6d7621e79de7855f7e23e0f69d3706f25d5f76d97f1f2ae7cfa"
         }
       },
       "d2_record": {
@@ -171,9 +171,9 @@
           }
         },
         "signoff": {
-          "签署人": null,
-          "日期": null,
-          "被签对象sha256": null
+          "签署人": "owner 委托 alpha 代行",
+          "日期": "2026-10-08",
+          "被签对象sha256": "eecf24f3afe9364746ff9c8e3db7f44cf5528b854bdf596a2ad6e8462b95dd65"
         }
       },
       "d2_record": {
@@ -269,9 +269,9 @@
           }
         },
         "signoff": {
-          "签署人": null,
-          "日期": null,
-          "被签对象sha256": null
+          "签署人": "owner 委托 alpha 代行",
+          "日期": "2026-10-08",
+          "被签对象sha256": "000ccae8ec3875a44e36aa253dfd629323cc63dfe3c0f2b76c5fefbb48f9fda7"
         }
       },
       "d2_record": {
@@ -367,9 +367,9 @@
           }
         },
         "signoff": {
-          "签署人": null,
-          "日期": null,
-          "被签对象sha256": null
+          "签署人": "owner 委托 alpha 代行",
+          "日期": "2026-10-08",
+          "被签对象sha256": "1f3fbb26f166485f0aa367e55535ec9d2676da145e5db091244444b985a5b420"
         }
       },
       "d2_record": {
@@ -465,9 +465,9 @@
           }
         },
         "signoff": {
-          "签署人": null,
-          "日期": null,
-          "被签对象sha256": null
+          "签署人": "owner 委托 alpha 代行",
+          "日期": "2026-10-08",
+          "被签对象sha256": "e8e6b8145c5e9fb2751a3719fe880ca0846dd125f0d808433d1d99a4c406a64d"
         }
       },
       "d2_record": {
@@ -563,9 +563,9 @@
           }
         },
         "signoff": {
-          "签署人": null,
-          "日期": null,
-          "被签对象sha256": null
+          "签署人": "owner 委托 alpha 代行",
+          "日期": "2026-10-08",
+          "被签对象sha256": "39abc11962e2ba3ad6511496071ac5fc1c05d22f9ac71f402435d4c0ceb69cb3"
         }
       },
       "d2_record": {
@@ -661,9 +661,9 @@
           }
         },
         "signoff": {
-          "签署人": null,
-          "日期": null,
-          "被签对象sha256": null
+          "签署人": "owner 委托 alpha 代行",
+          "日期": "2026-10-08",
+          "被签对象sha256": "4f99385ce80951d027e17d9b0b11988a178b6f82adc1b3ddf1fe5c8e8588512f"
         }
       },
       "d2_record": {
@@ -759,9 +759,9 @@
           }
         },
         "signoff": {
-          "签署人": null,
-          "日期": null,
-          "被签对象sha256": null
+          "签署人": "owner 委托 alpha 代行",
+          "日期": "2026-10-08",
+          "被签对象sha256": "28fbfe16f1002455febd5326450326de4aca3dad9c06c1578d0e2b1ce499c919"
         }
       },
       "d2_record": {
