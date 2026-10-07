@@ -52,13 +52,35 @@ if not base:
     print("== SF-0009 门槛: 0/1 PASS")
     sys.exit(1)
 
-# R-01 REGISTRY 只追加不改历史
+# R-01 REGISTRY 只追加不改历史 + 单文件独立提交互锁（alpha 修订同步 2026-10-08；
+# 48ab1e5 经 planner 重裁豁免，见 C10-adjudication-48ab1e5.md）
+ADJUDICATED = {"48ab1e5"}
+FORBIDDEN = ("SF-0006", "devpool-r1", "baseline-signal", "基线信号")
 d = git("diff", base + "..HEAD", "--", "REGISTRY.md")
 removed = [l for l in d.stdout.splitlines() if l.startswith("-") and not l.startswith("---")]
 added = [l for l in d.stdout.splitlines() if l.startswith("+") and not l.startswith("+++")]
 blob = "\n".join(added)
-check("R-01", (not removed) and len(added) >= 1,
-      "删行=%d 增行=%d" % (len(removed), len(added)))
+ok1 = (not removed) and len(added) >= 1
+detail1 = "删行=%d 增行=%d" % (len(removed), len(added))
+if ok1:
+    leak = [l for l in added if any(k in l for k in FORBIDDEN)]
+    if leak:
+        ok1 = False
+        detail1 += " 新增行含禁词=%d" % len(leak)
+    lg = git("log", "--format=%H", base + "..HEAD", "--", "REGISTRY.md")
+    bad_c = []
+    for c in lg.stdout.split():
+        if any(c.startswith(a) for a in ADJUDICATED):
+            continue
+        nm = git("show", "--name-only", "--format=", c)
+        files = [l for l in nm.stdout.splitlines() if l.strip()]
+        subj = git("log", "-1", "--format=%s", c).stdout.strip()
+        if files != ["REGISTRY.md"] or ("SF-0009" not in subj) or ("SF-0006" in subj):
+            bad_c.append("%s(%s…,%d文件)" % (c[:8], subj[:24], len(files)))
+    if bad_c:
+        ok1 = False
+        detail1 += " 违规提交=" + ";".join(bad_c[:3])
+check("R-01", ok1, detail1)
 
 # R-02 ③登记内容在位
 ok2 = ("reference/" in blob) and ("禁止直接对外分发" in blob) \
