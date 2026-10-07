@@ -1,0 +1,56 @@
+{
+  "probe_id": "P6-glm-m4-repro",
+  "mechanism": "reasoningLevel",
+  "prune_personal_except": null,
+  "m4_derive_data_dir": true,
+  "m4_note": "注入明文 identity 条目 account-provider:account:bigmodel-individual-coding-plan:identity（值=<17 chars，从 …api-key 条目名解析>）；其余 6 条原样拷贝（加密 blob 不动）",
+  "target": {
+    "provider_id": "account:bigmodel-individual-coding-plan",
+    "model_id": "GLM-5.3",
+    "reasoningLevel": "max"
+  },
+  "budget_slot": 6,
+  "budget_model_calls_after": 6,
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<最小 prompt：回复 ok>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-pin-probe/work/P6-glm-m4-repro",
+    "--json"
+  ],
+  "env_paired": true,
+  "builtin_src": "/opt/ZCode/resources/config/provider/zcode-builtin.json",
+  "builtin_sha256": "8bd8070d529732900d6bc067a4aa27fef5e06c50b00a32321aa4c3ae6e6b9d20",
+  "personal_src": "/home/pan-ding/.zcode/v2/provider_config.json",
+  "simplify": false,
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 5100,
+  "started_at_ms": 1791408778383,
+  "session_id": "sess_342cd537-16fa-49a1-b1be-74d288f02329",
+  "directory_matches_probe": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-pin-probe/work/P6-glm-m4-repro",
+  "model_call_confirmed": true,
+  "observed": {
+    "model_id": "GLM-5.3",
+    "provider_id": "account:bigmodel-individual-coding-plan",
+    "variant": "max",
+    "model_usage_rows": 1
+  },
+  "hit": true,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "variant": "max",
+      "status": "completed",
+      "it": 18886,
+      "ot": 3,
+      "n": 1
+    }
+  ],
+  "stderr_head": "",
+  "stdout_tail": "{\n  \"sessionId\": \"sess_342cd537-16fa-49a1-b1be-74d288f02329\",\n  \"traceId\": \"774edfe0-39e2-4721-8f31-81b4b83660d4\",\n  \"turnId\": \"turn_288b9654-3046-4f84-8715-57650edb189b\",\n  \"response\": \"ok\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 1,\n    \"inputTokens\": 18886,\n    \"outputTokens\": 3,\n    \"totalTokens\": 18889,\n    \"cacheReadTokens\": 15680,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 11,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 18889,\n    \"contextUsed\": 18889,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

@@ -1,0 +1,91 @@
+{
+  "cap": 8,
+  "model_calls": 6,
+  "note": "SF-0006 钉版探针预算账本：真实模型调用 ≤8（planner 裁决 2026-10-08，刚性）。spawn 前记账 pending，spawn 后按 db model_usage 实测回填；无模型调用的失败探针不消耗预算。",
+  "entries": [
+    {
+      "slot": 1,
+      "probe_id": "P1-minimax-rlen",
+      "ts_intent": "05:15:05",
+      "status": "done",
+      "model_call": true,
+      "hit": true,
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": "enabled",
+        "model_usage_rows": 1
+      }
+    },
+    {
+      "slot": 2,
+      "probe_id": "P2-glm-account",
+      "ts_intent": "05:15:19",
+      "status": "done",
+      "model_call": true,
+      "hit": false,
+      "observed": {
+        "model_id": "step-5-preview",
+        "provider_id": "new-provider",
+        "variant": "high",
+        "model_usage_rows": 1
+      }
+    },
+    {
+      "slot": 3,
+      "probe_id": "P3-adjudication-prune",
+      "ts_intent": "05:29:35",
+      "status": "done",
+      "model_call": true,
+      "hit": false,
+      "observed": {
+        "model_id": "k3",
+        "provider_id": "moonshot-kimi",
+        "variant": "max",
+        "model_usage_rows": 1
+      }
+    },
+    {
+      "slot": 4,
+      "probe_id": "P4-glm-m4-datadir",
+      "ts_intent": "05:32:14",
+      "status": "done",
+      "model_call": true,
+      "hit": true,
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": "max",
+        "model_usage_rows": 1
+      }
+    },
+    {
+      "slot": 5,
+      "probe_id": "P5-minimax-repro",
+      "ts_intent": "05:32:46",
+      "status": "done",
+      "model_call": true,
+      "hit": true,
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": "enabled",
+        "model_usage_rows": 1
+      }
+    },
+    {
+      "slot": 6,
+      "probe_id": "P6-glm-m4-repro",
+      "ts_intent": "05:32:58",
+      "status": "done",
+      "model_call": true,
+      "hit": true,
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": "max",
+        "model_usage_rows": 1
+      }
+    }
+  ]
+}

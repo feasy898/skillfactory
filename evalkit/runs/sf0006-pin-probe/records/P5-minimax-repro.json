@@ -1,0 +1,56 @@
+{
+  "probe_id": "P5-minimax-repro",
+  "mechanism": "reasoningLevel",
+  "prune_personal_except": null,
+  "m4_derive_data_dir": false,
+  "m4_note": null,
+  "target": {
+    "provider_id": "minimax",
+    "model_id": "Minimax-M3.1-Flash-Preview",
+    "reasoningLevel": "enabled"
+  },
+  "budget_slot": 5,
+  "budget_model_calls_after": 5,
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<最小 prompt：回复 ok>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-pin-probe/work/P5-minimax-repro",
+    "--json"
+  ],
+  "env_paired": true,
+  "builtin_src": "/opt/ZCode/resources/config/provider/zcode-builtin.json",
+  "builtin_sha256": "8bd8070d529732900d6bc067a4aa27fef5e06c50b00a32321aa4c3ae6e6b9d20",
+  "personal_src": "/home/pan-ding/.zcode/v2/provider_config.json",
+  "simplify": false,
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 4873,
+  "started_at_ms": 1791408766873,
+  "session_id": "sess_2cde723c-7c1e-4078-91c1-3702b592ef24",
+  "directory_matches_probe": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-pin-probe/work/P5-minimax-repro",
+  "model_call_confirmed": true,
+  "observed": {
+    "model_id": "Minimax-M3.1-Flash-Preview",
+    "provider_id": "minimax",
+    "variant": "enabled",
+    "model_usage_rows": 1
+  },
+  "hit": true,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "variant": "enabled",
+      "status": "completed",
+      "it": 18531,
+      "ot": 3,
+      "n": 1
+    }
+  ],
+  "stderr_head": "",
+  "stdout_tail": "{\n  \"sessionId\": \"sess_2cde723c-7c1e-4078-91c1-3702b592ef24\",\n  \"traceId\": \"2c4b4f24-3f79-4808-be8f-05d5b350106e\",\n  \"turnId\": \"turn_6a0b8d96-46b2-43c3-8ca5-c7c499fbd6d0\",\n  \"response\": \"ok\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 1,\n    \"inputTokens\": 18531,\n    \"outputTokens\": 3,\n    \"totalTokens\": 18534,\n    \"cacheReadTokens\": 190,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 11,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 18534,\n    \"contextUsed\": 18534,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

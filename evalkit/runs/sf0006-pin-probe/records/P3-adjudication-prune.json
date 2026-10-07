@@ -1,0 +1,54 @@
+{
+  "probe_id": "P3-adjudication-prune",
+  "mechanism": "adjudication-prune+reasoningLevel",
+  "prune_personal_except": "moonshot-kimi",
+  "target": {
+    "provider_id": "account:bigmodel-individual-coding-plan",
+    "model_id": "GLM-5.3",
+    "reasoningLevel": "max"
+  },
+  "budget_slot": 3,
+  "budget_model_calls_after": 3,
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<最小 prompt：回复 ok>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-pin-probe/work/P3-adjudication-prune",
+    "--json"
+  ],
+  "env_paired": true,
+  "builtin_src": "/opt/ZCode/resources/config/provider/zcode-builtin.json",
+  "builtin_sha256": "8bd8070d529732900d6bc067a4aa27fef5e06c50b00a32321aa4c3ae6e6b9d20",
+  "personal_src": "/home/pan-ding/.zcode/v2/provider_config.json",
+  "simplify": false,
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 6586,
+  "started_at_ms": 1791408575191,
+  "session_id": "sess_7375c482-1f36-4c2d-bb30-5b2216284197",
+  "directory_matches_probe": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-pin-probe/work/P3-adjudication-prune",
+  "model_call_confirmed": true,
+  "observed": {
+    "model_id": "k3",
+    "provider_id": "moonshot-kimi",
+    "variant": "max",
+    "model_usage_rows": 1
+  },
+  "hit": false,
+  "model_usage": [
+    {
+      "model_id": "k3",
+      "provider_id": "moonshot-kimi",
+      "variant": "max",
+      "status": "completed",
+      "it": 17270,
+      "ot": 38,
+      "n": 1
+    }
+  ],
+  "stderr_head": "",
+  "stdout_tail": "{\n  \"sessionId\": \"sess_7375c482-1f36-4c2d-bb30-5b2216284197\",\n  \"traceId\": \"e9220bcb-f672-42d5-bc72-1739d0954187\",\n  \"turnId\": \"turn_1d6c35ad-5ab9-4fa2-9b38-fce50c4dc97c\",\n  \"response\": \"ok\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 1,\n    \"inputTokens\": 17270,\n    \"outputTokens\": 38,\n    \"totalTokens\": 17308,\n    \"cacheReadTokens\": 0,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 22,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 34,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 17308,\n    \"contextUsed\": 17308,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

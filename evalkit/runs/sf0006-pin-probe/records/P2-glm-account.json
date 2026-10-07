@@ -1,0 +1,53 @@
+{
+  "probe_id": "P2-glm-account",
+  "mechanism": "reasoningLevel",
+  "target": {
+    "provider_id": "account:bigmodel-individual-coding-plan",
+    "model_id": "GLM-5.3",
+    "reasoningLevel": "max"
+  },
+  "budget_slot": 2,
+  "budget_model_calls_after": 2,
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<最小 prompt：回复 ok>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-pin-probe/work/P2-glm-account",
+    "--json"
+  ],
+  "env_paired": true,
+  "builtin_src": "/opt/ZCode/resources/config/provider/zcode-builtin.json",
+  "builtin_sha256": "8bd8070d529732900d6bc067a4aa27fef5e06c50b00a32321aa4c3ae6e6b9d20",
+  "personal_src": "/home/pan-ding/.zcode/v2/provider_config.json",
+  "simplify": false,
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 7095,
+  "started_at_ms": 1791407719653,
+  "session_id": "sess_bfd6ac96-82a8-4657-8d92-4d37ace21276",
+  "directory_matches_probe": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-pin-probe/work/P2-glm-account",
+  "model_call_confirmed": true,
+  "observed": {
+    "model_id": "step-5-preview",
+    "provider_id": "new-provider",
+    "variant": "high",
+    "model_usage_rows": 1
+  },
+  "hit": false,
+  "model_usage": [
+    {
+      "model_id": "step-5-preview",
+      "provider_id": "new-provider",
+      "variant": "high",
+      "status": "completed",
+      "it": 18276,
+      "ot": 139,
+      "n": 1
+    }
+  ],
+  "stderr_head": "",
+  "stdout_tail": "{\n  \"sessionId\": \"sess_bfd6ac96-82a8-4657-8d92-4d37ace21276\",\n  \"traceId\": \"27831a50-bc17-40ec-b4e8-84653cf9c0da\",\n  \"turnId\": \"turn_81f785d3-94a5-4dd5-9591-ab54efbcf6bc\",\n  \"response\": \"ok\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 1,\n    \"inputTokens\": 18276,\n    \"outputTokens\": 139,\n    \"totalTokens\": 18415,\n    \"cacheReadTokens\": 512,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 72,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 18415,\n    \"contextUsed\": 18415,\n    \"contextWindow\": 200000\n  }\n}\n"
+}
