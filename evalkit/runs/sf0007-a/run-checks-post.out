@@ -1,0 +1,37 @@
+
+== AC 组 · G0-5 形式合规门 ==
+[PASS] AC-1 golden exit=0 fails=[]
+[PASS] AC-2..5/r1-name-dir-mismatch exit=1 internal_fails=['name_equals_dir'] target=name_equals_dir
+[PASS] AC-2..5/r2-top-version exit=1 internal_fails=['top_fields_whitelist'] target=top_fields_whitelist
+[PASS] AC-2..5/r3-top-permissions exit=1 internal_fails=['top_fields_whitelist'] target=top_fields_whitelist
+[PASS] AC-2..5/r4-unknown-field exit=1 internal_fails=['top_fields_whitelist'] target=top_fields_whitelist
+[PASS] AC-2..5/r5-no-metadata-version exit=1 internal_fails=['metadata_version_present'] target=metadata_version_present
+[PASS] AC-2..5/r6-no-frontmatter exit=1 internal_fails=['frontmatter_present'] target=frontmatter_present
+[PASS] AC-2..5/r7-no-name exit=1 internal_fails=['name_present'] target=name_present
+[PASS] AC-2..5/r8-desc-1025 exit=1 internal_fails=['description_length'] target=description_length
+[PASS] AC-6 单一变异源：非目标内部规则命中=无
+[PASS] AC-7 隔离 PATH exit=3 fail_closed=True
+[PASS] AC-8 留痕：现行体检器 REQUIRED_FIELDS=['name', 'version', 'license', 'description', 'permissions']；与 G0-5 白名单冲突字段=['version', 'permissions']；对齐（体检器升级）属 WS9，届时重跑本条
+[PASS] AC-9 v5 package/ 布局 exit=3 refused=True
+
+== BP 组 · build.py 三变体 ==
+[PASS] BP-1 standard:OK; claude-code:OK; learner:OK
+[PASS] BP-2 metadata.version=0.2.0 metadata.permissions=[shell] top=['description', 'license', 'name'] dir=src-demo
+[PASS] BP-3a 无标注源：claude-code 零私字段=True 正文零标注块残留=True
+[PASS] BP-3b 含标注源：claude-code 恰生成 allowed-tools 且正文剥离
+[PASS] BP-4 smoke 双态：绿 exit=0 红 exit=1
+[PASS] BP-5 白名单外 learner 文件被拦=True；standard 剥 README 维持=True
+[PASS] BP-6 变换面外差异=无 违禁=无 正文保真=True
+[PASS] BP-7 双跑 diff=空
+[PASS] BP-8 共享文件逐字节一致=True 差异集=['README.md']（⊆ standard 已剥离人读层）；MANIFEST source_pkg 随源正确=True
+[PASS] BP-9 三包×三变体 门+绿+红：全过
+
+== HY 组 · 发布卫生与打包清单 ==
+[PASS] HY-1 打包输入+产物双侧保留名扫描：源=零命中 产物=零命中
+[PASS] HY-2 发布物 CRLF 扫描=零命中（utf-8 严格解码由 is_text_bytes 隐式验证）
+[PASS] HY-3 评测留档 json.load=全部可解析
+[PASS] HY-4 K-5 发布批准留痕位在修复票（发布亲签动作归 owner，本轮只留位）
+[PASS] HY-5 产物无 oracle/reference/违禁目录；MANIFEST.json 9 份均含版本+sha256 指纹
+
+==== 总计 28 条：PASS 28 / FAIL 0 ====
+report -> /home/pan-ding/workspace/skill工厂/skillfactory/dist/build/ws2-checks-report.json

@@ -4,7 +4,7 @@
   "skill_version": "1.0.0",
   "variant": "learner",
   "source_pkg": "meeting-minutes-skill",
-  "built_by": "build.py v1.0.0",
+  "built_by": "build.py v1.1.0",
   "transforms": {
     "frontmatter": [
       "top.version -> metadata.version",
@@ -12,12 +12,27 @@
     ],
     "text_normalization": "utf-8 decode; CRLF/CR -> LF (text files only)",
     "excluded": [
-      "./reference"
+      "./reference",
+      "eval/__pycache__"
     ],
     "stripped": [],
     "added": [
       "MANIFEST.json"
-    ]
+    ],
+    "reference_ref_rewrite": {
+      "rule": "literal 'reference/' -> 'canonical 参照区／'（SF-0007 K5A-01；签署②(b) 改写说明路径）",
+      "files": [
+        "EVALUATION.md",
+        "MANIFEST.md",
+        "README.md",
+        "SKILL.md"
+      ]
+    },
+    "disclosure_append": {
+      "target": "EVALUATION.md",
+      "marker": "SF-0007 disclosure v1",
+      "basis": "REGISTRY「对外必须随附的披露口径」1–5 条（SF-0007 K5A-04）"
+    }
   },
   "normalizations": {
     "text": "utf-8 + LF",
@@ -32,8 +47,8 @@
     },
     {
       "path": "EVALUATION.md",
-      "sha256": "885b761ef79f354812b04783476de0356aecf7beb88e23fb748a8390b078651c",
-      "bytes": 4782
+      "sha256": "907d15b3fba935b08408ae02d4319efbee36a680b2f709578b637e12c190335e",
+      "bytes": 5930
     },
     {
       "path": "LICENSE",
@@ -42,18 +57,18 @@
     },
     {
       "path": "MANIFEST.md",
-      "sha256": "3f055c2bffde5fb00f26c1cdce739510adc72f9ca3e302ab27986db27a36308e",
-      "bytes": 1035
+      "sha256": "fe7489b2510bed0f2ac4c488b64f5092fa6f5c452eaad4318bc0ee687b940bf2",
+      "bytes": 1047
     },
     {
       "path": "README.md",
-      "sha256": "2493ccb1c5017e4478c4af854223779db81a9b7294e5a803e8c2956797aaed68",
-      "bytes": 3034
+      "sha256": "76ffc7ac74d14082c423e21bc1da1ed15f2e0ea5a55c8edbec511bb772f9e2f8",
+      "bytes": 3082
     },
     {
       "path": "SKILL.md",
-      "sha256": "80cd21ede82c051beed0f456b33421ffbe86e70478802a2a6bc30017cd386e44",
-      "bytes": 6604
+      "sha256": "0b04eae2b6121e12616c1aa69711c3416ff2fd5fdd73398831d28ed9de94aff5",
+      "bytes": 6616
     },
     {
       "path": "eval/golden.json",

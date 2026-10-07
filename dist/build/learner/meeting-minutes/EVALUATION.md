@@ -54,11 +54,21 @@
 
 ```bash
 # 确定性评测（应 exit 0）
-python scripts/minutes.py --input reference/inputs/case1.txt --outdir out/case1
-python scripts/minutes.py --input reference/inputs/case2.txt --outdir out/case2
-python scripts/minutes.py --input reference/inputs/case3.txt --outdir out/case3
-python scripts/minutes.py --input reference/inputs/case4.txt --outdir out/case4
-python eval/runner.py out reference/out
+python scripts/minutes.py --input canonical 参照区／inputs/case1.txt --outdir out/case1
+python scripts/minutes.py --input canonical 参照区／inputs/case2.txt --outdir out/case2
+python scripts/minutes.py --input canonical 参照区／inputs/case3.txt --outdir out/case3
+python scripts/minutes.py --input canonical 参照区／inputs/case4.txt --outdir out/case4
+python eval/runner.py out canonical 参照区／out
 ```
 
 盲评协议（双臂任务、rubric、裁判指令）见开发方评测标准文档；本包发布时的完整裁决留档约 1.5 万字，含每组的实测证据链。
+
+<!-- SF-0007 disclosure v1（build.py 声明变换追加；幂等标记，请勿手改） -->
+
+## 渠道披露（SF-0007 · build.py 声明变换追加；口径=REGISTRY「对外必须随附的披露口径」1–5 条）
+
+- 证据等级：全批 **synthetic-passed ✓ / real-verified ✗**（真实复验门未做）。
+- **效率门**（token/耗时）未测；benchmark.json 落盘欠账见签署文件②（另行开卡补齐）。
+- 发布打包最后一道工序：再次清点删除包内 `.mimosa/`（本次构建实查为 0——构建器排除运行时缓存目录，本变体内无 .mimosa 实体）。
+- 参照区说明：canonical 参照区（官方样例 inputs 与参照产物）**不随本变体分发**；上文凡「canonical 参照区／…」形式的路径均指源包参照区，相关复现/对拍命令须自备参照根后方可执行，文档内复现记录均产生于 canonical 源包上下文。
+- 本件盲评 Δ+5.25 来自 2026-09-30 **majority** 判定反演**修正**（勘误）后的重算：均值与 Δ 未受修正影响，accepted 结论不变。

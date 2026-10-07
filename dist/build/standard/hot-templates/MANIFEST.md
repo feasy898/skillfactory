@@ -14,4 +14,4 @@
 | `scripts/` | 确定性引擎：`gen.py`（CLI 契约唯一入口，纯标准库） |
 | `references/` | 四平台模板规范（dy/xhs/wx/video.md）+ `frozen-tokens.md`（接口常量表：占位符 token、要素命名、填充语义的权威清单） |
 | `eval/` | 确定性评测：`runner.py`（8 case × 5 项机器检查）+ `golden.json`（黄金集 + 5 条 A/B 任务） |
-| `reference/` | 官方样例：`inputs/` 输入 JSON ×8 与 `out/` 参照产物单元 ×8 |
+| `canonical 参照区／` | 官方样例：`inputs/` 输入 JSON ×8 与 `out/` 参照产物单元 ×8 |

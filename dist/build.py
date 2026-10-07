@@ -22,7 +22,18 @@
   1. SKILL.md frontmatter 按 variant 重写（正文 LF 归一，其余字节不动）；
   2. 全部文本文件行尾归一 CRLF→LF（HY-2；基准声明对齐 TESTS §1.10 EI-4 思想）；
   3. 排除清单（见 EXCLUDE_DIRNAMES / EXCLUDE_FILENAMES / 变体附加剥离）；
-  4. 新增 MANIFEST.json（逐文件 sha256，无时间戳——BP-7 重建确定性）。
+  4. 新增 MANIFEST.json（逐文件 sha256，无时间戳——BP-7 重建确定性）；
+  5. 渠道悬空引用改写（SF-0007 K5A-01，签署②(b)「改写说明」路径）：仅对 dist
+     三包（DIST_PACKAGES）生效——变体已整目录剔除参照区，.md 文本中字面
+     `reference/` 开头的路径引用必然悬空，统一改写为「canonical 参照区／」；
+     改写清单写入 transforms.reference_ref_rewrite。幂等：替换文本不含
+     `reference/` 字面，重复应用零变化（BP-7 双跑一致）。
+  6. 渠道披露追加（SF-0007 K5A-04）：仅对 dist 三包生效——向产物 EVALUATION.md
+     末尾追加「渠道披露」节（REGISTRY「对外必须随附的披露口径」1–5 条，按包
+     差异化），幂等标记 DISCLOSURE_MARKER 防重复追加（组合构建共享文件逐字节
+     一致，BP-8）；写入 transforms.disclosure_append。
+  渠道变换 5/6 的触发白名单=DIST_PACKAGES；装置夹具（tests/src-demo*）不在渠道
+  声明面内、不触发——保 BP-6「变换面外 sha256==源」与 SKILL.md 正文保真断言。
 
 排除语义（重要，处置留痕见 dist-compliance-tickets.md）：
   reference/  = 官方样例输入 + 参照产物（oracle 性质，判据面不进分发物；
@@ -48,7 +59,7 @@ import shutil
 import subprocess
 import sys
 
-BUILD_VERSION = "1.0.0"
+BUILD_VERSION = "1.1.0"  # 1.1.0：+渠道悬空引用改写与渠道披露追加（SF-0007 K5A-01/04）
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 VARIANTS = ("standard", "claude-code", "learner")
@@ -211,8 +222,50 @@ def serialize_frontmatter(meta, top_order):
 
 
 # ---------------------------------------------------------------------------
-# 变体变换
+# 渠道声明变换（SF-0007 · 2026-10-08；判据基准=本节声明，写进产物 MANIFEST transforms）
+# 触发白名单=DIST_PACKAGES（真实 dist 三包）。装置夹具（tests/src-demo*）不在渠道
+# 声明面内、不触发——保 BP-6「变换面外 sha256==源」与 SKILL.md 正文保真断言。
+# 两条变换均确定性且幂等（无时间戳 → BP-7 双跑一致；marker 防重复追加 → 组合构建
+# learner(standard(源)) 与 learner(源) 共享文件逐字节一致，BP-8）。
 # ---------------------------------------------------------------------------
+
+# 渠道披露幂等标记（产物 EVALUATION.md 中已存在则不再追加）
+DISCLOSURE_MARKER = "SF-0007 disclosure v1"
+
+
+def rewrite_stale_reference_refs(text):
+    """渠道悬空引用改写（签署②(b)「改写说明」路径；SF-0007 K5A-01）。
+
+    变体已整目录剔除参照区，.md 文本中凡以字面 `reference/` 开头的路径引用在产物
+    内必然悬空（与「任何人可复跑验证」的声称不符，诚实性缺陷）。统一改写为
+    「canonical 参照区／」：指明来源（canonical 源包参照区）且命令形态明显不可
+    直接复制执行；替换文本不含 `reference/` 字面 → 幂等（改写结果不再命中本规则）。
+    """
+    return text.replace("reference/", "canonical 参照区／")
+
+
+def channel_disclosure_appendix(name):
+    """按包差异化的渠道披露节（REGISTRY「对外必须随附的披露口径」1–5 条）。"""
+    lines = [
+        "",
+        "<!-- %s（build.py 声明变换追加；幂等标记，请勿手改） -->" % DISCLOSURE_MARKER,
+        "",
+        "## 渠道披露（SF-0007 · build.py 声明变换追加；口径=REGISTRY「对外必须随附的披露口径」1–5 条）",
+        "",
+        "- 证据等级：全批 **synthetic-passed ✓ / real-verified ✗**（真实复验门未做）。",
+        "- **效率门**（token/耗时）未测；benchmark.json 落盘欠账见签署文件②（另行开卡补齐）。",
+        "- 发布打包最后一道工序：再次清点删除包内 `.mimosa/`（本次构建实查为 0——构建器排除运行时缓存目录，本变体内无 .mimosa 实体）。",
+        "- 参照区说明：canonical 参照区（官方样例 inputs 与参照产物）**不随本变体分发**；上文凡「canonical 参照区／…」形式的路径均指源包参照区，相关复现/对拍命令须自备参照根后方可执行，文档内复现记录均产生于 canonical 源包上下文。",
+    ]
+    if name == "meeting-minutes":
+        lines.append("- 本件盲评 Δ+5.25 来自 2026-09-30 **majority** 判定反演**修正**（勘误）后的重算：均值与 Δ 未受修正影响，accepted 结论不变。")
+    if name == "office-templates":
+        lines.append("- office-templates 一切对外文案标注 **single_round_signal**（第二轮盲评未做，单轮信号）。")
+    if name == "hot-templates":
+        lines.append("- hot-templates 以 **release-candidate** 形态入 dist；按 SPEC §4 五门口径欠账未清（效率门未测、benchmark.json 未落盘），**复检**通过前不上架——是否随本批放行随三包一并待雇主裁决。")
+    lines.append("")
+    return "\n".join(lines)
+
 
 def transform_frontmatter(meta, body, variant):
     """按 variant 重写 frontmatter。返回 (new_text, transforms, err)。"""
@@ -311,6 +364,10 @@ def build_pkg(src_root, variant, out_root):
     excluded = []
     copied = []
     stripped = []
+    # 渠道变换触发（SF-0007）：白名单=真实 dist 三包；夹具不触发（保 BP-6/BP-8）
+    pkg_in_channel = os.path.basename(os.path.normpath(src_root)) in DIST_PACKAGES
+    refs_rewritten = []
+    disclosure_done = False
     for base, dirs, files in os.walk(src_root):
         rel_base = os.path.relpath(base, src_root)
         for d in list(dirs):
@@ -337,6 +394,18 @@ def build_pkg(src_root, variant, out_root):
                 data = normalize_text(raw)
             else:
                 data = raw
+            if pkg_in_channel and rel.endswith(".md") and b"reference/" in data:
+                fixed = rewrite_stale_reference_refs(data.decode("utf-8")).encode("utf-8")
+                if fixed != data:
+                    data = fixed
+                    refs_rewritten.append(rel)
+            if pkg_in_channel and rel == "EVALUATION.md":
+                text = data.decode("utf-8")
+                if DISCLOSURE_MARKER not in text:
+                    if not text.endswith("\n"):
+                        text += "\n"
+                    data = (text + channel_disclosure_appendix(name)).encode("utf-8")
+                    disclosure_done = True
             dst = os.path.join(product, *rel.split("/"))
             os.makedirs(os.path.dirname(dst), exist_ok=True)
             with open(dst, "wb") as f:
@@ -370,6 +439,25 @@ def build_pkg(src_root, variant, out_root):
             files_entries.append({"path": rel, "sha256": sha256_bytes(data),
                                   "bytes": len(data)})
     files_entries.sort(key=lambda e: e["path"])
+    transforms_decl = {
+        "frontmatter": transforms,
+        "text_normalization": "utf-8 decode; CRLF/CR -> LF (text files only)",
+        "excluded": sorted(set(excluded)),
+        "stripped": sorted(stripped),
+        "added": ["MANIFEST.json"],
+    }
+    if refs_rewritten:
+        transforms_decl["reference_ref_rewrite"] = {
+            "rule": "literal 'reference/' -> 'canonical 参照区／'"
+                    "（SF-0007 K5A-01；签署②(b) 改写说明路径）",
+            "files": sorted(set(refs_rewritten)),
+        }
+    if disclosure_done:
+        transforms_decl["disclosure_append"] = {
+            "target": "EVALUATION.md",
+            "marker": DISCLOSURE_MARKER,
+            "basis": "REGISTRY「对外必须随附的披露口径」1–5 条（SF-0007 K5A-04）",
+        }
     manifest = {
         "manifest_version": "1",
         "skill": name,
@@ -377,13 +465,7 @@ def build_pkg(src_root, variant, out_root):
         "variant": variant,
         "source_pkg": os.path.basename(os.path.normpath(src_root)),
         "built_by": "build.py v%s" % BUILD_VERSION,
-        "transforms": {
-            "frontmatter": transforms,
-            "text_normalization": "utf-8 decode; CRLF/CR -> LF (text files only)",
-            "excluded": sorted(set(excluded)),
-            "stripped": sorted(stripped),
-            "added": ["MANIFEST.json"],
-        },
+        "transforms": transforms_decl,
         "normalizations": {"text": "utf-8 + LF", "binary": "byte-identical"},
         "file_count": len(files_entries),
         "files": files_entries,

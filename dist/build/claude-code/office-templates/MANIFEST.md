@@ -14,4 +14,4 @@
 | `scripts/` | 确定性引擎：`gen_doc.py`（contract §2 唯一契约入口） |
 | `references/` | 四类模板的版式与字段规范（周报/请示函/会议通知/工作总结.md） |
 | `eval/` | 确定性评测：`runner.py`（六类机器检查）+ `golden.json`（黄金集 + A/B 任务） |
-| `reference/` | 官方样例：`inputs/` 数据 JSON ×8 与 `out/` 参照产物单元 ×8 |
+| `canonical 参照区／` | 官方样例：`inputs/` 数据 JSON ×8 与 `out/` 参照产物单元 ×8 |

@@ -1,0 +1,10 @@
+[OK] meeting-minutes-skill -> standard (/home/pan-ding/workspace/skill工厂/skillfactory/dist/build/standard/meeting-minutes)
+[OK] meeting-minutes-skill -> claude-code (/home/pan-ding/workspace/skill工厂/skillfactory/dist/build/claude-code/meeting-minutes)
+[OK] meeting-minutes-skill -> learner (/home/pan-ding/workspace/skill工厂/skillfactory/dist/build/learner/meeting-minutes)
+[OK] office-templates-skill -> standard (/home/pan-ding/workspace/skill工厂/skillfactory/dist/build/standard/office-templates)
+[OK] office-templates-skill -> claude-code (/home/pan-ding/workspace/skill工厂/skillfactory/dist/build/claude-code/office-templates)
+[OK] office-templates-skill -> learner (/home/pan-ding/workspace/skill工厂/skillfactory/dist/build/learner/office-templates)
+[OK] hot-templates-skill -> standard (/home/pan-ding/workspace/skill工厂/skillfactory/dist/build/standard/hot-templates)
+[OK] hot-templates-skill -> claude-code (/home/pan-ding/workspace/skill工厂/skillfactory/dist/build/claude-code/hot-templates)
+[OK] hot-templates-skill -> learner (/home/pan-ding/workspace/skill工厂/skillfactory/dist/build/learner/hot-templates)
+summary -> /home/pan-ding/workspace/skill工厂/skillfactory/dist/build/build-summary.json

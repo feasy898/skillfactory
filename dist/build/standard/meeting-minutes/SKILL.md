@@ -58,7 +58,7 @@ metadata:
    - 输入文件不存在时脚本以非 0 退出且不产出半成品——此时停止并向用户确认正确路径，禁止自己编造输入。
 2. **验收（用随包评测脚本）**：
    ```
-   python eval/runner.py <被测out> reference/out
+   python eval/runner.py <被测out> canonical 参照区／out
    ```
    exit 0 即通过。5 项检查：三节标题齐全／待办表格含负责人、期限列／summary 四键与 docx 实际条数一致／每条目可在转写稿逐字溯源（含时间+说话人）／与参照产物各类条数差 ≤2。
 3. **无脚本执行条件时（无法运行 python）**：按 references/docx-and-summary.md 的结构约定**手工产出同名产物**（`纪要.docx` + `summary.json`），产出后逐条自查该文件末尾的验收清单。

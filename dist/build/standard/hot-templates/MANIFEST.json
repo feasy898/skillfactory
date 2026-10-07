@@ -4,7 +4,7 @@
   "skill_version": "1.0.0",
   "variant": "standard",
   "source_pkg": "hot-templates-skill",
-  "built_by": "build.py v1.0.0",
+  "built_by": "build.py v1.1.0",
   "transforms": {
     "frontmatter": [
       "top.version -> metadata.version",
@@ -12,14 +12,28 @@
     ],
     "text_normalization": "utf-8 decode; CRLF/CR -> LF (text files only)",
     "excluded": [
-      "./reference"
+      "./reference",
+      "eval/__pycache__"
     ],
     "stripped": [
       "README.md"
     ],
     "added": [
       "MANIFEST.json"
-    ]
+    ],
+    "reference_ref_rewrite": {
+      "rule": "literal 'reference/' -> 'canonical 参照区／'（SF-0007 K5A-01；签署②(b) 改写说明路径）",
+      "files": [
+        "EVALUATION.md",
+        "MANIFEST.md",
+        "SKILL.md"
+      ]
+    },
+    "disclosure_append": {
+      "target": "EVALUATION.md",
+      "marker": "SF-0007 disclosure v1",
+      "basis": "REGISTRY「对外必须随附的披露口径」1–5 条（SF-0007 K5A-04）"
+    }
   },
   "normalizations": {
     "text": "utf-8 + LF",
@@ -34,8 +48,8 @@
     },
     {
       "path": "EVALUATION.md",
-      "sha256": "6f54c09bc0252a7369033a56985d804694619b1ca35c468ee69218375625ca07",
-      "bytes": 7781
+      "sha256": "a4583168507a11985e6eb02872be8afe3ec63ab7079cefecaf8eefe7b9f08599",
+      "bytes": 9171
     },
     {
       "path": "LICENSE",
@@ -44,13 +58,13 @@
     },
     {
       "path": "MANIFEST.md",
-      "sha256": "ea1338c7ae274016c87fc64b6b2142622e1d7dcf28d525b65b372b58a5b40ed8",
-      "bytes": 1436
+      "sha256": "57d273a765554c9d2e02c21f60d7f88802260c880117e34ffe2cf54862217cf5",
+      "bytes": 1448
     },
     {
       "path": "SKILL.md",
-      "sha256": "4c8f9068698934db33f8f21b548da671a5a5419529c5601532d4540fe86f4bce",
-      "bytes": 8686
+      "sha256": "edebf974c0163a8977e133534b537da26ab042901bda9127027487c2e670002a",
+      "bytes": 8698
     },
     {
       "path": "eval/golden.json",

@@ -77,7 +77,7 @@ wx 三段论以「一、是什么」「二、为什么」「三、怎么办」�
 
 - `骨架.md`（人读）：首行 `# <平台> · 爆款骨架` + 元信息三行（主题/平台模板/卖点输入）+ 每要素一节 `## <序号>. <名称>`（内含要素文本与「> 写法要点：」）+ 尾部 `## 占位符统计` 节；video 另含 `## 分镜总表（时间轴 00:00-00:45，共 45 秒）`。
 - `structure.json`（机器可读）：顶层 11 键（`template_version="1.0"`、platform、platform_name、structure_name、topic、points_input_count、points_used、points_unused、element_count、elements、placeholder_stats）；每要素 9 键；统计 5 键；UTF-8/LF，同输入重跑逐字节一致。
-- 验收判据（本包内评测）：`python eval/runner.py <被测out> reference/out` 退出码 0（8 case × 5 检查，结构一致率阈值 90%；在分发包根目录运行，见 README「运行目录约定」）。
+- 验收判据（本包内评测）：`python eval/runner.py <被测out> canonical 参照区／out` 退出码 0（8 case × 5 检查，结构一致率阈值 90%；在分发包根目录运行，见 README「运行目录约定」）。
 
 ## 边界（非目标）
 

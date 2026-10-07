@@ -1,0 +1,127 @@
+{
+  "dangling_total": 154,
+  "files": {
+    "claude-code/hot-templates/EVALUATION.md": 19,
+    "claude-code/hot-templates/MANIFEST.md": 1,
+    "claude-code/hot-templates/SKILL.md": 1,
+    "claude-code/meeting-minutes/EVALUATION.md": 5,
+    "claude-code/meeting-minutes/MANIFEST.md": 1,
+    "claude-code/meeting-minutes/SKILL.md": 1,
+    "claude-code/office-templates/CHANGELOG.md": 4,
+    "claude-code/office-templates/EVALUATION.md": 12,
+    "claude-code/office-templates/MANIFEST.md": 1,
+    "learner/hot-templates/EVALUATION.md": 19,
+    "learner/hot-templates/MANIFEST.md": 1,
+    "learner/hot-templates/README.md": 8,
+    "learner/hot-templates/SKILL.md": 1,
+    "learner/meeting-minutes/EVALUATION.md": 5,
+    "learner/meeting-minutes/MANIFEST.md": 1,
+    "learner/meeting-minutes/README.md": 4,
+    "learner/meeting-minutes/SKILL.md": 1,
+    "learner/office-templates/CHANGELOG.md": 4,
+    "learner/office-templates/EVALUATION.md": 12,
+    "learner/office-templates/MANIFEST.md": 1,
+    "learner/office-templates/README.md": 7,
+    "standard/hot-templates/EVALUATION.md": 19,
+    "standard/hot-templates/MANIFEST.md": 1,
+    "standard/hot-templates/SKILL.md": 1,
+    "standard/meeting-minutes/EVALUATION.md": 5,
+    "standard/meeting-minutes/MANIFEST.md": 1,
+    "standard/meeting-minutes/SKILL.md": 1,
+    "standard/office-templates/CHANGELOG.md": 4,
+    "standard/office-templates/EVALUATION.md": 12,
+    "standard/office-templates/MANIFEST.md": 1
+  },
+  "k5a04_before": {
+    "standard/meeting-minutes": {
+      "synthetic-passed": 0,
+      "real-verified": 0,
+      "效率门": 0,
+      ".mimosa": 0,
+      "majority": 3,
+      "single_round_signal": 0,
+      "release-candidate": 0,
+      "复检": 0
+    },
+    "standard/office-templates": {
+      "synthetic-passed": 0,
+      "real-verified": 0,
+      "效率门": 0,
+      ".mimosa": 0,
+      "majority": 6,
+      "single_round_signal": 0,
+      "release-candidate": 0,
+      "复检": 0
+    },
+    "standard/hot-templates": {
+      "synthetic-passed": 0,
+      "real-verified": 0,
+      "效率门": 0,
+      ".mimosa": 0,
+      "majority": 6,
+      "single_round_signal": 0,
+      "release-candidate": 0,
+      "复检": 0
+    },
+    "claude-code/meeting-minutes": {
+      "synthetic-passed": 0,
+      "real-verified": 0,
+      "效率门": 0,
+      ".mimosa": 0,
+      "majority": 3,
+      "single_round_signal": 0,
+      "release-candidate": 0,
+      "复检": 0
+    },
+    "claude-code/office-templates": {
+      "synthetic-passed": 0,
+      "real-verified": 0,
+      "效率门": 0,
+      ".mimosa": 0,
+      "majority": 6,
+      "single_round_signal": 0,
+      "release-candidate": 0,
+      "复检": 0
+    },
+    "claude-code/hot-templates": {
+      "synthetic-passed": 0,
+      "real-verified": 0,
+      "效率门": 0,
+      ".mimosa": 0,
+      "majority": 6,
+      "single_round_signal": 0,
+      "release-candidate": 0,
+      "复检": 0
+    },
+    "learner/meeting-minutes": {
+      "synthetic-passed": 0,
+      "real-verified": 0,
+      "效率门": 0,
+      ".mimosa": 0,
+      "majority": 3,
+      "single_round_signal": 0,
+      "release-candidate": 0,
+      "复检": 0
+    },
+    "learner/office-templates": {
+      "synthetic-passed": 0,
+      "real-verified": 0,
+      "效率门": 0,
+      ".mimosa": 0,
+      "majority": 6,
+      "single_round_signal": 0,
+      "release-candidate": 0,
+      "复检": 0
+    },
+    "learner/hot-templates": {
+      "synthetic-passed": 0,
+      "real-verified": 0,
+      "效率门": 0,
+      ".mimosa": 0,
+      "majority": 6,
+      "single_round_signal": 0,
+      "release-candidate": 0,
+      "复检": 0
+    }
+  }
+}

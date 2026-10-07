@@ -8,7 +8,7 @@
 
 **第 1 层：确定性评测（机器判定，无随机、无网络）**
 
-`eval/runner.py` 对 8 个官方样例单元（dy/xhs/wx/video × case1/case2）各执行 5 项检查：产物齐全可解析 / structure.json 三层键与计数自洽 / 平台冻结模板齐备与卖点规整 / 样例数据全部落位且无 `{{ }}` 残留 / 与参照产物结构一致率 ≥90%。任一失败 exit 1。红绿双向校验成立：`runner reference/out reference/out` 全过为绿、空目录判红（本包发包时实测，见 §2.2）。
+`eval/runner.py` 对 8 个官方样例单元（dy/xhs/wx/video × case1/case2）各执行 5 项检查：产物齐全可解析 / structure.json 三层键与计数自洽 / 平台冻结模板齐备与卖点规整 / 样例数据全部落位且无 `{{ }}` 残留 / 与参照产物结构一致率 ≥90%。任一失败 exit 1。红绿双向校验成立：`runner canonical 参照区／out canonical 参照区／out` 全过为绿、空目录判红（本包发包时实测，见 §2.2）。
 
 **第 2 层：有无技能对照盲评（A/B，EVAL-SPEC v0.2 双臂双重复）**
 
@@ -40,11 +40,11 @@
 
 - **开发管线第 1 轮（r1，失败留档，存档未随包分发）**：8 case 均挂 `structure_consistency_with_reference`（最好 82.9%）——根因是部分模板接口常量（开放槽位 token、要素 name、填充计数语义）文档缺陷，见包内 `CHANGELOG.md` 1.0.1 条目。
 - **开发管线第 2 轮（1.0.1 模板常量对齐修复后）**：`python eval/runner.py package/out oracle/out` → exit 0，**40/40 checks 全过，8 例结构一致率均 100%**（CHANGELOG.md 1.0.1 回归记录）。
-- **分发包复跑（2026-09-30，发包时实跑，命令见「四、复现」）**：Windows x64 / Python 3.12.10，8 条生成命令全部 exit=0；`python eval/runner.py out reference/out` → `ok=true`、**40/40 checks 全 pass、8 例结构一致率均 100.0%（consistency_min=1.0，阈值 90%）**、exit 0；绿自检（`runner reference/out reference/out`）exit 0（40/40）；红检（空目录）exit 1（40 项全判红，首条「被测用例目录不存在」）；确定性双跑复验：同输入连跑两次 `骨架.md` 与 `structure.json` 均逐字节一致；8 单元新生成产物与 `reference/out` 参照 **16/16 文件逐字节一致**。
+- **分发包复跑（2026-09-30，发包时实跑，命令见「四、复现」）**：Windows x64 / Python 3.12.10，8 条生成命令全部 exit=0；`python eval/runner.py out canonical 参照区／out` → `ok=true`、**40/40 checks 全 pass、8 例结构一致率均 100.0%（consistency_min=1.0，阈值 90%）**、exit 0；绿自检（`runner canonical 参照区／out canonical 参照区／out`）exit 0（40/40）；红检（空目录）exit 1（40 项全判红，首条「被测用例目录不存在」）；确定性双跑复验：同输入连跑两次 `骨架.md` 与 `structure.json` 均逐字节一致；8 单元新生成产物与 `canonical 参照区／out` 参照 **16/16 文件逐字节一致**。
 
 ## 三、局限（诚实声明）
 
-- **合成数据**：盲评任务与黄金集均为合成数据（按典型自媒体场景构造的主题/卖点组合与边界 case，见 `eval/golden.json` 与 `reference/inputs/`），未用真实用户选题与卖点；绝对分值不可外推到真实分布，仅说明技能规则在该任务族上的边际贡献。
+- **合成数据**：盲评任务与黄金集均为合成数据（按典型自媒体场景构造的主题/卖点组合与边界 case，见 `eval/golden.json` 与 `canonical 参照区／inputs/`），未用真实用户选题与卖点；绝对分值不可外推到真实分布，仅说明技能规则在该任务族上的边际贡献。
 - 5 任务样本量小；治疗臂 5 任务全部满分（10.0）触评分上限，Δ +6.10 同时受基线臂低分（2–3 分）驱动，幅度解释需谨慎；结论取任务级方向一致性（5/5 majority、0 反向）而非单任务分值。
 - 裁判为 LLM（盲评），绝对分值可能有偏，但同一裁判同一标准下的组内比较有效。
 - 评测在单一环境执行（Windows x64 / Python 3.12.10），跨平台（路径分隔符、控制台编码）未验证；引擎本身无平台相关行为（纯标准库、LF 换行显式指定）。
@@ -54,19 +54,19 @@
 
 ```bash
 # 在分发包根目录（确定性评测，应 exit 0；runner 必须显式传两参数，见 README 运行目录约定）
-python scripts/gen.py --platform dy    --topic 时间管理     --points reference/inputs/dy/case1.json    --outdir out/dy/case1
-python scripts/gen.py --platform dy    --topic 减脂饮食     --points reference/inputs/dy/case2.json    --outdir out/dy/case2
-python scripts/gen.py --platform xhs   --topic Excel函数    --points reference/inputs/xhs/case1.json   --outdir out/xhs/case1
-python scripts/gen.py --platform xhs   --topic 租房避坑     --points reference/inputs/xhs/case2.json   --outdir out/xhs/case2
-python scripts/gen.py --platform wx    --topic 深度工作     --points reference/inputs/wx/case1.json    --outdir out/wx/case1
-python scripts/gen.py --platform wx    --topic 非暴力沟通   --points reference/inputs/wx/case2.json    --outdir out/wx/case2
-python scripts/gen.py --platform video --topic 手冲咖啡入门 --points reference/inputs/video/case1.json --outdir out/video/case1
-python scripts/gen.py --platform video --topic 城市夜跑装备 --points reference/inputs/video/case2.json --outdir out/video/case2
-python eval/runner.py out reference/out
+python scripts/gen.py --platform dy    --topic 时间管理     --points canonical 参照区／inputs/dy/case1.json    --outdir out/dy/case1
+python scripts/gen.py --platform dy    --topic 减脂饮食     --points canonical 参照区／inputs/dy/case2.json    --outdir out/dy/case2
+python scripts/gen.py --platform xhs   --topic Excel函数    --points canonical 参照区／inputs/xhs/case1.json   --outdir out/xhs/case1
+python scripts/gen.py --platform xhs   --topic 租房避坑     --points canonical 参照区／inputs/xhs/case2.json   --outdir out/xhs/case2
+python scripts/gen.py --platform wx    --topic 深度工作     --points canonical 参照区／inputs/wx/case1.json    --outdir out/wx/case1
+python scripts/gen.py --platform wx    --topic 非暴力沟通   --points canonical 参照区／inputs/wx/case2.json    --outdir out/wx/case2
+python scripts/gen.py --platform video --topic 手冲咖啡入门 --points canonical 参照区／inputs/video/case1.json --outdir out/video/case1
+python scripts/gen.py --platform video --topic 城市夜跑装备 --points canonical 参照区／inputs/video/case2.json --outdir out/video/case2
+python eval/runner.py out canonical 参照区／out
 
 # 红绿自校验
-python eval/runner.py reference/out reference/out    # 绿：应 exit 0
-python eval/runner.py <空目录> reference/out         # 红：应 artifacts_present 失败、exit 1
+python eval/runner.py canonical 参照区／out canonical 参照区／out    # 绿：应 exit 0
+python eval/runner.py <空目录> canonical 参照区／out         # 红：应 artifacts_present 失败、exit 1
 
 # 确定性双跑（同输入两次，两份产物应逐字节一致）
 python scripts/gen.py --platform video --topic 任意主题 --points '["甲","乙","丙"]' --outdir <目录1>
@@ -74,3 +74,13 @@ python scripts/gen.py --platform video --topic 任意主题 --points '["甲","�
 ```
 
 盲评协议（双臂任务指令、rubric、裁判口径）见 `eval/golden.json` 的 `ab_tasks`（5 条，随包附带）；盲评聚合原始数据见开发方评测存档（未随包分发；含 tasks/baselineMean/treatmentMean/delta/winRate/reverseTasks/accepted 及逐任务 taskAggs）。
+
+<!-- SF-0007 disclosure v1（build.py 声明变换追加；幂等标记，请勿手改） -->
+
+## 渠道披露（SF-0007 · build.py 声明变换追加；口径=REGISTRY「对外必须随附的披露口径」1–5 条）
+
+- 证据等级：全批 **synthetic-passed ✓ / real-verified ✗**（真实复验门未做）。
+- **效率门**（token/耗时）未测；benchmark.json 落盘欠账见签署文件②（另行开卡补齐）。
+- 发布打包最后一道工序：再次清点删除包内 `.mimosa/`（本次构建实查为 0——构建器排除运行时缓存目录，本变体内无 .mimosa 实体）。
+- 参照区说明：canonical 参照区（官方样例 inputs 与参照产物）**不随本变体分发**；上文凡「canonical 参照区／…」形式的路径均指源包参照区，相关复现/对拍命令须自备参照根后方可执行，文档内复现记录均产生于 canonical 源包上下文。
+- hot-templates 以 **release-candidate** 形态入 dist；按 SPEC §4 五门口径欠账未清（效率门未测、benchmark.json 未落盘），**复检**通过前不上架——是否随本批放行随三包一并待雇主裁决。

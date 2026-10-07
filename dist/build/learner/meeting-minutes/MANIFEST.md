@@ -14,4 +14,4 @@
 | `scripts/` | 确定性引擎：`minutes.py`（契约入口）、`gen_docx.py`（等价别名入口） |
 | `references/` | 三份细则：分类规则 / 抽取启发式 / docx 与 summary 规格 |
 | `eval/` | 确定性评测：`runner.py`（5 项机器检查）+ `golden.json`（黄金集） |
-| `reference/` | 官方样例：`inputs/` 转写稿 ×4 与 `out/` 参照产物 ×4 |
+| `canonical 参照区／` | 官方样例：`inputs/` 转写稿 ×4 与 `out/` 参照产物 ×4 |

@@ -22,8 +22,11 @@ Validation failed for meeting-minutes-skill:
 
 ## 验证证据（修复后）
 
-见 `dist/build/ws2-checks-report.json`（AC/BP/HY 逐条）与
-`dist/build/build-summary.json`（三包 × 三变体构建 + G0-5 门全过）。
+见 `dist/build/ws2-checks-report.json`（AC/BP/HY 逐条）。构建摘要（三包 × 三变体
+构建 + G0-5 门结果）由 `python build.py build --all` 即时生成；因 BP-9 重打包回归
+会重建产物根（fresh dist/build），构建摘要不作为常驻检查工件留档——需要时重跑
+构建命令即可复现（2026-10-08 SF-0007 更正引用：原指向的构建摘要文件在检查报告
+常驻形态下不存在，此句为引用闭合更正，签署②(d)「补出或更正引用」取后者）。
 确定性门复跑（BP-9）：三包 × 三变体 runner 绿路 exit 0 / 红路 exit 1（产物内 runner，
 参照=canonical 源包 reference/out）。
 

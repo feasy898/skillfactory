@@ -17,11 +17,11 @@
 依赖：Python 3.8+，`pip install python-docx`
 
 ```bash
-# 1. 用官方引擎生成纪要（输入格式见 reference/inputs/case*.txt）
-python scripts/minutes.py --input reference/inputs/case1.txt --outdir out/case1
+# 1. 用官方引擎生成纪要（输入格式见 canonical 参照区／inputs/case*.txt）
+python scripts/minutes.py --input canonical 参照区／inputs/case1.txt --outdir out/case1
 
 # 2. 机器自检（5 项确定性检查，4 个官方样例全跑）
-python eval/runner.py out reference/out
+python eval/runner.py out canonical 参照区／out
 ```
 
 `eval/runner.py` 检查：docx 可打开且三节齐全 / 待办表格含负责人与期限列 / summary 条数与文档实际一致 / 每条目可在转写稿逐字溯源 / 与参照产物条数差 ≤2。全部通过 exit 0。
@@ -42,7 +42,7 @@ scripts/minutes.py  确定性引擎（契约入口）
 scripts/gen_docx.py 等价别名入口
 references/         分类规则 / 抽取启发式 / 产物规格
 eval/               确定性评测器 + 黄金集清单
-reference/          官方样例（inputs 转写 ×4 + out 参照产物 ×4）
+canonical 参照区／          官方样例（inputs 转写 ×4 + out 参照产物 ×4）
 EVALUATION.md       盲评实测报告
 CHANGELOG.md        变更记录
 requirements.txt    依赖清单（python-docx）

@@ -15,14 +15,14 @@
 依赖：Python 3.12+，`pip install -r requirements.txt`（python-docx>=1.1）
 
 ```bash
-# 1. 用官方引擎生成一份文书（输入样例见 reference/inputs/<模板>/case*.json）
-python scripts/gen_doc.py --template 周报 --data reference/inputs/周报/case1.json --outdir out/周报/case1
+# 1. 用官方引擎生成一份文书（输入样例见 canonical 参照区／inputs/<模板>/case*.json）
+python scripts/gen_doc.py --template 周报 --data canonical 参照区／inputs/周报/case1.json --outdir out/周报/case1
 
 # 2. 机器自检（六类确定性检查，8 个官方样例全跑；在分发包根目录运行）
-python eval/runner.py out reference/out
+python eval/runner.py out canonical 参照区／out
 ```
 
-**运行目录约定（重要）**：`eval/runner.py` 无参数时的写死缺省路径是开发资产内的 `<包根>/oracle/out`（contract §5），分发包内**不存在** `oracle/` 目录——无参数直接运行会 exit 1。因此在本包中必须**显式传两个位置参数**：第 1 个是被测产物根（如 `out`），第 2 个是参照产物根（固定 `reference/out`），并在**分发包根目录**下运行。配套地，`eval/golden.json` 沿用开发资产的资产根相对路径（`oracle/inputs/...`、`oracle/out/...`），在本包中分别对应 `reference/inputs/...` 与 `reference/out/...`。
+**运行目录约定（重要）**：`eval/runner.py` 无参数时的写死缺省路径是开发资产内的 `<包根>/oracle/out`（contract §5），分发包内**不存在** `oracle/` 目录——无参数直接运行会 exit 1。因此在本包中必须**显式传两个位置参数**：第 1 个是被测产物根（如 `out`），第 2 个是参照产物根（固定 `canonical 参照区／out`），并在**分发包根目录**下运行。配套地，`eval/golden.json` 沿用开发资产的资产根相对路径（`oracle/inputs/...`、`oracle/out/...`），在本包中分别对应 `canonical 参照区／inputs/...` 与 `canonical 参照区／out/...`。
 
 `eval/runner.py` 六类检查：8 个产物单元（四类 × case1/case2）齐全且每单元恰含 `文书.docx`+`fields.json` / docx XML 安全（拒绝 DOCTYPE/ENTITY，防 XXE）且可打开 / 版式四要素（标题居中黑体二号且与 title 一致、称谓顶格、正文 firstLineChars=200 仿宋三号 28 磅、落款右对齐右空两字）/ fields.json 键集合与计数自洽 / 台账与 docx 实际内容一致且缺失记账正确 / 与参照产物字段填充一致率 ≥90%。全部通过 exit 0（打印 JSON，`ok=true`），任一失败 exit 1。
 
@@ -42,7 +42,7 @@ scripts/gen_doc.py    确定性引擎（contract §2 唯一契约入口）
 references/           四类模板的版式与字段规范（周报/请示函/会议通知/工作总结.md）
 requirements.txt      依赖清单（python-docx>=1.1）
 eval/                 确定性评测器 runner.py + 黄金集清单 golden.json（8 输入 + 5 条 A/B 任务）
-reference/            官方样例（inputs 数据 JSON ×8 + out 参照产物单元 ×8）
+canonical 参照区／            官方样例（inputs 数据 JSON ×8 + out 参照产物单元 ×8）
 EVALUATION.md         盲评与确定性评测报告
 CHANGELOG.md          变更记录
 LICENSE               MIT

@@ -19,14 +19,14 @@
 依赖：Python 3.8+，**无第三方依赖**（引擎与评测器均为纯标准库，无需 `pip install`）。
 
 ```bash
-# 1. 用官方引擎生成一份骨架（输入样例见 reference/inputs/<平台>/case*.json）
-python scripts/gen.py --platform dy --topic 时间管理 --points reference/inputs/dy/case1.json --outdir out/dy/case1
+# 1. 用官方引擎生成一份骨架（输入样例见 canonical 参照区／inputs/<平台>/case*.json）
+python scripts/gen.py --platform dy --topic 时间管理 --points canonical 参照区／inputs/dy/case1.json --outdir out/dy/case1
 
 # 2. 机器自检（5 项确定性检查，8 个官方样例全跑；在分发包根目录运行）
-python eval/runner.py out reference/out
+python eval/runner.py out canonical 参照区／out
 ```
 
-**运行目录约定（重要）**：`eval/runner.py` 按契约**必须显式传两个位置参数**——第 1 个是被测产物根（如 `out`），第 2 个是参照产物根（固定 `reference/out`），缺参 exit 2；请在**分发包根目录**下运行。配套地，`eval/golden.json` 的样例输入路径在本包中已从开发资产的资产根相对路径（`oracle/inputs/...`、`oracle/out/...`）适配为 `reference/inputs/...` 与 `reference/out/...`（`case` 值、`ab_tasks` 与断言均未改动）。
+**运行目录约定（重要）**：`eval/runner.py` 按契约**必须显式传两个位置参数**——第 1 个是被测产物根（如 `out`），第 2 个是参照产物根（固定 `canonical 参照区／out`），缺参 exit 2；请在**分发包根目录**下运行。配套地，`eval/golden.json` 的样例输入路径在本包中已从开发资产的资产根相对路径（`oracle/inputs/...`、`oracle/out/...`）适配为 `canonical 参照区／inputs/...` 与 `canonical 参照区／out/...`（`case` 值、`ab_tasks` 与断言均未改动）。
 
 `eval/runner.py` 8 个样例（四平台 × case1/case2）各执行 5 项检查：两份产物存在且可解析 / structure.json 三层键与计数自洽 / 平台冻结模板齐备（dy 钩子+CTA、xhs 标题含数字与 🔥 + emoji 映射 + 标签 3-8、wx 三段论 + 共勉、video 四列分镜表头 + 冻结时间轴共 45 秒）与卖点规整（不足补 `【占位:价值点N】`、超出截断入 `points_unused`）/ 样例主题与卖点全部落位且无 `{{ }}` 残留 / 与参照产物结构一致率 ≥90%。全部通过 exit 0（打印 JSON，`ok=true`），任一失败 exit 1。
 
@@ -46,7 +46,7 @@ scripts/gen.py          确定性引擎（CLI 契约唯一入口，纯标准库�
 references/             四平台模板规范（dy/xhs/wx/video.md）+ frozen-tokens.md 接口常量表
 requirements.txt        依赖声明（无第三方依赖，纯标准库）
 eval/                   确定性评测器 runner.py + 黄金集 golden.json（8 输入 + 5 条 A/B 任务）
-reference/              官方样例（inputs 输入 JSON ×8 + out 参照产物单元 ×8）
+canonical 参照区／              官方样例（inputs 输入 JSON ×8 + out 参照产物单元 ×8）
 EVALUATION.md           盲评与确定性评测报告
 CHANGELOG.md            变更记录
 LICENSE                 MIT
@@ -58,4 +58,4 @@ MANIFEST.md             包内容清单
 - **不做**：占位符的内容补写（骨架只给结构 + 开放槽位，扩写成文由使用者/AI 在槽位补写）、卖点语义改写（只 strip 与标签派生）、多平台一次生成（一次调用只出一平台）、四平台之外的平台（非法 platform 直接拒绝）、网络调用、第三方依赖。
 - `【占位:…】` 是**设计内的开放槽位**，正常产物中大量存在——这不是缺陷；`{{ }}` 类未填充模板变量才是残留，产物中必须为 0。
 - 非法输入（platform 不在四值、topic 空白、points 不可解析/缺 points 键/非字符串列表）退出码 2、不建目录、零产物；空白串卖点按**缺失**处理（落 `【占位:价值点N】`、`points_used` 对应位为 `null`）。
-- 参照产物 `reference/out/` 由同一确定性引擎在开发管线中生成，与开发资产 oracle 参照产物逐字节一致；结构一致率检查比较的是**结构要素**（要素 id/命名/计数/统计/小节序列），不要求逐字节。
+- 参照产物 `canonical 参照区／out/` 由同一确定性引擎在开发管线中生成，与开发资产 oracle 参照产物逐字节一致；结构一致率检查比较的是**结构要素**（要素 id/命名/计数/统计/小节序列），不要求逐字节。
