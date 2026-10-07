@@ -1,0 +1,10 @@
+{
+  "available": true,
+  "session_id": "synth",
+  "model_usage": [
+    {
+      "it": 111,
+      "ot": 11
+    }
+  ]
+}

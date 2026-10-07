@@ -203,6 +203,39 @@
   runs/sf0006-d3fix/{freeze-verify-pre,keyfiles-pre,verify-sf0003-pre}*-sf0006-d3fix.*
   + d3-real-pre-*.out（5 题 exit 1）
 
+### added（SF-0006 P6 · 多题×单族聚合工具 · 非装置版本变更，版本号保持 0.3）
+
+**ADD-3｜aggregate.py 单 run_dir 单 pack MVP → 双模式聚合工具（混族拒绝 + delta_vs_none 计算）**
+- 题号：SF-0006 P6（owner-delegated-signing-20261008 §三；C-01/C-05 授权——「改造 aggregate.py
+  或新增聚合工具」，本卡择改造原文件，aggregator 路径登记 evalkit/evaluators/aggregate.py）
+- 变更（四项硬口径全落地，全部拒绝路径在落盘之前判定）：
+  ① 模式二（`--family`/无 `--pack`）：按族各出一份 matrix（缺省 `matrix-<family>.json`，
+  即 C-01 的 matrix-glm.json / matrix-minimax.json），rows 恰 `--expect-tasks`（缺省 5）题、
+  每题两臂 × `--expect-reps`（缺省 2）= 每族 20 单元六键齐（缺题/缺 rep/多 rep 拒绝，fail-closed）；
+  ② delta_vs_none 按 PLAN §3.2 + C-05 复算口径计算：每题 treatment 通过率 − baseline 通过率，
+  再对题取均值；通过 = artifact_pass is True（产物轨 checker 唯一计分来源，SF-0004 §7）；
+  infra 单元 artifact_pass=None 计不通过、分母含全部单元（不做 infra 剔除，与独立复算逐位
+  一致），另在 matrix.infra_errors 逐条披露（C-06/EI-19）；附 delta_vs_none_per_task 对拍明细；
+  ③ delta_vs_prev 保持显式 null（不是 0；AG-4；--delta-from 同版本接受后仍 null）；
+  ④ AG-6 跨族拒绝：输入含两族单元（含单 pack 模式两臂异族）→ 非零退出且不落任何 matrix
+  文件（TESTS AG-6；EVAL-SPEC §4.4-2）。原单 pack 模式行为保持（B5/F4 门兼容），
+  仅新增 AG-6 出口。
+- 缺陷类型：装置能力缺口（非判分语义变更）——P6 红先证据：改造前对两族混合输入
+  （baseline=glm + treatment=minimax）exit 0 且落盘混族 matrix（glm|minimax 同份并存、
+  delta_vs_none 写死 None），留档 runs/sf0006-aggregator/red-probe-mixed-pre.out +
+  red-probe-matrix-pre.json
+- 类型：added（P6 授权装置改造；evalbench 版本保持 v6-mvp-0.3 不 bump，C-05 两分支均合规）
+- 判定人：开发方（SF-0006 P6 条款授权；改前留档 runs/sf0006-aggregator/
+  {keyfiles-pre,freeze-verify-pre,verify-sf0003-pre}-sf0006-p6.*，改前 verify_sf0003
+  exit 0 全绿 34 门、freeze verify exit 0 44 全对）
+- 复现命令：`python runs/sf0006-aggregator/selftest_p6.py` → exit 0（26 项：两族混合输入
+  C 层布局无 --family 与 --family glm 两喂法均 exit 1+零落盘+报 AG-6；旧布局混族 exit 1；
+  glm 单族 5 题输入 exit 0 产出 matrix-glm.json——rows 恰 5 题/20 单元六键齐/delta_vs_none=
+  0.6 与手算一致/delta_vs_prev 显式 null/layer=dev/v6-mvp-0.3/infra 逐条披露/C-05 独立复算
+  差 <1e-9；AG-7 同版本接受后 delta_vs_prev 仍 null；缺题拒绝）。装置协议：re-freeze 后
+  keyfiles 覆盖本工具（evaluators/aggregate.py 一条更新，44 文件数不变，F5 变更集仍恰等
+  DECLARED_CHANGED）；`python harness/verify_sf0003.py` 终跑 exit 0 全绿 34 门不回退
+
 ---
 
 ## v6-mvp-0.2 · 2026-10-03（SF-0003 · worker-glm-m4）

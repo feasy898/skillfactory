@@ -1,0 +1,8 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 4321,
+  "session_id": "synth-glm-mm-01-r1"
+}

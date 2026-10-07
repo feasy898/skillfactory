@@ -1,0 +1,347 @@
+{
+  "schema": "matrix.v6-mvp",
+  "matrix_kind": "devpool-baseline",
+  "layer": "dev",
+  "evalbench_version": "v6-mvp-0.3",
+  "run_id": "selftest-family-glm",
+  "family": "glm",
+  "rows": {
+    "hot-01": {
+      "glm|baseline|r1": {
+        "family": "glm",
+        "arm": "baseline",
+        "model_id_observed": null,
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 122,
+        "wall_ms": 4321,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "synth-glm-hot-01-r1"
+      },
+      "glm|treatment|r1": {
+        "family": "glm",
+        "arm": "treatment",
+        "model_id_observed": null,
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 122,
+        "wall_ms": 4321,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "synth-glm-hot-01-r1"
+      },
+      "glm|baseline|r2": {
+        "family": "glm",
+        "arm": "baseline",
+        "model_id_observed": null,
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 122,
+        "wall_ms": 4321,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "synth-glm-hot-01-r2"
+      },
+      "glm|treatment|r2": {
+        "family": "glm",
+        "arm": "treatment",
+        "model_id_observed": null,
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 122,
+        "wall_ms": 4321,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "synth-glm-hot-01-r2"
+      }
+    },
+    "hot-02": {
+      "glm|baseline|r1": {
+        "family": "glm",
+        "arm": "baseline",
+        "model_id_observed": null,
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 122,
+        "wall_ms": 4321,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "synth-glm-hot-02-r1"
+      },
+      "glm|treatment|r1": {
+        "family": "glm",
+        "arm": "treatment",
+        "model_id_observed": null,
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 122,
+        "wall_ms": 4321,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "synth-glm-hot-02-r1"
+      },
+      "glm|baseline|r2": {
+        "family": "glm",
+        "arm": "baseline",
+        "model_id_observed": null,
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 122,
+        "wall_ms": 4321,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "synth-glm-hot-02-r2"
+      },
+      "glm|treatment|r2": {
+        "family": "glm",
+        "arm": "treatment",
+        "model_id_observed": null,
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 122,
+        "wall_ms": 4321,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "synth-glm-hot-02-r2"
+      }
+    },
+    "hot-03": {
+      "glm|baseline|r1": {
+        "family": "glm",
+        "arm": "baseline",
+        "model_id_observed": null,
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 122,
+        "wall_ms": 4321,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "synth-glm-hot-03-r1"
+      },
+      "glm|treatment|r1": {
+        "family": "glm",
+        "arm": "treatment",
+        "model_id_observed": null,
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 122,
+        "wall_ms": 4321,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "synth-glm-hot-03-r1"
+      },
+      "glm|baseline|r2": {
+        "family": "glm",
+        "arm": "baseline",
+        "model_id_observed": null,
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 122,
+        "wall_ms": 4321,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "synth-glm-hot-03-r2"
+      },
+      "glm|treatment|r2": {
+        "family": "glm",
+        "arm": "treatment",
+        "model_id_observed": null,
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 122,
+        "wall_ms": 4321,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "synth-glm-hot-03-r2"
+      }
+    },
+    "mm-01": {
+      "glm|baseline|r1": {
+        "family": "glm",
+        "arm": "baseline",
+        "model_id_observed": null,
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 122,
+        "wall_ms": 4321,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "synth-glm-mm-01-r1"
+      },
+      "glm|treatment|r1": {
+        "family": "glm",
+        "arm": "treatment",
+        "model_id_observed": null,
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 122,
+        "wall_ms": 4321,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "synth-glm-mm-01-r1"
+      },
+      "glm|baseline|r2": {
+        "family": "glm",
+        "arm": "baseline",
+        "model_id_observed": null,
+        "process_pass": true,
+        "artifact_pass": null,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 122,
+        "wall_ms": 4321,
+        "infra_error": true,
+        "exit_code": 1,
+        "session_id": "synth-glm-mm-01-r2"
+      },
+      "glm|treatment|r2": {
+        "family": "glm",
+        "arm": "treatment",
+        "model_id_observed": null,
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 122,
+        "wall_ms": 4321,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "synth-glm-mm-01-r2"
+      }
+    },
+    "mm-02": {
+      "glm|baseline|r1": {
+        "family": "glm",
+        "arm": "baseline",
+        "model_id_observed": null,
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 122,
+        "wall_ms": 4321,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "synth-glm-mm-02-r1"
+      },
+      "glm|treatment|r1": {
+        "family": "glm",
+        "arm": "treatment",
+        "model_id_observed": null,
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 122,
+        "wall_ms": 4321,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "synth-glm-mm-02-r1"
+      },
+      "glm|baseline|r2": {
+        "family": "glm",
+        "arm": "baseline",
+        "model_id_observed": null,
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 122,
+        "wall_ms": 4321,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "synth-glm-mm-02-r2"
+      },
+      "glm|treatment|r2": {
+        "family": "glm",
+        "arm": "treatment",
+        "model_id_observed": null,
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 122,
+        "wall_ms": 4321,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "synth-glm-mm-02-r2"
+      }
+    }
+  },
+  "delta_vs_none": 0.6,
+  "delta_vs_none_per_task": {
+    "hot-01": {
+      "treatment_rate": 0.0,
+      "baseline_rate": 0.0,
+      "delta": 0.0
+    },
+    "hot-02": {
+      "treatment_rate": 1.0,
+      "baseline_rate": 0.0,
+      "delta": 1.0
+    },
+    "hot-03": {
+      "treatment_rate": 0.5,
+      "baseline_rate": 0.0,
+      "delta": 0.5
+    },
+    "mm-01": {
+      "treatment_rate": 1.0,
+      "baseline_rate": 0.0,
+      "delta": 1.0
+    },
+    "mm-02": {
+      "treatment_rate": 0.5,
+      "baseline_rate": 0.0,
+      "delta": 0.5
+    }
+  },
+  "delta_vs_prev": null,
+  "delta_note": "首轮基线轮两臂（none/treatment），无 A_old → delta_vs_prev=显式 null（不是 0，防「首轮误报 0」AG-4；PLAN §3.2）。delta_vs_none 口径（PLAN §3.2 + C-05）：每题 treatment 通过率 − baseline 通过率，再对题取均值；通过 = artifact_pass is True（产物轨 checker 唯一计分来源，SF-0004 §7；质量轨 unjudgeable 不出分）；infra_error 单元 artifact_pass=None 计不通过、分母含全部单元——不做 infra 剔除，与独立复算口径逐位一致（复算脚本不得 import 本工具），infra 单元在 infra_errors 逐条披露（C-06/EI-19）。本轮只出基线信号，不出验收结论。",
+  "cross_family_comparable": false,
+  "cross_family_note": "跨族 Δ 不可比（被测模型本身是变量，PLAN §5.5；AG-6：混族输入拒绝出数，单份 matrix 内只有一个族）",
+  "infra_errors": [
+    {
+      "task": "mm-01",
+      "rep": 2,
+      "arm": "baseline",
+      "family": "glm",
+      "exit_code": 1,
+      "timed_out": null,
+      "reason": "arm_run.timed_out 或 exit_code!=0（PLAN §5.5 三桶；逐条披露，禁止静默剔除，C-06/EI-19）"
+    }
+  ],
+  "unit_counts": {
+    "tasks": 5,
+    "cells": 20
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 4321,
+  "session_id": "synth-glm-hot-02-r2"
+}

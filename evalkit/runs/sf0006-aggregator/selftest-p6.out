@@ -1,0 +1,28 @@
+AG-6 混族(无 --family)非零退出      PASS exit=1
+AG-6 混族(无 --family)零落盘       PASS err头=AG-6 跨族拒绝：输入含 2 族单元 {glm, minimax}——跨族 Δ 不可比（被测模型本身是变量，PLAN 
+AG-6 混族(无 --family)报AG-6     PASS 
+AG-6 混族(--family glm)非零退出    PASS exit=1
+AG-6 混族(--family glm)零落盘     PASS err头=AG-6 跨族拒绝：输入含 2 族单元 {glm, minimax}——跨族 Δ 不可比（被测模型本身是变量，PLAN 
+AG-6 混族(--family glm)报AG-6   PASS 
+AG-6 旧布局混族非零退出               PASS exit=1
+AG-6 旧布局混族零落盘                PASS 
+AG-6 旧布局拒绝报AG-6非崩溃           PASS err头=AG-6 跨族拒绝：单次聚合输入含 2 族单元 {glm, minimax}（cols=glm|baseline|r1,
+单族输入 exit 0                  PASS 
+rows 恰 5 题                   PASS ['hot-01', 'hot-02', 'hot-03', 'mm-01', 'mm-02']
+每族 20 单元                     PASS cells=20
+六键齐                          PASS 
+family 单族 glm                PASS 
+delta_vs_none==手算0.6         PASS delta=0.6
+delta_vs_prev 显式 null        PASS repr=None
+layer==dev                   PASS 
+evalbench v6-mvp-0.3         PASS 
+质量轨 unjudgeable null         PASS 
+infra 单元恰 1 且披露              PASS [{"task": "mm-01", "rep": 2, "arm": "baseline", "family": "glm", "exit_code": 1, "timed_ou
+C-05 独立复算 <1e-9              PASS 复算=0.6 matrix=0.6
+per_task 明细可对拍               PASS 
+缺省落盘名 matrix-glm.json        PASS 
+AG-7 同版本接受 exit 0            PASS 
+AG-7 后 delta_vs_prev 仍 null  PASS 
+缺题拒绝非零退出                     PASS exit=1 err头=覆盖不足：实际 4 题 {hot-01, hot-02, mm-01, mm-02} ≠ 期望 --
+
+===== P6 聚合工具自证：全过（红=无）=====

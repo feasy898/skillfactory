@@ -1,0 +1,8 @@
+{
+  "family_requested": "minimax",
+  "arm": "treatment",
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 1000,
+  "session_id": "red-probe"
+}

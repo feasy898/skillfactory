@@ -1,0 +1,34 @@
+{
+  "card": "SF-0006",
+  "prerequisite": "P6（owner-delegated-signing-20261008.md §三）",
+  "aggregator": "evalkit/evaluators/aggregate.py",
+  "aggregator_sha256_at_registration": "见本提交 evalkit/harness/keyfiles.sha256 中 evaluators/aggregate.py 条目（re-freeze 钉版）",
+  "round_report_field": "C 层编排器落盘 round-report.json 时须将 aggregator 字段设为 evalkit/evaluators/aggregate.py（P6：路径登记进 round-report.json 的 aggregator 字段）；本文件为 P6 收口登记，B 层轮 round-report（runs/sf0006-b-smoke-2/round-report.json）为已收口历史轮产物，不改写。",
+  "four_requirements": {
+    "per_family_matrix_cover_5_tasks": "模式二按族各出一份 matrix（缺省 matrix-<family>.json），rows 恰 5 题、每族 20 单元六键齐；缺题/缺 rep/多 rep 一律拒绝（fail-closed）",
+    "delta_vs_none_plan_3_2": "每题 treatment 通过率 − baseline 通过率，再对题取均值；通过 = artifact_pass is True；infra 单元计不通过、分母含之（不做剔除，infra_errors 逐条披露）",
+    "delta_vs_prev_explicit_null": "顶层显式 null（不是 0，AG-4）",
+    "ag6_mixed_family_reject": "输入含两族单元 → 非零退出且不落盘任何 matrix 文件（全部拒绝路径在落盘之前判定）"
+  },
+  "red_before_evidence": {
+    "desc": "改造前对两族混合输入（baseline=glm + treatment=minimax）exit 0 且落盘混族 matrix（glm|minimax 同份并存、delta_vs_none 写死 None）",
+    "stdout": "runs/sf0006-aggregator/red-probe-mixed-pre.out",
+    "mixed_matrix_produced": "runs/sf0006-aggregator/red-probe-matrix-pre.json"
+  },
+  "green_after_evidence": {
+    "selftest": "runs/sf0006-aggregator/selftest-p6.out（python runs/sf0006-aggregator/selftest_p6.py → exit 0，22 项全过）",
+    "selftest_driver": "runs/sf0006-aggregator/selftest_p6.py（构造物，非跑批产物；C-05 独立复算不 import 聚合工具）"
+  },
+  "freeze_protocol": {
+    "pre_archive": [
+      "runs/sf0006-aggregator/keyfiles-pre-sf0006-p6.sha256",
+      "runs/sf0006-aggregator/freeze-verify-pre-sf0006-p6.out（exit 0，44 全对）",
+      "runs/sf0006-aggregator/verify-sf0003-pre-sf0006-p6.{json,out}（exit 0，全绿 34 门）"
+    ],
+    "re_freeze": "evalkit/harness/keyfiles.sha256 re-freeze；keyfiles 覆盖聚合工具（evaluators/aggregate.py 在 KEY_GLOBS evaluators/**/*.py 内）；变更集恰等 aggregate.py 一条，44 文件数不变",
+    "changelog": "evalkit/CHANGELOG.md v6-mvp-0.3 节 ADD-3",
+    "verify_sf0003": "终跑 exit 0 全绿 34 门（门数不减）"
+  },
+  "generated_at": "2026-10-08",
+  "by": "SF-0006 开发方（GLM-5.3-Flash）"
+}
