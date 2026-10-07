@@ -88,6 +88,63 @@
   （28 个关键文件全对）；改前钉版面留档 runs/sf0003/keyfiles-pre-x4.sha256（20 条），
   升格前基线 runs/sf0003/verify-pre-x4.json（34 门全绿）
 
+### fixed（SF-0006 A 层 · 拆仓残留与签署保全 · 非装置版本变更，版本号保持 0.3）
+
+**FIX-C4｜ws4_judge.py DIST_ROOT 拆仓残留路径（L1 桥在新仓恒 bridge_error）**
+- 题号：SF-0006 A-01（owner-delegated-signing-20261008 §三；红先证据 alpha 签署文件 + 本轮复测）
+- 旧文本：`harness/ws4_judge.py:37`
+  `DIST_ROOT = os.path.join(WORKSPACE, "afp-clone", "zcode-research", "skillfactory", "dist")`
+  ——拆仓前布局硬编码，本机不存在该路径，L1 子轨 bridge_error、selftest GREEN 项即红
+- 新文本：照 5972cf0 先例改 SF_ROOT/仓根自动探测：
+  `DIST_ROOT = os.path.join(os.environ.get("SF_ROOT") or WORKSPACE, "dist")`；
+  可执行代码 afp-clone 拼接清零（`grep -n '"afp-clone"' harness/ws4_judge.py harness/ws4_gen.py
+  harness/ws4_d3_gate.py harness/ws4_pool_state.py` = 0 命中）
+- 缺陷类型：环境残留缺陷（拆仓迁移遗留；零判分语义变更——L1 桥只登记不判分）
+- 判定人：alpha 测试卡 A-01（owner 委托签署 2026-10-08）
+- 复现命令：`cd evalkit/packs/ws4-dev/mm-01 && python gen_oracle.py --selftest`
+  （修复前 exit 1 SELFTEST FAIL，留档 runs/sf0006-a/selftest-pre-red-mm01.out；
+  修复后 8/8 exit 0 SELFTEST PASS）；改前基线 runs/sf0006-a/freeze-verify-pre-sf0006a.out
+  （28 文件全对）+ keyfiles-pre-sf0006a.sha256（29 行）
+- 收紧复检补记（2026-10-08，门槛 97467b8 扩为 evalkit 全量 *.py 扫描后）：另发现并
+  同卡修复 4 处——① harness/run_all.py:23 ASSET 仍拼旧布局真路径（同款环境残留缺陷，
+  照 5972cf0 先例改 SF_ROOT/仓根探测 + v5/assets/speaker-mapping）；② verify_sf0003.py
+  3 处门描述/注释字样、③ sm-mapping-01/checks/run_check.py 注释字样（纯文本措辞，
+  实现早已走本仓路径，5972cf0 已修）；修后 evalkit 全量 *.py 旧布局字样零命中，
+  verify_sf0003 34 门复跑全绿（变更集仍恰等声明面：run_all/sm-wrapper 在
+  DECLARED_CHANGED、verify_sf0003 在 DECLARED_NEW，集合不变）
+
+**FIX-C5｜ws4_pool_state.py 重跑冲掉已落盘签署（SIGNOFF_NULL 无条件覆盖）**
+- 题号：SF-0006 A-05（owner-delegated-signing-20261008 §三）
+- 旧文本：`harness/ws4_pool_state.py` d1_record/d3_record 恒写 `dict(SIGNOFF_NULL)`——
+  幂等重建 pool-state.json 时把已落盘的 d1/d3 signoff（8 题 D1 已于 2026-10-08 签署落盘）
+  无条件冲回 null，签署证据丢失
+- 新文本：重建前读取既有 pool-state.json，逐题继承已落盘的 d1/d3 signoff（签署人非 null
+  才继承，损坏/缺失按未签 null 重建）；模块 docstring 与 signoff_ledger 文案同步改为
+  如实口径（「继承已落盘签署，未签者保持 null=WAITING」）
+- 缺陷类型：幂等重建覆盖缺陷（SOP 痕迹丢失；不改任何判定阈值与 signoff 结构）
+- 判定人：alpha 测试卡 A-05（owner 委托签署 2026-10-08）
+- 复现命令：`python harness/ws4_pool_state.py` 前后各读 pool-state.json 断言
+  8 题 d1_record.signoff 逐字段相等且签署人非 null（本轮实测 exit 0，True/True/True）
+
+**FIX-C6｜pack_checks.py EI-20 缺件清单与 ws4-dev 题包形态不适配（A-12 前置断言恒红）**
+- 题号：SF-0006 A-12（owner-delegated-signing-20261008 §三）；红先证据
+  runs/sf0006-a/pack-checks-pre-fix-EI20-red.json（exit 1：包内缺件 out/transcript/records）
+- 旧文本：`harness/pack_checks.py` check_ei20 对 --pack 无差别检查
+  `["brief.md", "rubric.md", "out", "transcript", "records"]`——out/transcript/records 是
+  sm-mapping-01「跑批工作区」形态的产物目录（run_arm 落包内），ws4-dev 题包是纯题面+装置
+  形态（产物落臂目录，包内永不落产物），三件恒缺 → EI-20 恒红、A-12 无法 exit 0
+- 新文本：双形态清单——包内含 task.json + gen_oracle.py 判为题包形态，改查题包六件
+  （brief/rubric/task.json/gen_oracle.py/checks/run_check.py/runner_contract.json，
+  与 ws4_pool_state.py pack_files_sha256 登记清单一致）并落 res["pack_shape"]；
+  通用形态原五件清单原样保留。oracle/ 禁令、pin 五元组、fixtures/inputs 双名判定
+  两形态完全相同，零阈值放宽
+- 缺陷类型：装置清单形态适配缺陷（EI-20 写于 SF-0003 单包时代；零判分语义变更）
+- 判定人：alpha 测试卡 A-12（owner 委托签署 2026-10-08）
+- 复现命令：`python harness/pack_checks.py --pack packs/ws4-dev/mm-01 --arms <b> --arms <t>
+  --model-pin <pin>`（修复前 exit 1 三缺件；修复后 exit 0，pack_shape=task-pack）；
+  通用形态回归：`--pack packs/sm-mapping-01` 仍查原五件；verify_sf0003 34 门不回退
+  （pack_checks 本就在 DECLARED_CHANGED 声明面，F5 变更集恰等不变）
+
 ---
 
 ## v6-mvp-0.2 · 2026-10-03（SF-0003 · worker-glm-m4）

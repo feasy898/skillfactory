@@ -34,7 +34,9 @@ from docx.shared import Pt
 HARNESS_DIR = os.path.dirname(os.path.abspath(__file__))
 EVALKIT = os.path.dirname(HARNESS_DIR)
 WORKSPACE = os.path.dirname(EVALKIT)
-DIST_ROOT = os.path.join(WORKSPACE, "afp-clone", "zcode-research", "skillfactory", "dist")
+# 拆仓迁移修复（SF-0006 A-01，照 5972cf0 先例）：dist/ 在本仓内，SF_ROOT 可覆盖
+# （默认=evalkit 上一级=仓根）。不再拼接拆仓前上游工作区的旧布局路径。
+DIST_ROOT = os.path.join(os.environ.get("SF_ROOT") or WORKSPACE, "dist")
 
 MM_SECTIONS = ("一、决议事项", "二、待办事项", "三、风险与关注")
 MM_SECTION_KEYS = ("决议事项", "待办事项", "风险与关注")

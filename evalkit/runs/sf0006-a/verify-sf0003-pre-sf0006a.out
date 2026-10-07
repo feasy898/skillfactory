@@ -1,0 +1,36 @@
+A1   PASS 装置钉版绿（28 关键文件；2026-10-06 遗留小项② glob 递归化，新增 8 个 packs/ws4-dev 嵌套 wrapper 入钉版面）
+A2   PASS tree_sha256==ORACLE_SHA256 且 31 文件
+A3   PASS runner 零改动
+A4   PASS 本卡新增改动面 0 条落在封存区；既有 chenmai8 D/T 条目为 Windows checkout 的 symlink(mode 120000) 物化差异，S0 基线快照在案
+B1   PASS 默认值已改；旧版号零残留
+B2   PASS usage 输出含 --evalbench-version（透传已加；add_help=False 故 --help 走 usage 通道）
+B3   PASS 分支 B：voided_count=0+理由非空+目录清单落盘；聚合器可读旧版号基线数==0
+B4   PASS O-6/不得引用/citable:false 各≥1
+B5   PASS 混版本 exit≠0 报「版本」零输出；同版本 exit 0 delta_vs_prev=null（prev 按卡面锚 v6-mvp-0.3 运行时自生成，升卡 2026-10-06）
+B6   PASS ≥3 条 fixed，五字段齐，复现命令引用在位
+B7   PASS O-6 行【已裁定】+落点全串；README 已知限制节同步为已裁定态
+C1   PASS 恰 6 项且逐文件 sha256==改名前（保内容改名）
+C2   PASS 三形态各≥1；旧条款 0；资产名/暗示 0（EI-7）
+C3   PASS 带引号 inputs 字面仅存于 pack_checks 双名兼容；带引号 fixtures 计数≥2
+C4   PASS 四条 exit 0；treatment 命中 2=设计内阳性对照（README 口径）
+C5   PASS 四要素齐 + 建议回写条款文本在位
+D0   PASS 开工时未改（预期），本卡修；实测行尾 LF（卡写 CRLF 系笔误）
+D1   PASS 新文本恰 1、旧文本绝迹
+D2   PASS historical 降级（升卡 2026-10-06 注明）：卡时点工作区改动已由 5654f83 WIP 快照 commit 落盘；「新增改动面收死为 SKILL.md 一行」改以 ac18867 基线↔HEAD git 史断言，开工前行 sha 与 d0 证据一致
+D3   PASS 无混行；改动未引入第二种行尾
+D4   PASS 实跑工具 stderr ↔ 文档模板占位符归一同构；变异红→复原绿（MT-2）
+D4b  PASS selfcheck 复原后新文本仍恰 1
+D5   PASS speaker-mapping 包内零命中；dist/build 零命中；其余命中=['planning/reports/SF-0003-evalkit-fix-report.md', 'planning/reports/SF-0001-ws1-report.md', 'eval
+E1   PASS 24/24 逐字节一致；4/4 PASS——检查 4 首次转绿（显式 --reference，与 run_all 同参形态）
+E2   PASS 逐字节一致 → 归一规则数=0 收工（无 normalization.json 需求）
+E3   PASS 目录名改动 → 检查 4 红（门未放水）
+E4   PASS 检查 4 红（门未放水）
+E5   PASS 结论：归一回显——工具经 str(Path()) 把传入的 `/` 形态按 OS 分隔符归一（Windows 回显 `\`），故斜杠参数产出与基线逐字节一致
+F1   PASS exit 0 / exit 1 双向成立
+F2   PASS 9/9 成立、exit 0（负控未退化）
+F3   PASS unchanged=true
+F4   PASS 必填键齐；delta_vs_prev==null（AG-4）；版本断言锚卡面 v6-mvp-0.3（升卡 2026-10-06：0.2 时代锚随装置 bump 漂红，对齐 aggregate.py 声明面）
+F5   PASS 变更集恰等（changed=DECLARED_CHANGED 8 项 + new=DECLARED_NEW 14 项；多一项即红）
+F6   PASS v6 目录不存在（未升格，O-17 时机属 M1 阶段门）
+
+===== SF-0003 汇总：全绿（34 门，红：无）=====

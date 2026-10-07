@@ -20,8 +20,10 @@ import time
 
 EVALKIT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WORKSPACE = os.path.dirname(EVALKIT)
-ASSET = os.path.join(WORKSPACE, "afp-clone", "zcode-research", "skillfactory",
-                      "v5", "assets", "speaker-mapping")
+# 拆仓迁移修复（SF-0006 A-01 收紧复检，照 5972cf0 先例）：资产根=本仓 v5/，
+# SF_ROOT 可覆盖（默认=evalkit 上一级=仓根），与 verify_sf0003.py PROD_ROOT 同源。
+ASSET = os.path.join(os.environ.get("SF_ROOT") or WORKSPACE,
+                     "v5", "assets", "speaker-mapping")
 PACK = os.path.join(EVALKIT, "packs", "sm-mapping-01")
 PY = sys.executable
 

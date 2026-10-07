@@ -1,0 +1,32 @@
+{
+  "pack": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/packs/ws4-dev/mm-01",
+  "arms": [
+    "evalkit/runs/sf0006-a-gate/baseline",
+    "evalkit/runs/sf0006-a-gate/treatment"
+  ],
+  "results": [
+    {
+      "name": "EI-7 brief 公平",
+      "pass": true,
+      "gaps": [],
+      "input_dir_name": "fixtures",
+      "scan_hits": []
+    },
+    {
+      "name": "EI-9 臂间输入树公平",
+      "pass": true,
+      "gaps": []
+    },
+    {
+      "name": "EI-20 任务包 conformance",
+      "pass": false,
+      "gaps": [
+        "包内缺件: out",
+        "包内缺件: transcript",
+        "包内缺件: records"
+      ],
+      "input_dir_name": "fixtures"
+    }
+  ],
+  "pass": false
+}

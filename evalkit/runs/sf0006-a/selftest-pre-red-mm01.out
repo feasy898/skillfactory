@@ -1,0 +1,10 @@
+== mm-01 selftest（BQ-8/9/10）==
+GREEN  oracle(判自家 fixtures) exit=1 FAIL
+FIXT   包内fixtures==canonical生成 PASS
+RED    corrupt=fabricated_entry           exit=1 PASS
+RED    corrupt=drop_section_heading       exit=1 PASS
+RED    corrupt=summary_count_wrong        exit=1 PASS
+RED    corrupt=todo_header_broken         exit=1 PASS
+CROSS  oracle(A)判fixtures(B)       exit=1 PASS
+DET    同种子双跑逐字节             PASS
+SELFTEST FAIL

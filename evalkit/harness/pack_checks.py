@@ -4,6 +4,8 @@
   EI-7  brief 公平：两臂 brief 逐字相同 + brief/黄金输入 全文本扫资产名与暗示句式
   EI-9  臂间输入树公平：掩掉臂目录名后两棵输入树逐字节相同 + model_pin 五元组除 arm 外相等
   EI-20 任务包 conformance：六件齐 + oracle/ 不存在 + model_pin.json 五元组齐
+        （双形态清单，SF-0006 A-12：题包形态 ws4-dev=题面+装置六件、产物落臂目录；
+          通用跑批工作区形态=原五件含产物目录。判定阈值与 oracle 禁令两形态相同）
 
 黄金输入目录名（EI-20 双名兼容，SF-0003 修法 A 后口径）：fixtures/ 为本装置参照基线
 同形态的规范名（sm-mapping-01 已改用）；通用格式沿用 PLAN §3.3 字面的 inputs/。
@@ -167,10 +169,23 @@ def check_ei20(pack, model_pin):
         res["gaps"].append("包内缺件: 黄金输入目录（fixtures/ 或通用 inputs/，一名即可）")
     else:
         res["input_dir_name"] = pdir
-    for item in ["brief.md", "rubric.md", "out", "transcript", "records"]:
+    # 双形态清单（SF-0006 A-12 适配；不改判定阈值与 oracle 禁令）：
+    # - 题包形态（ws4-dev：task.json + gen_oracle.py 在包）＝纯题面+装置，产物落臂目录
+    #   不落包——六件齐与 ws4_pool_state.py pack_files_sha256 登记清单一致；
+    # - 通用形态（sm-mapping-01 跑批工作区）＝原五件清单（含跑批产物目录）原样保留。
+    is_task_pack = (os.path.isfile(os.path.join(pack, "task.json"))
+                    and os.path.isfile(os.path.join(pack, "gen_oracle.py")))
+    if is_task_pack:
+        items = ["brief.md", "rubric.md", "task.json", "gen_oracle.py",
+                 "checks/run_check.py", "runner_contract.json"]
+        res["pack_shape"] = "task-pack (ws4-dev)"
+    else:
+        items = ["brief.md", "rubric.md", "out", "transcript", "records"]
+        res["pack_shape"] = "run-workspace (generic)"
+    for item in items:
         if not os.path.exists(os.path.join(pack, item)):
             res["pass"] = False
-            res["gaps"].append("包内缺件: %s" % item)
+            res["gaps"].append("包内缺件[%s]: %s" % (res["pack_shape"], item))
     if os.path.exists(os.path.join(pack, "oracle")):
         res["pass"] = False
         res["gaps"].append("包内出现 oracle/（oracle 不入包，PLAN §3.3）")

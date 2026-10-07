@@ -1,0 +1,26 @@
+PASS A-01  evalkit/**/*.py afp-clone 零命中
+PASS A-02  8/8 SELFTEST PASS
+PASS A-03  8 份 contract 指向本仓且红绿记录齐
+PASS A-04  freeze=0 changelog 1->4 sf0003=0 py 声明面）
+F5   PASS 变更集恰等（changed=DECLARED_CHANGED 8 项 + new=DECLARED_NEW 14 项；多一项即红）
+F6   PASS v6 目录不存在（未升格，O-17 时机属 M1 阶段门）
+
+===== SF-0003 汇总：全绿（34 门，红：无）=====
+
+PASS A-05  exit=0 保持=True 已签=True ok(self=0 red=1) d2.selftest=True d3.exit=3(WAITING_WS3)
+pool-state -> /home/pan-ding/workspace/skill工厂/skillfactory/bench/devpool-r1/pool-state.json （ready=0）
+
+PASS A-06  8 题签署哈希与现物一致
+PASS A-11  nc=0 classify=0 错 CLI 参数：输入文件不存在（复刻 D1）
+PASS NC-5    注入一次 rate_limited 后成功
+PASS NC-6    注入连续 2 次 stream_idle_timeout
+PASS NC-7    3 族全绿 + 1 族全崩
+PASS NC-8    人为把某臂产物做坏
+PASS NC-CTRL 无植入（正常臂/绿路）
+
+负控全红 + 正常臂不误报: 成立（9/9）
+
+PASS A-12  泄漏=0 文件数=20 []
+SKIP A-13  由开发方按卡面命令执行并汇报退出码；B 层冒烟将实测复验 nonce 矩阵
+SKIP A-14  由开发方按卡面命令执行并汇报退出码；B-04 将用 oracle_gate verify 实测复验
+== SF-0006 A 层门槛: 8/8 PASS

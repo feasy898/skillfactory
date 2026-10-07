@@ -1,0 +1,10 @@
+{
+  "arms": {
+    "evalkit/runs/sf0006-a-gate/baseline": {
+      "hits": [],
+      "hit_count": 0,
+      "pass": true
+    }
+  },
+  "total_hits": 0
+}

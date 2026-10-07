@@ -29,7 +29,7 @@ import sys
 import tempfile
 
 EVALKIT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# 拆仓迁移(2026-10-05)：产线根 = 本仓根（原 afp-clone/zcode-research/skillfactory 布局已拆为独立仓）。
+# 拆仓迁移(2026-10-05)：产线根 = 本仓根（原上游工作区旧布局已拆为独立仓，A-01 字样清零）。
 # SF_ROOT 可覆盖（默认取 evalkit 上一级 = 仓根）。
 PROD_ROOT = os.environ.get("SF_ROOT") or os.path.normpath(os.path.join(EVALKIT, ".."))
 AFP = PROD_ROOT  # git porcelain/资源定位统一走产线根
@@ -141,7 +141,7 @@ def a_group():
          out, "tree_sha256==ORACLE_SHA256 且 %d 文件" % ORACLE_FILES)
     rc, out, _ = git(["diff", "--exit-code", "--",
                       "v5/assets/speaker-mapping/eval/runner.py"])
-    gate("A3", "git -C <afp-clone> diff --exit-code -- $ASSET/eval/runner.py", rc == 0, "",
+    gate("A3", "git -C <产线根> diff --exit-code -- $ASSET/eval/runner.py", rc == 0, "",
          "runner 零改动")
     rc, out, _ = git(["status", "--porcelain"])
     sealed = ("peidian", "qw-arena2", "ohos-tailscale", "video-capability", "chenmai8", "xuexing-agent")
@@ -149,7 +149,7 @@ def a_group():
     bset = set(before["lines"])
     cur = set(l for l in out.splitlines() if l.strip())
     new_sealed = [l for l in cur - bset if any(s in l for s in sealed)]
-    gate("A4", "git -C <afp-clone> status --porcelain（差分口径：本卡新增条目 ∩ 六封存区 == ∅）",
+    gate("A4", "git -C <产线根> status --porcelain（差分口径：本卡新增条目 ∩ 六封存区 == ∅）",
          not new_sealed, json.dumps(sorted(cur - bset), ensure_ascii=False),
          "本卡新增改动面 0 条落在封存区；既有 chenmai8 D/T 条目为 Windows checkout 的 "
          "symlink(mode 120000) 物化差异，S0 基线快照在案")
@@ -443,7 +443,7 @@ def f_group():
          "changed=%s new=%s" % (sorted(changed), sorted(new)),
          "变更集恰等（changed=DECLARED_CHANGED %d 项 + new=DECLARED_NEW %d 项；多一项即红）"
          % (len(DECLARED_CHANGED), len(DECLARED_NEW)))
-    gate("F6", "test ! -d <afp-clone>/v6",
+    gate("F6", "test ! -d <产线根>/v6",
          not os.path.isdir(os.path.join(PROD_ROOT, "v6")), "",
          "v6 目录不存在（未升格，O-17 时机属 M1 阶段门）")
 

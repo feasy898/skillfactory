@@ -24,8 +24,8 @@ import os
 import sys
 import contextlib
 
-# 资产根：本 evalkit 与 afp-clone **平级**都在工作区根下（PLAN §8 O-17：evalkit 不进 afp-clone），
-# 所以资产树要从 evalkit 上一级找。用 __file__ 相对定位，整目录搬迁后不用改代码。
+# 资产根：本 evalkit 与上游产线工作区**平级**都在工作区根下（PLAN §8 O-17：evalkit 不进
+# 产线工作区），所以资产树要从 evalkit 上一级找。用 __file__ 相对定位，整目录搬迁后不用改代码。
 PACK_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))      # .../packs/sm-mapping-01
 EVALKIT = os.path.dirname(os.path.dirname(PACK_DIR))                      # .../evalkit
 # 拆仓迁移(2026-10-05)：产线根=本仓根(evalkit 上一级)，SF_ROOT 可覆盖

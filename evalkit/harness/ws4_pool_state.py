@@ -6,9 +6,11 @@
 1. evalkit/packs/ws4-dev/<pkg>/runner_contract.json —— L1 桥接实测四字段
    （argv_shape / ref_root_verbatim / selfcheck_exit / redpath_exit，GC-1）；
 2. bench/devpool-r1/pool-state.json —— 8 题 D1-D4 记录（GD-1..GD-4）：
-   - d1_record：来源+四项自检+signoff 三字段（恒 null = WAITING_OWNER，反假人工门）；
+   - d1_record：来源+四项自检+signoff 三字段（未签=null=WAITING_OWNER，反假人工门）；
+     **签署保全（SF-0006 A-05）**：重建时从既有 pool-state.json 继承已落盘的
+     d1/d3 signoff，不得把已签署记录冲回 null；
    - d2_record：canonical 种子 + 生成时间 + 生成树逐文件 sha256（纯机械，自足）；
-   - d3_record：D3 门实测（自环 + fail-closed 出口）+ signoff 三字段恒 null；
+   - d3_record：D3 门实测（自环 + fail-closed 出口）+ signoff（未签=null，已签则继承）；
    - d4_record：难度带 null（首轮未标定）+ 首轮分布记录（全带外，卡面允许）。
    status=built、ready=false（READY≥5 需 owner D1 签署后由 planner 翻绿）。
 
@@ -39,7 +41,7 @@ def write_json(path, obj):
         f.write(json.dumps(obj, ensure_ascii=False, indent=2) + "\n")
 
 
-def d1_record(cfg):
+def d1_record(cfg, prev_signoff=None):
     return {
         "stage": "D1 来源→题面（人工必须过；本记录为 worker 起草，待 owner 签署）",
         "source": {"origin": cfg["origin"], "source_ref": cfg.get("source_ref"),
@@ -50,11 +52,11 @@ def d1_record(cfg):
             "sc3_两臂公平": {"claim": "两臂 brief 逐字相同（包内单一 brief.md，跑批时 make_arms 复制），无资产暗示", "evidence": "pack_checks EI-7 扫描零命中（pool-state.build_evidence）", "status": "machine-green"},
             "sc4_资产名零泄漏": {"claim": "brief/黄金输入零资产名与暗示句式", "evidence": "pack_checks EI-7 scan_hits=0；GE-4 grep 三个 dist 资产名零命中", "status": "machine-green"},
         },
-        "signoff": dict(SIGNOFF_NULL),
+        "signoff": dict(prev_signoff) if prev_signoff else dict(SIGNOFF_NULL),
     }
 
 
-def d3_record(task_id):
+def d3_record(task_id, prev_signoff=None):
     import ws4_d3_gate
     selfloop = ws4_d3_gate.self_loop(task_id)
     code, real = ws4_d3_gate.real_mode(task_id)
@@ -65,7 +67,7 @@ def d3_record(task_id):
         "state": real.get("state", "GOLDEN_PRESENT"),
         "message": real.get("message", real.get("note", "")),
         "real_result": real if code != 3 else None,
-        "signoff": dict(SIGNOFF_NULL),
+        "signoff": dict(prev_signoff) if prev_signoff else dict(SIGNOFF_NULL),
     }
 
 
@@ -78,6 +80,23 @@ def main(argv):
     import ws4_judge
 
     now = datetime.datetime.now().astimezone().isoformat(timespec="seconds")
+    # 签署保全（SF-0006 A-05）：重建前读取既有 pool-state.json，已落盘的 d1/d3
+    # signoff 逐题继承；文件缺失或损坏视为无历史（全部按未签 null 重建）。
+    prev_tasks = {}
+    pool_path = os.path.join(BENCH, "pool-state.json")
+    if os.path.isfile(pool_path):
+        try:
+            with io.open(pool_path, encoding="utf-8") as f:
+                prev_tasks = {t.get("id"): t for t in json.load(f).get("tasks", [])}
+        except (ValueError, OSError) as exc:
+            print("warn: 既有 pool-state.json 不可读，签署继承跳过: %s" % exc, file=sys.stderr)
+            prev_tasks = {}
+
+    def prev_signoff_of(tid, record_key):
+        rec = (prev_tasks.get(tid) or {}).get(record_key) or {}
+        so = rec.get("signoff")
+        return so if isinstance(so, dict) and so.get("签署人") else None
+
     tasks_out = []
     for tid in TASK_IDS:
         pack = os.path.join(WS4_ROOT, tid)
@@ -103,7 +122,7 @@ def main(argv):
                          "covers": "BQ-8 红绿两态 / BQ-9 nonce 交叉红 / BQ-10 同种子逐字节 / fixtures 漂移守卫"},
         }
 
-        d3 = d3_record(tid)
+        d3 = d3_record(tid, prev_signoff_of(tid, "d3_record"))
 
         d4 = {
             "stage": "D4 校准入池（难度带分拣）",
@@ -135,7 +154,7 @@ def main(argv):
             "status": "built", "ready": False,
             "canonical_seed": cfg["canonical_seed"],
             "pack_files_sha256": pack_files,
-            "d1_record": d1_record(cfg),
+            "d1_record": d1_record(cfg, prev_signoff_of(tid, "d1_record")),
             "d2_record": d2,
             "d3_record": d3,
             "d4_record": d4,
@@ -152,7 +171,8 @@ def main(argv):
                    "case_type": {"positive": 4, "near-negative": 2, "adversarial": 2},
                    "origin": {"self-built": 5, "public-variant": 3},
                    "line": {"mm": 2, "hot": 3, "ofc": 3}},
-        "signoff_ledger": "全 8 题 d1/d3 signoff 恒 null = WAITING_OWNER（ofc 3 题 D3 另为 WAITING_WS3）；"
+        "signoff_ledger": "d1/d3 signoff 重建时继承已落盘签署（A-05 签署保全），未签者保持 null=WAITING"
+                          "（ofc 3 题 D3 另为 WAITING_WS3）；"
                           "READY 翻绿条件=owner D1 签署（mm/hot ≥5 题即满足卡 B 兜底门）",
         "tasks": tasks_out,
     }
