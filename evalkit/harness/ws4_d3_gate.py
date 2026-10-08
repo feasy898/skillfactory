@@ -10,11 +10,17 @@ PLAN §3.8 D3 = 判分器对人工金标对拍（准确率/召回各自 ≥95%�
 - --real 模式：读人工金标目录 bench/devpool-r1/goldens/<task>/
   （每个子目录 = 一份人工标注样本：sample_dir/product/ 产物 + sample_dir/verdict.json
    {expected_pass: bool, annotator: ...}）。目录不存在或样本未注入 → **fail-closed
-  exit 3 + WAITING_OWNER 消息，绝不静默通过**（卡面明文）。
-  ofc 线三题（ofc-01/02/03）金标对拍属 WS3 范畴 → WAITING_WS3，同样 exit 3。
+   exit 3 + WAITING_OWNER 消息，绝不静默通过**（卡面明文）。
+  ofc 线（task id 以 ofc- 开头）原硬编码 WAITING_WS3 作用域，已由 planner 裁决
+  SF-0006-OFCD3（2026-10-08，planning/test-cards-20261008/
+  ofc-d3-scope-and-ws3-harness-adjudication.md 第 1 条）解除：放行条件 =
+  该题 goldens/<task>/ 下存在 verdict.json **且** 本裁决文件在盘（裁决文件缺席
+  即回退 WAITING_WS3，fail-closed）；状态字段由 ws4_pool_state 按盘上记录派生
+  （verdict 在 ∧ 对拍达标 ∧ signoff 非空 → D3_DONE；只有 verdict →
+  ADJUDICATING；无 verdict → 维持 waiting），ofc 不因迁移而无条件放行。
 
 用法：python ws4_d3_gate.py --task mm-01 [--real]
-退出码：0 自环完成 / 1 对拍出现分歧（--real 下有样本但判分与金标不符）/ 3 WAITING（金标未注入）/ 2 用法错误。
+退出码：0 自环完成 / 1 对拍出现分歧（--real 下有样本但判分与金标不符）/ 3 WAITING（金标未注入或 ofc 裁决文件缺席）/ 2 用法错误。
 """
 
 import argparse
@@ -29,7 +35,21 @@ WORKSPACE = os.path.dirname(EVALKIT)
 WS4_ROOT = os.path.join(EVALKIT, "packs", "ws4-dev")
 BENCH = os.path.join(WORKSPACE, "bench", "devpool-r1")
 
-WS3_SCOPED = ("ofc-01", "ofc-02", "ofc-03")  # office 线 D3 金标对拍归 WS3（PLAN 独立工作流）
+# ofc D3 作用域迁移的裁决授权文件（SF-0006-OFCD3）：在盘才解除 ofc 线 WAITING_WS3
+ADJUDICATION_DOC = os.path.join(
+    WORKSPACE, "planning", "test-cards-20261008",
+    "ofc-d3-scope-and-ws3-harness-adjudication.md")
+
+
+def golden_has_verdict(golden_root):
+    """放行条件之一：金标目录下任一样本存在 verdict.json（只认目录样本）。"""
+    if not os.path.isdir(golden_root):
+        return False
+    for sample in os.listdir(golden_root):
+        sdir = os.path.join(golden_root, sample)
+        if os.path.isdir(sdir) and os.path.isfile(os.path.join(sdir, "verdict.json")):
+            return True
+    return False
 
 
 def self_loop(task_id):
@@ -44,17 +64,21 @@ def self_loop(task_id):
         "task": task_id, "mode": "self_loop", "checker_exit_on_machine_oracle": rc,
         "agreement": "1.0" if rc == 0 else "0.0",
         "self_loop": True,
-        "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 完成态恒为 WAITING_OWNER/WAITING_WS3",
+        "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 状态由盘上记录派生"
+                "（ws4_pool_state：verdict 在 ∧ 对拍达标 ∧ signoff 非空 → D3_DONE）",
     }
 
 
 def real_mode(task_id):
     golden_root = os.path.join(BENCH, "goldens", task_id)
-    if task_id in WS3_SCOPED:
-        msg = "WAITING_WS3：%s 的金标对拍属 WS3 范畴（PLAN 独立工作流，owner 或委托 0.5-1 人日）；金标未注入，fail-closed 不放行。" % task_id
+    if task_id.startswith("ofc-") and not os.path.isfile(ADJUDICATION_DOC):
+        # SF-0006-OFCD3：作用域解除以裁决文件在盘为前提；缺席即回退历史 WAITING_WS3
+        msg = ("WAITING_WS3：%s 的金标对拍原属 WS3 范畴；SF-0006-OFCD3 作用域迁移裁决文件缺席"
+               "（期望 planning/test-cards-20261008/ofc-d3-scope-and-ws3-harness-adjudication.md），"
+               "fail-closed 维持 WAITING_WS3 不放行。") % task_id
         print(msg)
         return 3, {"task": task_id, "state": "WAITING_WS3", "exit": 3, "message": msg}
-    if not os.path.isdir(golden_root) or not os.listdir(golden_root):
+    if not golden_has_verdict(golden_root):
         msg = ("WAITING_OWNER：%s 人工金标未注入（期望目录 bench/devpool-r1/goldens/%s/，"
                "每样本一子目录：product/ 产物 + verdict.json {expected_pass, annotator}）；"
                "对拍准确率/召回 ≥95%% 才可签 D3；金标未注入即 fail-closed，绝不静默通过。") % (task_id, task_id)
@@ -91,6 +115,12 @@ def real_mode(task_id):
     acc = agree / total
     result = {"task": task_id, "mode": "real", "samples": total, "agree": agree,
               "accuracy": acc, "mismatches": mismatches}
+    if task_id.startswith("ofc-"):
+        # SF-0006-OFCD3：ofc 放行依据留痕（裁决文件 + verdict 在位），供审计
+        result["release_basis"] = {
+            "adjudication_doc": os.path.relpath(ADJUDICATION_DOC, WORKSPACE),
+            "adjudication_present": True, "verdict_present": True,
+        }
     if acc < 0.95 or mismatches:
         print("对拍未达 95%%：%s" % json.dumps(result, ensure_ascii=False))
         return 1, result

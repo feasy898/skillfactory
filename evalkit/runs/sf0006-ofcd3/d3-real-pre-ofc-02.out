@@ -1,0 +1,9 @@
+WAITING_WS3：ofc-02 的金标对拍属 WS3 范畴（PLAN 独立工作流，owner 或委托 0.5-1 人日）；金标未注入，fail-closed 不放行。
+{
+  "d3_gate": {
+    "task": "ofc-02",
+    "state": "WAITING_WS3",
+    "exit": 3,
+    "message": "WAITING_WS3：ofc-02 的金标对拍属 WS3 范畴（PLAN 独立工作流，owner 或委托 0.5-1 人日）；金标未注入，fail-closed 不放行。"
+  }
+}

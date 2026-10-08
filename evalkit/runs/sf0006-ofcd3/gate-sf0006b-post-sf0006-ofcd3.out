@@ -1,0 +1,12 @@
+PASS A-07[mm-01]  exit=0 accuracy=1.0
+PASS A-07[mm-02]  exit=0 accuracy=1.0
+PASS A-07[hot-01]  exit=0 accuracy=1.0
+PASS A-07[hot-02]  exit=0 accuracy=1.0
+PASS A-07[hot-03]  exit=0 accuracy=1.0
+FAIL A-07[ofc-01]  exit=1（期望 3=WAITING_WS3 fail-closed）
+FAIL A-07[ofc-02]  exit=1（期望 3=WAITING_WS3 fail-closed）
+FAIL A-07[ofc-03]  exit=1（期望 3=WAITING_WS3 fail-closed）
+PASS A-08  5 题样本构成全部达标
+PASS A-09  verdict 历史唯一
+PASS A-10  ready 派生正确 counts.ready=5
+== SF-0006 A-07..A-10 门槛: 8/11 PASS

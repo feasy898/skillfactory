@@ -11,12 +11,15 @@
      d1/d3 signoff，不得把已签署记录冲回 null；
    - d2_record：canonical 种子 + 生成时间 + 生成树逐文件 sha256（纯机械，自足）；
    - d3_record：D3 门实测（自环 + fail-closed 出口）+ signoff（未签=null，已签则继承）；
-     mm/hot 金标标注渠道登记 annotator_kind="delegated-signing-model"（A-10；
-     ofc 三题金标属 WS3 未注入，不带该字段）；
+     state 由工具按盘上记录派生（SF-0006-OFCD3：verdict 在 ∧ 对拍达标 ∧ signoff
+     非空 → D3_DONE 完成态；只有 verdict → ADJUDICATING 对拍中；无 verdict →
+     维持 waiting），禁止手改；金标 verdict 在位的题（mm/hot/ofc 同口径）登记
+     annotator_kind="delegated-signing-model"（A-10），未注入不带该字段；
    - d4_record：难度带 null（首轮未标定）+ 首轮分布记录（全带外，卡面允许）。
-   status=built；ready 由盘上记录派生（SF-0006-D3FIX 修4，A-10 口径）：
+   status=built；ready 由盘上记录派生（SF-0006-D3FIX 修4，A-10 口径；
+     SF-0006-OFCD3 起 ofc 解除「恒不翻绿」、同口径派生）：
      ready = d1 signoff 签署人非 null ∧ 该题 D3 真实对拍达标（real_gate_exit=0 且
-     real_result.accuracy≥0.95）∧ d3 signoff 三字段非 null ∧ line∈{mm,hot}；
+     real_result.accuracy≥0.95）∧ d3 signoff 三字段非 null；
      counts.ready 同步；禁止手改 pool-state.json。
    generated_at（pool 级与 d2 级）重跑继承既有值：重跑幂等（A-10 门 preserved
      前后全量比对；A-05 签署/就绪保全的时态面收口——eef8056 时代「仅 generated_at
@@ -64,29 +67,51 @@ def d1_record(cfg, prev_signoff=None):
     }
 
 
+def derive_d3_state(code, real, signoff):
+    """SF-0006-OFCD3：d3 状态由工具按盘上记录派生，禁止手改——
+    verdict 在（对拍实跑 exit∈{0,1}）∧ 对拍达标（exit=0 且 accuracy≥0.95）
+    ∧ signoff 三字段非 null → D3_DONE（完成态）；
+    只有 verdict（对拍实跑但未达标或未签）→ ADJUDICATING（对拍中）；
+    无 verdict → 维持 waiting（real_mode 的 WAITING_OWNER / WAITING_WS3）。"""
+    if code in (0, 1):
+        rr = real or {}
+        try:
+            acc = float(rr.get("accuracy") or 0.0)
+        except (TypeError, ValueError):
+            acc = 0.0
+        so = signoff or {}
+        signed = all(so.get(k) for k in ("签署人", "日期", "被签对象sha256"))
+        if code == 0 and acc >= 0.95 and signed:
+            return "D3_DONE"
+        return "ADJUDICATING"
+    return (real or {}).get("state", "WAITING_OWNER")
+
+
 def d3_record(task_id, line, prev_signoff=None):
     import ws4_d3_gate
     selfloop = ws4_d3_gate.self_loop(task_id)
     code, real = ws4_d3_gate.real_mode(task_id)
+    prev_signoff = prev_signoff or dict(SIGNOFF_NULL)
     rec = {
         "stage": "D3 判分器化（人工金标对拍 ≥95%；人工必须过）",
         "self_loop": selfloop,
         "real_gate_exit": code,
-        "state": real.get("state", "GOLDEN_PRESENT"),
+        "state": derive_d3_state(code, real, prev_signoff),
         "message": real.get("message", real.get("note", "")),
         "real_result": real if code != 3 else None,
-        "signoff": dict(prev_signoff) if prev_signoff else dict(SIGNOFF_NULL),
+        "signoff": dict(prev_signoff),
     }
-    if line in ("mm", "hot"):  # A-10：mm/hot 金标标注渠道=受托模型（ofc 金标属 WS3 未注入）
+    if code in (0, 1):  # A-10：金标 verdict 在位（mm/hot/ofc 同口径）→ 标注渠道=受托签署模型
         rec["annotator_kind"] = "delegated-signing-model"
     return rec
 
 
 def derive_ready(line, d1_signoff, d3_rec):
-    """SF-0006-D3FIX 修4（A-10 口径，owner-delegated-signing-20261008 §三）：
+    """SF-0006-D3FIX 修4（A-10 口径，owner-delegated-signing-20261008 §三），
+    SF-0006-OFCD3 起 ofc 线解除「恒不翻绿」硬编码、与 mm/hot 同口径按盘上派生：
     ready 只能由本脚本从盘上记录派生——D1 已签 ∧ D3 真实对拍达标
-    （real_gate_exit=0 且 real_result.accuracy≥0.95）∧ D3 已签（三字段非 null）
-    ∧ line∈{mm,hot}（ofc 金标对拍属 WS3，恒不翻绿）。禁止手改 pool-state.json。"""
+    （real_gate_exit=0 且 real_result.accuracy≥0.95）∧ D3 已签（三字段非 null）。
+    ofc 无签署不翻绿（禁止无条件放行）；禁止手改 pool-state.json。"""
     d1_ok = bool((d1_signoff or {}).get("签署人"))
     d3s = d3_rec.get("signoff") or {}
     d3_signed = all(d3s.get(k) for k in ("签署人", "日期", "被签对象sha256"))
@@ -96,7 +121,7 @@ def derive_ready(line, d1_signoff, d3_rec):
     except (TypeError, ValueError):
         acc = 0.0
     d3_real_ok = d3_rec.get("real_gate_exit") == 0 and acc >= 0.95
-    return bool(d1_ok and d3_signed and d3_real_ok and line in ("mm", "hot"))
+    return bool(d1_ok and d3_signed and d3_real_ok)
 
 
 def derive_d4(tid, d4_default):
@@ -266,8 +291,10 @@ def main(argv):
                    "origin": {"self-built": 5, "public-variant": 3},
                    "line": {"mm": 2, "hot": 3, "ofc": 3}},
         "signoff_ledger": "d1/d3 signoff 重建时继承已落盘签署（A-05 签署保全），未签者保持 null=WAITING"
-                          "（ofc 3 题 D3 另为 WAITING_WS3）；ready 由盘上记录派生（SF-0006-D3FIX 修4，"
-                          "A-10 口径：D1 已签 ∧ D3 真实对拍达标 ∧ D3 已签 ∧ line∈{mm,hot}），"
+                          "；ready 由盘上记录派生（SF-0006-D3FIX 修4 + SF-0006-OFCD3 ofc 作用域解除，"
+                          "A-10 口径：D1 已签 ∧ D3 真实对拍达标 ∧ D3 已签，mm/hot/ofc 同口径；"
+                          "d3 state 派生：verdict 在 ∧ 对拍达标 ∧ signoff 非空 → D3_DONE，"
+                          "只有 verdict → ADJUDICATING，无 verdict → waiting），"
                           "禁止手改 pool-state.json",
         "tasks": tasks_out,
     }

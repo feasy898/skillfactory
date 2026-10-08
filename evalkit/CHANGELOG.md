@@ -203,6 +203,38 @@
   runs/sf0006-d3fix/{freeze-verify-pre,keyfiles-pre,verify-sf0003-pre}*-sf0006-d3fix.*
   + d3-real-pre-*.out（5 题 exit 1）
 
+**FIX-C9｜ws4_d3_gate/ws4_pool_state 对 ofc 三题 WAITING_WS3 硬编码作用域解除
+（SF-0006-OFCD3 第 1 轮；真实对拍暴露 judge_ofc 缺口分歧，判卷器本轮不修）**
+- 题号：SF-0006-OFCD3（planner 裁决 2026-10-08，planning/test-cards-20261008/
+  ofc-d3-scope-and-ws3-harness-adjudication.md 第 1 条：owner 2026-10-08 常设指示已把
+  人工门委托给受托签署模型，WS3-scoped 历史理由消失，ofc-01/02/03 的 D3 迁移至
+  SF-0006 委托链下执行）
+- 旧文本：`harness/ws4_d3_gate.py` `WS3_SCOPED=("ofc-01","ofc-02","ofc-03")` 硬编码
+  短路——ofc 金标 verdict 已注入（eb8d6f0，41 份）仍 exit 3 WAITING_WS3；同文件
+  `harness/ws4_pool_state.py` annotator_kind 只认 line∈{mm,hot}、derive_ready 含
+  「line∈{mm,hot}（ofc 恒不翻绿）」硬条件
+- 新文本：ofc 线（task id 以 ofc- 开头）放行条件 = 该题 goldens/<task>/ 下存在
+  verdict.json ∧ 裁决文件在盘（planning/test-cards-20261008/
+  ofc-d3-scope-and-ws3-harness-adjudication.md；缺席即回退 WAITING_WS3 fail-closed）；
+  d3 state 由工具按盘上记录派生（verdict 在 ∧ 对拍达标 ∧ signoff 非空 → D3_DONE；
+  只有 verdict → ADJUDICATING；无 verdict → 维持 waiting），禁止手改；annotator_kind
+  按 verdict 在位登记（mm/hot/ofc 同口径）；derive_ready 删 line 硬条件（ofc 无签署
+  不翻绿，禁止无条件放行）；gate 对拍结果附 release_basis（裁决文件+verdict 在位留痕）
+- 缺陷类型：状态机硬编码作用域缺陷（金标注入后真实对拍被短路）；非判分器语义变更
+  （checks/run_check.py、gen_oracle.py、ws4_judge.py、goldens 标注、pool-state 签署
+  零改动）
+- 判定人：planner 裁决（2026-10-08，供 owner 审阅）；执行=dev GLM-5.3-Flash
+- 复现命令：`python harness/ws4_d3_gate.py --task ofc-01 --real` → 修前 exit 3
+  WAITING_WS3（runs/sf0006-ofcd3/d3-real-pre-ofc-01.out）修后 exit 1（13 样本 3 分歧）；
+  ofc-02/03 同验 exit 1（14 样本 4/2 分歧，9 处全为 checker=True 金标=False 的
+  handmade 缺口探针负例——judge_ofc G1-G6 缺口，如实留痕不修判卷器，修复走下一轮
+  裁决流程）；`python harness/ws4_pool_state.py` 重跑幂等（前后全量相等）、mm/hot
+  5 题签署保全 D3_DONE ready=5 不变、ofc 3 题 ADJUDICATING ready=False；
+  `python harness/freeze_device.py verify` exit 0（44 关键文件，变更集恰等
+  ws4_d3_gate.py+ws4_pool_state.py 两个 harness 文件）；`python harness/verify_sf0003.py`
+  exit 0（34 门全绿不减）；改前留档 runs/sf0006-ofcd3/{freeze-verify-pre,
+  keyfiles-pre,verify-sf0003-pre}-sf0006-ofcd3.* + d3-real-pre-*.out（3 题 exit 3）
+
 ### added（SF-0006 P6 · 多题×单族聚合工具 · 非装置版本变更，版本号保持 0.3）
 
 **ADD-3｜aggregate.py 单 run_dir 单 pack MVP → 双模式聚合工具（混族拒绝 + delta_vs_none 计算）**

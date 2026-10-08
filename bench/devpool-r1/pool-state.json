@@ -22,7 +22,7 @@
       "ofc": 3
     }
   },
-  "signoff_ledger": "d1/d3 signoff 重建时继承已落盘签署（A-05 签署保全），未签者保持 null=WAITING（ofc 3 题 D3 另为 WAITING_WS3）；ready 由盘上记录派生（SF-0006-D3FIX 修4，A-10 口径：D1 已签 ∧ D3 真实对拍达标 ∧ D3 已签 ∧ line∈{mm,hot}），禁止手改 pool-state.json",
+  "signoff_ledger": "d1/d3 signoff 重建时继承已落盘签署（A-05 签署保全），未签者保持 null=WAITING；ready 由盘上记录派生（SF-0006-D3FIX 修4 + SF-0006-OFCD3 ofc 作用域解除，A-10 口径：D1 已签 ∧ D3 真实对拍达标 ∧ D3 已签，mm/hot/ofc 同口径；d3 state 派生：verdict 在 ∧ 对拍达标 ∧ signoff 非空 → D3_DONE，只有 verdict → ADJUDICATING，无 verdict → waiting），禁止手改 pool-state.json",
   "tasks": [
     {
       "id": "mm-01",
@@ -102,10 +102,10 @@
           "checker_exit_on_machine_oracle": 0,
           "agreement": "1.0",
           "self_loop": true,
-          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 完成态恒为 WAITING_OWNER/WAITING_WS3"
+          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 状态由盘上记录派生（ws4_pool_state：verdict 在 ∧ 对拍达标 ∧ signoff 非空 → D3_DONE）"
         },
         "real_gate_exit": 0,
-        "state": "GOLDEN_PRESENT",
+        "state": "D3_DONE",
         "message": "",
         "real_result": {
           "task": "mm-01",
@@ -214,10 +214,10 @@
           "checker_exit_on_machine_oracle": 0,
           "agreement": "1.0",
           "self_loop": true,
-          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 完成态恒为 WAITING_OWNER/WAITING_WS3"
+          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 状态由盘上记录派生（ws4_pool_state：verdict 在 ∧ 对拍达标 ∧ signoff 非空 → D3_DONE）"
         },
         "real_gate_exit": 0,
-        "state": "GOLDEN_PRESENT",
+        "state": "D3_DONE",
         "message": "",
         "real_result": {
           "task": "mm-02",
@@ -326,10 +326,10 @@
           "checker_exit_on_machine_oracle": 0,
           "agreement": "1.0",
           "self_loop": true,
-          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 完成态恒为 WAITING_OWNER/WAITING_WS3"
+          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 状态由盘上记录派生（ws4_pool_state：verdict 在 ∧ 对拍达标 ∧ signoff 非空 → D3_DONE）"
         },
         "real_gate_exit": 0,
-        "state": "GOLDEN_PRESENT",
+        "state": "D3_DONE",
         "message": "",
         "real_result": {
           "task": "hot-01",
@@ -438,10 +438,10 @@
           "checker_exit_on_machine_oracle": 0,
           "agreement": "1.0",
           "self_loop": true,
-          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 完成态恒为 WAITING_OWNER/WAITING_WS3"
+          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 状态由盘上记录派生（ws4_pool_state：verdict 在 ∧ 对拍达标 ∧ signoff 非空 → D3_DONE）"
         },
         "real_gate_exit": 0,
-        "state": "GOLDEN_PRESENT",
+        "state": "D3_DONE",
         "message": "",
         "real_result": {
           "task": "hot-02",
@@ -550,10 +550,10 @@
           "checker_exit_on_machine_oracle": 0,
           "agreement": "1.0",
           "self_loop": true,
-          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 完成态恒为 WAITING_OWNER/WAITING_WS3"
+          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 状态由盘上记录派生（ws4_pool_state：verdict 在 ∧ 对拍达标 ∧ signoff 非空 → D3_DONE）"
         },
         "real_gate_exit": 0,
-        "state": "GOLDEN_PRESENT",
+        "state": "D3_DONE",
         "message": "",
         "real_result": {
           "task": "hot-03",
@@ -662,17 +662,34 @@
           "checker_exit_on_machine_oracle": 0,
           "agreement": "1.0",
           "self_loop": true,
-          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 完成态恒为 WAITING_OWNER/WAITING_WS3"
+          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 状态由盘上记录派生（ws4_pool_state：verdict 在 ∧ 对拍达标 ∧ signoff 非空 → D3_DONE）"
         },
-        "real_gate_exit": 3,
-        "state": "WAITING_WS3",
-        "message": "WAITING_WS3：ofc-01 的金标对拍属 WS3 范畴（PLAN 独立工作流，owner 或委托 0.5-1 人日）；金标未注入，fail-closed 不放行。",
-        "real_result": null,
+        "real_gate_exit": 1,
+        "state": "ADJUDICATING",
+        "message": "",
+        "real_result": {
+          "task": "ofc-01",
+          "mode": "real",
+          "samples": 13,
+          "agree": 10,
+          "accuracy": 0.7692307692307693,
+          "mismatches": [
+            "s07: checker=True 金标=False",
+            "s09: checker=True 金标=False",
+            "s10: checker=True 金标=False"
+          ],
+          "release_basis": {
+            "adjudication_doc": "planning/test-cards-20261008/ofc-d3-scope-and-ws3-harness-adjudication.md",
+            "adjudication_present": true,
+            "verdict_present": true
+          }
+        },
         "signoff": {
           "签署人": null,
           "日期": null,
           "被签对象sha256": null
-        }
+        },
+        "annotator_kind": "delegated-signing-model"
       },
       "d4_record": {
         "stage": "D4 校准入池（难度带分拣）",
@@ -760,17 +777,35 @@
           "checker_exit_on_machine_oracle": 0,
           "agreement": "1.0",
           "self_loop": true,
-          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 完成态恒为 WAITING_OWNER/WAITING_WS3"
+          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 状态由盘上记录派生（ws4_pool_state：verdict 在 ∧ 对拍达标 ∧ signoff 非空 → D3_DONE）"
         },
-        "real_gate_exit": 3,
-        "state": "WAITING_WS3",
-        "message": "WAITING_WS3：ofc-02 的金标对拍属 WS3 范畴（PLAN 独立工作流，owner 或委托 0.5-1 人日）；金标未注入，fail-closed 不放行。",
-        "real_result": null,
+        "real_gate_exit": 1,
+        "state": "ADJUDICATING",
+        "message": "",
+        "real_result": {
+          "task": "ofc-02",
+          "mode": "real",
+          "samples": 14,
+          "agree": 10,
+          "accuracy": 0.7142857142857143,
+          "mismatches": [
+            "s06: checker=True 金标=False",
+            "s08: checker=True 金标=False",
+            "s10: checker=True 金标=False",
+            "s11: checker=True 金标=False"
+          ],
+          "release_basis": {
+            "adjudication_doc": "planning/test-cards-20261008/ofc-d3-scope-and-ws3-harness-adjudication.md",
+            "adjudication_present": true,
+            "verdict_present": true
+          }
+        },
         "signoff": {
           "签署人": null,
           "日期": null,
           "被签对象sha256": null
-        }
+        },
+        "annotator_kind": "delegated-signing-model"
       },
       "d4_record": {
         "stage": "D4 校准入池（难度带分拣）",
@@ -858,17 +893,33 @@
           "checker_exit_on_machine_oracle": 0,
           "agreement": "1.0",
           "self_loop": true,
-          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 完成态恒为 WAITING_OWNER/WAITING_WS3"
+          "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 状态由盘上记录派生（ws4_pool_state：verdict 在 ∧ 对拍达标 ∧ signoff 非空 → D3_DONE）"
         },
-        "real_gate_exit": 3,
-        "state": "WAITING_WS3",
-        "message": "WAITING_WS3：ofc-03 的金标对拍属 WS3 范畴（PLAN 独立工作流，owner 或委托 0.5-1 人日）；金标未注入，fail-closed 不放行。",
-        "real_result": null,
+        "real_gate_exit": 1,
+        "state": "ADJUDICATING",
+        "message": "",
+        "real_result": {
+          "task": "ofc-03",
+          "mode": "real",
+          "samples": 14,
+          "agree": 12,
+          "accuracy": 0.8571428571428571,
+          "mismatches": [
+            "s08: checker=True 金标=False",
+            "s11: checker=True 金标=False"
+          ],
+          "release_basis": {
+            "adjudication_doc": "planning/test-cards-20261008/ofc-d3-scope-and-ws3-harness-adjudication.md",
+            "adjudication_present": true,
+            "verdict_present": true
+          }
+        },
         "signoff": {
           "签署人": null,
           "日期": null,
           "被签对象sha256": null
-        }
+        },
+        "annotator_kind": "delegated-signing-model"
       },
       "d4_record": {
         "stage": "D4 校准入池（难度带分拣）",
