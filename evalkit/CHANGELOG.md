@@ -3,6 +3,44 @@
 > 格式：removed（附饱和证据）/ fixed（附缺陷类型 + 复现命令）/ added。
 > 跨版本 Δ 禁止并列（EVAL-SPEC §4.4-2；装置侧由 aggregate.py AG-7 拒绝门执行）。
 
+## spec-v0.2.1 · 2026-10-08（SF-0010 勘误卡 · worker-glm-flash，零模型）
+
+### fixed
+
+**FIX-S1｜K5B-05 swap 块 verdict 标签互换式伪复算（runs/sf0008-k5b/s8_aggregate.py）**
+- 缺陷类型：聚合审计器伪复算——swap_check 旧实现（:244-270）用 win<->loss 翻标签得
+  swap_win_rate，并把「镜像均分反向」（正向 treatment 均分更高的任务数，平局任务
+  均分不对称 + win 镜像必落败所致）当 reverse_tasks 留痕，产出假数字 6/3/4
+  （K-5 alpha 裁决附带入案发现，`planning/test-cards-20261008/K5-ruling-20261008.md`）。
+- 变更：swap_check 改为从原始 per-run 分数独立重算——swap 后 (T′,B′)=(原B,原T)，
+  delta′/winRate′/tieRate′ 按镜像独立重算（新增 judge_task_tieaware，EVAL-SPEC
+  v0.2.1 §3.3-2/3 tie-aware）；swap_reverse_tasks 锚定资产方向按 §3.6 完整口径
+  （tie-aware 任务级判定 + 平局任务不进反向计数）独立重算，满足 K5B-05
+  「reverse_tasks 不变」恒等；旧假数字来源以 mirror_flipped_tasks 字段如实披露。
+  正向判定路径（attach_scores/aggregate）零改动，已落盘三包 verdict/benchmark.json
+  不追溯改判（rejected×3 维持）。
+- 判定人：alpha 裁决（K-5 产线指令 1，owner 委托链内）。
+- 复现命令：`cd evalkit/runs/sf0008-k5b && python3 s8_swap_recheck.py` → exit 0
+  （三包 swap_reverse_tasks=0/0/0；swap_delta=-delta 恒等 −1.9344/−0.725/−2.4233；
+  mirror_flipped=6/3/4 恰等于勘误前盘上假数字；正向 aggregate/verdict 与盘上逐值
+  相符；tie-aware 重判胜率不变 12.5%/40%/40%，hot ab-001/003/005 伪 loss→tie）。
+  断言输出留档：`records/s8-swap-recheck.json`。
+
+### added
+
+**ADD-S1｜EVAL-SPEC 升版 v0.2 → v0.2.1（勘误，只收紧不放宽）**
+- 变更：新文件 `v2/standard/EVAL-SPEC-v0.2.1.md`（原 v0.2 正文除两处收紧外逐字并入，
+  原 `EVAL-SPEC-v0.2.md` 头部注记 superseded-by、正文不动）；①§3.3-2 n=3 补 tie 出口
+  （「≥2 更高→胜；≥2 更低→负；其余（更高 ≤1 且更低 ≤1，含全平）→平」，alpha 建议
+  口径，与 n=2 路径同源；win 侧条件不变，消除饱和题集伪 loss——hot ab-005 双 10 满
+  判负案）；②§3.7 增补第 4 条跨代可比条件（两轮须同 model_pin.judge_model_id 与
+  judge_prompt_version 才构成同代可比；round1 v0.1 数据不得与 round2 v0.2 直接 Δ 对位）。
+  升版记录同时见 v0.2.1 文件头修订记录表。
+- 类型：added（协议文本勘误升版）；既有轮次 verdict 不追溯。
+- 复现命令：`diff v2/standard/EVAL-SPEC-v0.2.md v2/standard/EVAL-SPEC-v0.2.1.md`
+  （差异恰为头部/修订表 + §3.3-2 + §3.7-4 + 文末修订行）；`git diff --stat --
+  v2/standard/EVAL-SPEC-v0.2.md`（仅 +2 行头部注记）。
+
 ## v6-mvp-0.3 · 2026-10-04（SF-0005 · worker-glm-bd）
 
 ### added

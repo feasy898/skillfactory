@@ -1,0 +1,303 @@
+{
+  "date": "2026-10-08",
+  "basis": "SF-0010 勘误卡 / K-5 alpha 裁决 planning/test-cards-20261008/K5-ruling-20261008.md",
+  "spec": "EVAL-SPEC-v0.2.1 §3.3-2/3（tie-aware）；K5B-05 swap 独立重算",
+  "packages": {
+    "meeting-minutes": {
+      "pkg": "meeting-minutes",
+      "checks": {
+        "rebuild_scores_match_bench": [
+          true,
+          []
+        ],
+        "forward_aggregate_match_bench": [
+          true,
+          {
+            "mean_baseline": [
+              7.9156,
+              7.9156
+            ],
+            "mean_treatment": [
+              9.85,
+              9.85
+            ],
+            "delta": [
+              1.9344,
+              1.9344
+            ],
+            "task_win_rate": [
+              0.125,
+              0.125
+            ],
+            "pair_win_rate": [
+              0.4375,
+              0.4375
+            ],
+            "reverse_tasks": [
+              0,
+              0
+            ],
+            "ties": [
+              7,
+              7
+            ],
+            "valid_tasks": [
+              8,
+              8
+            ],
+            "total_tasks": [
+              8,
+              8
+            ]
+          }
+        ],
+        "forward_verdicts_match_bench": [
+          true,
+          []
+        ],
+        "swap_reverse_tasks_zero": [
+          true,
+          0
+        ],
+        "swap_delta_negation_identity": [
+          true,
+          {
+            "swap_delta": -1.9344,
+            "delta": 1.9344
+          }
+        ],
+        "mirror_flipped_matches_legacy_artifact": [
+          true,
+          {
+            "mirror_flipped_tasks": 6,
+            "legacy_swap_reverse_tasks": 6
+          }
+        ],
+        "tie_aware_winrate_unchanged": [
+          true,
+          {
+            "v021": 0.125,
+            "bench": 0.125
+          }
+        ]
+      },
+      "tie_aware_rejudge": [],
+      "swap_independent_recompute": {
+        "swap_delta": -1.9344,
+        "swap_win_rate": 0.0,
+        "tie_rate": 0.875,
+        "swap_reverse_tasks": 0,
+        "mirror_flipped_tasks": 6,
+        "method": "swap 后 (treatment',baseline')=(原baseline,原treatment)；delta'/winRate'/tieRate' 为镜像独立重算（EVAL-SPEC v0.2.1 §3.3-2/3 tie-aware）；reverse_tasks' 锚定资产方向按 §3.3-2/3+§3.6（平局不进反向计数）独立重算（K5B-05：reverse_tasks 不变）。SF-0010 勘误：禁止 verdict 标签互换式伪复算",
+        "identity_note": "delta'=−delta 在 valid 任务集上恒等成立（均值差换序）；winRate'/tieRate' 为镜像独立重算值而非恒等式（§3.3-3 平局计入分母不计胜）；reverse_tasks'=真实反向（资产方向不变量，swap 重算后不变）；mirror_flipped_tasks 为镜像均分伪象（旧假数字 6/3/4 的来源），非资产反向"
+      },
+      "tie_aware_win_rate": 0.125,
+      "pass": true
+    },
+    "office-templates": {
+      "pkg": "office-templates",
+      "checks": {
+        "rebuild_scores_match_bench": [
+          true,
+          []
+        ],
+        "forward_aggregate_match_bench": [
+          true,
+          {
+            "mean_baseline": [
+              7.125,
+              7.125
+            ],
+            "mean_treatment": [
+              7.85,
+              7.85
+            ],
+            "delta": [
+              0.725,
+              0.725
+            ],
+            "task_win_rate": [
+              0.4,
+              0.4
+            ],
+            "pair_win_rate": [
+              0.6,
+              0.6
+            ],
+            "reverse_tasks": [
+              1,
+              1
+            ],
+            "ties": [
+              3,
+              3
+            ],
+            "valid_tasks": [
+              5,
+              5
+            ],
+            "total_tasks": [
+              5,
+              5
+            ]
+          }
+        ],
+        "forward_verdicts_match_bench": [
+          true,
+          []
+        ],
+        "swap_reverse_tasks_zero": [
+          true,
+          0
+        ],
+        "swap_delta_negation_identity": [
+          true,
+          {
+            "swap_delta": -0.725,
+            "delta": 0.725
+          }
+        ],
+        "mirror_flipped_matches_legacy_artifact": [
+          true,
+          {
+            "mirror_flipped_tasks": 3,
+            "legacy_swap_reverse_tasks": 3
+          }
+        ],
+        "tie_aware_winrate_unchanged": [
+          true,
+          {
+            "v021": 0.4,
+            "bench": 0.4
+          }
+        ]
+      },
+      "tie_aware_rejudge": [],
+      "swap_independent_recompute": {
+        "swap_delta": -0.725,
+        "swap_win_rate": 0.0,
+        "tie_rate": 0.6,
+        "swap_reverse_tasks": 0,
+        "mirror_flipped_tasks": 3,
+        "method": "swap 后 (treatment',baseline')=(原baseline,原treatment)；delta'/winRate'/tieRate' 为镜像独立重算（EVAL-SPEC v0.2.1 §3.3-2/3 tie-aware）；reverse_tasks' 锚定资产方向按 §3.3-2/3+§3.6（平局不进反向计数）独立重算（K5B-05：reverse_tasks 不变）。SF-0010 勘误：禁止 verdict 标签互换式伪复算",
+        "identity_note": "delta'=−delta 在 valid 任务集上恒等成立（均值差换序）；winRate'/tieRate' 为镜像独立重算值而非恒等式（§3.3-3 平局计入分母不计胜）；reverse_tasks'=真实反向（资产方向不变量，swap 重算后不变）；mirror_flipped_tasks 为镜像均分伪象（旧假数字 6/3/4 的来源），非资产反向"
+      },
+      "tie_aware_win_rate": 0.4,
+      "pass": true
+    },
+    "hot-templates": {
+      "pkg": "hot-templates",
+      "checks": {
+        "rebuild_scores_match_bench": [
+          true,
+          []
+        ],
+        "forward_aggregate_match_bench": [
+          true,
+          {
+            "mean_baseline": [
+              7.5767,
+              7.5767
+            ],
+            "mean_treatment": [
+              10.0,
+              10.0
+            ],
+            "delta": [
+              2.4233,
+              2.4233
+            ],
+            "task_win_rate": [
+              0.4,
+              0.4
+            ],
+            "pair_win_rate": [
+              0.4,
+              0.4
+            ],
+            "reverse_tasks": [
+              0,
+              0
+            ],
+            "ties": [
+              0,
+              0
+            ],
+            "valid_tasks": [
+              5,
+              5
+            ],
+            "total_tasks": [
+              5,
+              5
+            ]
+          }
+        ],
+        "forward_verdicts_match_bench": [
+          true,
+          []
+        ],
+        "swap_reverse_tasks_zero": [
+          true,
+          0
+        ],
+        "swap_delta_negation_identity": [
+          true,
+          {
+            "swap_delta": -2.4233,
+            "delta": 2.4233
+          }
+        ],
+        "mirror_flipped_matches_legacy_artifact": [
+          true,
+          {
+            "mirror_flipped_tasks": 4,
+            "legacy_swap_reverse_tasks": 4
+          }
+        ],
+        "tie_aware_winrate_unchanged": [
+          true,
+          {
+            "v021": 0.4,
+            "bench": 0.4
+          }
+        ]
+      },
+      "tie_aware_rejudge": [
+        {
+          "task": "ab-001",
+          "bench_verdict": "loss",
+          "v021_verdict": "tie",
+          "task_mean_t": 10.0,
+          "task_mean_b": 8.4333
+        },
+        {
+          "task": "ab-003",
+          "bench_verdict": "loss",
+          "v021_verdict": "tie",
+          "task_mean_t": 10.0,
+          "task_mean_b": 7.3667
+        },
+        {
+          "task": "ab-005",
+          "bench_verdict": "loss",
+          "v021_verdict": "tie",
+          "task_mean_t": 10.0,
+          "task_mean_b": 10.0
+        }
+      ],
+      "swap_independent_recompute": {
+        "swap_delta": -2.4233,
+        "swap_win_rate": 0.0,
+        "tie_rate": 0.6,
+        "swap_reverse_tasks": 0,
+        "mirror_flipped_tasks": 4,
+        "method": "swap 后 (treatment',baseline')=(原baseline,原treatment)；delta'/winRate'/tieRate' 为镜像独立重算（EVAL-SPEC v0.2.1 §3.3-2/3 tie-aware）；reverse_tasks' 锚定资产方向按 §3.3-2/3+§3.6（平局不进反向计数）独立重算（K5B-05：reverse_tasks 不变）。SF-0010 勘误：禁止 verdict 标签互换式伪复算",
+        "identity_note": "delta'=−delta 在 valid 任务集上恒等成立（均值差换序）；winRate'/tieRate' 为镜像独立重算值而非恒等式（§3.3-3 平局计入分母不计胜）；reverse_tasks'=真实反向（资产方向不变量，swap 重算后不变）；mirror_flipped_tasks 为镜像均分伪象（旧假数字 6/3/4 的来源），非资产反向"
+      },
+      "tie_aware_win_rate": 0.4,
+      "pass": true
+    }
+  },
+  "conclusion": "三包 swap_reverse_tasks 独立重算=0/0/0；swap_delta=-delta 恒等成立；正向 aggregate/verdict 与盘上逐值相符（正向路径与已落盘 verdict 未动）；正向 v0.2.1 tie-aware 重判胜率不变（12.5%/40%/40%），仅伪 loss→tie 迁移"
+}

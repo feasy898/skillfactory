@@ -12,9 +12,13 @@
   format:        非 infra 单元产物文件齐备可解析（checker 报告）
   assertion:     treatment 侧确定性断言全过（checker 报告；baseline 如实记录不进门）
   verdict:       accepted ⟺ 五门全 true（K5B-08）；evidence_level ∈ {synthetic-passed, provisional}
-聚合（K5B-05）：delta/task_win_rate/reverse_tasks 独立复算；标签互换 → delta 变号、
-  winRate→1−winRate（平局计入分母不计胜的 §3.3-3 语义下，严格恒等式为
-  winRate' = 1 − winRate − tieRate，tieRate>0 时如实披露）、reverse_tasks 互换口径复算留痕。
+聚合（K5B-05，SF-0010 勘误后）：delta/task_win_rate/reverse_tasks 独立复算；swap 块为
+  从原始 per-run 分数独立重算——swap 后 (treatment',baseline')=(原baseline,原treatment)，
+  逐任务调用 judge_task_tieaware（EVAL-SPEC v0.2.1 §3.3-2/3 tie-aware）重算
+  delta'/winRate'（镜像量）；reverse_tasks' 锚定资产方向按 §3.6（平局不进反向计数）
+  独立重算，K5B-05「reverse_tasks 不变」恒等；【禁止】verdict 标签互换式伪复算
+  （2026-10-08 勘误前旧实现翻标签+把镜像均分伪象当 reverse_tasks，产假数字 6/3/4，
+  独立重算真实反向 0/0/0——K-5 裁决在案）。
 用法：python s8_aggregate.py   （退出码 0=全部基准文件与自检落盘，门红不代表本脚本红）
 """
 
@@ -241,33 +245,85 @@ def aggregate(data):
             "valid_tasks": total, "total_tasks": len(data["tasks"])}
 
 
+def judge_task_tieaware(tr_scores, bs_scores):
+    """EVAL-SPEC v0.2.1 §3.3-2/3（tie-aware）：从原始 per-run 分数独立判任务级胜负。
+
+    n=3：更高次数 h≥2 → win；更低次数 l≥2 → loss；其余（h≤1 且 l≤1，必含平局，
+         含全平与双 10 满饱和）→ tie（v0.2 原口径「≤1 次更高→loss」无 tie 出口，
+         饱和题集产伪 loss——K-5 裁决附带入案发现，SF-0010 勘误升版消除）。
+    n=2：均高 → win；均低 → loss；其余 → tie（与 v0.2 §3.3-2 原口径一致）。
+    返回 (task_verdict, mean_tr, mean_bs)；均分 round 4 位，与 attach_scores 同口径。
+    """
+    pairs = [(a, b) for a, b in zip(tr_scores, bs_scores)
+             if a is not None and b is not None]
+    n = len(pairs)
+    higher = sum(1 for a, b in pairs if a > b)
+    lower = sum(1 for a, b in pairs if a < b)
+    mean_tr = round(sum(a for a, _ in pairs) / n, 4) if n else None
+    mean_bs = round(sum(b for _, b in pairs) / n, 4) if n else None
+    if n == 3:
+        verdict = "win" if higher >= 2 else ("loss" if lower >= 2 else "tie")
+    else:
+        verdict = "win" if (n and higher == n) else \
+            ("loss" if (n and lower == n) else "tie")
+    return verdict, mean_tr, mean_bs
+
+
 def swap_check(tasks, agg):
-    """K5B-05：标签互换复算。返回留痕 dict（含 §3.3-3 平局语义下的严格恒等式说明）。"""
+    """K5B-05（SF-0010 勘误后口径）：swap 后 (treatment', baseline')=(原 baseline, 原 treatment)，
+    从原始 per-run 分数独立重算（EVAL-SPEC v0.2.1 §3.3-2/3 tie-aware），
+    【禁止】verdict 标签互换式伪复算。逐量口径：
+      - swap_delta / swap_win_rate / tie_rate：镜像量，对新臂序独立重算
+        （delta'=-delta 在 valid 任务集上恒等；winRate'/tieRate' 为镜像独立重算值）；
+      - swap_reverse_tasks：**资产方向不变量**——K5B-05 原文要求 swap 重算后
+        「reverse_tasks 不变」，反向锚定资产方向（treatment=挂资产侧），按 §3.3-2/3
+        （tie-aware 判 task_verdict）+ §3.6（反向 = 非 tie 任务且 task_mean_t < task_mean_b
+        或 task_mean_t == 0；平局任务不进反向计数）从原始 per-run 分数独立重算；
+      - mirror_flipped_tasks：附加披露——镜像均分反向计数（新 treatment 均分更低或 =0 的
+        任务数，无平局排除）。旧实现（2026-10-08 勘误前）误把此镜像伪象当 reverse_tasks
+        留痕并叠加 win<->loss 标签互换，产出假数字 6/3/4（tie 任务均分不对称 + win 镜像
+        必落败所致）；K-5 裁决独立重算真实反向=0/0/0。
+    """
+    delta_t2, delta_b2 = [], []
     wins = losses = ties = 0
-    delta_t, delta_b = [], []
-    reverse_swapped = 0
+    reverse_true = 0
+    mirror_flipped = 0
     for t in tasks:
         if t["task_verdict"] == "unjudgeable":
             continue
-        if t["task_verdict"] == "win":
-            losses += 1
-        elif t["task_verdict"] == "loss":
+        tr = [r["score"] for r in t["arms"]["treatment"]["runs"]]
+        bs = [r["score"] for r in t["arms"]["baseline"]["runs"]]
+        v2, mt2, mb2 = judge_task_tieaware(bs, tr)  # swap：新 treatment=原 baseline
+        if v2 == "win":
             wins += 1
+        elif v2 == "loss":
+            losses += 1
         else:
             ties += 1
-        delta_t.append(t["task_mean_b"]); delta_b.append(t["task_mean_t"])
-        mt, mb = t["task_mean_t"], t["task_mean_b"]
-        if mb < mt or mb == 0:
-            reverse_swapped += 1
+        delta_t2.append(mt2); delta_b2.append(mb2)
+        # reverse_tasks'（K5B-05 不变量）：资产方向独立重算，§3.3-2/3 tie-aware + §3.6 口径
+        v_fwd, mt_fwd, mb_fwd = judge_task_tieaware(tr, bs)
+        if v_fwd != "tie" and (mt_fwd < mb_fwd or mt_fwd == 0):
+            reverse_true += 1
+        # 镜像均分反向（伪象，仅披露）
+        if mt2 is not None and (mt2 < mb2 or mt2 == 0):
+            mirror_flipped += 1
     total = wins + losses + ties
-    n = len(delta_t)
-    return {"swap_delta": round(sum(delta_t) / n - sum(delta_b) / n, 4) if n else None,
+    n = len(delta_t2)
+    return {"swap_delta": round(sum(delta_t2) / n - sum(delta_b2) / n, 4) if n else None,
             "swap_win_rate": round(wins / total, 4) if total else None,
             "tie_rate": round(ties / total, 4) if total else None,
-            "swap_reverse_tasks": reverse_swapped,
-            "identity_note": ("delta'=−delta 恒等；winRate'=1−winRate−tieRate（§3.3-3 平局计入"
-                              "分母不计胜；tieRate=0 时退化为 1−winRate）；reverse 按同定义在新"
-                              "treatment 侧复算留痕")}
+            "swap_reverse_tasks": reverse_true,
+            "mirror_flipped_tasks": mirror_flipped,
+            "method": ("swap 后 (treatment',baseline')=(原baseline,原treatment)；delta'/winRate'/"
+                       "tieRate' 为镜像独立重算（EVAL-SPEC v0.2.1 §3.3-2/3 tie-aware）；"
+                       "reverse_tasks' 锚定资产方向按 §3.3-2/3+§3.6（平局不进反向计数）独立重算"
+                       "（K5B-05：reverse_tasks 不变）。SF-0010 勘误：禁止 verdict 标签互换式伪复算"),
+            "identity_note": ("delta'=−delta 在 valid 任务集上恒等成立（均值差换序）；winRate'/"
+                              "tieRate' 为镜像独立重算值而非恒等式（§3.3-3 平局计入分母不计胜）；"
+                              "reverse_tasks'=真实反向（资产方向不变量，swap 重算后不变）；"
+                              "mirror_flipped_tasks 为镜像均分伪象（旧假数字 6/3/4 的来源），"
+                              "非资产反向")}
 
 
 def build_benchmark(pkg, data, checks, det):
