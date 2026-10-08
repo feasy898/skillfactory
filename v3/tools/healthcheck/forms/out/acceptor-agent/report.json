@@ -1,0 +1,34 @@
+{
+  "tool": "healthcheck-forms.py 1.0.0 (agent 形态)",
+  "form": "agent",
+  "target": "/home/pan-ding/workspace/skill工厂/skillfactory/v5/assets/acceptor-agent/package",
+  "generated_at": "2026-10-08T11:23:21+0800",
+  "summary": {
+    "total": 4,
+    "pass": 4,
+    "fail": 0
+  },
+  "rating": "A",
+  "checks": [
+    {
+      "name": "agent_md_sections",
+      "pass": true,
+      "detail": "agent.md 三节齐备（职责、输出契约、禁令；命中标题: 职责（Responsibilities） / 输出契约（Output Contract） / 禁令（Prohibitions））"
+    },
+    {
+      "name": "schema_fields_exact",
+      "pass": true,
+      "detail": "字段恰等：schema 与 example 顶层键集恰等基线 5 字段 ['blockers', 'boundary_note', 'checks', 'deliverable_path', 'verdict']，checks[] 项键恰等 ['evidence', 'name', 'passed', 'status']，verdict/status enum 与基线一致"
+    },
+    {
+      "name": "example_valid",
+      "pass": true,
+      "detail": "example 合法：verdict=PASS，checks 3 条全带非空 evidence，blockers 为空，boundary_note 非空，R1 充要条件成立"
+    },
+    {
+      "name": "no_promise_wording",
+      "pass": true,
+      "detail": "零承诺措辞：基线禁令短语 禁止修改、禁止把未跑过的检查标 verified 在文；承诺关键词仅出现在禁令/边界声明句（L24（就业/收益，护栏: 不评）; L36（就业/收益，护栏: 禁止））"
+    }
+  ]
+}

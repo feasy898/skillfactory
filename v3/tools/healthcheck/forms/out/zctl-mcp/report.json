@@ -1,0 +1,39 @@
+{
+  "tool": "healthcheck-forms.py 1.0.0 (mcp 形态)",
+  "form": "mcp",
+  "target": "/home/pan-ding/workspace/skill工厂/skillfactory/v5/assets/zctl-mcp/package",
+  "generated_at": "2026-10-08T11:23:21+0800",
+  "summary": {
+    "total": 5,
+    "pass": 5,
+    "fail": 0
+  },
+  "rating": "A",
+  "checks": [
+    {
+      "name": "mcp_server_parsable",
+      "pass": true,
+      "detail": "mcp-server.mjs 通过 node --check 语法解析（node v22.16.0）"
+    },
+    {
+      "name": "server_info_identity",
+      "pass": true,
+      "detail": "initialize 实测 serverInfo name=zctl-mcp version=1.0.0 protocolVersion=2024-11-05 与冻结基线一致"
+    },
+    {
+      "name": "tools_decl_match_impl",
+      "pass": true,
+      "detail": "三方一致：4 个工具 ['zctl_reset_status', 'zctl_offpeak_availability', 'zctl_offpeak_status', 'zctl_help']（tools/list 实测 = 源码 TOOLS 声明 = 冻结基线，required/描述关键词逐项过，分派分支齐备）"
+    },
+    {
+      "name": "no_mutation_exposure",
+      "pass": true,
+      "detail": "暴露面干净：4 个工具全部只读声明、无禁暴露工具名、源码无变更类 zctl 接线（核对口径：冻结基线 forbidden_tool_names=['zctl_reset_use', 'zctl_offpeak_take', 'zctl_offpeak_settle']；模式 zctl 变更类接线 \"reset\",\"use\"/zctl 变更类接线 \"offpeak\",\"take\"/zctl 变更类接线 \"settle\"/独立参数元素 \"--yes\"（变更确认旗标））"
+    },
+    {
+      "name": "install_md_complete",
+      "pass": true,
+      "detail": "INSTALL.md 四要素齐备：Node 版本要求 / mcpServers 配置片段 / eval/runner.py 自检入口 / 变更类安全说明"
+    }
+  ]
+}
