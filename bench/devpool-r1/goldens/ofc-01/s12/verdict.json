@@ -1,0 +1,7 @@
+{
+  "expected_pass": false,
+  "annotator": "owner 委托 alpha 代行",
+  "annotator_kind": "delegated-signing-model",
+  "product_sha256": "347f161a5b330c2dc00b1088396a26dea74d3c0aff02d6e98e520351a13eb3de",
+  "source": "oracle:gen_oracle.py(seed=4206,nonce=B)"
+}
