@@ -4,7 +4,7 @@
   "prepared_by": "开发方（SF-0006-P2ofc 第 1 轮；expected_pass 判定由受托签署模型盲态另行出具，本文件不含任何判定）",
   "canonical_seed": 4208,
   "oracle_tree_sha256": "f2c92755834a1e8f98e5b45ff2e9026f755ef5f69e95b613c8f2e2910c5d2166",
-  "sample_count": 12,
+  "sample_count": 14,
   "samples": {
     "s01": {
       "source": "oracle:gen_oracle.py(seed=4208,nonce=A)",
@@ -53,6 +53,14 @@
     "s12": {
       "source": "oracle:gen_oracle.py(seed=4208,nonce=B)",
       "note": "同种子 nonce-B 交叉实例的 oracle 树（产物对应另一套实例输入；对拍以包内 fixtures 为基准）"
+    },
+    "s13": {
+      "source": "manual-boundary-plus",
+      "note": "manual-boundary-plus：正文各段首行缩进 24→27 磅（题面判定档 20–28 磅内的非 24 值；全角字符值逐字照抄不动）；fields.json 与 oracle 一致"
+    },
+    "s14": {
+      "source": "manual-boundary-plus",
+      "note": "manual-boundary-plus：fields.json 改 tab 缩进（键序、数组序、条目内容均保持 oracle 原样，语义等义）；docx 与 oracle 一致"
     }
   },
   "checker_review_note": [
