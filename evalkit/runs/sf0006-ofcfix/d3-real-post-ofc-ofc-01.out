@@ -1,0 +1,16 @@
+对拍达标（待 owner 签署）：accuracy=1.000 samples=13
+{
+  "d3_gate": {
+    "task": "ofc-01",
+    "mode": "real",
+    "samples": 13,
+    "agree": 13,
+    "accuracy": 1.0,
+    "mismatches": [],
+    "release_basis": {
+      "adjudication_doc": "planning/test-cards-20261008/ofc-d3-scope-and-ws3-harness-adjudication.md",
+      "adjudication_present": true,
+      "verdict_present": true
+    }
+  }
+}

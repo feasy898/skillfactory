@@ -597,9 +597,9 @@
       "pack_files_sha256": {
         "brief.md": "39abc11962e2ba3ad6511496071ac5fc1c05d22f9ac71f402435d4c0ceb69cb3",
         "rubric.md": "10dcf693dc5da5a21d287508849b00896489ac09097f20352dd9a3dbd970e761",
-        "task.json": "dbf31e6df882c631023a9c0e89df1385e0a38b8660829e7662e9c0e2e65b9c21",
+        "task.json": "ea24a7fdb25403e024d5c506b51dc4be1900048673ecfd80468b3545855fe180",
         "gen_oracle.py": "68590e5c7252569220db61b7bad56fd2d1c0d75ecedd8bac56d76717c5b191df",
-        "checks/run_check.py": "3be0838c91f36e48e98b54e481f06ef979c89248f3351e3f970fc89830ee66b1",
+        "checks/run_check.py": "69bf361a12244ba24e7b50c7dac0ab79d7b77d1f0160a4bd726f1aa5e78f54f2",
         "runner_contract.json": "ac681f9dfccb5b5d4c4bb85eb6ecc68b228341493940bb8a3554b6300a4b2fdc",
         "fixtures/input.json": "e57d20df24a68ffeac6876b816f32632c511c9a60e5bd250b29870e87da37274"
       },
@@ -664,20 +664,16 @@
           "self_loop": true,
           "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 状态由盘上记录派生（ws4_pool_state：verdict 在 ∧ 对拍达标 ∧ signoff 非空 → D3_DONE）"
         },
-        "real_gate_exit": 1,
+        "real_gate_exit": 0,
         "state": "ADJUDICATING",
         "message": "",
         "real_result": {
           "task": "ofc-01",
           "mode": "real",
           "samples": 13,
-          "agree": 10,
-          "accuracy": 0.7692307692307693,
-          "mismatches": [
-            "s07: checker=True 金标=False",
-            "s09: checker=True 金标=False",
-            "s10: checker=True 金标=False"
-          ],
+          "agree": 13,
+          "accuracy": 1.0,
+          "mismatches": [],
           "release_basis": {
             "adjudication_doc": "planning/test-cards-20261008/ofc-d3-scope-and-ws3-harness-adjudication.md",
             "adjudication_present": true,
@@ -712,9 +708,9 @@
       "pack_files_sha256": {
         "brief.md": "4f99385ce80951d027e17d9b0b11988a178b6f82adc1b3ddf1fe5c8e8588512f",
         "rubric.md": "221c4eba99b33b95ec440e731741a9f75053a44efb937fc22bc2d30c0d5a2a45",
-        "task.json": "9a81a2569e626663ec7786951cdc5d1f26c7f4b79e5dd086b728024176d0b22e",
+        "task.json": "7470ab29e5007433bce6652261eb93c9ff1e83f0ff8d447fbfa22ccf0a5d82ed",
         "gen_oracle.py": "08a82ef603c14431d776f13bd868a6ed47ad43001988da9856ef679e81c45706",
-        "checks/run_check.py": "3c8f9da24e23ee36acbccbcaa917ed4f003ea1e9b618d4207c5b251d447b1b14",
+        "checks/run_check.py": "b06a253b2066014c5759f359f8decf483857ab9cf4c9e50c613a400746f548cb",
         "runner_contract.json": "ac681f9dfccb5b5d4c4bb85eb6ecc68b228341493940bb8a3554b6300a4b2fdc",
         "fixtures/input.json": "7a17c43ce9999c9e3be08d5eb87a3c2816b6570d981b900a0bb1fc35ff49bba5"
       },
@@ -779,21 +775,16 @@
           "self_loop": true,
           "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 状态由盘上记录派生（ws4_pool_state：verdict 在 ∧ 对拍达标 ∧ signoff 非空 → D3_DONE）"
         },
-        "real_gate_exit": 1,
+        "real_gate_exit": 0,
         "state": "ADJUDICATING",
         "message": "",
         "real_result": {
           "task": "ofc-02",
           "mode": "real",
           "samples": 14,
-          "agree": 10,
-          "accuracy": 0.7142857142857143,
-          "mismatches": [
-            "s06: checker=True 金标=False",
-            "s08: checker=True 金标=False",
-            "s10: checker=True 金标=False",
-            "s11: checker=True 金标=False"
-          ],
+          "agree": 14,
+          "accuracy": 1.0,
+          "mismatches": [],
           "release_basis": {
             "adjudication_doc": "planning/test-cards-20261008/ofc-d3-scope-and-ws3-harness-adjudication.md",
             "adjudication_present": true,
@@ -828,9 +819,9 @@
       "pack_files_sha256": {
         "brief.md": "28fbfe16f1002455febd5326450326de4aca3dad9c06c1578d0e2b1ce499c919",
         "rubric.md": "04f5c9b2a3dc02850696767975c2ceef6b7b0f5b84212b111a1a4ff23e41c3b2",
-        "task.json": "5e81905a99b91d6930ba51816a6353c45b9920566992563c72e2f2387065d77b",
+        "task.json": "61ad5faef8883dba9ae31b073fc0dfa4a44f082a54d943a621d988aa65e8407f",
         "gen_oracle.py": "75fce73eac85fa40b4cce6a8218ce35e665f675ce8238264d9688a199f4de187",
-        "checks/run_check.py": "03260bb11bdf4059532564046c2c408c96099119fd4d68a1ca4faf35af17826b",
+        "checks/run_check.py": "3fafa7f8c81f7e447b2027d97a084535198c8e88679331f8154bf4cef83007af",
         "runner_contract.json": "ac681f9dfccb5b5d4c4bb85eb6ecc68b228341493940bb8a3554b6300a4b2fdc",
         "fixtures/input.json": "cd12e74e7a10adfd9cb547bfb05422a32f6ec179a9c57da2c1a1b7a3f2d34e03"
       },
@@ -895,19 +886,16 @@
           "self_loop": true,
           "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 状态由盘上记录派生（ws4_pool_state：verdict 在 ∧ 对拍达标 ∧ signoff 非空 → D3_DONE）"
         },
-        "real_gate_exit": 1,
+        "real_gate_exit": 0,
         "state": "ADJUDICATING",
         "message": "",
         "real_result": {
           "task": "ofc-03",
           "mode": "real",
           "samples": 14,
-          "agree": 12,
-          "accuracy": 0.8571428571428571,
-          "mismatches": [
-            "s08: checker=True 金标=False",
-            "s11: checker=True 金标=False"
-          ],
+          "agree": 14,
+          "accuracy": 1.0,
+          "mismatches": [],
           "release_basis": {
             "adjudication_doc": "planning/test-cards-20261008/ofc-d3-scope-and-ws3-harness-adjudication.md",
             "adjudication_present": true,

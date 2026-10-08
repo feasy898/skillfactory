@@ -61,6 +61,9 @@ EMOJI_RE = re.compile(r"[\U0001F300-\U0001FAFF\u2600-\u27BF]")
 HASHTAG_RE = re.compile(r"#[^#\s]+")
 
 OFC_SALUTATION = {"周报": False, "请示函": True, "会议通知": True}
+# 落款字段（题面：只写值本身、不带字段名、不进正文段；与 ws4_gen.OFC_SIGN 同源冻结）
+OFC_SIGN = {"周报": ("填报人", "报送日期"), "请示函": ("落款单位", "落款日期"),
+            "会议通知": ("落款单位", "落款日期")}
 
 
 def load_task_cfg(pack_dir):
@@ -397,6 +400,18 @@ def judge_ofc(product_root, basis, cfg):
             problems.append("missing_fields 与 fields 不一致")
         if fj.get("title") != inp["title"]:
             problems.append("title 不符")
+        # SF-0006-OFCFIX 修3：fields[].value 与输入回对——filled 字段 value 必须=输入值，
+        # missing 字段 value 必须 null（缺失却记值=记账造假，如 s11 联系电话 missing 带值）
+        inp_val = {f["name"]: f["value"] for f in inp["fields"]}
+        val_bad = []
+        for f in fj.get("fields", []):
+            want = inp_val.get(f.get("name"))
+            if f.get("status") == "filled" and f.get("value") != want:
+                val_bad.append("%s:filled value≠输入" % f.get("name"))
+            elif f.get("status") == "missing" and f.get("value") is not None:
+                val_bad.append("%s:missing value 应为null" % f.get("name"))
+        if val_bad:
+            problems.append("fields[].value 与输入不符: %s" % val_bad)
         ok = not problems
         det = "; ".join(problems) if problems else "记账与输入基准一致"
     checks.append(check("task_outcome_fields_selfconsistent", ok, det))
@@ -411,13 +426,30 @@ def judge_ofc(product_root, basis, cfg):
     checks.append(check("task_outcome_values_verbatim_in_docx", not absent,
                         "全部逐字在 docx" if not absent else "缺失: %s" % absent))
 
+    # 全角冒号+字段前缀（SF-0006-OFCFIX 修1）：每个非落款且非称谓代达的已填字段，
+    # 段文本须存在「字段名：(全角 U+FF1A)字段值」形态子串（题面明文：正文每字段一段
+    # `字段名:值`，冒号用中文全角`：`）——半角冒号行、裸值无前缀行均红。
+    # 落款字段按题面只写值本身不进正文段；请示函主送单位以称谓「值：」代达，均不在本条约束面。
+    no_prefix = []
+    for n, v in sorted(exp_filled.items()):
+        if n in OFC_SIGN[template] or (OFC_SALUTATION[template] and n == "主送单位"):
+            continue
+        if ("%s：%s" % (n, v)) not in full:
+            no_prefix.append(n)
+    checks.append(check("task_outcome_field_lines_fullwidth_prefixed", not no_prefix,
+                        "非落款字段全部「字段名：值」全角形态" if not no_prefix
+                        else "缺「字段名：值」全角形态行: %s" % no_prefix))
+
     # 缺失必填：docx 以 ____ 呈现且登记，不得虚构
+    # （SF-0006-OFCFIX 修2：去掉「____ 全篇出现即放行」兜底——题面明文每个缺失字段
+    #   都应存在 `字段名:____` 的呈现，故逐字段单独验证「字段名：____」精确子串，
+    #   他处出现的 ____ 不得代偿，编造值更不得顶替）
     problems = []
     for n in exp_missing:
         if n not in full:
             problems.append("字段名未出现: %s" % n)
-        elif ("%s：____" % n) not in full and ("%s:____" % n) not in full and "____" not in full:
-            problems.append("未以 ____ 呈现: %s" % n)
+        elif ("%s：____" % n) not in full:
+            problems.append("未以「%s：____」精确呈现: %s" % (n, n))
     checks.append(check("task_outcome_missing_reported_and_blank", not problems,
                         "缺失项合规呈现" if not problems else str(problems)))
     return checks

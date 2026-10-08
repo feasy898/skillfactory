@@ -10,6 +10,7 @@
   - task_outcome_layout_signature_right
   - task_outcome_fields_selfconsistent
   - task_outcome_values_verbatim_in_docx
+  - task_outcome_field_lines_fullwidth_prefixed
   - task_outcome_missing_reported_and_blank
 """
 
@@ -30,6 +31,7 @@ CHECKS = [
     "task_outcome_layout_signature_right",
     "task_outcome_fields_selfconsistent",
     "task_outcome_values_verbatim_in_docx",
+    "task_outcome_field_lines_fullwidth_prefixed",
     "task_outcome_missing_reported_and_blank"
 ]
 

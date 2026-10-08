@@ -1,0 +1,19 @@
+对拍未达 95%：{"task": "ofc-01", "mode": "real", "samples": 13, "agree": 11, "accuracy": 0.8461538461538461, "mismatches": ["s09: checker=True 金标=False", "s10: checker=True 金标=False"], "release_basis": {"adjudication_doc": "planning/test-cards-20261008/ofc-d3-scope-and-ws3-harness-adjudication.md", "adjudication_present": true, "verdict_present": true}}
+{
+  "d3_gate": {
+    "task": "ofc-01",
+    "mode": "real",
+    "samples": 13,
+    "agree": 11,
+    "accuracy": 0.8461538461538461,
+    "mismatches": [
+      "s09: checker=True 金标=False",
+      "s10: checker=True 金标=False"
+    ],
+    "release_basis": {
+      "adjudication_doc": "planning/test-cards-20261008/ofc-d3-scope-and-ws3-harness-adjudication.md",
+      "adjudication_present": true,
+      "verdict_present": true
+    }
+  }
+}

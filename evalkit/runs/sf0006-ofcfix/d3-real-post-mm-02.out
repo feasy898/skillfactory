@@ -1,0 +1,11 @@
+对拍达标（待 owner 签署）：accuracy=1.000 samples=12
+{
+  "d3_gate": {
+    "task": "mm-02",
+    "mode": "real",
+    "samples": 12,
+    "agree": 12,
+    "accuracy": 1.0,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,17 @@
+对拍达标（待 owner 签署）：accuracy=1.000 samples=12
+mm-01: contract+l1 ok(self=0 red=1) d2.selftest=True d3.exit=0(D3_DONE) ready=True
+对拍达标（待 owner 签署）：accuracy=1.000 samples=12
+mm-02: contract+l1 ok(self=0 red=1) d2.selftest=True d3.exit=0(D3_DONE) ready=True
+对拍达标（待 owner 签署）：accuracy=1.000 samples=14
+hot-01: contract+l1 ok(self=0 red=1) d2.selftest=True d3.exit=0(D3_DONE) ready=True
+对拍达标（待 owner 签署）：accuracy=1.000 samples=14
+hot-02: contract+l1 ok(self=0 red=1) d2.selftest=True d3.exit=0(D3_DONE) ready=True
+对拍达标（待 owner 签署）：accuracy=1.000 samples=14
+hot-03: contract+l1 ok(self=0 red=1) d2.selftest=True d3.exit=0(D3_DONE) ready=True
+对拍达标（待 owner 签署）：accuracy=1.000 samples=13
+ofc-01: contract+l1 ok(self=0 red=1) d2.selftest=True d3.exit=0(ADJUDICATING) ready=False
+对拍达标（待 owner 签署）：accuracy=1.000 samples=14
+ofc-02: contract+l1 ok(self=0 red=1) d2.selftest=True d3.exit=0(ADJUDICATING) ready=False
+对拍达标（待 owner 签署）：accuracy=1.000 samples=14
+ofc-03: contract+l1 ok(self=0 red=1) d2.selftest=True d3.exit=0(ADJUDICATING) ready=False
+pool-state -> /home/pan-ding/workspace/skill工厂/skillfactory/bench/devpool-r1/pool-state.json （ready=5）

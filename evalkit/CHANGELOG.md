@@ -235,6 +235,54 @@
   exit 0（34 门全绿不减）；改前留档 runs/sf0006-ofcd3/{freeze-verify-pre,
   keyfiles-pre,verify-sf0003-pre}-sf0006-ofcd3.* + d3-real-pre-*.out（3 题 exit 3）
 
+**FIX-C10｜judge_ofc 三处判分缺口（ofc D3 开卷裁决 9 分歧定谳：6 checker 责任修复
++ 3 annotation 责任金标翻改，SF-0006-OFCFIX 第 1 轮）**
+- 题号：SF-0006 D3 ofc 线（alpha 开卷裁决 2026-10-08 定谳：FIX-C9 修后真实对拍
+  ofc-01 0.769 / ofc-02 0.714 / ofc-03 0.857 共 9 处分歧——6 处 checker-wrong
+  （checker=True 金标=False，本条修复）+ 3 处 annotation-wrong（金标翻改，
+  bench/devpool-r1/goldens/RELABEL.md 登记 ofc-01/s07 空段与 fields.json 4 空格缩进、
+  ofc-02/s06 空段与单行紧凑序列化（题面均未禁止，rubric 裁判不自行加码）、
+  ofc-03/s11 三数组倒序（题面为集合一致语义），翻改仅 expected_pass false→true，
+  annotator/annotator_kind/product_sha256/source 四字段不动）
+- 旧文本→新文本（judge_ofc 三处 + 检查名契约同步，mm/hot 判分面零触碰）：
+  ① `harness/ws4_judge.py` 新增全角冒号+字段前缀检查
+  `task_outcome_field_lines_fullwidth_prefixed`：每个非落款且非称谓代达的已填字段，
+  段文本须存在「字段名：(全角 U+FF1A)字段值」形态子串（题面明文：正文每字段一段
+  `字段名:值`，冒号用中文全角`：`）——半角冒号行（ofc-01/s09、ofc-02/s10）与
+  裸值无前缀行（ofc-01/s10）翻红；落款字段按题面只写值本身、请示函主送单位以
+  称谓「值：」代达，均不在约束面（oracle 不受误伤）；
+  ② 同文件缺失判定去掉 `"____" not in full` 全篇兜底：题面明文「missing_fields 里
+  登记的每个字段，docx 中都应存在 `字段名:____` 的呈现」，改为逐缺失字段单独验证
+  「字段名：____」精确子串——他处出现 ____ 不得代偿（ofc-02/s08 编造联系电话值、
+  ofc-03/s08 编造参会人员值并把 ____ 挪到议题行，均翻红）；
+  ③ 同文件 fields_selfconsistent 增加 fields[].value 与输入回对：filled 字段
+  value 必须=输入值、missing 字段 value 必须 null（ofc-02/s11 联系电话登记 missing
+  却带值 13800000000，记账造假翻红）；契约同步：三题 task.json expected_checks 与
+  checks/run_check.py CHECKS/docstring 插入新检查名（values_verbatim 之后）
+- 缺陷类型：判分器口径缺陷 ×3（全角形态漏检/缺失呈现全篇兜底代偿/fields 记账
+  value 不回对输入）；mm/hot 判分面零改动（judge_mm/judge_hot 未触碰，5 题回归
+  实测零误伤）；oracle 绿路不受影响（8 题 gen_oracle --selftest 全 PASS）
+- 判定人：alpha 开卷裁决（2026-10-08，owner 委托）；执行=dev GLM-5.3-Flash
+- 复现命令：`python harness/ws4_d3_gate.py --task ofc-01 --real` → 修前 exit 1
+  accuracy=0.846（13 样本 2 分歧，RELABEL 收口 annotation 侧 3 处后的 6 处
+  checker-wrong 留档 runs/sf0006-ofcfix/d3-real-pre-ofc-*.out）修后 exit 0
+  accuracy=1.000（13/13；ofc-02 14/14、ofc-03 14/14 同验，d3-real-post-*.out）；
+  mm/hot 5 题回归 exit 0 accuracy=1.000 零分歧；`python harness/ws4_pool_state.py`
+  重跑幂等（连跑两次全量相等）、mm/hot 5 题签署保全 D3_DONE ready=5 不变、
+  ofc 3 题 real_gate_exit 1→0 且 accuracy=1.0、无签署维持 ADJUDICATING ready=False、
+  generated_at 03:12:16 幂等继承；`python harness/freeze_device.py verify` exit 0
+  （钉版面 44 文件数不变，keyfiles 差分恰等 ws4_judge.py + ofc 三题 run_check.py
+  四文件）；`python harness/verify_sf0003.py` 终跑 exit 0（34 门全绿不减，改前
+  预跑同 34 门全绿）；旧门槛 gate_sf0006b.py 实跑 8/11 PASS 不变，唯一 FAIL 仍=
+  A-07[ofc-01/02/03] 期望 exit 3 的旧现实断言（门槛脚本按纪律未改，口径更新走
+  下一轮裁决）；已观察既有行为如实留痕：ofc-01/s11（正文全右对齐负例）触发
+  layout_body_indent 的 `if body:` 守卫不发出 → 检查名契约 exit 2，HEAD 版同样
+  复现，非本轮引入且不影响对拍（checker 非 0 与金标 false 一致）；改前留档
+  runs/sf0006-ofcfix/{freeze-verify-pre,keyfiles-pre,verify-sf0003-pre,
+  d3-real-pre-ofc-*,d3-real-post-*,poolstate-rebuild-*,verify-sf0003-post,
+  gate-sf0006b-post}-sf0006-ofcfix.*；verify F2 副产物 nc-20261008T123746/124430
+  照 cfad437/5d38ac4/5ab6ce5 先例入库
+
 ### added（SF-0006 P6 · 多题×单族聚合工具 · 非装置版本变更，版本号保持 0.3）
 
 **ADD-3｜aggregate.py 单 run_dir 单 pack MVP → 双模式聚合工具（混族拒绝 + delta_vs_none 计算）**
