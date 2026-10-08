@@ -1,0 +1,42 @@
+{
+  "id": "mm-02",
+  "domain": "meeting-minutes",
+  "difficulty": "中",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 15,
+    "id": "mm-02"
+  },
+  "checks": [
+    {
+      "name": "decision-game",
+      "desc": "拍板结论明确：主路径不加，游戏化组件进灰度桶",
+      "type": "regex",
+      "value": "灰度"
+    },
+    {
+      "name": "no-argue-detail",
+      "desc": "不展开争论细节，仅记录结论",
+      "type": "semantic"
+    },
+    {
+      "name": "action-copy",
+      "desc": "行动项：文案10月20日前定稿，责任人文案小周",
+      "type": "regex",
+      "value": "10月20日[\\s\\S]{0,20}小周|小周[\\s\\S]{0,20}10月20日"
+    },
+    {
+      "name": "pending",
+      "desc": "单列遗留问题：灰度评估指标由数据组小林下次会前给出建议",
+      "type": "regex",
+      "value": "遗留"
+    },
+    {
+      "name": "owners",
+      "desc": "行动项均有负责人与时限（含10月22日压测·老张）",
+      "type": "semantic"
+    }
+  ]
+}

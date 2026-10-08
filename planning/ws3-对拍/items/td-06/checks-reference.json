@@ -1,0 +1,43 @@
+{
+  "id": "td-06",
+  "domain": "table-data",
+  "difficulty": "难",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 13,
+    "id": "td-06"
+  },
+  "checks": [
+    {
+      "name": "east-yoy",
+      "desc": "华东2026Q3同比15.0%",
+      "type": "regex",
+      "value": "15\\.0%"
+    },
+    {
+      "name": "north-yoy",
+      "desc": "华北同比-5.0%且带负号",
+      "type": "regex",
+      "value": "-5\\.0%"
+    },
+    {
+      "name": "south-yoy",
+      "desc": "华南同比22.0%",
+      "type": "regex",
+      "value": "22\\.0%"
+    },
+    {
+      "name": "h2-totals",
+      "desc": "2026下半年合计：华东617、华北456、华南442",
+      "type": "regex",
+      "value": "617[\\s\\S]{0,40}456"
+    },
+    {
+      "name": "caliber-note",
+      "desc": "注明2026Q4口径（预实混合/预测），且下滑区域（华北）有归因",
+      "type": "semantic"
+    }
+  ]
+}

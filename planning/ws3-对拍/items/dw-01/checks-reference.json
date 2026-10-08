@@ -1,0 +1,43 @@
+{
+  "id": "dw-01",
+  "domain": "doc-writing",
+  "difficulty": "易",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 0,
+    "id": "dw-01"
+  },
+  "checks": [
+    {
+      "name": "event-time",
+      "desc": "写明活动时间11月8日",
+      "type": "regex",
+      "value": "11月8日"
+    },
+    {
+      "name": "signup-deadline",
+      "desc": "写明报名截止11月5日",
+      "type": "regex",
+      "value": "11月5日"
+    },
+    {
+      "name": "rainy-plan",
+      "desc": "写明雨天备选方案（改至3号楼多功能厅）",
+      "type": "regex",
+      "value": "雨.{0,20}3号楼|3号楼多功能厅"
+    },
+    {
+      "name": "fee",
+      "desc": "费用说明含人均80元",
+      "type": "regex",
+      "value": "人均.{0,4}80元|80元"
+    },
+    {
+      "name": "tone-structure",
+      "desc": "五要素齐全（时间地点/内容/费用/报名/雨天备选），结尾有动员语，篇幅150-250字",
+      "type": "semantic"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "rp-03",
+  "domain": "rewrite-polish",
+  "difficulty": "中",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 46,
+    "id": "rp-03"
+  },
+  "checks": [
+    {
+      "name": "sentence-split",
+      "desc": "拆为3-4个短句，单句不超过30字",
+      "type": "semantic"
+    },
+    {
+      "name": "numbers-kept",
+      "desc": "关键数字全部保留：投诉11次/两家客户/10月17日/460万元",
+      "type": "regex",
+      "value": "11次[\\s\\S]*10月17日[\\s\\S]*460万"
+    },
+    {
+      "name": "logic-clear",
+      "desc": "因果链条清晰（投诉→供应商评审→分仓切换与整改报告→流失风险→今晚反馈）",
+      "type": "semantic"
+    }
+  ]
+}

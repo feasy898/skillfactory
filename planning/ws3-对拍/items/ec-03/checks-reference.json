@@ -1,0 +1,42 @@
+{
+  "id": "ec-03",
+  "domain": "email-comm",
+  "difficulty": "中",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 27,
+    "id": "ec-03"
+  },
+  "checks": [
+    {
+      "name": "new-date",
+      "desc": "新上线日期12月14日出现（结论先行）",
+      "type": "regex",
+      "value": "12月14日"
+    },
+    {
+      "name": "cause",
+      "desc": "原因：第三方10月28日才提供沙箱环境、晚9天",
+      "type": "regex",
+      "value": "10月28日|晚9天|9天"
+    },
+    {
+      "name": "mitigation",
+      "desc": "缓解措施：并行开发、每日报错清单同步",
+      "type": "regex",
+      "value": "并行[\\s\\S]*每日报错|每日报错[\\s\\S]*并行"
+    },
+    {
+      "name": "proposal",
+      "desc": "建议营销活动模块移出本期，并请求CTO拍板",
+      "type": "semantic"
+    },
+    {
+      "name": "tone-conclusion-first",
+      "desc": "结论先行，不指责第三方，200-350字",
+      "type": "semantic"
+    }
+  ]
+}

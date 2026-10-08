@@ -1,0 +1,43 @@
+{
+  "id": "dw-03",
+  "domain": "doc-writing",
+  "difficulty": "中",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 2,
+    "id": "dw-03"
+  },
+  "checks": [
+    {
+      "name": "downtime-data",
+      "desc": "停机数据46小时降至17小时须如实呈现",
+      "type": "regex",
+      "value": "46小时[\\s\\S]{0,30}17小时|46[^0-9]{0,8}17"
+    },
+    {
+      "name": "anonymity",
+      "desc": "客户以「H工厂」指代，不出现真实名称",
+      "type": "contains",
+      "value": "H工厂"
+    },
+    {
+      "name": "customer-quote",
+      "desc": "引用刘工原话（引号内不少于8字）",
+      "type": "regex",
+      "value": "“[^”]{8,80}”"
+    },
+    {
+      "name": "phase-two",
+      "desc": "二期签约信息出现",
+      "type": "contains",
+      "value": "二期"
+    },
+    {
+      "name": "structure",
+      "desc": "四段结构（背景—痛点—方案与效果—客户评价）完整，数据与笔记一致，结尾无推销话术",
+      "type": "semantic"
+    }
+  ]
+}

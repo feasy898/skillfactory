@@ -1,0 +1,37 @@
+{
+  "id": "rp-04",
+  "domain": "rewrite-polish",
+  "difficulty": "中",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 47,
+    "id": "rp-04"
+  },
+  "checks": [
+    {
+      "name": "minimal-english",
+      "desc": "除注明含义的通用缩写外无英文词（不得残留 review/update/presentation/sync/gap）",
+      "type": "regex",
+      "value": "(?!.*(review|update|presentation|sync))"
+    },
+    {
+      "name": "okr-noted",
+      "desc": "OKR 首次出现时注明中文含义「目标与关键成果」",
+      "type": "regex",
+      "value": "目标与关键成果"
+    },
+    {
+      "name": "info-kept",
+      "desc": "下周三/Q3/5分钟/差距与下一步/CEO参会信息完整",
+      "type": "regex",
+      "value": "下周三[\\s\\S]*5分钟"
+    },
+    {
+      "name": "tone",
+      "desc": "正式语气，无「哈」「随时找我sync」式口语",
+      "type": "semantic"
+    }
+  ]
+}

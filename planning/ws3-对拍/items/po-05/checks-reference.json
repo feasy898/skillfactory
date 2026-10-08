@@ -1,0 +1,43 @@
+{
+  "id": "po-05",
+  "domain": "ppt-outline",
+  "difficulty": "难",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 24,
+    "id": "po-05"
+  },
+  "checks": [
+    {
+      "name": "ltv-cac",
+      "desc": "单位经济模型页呈现LTV/CAC≈6.1及计算口径（含CAC 3,800元、ARR 1.38万）",
+      "type": "regex",
+      "value": "6\\.1"
+    },
+    {
+      "name": "growth",
+      "desc": "收入增长74.4%（860万→1,500万）",
+      "type": "regex",
+      "value": "74\\.4%"
+    },
+    {
+      "name": "market-size",
+      "desc": "市场规模约120亿元、年增12%，且注明口径与来源（第三方行业报告估算）",
+      "type": "regex",
+      "value": "120亿"
+    },
+    {
+      "name": "ask",
+      "desc": "融资请求页：800万元、出让10%、用途比例（研发60%/市场30%/储备10%）",
+      "type": "regex",
+      "value": "800万[\\s\\S]*10%"
+    },
+    {
+      "name": "page-discipline",
+      "desc": "恰好10页，每页一句话标题加不超过3条要点，首页为价值主张",
+      "type": "semantic"
+    }
+  ]
+}

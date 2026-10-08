@@ -1,0 +1,43 @@
+{
+  "id": "ie-01",
+  "domain": "info-extraction",
+  "difficulty": "易",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 38,
+    "id": "ie-01"
+  },
+  "checks": [
+    {
+      "name": "venue-capacity",
+      "desc": "venue=滨江国际会展中心三楼宴会厅、capacity=600",
+      "type": "regex",
+      "value": "滨江国际会展中心[\\s\\S]*600"
+    },
+    {
+      "name": "price",
+      "desc": "price=28,000元（保持原文写法）",
+      "type": "regex",
+      "value": "28,?000"
+    },
+    {
+      "name": "deposit",
+      "desc": "deposit_ratio=30%、deposit_deadline=11月1日",
+      "type": "regex",
+      "value": "30%[\\s\\S]*11月1日"
+    },
+    {
+      "name": "contact",
+      "desc": "联系人三项齐全：刘小姐/138-5762-1900/liu@xingchen-media.com",
+      "type": "contains",
+      "value": "liu@xingchen-media.com"
+    },
+    {
+      "name": "json-format",
+      "desc": "输出为合法JSON、键名与要求一致、缺失字段置null、无编造字段",
+      "type": "semantic"
+    }
+  ]
+}

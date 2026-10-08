@@ -1,0 +1,43 @@
+{
+  "id": "mm-04",
+  "domain": "meeting-minutes",
+  "difficulty": "中",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 17,
+    "id": "mm-04"
+  },
+  "checks": [
+    {
+      "name": "conditional",
+      "desc": "议题一标注有条件通过，含修订条件、责任人阿珂与时限10月25日",
+      "type": "regex",
+      "value": "10月25日[\\s\\S]{0,20}阿珂|阿珂[\\s\\S]{0,20}10月25日"
+    },
+    {
+      "name": "unresolved",
+      "desc": "议题二标注未决/线下对齐，数据部下次会前出对齐纪要",
+      "type": "regex",
+      "value": "未决|线下.{0,6}对齐"
+    },
+    {
+      "name": "passed",
+      "desc": "议题三通过：试点客服二组、11月1日启动",
+      "type": "regex",
+      "value": "11月1日"
+    },
+    {
+      "name": "next-meeting",
+      "desc": "下次会议11月5日14:00单独列示",
+      "type": "regex",
+      "value": "11月5日"
+    },
+    {
+      "name": "three-states",
+      "desc": "三种结论状态（有条件通过/未决/通过）区分清晰，条件与责任人完整",
+      "type": "semantic"
+    }
+  ]
+}

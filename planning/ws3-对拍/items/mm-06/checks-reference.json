@@ -1,0 +1,44 @@
+{
+  "id": "mm-06",
+  "domain": "meeting-minutes",
+  "difficulty": "难",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 19,
+    "id": "mm-06"
+  },
+  "checks": [
+    {
+      "name": "batch-rate",
+      "desc": "批次口径93.3%出现",
+      "type": "regex",
+      "value": "93\\.3%"
+    },
+    {
+      "name": "piece-rate",
+      "desc": "件数口径98.6%出现",
+      "type": "regex",
+      "value": "98\\.6%"
+    },
+    {
+      "name": "penalty",
+      "desc": "违约金结论：上限2%、减免后实际计提1%",
+      "type": "regex",
+      "value": "2%[\\s\\S]*1%"
+    },
+    {
+      "name": "vote",
+      "desc": "表决情况：5票赞成、1票反对、1票弃权",
+      "type": "regex",
+      "value": "5票[\\s\\S]*1票[\\s\\S]*弃权"
+    },
+    {
+      "name": "deadline",
+      "desc": "改善计划时限11月15日与采购部月度跟踪出现，全文350字以内",
+      "type": "regex",
+      "value": "11月15日"
+    }
+  ]
+}

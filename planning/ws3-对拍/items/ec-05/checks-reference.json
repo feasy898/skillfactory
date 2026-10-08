@@ -1,0 +1,42 @@
+{
+  "id": "ec-05",
+  "domain": "email-comm",
+  "difficulty": "中",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 29,
+    "id": "ec-05"
+  },
+  "checks": [
+    {
+      "name": "alternative",
+      "desc": "给出替代方案（三年框架：8.5折+赠10个子账号+1场上线培训）",
+      "type": "regex",
+      "value": "8\\.5折[\\s\\S]*三年|三年[\\s\\S]*8\\.5折"
+    },
+    {
+      "name": "validity",
+      "desc": "替代方案注明有效期（本月底前）",
+      "type": "regex",
+      "value": "月底前|有效期"
+    },
+    {
+      "name": "no-harsh",
+      "desc": "不出现「不可能」「拒绝」等生硬表述",
+      "type": "regex",
+      "value": "(?!.*(不可能|拒绝))"
+    },
+    {
+      "name": "meeting",
+      "desc": "结尾约电话沟通时间",
+      "type": "semantic"
+    },
+    {
+      "name": "structure-tone",
+      "desc": "先谢后答、原因得体且不泄露内部机制，180-280字",
+      "type": "semantic"
+    }
+  ]
+}

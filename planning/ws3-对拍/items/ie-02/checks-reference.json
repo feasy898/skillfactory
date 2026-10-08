@@ -1,0 +1,36 @@
+{
+  "id": "ie-02",
+  "domain": "info-extraction",
+  "difficulty": "中",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 39,
+    "id": "ie-02"
+  },
+  "checks": [
+    {
+      "name": "item-count",
+      "desc": "五条行动项全部抽取，无遗漏",
+      "type": "semantic"
+    },
+    {
+      "name": "deadline-format",
+      "desc": "期限统一为M月D日格式（10月24日/10月27日/11月1日）",
+      "type": "regex",
+      "value": "10月27日[\\s\\S]*11月1日"
+    },
+    {
+      "name": "no-deadline-flag",
+      "desc": "无期限行动项（404页面跳转规则发给老蔡）标注「期限未明」",
+      "type": "contains",
+      "value": "期限未明"
+    },
+    {
+      "name": "format",
+      "desc": "每项按「事项｜负责人｜期限」格式编号列出，同一人多项分别列出",
+      "type": "semantic"
+    }
+  ]
+}

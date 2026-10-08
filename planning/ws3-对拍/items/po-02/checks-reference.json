@@ -1,0 +1,42 @@
+{
+  "id": "po-02",
+  "domain": "ppt-outline",
+  "difficulty": "中",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 21,
+    "id": "po-02"
+  },
+  "checks": [
+    {
+      "name": "value-prop",
+      "desc": "首页含面向客户的value主张表述",
+      "type": "semantic"
+    },
+    {
+      "name": "params-kept",
+      "desc": "参数保留：<1秒延迟、2秒操作、2周实施、1.98万/年（3仓起步）",
+      "type": "regex",
+      "value": "1\\.98万[\\s\\S]{0,60}2周|2秒[\\s\\S]{0,60}1\\.98万"
+    },
+    {
+      "name": "case-page",
+      "desc": "案例页：盘点人力从4人减到1人",
+      "type": "regex",
+      "value": "4人[\\s\\S]{0,12}1人"
+    },
+    {
+      "name": "cta",
+      "desc": "结尾页30天试用号召及申请入口",
+      "type": "contains",
+      "value": "trial@yunmanager.cn"
+    },
+    {
+      "name": "page-cap",
+      "desc": "不超过10页，且单独设置报价页",
+      "type": "semantic"
+    }
+  ]
+}

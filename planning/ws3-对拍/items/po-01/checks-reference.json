@@ -1,0 +1,36 @@
+{
+  "id": "po-01",
+  "domain": "ppt-outline",
+  "difficulty": "易",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 20,
+    "id": "po-01"
+  },
+  "checks": [
+    {
+      "name": "page-structure",
+      "desc": "结构含开场/业绩/能力成长/不足与改进/来年规划/结束页",
+      "type": "regex",
+      "value": "业绩[\\s\\S]*不足[\\s\\S]*来年|业绩[\\s\\S]*改进[\\s\\S]*规划"
+    },
+    {
+      "name": "key-numbers",
+      "desc": "关键数字入页：9个项目、96%满意度、1,200篇文档",
+      "type": "regex",
+      "value": "96%[\\s\\S]*1,?200"
+    },
+    {
+      "name": "pages-cap",
+      "desc": "页数不超过8页，每页要点不超过3条",
+      "type": "semantic"
+    },
+    {
+      "name": "weakness",
+      "desc": "不足页如实呈现跨部门协作延期，并给出改进动作",
+      "type": "semantic"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "ps-04",
+  "domain": "process-spec",
+  "difficulty": "中",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 35,
+    "id": "ps-04"
+  },
+  "checks": [
+    {
+      "name": "rpo-rto",
+      "desc": "RPO≤5分钟、RTO≤2小时醒目呈现",
+      "type": "regex",
+      "value": "RPO[\\s\\S]{0,6}5分钟[\\s\\S]*RTO[\\s\\S]{0,6}2小时|RTO[\\s\\S]{0,6}2小时[\\s\\S]*RPO[\\s\\S]{0,6}5分钟"
+    },
+    {
+      "name": "backup-table",
+      "desc": "备份策略表含全量周日02:00/增量每日03:00，保留期35天与14天",
+      "type": "regex",
+      "value": "35天[\\s\\S]*14天|14天[\\s\\S]*35天"
+    },
+    {
+      "name": "drill",
+      "desc": "每季度演练+隔离环境+一致性校验（行数比对与关键表抽样），记录留存2年",
+      "type": "regex",
+      "value": "季度[\\s\\S]*校验|校验[\\s\\S]*季度"
+    },
+    {
+      "name": "roles",
+      "desc": "职责分工明确：DBA执行、运维经理审批演练方案；恢复步骤有编号",
+      "type": "semantic"
+    }
+  ]
+}

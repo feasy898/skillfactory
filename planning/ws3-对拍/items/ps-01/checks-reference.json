@@ -1,0 +1,37 @@
+{
+  "id": "ps-01",
+  "domain": "process-spec",
+  "difficulty": "易",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 32,
+    "id": "ps-01"
+  },
+  "checks": [
+    {
+      "name": "steps-numbered",
+      "desc": "步骤有编号且按时间顺序（登记→到访换证→临时访客→离开销记）",
+      "type": "regex",
+      "value": "(^|\\n)\\s*[1-5][\\.、）\\)]"
+    },
+    {
+      "name": "numbers-kept",
+      "desc": "数字约束保留：提前一个工作日登记、每日临时登记不超过3人次",
+      "type": "regex",
+      "value": "一个工作日[\\s\\S]*3人次|3人次[\\s\\S]*一个工作日"
+    },
+    {
+      "name": "clause-ref",
+      "desc": "步骤后括号标注对应条文编号（第五条至第八条）",
+      "type": "regex",
+      "value": "（第[五六七八]条）|\\(第[五六七八]条\\)|第[五六七八]条"
+    },
+    {
+      "name": "actor",
+      "desc": "每步注明责任主体（接待人/前台），全文不超过250字",
+      "type": "semantic"
+    }
+  ]
+}

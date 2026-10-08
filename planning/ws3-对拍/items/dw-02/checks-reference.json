@@ -1,0 +1,42 @@
+{
+  "id": "dw-02",
+  "domain": "doc-writing",
+  "difficulty": "易",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 1,
+    "id": "dw-02"
+  },
+  "checks": [
+    {
+      "name": "version",
+      "desc": "版本号V3.2出现",
+      "type": "regex",
+      "value": "V3\\.2"
+    },
+    {
+      "name": "csv-limit",
+      "desc": "已知限制含CSV单次最多1万行",
+      "type": "regex",
+      "value": "1万行|10,?000行"
+    },
+    {
+      "name": "feedback-channel",
+      "desc": "给出反馈渠道 feedback@paylab.cn",
+      "type": "contains",
+      "value": "feedback@paylab.cn"
+    },
+    {
+      "name": "sections",
+      "desc": "新功能、修复、已知限制划分清晰，微信支付/对账导出/退款查询三条功能逐一说明",
+      "type": "semantic"
+    },
+    {
+      "name": "plain-language",
+      "desc": "面向商户的通俗语言，无内部术语与黑话，全文不超过300字",
+      "type": "semantic"
+    }
+  ]
+}

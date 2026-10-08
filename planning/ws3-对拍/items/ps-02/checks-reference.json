@@ -1,0 +1,42 @@
+{
+  "id": "ps-02",
+  "domain": "process-spec",
+  "difficulty": "中",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 33,
+    "id": "ps-02"
+  },
+  "checks": [
+    {
+      "name": "levels",
+      "desc": "P1/P2/P3三级定义完整且与材料一致",
+      "type": "regex",
+      "value": "P1[\\s\\S]*P2[\\s\\S]*P3"
+    },
+    {
+      "name": "time-limits",
+      "desc": "时限数字一致：P1 5分钟内响应、30分钟内切换、副本延迟5分钟、P2 15分钟",
+      "type": "regex",
+      "value": "5分钟[\\s\\S]*30分钟"
+    },
+    {
+      "name": "escalation",
+      "desc": "升级路径完整：DBA→运维经理（P1/P2必通知）→技术总监（P1超30分钟未恢复）",
+      "type": "semantic"
+    },
+    {
+      "name": "contacts",
+      "desc": "联系人信息齐全：dba-oncall 值班群、运维经理老韩、技术总监孙总",
+      "type": "contains",
+      "value": "dba-oncall"
+    },
+    {
+      "name": "format",
+      "desc": "四部分齐全，处置用有序步骤，不超过350字",
+      "type": "semantic"
+    }
+  ]
+}

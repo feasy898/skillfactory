@@ -1,0 +1,31 @@
+{
+  "id": "rp-02",
+  "domain": "rewrite-polish",
+  "difficulty": "中",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 45,
+    "id": "rp-02"
+  },
+  "checks": [
+    {
+      "name": "no-cliche",
+      "desc": "四字套话与修辞全部移除（多措并举/真抓实干/深耕细作/久久为功/答卷/指引下）",
+      "type": "regex",
+      "value": "(?!.*(多措并举|真抓实干|深耕细作|久久为功|答卷))"
+    },
+    {
+      "name": "facts-kept",
+      "desc": "五组数据全部保留（18,400件/94.6%/1.2个百分点/7个/12%）",
+      "type": "regex",
+      "value": "18,?400[\\s\\S]*94\\.6%"
+    },
+    {
+      "name": "length",
+      "desc": "以事实陈述为主，全文不超过120字",
+      "type": "semantic"
+    }
+  ]
+}

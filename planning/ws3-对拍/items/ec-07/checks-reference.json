@@ -1,0 +1,42 @@
+{
+  "id": "ec-07",
+  "domain": "email-comm",
+  "difficulty": "难",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 31,
+    "id": "ec-07"
+  },
+  "checks": [
+    {
+      "name": "facts",
+      "desc": "事实要素齐全：10月26日、约1.2万条、测试环境范围",
+      "type": "regex",
+      "value": "10月26日[\\s\\S]{0,60}1\\.2万"
+    },
+    {
+      "name": "actions-taken",
+      "desc": "已采取措施逐条：吊销权限并终止合作、日志溯源",
+      "type": "regex",
+      "value": "吊销[\\s\\S]*溯源|终止合作[\\s\\S]*溯源"
+    },
+    {
+      "name": "do-dont",
+      "desc": "行动指引区分可为（转介PR与法务）与不可为（自行披露/猜测扩散）",
+      "type": "semantic"
+    },
+    {
+      "name": "channel",
+      "desc": "统一上报/转介渠道 security-inc@company.cn",
+      "type": "contains",
+      "value": "security-inc@company.cn"
+    },
+    {
+      "name": "restraint",
+      "desc": "对未知事项（如是否对外通知）不下结论，措辞克制，250-400字",
+      "type": "semantic"
+    }
+  ]
+}

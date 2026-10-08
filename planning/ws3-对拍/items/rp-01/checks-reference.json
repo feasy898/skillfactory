@@ -1,0 +1,31 @@
+{
+  "id": "rp-01",
+  "domain": "rewrite-polish",
+  "difficulty": "易",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 44,
+    "id": "rp-01"
+  },
+  "checks": [
+    {
+      "name": "info-kept",
+      "desc": "时间（周三下午两点）/地点（三楼大会议室）/时长/议题/全员/请假报备信息完整",
+      "type": "regex",
+      "value": "两点|14:00"
+    },
+    {
+      "name": "no-colloquial",
+      "desc": "无语气词与网络用语（哈喽/咱们/散会/小伙伴等）",
+      "type": "regex",
+      "value": "(?!.*(哈喽|咱们|散会|小伙伴))"
+    },
+    {
+      "name": "length",
+      "desc": "正式通知格式，150字以内",
+      "type": "semantic"
+    }
+  ]
+}

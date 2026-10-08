@@ -1,0 +1,43 @@
+{
+  "id": "rp-06",
+  "domain": "rewrite-polish",
+  "difficulty": "难",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 49,
+    "id": "rp-06"
+  },
+  "checks": [
+    {
+      "name": "contradiction",
+      "desc": "矛盾处理正确：日单量采用后核实的1,100单，未采用1,200单",
+      "type": "regex",
+      "value": "1,?100"
+    },
+    {
+      "name": "no-irrelevant",
+      "desc": "无关信息（公司营收增长8%、站点B）未写入",
+      "type": "regex",
+      "value": "(?!.*(营收|站点B))"
+    },
+    {
+      "name": "timeline",
+      "desc": "按10月9日至10月13日时间顺序组织，暴雨骤降/增派骑手/新站长到岗事件齐全",
+      "type": "regex",
+      "value": "10月9日[\\s\\S]*10月13日"
+    },
+    {
+      "name": "subsidy",
+      "desc": "冬季装备补贴「待批」状态如实保留",
+      "type": "contains",
+      "value": "待批"
+    },
+    {
+      "name": "length",
+      "desc": "400字以内，行文连贯",
+      "type": "semantic"
+    }
+  ]
+}

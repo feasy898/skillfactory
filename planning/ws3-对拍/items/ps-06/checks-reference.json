@@ -1,0 +1,44 @@
+{
+  "id": "ps-06",
+  "domain": "process-spec",
+  "difficulty": "难",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 37,
+    "id": "ps-06"
+  },
+  "checks": [
+    {
+      "name": "conflict-resolved",
+      "desc": "冲突按后记录为准：有效期14天，且不出现「30天」作为有效期",
+      "type": "regex",
+      "value": "14天"
+    },
+    {
+      "name": "prefix",
+      "desc": "guest- 前缀要求成条",
+      "type": "regex",
+      "value": "guest-"
+    },
+    {
+      "name": "access-restriction",
+      "desc": "含系统访问限制（不得访问财务与HR系统）与审批要求（对接部门负责人）",
+      "type": "regex",
+      "value": "财务[\\s\\S]*HR"
+    },
+    {
+      "name": "legacy-remediation",
+      "desc": "存量旧前缀账号11月底前整改成条",
+      "type": "regex",
+      "value": "11月底"
+    },
+    {
+      "name": "effective",
+      "desc": "条款化格式（第一条、第二条……）且生效日期11月1日",
+      "type": "regex",
+      "value": "第[一二三四五]条[\\s\\S]*11月1日"
+    }
+  ]
+}

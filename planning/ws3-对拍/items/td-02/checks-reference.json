@@ -1,0 +1,43 @@
+{
+  "id": "td-02",
+  "domain": "table-data",
+  "difficulty": "中",
+  "note": "参照要点逐字复制自 v4/assets/office-eval-suite/oracle/suite.json 该题 checks；本文件不含任何判定或人工金标，判定由受托模型另行出具",
+  "source": {
+    "path": "v4/assets/office-eval-suite/oracle/suite.json",
+    "sha256": "65bebb7378da64e05eeee74b11e152638152a6651260336a2b9b03d74dd91706",
+    "item_index": 9,
+    "id": "td-02"
+  },
+  "checks": [
+    {
+      "name": "resume-count",
+      "desc": "简历840份出现",
+      "type": "regex",
+      "value": "840"
+    },
+    {
+      "name": "screen-rate",
+      "desc": "简历到筛选通过的转化率为30.0%",
+      "type": "regex",
+      "value": "30\\.0%|30%"
+    },
+    {
+      "name": "offer-rate",
+      "desc": "约面到offer的转化率为35.7%",
+      "type": "regex",
+      "value": "35\\.7%"
+    },
+    {
+      "name": "overall-rate",
+      "desc": "全程转化率=36÷840=4.3%",
+      "type": "regex",
+      "value": "4\\.3%"
+    },
+    {
+      "name": "funnel-order",
+      "desc": "五行按漏斗顺序排列且数量单调递减，归因针对最低环节（简历→筛选通过，30.0%）",
+      "type": "semantic"
+    }
+  ]
+}
