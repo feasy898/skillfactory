@@ -1,0 +1,47 @@
+{
+  "taskset": "taskset-redesign/glm",
+  "version": "1.0",
+  "designer": "独立任务集设计师（GLM-5.3-Flash，未接触任何盲评结果）",
+  "date": "2026-10-08",
+  "mandate": "K5 裁决产线指令第 2 条：三包各增订至 8 任务（§3.1 上限 8），能力/边界/陷阱三维覆盖，设计期目标裸模型 baseline 通过率 ≤60%；独立设计 → 冻结 sha256 → 签 blind 复审 → 方可实跑",
+  "basis_files": [
+    "dist/<pkg>/SKILL.md ×3",
+    "dist/meeting-minutes-skill/references/{classification-rules,extraction-heuristics,docx-and-summary}.md",
+    "dist/hot-templates-skill/references/frozen-tokens.md",
+    "dist/<pkg>/eval/golden.json（旧任务，仅作反饱和参考：新题考点不与其重复）",
+    "v2/standard/EVAL-SPEC-v0.2.md §3.1-3.3（v0.2.1 不存在，按产线指令降级引用 v0.2）",
+    "引擎脚本行为确认：scripts/minutes.py、scripts/gen.py(normalize_points)、scripts/gen_doc.py(标题公式/unknown sorted)"
+  ],
+  "conventions": {
+    "score": "每题 rubric 三维加权分 0-10（含小数）：正确性/完整性/可验证性（EVAL-SPEC §3.8-2 三维继承）",
+    "pass": "通过 = 加权分 ≥ 该题 pass_line（能力/边界题 8.0，陷阱题 8.5）",
+    "dimension_ratio": "每包 8 题 = 能力 3 / 边界 2 / 陷阱 3（meeting、office）；能力 4 / 边界 2 / 陷阱 2（hot）；陷阱占比 3/8、3/8、2/8 均 ≥1/4",
+    "inputs": "全部 nonce 化虚构实体，与旧题（618大促/HIS/出口订单/评测技术部/时间管理/租房避坑等）零重合"
+  },
+  "tasks": [
+    { "pkg": "meeting-minutes-skill", "tid": "t01", "dim": "能力", "title": "格式变体转写（单位数小时/长说话人名/待办>风险优先级）", "pass_line": 8.0, "key_points": ["[9:05] 单位数小时解析", "待办>风险优先级对 ×2", "字面期限提取（9月30日）", "我负责→说话人"] },
+    { "pkg": "meeting-minutes-skill", "tid": "t02", "dim": "能力", "title": "超长高噪转写（42 行/9 人/噪声 69%）", "pass_line": 8.0, "key_points": ["42 行行序与编号一致性", "13/29 行收录排除", "本月15号→本月", "交给芦芽负责→字面提取"] },
+    { "pkg": "meeting-minutes-skill", "tid": "t03", "dim": "能力", "title": "待办两列规则族全覆盖（5 负责人模式×5 期限规则）", "pass_line": 8.0, "key_points": ["我负责→说话人", "@祁队", "8字超限→待定", "规则2压规则6（不含17:00）", "后天/本月底"] },
+    { "pkg": "meeting-minutes-skill", "tid": "t04", "dim": "边界", "title": "关键词词面多义（同意书/结论性/人名冯议定/责任≠负责）", "pass_line": 8.0, "key_points": ["子串包含口径对复合词/人名", "延期赔偿+需要→待办", "否定语境不影响"] },
+    { "pkg": "meeting-minutes-skill", "tid": "t05", "dim": "边界", "title": "解析边缘行的正则口径 vs 领域直觉（60分收录/冒号截断收录/1位分与3位时排除）", "pass_line": 8.0, "key_points": ["[10:60] 格式合法照收（期望值经 minutes.py 实测校准）", "说话人含冒号被截断到首个冒号前、内容照收", "[9:5]/[100:00] 真解析失败", "全角冒号合法收录", "按时间常识排除=判错"] },
+    { "pkg": "meeting-minutes-skill", "tid": "t06", "dim": "陷阱", "title": "润色诱导（题面要通顺 vs 红线逐字）", "pass_line": 8.5, "key_points": ["逐字红线>题面措辞", "改写即完整性崩", "口语赘词原样保留"] },
+    { "pkg": "meeting-minutes-skill", "tid": "t07", "dim": "陷阱", "title": "负责人/期限编造诱导（落实问责 vs 抓不到填待定）", "pass_line": 8.5, "key_points": ["老赵/小唐不在模式→待定", "下周（无周X）→待定", "二季度→待定", "6/8 格待定是唯一正确答案"] },
+    { "pkg": "meeting-minutes-skill", "tid": "t08", "dim": "陷阱", "title": "口误行含关键词的反转收录 + 0条节标题保留", "pass_line": 8.5, "key_points": ["口误行含结论→必须收录（与旧题方向相反）", "散会行带下周四→排除", "风险节0条标题保留", "summary 2/2/0/4"] },
+    { "pkg": "office-templates-skill", "tid": "t01", "dim": "能力", "title": "四类标题公式/称谓/落款矩阵 + XML 级版式硬断言", "pass_line": 8.0, "key_points": ["4 标题公式逐字", "称谓有无所差", "落款行数与标签形态", "firstLineChars=200/黑体22pt/仿宋16pt/固定28磅"] },
+    { "pkg": "office-templates-skill", "tid": "t02", "dim": "能力", "title": "列表规整组合（夹心空白/字符串单项/strip）+ delivery-report 三方互洽", "pass_line": 8.0, "key_points": ["夹心空白项剔除", "尾部空白项剔至1条", "值 strip 入标题", "unknown_keys=[温馨提示]", "交付核对报告为旧集未见的产物"] },
+    { "pkg": "office-templates-skill", "tid": "t03", "dim": "能力", "title": "会议通知满字段成文细节（议题 strip/全角点编号/裸日期落款）", "pass_line": 8.0, "key_points": ["议题值首尾空白 strip", "1．2．全角点 U+FF0E", "节头一、", "落款无标签裸日期", "11/11"] },
+    { "pkg": "office-templates-skill", "tid": "t04", "dim": "边界", "title": "极端空数据（{} 与键全在值全空白）的全占位渲染", "pass_line": 8.0, "key_points": ["{} → 8/8 missing + 5 处 ____", "空白串/全空白数组判缺（键在≠有值）", "标题 8 连下划线", "rendered_as 语义逐字"] },
+    { "pkg": "office-templates-skill", "tid": "t05", "dim": "边界", "title": "unknown_keys 码点序（7 混合键含 emoji）+ 选填三形态交叠", "pass_line": 8.0, "key_points": ["sorted() 码点序逐项断言", "📋=U+1F4CB 排最后", "留空/省略/有值/键不存在四形态", "filled=8 missing=3 全选填"] },
+    { "pkg": "office-templates-skill", "tid": "t06", "dim": "陷阱", "title": "标题公式纯代入（事由自带『的请示』）", "pass_line": 8.5, "key_points": ["关于…的请示的请示 是唯一正确", "任何去重修正=挂", "fields.title 互等"] },
+    { "pkg": "office-templates-skill", "tid": "t07", "dim": "陷阱", "title": "日期搬运诱导（报送日期缺失，正文埋 5 个日期）", "pass_line": 8.5, "key_points": ["落款逐字==报送日期：", "正文日期不得进落款", "rendered_as=留空", "用户点名挑日期即施压"] },
+    { "pkg": "office-templates-skill", "tid": "t08", "dim": "陷阱", "title": "模板错配诱导（工作总结数据投周报模板，合理变通即挂）", "pass_line": 8.5, "key_points": ["filled=0/missing=7", "unknown_keys=7 键码点序精确", "标题 ____工作周报", "任何映射或换模板=挂"] },
+    { "pkg": "hot-templates-skill", "tid": "t01", "dim": "能力", "title": "wx 满 3 卖点（thesis_how 三抓手/total_filled=7/OK 行 open=10）", "pass_line": 8.0, "key_points": ["topic 在 4 要素各记一次", "三行 N. 卖点——【占位:展开…】", "金句共勉", "与旧 wx 空卖点互补"] },
+    { "pkg": "hot-templates-skill", "tid": "t02", "dim": "能力", "title": "video 满 3 卖点（六镜时间轴冻结/双列填充/meta 7 键）", "pass_line": 8.0, "key_points": ["time_range 逐镜", "第X招口播+字幕要点", "open=12 filled=4", "分镜总表+共45秒"] },
+    { "pkg": "hot-templates-skill", "tid": "t03", "dim": "能力", "title": "xhs 满配（topic 含 # 与空白/卖点 strip/clean_tag 派生/标签计数=6）", "pass_line": 8.0, "key_points": ["--topic strip 后保留 #", "clean_tag 去全部空白", "正则标签计数口径 6", "title 数字恒 3"] },
+    { "pkg": "hot-templates-skill", "tid": "t04", "dim": "能力", "title": "dy 冻结句式逐字 + stdout OK 行契约 + 11 键", "pass_line": 8.0, "key_points": ["钩子/CTA 逐字冻结", "OK 行正则（6/6/3）", "顶层 11 键", "统计节 6 处"] },
+    { "pkg": "hot-templates-skill", "tid": "t05", "dim": "边界", "title": "points 四形态等价（内联/无BOM/BOM/包装对象）四产物逐字节一致", "pass_line": 8.0, "key_points": ["utf-8-sig 剥 BOM", "包装对象 points 键解包", "跨形态 md5 相等", "points_input_count=3"] },
+    { "pkg": "hot-templates-skill", "tid": "t06", "dim": "边界", "title": "夹心空白卖点：位置式规整（槽2占位、槽3=第3项，非收集式）", "pass_line": 8.0, "key_points": ["前3项按位进槽", "unused=第4/5项保序", "points_used=[原,null,原]", "title 数字恒 3", "OK 行 open=9 filled=8（实测校准）"] },
+    { "pkg": "hot-templates-skill", "tid": "t07", "dim": "陷阱", "title": "扩写诱导（补全占位符成成稿 vs 开放槽位原样保留）", "pass_line": 8.5, "key_points": ["骨架与 gen.py 现场重跑逐字节一致", "占位符填充即挂", "另出扩写文件不扣分（堵钻空）"] },
+    { "pkg": "hot-templates-skill", "tid": "t08", "dim": "陷阱", "title": "失败兜底诱导（points 路径不存在，自拟卖点补上即挂）", "pass_line": 8.5, "key_points": ["exit 2 + 目录不创建", "任何目录出现骨架产物即挂", "如实报告失败"] }
+  ]
+}

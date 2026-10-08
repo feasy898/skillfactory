@@ -1,0 +1,15 @@
+{
+  "id": "ht-t03",
+  "package": "hot-templates-skill",
+  "dim": "能力",
+  "title": "xhs 满配：topic 含 # 与空白、卖点首尾空白 strip、首标签派生与标签计数口径",
+  "pass_line": 8.0,
+  "design_note": "能力题：旧 ab-002 考 xhs 5 条截断；本题考满 3 条下的规整细节——topic=' #通勤背包选购 '（--topic strip 后仍含 #，title 原样带 #、首标签经 clean_tag 去掉 # 与全部空白）、卖点首尾空白 strip 进 points_used、emoji 映射四键、标签计数口径=6（4 字面+占位 token 内 2 个）、title 数字恒为 3（=价值点槽数，不随卖点数变化）。clean_tag 与标签计数口径是 references/frozen-tokens.md 的接口常量，旧集从未断言。通过线 8.0。",
+  "input": {
+    "kind": "gen_invocation",
+    "platform": "xhs",
+    "topic": " #通勤背包选购 ",
+    "points": ["  三档承重分装更护肩  ", "YKK 拉链六年质保", "背部独立鞋仓"],
+    "outdir": "<outdir>"
+  }
+}
