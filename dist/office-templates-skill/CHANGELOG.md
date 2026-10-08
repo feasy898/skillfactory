@@ -1,5 +1,17 @@
 # CHANGELOG — office-templates package（实现层）
 
+## 1.0.1 — 2026-10-09（office 补强重打包，K-5 回炉重测前置）
+
+- 以补强后资产源 `v3/assets/office-templates`（提交 e82b3cb：docx 容器时间戳归一化 + SKILL §9-5 自评规程，oracle 参照与 eval/runner.py 零改动）按首发（1.0.0）打包口径重建本分发包：**包结构不变、内容更新**。
+  - `SKILL.md`：正文逐字节更新为 `package/SKILL.md` 补强版（§2/§5/§6-V8 确定性口径升级为整文件逐字节一致；§9 增第 5 步「确定性/交付自评」：同命令连跑两遍快照对拍 sha256 + run_log.json 留痕规程）；front-matter 照分发包体例保留，版本随包升 1.0.1。
+  - `scripts/gen_doc.py`：逐字节更新为补强版引擎（canonicalize_docx_zip()——保存后原子重写 zip 容器，17 条目时间戳归一化 1980-01-01，D1+ 整文件逐字节可复现；失败退回 D1 语义下限不影响退出码）。
+  - `references/`（四份）、`requirements.txt`、`eval/runner.py`、`eval/golden.json`、`reference/inputs/`：源零改动，逐字节复制校验一致（打包器实算）。
+  - `reference/out/`：照旧例取自 `oracle/out`（本轮 oracle 参照零改动，逐字节未变）；fields.json 沿用首发包侧 CRLF→LF 归一形态。
+  - `README.md`：设计红线②「确定性可复现」表述同步为整文件逐字节口径（仅此一处）。
+  - 新写面（`LICENSE`/`EVALUATION.md`/`MANIFEST.md`/`eval/results/benchmark.json`）零改动；版本号面（front-matter/本文件/MANIFEST 标题）随包升 1.0.1。
+- 冻结纪律（K5B-09 口径）：`eval/golden.json` 逐字节未动，sha256=2fa58b07… 与 REGISTRY.md 登记值一致。
+- canonical 源 `v3/assets/office-templates` 本轮零改动。
+
 ## 1.0.0 — 2026-09-30（分发包首发）
 
 - 自开发资产源（spec.md v1.0，2026-09-30 固化）打包为可分发技能包：

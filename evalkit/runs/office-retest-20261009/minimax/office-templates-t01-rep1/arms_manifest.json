@@ -1,0 +1,11 @@
+{
+  "run_id": "minimax/office-templates-t01-rep1",
+  "run_dir": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep1",
+  "arms": {
+    "baseline": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep1/baseline",
+    "treatment": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep1/treatment"
+  },
+  "treatment_skill_mount": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep1/treatment/.zcode/skills/office-templates",
+  "baseline_has_skill": false,
+  "pack": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/packs/office-templates-t01"
+}

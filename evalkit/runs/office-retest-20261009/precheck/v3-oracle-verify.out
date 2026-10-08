@@ -1,0 +1,10 @@
+PASS out/会议通知/case1
+PASS out/会议通知/case2
+PASS out/周报/case1
+PASS out/周报/case2
+PASS out/工作总结/case1
+PASS out/工作总结/case2
+PASS out/请示函/case1
+PASS out/请示函/case2
+
+共 8 份产物: PASS=8 FAIL=0

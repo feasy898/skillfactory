@@ -1,0 +1,260 @@
+{
+  "run": "office-retest-20261009",
+  "started_at": "2026-10-09T03:23:14+0800",
+  "source": "v3/assets/office-templates",
+  "source_head": "e82b3cb（补强收口）+ 9827318（ab5 裁决）",
+  "dest": "dist/office-templates-skill",
+  "checks": [
+    {
+      "name": "dist_worktree_clean",
+      "ok": true,
+      "detail": "git status --porcelain dist/office-templates-skill → ''"
+    },
+    {
+      "name": "untouched_face_byte_equal",
+      "ok": true,
+      "detail": "references/工作总结.md=True; references/会议通知.md=True; references/请示函.md=True; references/周报.md=True; requirements.txt=True; eval/runner.py=True; eval/golden.json=True; reference/inputs ↔ oracle/inputs=True"
+    },
+    {
+      "name": "golden_frozen_sha",
+      "ok": true,
+      "detail": "2fa58b07481b44bc2840b2fdd757ef19faa5ebe37e1918baf936b2b923f4ecbf"
+    },
+    {
+      "name": "runner_sha_matches_registry",
+      "ok": true,
+      "detail": "REGISTRY.md:74"
+    },
+    {
+      "name": "skill_body_from_source",
+      "ok": true,
+      "detail": "正文=package/SKILL.md 逐字节"
+    }
+  ],
+  "actions": [
+    {
+      "file": "SKILL.md",
+      "op": "front-matter(1.0.1)+package/SKILL.md 正文逐字节",
+      "sha256": "e91b08cf680d13d7296d0c8182965245b4b87a29ab7d927e36edf7193a4fd58f"
+    },
+    {
+      "file": "scripts/gen_doc.py",
+      "op": "逐字节复制（补强版引擎 D1+）",
+      "sha256": "6b31deb5766e5f2379dcaaa1dd3af465b0c9a8013c2019c234d63792e880ce3d"
+    },
+    {
+      "file": "README.md",
+      "op": "红线②确定性表述同步补强口径（仅此一处）",
+      "sha256": "2f2114d120922ccf1f23d2e9132fb89bed7d7225ce82b3b46c6fb89416aa7002"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "op": "新增 1.0.1 重打包条目（流程留痕）",
+      "sha256": "d0354cbc1a7495262845c749ed8e54b498480fff2ed45196a62e41e4a0962a90"
+    },
+    {
+      "file": "MANIFEST.md",
+      "op": "标题版本 1.0.0→1.0.1（仅此一处）",
+      "sha256": "d8fe95b65a0f03d22f18dbd399b0c5091158f4ab741e4fb6c72cd61ad58462eb"
+    }
+  ],
+  "finished_at": "2026-10-09T03:23:14+0800",
+  "package_files": [
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "d0354cbc1a7495262845c749ed8e54b498480fff2ed45196a62e41e4a0962a90",
+      "bytes": 3795
+    },
+    {
+      "path": "EVALUATION.md",
+      "sha256": "c3ce78558829deedb524e37f3e2cfb90b08145b8a07dffa0b7c585ab588d3800",
+      "bytes": 6044
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "fc1d71276934d21069136891d65c1ba29b0d3a96db751a2fdd8c8f308d0fed59",
+      "bytes": 1069
+    },
+    {
+      "path": "MANIFEST.md",
+      "sha256": "d8fe95b65a0f03d22f18dbd399b0c5091158f4ab741e4fb6c72cd61ad58462eb",
+      "bytes": 1102
+    },
+    {
+      "path": "README.md",
+      "sha256": "2f2114d120922ccf1f23d2e9132fb89bed7d7225ce82b3b46c6fb89416aa7002",
+      "bytes": 5021
+    },
+    {
+      "path": "SKILL.md",
+      "sha256": "e91b08cf680d13d7296d0c8182965245b4b87a29ab7d927e36edf7193a4fd58f",
+      "bytes": 12517
+    },
+    {
+      "path": "eval/golden.json",
+      "sha256": "2fa58b07481b44bc2840b2fdd757ef19faa5ebe37e1918baf936b2b923f4ecbf",
+      "bytes": 9044
+    },
+    {
+      "path": "eval/results/benchmark.json",
+      "sha256": "0e2c01e215e08aba15d69b88af96c7164b259130736729b0c83427e17c1df191",
+      "bytes": 14119
+    },
+    {
+      "path": "eval/runner.py",
+      "sha256": "8eb51801b6fc9fce357be87e3f13f5903720e573dcf5988167bdd41bf1f08c67",
+      "bytes": 24949
+    },
+    {
+      "path": "reference/inputs/会议通知/case1.json",
+      "sha256": "89c0568932be989aff227912f06f67806ce95634034c054ac3841ac3e5a9f6b8",
+      "bytes": 563
+    },
+    {
+      "path": "reference/inputs/会议通知/case2.json",
+      "sha256": "db960ef5fbb9bdeeec762eebbce8983655d82eac89a90869962e0e081b4f7596",
+      "bytes": 308
+    },
+    {
+      "path": "reference/inputs/周报/case1.json",
+      "sha256": "3e775488b6a95bf9cf0d17824208f28457124aaa7f216f0746ef3152f62cb968",
+      "bytes": 456
+    },
+    {
+      "path": "reference/inputs/周报/case2.json",
+      "sha256": "900b44a4f93b9ce301c4f842a4e941571c6a8bee4752afb2cc1a428f6a2c803c",
+      "bytes": 170
+    },
+    {
+      "path": "reference/inputs/工作总结/case1.json",
+      "sha256": "1cdec5b810cc531120b07010517e8cf0cc7ebf3b21cc2549e0cfda98d1d61cb2",
+      "bytes": 502
+    },
+    {
+      "path": "reference/inputs/工作总结/case2.json",
+      "sha256": "eb1691428679eca9560b95302b87add439f858290a6970b7a2bc9e599c4dcfdd",
+      "bytes": 178
+    },
+    {
+      "path": "reference/inputs/请示函/case1.json",
+      "sha256": "c1fa35da12b2cd759ec5821d652e75a4c45ea1417b7d3004ee5923654cda6afd",
+      "bytes": 460
+    },
+    {
+      "path": "reference/inputs/请示函/case2.json",
+      "sha256": "f54dc25f2f760785c9342867f1b9d45b809d6cd9983a6bbc8e71ca3ceefbddb9",
+      "bytes": 230
+    },
+    {
+      "path": "reference/out/会议通知/case1/fields.json",
+      "sha256": "55de9b1304bf276f4decba8ff2eca99cc3d826d7a045e02edbc08da5236399b8",
+      "bytes": 2480
+    },
+    {
+      "path": "reference/out/会议通知/case1/文书.docx",
+      "sha256": "b918f8180139a950367f9dca844613c17e0f288b03fe62731f30be217812caf3",
+      "bytes": 37318
+    },
+    {
+      "path": "reference/out/会议通知/case2/fields.json",
+      "sha256": "b10ddcf0c480c985ee92c154ac4bf8bbf021cdd7c1860fe7ad96cecc268ae6d5",
+      "bytes": 2606
+    },
+    {
+      "path": "reference/out/会议通知/case2/文书.docx",
+      "sha256": "ef4973b6fc690264d1df8a1e57e36e4a6a3c675d49c9e7752e7f134dc94e52ac",
+      "bytes": 37115
+    },
+    {
+      "path": "reference/out/周报/case1/fields.json",
+      "sha256": "0c325f7074c0d307a349bfd1ed9e97d02de35dcbb5cad52850f634aafc683535",
+      "bytes": 1834
+    },
+    {
+      "path": "reference/out/周报/case1/文书.docx",
+      "sha256": "f0d11dc26c79961f35542c97425a09f2e65710703e2a13ab4c269670bb2814a7",
+      "bytes": 37227
+    },
+    {
+      "path": "reference/out/周报/case2/fields.json",
+      "sha256": "3b4abcbd7bfa5e425580b5536db2b315aee255075b3f8929288a67f7835a5905",
+      "bytes": 1806
+    },
+    {
+      "path": "reference/out/周报/case2/文书.docx",
+      "sha256": "8dc06c1b6f6314a79d4f0f060a3baa23d4a8face74cf49d02e05a2d5f41e9bbc",
+      "bytes": 37030
+    },
+    {
+      "path": "reference/out/工作总结/case1/fields.json",
+      "sha256": "6a73aa8a10756c7af7300d3af59739830ca020b48dd454cf6ed528006f9e11d2",
+      "bytes": 1939
+    },
+    {
+      "path": "reference/out/工作总结/case1/文书.docx",
+      "sha256": "081bfb2631584a38f1981309ed2b015283e9fe96922903525cb5975827e1efbf",
+      "bytes": 37244
+    },
+    {
+      "path": "reference/out/工作总结/case2/fields.json",
+      "sha256": "471cf7530bc4f0e217952acd6e65c0b46477a602844eafbc0dd351196089064d",
+      "bytes": 1873
+    },
+    {
+      "path": "reference/out/工作总结/case2/文书.docx",
+      "sha256": "3130ac905d0db858e813121fcf62b20d0f380c4f449bc627e79620fa2daaf841",
+      "bytes": 37021
+    },
+    {
+      "path": "reference/out/请示函/case1/fields.json",
+      "sha256": "cc7cc368c7b7e21635b311ee131e6ecfbc6dfae6f8925a05874d41e3216e6c14",
+      "bytes": 1958
+    },
+    {
+      "path": "reference/out/请示函/case1/文书.docx",
+      "sha256": "1005b9a471f468bd8179a45badba1fb17e114838b7d32db5230a41b239e516fa",
+      "bytes": 37222
+    },
+    {
+      "path": "reference/out/请示函/case2/fields.json",
+      "sha256": "1e47ff54e9675c47f5185c47ec6a07e2273ec0dc67794a4e5d2fe47ca0cf63a4",
+      "bytes": 2046
+    },
+    {
+      "path": "reference/out/请示函/case2/文书.docx",
+      "sha256": "87a4d82bae93a3ed2493bbc9f86e46865246dc30b7b116cd8b6ca66f89302506",
+      "bytes": 37094
+    },
+    {
+      "path": "references/会议通知.md",
+      "sha256": "49e50d197508f0728e49e34b386b96713e840053180b4139a4c73e0c4ca58446",
+      "bytes": 2795
+    },
+    {
+      "path": "references/周报.md",
+      "sha256": "75a31ceba1184b749d216967f7e66fecf1f6295de2ceb0597b11f81e8ff31cc2",
+      "bytes": 2336
+    },
+    {
+      "path": "references/工作总结.md",
+      "sha256": "021a8367f9c0c1da388d240fc488ffc15a149b59e97b5f0bbbb8988ae51d3612",
+      "bytes": 2635
+    },
+    {
+      "path": "references/请示函.md",
+      "sha256": "d4dd35a9831118ec1339ff1b614cd76b6d85e3ba63b7f012578f913e107dbca2",
+      "bytes": 2193
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "ae4a6adc2ae696ce87d4e3ee0d46eb07a0d2d60a3b117981e8072d06093fac29",
+      "bytes": 17
+    },
+    {
+      "path": "scripts/gen_doc.py",
+      "sha256": "6b31deb5766e5f2379dcaaa1dd3af465b0c9a8013c2019c234d63792e880ce3d",
+      "bytes": 19354
+    }
+  ],
+  "exit": 0
+}

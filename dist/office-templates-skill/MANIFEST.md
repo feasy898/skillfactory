@@ -1,4 +1,4 @@
-# MANIFEST — office-templates-skill v1.0.0
+# MANIFEST — office-templates-skill v1.0.1
 
 中文办公四类文书技能包：把周报 / 请示函 / 会议通知 / 工作总结的结构化数据 JSON，确定性地生成 GB/T 9704 风格 `文书.docx` 与字段台账 `fields.json`。
 

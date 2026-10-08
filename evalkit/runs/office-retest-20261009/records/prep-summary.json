@@ -1,0 +1,50 @@
+{
+  "units": 39,
+  "arm_calls_planned": 78,
+  "cap_arms": 78,
+  "allocation": {
+    "task_order": [
+      "ab1-standard-four-templates",
+      "ab2-boundary-missing-required",
+      "ab3-empty-and-string-lists",
+      "ab4-invalid-input-rejection",
+      "ab5-determinism-layout-selfeval",
+      "t01",
+      "t02",
+      "t03",
+      "t04",
+      "t05",
+      "t06",
+      "t07",
+      "t08"
+    ],
+    "glm_tasks": [
+      "ab1-standard-four-templates",
+      "ab3-empty-and-string-lists",
+      "ab5-determinism-layout-selfeval",
+      "t02",
+      "t04",
+      "t06",
+      "t08"
+    ],
+    "minimax_tasks": [
+      "ab2-boundary-missing-required",
+      "ab4-invalid-input-rejection",
+      "t01",
+      "t03",
+      "t05",
+      "t07"
+    ],
+    "by_family": {
+      "glm": 42,
+      "minimax": 36
+    }
+  },
+  "mountable": [
+    "SKILL.md",
+    "references",
+    "scripts",
+    "requirements.txt"
+  ],
+  "opened_at": "2026-10-09T03:32:16+0800"
+}

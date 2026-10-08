@@ -1,0 +1,64 @@
+{
+  "card": "office-retest（K-5 回炉·office-templates 单包重测）",
+  "run_id": "office-retest-20261009",
+  "kind": "budget_registration",
+  "status": "registered_not_started",
+  "base_commit": "9827318",
+  "registered_at": "2026-10-09T03:31+0800",
+  "authority": "本轮 ask 预算公式（13 任务 × 2 臂 × n=3 = 78 臂调用上限 + 裁判调用每任务 ≥2 异族 + step 通道重试余量，全部记账本文件）；超出本登记须先经 planner 批准，超额进程不计入结果",
+  "formula": {
+    "arm_calls": "任务 13 × 2 臂 × n=3 = 78，按族分配（任务序奇偶轮换：奇=glm 7 任务=42、偶=minimax 6 任务=36）",
+    "judge_calls": "每任务 ≥2 异族裁判 → 下限 26；另列 §3.4-1 一致性抽检复评 ≥1/任务（≥13）与分差>2 触发的换裁判重评（按实发记账）",
+    "retry_margin": "臂：rate_limited 退避重试每臂 ≤1（≤78 条重试，不占正式额度）；裁判：每裁判调用失败/超时重试 ≤1（step 通道重试余量 ≤26，不占正式额度）；重试逐条留痕 ledger_entries"
+  },
+  "arm_calls": {
+    "total": 78,
+    "by_family": {
+      "glm": 42,
+      "minimax": 36
+    },
+    "per_package": [
+      {
+        "pkg": "office-templates",
+        "n": 3,
+        "tasks": 13,
+        "calls_per_task": 6,
+        "arm_calls": 78,
+        "by_family": {
+          "glm": 42,
+          "minimax": 36
+        }
+      }
+    ],
+    "counted_rule": "正式臂进程数以台账为准（spawn 前 pending、事后按 db model_usage 实测回填，照 sf0006-b/c 与 sf0008-k5b 先例）；装置 bug/无效尝试条目（skipped_harness_bug 等）不占额度",
+    "counted_so_far": 0
+  },
+  "judge_calls": {
+    "floor": 26,
+    "floor_basis": "13 任务 × ≥2 异族裁判",
+    "consistency_spot_check_extra": 13,
+    "consistency_basis": "EVAL-SPEC v0.2.1 §3.4-1 每任务 ≥1 份匿名复评",
+    "rejudge_extra_policy": "分差>2 换面板内另一异族裁判重评全任务，按实发记账",
+    "step_channel_retry_margin": 26,
+    "step_channel_retry_basis": "step=模型 API 直调通道，每裁判调用失败/超时重试 ≤1；通道故障如实降级留痕，致异族 <2 族的任务 fail-closed 记 unjudgeable",
+    "used_so_far": 0
+  },
+  "retry_policy": {
+    "retry_cap_per_arm": 1,
+    "judge_retry_cap_per_call": 1,
+    "used": 0,
+    "note": "重试进程/调用不占正式额度，逐条留痕 ledger_entries（kind=rate_limited-retry / judge-retry）"
+  },
+  "pinning": {
+    "glm": "GLM-5.3 @ account:bigmodel-individual-coding-plan，variant=max，机制 M4（照 sf0006-b-smoke-2/sf0008-k5b 实测）",
+    "minimax": "Minimax-M3.1-Flash-Preview @ minimax，variant=enabled，机制 M2（照 sf0006-b-smoke-2/sf0008-k5b 实测）",
+    "step_judge": "step-router-v1 @ new-provider，模型 API 直调（裁判专用）",
+    "drift_policy": "glm 臂落点漂移 → 红线停全批（B-01/SF-0004 DT-v1 同款）"
+  },
+  "ledger_entries": [],
+  "discipline": [
+    "记账刚性：spawn 前 pending 占位即计数（防并发超预算），事后回填 status/exit/session/tokens；只增不改历史行",
+    "超出 78 臂/裁判下限+余量的调用须先经 planner 批准，超额进程不计入结果",
+    "judge prompt 版本 S8-JUDGE-v2-OFXRETEST-1 与 model_pin.judge_model_id 随轮落盘（§3.7-4 同代可比前提）"
+  ]
+}

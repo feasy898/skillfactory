@@ -1,0 +1,40 @@
+{
+  "office-templates-skill": {
+    "source": "dist/office-templates-skill",
+    "source_note": "重打包后 dist 包（repack 1.0.1，补强内容 e82b3cb；本轮零改动）",
+    "source_untouched": true,
+    "filter_whitelist": [
+      "SKILL.md",
+      "references",
+      "scripts",
+      "requirements.txt"
+    ],
+    "excluded": [
+      "reference",
+      "eval",
+      "EVALUATION.md",
+      "CHANGELOG.md",
+      "README.md",
+      "MANIFEST.md",
+      "LICENSE"
+    ],
+    "files": [
+      "SKILL.md",
+      "references/会议通知.md",
+      "references/周报.md",
+      "references/工作总结.md",
+      "references/请示函.md",
+      "requirements.txt",
+      "scripts/gen_doc.py"
+    ],
+    "file_sha256": {
+      "SKILL.md": "e91b08cf680d13d7296d0c8182965245b4b87a29ab7d927e36edf7193a4fd58f",
+      "references/会议通知.md": "49e50d197508f0728e49e34b386b96713e840053180b4139a4c73e0c4ca58446",
+      "references/周报.md": "75a31ceba1184b749d216967f7e66fecf1f6295de2ceb0597b11f81e8ff31cc2",
+      "references/工作总结.md": "021a8367f9c0c1da388d240fc488ffc15a149b59e97b5f0bbbb8988ae51d3612",
+      "references/请示函.md": "d4dd35a9831118ec1339ff1b614cd76b6d85e3ba63b7f012578f913e107dbca2",
+      "requirements.txt": "ae4a6adc2ae696ce87d4e3ee0d46eb07a0d2d60a3b117981e8072d06093fac29",
+      "scripts/gen_doc.py": "6b31deb5766e5f2379dcaaa1dd3af465b0c9a8013c2019c234d63792e880ce3d"
+    }
+  }
+}

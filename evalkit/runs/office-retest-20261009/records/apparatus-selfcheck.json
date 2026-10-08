@@ -1,0 +1,137 @@
+{
+  "run": "office-retest-20261009",
+  "total": 26,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "taskset_frozen_96_recompute",
+      "ok": true,
+      "detail": "9e7f57c6f4094f184483fab0d59f61121abd82316b1779072e9e99df43c0c535"
+    },
+    {
+      "name": "golden_frozen_unchanged",
+      "ok": true,
+      "detail": "2fa58b07481b44bc2840b2fdd757ef19faa5ebe37e1918baf936b2b923f4ecbf"
+    },
+    {
+      "name": "pack_ab1-standard-four-templates_body≡K5B",
+      "ok": true,
+      "detail": "lines=9/9"
+    },
+    {
+      "name": "pack_ab2-boundary-missing-required_body≡K5B",
+      "ok": true,
+      "detail": "lines=8/8"
+    },
+    {
+      "name": "pack_ab3-empty-and-string-lists_body≡K5B",
+      "ok": true,
+      "detail": "lines=8/8"
+    },
+    {
+      "name": "pack_ab4-invalid-input-rejection_body≡K5B",
+      "ok": true,
+      "detail": "lines=7/7"
+    },
+    {
+      "name": "pack_ab5-determinism-layout-selfeval_body≡K5B",
+      "ok": true,
+      "detail": "lines=7/7"
+    },
+    {
+      "name": "pack_t01_brief≡instruction",
+      "ok": true,
+      "detail": "861"
+    },
+    {
+      "name": "pack_t02_brief≡instruction",
+      "ok": true,
+      "detail": "851"
+    },
+    {
+      "name": "pack_t03_brief≡instruction",
+      "ok": true,
+      "detail": "662"
+    },
+    {
+      "name": "pack_t04_brief≡instruction",
+      "ok": true,
+      "detail": "855"
+    },
+    {
+      "name": "pack_t05_brief≡instruction",
+      "ok": true,
+      "detail": "728"
+    },
+    {
+      "name": "pack_t06_brief≡instruction",
+      "ok": true,
+      "detail": "786"
+    },
+    {
+      "name": "pack_t07_brief≡instruction",
+      "ok": true,
+      "detail": "756"
+    },
+    {
+      "name": "pack_t08_brief≡instruction",
+      "ok": true,
+      "detail": "794"
+    },
+    {
+      "name": "packs_all",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "arm_trees_isolated_39_units",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mount_face_matches_repacked_dist",
+      "ok": true,
+      "detail": "files=7 excluded_absent=True"
+    },
+    {
+      "name": "staging_blind_no_arm_labels",
+      "ok": true,
+      "detail": "pids=['P1', 'P2']"
+    },
+    {
+      "name": "staging_mapping_kept_off_judge_face",
+      "ok": true,
+      "detail": "{\"P1\": \"treatment\", \"P2\": \"baseline\"}"
+    },
+    {
+      "name": "brief_ab5_has_rubric_and_replay_note",
+      "ok": true,
+      "detail": "len=1443"
+    },
+    {
+      "name": "brief_t01_weighted_protocol",
+      "ok": true,
+      "detail": "len=2530"
+    },
+    {
+      "name": "verdict_parser_roundtrip",
+      "ok": true,
+      "detail": "{'scores': {'P1': {'total': 7.6, 'evidence': '样例'}}, 'junk': 1}"
+    },
+    {
+      "name": "panel_cross_family_no_self",
+      "ok": true,
+      "detail": "{\"glm\": [\"step-router-v1\", \"Minimax-M3.1-Flash-Preview\"], \"minimax\": [\"step-router-v1\", \"GLM-5.3\"]}"
+    },
+    {
+      "name": "ab5_replay_tool_validated_on_k5b_arms",
+      "ok": true,
+      "detail": "green68/red1 facts=[True, True]"
+    },
+    {
+      "name": "aggregate_failclosed_before_judging",
+      "ok": true,
+      "detail": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/records/judging/office-templates.json\n"
+    }
+  ]
+}

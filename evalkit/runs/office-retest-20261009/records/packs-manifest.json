@@ -1,0 +1,153 @@
+{
+  "run": "office-retest-20261009",
+  "taskset_frozen_sha256_96": "9e7f57c6f4094f184483fab0d59f61121abd82316b1779072e9e99df43c0c535",
+  "taskset_frozen_cmd": "find planning/taskset-redesign/merged -type f ! -name index.json ! -name selection.tsv ! -name 'BLIND-REVIEW*' ! -name 'REVISION-LOG.md' | sort | xargs sha256sum | sha256sum",
+  "golden_json_sha256": "2fa58b07481b44bc2840b2fdd757ef19faa5ebe37e1918baf936b2b923f4ecbf",
+  "golden_frozen_expected": "2fa58b07481b44bc2840b2fdd757ef19faa5ebe37e1918baf936b2b923f4ecbf",
+  "packs": [
+    {
+      "task": "ab1-standard-four-templates",
+      "pack": "evalkit/runs/office-retest-20261009/packs/office-templates-ab1-standard-four-templates",
+      "source": "dist/office-templates-skill/eval/golden.json ab_tasks（忠实改写照 sf0008-k5b）",
+      "fixtures": [
+        {
+          "file": "fixtures/周报/case1.json",
+          "sha256": "3e775488b6a95bf9cf0d17824208f28457124aaa7f216f0746ef3152f62cb968"
+        },
+        {
+          "file": "fixtures/请示函/case1.json",
+          "sha256": "c1fa35da12b2cd759ec5821d652e75a4c45ea1417b7d3004ee5923654cda6afd"
+        },
+        {
+          "file": "fixtures/会议通知/case1.json",
+          "sha256": "89c0568932be989aff227912f06f67806ce95634034c054ac3841ac3e5a9f6b8"
+        },
+        {
+          "file": "fixtures/工作总结/case1.json",
+          "sha256": "1cdec5b810cc531120b07010517e8cf0cc7ebf3b21cc2549e0cfda98d1d61cb2"
+        }
+      ],
+      "brief_sha256": "903039dc6e5b54c5220e0b6b5d5d3aa51ea9131e74003024db7ea7ad1993f6d8"
+    },
+    {
+      "task": "ab2-boundary-missing-required",
+      "pack": "evalkit/runs/office-retest-20261009/packs/office-templates-ab2-boundary-missing-required",
+      "source": "dist/office-templates-skill/eval/golden.json ab_tasks（忠实改写照 sf0008-k5b）",
+      "fixtures": [
+        {
+          "file": "fixtures/请示函/case2.json",
+          "sha256": "f54dc25f2f760785c9342867f1b9d45b809d6cd9983a6bbc8e71ca3ceefbddb9"
+        },
+        {
+          "file": "fixtures/会议通知/case2.json",
+          "sha256": "db960ef5fbb9bdeeec762eebbce8983655d82eac89a90869962e0e081b4f7596"
+        }
+      ],
+      "brief_sha256": "b7229fc5b1ed203bb39f5f201ff438e2821a8f933d7edaa0e27f9483d079539a"
+    },
+    {
+      "task": "ab3-empty-and-string-lists",
+      "pack": "evalkit/runs/office-retest-20261009/packs/office-templates-ab3-empty-and-string-lists",
+      "source": "dist/office-templates-skill/eval/golden.json ab_tasks（忠实改写照 sf0008-k5b）",
+      "fixtures": [
+        {
+          "file": "fixtures/周报/case2.json",
+          "sha256": "900b44a4f93b9ce301c4f842a4e941571c6a8bee4752afb2cc1a428f6a2c803c"
+        },
+        {
+          "file": "fixtures/工作总结/case2.json",
+          "sha256": "eb1691428679eca9560b95302b87add439f858290a6970b7a2bc9e599c4dcfdd"
+        }
+      ],
+      "brief_sha256": "762d9a182ecfd44668cc605e7b37b45826496614166fe1fbfabdf997ed2c7841"
+    },
+    {
+      "task": "ab4-invalid-input-rejection",
+      "pack": "evalkit/runs/office-retest-20261009/packs/office-templates-ab4-invalid-input-rejection",
+      "source": "dist/office-templates-skill/eval/golden.json ab_tasks（忠实改写照 sf0008-k5b）",
+      "fixtures": [
+        {
+          "file": "fixtures/周报/case1.json",
+          "sha256": "3e775488b6a95bf9cf0d17824208f28457124aaa7f216f0746ef3152f62cb968"
+        }
+      ],
+      "brief_sha256": "3bb92a8bc0a968b2d543183ef23195b959b0aae0b5a6ab744049274f31d43f93"
+    },
+    {
+      "task": "ab5-determinism-layout-selfeval",
+      "pack": "evalkit/runs/office-retest-20261009/packs/office-templates-ab5-determinism-layout-selfeval",
+      "source": "dist/office-templates-skill/eval/golden.json ab_tasks（忠实改写照 sf0008-k5b）",
+      "fixtures": [
+        {
+          "file": "fixtures/会议通知/case1.json",
+          "sha256": "89c0568932be989aff227912f06f67806ce95634034c054ac3841ac3e5a9f6b8"
+        }
+      ],
+      "brief_sha256": "e8a3ad021e7e35c1f869542f2f9b05bda5b29fd6f957a37435933cfb90f2b926"
+    },
+    {
+      "task": "t01",
+      "pack": "evalkit/runs/office-retest-20261009/packs/office-templates-t01",
+      "source": "planning/taskset-redesign/merged/office-templates-skill/t01/task.json.instruction（<outdir>→out 机械替换）",
+      "dim": "能力",
+      "pass_line": 8.0,
+      "brief_sha256": "babc3a84601bd9db20c123782294040dada55614428a19bb6926c928b0cb2372"
+    },
+    {
+      "task": "t02",
+      "pack": "evalkit/runs/office-retest-20261009/packs/office-templates-t02",
+      "source": "planning/taskset-redesign/merged/office-templates-skill/t02/task.json.instruction（<outdir>→out 机械替换）",
+      "dim": "能力",
+      "pass_line": 8.0,
+      "brief_sha256": "0ab2d47cafbe1b486e97c01856429d2b8843bdd489dcfd3ed2ff647148aa426f"
+    },
+    {
+      "task": "t03",
+      "pack": "evalkit/runs/office-retest-20261009/packs/office-templates-t03",
+      "source": "planning/taskset-redesign/merged/office-templates-skill/t03/task.json.instruction（<outdir>→out 机械替换）",
+      "dim": "边界",
+      "pass_line": 8.0,
+      "brief_sha256": "2621cbd581f8284b0558db0d203f9a88e9b7a1864d94fb5e152ac059d64d4214"
+    },
+    {
+      "task": "t04",
+      "pack": "evalkit/runs/office-retest-20261009/packs/office-templates-t04",
+      "source": "planning/taskset-redesign/merged/office-templates-skill/t04/task.json.instruction（<outdir>→out 机械替换）",
+      "dim": "边界",
+      "pass_line": 8.0,
+      "brief_sha256": "86746fb92e01f7f1883113671429cc2db43c3402c6ac077f3d7ce5da6a580592"
+    },
+    {
+      "task": "t05",
+      "pack": "evalkit/runs/office-retest-20261009/packs/office-templates-t05",
+      "source": "planning/taskset-redesign/merged/office-templates-skill/t05/task.json.instruction（<outdir>→out 机械替换）",
+      "dim": "陷阱",
+      "pass_line": 8.5,
+      "brief_sha256": "b9a94584fdb7c78adf4e8621f091b0843dd5ec2c03e98619f13115a16048cec7"
+    },
+    {
+      "task": "t06",
+      "pack": "evalkit/runs/office-retest-20261009/packs/office-templates-t06",
+      "source": "planning/taskset-redesign/merged/office-templates-skill/t06/task.json.instruction（<outdir>→out 机械替换）",
+      "dim": "陷阱",
+      "pass_line": 8.5,
+      "brief_sha256": "c47f22f37802f3957278244edd9e00d265ab2bb9d237f2118deeaa4d2aadc148"
+    },
+    {
+      "task": "t07",
+      "pack": "evalkit/runs/office-retest-20261009/packs/office-templates-t07",
+      "source": "planning/taskset-redesign/merged/office-templates-skill/t07/task.json.instruction（<outdir>→out 机械替换）",
+      "dim": "陷阱",
+      "pass_line": 8.5,
+      "brief_sha256": "4e2de72f78d2c365e61f9f4bd98663d5b1affb9a78295011a91528932db550dc"
+    },
+    {
+      "task": "t08",
+      "pack": "evalkit/runs/office-retest-20261009/packs/office-templates-t08",
+      "source": "planning/taskset-redesign/merged/office-templates-skill/t08/task.json.instruction（<outdir>→out 机械替换）",
+      "dim": "陷阱",
+      "pass_line": 8.5,
+      "brief_sha256": "cbb35fceba4b568d66ad93fa4c548b70996e2b5953525d790f05a37f20160d60"
+    }
+  ]
+}
