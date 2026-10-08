@@ -1,0 +1,2534 @@
+{
+  "meeting-minutes|t1": {
+    "baseline-rep1": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=5 和=5"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 4 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "treatment-rep1": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=6 和=6"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 5 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "baseline-rep2": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=6 和=6"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 5 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "treatment-rep2": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=6 和=6"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 5 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    }
+  },
+  "meeting-minutes|t2": {
+    "baseline-rep1": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=0 和=0"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "空输入边界任务（合计=0）：无条目即无引语，检出 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "treatment-rep1": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=0 和=0"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "空输入边界任务（合计=0）：无条目即无引语，检出 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "baseline-rep2": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=0 和=0"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "空输入边界任务（合计=0）：无条目即无引语，检出 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "treatment-rep2": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=0 和=0"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "空输入边界任务（合计=0）：无条目即无引语，检出 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    }
+  },
+  "meeting-minutes|t3": {
+    "baseline-rep1": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=6 和=6"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 3 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "treatment-rep1": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=5 和=5"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 2 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "baseline-rep2": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=5 和=5"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 2 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "treatment-rep2": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=5 和=5"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 2 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    }
+  },
+  "meeting-minutes|t4": {
+    "baseline-rep1": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=6 和=6"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 4 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "treatment-rep1": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=6 和=6"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 4 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "baseline-rep2": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=6 和=6"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 4 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "treatment-rep2": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=6 和=6"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 4 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    }
+  },
+  "meeting-minutes|t5": {
+    "baseline-rep1": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=7 和=7"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 2 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "treatment-rep1": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=7 和=7"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 3 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "baseline-rep2": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=7 和=7"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 3 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "treatment-rep2": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=7 和=7"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 3 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    }
+  },
+  "meeting-minutes|t6": {
+    "baseline-rep1": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=5 和=5"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 3 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "treatment-rep1": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=5 和=5"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 3 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "baseline-rep2": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=5 和=5"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 2 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "treatment-rep2": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=5 和=5"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 3 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    }
+  },
+  "meeting-minutes|t7": {
+    "baseline-rep1": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=7 和=7"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 5 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "treatment-rep1": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=6 和=6"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 4 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "baseline-rep2": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=7 和=7"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 5 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "treatment-rep2": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=6 和=6"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 4 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    }
+  },
+  "meeting-minutes|t8": {
+    "baseline-rep1": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=4 和=4"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 2 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "treatment-rep1": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=4 和=4"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 2 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "baseline-rep2": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=4 和=4"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 2 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    },
+    "treatment-rep2": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "三节标题逐字": {
+          "pass": true,
+          "detail": "三节标题逐字在位"
+        },
+        "summary四键": {
+          "pass": true,
+          "detail": "['决议事项', '合计', '待办事项', '风险与关注']"
+        },
+        "合计自洽": {
+          "pass": true,
+          "detail": "合计=4 和=4"
+        },
+        "逐字引用抽核": {
+          "pass": true,
+          "detail": "引语 2 条，未命中原文 0 条"
+        },
+        "待办表格": {
+          "pass": true,
+          "detail": "1 张表"
+        }
+      }
+    }
+  },
+  "office-templates|ab1-standard-four-templates": {
+    "baseline-rep1": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "单元产物": {
+          "pass": true,
+          "detail": "4 单元"
+        },
+        "标题居中": {
+          "pass": true,
+          "detail": "研发部工作周报… CENTER (1)"
+        },
+        "正文缩进200": {
+          "pass": true,
+          "detail": "5 个实质段落"
+        },
+        "落款右对齐": {
+          "pass": true,
+          "detail": "报送日期：2026-09-28"
+        },
+        "fields.json 台账结构": {
+          "pass": true,
+          "detail": "['fields', 'filled_fields', 'missing_fields', 'source_data', 'summary', 'template', 'title']"
+        }
+      }
+    },
+    "treatment-rep1": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "单元产物": {
+          "pass": true,
+          "detail": "4 单元"
+        },
+        "标题居中": {
+          "pass": true,
+          "detail": "研发部工作周报… CENTER (1)"
+        },
+        "正文缩进200": {
+          "pass": true,
+          "detail": "8 个实质段落"
+        },
+        "落款右对齐": {
+          "pass": true,
+          "detail": "报送日期：2026-09-28"
+        },
+        "fields.json 台账结构": {
+          "pass": true,
+          "detail": "['fields', 'filled_fields', 'missing_fields', 'outputs', 'summary', 'template', 'title']"
+        }
+      }
+    },
+    "baseline-rep2": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "单元产物": {
+          "pass": true,
+          "detail": "4 单元"
+        },
+        "标题居中": {
+          "pass": true,
+          "detail": "研发部工作周报… CENTER (1)"
+        },
+        "正文缩进200": {
+          "pass": true,
+          "detail": "8 个实质段落"
+        },
+        "落款右对齐": {
+          "pass": true,
+          "detail": "报送日期：2026-09-28"
+        },
+        "fields.json 台账结构": {
+          "pass": true,
+          "detail": "['data_source', 'fields', 'summary', 'template', 'title']"
+        }
+      }
+    },
+    "treatment-rep2": {
+      "assertion_pass": true,
+      "detail": "5 锚点",
+      "anchors": {
+        "单元产物": {
+          "pass": true,
+          "detail": "4 单元"
+        },
+        "标题居中": {
+          "pass": true,
+          "detail": "研发部工作周报… CENTER (1)"
+        },
+        "正文缩进200": {
+          "pass": true,
+          "detail": "8 个实质段落"
+        },
+        "落款右对齐": {
+          "pass": true,
+          "detail": "报送日期：2026-09-28"
+        },
+        "fields.json 台账结构": {
+          "pass": true,
+          "detail": "['fields', 'filled_fields', 'missing_fields', 'outputs', 'summary', 'template', 'title']"
+        }
+      }
+    }
+  },
+  "office-templates|ab2-boundary-missing-required": {
+    "baseline-rep1": {
+      "assertion_pass": false,
+      "detail": "10 锚点",
+      "anchors": {
+        "单元产物": {
+          "pass": true,
+          "detail": "2 单元"
+        },
+        "标题居中": {
+          "pass": true,
+          "detail": "请  示… CENTER (1)"
+        },
+        "正文缩进200": {
+          "pass": false,
+          "detail": "5 个实质段落"
+        },
+        "落款右对齐": {
+          "pass": true,
+          "detail": "联系人：李工"
+        },
+        "fields.json 台账结构": {
+          "pass": true,
+          "detail": "['counts', 'doc_title', 'fields', 'filled', 'generated_at', 'missing_optional', 'missing_required', 'placeholder', 'policy', 'source_data', "
+        },
+        "请示函 missing_required": {
+          "pass": true,
+          "detail": "主送机关,请示事项"
+        },
+        "请示函 ____占位": {
+          "pass": true,
+          "detail": "占位在位"
+        },
+        "会议通知 missing_required": {
+          "pass": true,
+          "detail": "会议名称,会议地点"
+        },
+        "会议通知 ____占位": {
+          "pass": true,
+          "detail": "占位在位"
+        },
+        "模板外键记账": {
+          "pass": true,
+          "detail": "unknown 含 备注"
+        }
+      }
+    },
+    "treatment-rep1": {
+      "assertion_pass": true,
+      "detail": "10 锚点",
+      "anchors": {
+        "单元产物": {
+          "pass": true,
+          "detail": "2 单元"
+        },
+        "标题居中": {
+          "pass": true,
+          "detail": "关于延期举办季度评审会的请示… CENTER (1)"
+        },
+        "正文缩进200": {
+          "pass": true,
+          "detail": "3 个实质段落"
+        },
+        "落款右对齐": {
+          "pass": true,
+          "detail": "评测技术部"
+        },
+        "fields.json 台账结构": {
+          "pass": true,
+          "detail": "['fields', 'filled_fields', 'missing_fields', 'outputs', 'summary', 'template', 'title']"
+        },
+        "请示函 missing_required": {
+          "pass": true,
+          "detail": "主送机关,请示事项"
+        },
+        "请示函 ____占位": {
+          "pass": true,
+          "detail": "占位在位"
+        },
+        "会议通知 missing_required": {
+          "pass": true,
+          "detail": "会议名称,会议地点"
+        },
+        "会议通知 ____占位": {
+          "pass": true,
+          "detail": "占位在位"
+        },
+        "模板外键记账": {
+          "pass": true,
+          "detail": "unknown 含 备注"
+        }
+      }
+    },
+    "baseline-rep2": {
+      "assertion_pass": true,
+      "detail": "10 锚点",
+      "anchors": {
+        "单元产物": {
+          "pass": true,
+          "detail": "2 单元"
+        },
+        "标题居中": {
+          "pass": true,
+          "detail": "请 示… CENTER (1)"
+        },
+        "正文缩进200": {
+          "pass": true,
+          "detail": "5 个实质段落"
+        },
+        "落款右对齐": {
+          "pass": true,
+          "detail": "（联系人：李工）"
+        },
+        "fields.json 台账结构": {
+          "pass": true,
+          "detail": "['counts', 'data_path', 'exit_code', 'field_definitions', 'fields', 'filled_fields', 'missing_optional', 'missing_required', 'outputs', 'par"
+        },
+        "请示函 missing_required": {
+          "pass": true,
+          "detail": "主送机关,请示事项"
+        },
+        "请示函 ____占位": {
+          "pass": true,
+          "detail": "占位在位"
+        },
+        "会议通知 missing_required": {
+          "pass": true,
+          "detail": "会议名称,会议地点"
+        },
+        "会议通知 ____占位": {
+          "pass": true,
+          "detail": "占位在位"
+        },
+        "模板外键记账": {
+          "pass": true,
+          "detail": "unknown 含 备注"
+        }
+      }
+    },
+    "treatment-rep2": {
+      "assertion_pass": true,
+      "detail": "10 锚点",
+      "anchors": {
+        "单元产物": {
+          "pass": true,
+          "detail": "2 单元"
+        },
+        "标题居中": {
+          "pass": true,
+          "detail": "关于延期举办季度评审会的请示… CENTER (1)"
+        },
+        "正文缩进200": {
+          "pass": true,
+          "detail": "3 个实质段落"
+        },
+        "落款右对齐": {
+          "pass": true,
+          "detail": "评测技术部"
+        },
+        "fields.json 台账结构": {
+          "pass": true,
+          "detail": "['fields', 'filled_fields', 'missing_fields', 'outputs', 'summary', 'template', 'title']"
+        },
+        "请示函 missing_required": {
+          "pass": true,
+          "detail": "主送机关,请示事项"
+        },
+        "请示函 ____占位": {
+          "pass": true,
+          "detail": "占位在位"
+        },
+        "会议通知 missing_required": {
+          "pass": true,
+          "detail": "会议名称,会议地点"
+        },
+        "会议通知 ____占位": {
+          "pass": true,
+          "detail": "占位在位"
+        },
+        "模板外键记账": {
+          "pass": true,
+          "detail": "unknown 含 备注"
+        }
+      }
+    }
+  },
+  "office-templates|ab3-empty-and-string-lists": {
+    "baseline-rep1": {
+      "assertion_pass": false,
+      "detail": "9 锚点",
+      "anchors": {
+        "单元产物": {
+          "pass": true,
+          "detail": "2 单元"
+        },
+        "标题居中": {
+          "pass": true,
+          "detail": "____工作周报… CENTER (1)"
+        },
+        "正文缩进200": {
+          "pass": false,
+          "detail": "2 个实质段落"
+        },
+        "落款右对齐": {
+          "pass": true,
+          "detail": "报送日期：2026-09-28"
+        },
+        "fields.json 台账结构": {
+          "pass": true,
+          "detail": "['data_source', 'fields', 'filled_fields', 'missing_fields', 'template']"
+        },
+        "空列表占位条目": {
+          "pass": true,
+          "detail": "周报占位"
+        },
+        "字符串列表单项化": {
+          "pass": true,
+          "detail": "工作回顾值"
+        },
+        "周报 标题占位": {
+          "pass": true,
+          "detail": "____工作周报"
+        },
+        "工作总结 标题占位": {
+          "pass": true,
+          "detail": "____2026年9月工作总结"
+        }
+      }
+    },
+    "treatment-rep1": {
+      "assertion_pass": true,
+      "detail": "9 锚点",
+      "anchors": {
+        "单元产物": {
+          "pass": true,
+          "detail": "2 单元"
+        },
+        "标题居中": {
+          "pass": true,
+          "detail": "____工作周报… CENTER (1)"
+        },
+        "正文缩进200": {
+          "pass": true,
+          "detail": "3 个实质段落"
+        },
+        "落款右对齐": {
+          "pass": true,
+          "detail": "报送日期：2026-09-28"
+        },
+        "fields.json 台账结构": {
+          "pass": true,
+          "detail": "['fields', 'filled_fields', 'missing_fields', 'outputs', 'summary', 'template', 'title']"
+        },
+        "空列表占位条目": {
+          "pass": true,
+          "detail": "周报占位"
+        },
+        "字符串列表单项化": {
+          "pass": true,
+          "detail": "工作回顾值"
+        },
+        "周报 标题占位": {
+          "pass": true,
+          "detail": "____工作周报"
+        },
+        "工作总结 标题占位": {
+          "pass": true,
+          "detail": "____2026年9月工作总结"
+        }
+      }
+    },
+    "baseline-rep2": {
+      "assertion_pass": false,
+      "detail": "9 锚点",
+      "anchors": {
+        "单元产物": {
+          "pass": true,
+          "detail": "2 单元"
+        },
+        "标题居中": {
+          "pass": true,
+          "detail": "____工作周报… CENTER (1)"
+        },
+        "正文缩进200": {
+          "pass": false,
+          "detail": "2 个实质段落"
+        },
+        "落款右对齐": {
+          "pass": true,
+          "detail": "报送日期：2026-09-28"
+        },
+        "fields.json 台账结构": {
+          "pass": true,
+          "detail": "['data_source', 'fields', 'omitted_sections', 'sections', 'signature', 'template', 'title', 'unit']"
+        },
+        "空列表占位条目": {
+          "pass": true,
+          "detail": "周报占位"
+        },
+        "字符串列表单项化": {
+          "pass": true,
+          "detail": "工作回顾值"
+        },
+        "周报 标题占位": {
+          "pass": true,
+          "detail": "____工作周报"
+        },
+        "工作总结 标题占位": {
+          "pass": true,
+          "detail": "____2026年9月工作总结"
+        }
+      }
+    },
+    "treatment-rep2": {
+      "assertion_pass": true,
+      "detail": "9 锚点",
+      "anchors": {
+        "单元产物": {
+          "pass": true,
+          "detail": "2 单元"
+        },
+        "标题居中": {
+          "pass": true,
+          "detail": "____工作周报… CENTER (1)"
+        },
+        "正文缩进200": {
+          "pass": true,
+          "detail": "3 个实质段落"
+        },
+        "落款右对齐": {
+          "pass": true,
+          "detail": "报送日期：2026-09-28"
+        },
+        "fields.json 台账结构": {
+          "pass": true,
+          "detail": "['fields', 'filled_fields', 'missing_fields', 'outputs', 'summary', 'template', 'title']"
+        },
+        "空列表占位条目": {
+          "pass": true,
+          "detail": "周报占位"
+        },
+        "字符串列表单项化": {
+          "pass": true,
+          "detail": "工作回顾值"
+        },
+        "周报 标题占位": {
+          "pass": true,
+          "detail": "____工作周报"
+        },
+        "工作总结 标题占位": {
+          "pass": true,
+          "detail": "____2026年9月工作总结"
+        }
+      }
+    }
+  },
+  "office-templates|ab4-invalid-input-rejection": {
+    "baseline-rep1": {
+      "assertion_pass": true,
+      "detail": "7 锚点",
+      "anchors": {
+        "单元产物": {
+          "pass": true,
+          "detail": "1 单元"
+        },
+        "标题居中": {
+          "pass": true,
+          "detail": "研发部工作周报… CENTER (1)"
+        },
+        "正文缩进200": {
+          "pass": true,
+          "detail": "10 个实质段落"
+        },
+        "落款右对齐": {
+          "pass": true,
+          "detail": "2026-09-28"
+        },
+        "fields.json 台账结构": {
+          "pass": true,
+          "detail": "['case', 'fields', 'filled_fields', 'missing_fields', 'missing_optional', 'missing_required', 'source_data', 'summary', 'template', 'title',"
+        },
+        "非法组退出码2": {
+          "pass": true,
+          "detail": "[2, 2, 2, 2]"
+        },
+        "零产物残留": {
+          "pass": true,
+          "detail": "0 组残留"
+        }
+      }
+    },
+    "treatment-rep1": {
+      "assertion_pass": true,
+      "detail": "7 锚点",
+      "anchors": {
+        "单元产物": {
+          "pass": true,
+          "detail": "1 单元"
+        },
+        "标题居中": {
+          "pass": true,
+          "detail": "研发部工作周报… CENTER (1)"
+        },
+        "正文缩进200": {
+          "pass": true,
+          "detail": "8 个实质段落"
+        },
+        "落款右对齐": {
+          "pass": true,
+          "detail": "报送日期：2026-09-28"
+        },
+        "fields.json 台账结构": {
+          "pass": true,
+          "detail": "['fields', 'filled_fields', 'missing_fields', 'outputs', 'summary', 'template', 'title']"
+        },
+        "非法组退出码2": {
+          "pass": true,
+          "detail": "[2, 2, 2, 2]"
+        },
+        "零产物残留": {
+          "pass": true,
+          "detail": "0 组残留"
+        }
+      }
+    },
+    "baseline-rep2": {
+      "assertion_pass": true,
+      "detail": "7 锚点",
+      "anchors": {
+        "单元产物": {
+          "pass": true,
+          "detail": "1 单元"
+        },
+        "标题居中": {
+          "pass": true,
+          "detail": "研发部工作周报… CENTER (1)"
+        },
+        "正文缩进200": {
+          "pass": true,
+          "detail": "9 个实质段落"
+        },
+        "落款右对齐": {
+          "pass": true,
+          "detail": "2026-09-28"
+        },
+        "fields.json 台账结构": {
+          "pass": true,
+          "detail": "['case', 'fields', 'filled_count', 'filled_fields', 'missing_count', 'missing_fields', 'required', 'source', 'template', 'unknown_count', 'u"
+        },
+        "非法组退出码2": {
+          "pass": true,
+          "detail": "[2, 2, 2, 2]"
+        },
+        "零产物残留": {
+          "pass": true,
+          "detail": "0 组残留"
+        }
+      }
+    },
+    "treatment-rep2": {
+      "assertion_pass": true,
+      "detail": "6 锚点",
+      "anchors": {
+        "单元产物": {
+          "pass": true,
+          "detail": "1 单元"
+        },
+        "标题居中": {
+          "pass": true,
+          "detail": "研发部工作周报… CENTER (1)"
+        },
+        "正文缩进200": {
+          "pass": true,
+          "detail": "8 个实质段落"
+        },
+        "落款右对齐": {
+          "pass": true,
+          "detail": "报送日期：2026-09-28"
+        },
+        "fields.json 台账结构": {
+          "pass": true,
+          "detail": "['fields', 'filled_fields', 'missing_fields', 'outputs', 'summary', 'template', 'title']"
+        },
+        "非法组记录": {
+          "pass": null,
+          "detail": "run_log 无显式非法组标记（N=6）"
+        }
+      }
+    }
+  },
+  "office-templates|ab5-determinism-layout-selfeval": {
+    "baseline-rep1": {
+      "assertion_pass": false,
+      "detail": "6 锚点",
+      "anchors": {
+        "单元产物": {
+          "pass": true,
+          "detail": "1 单元"
+        },
+        "标题居中": {
+          "pass": true,
+          "detail": "关于召开三季度质量评审会的通知… CENTER (1)"
+        },
+        "正文缩进200": {
+          "pass": false,
+          "detail": "11 个实质段落"
+        },
+        "落款右对齐": {
+          "pass": true,
+          "detail": "2026年9月28日"
+        },
+        "fields.json 台账结构": {
+          "pass": true,
+          "detail": "['data', 'filled_fields', 'missing_fields', 'outputs', 'template']"
+        },
+        "两遍哈希记录": {
+          "pass": true,
+          "detail": "run_log 含哈希与一致性结论"
+        }
+      }
+    },
+    "treatment-rep1": {
+      "assertion_pass": true,
+      "detail": "6 锚点",
+      "anchors": {
+        "单元产物": {
+          "pass": true,
+          "detail": "1 单元"
+        },
+        "标题居中": {
+          "pass": true,
+          "detail": "关于召开三季度质量评审会的通知… CENTER (1)"
+        },
+        "正文缩进200": {
+          "pass": true,
+          "detail": "10 个实质段落"
+        },
+        "落款右对齐": {
+          "pass": true,
+          "detail": "2026年9月28日"
+        },
+        "fields.json 台账结构": {
+          "pass": true,
+          "detail": "['fields', 'filled_fields', 'missing_fields', 'outputs', 'summary', 'template', 'title']"
+        },
+        "两遍哈希记录": {
+          "pass": true,
+          "detail": "run_log 含哈希与一致性结论"
+        }
+      }
+    },
+    "baseline-rep2": {
+      "assertion_pass": false,
+      "detail": "6 锚点",
+      "anchors": {
+        "单元产物": {
+          "pass": true,
+          "detail": "1 单元"
+        },
+        "标题居中": {
+          "pass": true,
+          "detail": "关于召开三季度质量评审会的通知… CENTER (1)"
+        },
+        "正文缩进200": {
+          "pass": false,
+          "detail": "11 个实质段落"
+        },
+        "落款右对齐": {
+          "pass": true,
+          "detail": "2026年9月28日"
+        },
+        "fields.json 台账结构": {
+          "pass": true,
+          "detail": "['fields', 'filled_fields', 'missing_fields', 'outputs', 'template']"
+        },
+        "两遍哈希记录": {
+          "pass": true,
+          "detail": "run_log 含哈希与一致性结论"
+        }
+      }
+    },
+    "treatment-rep2": {
+      "assertion_pass": true,
+      "detail": "6 锚点",
+      "anchors": {
+        "单元产物": {
+          "pass": true,
+          "detail": "1 单元"
+        },
+        "标题居中": {
+          "pass": true,
+          "detail": "关于召开三季度质量评审会的通知… CENTER (1)"
+        },
+        "正文缩进200": {
+          "pass": true,
+          "detail": "10 个实质段落"
+        },
+        "落款右对齐": {
+          "pass": true,
+          "detail": "2026年9月28日"
+        },
+        "fields.json 台账结构": {
+          "pass": true,
+          "detail": "['fields', 'filled_fields', 'missing_fields', 'outputs', 'summary', 'template', 'title']"
+        },
+        "两遍哈希记录": {
+          "pass": true,
+          "detail": "run_log 含哈希与一致性结论"
+        }
+      }
+    }
+  },
+  "hot-templates|ab-001": {
+    "baseline-rep1": {
+      "assertion_pass": true,
+      "detail": "6 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=6 sum=6"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "六要素顺序": {
+          "pass": true,
+          "detail": "['hook_3s', 'pain_point', 'value_1', 'value_2', 'value_3', 'cta']"
+        },
+        "钩子CTA非空": {
+          "pass": true,
+          "detail": ""
+        },
+        "卖点填充": {
+          "pass": true,
+          "detail": "filled_from_input 齐且无未填充价值点占位"
+        }
+      }
+    },
+    "treatment-rep1": {
+      "assertion_pass": true,
+      "detail": "6 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=6 sum=6"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "六要素顺序": {
+          "pass": true,
+          "detail": "['hook_3s', 'pain_point', 'value_1', 'value_2', 'value_3', 'cta']"
+        },
+        "钩子CTA非空": {
+          "pass": true,
+          "detail": ""
+        },
+        "卖点填充": {
+          "pass": true,
+          "detail": "filled_from_input 齐且无未填充价值点占位"
+        }
+      }
+    },
+    "baseline-rep2": {
+      "assertion_pass": false,
+      "detail": "4 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "六要素顺序": {
+          "pass": false,
+          "detail": "[]"
+        },
+        "钩子CTA非空": {
+          "pass": false,
+          "detail": ""
+        },
+        "卖点填充": {
+          "pass": false,
+          "detail": "filled_from_input 齐且无未填充价值点占位"
+        }
+      }
+    },
+    "treatment-rep2": {
+      "assertion_pass": true,
+      "detail": "6 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=6 sum=6"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "六要素顺序": {
+          "pass": true,
+          "detail": "['hook_3s', 'pain_point', 'value_1', 'value_2', 'value_3', 'cta']"
+        },
+        "钩子CTA非空": {
+          "pass": true,
+          "detail": ""
+        },
+        "卖点填充": {
+          "pass": true,
+          "detail": "filled_from_input 齐且无未填充价值点占位"
+        }
+      }
+    },
+    "baseline-rep3": {
+      "assertion_pass": true,
+      "detail": "6 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=6 sum=6"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "六要素顺序": {
+          "pass": true,
+          "detail": "['hook_3s', 'pain_point', 'value_1', 'value_2', 'value_3', 'cta']"
+        },
+        "钩子CTA非空": {
+          "pass": true,
+          "detail": ""
+        },
+        "卖点填充": {
+          "pass": true,
+          "detail": "filled_from_input 齐且无未填充价值点占位"
+        }
+      }
+    },
+    "treatment-rep3": {
+      "assertion_pass": true,
+      "detail": "6 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=6 sum=6"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "六要素顺序": {
+          "pass": true,
+          "detail": "['hook_3s', 'pain_point', 'value_1', 'value_2', 'value_3', 'cta']"
+        },
+        "钩子CTA非空": {
+          "pass": true,
+          "detail": ""
+        },
+        "卖点填充": {
+          "pass": true,
+          "detail": "filled_from_input 齐且无未填充价值点占位"
+        }
+      }
+    }
+  },
+  "hot-templates|ab-002": {
+    "baseline-rep1": {
+      "assertion_pass": false,
+      "detail": "6 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "七要素": {
+          "pass": false,
+          "detail": "['title', 'emoji_rules', 'hook_block', 'point_block_1', 'point_block_2', 'point_block_3', 'point_block_4', 'point_block_5', 'summary_block', 'tag_group']"
+        },
+        "标题数字emoji": {
+          "pass": false,
+          "detail": "租房前必看｜5 个避坑细节，少踩一个都算赢 🏠"
+        },
+        "截断策略": {
+          "pass": false,
+          "detail": "used=['签约前查房东房产证与身份证一致性', '押金条款写明退还条件与时限', '入 unused=0"
+        },
+        "标签组": {
+          "pass": true,
+          "detail": "8 个#"
+        },
+        "emoji映射": {
+          "pass": false,
+          "detail": "meta.emoji 冻结映射"
+        }
+      }
+    },
+    "treatment-rep1": {
+      "assertion_pass": true,
+      "detail": "8 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=7 sum=7"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "七要素": {
+          "pass": true,
+          "detail": "['title', 'hook_block', 'point_block_1', 'point_block_2', 'point_block_3', 'summary_block', 'tag_group']"
+        },
+        "标题数字emoji": {
+          "pass": true,
+          "detail": "🔥亲测有效｜租房避坑指南的3个方法，【占位:目标人群，如：打"
+        },
+        "截断策略": {
+          "pass": true,
+          "detail": "used=['签约前查房东房产证与身份证一致性', '押金条款写明退还条件与时限', '入 unused=2"
+        },
+        "标签组": {
+          "pass": true,
+          "detail": "6 个#"
+        },
+        "emoji映射": {
+          "pass": true,
+          "detail": "meta.emoji 冻结映射"
+        }
+      }
+    },
+    "baseline-rep2": {
+      "assertion_pass": true,
+      "detail": "8 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=7 sum=7"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "七要素": {
+          "pass": true,
+          "detail": "['title', 'hook_block', 'point_block_1', 'point_block_2', 'point_block_3', 'summary_block', 'tag_group']"
+        },
+        "标题数字emoji": {
+          "pass": true,
+          "detail": "🔥亲测有效｜租房避坑指南的3个方法，【占位:目标人群，如：打"
+        },
+        "截断策略": {
+          "pass": true,
+          "detail": "used=['签约前查房东房产证与身份证一致性', '押金条款写明退还条件与时限', '入 unused=2"
+        },
+        "标签组": {
+          "pass": true,
+          "detail": "6 个#"
+        },
+        "emoji映射": {
+          "pass": true,
+          "detail": "meta.emoji 冻结映射"
+        }
+      }
+    },
+    "treatment-rep2": {
+      "assertion_pass": true,
+      "detail": "8 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=7 sum=7"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "七要素": {
+          "pass": true,
+          "detail": "['title', 'hook_block', 'point_block_1', 'point_block_2', 'point_block_3', 'summary_block', 'tag_group']"
+        },
+        "标题数字emoji": {
+          "pass": true,
+          "detail": "🔥亲测有效｜租房避坑指南的3个方法，【占位:目标人群，如：打"
+        },
+        "截断策略": {
+          "pass": true,
+          "detail": "used=['签约前查房东房产证与身份证一致性', '押金条款写明退还条件与时限', '入 unused=2"
+        },
+        "标签组": {
+          "pass": true,
+          "detail": "6 个#"
+        },
+        "emoji映射": {
+          "pass": true,
+          "detail": "meta.emoji 冻结映射"
+        }
+      }
+    },
+    "baseline-rep3": {
+      "assertion_pass": false,
+      "detail": "6 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "七要素": {
+          "pass": false,
+          "detail": "[]"
+        },
+        "标题数字emoji": {
+          "pass": false,
+          "detail": ""
+        },
+        "截断策略": {
+          "pass": false,
+          "detail": "used=None unused=0"
+        },
+        "标签组": {
+          "pass": false,
+          "detail": "0 个#"
+        },
+        "emoji映射": {
+          "pass": false,
+          "detail": "meta.emoji 冻结映射"
+        }
+      }
+    },
+    "treatment-rep3": {
+      "assertion_pass": true,
+      "detail": "8 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=7 sum=7"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "七要素": {
+          "pass": true,
+          "detail": "['title', 'hook_block', 'point_block_1', 'point_block_2', 'point_block_3', 'summary_block', 'tag_group']"
+        },
+        "标题数字emoji": {
+          "pass": true,
+          "detail": "🔥亲测有效｜租房避坑指南的3个方法，【占位:目标人群，如：打"
+        },
+        "截断策略": {
+          "pass": true,
+          "detail": "used=['签约前查房东房产证与身份证一致性', '押金条款写明退还条件与时限', '入 unused=2"
+        },
+        "标签组": {
+          "pass": true,
+          "detail": "6 个#"
+        },
+        "emoji映射": {
+          "pass": true,
+          "detail": "meta.emoji 冻结映射"
+        }
+      }
+    }
+  },
+  "hot-templates|ab-003": {
+    "baseline-rep1": {
+      "assertion_pass": true,
+      "detail": "6 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=13 sum=13"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "五要素三段论": {
+          "pass": true,
+          "detail": "['lead_in', 'thesis_what', 'thesis_why', 'thesis_how', 'golden_ending']"
+        },
+        "零卖点占位": {
+          "pass": true,
+          "detail": "[None, None, None]"
+        },
+        "金句收尾": {
+          "pass": true,
+          "detail": ""
+        }
+      }
+    },
+    "treatment-rep1": {
+      "assertion_pass": true,
+      "detail": "6 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=13 sum=13"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "五要素三段论": {
+          "pass": true,
+          "detail": "['lead_in', 'thesis_what', 'thesis_why', 'thesis_how', 'golden_ending']"
+        },
+        "零卖点占位": {
+          "pass": true,
+          "detail": "[None, None, None]"
+        },
+        "金句收尾": {
+          "pass": true,
+          "detail": ""
+        }
+      }
+    },
+    "baseline-rep2": {
+      "assertion_pass": true,
+      "detail": "6 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=13 sum=13"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "五要素三段论": {
+          "pass": true,
+          "detail": "['lead_in', 'thesis_what', 'thesis_why', 'thesis_how', 'golden_ending']"
+        },
+        "零卖点占位": {
+          "pass": true,
+          "detail": "[None, None, None]"
+        },
+        "金句收尾": {
+          "pass": true,
+          "detail": ""
+        }
+      }
+    },
+    "treatment-rep2": {
+      "assertion_pass": true,
+      "detail": "6 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=13 sum=13"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "五要素三段论": {
+          "pass": true,
+          "detail": "['lead_in', 'thesis_what', 'thesis_why', 'thesis_how', 'golden_ending']"
+        },
+        "零卖点占位": {
+          "pass": true,
+          "detail": "[None, None, None]"
+        },
+        "金句收尾": {
+          "pass": true,
+          "detail": ""
+        }
+      }
+    },
+    "baseline-rep3": {
+      "assertion_pass": false,
+      "detail": "4 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "五要素三段论": {
+          "pass": false,
+          "detail": "[]"
+        },
+        "零卖点占位": {
+          "pass": false,
+          "detail": "None"
+        },
+        "金句收尾": {
+          "pass": false,
+          "detail": ""
+        }
+      }
+    },
+    "treatment-rep3": {
+      "assertion_pass": true,
+      "detail": "6 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=13 sum=13"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "五要素三段论": {
+          "pass": true,
+          "detail": "['lead_in', 'thesis_what', 'thesis_why', 'thesis_how', 'golden_ending']"
+        },
+        "零卖点占位": {
+          "pass": true,
+          "detail": "[None, None, None]"
+        },
+        "金句收尾": {
+          "pass": true,
+          "detail": ""
+        }
+      }
+    }
+  },
+  "hot-templates|ab-004": {
+    "baseline-rep1": {
+      "assertion_pass": false,
+      "detail": "6 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "六镜": {
+          "pass": false,
+          "detail": "[]"
+        },
+        "表头四列": {
+          "pass": false,
+          "detail": ""
+        },
+        "冻结时间轴": {
+          "pass": false,
+          "detail": ""
+        },
+        "缺失槽位": {
+          "pass": false,
+          "detail": ""
+        },
+        "分镜总表": {
+          "pass": false,
+          "detail": ""
+        }
+      }
+    },
+    "treatment-rep1": {
+      "assertion_pass": true,
+      "detail": "8 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=16 sum=16"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "六镜": {
+          "pass": true,
+          "detail": "['shot_1', 'shot_2', 'shot_3', 'shot_4', 'shot_5', 'shot_6']"
+        },
+        "表头四列": {
+          "pass": true,
+          "detail": ""
+        },
+        "冻结时间轴": {
+          "pass": true,
+          "detail": ""
+        },
+        "缺失槽位": {
+          "pass": true,
+          "detail": ""
+        },
+        "分镜总表": {
+          "pass": true,
+          "detail": ""
+        }
+      }
+    },
+    "baseline-rep2": {
+      "assertion_pass": true,
+      "detail": "8 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=6 sum=6"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "六镜": {
+          "pass": true,
+          "detail": "['shot_1', 'shot_2', 'shot_3', 'shot_4', 'shot_5', 'shot_6']"
+        },
+        "表头四列": {
+          "pass": true,
+          "detail": ""
+        },
+        "冻结时间轴": {
+          "pass": true,
+          "detail": ""
+        },
+        "缺失槽位": {
+          "pass": true,
+          "detail": ""
+        },
+        "分镜总表": {
+          "pass": true,
+          "detail": ""
+        }
+      }
+    },
+    "treatment-rep2": {
+      "assertion_pass": true,
+      "detail": "8 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=16 sum=16"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "六镜": {
+          "pass": true,
+          "detail": "['shot_1', 'shot_2', 'shot_3', 'shot_4', 'shot_5', 'shot_6']"
+        },
+        "表头四列": {
+          "pass": true,
+          "detail": ""
+        },
+        "冻结时间轴": {
+          "pass": true,
+          "detail": ""
+        },
+        "缺失槽位": {
+          "pass": true,
+          "detail": ""
+        },
+        "分镜总表": {
+          "pass": true,
+          "detail": ""
+        }
+      }
+    },
+    "baseline-rep3": {
+      "assertion_pass": true,
+      "detail": "8 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=16 sum=16"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "六镜": {
+          "pass": true,
+          "detail": "['shot_1', 'shot_2', 'shot_3', 'shot_4', 'shot_5', 'shot_6']"
+        },
+        "表头四列": {
+          "pass": true,
+          "detail": ""
+        },
+        "冻结时间轴": {
+          "pass": true,
+          "detail": ""
+        },
+        "缺失槽位": {
+          "pass": true,
+          "detail": ""
+        },
+        "分镜总表": {
+          "pass": true,
+          "detail": ""
+        }
+      }
+    },
+    "treatment-rep3": {
+      "assertion_pass": true,
+      "detail": "8 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=16 sum=16"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "六镜": {
+          "pass": true,
+          "detail": "['shot_1', 'shot_2', 'shot_3', 'shot_4', 'shot_5', 'shot_6']"
+        },
+        "表头四列": {
+          "pass": true,
+          "detail": ""
+        },
+        "冻结时间轴": {
+          "pass": true,
+          "detail": ""
+        },
+        "缺失槽位": {
+          "pass": true,
+          "detail": ""
+        },
+        "分镜总表": {
+          "pass": true,
+          "detail": ""
+        }
+      }
+    }
+  },
+  "hot-templates|ab-005": {
+    "baseline-rep1": {
+      "assertion_pass": true,
+      "detail": "6 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=6 sum=6"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "确定性双跑逐字节": {
+          "pass": true,
+          "detail": "run1=155c8b03d436 run2=155c8b03d436"
+        },
+        "失败路径": {
+          "pass": true,
+          "detail": ""
+        },
+        "成功路径": {
+          "pass": true,
+          "detail": ""
+        }
+      }
+    },
+    "treatment-rep1": {
+      "assertion_pass": true,
+      "detail": "6 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=6 sum=6"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "确定性双跑逐字节": {
+          "pass": true,
+          "detail": "run1=155c8b03d436 run2=155c8b03d436"
+        },
+        "失败路径": {
+          "pass": true,
+          "detail": ""
+        },
+        "成功路径": {
+          "pass": true,
+          "detail": ""
+        }
+      }
+    },
+    "baseline-rep2": {
+      "assertion_pass": true,
+      "detail": "6 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=6 sum=6"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "确定性双跑逐字节": {
+          "pass": true,
+          "detail": "run1=155c8b03d436 run2=155c8b03d436"
+        },
+        "失败路径": {
+          "pass": true,
+          "detail": ""
+        },
+        "成功路径": {
+          "pass": true,
+          "detail": ""
+        }
+      }
+    },
+    "treatment-rep2": {
+      "assertion_pass": true,
+      "detail": "6 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=6 sum=6"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "确定性双跑逐字节": {
+          "pass": true,
+          "detail": "run1=155c8b03d436 run2=155c8b03d436"
+        },
+        "失败路径": {
+          "pass": true,
+          "detail": ""
+        },
+        "成功路径": {
+          "pass": true,
+          "detail": ""
+        }
+      }
+    },
+    "baseline-rep3": {
+      "assertion_pass": true,
+      "detail": "6 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=6 sum=6"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "确定性双跑逐字节": {
+          "pass": true,
+          "detail": "run1=155c8b03d436 run2=155c8b03d436"
+        },
+        "失败路径": {
+          "pass": true,
+          "detail": ""
+        },
+        "成功路径": {
+          "pass": true,
+          "detail": ""
+        }
+      }
+    },
+    "treatment-rep3": {
+      "assertion_pass": true,
+      "detail": "6 锚点",
+      "anchors": {
+        "无模板残留": {
+          "pass": true,
+          "detail": "无 {{ }}"
+        },
+        "占位统计自洽": {
+          "pass": true,
+          "detail": "total=6 sum=6"
+        },
+        "骨架统计节": {
+          "pass": true,
+          "detail": "「占位符统计」节在位"
+        },
+        "确定性双跑逐字节": {
+          "pass": true,
+          "detail": "run1=155c8b03d436 run2=155c8b03d436"
+        },
+        "失败路径": {
+          "pass": true,
+          "detail": ""
+        },
+        "成功路径": {
+          "pass": true,
+          "detail": ""
+        }
+      }
+    }
+  }
+}

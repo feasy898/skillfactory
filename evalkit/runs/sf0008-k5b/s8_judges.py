@@ -73,7 +73,7 @@ def docx_facts(path):
         for r in p.runs[:6]:
             sz = r.font.size.pt if r.font.size else None
             east = None
-            rPr = r._p.rPr
+            rPr = r._r.rPr
             if rPr is not None:
                 rf = rPr.find(qn("w:rFonts"))
                 if rf is not None:

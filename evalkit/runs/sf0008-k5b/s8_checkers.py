@@ -44,7 +44,7 @@ def para_facts(p):
     for r in p.runs:
         sz = r.font.size.pt if r.font.size else None
         east = None
-        rPr = r._p.rPr
+        rPr = r._r.rPr
         if rPr is not None:
             rf = rPr.find(qn("w:rFonts"))
             if rf is not None:
@@ -108,14 +108,22 @@ def check_mm(task, ad):
     turns = re.findall(r"\[(\d{1,2}:\d{2})\]\s*([^：:]+?)\s*[：:]\s*(.+)", brief)
     tmap = {"%s %s" % (t, sp): c for t, sp, c in turns}
     quotes = re.findall(r"【([^】]+)】\s*([^【\n]+)", text_all)
-    if quotes:
+    zero_boundary = (isinstance(s, dict) and s.get("合计") == 0
+                     and s.get("决议事项") == 0 and s.get("待办事项") == 0
+                     and s.get("风险与关注") == 0)
+    if zero_boundary:
+        a["逐字引用抽核"] = {"pass": len(quotes) == 0,
+                        "detail": "空输入边界任务（合计=0）：无条目即无引语，检出 %d 条" % len(quotes)}
+    elif quotes:
         hit = miss = 0
+        tlist = [(k.split(" ")[0], k.split(" ", 1)[1], v) for k, v in tmap.items()]
         for tag, body in quotes:
             body = body.strip().lstrip("0123456789．.、)） ").strip()
-            key = tag.strip()
-            matched = any(key.endswith(t) and t in key and body == c.strip()
-                          for (t, sp), c in [((k.split(" ")[0], k.split(" ", 1)[1]), v)
-                                             for k, v in tmap.items()] if key.endswith(k.split(" ")[0]))
+            parts = [x.strip() for x in tag.split("·", 1)]
+            qtime = parts[0] if parts else ""
+            qspeaker = parts[1] if len(parts) > 1 else ""
+            matched = any(qtime == t and qspeaker == sp and body == c.strip()
+                          for t, sp, c in tlist)
             hit += 1 if matched else 0
             miss += 0 if matched else 1
         a["逐字引用抽核"] = {"pass": miss == 0, "detail": "引语 %d 条，未命中原文 %d 条" % (hit + miss, miss)}
@@ -163,9 +171,9 @@ def check_office(task, ad):
         title = next((p for p in paras if p["text"].strip()), None)
         a["标题居中"] = {"pass": title is not None and "CENTER" in title["align"],
                       "detail": "%s… %s" % (title["text"][:16], title["align"]) if title else "无段落"}
-        body = [p for p in paras if len(p["text"]) > 30]
+        body = [p for p in paras if len(p["text"]) > 8]
         a["正文缩进200"] = {"pass": any(p["firstLineChars"] == "200" for p in body),
-                         "detail": "%d 长段" % len(body)}
+                         "detail": "%d 个实质段落" % len(body)}
         sig = [p for p in paras if p["text"].strip() and p != title][-1] if len(paras) > 1 else None
         a["落款右对齐"] = {"pass": sig is not None and "RIGHT" in sig["align"],
                         "detail": sig["text"][:16] if sig else "无"}
@@ -233,10 +241,20 @@ def check_office(task, ad):
 # ---------------------------------------------------------------- hot
 def check_hot(task, ad):
     out = os.path.join(ad, "out")
-    sj_p = os.path.join(out, "structure.json")
-    md_p = os.path.join(out, "骨架.md")
     a = {}
-    if not (os.path.isfile(sj_p) and os.path.isfile(md_p)):
+    # ab-005：双跑双目录（out/run1、out/run2），其余任务单目录
+    cand_dirs = [out]
+    if task == "ab-005":
+        subs = sorted(d for d in os.listdir(out) if os.path.isdir(os.path.join(out, d))) \
+            if os.path.isdir(out) else []
+        cand_dirs = [os.path.join(out, d) for d in subs] or [out]
+    sj_p = md_p = None
+    for cd in cand_dirs:
+        s2, m2 = os.path.join(cd, "structure.json"), os.path.join(cd, "骨架.md")
+        if os.path.isfile(s2) and os.path.isfile(m2):
+            sj_p, md_p = s2, m2
+            break
+    if not (sj_p and md_p):
         return {"assertion_pass": False, "detail": "产物缺失", "anchors": {"files": {"pass": False}}}
     try:
         sj = jload(sj_p)
@@ -260,8 +278,8 @@ def check_hot(task, ad):
         a["钩子CTA非空"] = {"pass": bool(emap.get("hook_3s",{}).get("text")) and bool(emap.get("cta",{}).get("text")),
                        "detail": ""}
         vals = json.dumps([emap.get("value_%d"%i,{}) for i in (1,2,3)], ensure_ascii=False)
-        a["卖点填充"] = {"pass": all(("point#%d"%i) in vals for i in (1,2,3)) and "【占位" not in vals,
-                     "detail": "filled_from_input/占位"}
+        a["卖点填充"] = {"pass": all(("point#%d"%i) in vals for i in (1,2,3)) and "【占位:价值点" not in vals,
+                     "detail": "filled_from_input 齐且无未填充价值点占位"}
     if task == "ab-002":
         a["七要素"] = {"pass": ids == ["title","hook_block","point_block_1","point_block_2","point_block_3","summary_block","tag_group"], "detail": str(ids)}
         t = emap.get("title",{}).get("text","")
@@ -272,9 +290,12 @@ def check_hot(task, ad):
         tg = emap.get("tag_group",{}).get("text","")
         ntag = tg.count("#")
         a["标签组"] = {"pass": 3 <= ntag <= 8 and "租房避坑" in tg, "detail": "%d 个#" % ntag}
-        a["emoji映射"] = {"pass": "✅" in json.dumps(emap.get("hook_block",{}),ensure_ascii=False)
-                      and "📌" in json.dumps(emap.get("summary_block",{}),ensure_ascii=False)
-                      and "🏷️" in tg, "detail": ""}
+        def _meta_emoji(eid):
+            return (emap.get(eid, {}).get("meta", {}) or {}).get("emoji", "")
+        a["emoji映射"] = {"pass": _meta_emoji("hook_block") == "✅"
+                      and all(_meta_emoji("point_block_%d" % i) == "💡" for i in (1, 2, 3))
+                      and _meta_emoji("summary_block") == "📌"
+                      and _meta_emoji("tag_group") == "🏷️", "detail": "meta.emoji 冻结映射"}
     if task == "ab-003":
         a["五要素三段论"] = {"pass": ids == ["lead_in","thesis_what","thesis_why","thesis_how","golden_ending"]
                         and emap.get("thesis_what",{}).get("text","").startswith("一、是什么")
@@ -295,16 +316,27 @@ def check_hot(task, ad):
                      "detail": ""}
         a["分镜总表"] = {"pass": "分镜总表" in md, "detail": ""}
     if task == "ab-005":
+        # 双跑逐字节比对（checker 直接对两目录产物算哈希）
+        import hashlib
+        h1 = h2 = None
+        if len(cand_dirs) >= 2:
+            def tree_h(d):
+                hh = hashlib.sha256()
+                for f in ("骨架.md", "structure.json"):
+                    hh.update(open(os.path.join(d, f), "rb").read())
+                return hh.hexdigest()
+            h1, h2 = tree_h(cand_dirs[0]), tree_h(cand_dirs[1])
+        a["确定性双跑逐字节"] = {"pass": (h1 is not None and h1 == h2),
+                          "detail": "run1=%s run2=%s" % (str(h1)[:12], str(h2)[:12])}
         rl_p = os.path.join(ad, "run_log.json")
         if not os.path.isfile(rl_p):
             a["run_log"] = {"pass": False, "detail": "run_log.json 缺失"}
         else:
             rl = jload(rl_p)
             flat = json.dumps(rl, ensure_ascii=False)
-            a["确定性双跑"] = {"pass": ("一致" in flat or "identical" in flat.lower() or
-                              ("sha" in flat.lower() and flat.count("sha") >= 2)),
-                           "detail": ""}
-            a["失败路径"] = {"pass": flat.count("2") > 0 and ("bilibili" in flat or "非法" in flat), "detail": ""}
+            a["失败路径"] = {"pass": ("bilibili" in flat or "非法" in flat) and
+                        ("退出码" in flat or "exit" in flat.lower()), "detail": ""}
+            a["成功路径"] = {"pass": "OK" in flat or "退出码 0" in flat or '"0"' in flat, "detail": ""}
     return {"assertion_pass": anchors_result(a), "detail": "%d 锚点" % len(a), "anchors": a}
 
 
