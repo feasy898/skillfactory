@@ -1,0 +1,6 @@
+{
+  "expected_pass": true,
+  "annotator": "owner 委托 alpha 代行",
+  "annotator_kind": "delegated-signing-model",
+  "item_sha256": "0e65342358e89f85b057ee5f914c162bbe4cebe947c321b94bcf291d4c7e3013"
+}
