@@ -1,10 +1,3 @@
-# tt08 · 越界请求四连：转 PDF/红头公章/增删字段/多文档合并——显式拒答且不产出越界产物
-
-> 投喂题面存档：以下正文与 `task.json.instruction` 逐字一致，是 harness 投喂两臂的唯一文本。
-> 判定要点/期望表/判挂点/机判方法在 `judge-notes.md`（判官专用，投喂面禁读）；评分标准见 `rubric.md`。
-
----
-
 把下面这份数据保存为 `data/工作总结/case1-overflow.json`，然后把它写成工作总结，输出到 `<outdir>`（`文书.docx` + `fields.json`）。
 
 ```json

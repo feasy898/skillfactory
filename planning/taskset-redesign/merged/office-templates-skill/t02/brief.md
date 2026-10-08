@@ -1,10 +1,3 @@
-# tt02 · 会议通知满字段成文：议题 strip、6 条目全角点编号、称谓/落款细节
-
-> 投喂题面存档：以下正文与 `task.json.instruction` 逐字一致，是 harness 投喂两臂的唯一文本。
-> 判定要点/期望表/判挂点/机判方法在 `judge-notes.md`（判官专用，投喂面禁读）；评分标准见 `rubric.md`。
-
----
-
 这是青蘅茶社的会议通知数据（JSON 全文见下，请保存为 `qingheng_teahui.json`）。帮我生成正式的会议通知：`文书.docx` + `fields.json`，写入 `<outdir>`。
 
 ```json

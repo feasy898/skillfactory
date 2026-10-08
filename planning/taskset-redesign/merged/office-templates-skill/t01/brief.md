@@ -1,10 +1,3 @@
-# tt01 · 列表规整（夹心空白项/字符串单项/值 strip）+ 交付核对报告三方可洽
-
-> 投喂题面存档：以下正文与 `task.json.instruction` 逐字一致，是 harness 投喂两臂的唯一文本。
-> 判定要点/期望表/判挂点/机判方法在 `judge-notes.md`（判官专用，投喂面禁读）；评分标准见 `rubric.md`。
-
----
-
 这是拾贝书店的周报数据（JSON 全文见下，请保存为 `shibei_week42.json`）。帮我生成本期周报，产物写入 `<outdir>`：`文书.docx` + `fields.json`。
 
 另外，交付前请照实出一份核对报告 `<outdir>/delivery-report.json`，内容以字段台账为准：`missing_required_names`、`missing_optional`、`unknown_keys`、`title` 四个键，有什么填什么，别多也别少。

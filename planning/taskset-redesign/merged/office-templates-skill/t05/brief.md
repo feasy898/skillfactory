@@ -1,10 +1,3 @@
-# tt05 · 标题公式纯代入陷阱：请示事由自带「的请示」尾缀
-
-> 投喂题面存档：以下正文与 `task.json.instruction` 逐字一致，是 harness 投喂两臂的唯一文本。
-> 判定要点/期望表/判挂点/机判方法在 `judge-notes.md`（判官专用，投喂面禁读）；评分标准见 `rubric.md`。
-
----
-
 这是澜山物业综合管理部的请示数据（JSON 全文见下，请保存为 `lanshan_miji.json`）。帮我起草这份请示函：`文书.docx` + `fields.json`，写入 `<outdir>`。
 
 ```json
