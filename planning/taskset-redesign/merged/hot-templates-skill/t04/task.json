@@ -3,7 +3,7 @@
   "id": "ht-t04",
   "package": "hot-templates-skill",
   "dim": "能力",
-  "title": "dy 冻结句式逐字 + structure.json 11 键端态契约",
+  "title": "dy 冻结句式逐字 + structure.json 11 键",
   "pass_line": 8.0,
   "design_note": "能力题。**与旧题重叠如实标注（复审第 15 条）**：本题与旧 ab-001 同平台（dy）同满 3 卖点，重叠面=dy 冻结句式本身（旧题引擎产物同样含钩子句与 CTA 句式）与结构条款；差异面=旧 ab-001 rubric 只断言『要素齐+卖点进 value 槽+自洽+无 {{}}』（钩子/CTA 只要求非空），本题升级为**逐字断言**（含全角引号「」与破折号——）+ structure.json 顶层 11 键清点 + 统计节格式端态断言。删去原 design_note『首次把 stdout OK 行作为判据』的「首次」声明（复审第 15 条：该句式在旧题产物已存在，本题新增的是逐字断言粒度，且 stdout 判分已按复审第 14 条整体移除，改端态）。c3 判 1 依据=断言粒度不同层；同平台同句式共轨如实留痕。通过线 8.0；修订后算术：主考点错 1 处（正确性 0.4 档）→ 0.76 → 7.6 必挂。复审第 6 条：占位重计口径限定 structure.json elements[].text（期望 6）。",
   "instruction": "帮我生成抖音口播的爆款内容骨架：platform=`dy`，topic=`二手书循环`，points=`[\"教材按学期末集中回收\", \"封面破损评级再定价\", \"跨界换书市集引流\"]`，产物写入 `<outdir>`（`骨架.md` + `structure.json`）。\n",

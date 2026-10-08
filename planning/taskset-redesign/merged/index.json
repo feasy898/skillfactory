@@ -1,7 +1,7 @@
 {
   "taskset": "taskset-redesign/merged",
   "date": "2026-10-09",
-  "method": "两候选（glm@704f17a / minimax@e0acd99）逐题 5 项机械判据打分（selection.tsv 留痕），同包同条款+同形态去重 17 对，并集按总分排序取每包 8 题，同分优先 glm；零模型调用；2026-10-09 按 alpha 签盲复审 16 条必修完成修订（instruction/judge-notes 物理分离、泄题清除、算术收紧、引擎实测复校，见 REVISION-LOG.md）；2026-10-09 按 alpha 第二轮签盲复审驳回结论 R1-R8 完成修订（判挂点全集 69 锚点逐条重算全部跌破通过线、rubric 公式改 0-10 刻度、brief 只留 instruction 逐字正文、office/t07 两态合规重做、ht-t08 内容口径判挂+卖点路径自然化、mm 三节标题标准串、文本更正五处、三口径哈希重算，见 REVISION-LOG.md 第二轮）",
+  "method": "两候选（glm@704f17a / minimax@e0acd99）逐题 5 项机械判据打分（selection.tsv 留痕），同包同条款+同形态去重 17 对，并集按总分排序取每包 8 题，同分优先 glm；零模型调用；2026-10-09 按 alpha 签盲复审 16 条必修完成修订（instruction/judge-notes 物理分离、泄题清除、算术收紧、引擎实测复校，见 REVISION-LOG.md）；2026-10-09 按 alpha 第二轮签盲复审驳回结论 R1-R8 完成修订（判挂点全集 69 锚点逐条重算全部跌破通过线、rubric 公式改 0-10 刻度、brief 只留 instruction 逐字正文、office/t07 两态合规重做、ht-t08 内容口径判挂+卖点路径自然化、mm 三节标题标准串、文本更正五处、三口径哈希重算，见 REVISION-LOG.md 第二轮）；2026-10-09 按 alpha 第三轮签盲复审 pass-with-changes 结论完成 5 处定点微修（mm-t05 可验证性满分档改引擎真值逐格清单、office/t07 标题采用 index 版并同步 design_note 主调、hot/t04+hot/t08+office/t08 标题对齐、hot t01/t04/t06 judge-notes 算术 0.60→6.0、index hot/t04 标题删 stdout 残留，三口径哈希重算冻结，见 REVISION-LOG.md 第三轮）",
   "source_distribution": {
     "meeting-minutes-skill": {
       "glm": 8,
@@ -34,7 +34,7 @@
       "陷阱": 2
     }
   },
-  "frozen_sha256": "ef0d2fb81ad5fcb683e8c1f17e04a6e947b96af0d2b238b4177b54c12a928c4d",
+  "frozen_sha256": "9e7f57c6f4094f184483fab0d59f61121abd82316b1779072e9e99df43c0c535",
   "frozen_sha256_cmd": "cd <ROOT> && find planning/taskset-redesign/merged -type f ! -name index.json ! -name selection.tsv ! -name 'BLIND-REVIEW*' ! -name 'REVISION-LOG.md' | sort | xargs sha256sum | sha256sum",
   "tasks": [
     {
@@ -158,7 +158,7 @@
       "sha256": {
         "task.json": "40215cf4911bc2cd4962fffb8e291e81847f507d8272b1c88d18dbaf31d1ad26",
         "brief.md": "38aba865c5b890e415bf3453dc465bb323b0527f1f2af9b790b9c45af5e19362",
-        "rubric.md": "213b2c86a059b86a6349de36be5354057e08904e1823dd6eee00a044a4112142",
+        "rubric.md": "5bc2e3ee4c94a3a27168c8cb29bc7b3ead799c3229e385017fa0a37d23af6261",
         "judge-notes.md": "40413b8ec3373360892a79b21da724a5010acee90cffcdba1dcfbd2fa3a06132"
       }
     },
@@ -406,7 +406,7 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "26a4cd4c68db92579a17a825a9fddd1958f37b9d785518bfcbafa2780c4a3963",
+        "task.json": "91c3d9187738a56a530ac291419c67225a4dd6b149070ecb5da46be9c33cdc15",
         "brief.md": "d499375a93e092a0b8bdc46437d06ba61f2f41fbb5edd72dbec53a3288301b77",
         "rubric.md": "2ee3741c61715dced690580f2ee39742bb367c2921578f4c590227e0654e84f4",
         "judge-notes.md": "d7579c17110ad01a7d0d95fc7ed9ab515237cb48014f92a52c8ec41c50140001"
@@ -431,7 +431,7 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "b8715359773f33bc02b453f34d6739f220b9a9cde1c38e8feb4cc36e23e8992d",
+        "task.json": "965b45e3c65c869326130a54303bc41cd6b595bfd7f8f61ee44f830d13118602",
         "brief.md": "a0deada33a7d3d1bea0a589beefd9014f4cc41fe82f158d768b02a90987be584",
         "rubric.md": "0b53e8c8fb312de715d8d338c0c3bfb88a6465f370eedc72c6c8fad8e1a5156f",
         "judge-notes.md": "2f6d677486b6b3126bff473bc616990eb814fe415ae122c9912c7450b32d4d98"
@@ -460,7 +460,7 @@
         "task.json": "69c41451a952ad854cc6d104b3a49c632614b0a88cede7cb61fed77f3ef4737e",
         "brief.md": "1ccc6a98877dc23b8fb68505305437a2b6a58504756c9a770292456ab7e46bfe",
         "rubric.md": "84fcadd90c8f24d32141cad026de55f45efc54f9a63a4d60b851de56125c655e",
-        "judge-notes.md": "ee6463ea1d3072b3ebeb28df399648b9b48e7cfb11c88aa07244f6642f94386d"
+        "judge-notes.md": "35b77e910d22c42f09721ed9cc0611de9fb867a1e88b4f6ad7089a9a636dfe2c"
       }
     },
     {
@@ -521,7 +521,7 @@
       "orig_tid": "t04",
       "source_designer": "glm",
       "dim": "能力",
-      "title": "dy 冻结句式逐字 + stdout OK 行契约 + structure.json 11 键",
+      "title": "dy 冻结句式逐字 + structure.json 11 键",
       "pass_line": 8.0,
       "scores": {
         "c1_判据可判定性": 1,
@@ -532,10 +532,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "a79a839abd15237b1c6ef78a14349f37be68fc56d5df725103911c2971b386a2",
+        "task.json": "61f208ed22f4b155eeb6db420820bd7b83e183d4f7fc6f3adf915516c3e4b455",
         "brief.md": "1806b9197e810fbf6f920eff8b5851f36ee25d45be211790d898d76932def895",
         "rubric.md": "83fbc60ddea2181b94ed7d0d5ecd88909fd87b4b6a34c3108ba411df3c63059c",
-        "judge-notes.md": "c4d729b0950adf960fa3528cfae549cead0af5fa1a60b2761a216948ae3c56ea"
+        "judge-notes.md": "d1988b8a3e39a50abd4a9f23460f1e88e883e08e34733838f8d79a0276f864b2"
       }
     },
     {
@@ -585,7 +585,7 @@
         "task.json": "3fd424f346ee93196ea0318deadef7d7fb525ad70ededfa0a4230aa298b5e225",
         "brief.md": "1472b65febce2b21e4df2d47cb9d30a51d49d08721ddc3d1602b3e148f2dd99c",
         "rubric.md": "e0d71d58be4395d61628270e3132ffc4bd3716cc820ffb9e6370a5fdbffeec31",
-        "judge-notes.md": "4aab2fa0f8cbe5cc0947a0d7cfc0e9cd8234b335b219361876ea8ee9e41e3036"
+        "judge-notes.md": "2386b4ab5284956f9b40d0fe5ceb6f6777df3674c1421f73fc9f7e3ee6db984b"
       }
     },
     {
@@ -633,7 +633,7 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "45861c0bb722aa7c7bcfcf3ba77c650711e915a84bdc9d34656733bc5a469d8f",
+        "task.json": "8d97bf9c0e15664a812a0397df9766d60be68233a489b2adf59f344354e814e3",
         "brief.md": "7af21f92df63bcf2b67816fcf8c2cec71ed6257e8d6ad83600979725c21cde12",
         "rubric.md": "440cba36911e6e5ab1f8c965ec949d57f6d6af198c619e943fa003994647dd87",
         "judge-notes.md": "7e3144d4b1b15813ecf3bd39af897b4bcf52fae15c496819a5099b7f80d50acb"
@@ -834,19 +834,28 @@
       "reason": "落选(名额)：9 个 4 分题竞争 8 席，与同源 t07 同分，按机制多样性+同源题号序取 t07"
     }
   ],
-  "frozen_sha256_scope": "96 个任务文件（task.json/brief.md/rubric.md/judge-notes.md，24 题×4）；index.json 与 selection.tsv 为清单不在净荷内。哈希口径=原冻结命令（find … ! -name index.json ! -name selection.tsv ! -name 'BLIND-REVIEW*' ! -name 'REVISION-LOG.md' | sort | xargs sha256sum | sha256sum，含仓库相对路径行）。口径沿革：修订前 72 文件=59203e0eb2665d9fda909a78d7d49874d6588756df6903b478863bfc8e88d976（git 2ef698c）；第一轮修订后 96 文件=2a931037e08198ca62bfbbf5438b2b8b6fb63525c7038681d71b2c46aa997bcc、72 文件可比=91863b1f1c1137f7372b72ccae7bdcec6016f69048d52213cd18c1f9d8c56ef1；第二轮修订后（现值）96 文件=ef0d2fb81ad5fcb683e8c1f17e04a6e947b96af0d2b238b4177b54c12a928c4d、72 文件可比=968d79854c3fa217a05ad5b3af151823333ba2674189d7b038655bc35b3c021e（见 REVISION-LOG.md 第二轮）。",
-  "frozen_sha256_72file_scope": "968d79854c3fa217a05ad5b3af151823333ba2674189d7b038655bc35b3c021e",
-  "revision": {
-    "date": "2026-10-09（第二轮）",
-    "basis": "alpha 第二轮签盲复审驳回结论 R1-R8（BLIND-REVIEW-v2-20261009.md，本轮在盘，与上轮报告文件缺席情形不同）",
-    "items": "8/8 执行：R1 判挂点全集 69 锚点逐条重算全部跌破通过线（清单 anchor_scores 清单见 /tmp/calib_taskset_r2/ 与 REVISION-LOG 第二轮自证表）、R2 公式 24 份、R3 brief 24 份、R4 office/t07、R5 ht-t08、R6 mm×8、R7 文本五处、R8 本哈希重算；逐条前后对照见 REVISION-LOG.md 第二轮节",
-    "selfcheck": "自证 EXIT=0：判挂点全集 69 锚点重算全 < 通过线；净化/分离断言过；引擎真值 9 组实跑一致；py_compile+25 JSON 合法",
-    "file_schema": "每题 4 文件：task.json（含 instruction 字段=两臂唯一投喂文本；title=题目标题存档）/brief.md（仅 instruction 逐字正文，无标题无说明头）/rubric.md（公式=10 × Σ(维度分×权重)/Σ权重，0-10 刻度舍 1 位）/judge-notes.md（判官专用判据，判挂点带 ⟦三维档位⟧ 结构化标注）"
-  },
+  "frozen_sha256_scope": "三个冻结口径，均以仓库根为 cwd、哈希含 sha256sum 输出的仓库相对路径行。（1）96 文件净荷=「find planning/taskset-redesign/merged -type f ! -name index.json ! -name selection.tsv ! -name 'BLIND-REVIEW*' ! -name 'REVISION-LOG.md' | sort | xargs sha256sum | sha256sum」，现值见 frozen_sha256；（2）72 文件可比=「find planning/taskset-redesign/merged \\( -name task.json -o -name brief.md -o -name rubric.md \\) | sort | xargs sha256sum | sha256sum」，现值见 frozen_sha256_72file_scope；（3）全树=「find planning/taskset-redesign/merged -type f | sort | xargs sha256sum | sha256sum」（含本文件/REVISION-LOG/selection/BLIND-REVIEW*），因全树含本文件自身，冻结值不可自嵌：frozen_sha256_fulltree 记录的是「把本字段值替换回哨兵 SELFREF-SENTINEL-（17 字符前缀+47 个 0，共 64 字符）后」按该命令的实测结果，验证时照此替换重跑即应复得该值；现值另留痕于冻结提交信息。口径沿革：修订前 72 文件=59203e0eb2665d9fda909a78d7d49874d6588756df6903b478863bfc8e88d976（git 2ef698c）；第一轮修订后 96=2a931037e08198ca62bfbbf5438b2b8b6fb63525c7038681d71b2c46aa997bcc、72 可比=91863b1f1c1137f7372b72ccae7bdcec6016f69048d52213cd18c1f9d8c56ef1；第二轮修订后 96=ef0d2fb81ad5fcb683e8c1f17e04a6e947b96af0d2b238b4177b54c12a928c4d、72 可比=968d79854c3fa217a05ad5b3af151823333ba2674189d7b038655bc35b3c021e；第三轮微修后（现值）96=9e7f57c6f4094f184483fab0d59f61121abd82316b1779072e9e99df43c0c535、72 可比=318af03a543a0733e1d1931c4baa74afec09318a85f3090055dea259fb4af99f、全树（哨兵态）见 frozen_sha256_fulltree。",
+  "frozen_sha256_72file_scope": "318af03a543a0733e1d1931c4baa74afec09318a85f3090055dea259fb4af99f",
   "revision_r1": {
     "date": "2026-10-09",
     "basis": "alpha 签盲复审驳回结论 16 条必修（复审报告 BLIND-REVIEW-20261009.md 计划存于本目录；本轮执行时该文件未在盘上，修订依据为任务简报内嵌的 16 条摘要，已如实登记）",
     "items": "16/16 执行，逐条前后对照见 REVISION-LOG.md",
     "file_schema": "每题 4 文件：task.json（含 instruction 字段=两臂唯一投喂文本）/brief.md（投喂题面存档）/rubric.md（评分）/judge-notes.md（判官专用判据）"
+  },
+  "frozen_sha256_fulltree": "8e132a0364770ac2591e99b4f53c458886e8d2c262e6f475bfe130bd58eae55f",
+  "frozen_note": "第三轮 pass-with-changes 微修后冻结，2026-10-09",
+  "revision": {
+    "date": "2026-10-09（第三轮，微修轮）",
+    "basis": "alpha 第三轮签盲复审 pass-with-changes 结论 5 处 requiredChanges（复审报告文件本轮未在盘上，与第一轮情形相同；修订依据为任务简报内嵌的 5 条原文，已如实登记）",
+    "items": "5/5 执行：①mm-t05 rubric 可验证性满分档改为「表格 4 行两列=（场地需要预订/待定/待定）（何莉): 值班表需要更新/待定/待定）（供暖设备巡检需要挂牌，截止到本月底/待定/本月底）（需要补充两名夜班门卫/待定/待定）逐格正确」（与 judge-notes:47 引擎实测真值一致）；②office/t07 task.json.title 采用 index 版「模板错配诱导：工作总结字段投给「周报」模板——「合理变通」即挂」并同步 design_note 主调；③hot/t04、hot/t08、office/t08 task.json.title 与 index.json.title 对齐（office/t04 经逐字节比对本已一致，零改动如实登记）；④hot t01/t04/t06 judge-notes 三处「0.60→7.0」算术误记改「→6.0」（hot/t06 复审所记行号 33 实际在第 27 行，同型修正）；⑤index.json hot/t04 标题删「stdout OK 行契约」残留（R14 端态化口径），task.json.title 同步为删后标题——24 题 title 与 index 全量核对一致",
+    "selfcheck": "自证 EXIT=0：5 处定点改全部落盘并经断言；不变量保持（24 题 brief≡instruction、25 个 JSON 合法、96 逐文件 sha256 独立复算 bad=0、判挂点算术 0+0.3+0.3=0.60→6.0 全部仍 < 通过线）；三口径哈希重算（96/72/全树哨兵态）",
+    "file_schema": "每题 4 文件：task.json（含 instruction 字段=两臂唯一投喂文本；title=题目标题存档）/brief.md（仅 instruction 逐字正文，无标题无说明头）/rubric.md（公式=10 × Σ(维度分×权重)/Σ权重，0-10 刻度舍 1 位）/judge-notes.md（判官专用判据，判挂点带 ⟦三维档位⟧ 结构化标注）"
+  },
+  "revision_r2": {
+    "date": "2026-10-09（第二轮）",
+    "basis": "alpha 第二轮签盲复审驳回结论 R1-R8（BLIND-REVIEW-v2-20261009.md，本轮在盘，与上轮报告文件缺席情形不同）",
+    "items": "8/8 执行：R1 判挂点全集 69 锚点逐条重算全部跌破通过线（清单 anchor_scores 清单见 /tmp/calib_taskset_r2/ 与 REVISION-LOG 第二轮自证表）、R2 公式 24 份、R3 brief 24 份、R4 office/t07、R5 ht-t08、R6 mm×8、R7 文本五处、R8 本哈希重算；逐条前后对照见 REVISION-LOG.md 第二轮节",
+    "selfcheck": "自证 EXIT=0：判挂点全集 69 锚点重算全 < 通过线；净化/分离断言过；引擎真值 9 组实跑一致；py_compile+25 JSON 合法",
+    "file_schema": "每题 4 文件：task.json（含 instruction 字段=两臂唯一投喂文本；title=题目标题存档）/brief.md（仅 instruction 逐字正文，无标题无说明头）/rubric.md（公式=10 × Σ(维度分×权重)/Σ权重，0-10 刻度舍 1 位）/judge-notes.md（判官专用判据，判挂点带 ⟦三维档位⟧ 结构化标注）"
   }
 }

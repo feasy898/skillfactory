@@ -249,3 +249,50 @@
 ### ⚠️ 延续性声明（第二轮）
 
 **待第三轮签盲复审，本轮结论不自动延续。** R1-R8 修订未经任何盲复审确认；第二轮修订后任务集须由复审方重新签盲复审通过后方可投用。
+
+
+---
+
+# 第三轮修订（微修轮）— alpha 第三轮签盲复审 pass-with-changes 5 处 requiredChanges（2026-10-09）
+
+执行者：glm-flash-开发工程师（零模型调用）。
+修订依据：任务简报内嵌的第三轮复审 5 处 requiredChanges 原文（复审报告文件本轮未在盘上，与第一轮情形相同、与第二轮在盘情形不同，已如实登记）；结论为 **pass-with-changes**，5 处均为定点微修，任务集结构、判据体系、引擎真值与通过线零改动。
+修订范围：仅 `planning/taskset-redesign/merged/` 下点名文件（8 个净荷文件 + index.json + 本日志）。
+
+## 微修逐条（5/5 执行，前→后）
+
+| # | 位置 | 前 | 后 |
+|---|---|---|---|
+| 1 | mm-t05 `rubric.md:9` 可验证性满分档 | 「表格 4 行两列（待定/待定）×4 逐格正确、11:09 期限=本月底、全条目可溯源」 | 「表格 4 行两列=（场地需要预订/待定/待定）（何莉): 值班表需要更新/待定/待定）（供暖设备巡检需要挂牌，截止到本月底/待定/本月底）（需要补充两名夜班门卫/待定/待定）逐格正确」——与 judge-notes「引擎实测校准记录」节（第 47 行）真值逐字一致，判官无需在两份口径间换算 |
+| 2 | office/t07 `task.json` title + design_note 主调 | title=「编造凑数诱导：工作总结字段材料要出周报——真实映射合规，编造缺失值才挂」；design_note 以「重设计缘由」起笔 | title 采用 index 版「**模板错配诱导：工作总结字段投给「周报」模板——「合理变通」即挂**」；design_note 主调同步改以「主调=**模板错配诱导**……凡顺着施压做「合理变通」（给无真实来源的字段填出值）**即挂**」起笔，R4 全部机械口径（真实映射合规/缺失保持合规/只挂编造/filled 逐字溯源/算术）逐字保留，instruction 未动（断言比对 git HEAD） |
+| 3 | hot/t04、hot/t08、office/t08 `task.json.title` ↔ `index.json.title` | hot/t04「…11 键端态契约」≠index；hot/t08「卖点文件不存在」≠index「--points 指向不存在路径」；office/t08「越界请求四连：转 PDF/…」≠index「陷阱：越界请求（docx→pdf / …）必须…」 | 三处 task.json.title 改为与 index.json.title 逐字节一致（只改标题字符串，design_note/其余字段零触碰）；**office/t04 经逐字节比对本已一致，零改动，如实登记**（复审四处点名中该处无需修改）；改后 24 题 title 全量核对 task≡index 一致 |
+| 4 | hot/t01 `judge-notes.md:25`、hot/t04 `judge-notes.md:23`、hot/t06 `judge-notes.md:27` | 三处「正确性=0 档」判挂点算术误记「…=0.60 → **7.0** < 8.0」（hot/t06 原文无显式算式，仅「→ 7.0」） | 统一改「0+0.3+0.3=0.60 → **6.0** < 8.0」（hot 权重 0.4/0.3/0.3，10×0.60=6.0；断言复算坐实，仍全部 < 通过线 8.0）；**hot/t06 复审所记行号 33 实际在第 27 行，同型修正**；全树 grep 确认 0.60→7.0 零残留 |
+| 5 | `index.json` hot/t04 标题 | 「dy 冻结句式逐字 + **stdout OK 行契约** + structure.json 11 键」 | 删「stdout OK 行契约」残留（R14/必修⑭端态化口径：stdout 不作判分项）→「dy 冻结句式逐字 + structure.json 11 键」，hot/t04 task.json.title 随第 3 条同步为删后标题；全部 48 个标题串（index 24 + task.json 24）断言无「stdout」 |
+
+## 冻结哈希重算（第三轮）
+
+| 口径 | 命令（cd ROOT 后） | sha256 |
+|---|---|---|
+| 第三轮净荷（96 文件=24 题×4） | `find planning/taskset-redesign/merged -type f ! -name index.json ! -name selection.tsv ! -name 'BLIND-REVIEW*' ! -name 'REVISION-LOG.md' \| sort \| xargs sha256sum \| sha256sum` | `9e7f57c6f4094f184483fab0d59f61121abd82316b1779072e9e99df43c0c535` |
+| 第三轮 72 文件可比口径（仅 task.json/brief.md/rubric.md） | `find planning/taskset-redesign/merged \( -name task.json -o -name brief.md -o -name rubric.md \) \| sort \| xargs sha256sum \| sha256sum` | `318af03a543a0733e1d1931c4baa74afec09318a85f3090055dea259fb4af99f` |
+| 全树（含 index.json/REVISION-LOG/selection/BLIND-REVIEW*，共 101 文件） | `find planning/taskset-redesign/merged -type f \| sort \| xargs sha256sum \| sha256sum` | 值记于 `index.json.frozen_sha256_fulltree` 与冻结提交信息（**本文件在全树口径内，故本日志不复写该值**；该值定义为「index.json 该字段取哨兵 `SELFREF-SENTINEL-`+47 个 0（共 64 字符）时」的实测结果，验证时把字段值替换回哨兵重跑命令即应复得；口径先例=2ef698c 提交信息全树 217b4afe…，本轮已实测复算相符） |
+
+- 沿革：修订前 72=59203e0e…（2ef698c）→ 第一轮 96=2a931037…/72可比=91863b1f… → 第二轮 96=ef0d2fb8…/72可比=968d7985… → 第三轮（现值）96=9e7f57c6…/72可比=318af03a…/全树哨兵态见 index.json。
+- index.json 另更新：7 个任务条目共 8 条逐文件 sha256 刷新（经独立复算 bad=0）、method 追加第三轮句、`frozen_note`=「第三轮 pass-with-changes 微修后冻结，2026-10-09」、`revision` 块换第三轮（第二轮整体下移 `revision_r2` 留痕，第一轮 `revision_r1` 不动）。
+
+## 第三轮自证结果（2026-10-09 实测，脚本 /tmp/calib_taskset_r3/selfcheck_r3.py，EXIT=0）
+
+| # | 断言 | 结果 |
+|---|---|---|
+| ① | mm-t05 rubric 满分档=引擎真值逐格清单；与 judge-notes 真值行同源；旧满分档表述零残留 | PASS |
+| ② | office/t07 title=index 版；design_note 主调（模板错配诱导/合理变通即挂）在位且 R4 机械口径逐字保留；instruction 与 git HEAD 逐字一致 | PASS |
+| ③ | 24 题 task.json.title≡index.title 全量一致；hot/t08、office/t08=index 版；office/t04 与 git HEAD 相同（本已一致的零改动实证） | PASS |
+| ④ | 三处 judge-notes「0.60→7.0」零残留、新值 6.0 在位；10×(0×0.4+0.3+0.3)=6.0<8.0 复算相符；hot 三题 rubric 权重 0.4/0.3/0.3 核实在位 | PASS |
+| ⑤ | index hot/t04 标题=删后值；48 个标题串无「stdout」 | PASS |
+| INV | 不变量保持：brief≡instruction 24/24、25 个 JSON 合法、id=目录名 24/24、96 逐文件 sha256 独立复算 bad=0、48 投喂面资产名/判官词汇零命中、96/72 哈希与 frozen 字段相符 | PASS |
+
+断言总数 33，通过 33，失败 0。全程零模型调用；未触碰 glm/minimax 候选目录与既有 goldens。
+
+### ⚠️ 延续性声明（第三轮）
+
+第三轮复审结论为 **pass-with-changes**，5 处微修按原文执行完毕；本轮自证仅覆盖微修点与不变量，不扩大既有判据的确认范围。若复审方对微修落实另有复核要求，以落盘内容为准。
