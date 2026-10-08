@@ -1,0 +1,213 @@
+{
+  "card": "SF-0008",
+  "card_source": "evidence/owner-delegated-signing-20261008.md 第三节 SF-0008（K5B-01..K5B-10 及前置）",
+  "owner_directive": "owner 2026-10-08 三族并发指令：GLM-5.3-Flash、step-router-v1、Minimax-M3.1-Flash-Preview 三族并发；裁判从与被测族无交集的族抽取、≥2 族互裁（O-7 缺口就此解除）",
+  "run_id": "sf0008-k5b",
+  "kind": "round_plan_registration",
+  "status": "registered_not_started",
+  "base_commit": "d18820523c67eaa7339361d6ece4c9abe6d57d92",
+  "base_commit_note": "本卡登记开工时 git rev-parse HEAD 实读值（P4 口径：以实际开工值为准）",
+  "opened_at": "2026-10-08T10:36+0800",
+  "preconditions": {
+    "SF-0006_A_B_passed": {
+      "met": true,
+      "evidence": [
+        "evalkit/runs/sf0006-b-smoke-2/round-report.json layers.B=passed（提交 d2a019d）",
+        "evalkit/runs/sf0006-c/round-report.json：C 层收官（提交 d188205）；A 层 gate_sf0006a 8/8 PASS（提交 29e0a25/efcf91c）"
+      ]
+    },
+    "judge_config_O7": {
+      "met": true,
+      "note": "本登记 judge_panel 一节即载体；卡面前置『本机只有 GLM/minimax 两族、≥2 族互裁可能无法满足』由 owner 三族并发指令解除"
+    },
+    "budget_approved": {
+      "met": true,
+      "note": "按 ask 公式登记落盘 evalkit/runs/sf0008-k5b/budget.json；超出登记的调用须先经 planner 批准（P5 口径）"
+    },
+    "ab_task_source_frozen": {
+      "met": true,
+      "note": "三包任务源照卡面 P 前置选定；不改 dist eval/runner.py、golden.json、rubric、ab 任务集"
+    }
+  },
+  "families": {
+    "glm": {
+      "model_pin_required": "GLM-5.3 @ account:bigmodel-individual-coding-plan",
+      "reasoning_variant": "max",
+      "observability": "headless（B 层冒烟同款）",
+      "mechanism": "M4 = M2 成对 env + ZCODE_DATA_BASE_DIR 派生数据目录 + 凭据副本明文 identity 条目注入",
+      "evidence": [
+        "evalkit/runs/sf0006-pin-probe/verdict.md P4/P6 命中且可重复",
+        "evalkit/runs/sf0006-b-smoke-2/round-report.json b01_pin：两臂实测 GLM-5.3@account:bigmodel-individual-coding-plan variant=max"
+      ]
+    },
+    "minimax": {
+      "model_pin_required": "Minimax-M3.1-Flash-Preview @ minimax",
+      "reasoning_variant": "enabled",
+      "observability": "headless（B 层冒烟同款）",
+      "mechanism": "M2 = 进程级成对 env（ZCODE_BUILTIN_PROVIDER_CONFIG_FILE+ZCODE_PERSONAL_PROVIDER_CONFIG_FILE）+ defaultModelSelection.options.reasoningLevel",
+      "evidence": [
+        "evalkit/runs/sf0006-pin-probe/verdict.md P1/P5 命中且可重复",
+        "evalkit/runs/sf0006-b-smoke-2/round-report.json b01_pin：两臂实测 Minimax-M3.1-Flash-Preview@minimax variant=enabled"
+      ]
+    },
+    "step": {
+      "model_pin_required": "step-router-v1 @ new-provider",
+      "observability": "模型 API 直调（不走 headless 臂，owner 指令）",
+      "mechanism": "裁判专用通道：new-provider（provider_config 实读 providerOrder[0]='new-provider'，step-router-v1 enabled、contextWindow 256000）模型 API 调用；endpoint/凭据读全局配置，零落盘、全局配置零修改",
+      "evidence": [
+        "~/.zcode/v2/provider_config.json 本会话只读实读（providerConfigRules.providerRules[0].providerId='new-provider'（阶跃星辰）；modelConfigRules.providerModelRules 含 modelId='step-router-v1' enabled=True）",
+        "planning/reports/sf0004-probes/p0-kimi-recon.json:153 'stepfun-step-plan/step-router-v1'"
+      ],
+      "caveat": "API 通道真实连通性本登记未实测；首跑前 1 次冒烟计入裁判调用记账，不通则该裁判列 fail-closed"
+    }
+  },
+  "judge_panel": {
+    "composition_rule": "被测族=glm → 裁判=[step-router-v1, Minimax-M3.1-Flash-Preview]；被测族=minimax → 裁判=[step-router-v1, GLM-5.3]",
+    "per_task_judges": "每任务 ≥2 名异族裁判（下限 2，来自 2 个不同族，与被测族交集为空）",
+    "cross_family_guarantee": "≥2 族互裁成立：glm 任务由 step+minimax 互裁、minimax 任务由 step+glm 互裁；K5B-04 盲态断言自证——被测 glm 时 judge_model_id 不含 'GLM'，被测 minimax 时不含 'Minimax'",
+    "O7_note": "卡面前置引 SF-0004 §8『异族裁判不可满足』由本面板解除；若 step 通道不通，只剩单异族裁判，≥2 族互裁不成立 → 相关任务按 fail-closed 记 unjudgeable、blind_v02=false，不得放宽（K5B-04）",
+    "position_rotation": {
+      "judge_slot": "裁判槽位按 (包内任务 1-based 序号 + 重复 1-based 序号) mod 2 轮换：余 0 时 judge[0]/judge[1] 顺序为登记序，余 1 时互换",
+      "treatment_baseline_presentation": "EVAL-SPEC v0.2 §3.2-4 甲乙呈现位置在任务间与重复间轮换，照做",
+      "family_rotation": "任务→被测族按包内任务序号奇偶轮换（奇=glm、偶=minimax），见 arm_allocation"
+    },
+    "blind": [
+      "EVAL-SPEC v0.2 §3.4-4：裁判对两臂来源与顺序不知情",
+      "§3.8-6：同批裁判评审两臂产物混洗且匿名（文件名去臂标/族标）",
+      "评分必须附实测证据（复跑脚本/逐字比对/回读证据），禁同情分",
+      "§3.4-5 / K5B-01：裁判模型 ID 与裁判 prompt 版本随轮落盘（model_pin.judge_model_id、judge_prompt_version 非空）"
+    ],
+    "consistency_spot_check": {
+      "rule": "EVAL-SPEC v0.2 §3.4-1/2/3 照做：每任务 ≥1 份产物（两臂轮换覆盖）匿名化后由同一裁判按同一 rubric 复评",
+      "delta_gt_2": "该裁判本任务失格 → 换本任务面板内另一异族裁判（更换裁判会话实例）重评该任务全部产物；重评后仍 >2 → task_verdict=unjudgeable 且 acceptance.gates.blind_v02=false",
+      "ledger": "judge_consistency 每任务 ≥1 条落盘（K5B-06），字段含任务、被抽产物、两次分、分差、action∈{re-judged,unjudgeable}"
+    },
+    "judge_channel": "glm/minimax 裁判调用照各自 M4/M2 headless 机制（可观测、可 join 遥测）；step-router-v1 裁判走模型 API 直调（不需 headless 臂），调用量按 budget.json 记账"
+  },
+  "task_sources": [
+    {
+      "pkg": "meeting-minutes",
+      "source": "v2/evalbench-v02/meeting-minutes/tasks.json",
+      "n": 2,
+      "tasks": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6",
+        "t7",
+        "t8"
+      ],
+      "note": "dist/meeting-minutes-skill/eval/golden.json 仅 3 条 ab_tasks（本会话实读），按 SF-0008 前置改用 evalbench-v02 8 任务集；任务集冻结不改"
+    },
+    {
+      "pkg": "office-templates",
+      "source": "dist/office-templates-skill/eval/golden.json#ab_tasks",
+      "n": 2,
+      "tasks": [
+        "ab1-standard-four-templates",
+        "ab2-boundary-missing-required",
+        "ab3-empty-and-string-lists",
+        "ab4-invalid-input-rejection",
+        "ab5-determinism-layout-selfeval"
+      ],
+      "note": "golden.json 冻结不改"
+    },
+    {
+      "pkg": "hot-templates",
+      "source": "dist/hot-templates-skill/eval/golden.json#ab_tasks",
+      "n": 3,
+      "tasks": [
+        "ab-001",
+        "ab-002",
+        "ab-003",
+        "ab-004",
+        "ab-005"
+      ],
+      "note": "复检轮 n=3（EVAL-SPEC v0.2 附录 A）；golden.json 冻结不改"
+    }
+  ],
+  "arm_allocation": {
+    "rule": "臂调用=任务×2臂×n，按族分配：包内任务按 1-based 序号奇偶轮换（奇=glm、偶=minimax）；同一任务两臂与全部重复同族（EVAL-SPEC §4.2 双臂同模型）",
+    "per_package": [
+      {
+        "pkg": "meeting-minutes",
+        "n": 2,
+        "tasks": 8,
+        "glm_tasks": [
+          "t1",
+          "t3",
+          "t5",
+          "t7"
+        ],
+        "minimax_tasks": [
+          "t2",
+          "t4",
+          "t6",
+          "t8"
+        ],
+        "arm_calls": 32,
+        "by_family": {
+          "glm": 16,
+          "minimax": 16
+        }
+      },
+      {
+        "pkg": "office-templates",
+        "n": 2,
+        "tasks": 5,
+        "glm_tasks": [
+          "ab1-standard-four-templates",
+          "ab3-empty-and-string-lists",
+          "ab5-determinism-layout-selfeval"
+        ],
+        "minimax_tasks": [
+          "ab2-boundary-missing-required",
+          "ab4-invalid-input-rejection"
+        ],
+        "arm_calls": 20,
+        "by_family": {
+          "glm": 12,
+          "minimax": 8
+        }
+      },
+      {
+        "pkg": "hot-templates",
+        "n": 3,
+        "tasks": 5,
+        "glm_tasks": [
+          "ab-001",
+          "ab-003",
+          "ab-005"
+        ],
+        "minimax_tasks": [
+          "ab-002",
+          "ab-004"
+        ],
+        "arm_calls": 30,
+        "by_family": {
+          "glm": 18,
+          "minimax": 12
+        }
+      }
+    ],
+    "total_arm_calls": 82,
+    "by_family": {
+      "glm": 46,
+      "minimax": 36
+    }
+  },
+  "budget_registration": "evalkit/runs/sf0008-k5b/budget.json（同目录，登记口径一致）",
+  "frozen_surfaces": [
+    "dist 三包 eval/runner.py、eval/golden.json、rubric、ab 任务集（owner 纪律(3)，K5B-09 golden sha256 对拍 REGISTRY 登记）",
+    "v5/、<HOLDOUT>、pool-state 签署（owner 纪律(4)）",
+    "planning/test-cards-20261008/ 门槛脚本（owner 纪律(2)）",
+    "evidence/publish-approval.md 在新签署前绝不存在（K5B-07/10，owner 纪律(5)）；重新提交只走 evidence/publish-approval-REQUEST.md 增量"
+  ],
+  "open_items": [
+    "K5B-07『office disclosure.rounds≥2』的第 1 轮口径（引用存量首轮盲评档案 vs 本卡加跑第二轮）未在本登记拍板；本预算只按 ask 公式计本卡新跑 1 轮，如需加跑须 planner 追加预算",
+    "step-router-v1 裁判 API 通道连通性未实测（见 families.step.caveat）",
+    "三包基准轮 actual 执行、efficiency 复算、benchmark.json 落盘属本卡后续施工，不在本登记"
+  ]
+}

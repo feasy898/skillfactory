@@ -1,0 +1,295 @@
+{
+  "card": "SF-0008",
+  "run_id": "sf0008-k5b",
+  "kind": "budget_registration",
+  "status": "registered_not_started",
+  "base_commit": "d18820523c67eaa7339361d6ece4c9abe6d57d92",
+  "registered_at": "2026-10-08T10:36+0800",
+  "authority": "owner 2026-10-08 三族并发指令；SF-0008 前置【planner】批准模型调用预算条款的本卡登记载体（超出本登记须先经 planner 批准，超额进程不计入结果）",
+  "formula": {
+    "arm_calls": "任务 × 2 臂 × n（mm/office n=2、hot 复检轮 n=3），按族分配",
+    "judge_calls": "按每任务 ≥2 计（18 任务 → 下限 36）；另列 §3.4-1 一致性抽检复评 ≥1/任务（≥18）与分差>2 触发的换裁判重评（按实发记账）",
+    "rounds": 1
+  },
+  "arm_calls": {
+    "total": 82,
+    "by_family": {
+      "glm": 46,
+      "minimax": 36
+    },
+    "per_package": [
+      {
+        "pkg": "meeting-minutes",
+        "n": 2,
+        "tasks": 8,
+        "calls_per_task": 4,
+        "arm_calls": 32,
+        "by_family": {
+          "glm": 16,
+          "minimax": 16
+        }
+      },
+      {
+        "pkg": "office-templates",
+        "n": 2,
+        "tasks": 5,
+        "calls_per_task": 4,
+        "arm_calls": 20,
+        "by_family": {
+          "glm": 12,
+          "minimax": 8
+        }
+      },
+      {
+        "pkg": "hot-templates",
+        "n": 3,
+        "tasks": 5,
+        "calls_per_task": 6,
+        "arm_calls": 30,
+        "by_family": {
+          "glm": 18,
+          "minimax": 12
+        }
+      }
+    ],
+    "counted_rule": "正式臂进程数以 budget 记账为准（spawn 前 pending、事后按 db model_usage 实测回填，照 sf0006-b/c 先例）；rate_limited 退避重试每臂 ≤1，重试进程不占正式额度、逐条留痕"
+  },
+  "judge_calls": {
+    "floor": 36,
+    "floor_basis": "18 任务 × ≥2 异族裁判",
+    "consistency_spot_check_extra": 18,
+    "consistency_basis": "EVAL-SPEC v0.2 §3.4-1 每任务 ≥1 次同裁判匿名复评（必做）",
+    "rejudge_on_delta_gt_2": "按实发记账，不预批（触发即留痕，不静默）",
+    "registered_judge_budget": 54,
+    "registered_judge_budget_note": "下限口径合计 54；rejudge 与冒烟另计、按实发如实入 entries"
+  },
+  "retry_policy": {
+    "cap_per_arm": 1,
+    "condition": "rate_limited 退避重试（PLAN §5.6 先例）",
+    "counted": false
+  },
+  "entries": [
+    {
+      "pkg": "meeting-minutes",
+      "task": "t1",
+      "task_index": 1,
+      "family": "glm",
+      "arms": 2,
+      "n": 2,
+      "planned_arm_calls": 4,
+      "planned_judge_calls_floor": 2,
+      "judge_panel": "cross_family_2"
+    },
+    {
+      "pkg": "meeting-minutes",
+      "task": "t2",
+      "task_index": 2,
+      "family": "minimax",
+      "arms": 2,
+      "n": 2,
+      "planned_arm_calls": 4,
+      "planned_judge_calls_floor": 2,
+      "judge_panel": "cross_family_2"
+    },
+    {
+      "pkg": "meeting-minutes",
+      "task": "t3",
+      "task_index": 3,
+      "family": "glm",
+      "arms": 2,
+      "n": 2,
+      "planned_arm_calls": 4,
+      "planned_judge_calls_floor": 2,
+      "judge_panel": "cross_family_2"
+    },
+    {
+      "pkg": "meeting-minutes",
+      "task": "t4",
+      "task_index": 4,
+      "family": "minimax",
+      "arms": 2,
+      "n": 2,
+      "planned_arm_calls": 4,
+      "planned_judge_calls_floor": 2,
+      "judge_panel": "cross_family_2"
+    },
+    {
+      "pkg": "meeting-minutes",
+      "task": "t5",
+      "task_index": 5,
+      "family": "glm",
+      "arms": 2,
+      "n": 2,
+      "planned_arm_calls": 4,
+      "planned_judge_calls_floor": 2,
+      "judge_panel": "cross_family_2"
+    },
+    {
+      "pkg": "meeting-minutes",
+      "task": "t6",
+      "task_index": 6,
+      "family": "minimax",
+      "arms": 2,
+      "n": 2,
+      "planned_arm_calls": 4,
+      "planned_judge_calls_floor": 2,
+      "judge_panel": "cross_family_2"
+    },
+    {
+      "pkg": "meeting-minutes",
+      "task": "t7",
+      "task_index": 7,
+      "family": "glm",
+      "arms": 2,
+      "n": 2,
+      "planned_arm_calls": 4,
+      "planned_judge_calls_floor": 2,
+      "judge_panel": "cross_family_2"
+    },
+    {
+      "pkg": "meeting-minutes",
+      "task": "t8",
+      "task_index": 8,
+      "family": "minimax",
+      "arms": 2,
+      "n": 2,
+      "planned_arm_calls": 4,
+      "planned_judge_calls_floor": 2,
+      "judge_panel": "cross_family_2"
+    },
+    {
+      "pkg": "office-templates",
+      "task": "ab1-standard-four-templates",
+      "task_index": 1,
+      "family": "glm",
+      "arms": 2,
+      "n": 2,
+      "planned_arm_calls": 4,
+      "planned_judge_calls_floor": 2,
+      "judge_panel": "cross_family_2"
+    },
+    {
+      "pkg": "office-templates",
+      "task": "ab2-boundary-missing-required",
+      "task_index": 2,
+      "family": "minimax",
+      "arms": 2,
+      "n": 2,
+      "planned_arm_calls": 4,
+      "planned_judge_calls_floor": 2,
+      "judge_panel": "cross_family_2"
+    },
+    {
+      "pkg": "office-templates",
+      "task": "ab3-empty-and-string-lists",
+      "task_index": 3,
+      "family": "glm",
+      "arms": 2,
+      "n": 2,
+      "planned_arm_calls": 4,
+      "planned_judge_calls_floor": 2,
+      "judge_panel": "cross_family_2"
+    },
+    {
+      "pkg": "office-templates",
+      "task": "ab4-invalid-input-rejection",
+      "task_index": 4,
+      "family": "minimax",
+      "arms": 2,
+      "n": 2,
+      "planned_arm_calls": 4,
+      "planned_judge_calls_floor": 2,
+      "judge_panel": "cross_family_2"
+    },
+    {
+      "pkg": "office-templates",
+      "task": "ab5-determinism-layout-selfeval",
+      "task_index": 5,
+      "family": "glm",
+      "arms": 2,
+      "n": 2,
+      "planned_arm_calls": 4,
+      "planned_judge_calls_floor": 2,
+      "judge_panel": "cross_family_2"
+    },
+    {
+      "pkg": "hot-templates",
+      "task": "ab-001",
+      "task_index": 1,
+      "family": "glm",
+      "arms": 2,
+      "n": 3,
+      "planned_arm_calls": 6,
+      "planned_judge_calls_floor": 2,
+      "judge_panel": "cross_family_2"
+    },
+    {
+      "pkg": "hot-templates",
+      "task": "ab-002",
+      "task_index": 2,
+      "family": "minimax",
+      "arms": 2,
+      "n": 3,
+      "planned_arm_calls": 6,
+      "planned_judge_calls_floor": 2,
+      "judge_panel": "cross_family_2"
+    },
+    {
+      "pkg": "hot-templates",
+      "task": "ab-003",
+      "task_index": 3,
+      "family": "glm",
+      "arms": 2,
+      "n": 3,
+      "planned_arm_calls": 6,
+      "planned_judge_calls_floor": 2,
+      "judge_panel": "cross_family_2"
+    },
+    {
+      "pkg": "hot-templates",
+      "task": "ab-004",
+      "task_index": 4,
+      "family": "minimax",
+      "arms": 2,
+      "n": 3,
+      "planned_arm_calls": 6,
+      "planned_judge_calls_floor": 2,
+      "judge_panel": "cross_family_2"
+    },
+    {
+      "pkg": "hot-templates",
+      "task": "ab-005",
+      "task_index": 5,
+      "family": "glm",
+      "arms": 2,
+      "n": 3,
+      "planned_arm_calls": 6,
+      "planned_judge_calls_floor": 2,
+      "judge_panel": "cross_family_2"
+    },
+    {
+      "pkg": "*judges*",
+      "task": "all-18-tasks",
+      "task_index": null,
+      "family": "cross",
+      "planned_arm_calls": 0,
+      "planned_judge_calls_floor": 36,
+      "judge_panel": {
+        "tested_glm": [
+          "step-router-v1",
+          "Minimax-M3.1-Flash-Preview"
+        ],
+        "tested_minimax": [
+          "step-router-v1",
+          "GLM-5.3"
+        ]
+      },
+      "note": "§3.4 抽检复评 ≥18 次另列 judge_calls.consistency_spot_check_extra；分差>2 重评按实发"
+    }
+  ],
+  "discipline": [
+    "以退出码为准；判不了 fail-closed 记 unjudgeable，不放宽口径",
+    "登记后的任何超预算调用须先经 planner 批准，超额进程不计入结果（SF-0006 P5 口径沿用）",
+    "run 期间本文件由登记态转为台账态：每进程 spawn 前记 pending、事后按实测回填（照 sf0006-b-smoke-2/sf0006-c 先例）；只增不改历史行"
+  ]
+}
