@@ -44,7 +44,7 @@
 - 被测对象：dist/ 顶层 canonical 三包（零改动，`git status -- dist/*-skill` 无源改动；treatment 挂载为可交付面过滤副本，禁 reference/、eval/ 入臂——A-12 同款口径）
 - 臂：82 正式臂进程（mm 8 任务×2臂×n=2=32；office 5×2×2=20；hot 5×2×3=30 复检轮），按族分配 glm=46 / minimax=36，任务级奇偶轮换；两臂 prompt 逐字同；钉版 glm=GLM-5.3@account:bigmodel-individual-coding-plan（M4）、minimax=Minimax-M3.1-Flash-Preview@minimax（M2），82/82 db join 实测逐字命中、零漂移零红线
 - 裁判面板（O-7 缺口已解除）：被测 glm → [step-router-v1, Minimax-M3.1-Flash-Preview]；被测 minimax → [step-router-v1, GLM-5.3]；每任务 ≥2 异族裁判、2 族互裁、槽位按任务奇偶轮换；盲态（产物匿名洗牌、路径/臂标脱敏）；step-router-v1 走模型 API 直调（assistant 预填约束输出），glm/minimax 走 headless M4/M2；§3.4 一致性抽检 18/18 任务配对完成、delta 全部 ≤2
-- 记账：budget.json 台账 82 done（另 4 条如实留痕：1 冒烟、1 机制验证、2 装置 bug 空转不占额度）；rate_limited 1 次无效尝试不占额度；裁判调用 92 条含修复/重试全部逐条落账
+- 记账：臂通道台账 84 条（82 done 正式 + 1 冒烟/机制类留痕 + 1 rate_limited 无效尝试不占额度，另有 2 条装置 bug 空转留痕不占额度）；rate_limited 重试实发 0；裁判通道台账 100 条（done 74 / no-verdict 19 / 停批打断 7；含 §3.4 配对修复 12 次与机制验证 2 次，全部逐条落账、无静默剔除）
 
 ## S2. 三包本轮结果（本轮=第 2 轮；第 1 轮为存量 ab_summary，均已实读核验）
 
