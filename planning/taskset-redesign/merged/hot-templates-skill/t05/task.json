@@ -1,0 +1,22 @@
+{
+  "source_designer": "glm",
+  "id": "ht-t05",
+  "package": "hot-templates-skill",
+  "dim": "边界",
+  "title": "points 四形态等价：内联串/无 BOM 文件/BOM 文件/包装对象——四产物逐字节一致",
+  "pass_line": 8.0,
+  "design_note": "边界题（输入多义/多形态）：SKILL 输入格式表定义 --points 可为文件路径（utf-8-sig 容忍 BOM）或内联 JSON 串，且对象形态须含 points 键——四种合法形态旧集只考过单形态（ab 系列 input 全为 reference 文件）。本题要求同参数跑 4 次到 4 目录，判定四产物两两逐字节一致（md5 相等）+ points_input_count=3。『多形态同一性』是引擎层口径的边界考题：任何一次形态处理不一致（BOM 未剥、包装对象漏解、内联串转义错）即立现。通过线 8.0。",
+  "input": {
+    "kind": "four_invocations",
+    "platform": "xhs",
+    "topic": "阳台种菜入门",
+    "points_literal": ["泡沫箱打孔防涝", "蛋壳补钙碾碎拌土", "北侧种耐阴生菜"],
+    "forms": [
+      { "name": "A-inline", "points_arg": "'[\"泡沫箱打孔防涝\", \"蛋壳补钙碾碎拌土\", \"北侧种耐阴生菜\"]'（内联 JSON 串）" },
+      { "name": "B-plain-file", "points_arg": "points_plain.json（UTF-8 无 BOM，内容为同一 JSON 数组）" },
+      { "name": "C-bom-file", "points_arg": "points_bom.json（UTF-8 with BOM，内容同 B；用 utf-8-sig 可读）" },
+      { "name": "D-wrapped-file", "points_arg": "points_wrapped.json（UTF-8 无 BOM，内容为 {\"points\": [同数组]}）" }
+    ],
+    "outdir_convention": "四次分别输出到 <outdir>/A-inline/、<outdir>/B-plain/、<outdir>/C-bom/、<outdir>/D-wrapped/"
+  }
+}

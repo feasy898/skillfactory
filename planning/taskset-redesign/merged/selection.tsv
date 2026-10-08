@@ -1,0 +1,67 @@
+# taskset-redesign 择优合并打分留痕（逐题 5 项机械判据，零模型调用，2026-10-08）
+# 判据口径（每项 1 分，满分 5）：
+#   c1 判据可判定性=rubric 加权分项+断言含逐字/计数/命令级期望值；校准证据为加分项注明（实测两候选均有：glm DESIGN.md §7 六处引擎实测校准；minimax DESIGN.md §4-5 资产脚本钉真值+commit 修正 6 处）
+#   c2 三维归属清晰=task.json 声明 dim 且与题面机制相容（能力=正例/边界=极端输入形态/陷阱=对抗诱导）
+#   c3 与 dist/<pkg>/eval/golden.json ab_tasks 旧题考点不重复；机械规则=题面(title+design_note)声明核心考点对照旧题 rubric 原文，同条款且同输入形态（同模板/同平台/同稿件类型）记「重」，重>新 → 0
+#   c4 防饱和结构=加权分项≥3维 ∧ 通过线明确 ∧ ≤60% 目标字样在该题 design_note/rubric（grep 核验：glm 24/24 有通过线 8.0/8.5 但仅 mm-t01/t02 题内含≤60%；minimax 24/24 含≤60% 但全目录 0 处通过线/pass_line）
+#   c5 实体 nonce 化且与旧输入零撞车；机械规则=输入面实体与旧输入全集（mm case1-4.txt+ab 内联实体 / office 8 case / hot 8 case+ab 内联）≥8 字逐字节公共子串，或新 topic 完整包含旧 topic（≥4 字）
+#
+# minimax 候选整体折扣备注（记入表头，不逐题扣分）：其设计方自曝一次越权读取裁决文件 planning/test-cards-20261008/K5-ruling-20261008.md 第 1-40 行（该区间含「总裁决/逐包」等盲评数字章节；裁决文件产线指令节自第 13 行起）——来源：任务简报原文「设计方自曝一次越权读取裁决文件第 1-40 行的纪律瑕疵，已如实登记」；仓库内未检索到该瑕疵的登记文件（grep 全仓无命中）。处置：按合并规则仅作同分冲突时优先 glm 的折扣项，不据此弃用其任何题目（逐题独立评判）。
+# 同包去重重叠判定=同包内考察同一 SKILL.md 条款+同输入形态；重叠只保留得分高者，同分优先 glm（共 17 对，见 reason 列）。
+# office 第 8 席：9 个 4 分题竞争 8 席，同分 glm 优先取 7 席后，minimax t07/t08 同分同源，按机制多样性（越界拒答为旧集与 glm 候选均零覆盖）+同源题号序取 t07。
+# hot 三维覆盖修复：严格排序前 8 使陷阱占比 1/8<1/4（不达 K5 §3.1 自查门槛），移除该席唯一 minimax 边界题 ht-t05，补 glm t07（陷阱，3 分）→ 陷阱 2/8 达标。
+# 冻结树哈希复算命令：cd <ROOT> && find planning/taskset-redesign/merged -type f | sort | xargs sha256sum | sha256sum
+#
+pkg	cand_id	source	dim	c1_可判定性	c2_三维归属	c3_旧题不重复	c4_防饱和	c5_nonce零撞车	total	outcome	reason
+meeting-minutes-skill	t01	glm	能力	1	1	1	1	1	5	入选	入选 merged/meeting-minutes-skill/t01（总分5：④ 题内含通过线8.0+≤60%，为 glm 24 题中仅有的两题之一）
+meeting-minutes-skill	t02	glm	能力	1	1	1	1	1	5	入选	入选 merged/meeting-minutes-skill/t02（总分5，排序入围）
+meeting-minutes-skill	t03	glm	能力	1	1	1	0	1	4	入选	入选 merged/meeting-minutes-skill/t03（总分4，排序入围）
+meeting-minutes-skill	t04	glm	边界	1	1	1	0	1	4	入选	入选 merged/meeting-minutes-skill/t04（总分4，排序入围）
+meeting-minutes-skill	t05	glm	边界	1	1	1	0	1	4	入选	入选 merged/meeting-minutes-skill/t05（总分4，排序入围）
+meeting-minutes-skill	t06	glm	陷阱	1	1	1	0	1	4	入选	入选 merged/meeting-minutes-skill/t06（总分4，排序入围）
+meeting-minutes-skill	t07	glm	陷阱	1	1	1	0	1	4	入选	入选 merged/meeting-minutes-skill/t07（总分4，排序入围）
+meeting-minutes-skill	t08	glm	陷阱	1	1	1	0	1	4	入选	入选 merged/meeting-minutes-skill/t08（总分4，排序入围）
+meeting-minutes-skill	t01	minimax	能力	1	1	1	0	1	4	落选	重叠：SKILL 解析正则容错条款+畸形时间戳转写稿形态；glm5>minimax4
+meeting-minutes-skill	t02	minimax	能力	1	1	1	0	1	4	落选	重叠：期限规则族+待办转写稿形态；同分4，glm 优先
+meeting-minutes-skill	t03	minimax	能力	1	1	1	0	1	4	落选	重叠：负责人规则族(我负责/交给X/@X/near-miss)+同形态；同分4，glm 优先
+meeting-minutes-skill	t04	minimax	边界	1	1	1	0	1	4	落选	总分 4，同分候选超额，同分优先 glm
+meeting-minutes-skill	t05	minimax	边界	1	1	1	0	1	4	落选	总分 4，同分候选超额，同分优先 glm
+meeting-minutes-skill	t06	minimax	陷阱	1	1	1	0	1	4	落选	重叠：发言行解析/LINE_RE 边界条款+畸形行转写稿形态；同分4，glm 优先
+meeting-minutes-skill	t07	minimax	陷阱	1	1	1	0	1	4	落选	总分 4，同分候选超额，同分优先 glm
+meeting-minutes-skill	t08	minimax	陷阱	1	1	1	0	1	4	落选	总分 4，同分候选超额，同分优先 glm
+office-templates-skill	t01	glm	能力	1	1	0	0	1	3	落选	总分 3，同分候选超额，同分优先 glm
+office-templates-skill	t02	glm	能力	1	1	1	0	1	4	入选	入选 merged/office-templates-skill/t01（总分4，排序入围；第 8 席角逐见 minimax t08 的落选 reason）
+office-templates-skill	t03	glm	能力	1	1	1	0	1	4	入选	入选 merged/office-templates-skill/t02（总分4，排序入围）
+office-templates-skill	t04	glm	边界	1	1	1	0	1	4	入选	入选 merged/office-templates-skill/t03（总分4，排序入围）
+office-templates-skill	t05	glm	边界	1	1	1	0	1	4	入选	入选 merged/office-templates-skill/t04（总分4，排序入围）
+office-templates-skill	t06	glm	陷阱	1	1	1	0	1	4	入选	入选 merged/office-templates-skill/t05（总分4，排序入围）
+office-templates-skill	t07	glm	陷阱	1	1	1	0	1	4	入选	入选 merged/office-templates-skill/t06（总分4，排序入围）
+office-templates-skill	t08	glm	陷阱	1	1	1	0	1	4	入选	入选 merged/office-templates-skill/t07（总分4，排序入围）
+office-templates-skill	t01	minimax	能力	1	1	1	0	1	4	落选	重叠：F5 strip+空白项剔除条款+周报数据形态；同分4，glm 优先
+office-templates-skill	t02	minimax	能力	1	1	1	0	1	4	落选	重叠：F3 列表宽容取值条款+退化列表数据形态；同分4，glm 优先
+office-templates-skill	t03	minimax	能力	1	1	1	0	1	4	落选	重叠：版式字面(V5/V6 称谓/编号/落款)条款+多模板成文形态；同分4，glm 优先
+office-templates-skill	t04	minimax	能力	1	1	1	0	1	4	落选	重叠：F6 unknown_keys 字典序记账条款+模板外键数据形态；同分4，glm 优先
+office-templates-skill	t05	minimax	边界	1	1	1	0	1	4	落选	重叠：缺失判定(空白串/全空白数组)+占位渲染条款+退化数据形态；同分4，glm 优先
+office-templates-skill	t06	minimax	边界	1	1	1	0	1	4	落选	重叠：必填全缺→____占位渲染条款+极端缺失数据形态；同分4，glm 优先
+office-templates-skill	t07	minimax	陷阱	1	1	1	0	1	4	入选	入选 merged/office-templates-skill/t08；4；第 8 席：与同源 t08 同分，越界拒答为旧集与 glm 候选均零覆盖的陷阱机制，机制互补+同源题号序
+office-templates-skill	t08	minimax	陷阱	1	1	1	0	1	4	落选	9 个 4 分题竞争 8 席，与同源 t07 同分，按机制多样性+同源题号序取 t07
+hot-templates-skill	t01	glm	能力	1	1	1	0	1	4	入选	入选 merged/hot-templates-skill/t01（总分4，排序入围）
+hot-templates-skill	t02	glm	能力	1	1	1	0	1	4	入选	入选 merged/hot-templates-skill/t02（总分4，排序入围）
+hot-templates-skill	t03	glm	能力	1	1	1	0	1	4	入选	入选 merged/hot-templates-skill/t03（总分4，排序入围）
+hot-templates-skill	t04	glm	能力	1	1	1	0	1	4	入选	入选 merged/hot-templates-skill/t04（总分4，排序入围）
+hot-templates-skill	t05	glm	边界	1	1	1	0	1	4	入选	入选 merged/hot-templates-skill/t05（总分4，排序入围）
+hot-templates-skill	t06	glm	边界	1	1	1	0	1	4	入选	入选 merged/hot-templates-skill/t06（总分4，排序入围）
+hot-templates-skill	t07	glm	陷阱	1	1	1	0	0	3	入选	入选 merged/hot-templates-skill/t07；3：⑤=0 旧输入 topic「手冲咖啡入门」被完整包含+卖点近同文；经三维覆盖修复入围补陷阱维
+hot-templates-skill	t08	glm	陷阱	1	1	1	0	1	4	入选	入选 merged/hot-templates-skill/t08（总分4，排序入围）
+hot-templates-skill	t01	minimax	能力	1	1	1	0	0	3	落选	重叠：dy 冻结句式/结构条款+满3卖点形态；glm4>minimax3(minimax 另有⑤=0)
+hot-templates-skill	t02	minimax	能力	1	1	0	0	1	3	落选	重叠：xhs 标签/截断条款+多卖点形态；glm4>minimax3(minimax 另有③=0)
+hot-templates-skill	t03	minimax	能力	1	1	1	0	1	4	落选	重叠：wx 满3卖点 filled==7+thesis_how 三行+金句条款+同形态；同分4，glm 优先
+hot-templates-skill	t04	minimax	能力	1	1	1	0	1	4	落选	重叠：video 分镜结构(时间轴冻结/meta7键)条款+分镜生成形态；同分4，glm 优先
+hot-templates-skill	t05	minimax	边界	1	1	1	0	1	4	落选	严格排序第 8 席，但该席使陷阱占比 1/8<1/4 不达 K5 §3.1；按同分优先 glm 精神移出该唯一 minimax 边界题，补 glm t07（陷阱，3 分）
+hot-templates-skill	t06	minimax	陷阱	1	1	1	0	1	4	落选	重叠：空白串卖点按缺失+槽位保序条款+含空白卖点形态；同分4，glm 优先
+hot-templates-skill	t07	minimax	陷阱	1	1	1	0	1	4	落选	重叠：--points 输入形态条款(对象/BOM/内联/失败路径)+多形态输入；同分4，glm 优先
+hot-templates-skill	t08	minimax	陷阱	1	1	0	0	1	3	落选	重叠：占位 token 保真条款+骨架产物形态；同分3，glm 优先(另有引擎校准证据)
+
+# 冻结净荷 sha256（72 任务文件，不含两清单）：59203e0eb2665d9fda909a78d7d49874d6588756df6903b478863bfc8e88d976
+# 复算：cd <ROOT> && find planning/taskset-redesign/merged -type f ! -name index.json ! -name selection.tsv | sort | xargs sha256sum | sha256sum
+# 全树 sha256（含两清单）以提交信息 TASKSET-merged 内记录值为准

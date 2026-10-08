@@ -1,0 +1,812 @@
+{
+  "taskset": "taskset-redesign/merged",
+  "date": "2026-10-08",
+  "method": "两候选（glm@704f17a / minimax@e0acd99）逐题 5 项机械判据打分（selection.tsv 留痕），同包同条款+同形态去重 17 对，并集按总分排序取每包 8 题，同分优先 glm；零模型调用",
+  "source_distribution": {
+    "meeting-minutes-skill": {
+      "glm": 8,
+      "minimax": 0
+    },
+    "office-templates-skill": {
+      "glm": 7,
+      "minimax": 1
+    },
+    "hot-templates-skill": {
+      "glm": 8,
+      "minimax": 0
+    }
+  },
+  "minimax_discount_note": "设计方自曝越权读取裁决文件第 1-40 行（含盲评数字章节）；仅作同分优先 glm 的整体折扣，未据此弃用其任何题目",
+  "coverage": {
+    "meeting-minutes-skill": {
+      "能力": 3,
+      "边界": 2,
+      "陷阱": 3
+    },
+    "office-templates-skill": {
+      "能力": 2,
+      "边界": 2,
+      "陷阱": 4
+    },
+    "hot-templates-skill": {
+      "能力": 4,
+      "边界": 2,
+      "陷阱": 2
+    }
+  },
+  "frozen_sha256": "59203e0eb2665d9fda909a78d7d49874d6588756df6903b478863bfc8e88d976",
+  "frozen_sha256_cmd": "cd <ROOT> && find planning/taskset-redesign/merged -type f ! -name index.json ! -name selection.tsv | sort | xargs sha256sum | sha256sum",
+  "tasks": [
+    {
+      "pkg": "meeting-minutes-skill",
+      "merged_tid": "t01",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/meeting-minutes-skill/t01",
+      "orig_tid": "t01",
+      "source_designer": "glm",
+      "dim": "能力",
+      "title": "格式变体转写稿的三段式整理（单位数小时/长说话人名/待办优先级）",
+      "pass_line": 8.0,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 1,
+        "c5_nonce零撞车": 1,
+        "total": 5
+      },
+      "sha256": {
+        "task.json": "d0b26e47f38b50a27a45fe1b8ef5edfa088e8d4983f14d1effa97ffdac46c674",
+        "brief.md": "2bcb1f4f50a58f113765d0103ee4422413b6d4e896f46d81b7b048cca5e13544",
+        "rubric.md": "a6d40e58c4624f781955da60ca1c9dd989bc7799ba981d2253d347b470afe6ae"
+      }
+    },
+    {
+      "pkg": "meeting-minutes-skill",
+      "merged_tid": "t02",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/meeting-minutes-skill/t02",
+      "orig_tid": "t02",
+      "source_designer": "glm",
+      "dim": "能力",
+      "title": "超长高噪转写（42 行发言 / 9 说话人 / 噪声比 69%）的批量一致性",
+      "pass_line": 8.0,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 1,
+        "c5_nonce零撞车": 1,
+        "total": 5
+      },
+      "sha256": {
+        "task.json": "a336b32aacb952d4a6870e962457a5adebf9b4efb7182c8c7ebc55278ec0611d",
+        "brief.md": "88260a52b175e756b91802d000207edc789e72cff6563cd961a44c45557c9131",
+        "rubric.md": "239cc587fb3fd020039a48d9c13bb90699dbeb8b10a646c2952a4d7d0128eda0"
+      }
+    },
+    {
+      "pkg": "meeting-minutes-skill",
+      "merged_tid": "t03",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/meeting-minutes-skill/t03",
+      "orig_tid": "t03",
+      "source_designer": "glm",
+      "dim": "能力",
+      "title": "待办两列提取规则族全覆盖（5 种负责人模式 × 5 种期限规则的优先级矩阵）",
+      "pass_line": 8.0,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "404843f90c1fdb6ef0e2afada211884a5d5e50b743764550171151357f10565e",
+        "brief.md": "6be15a37ae88f28bf9a129cecf8f7afa5c9b10379e7a92b0eda32857d9463971",
+        "rubric.md": "203e70bbca53c4e4f897a75b8d43cacb0b8fcecf7ac68ffd1b79b43077e4bcef"
+      }
+    },
+    {
+      "pkg": "meeting-minutes-skill",
+      "merged_tid": "t04",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/meeting-minutes-skill/t04",
+      "orig_tid": "t04",
+      "source_designer": "glm",
+      "dim": "边界",
+      "title": "关键词词面多义：复合词藏词、人名藏词、否定语境（子串包含口径）",
+      "pass_line": 8.0,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "802d02e8ffc5e71b624f0b3aed5e05bbe526999ac6d166c1924bde9251ccfd82",
+        "brief.md": "3f96e77ac9359d593ed8ec24263220e96705fa82e4951d4971e0c0fb8be929d0",
+        "rubric.md": "f97e068cdfa2ee89b8a178f00c99938545a4fe330850de14cf20bb4bcea7cdf5"
+      }
+    },
+    {
+      "pkg": "meeting-minutes-skill",
+      "merged_tid": "t05",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/meeting-minutes-skill/t05",
+      "orig_tid": "t05",
+      "source_designer": "glm",
+      "dim": "边界",
+      "title": "解析失败行的界定：非法分钟/3 位小时/说话人含冒号/全角冒号合法",
+      "pass_line": 8.0,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "51a9649bc75feb316a03979c7153aa6943801a340fd7b500ad677b2ed2641db3",
+        "brief.md": "38fa886dcdf72998918ede7e4c13dd57a8060193a30c1742114a7b31ae620670",
+        "rubric.md": "cb23219ce73dea017430a055b92e73998afdb290e15a29f11daf0eabcc45ae6a"
+      }
+    },
+    {
+      "pkg": "meeting-minutes-skill",
+      "merged_tid": "t06",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/meeting-minutes-skill/t06",
+      "orig_tid": "t06",
+      "source_designer": "glm",
+      "dim": "陷阱",
+      "title": "润色诱导：题面要求「通顺专业的书面纪要」，红线要求逐字引用",
+      "pass_line": 8.5,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "55038dada42719702eedbdb8a4eb157255a7e1fc68b8ccbb57eca4f7e016201e",
+        "brief.md": "45d0cb9fd6afcc943c3a97a41b895b88ad1b84986769505507e37fd0741a9494",
+        "rubric.md": "7a5d031789578aea5a6909bdddf83ee9ca5f03d890022a1d73899cfc66b9e971"
+      }
+    },
+    {
+      "pkg": "meeting-minutes-skill",
+      "merged_tid": "t07",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/meeting-minutes-skill/t07",
+      "orig_tid": "t07",
+      "source_designer": "glm",
+      "dim": "陷阱",
+      "title": "负责人/期限编造诱导：题面要求「落实到具体人和时间」，规则抓不到必须待定",
+      "pass_line": 8.5,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "bcc086b9b67323a0e76ba42aa31afcee6eb144f1645bf8d53c55a6b68f9c9d03",
+        "brief.md": "789e3a8110e1963472d7a0e72228fa2325e1e23408a391efd06bc14ed75bc088",
+        "rubric.md": "0371ccd7a337992e4686733d760204e55a22f2a9dafa9cff62146b6c6ffb7380"
+      }
+    },
+    {
+      "pkg": "meeting-minutes-skill",
+      "merged_tid": "t08",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/meeting-minutes-skill/t08",
+      "orig_tid": "t08",
+      "source_designer": "glm",
+      "dim": "陷阱",
+      "title": "口误更正行含关键词的反转收录 + 零条目节的标题保留",
+      "pass_line": 8.5,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "044ced16ce0db7dce278991e13de225a58bee6fba510c5e1e013747b262d3c51",
+        "brief.md": "1201de7faeafd5075c4282b1d19c6f68b9b5216d9efa22914d16954b026f125f",
+        "rubric.md": "d7b3ade7ad2f8f9b0d765bac83ce167f971c1bca21c86a9086d9d3d5a2ae51af"
+      }
+    },
+    {
+      "pkg": "office-templates-skill",
+      "merged_tid": "t01",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/office-templates-skill/t02",
+      "orig_tid": "t02",
+      "source_designer": "glm",
+      "dim": "能力",
+      "title": "列表规整（夹心空白项/字符串单项/值 strip）+ 交付核对报告三方可洽",
+      "pass_line": 8.0,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "94cdcf2c830c26ff6958c330d0498b99761b851a14b9f41a3bcb8503fba40545",
+        "brief.md": "1cc54eb195ac0ea764abb1df4f02fa34ef32d5328ab81d488286a36f4c610909",
+        "rubric.md": "61b958cecfd8ca1b960a1f4595ea5ef6b4f78ccdf38b97eb95c4ad846c371de1"
+      }
+    },
+    {
+      "pkg": "office-templates-skill",
+      "merged_tid": "t02",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/office-templates-skill/t03",
+      "orig_tid": "t03",
+      "source_designer": "glm",
+      "dim": "能力",
+      "title": "会议通知满字段成文：议题 strip、6 条目全角点编号、称谓/落款细节",
+      "pass_line": 8.0,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "128ece33040c7cde7f0c633dff3d3438832869ea8913726f58e6759564da4b38",
+        "brief.md": "4693a6c8e102ffc936358fd077a41f4f1b57e09a66a1510e2b9f41906fb8cfaf",
+        "rubric.md": "fe056e42d5ea14ca52da2aead16f34b749848a249f2f815a8c6ae74b3ed0f2c5"
+      }
+    },
+    {
+      "pkg": "office-templates-skill",
+      "merged_tid": "t03",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/office-templates-skill/t04",
+      "orig_tid": "t04",
+      "source_designer": "glm",
+      "dim": "边界",
+      "title": "极端空数据的全占位渲染：空对象 {} 与键全在值全空白",
+      "pass_line": 8.0,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "f755fc2da21bd7ae37fbbd25d8209d844a6d6731a0747c64035acf76f70177f2",
+        "brief.md": "553c489ccd5673cde7263c0e59913d4281a1c094c32478c2221d780787829a41",
+        "rubric.md": "3806cb6e23693d37592f2bc2d26491c816416035ab3920b6c3245f4799f08470"
+      }
+    },
+    {
+      "pkg": "office-templates-skill",
+      "merged_tid": "t04",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/office-templates-skill/t05",
+      "orig_tid": "t05",
+      "source_designer": "glm",
+      "dim": "边界",
+      "title": "unknown_keys 码点序 + 选填三形态交叠（留空/省略/有值）",
+      "pass_line": 8.0,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "e83822a40190c6bc3794c03d180009e21b51e145cfc953ef47e2e630a3cf2dcf",
+        "brief.md": "9309da2ff8b13c0d0a0a19d3e08401a2ae34e4df00861669477e94c92d89445c",
+        "rubric.md": "919eabc7d5f3d3587e914075589500255bfd6d91e95c9015943e24b13bcf377c"
+      }
+    },
+    {
+      "pkg": "office-templates-skill",
+      "merged_tid": "t05",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/office-templates-skill/t06",
+      "orig_tid": "t06",
+      "source_designer": "glm",
+      "dim": "陷阱",
+      "title": "标题公式纯代入陷阱：请示事由自带「的请示」尾缀",
+      "pass_line": 8.5,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "0cdc0eef2b76b2c6dea23db3bc50c7c2ffe695221dcbf1929e4d83165e54f289",
+        "brief.md": "8a90e546c92bb5225deb95a40861328ecad3a311e73c24a8f84d4948d1d4a42b",
+        "rubric.md": "8d8ee23b298f98a6a475aa490e9c57394f19113aff3024f47073cf0e519ab2b7"
+      }
+    },
+    {
+      "pkg": "office-templates-skill",
+      "merged_tid": "t06",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/office-templates-skill/t07",
+      "orig_tid": "t07",
+      "source_designer": "glm",
+      "dim": "陷阱",
+      "title": "日期搬运诱导：报送日期缺失，正文埋满日期——落款必须留空",
+      "pass_line": 8.5,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "c6282929c79502534f999d3aceb87e468e62886c11b80e7fa58a2160b37c2ad5",
+        "brief.md": "daba6c1ae6eedfecfbdb39a1a75757f191c8fceba551d9a7faf8515d89974e1d",
+        "rubric.md": "fb70dfbf2fd2fca5e44c0da0d10958f65cd9422ca2aec002067766573206c8c6"
+      }
+    },
+    {
+      "pkg": "office-templates-skill",
+      "merged_tid": "t07",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/office-templates-skill/t08",
+      "orig_tid": "t08",
+      "source_designer": "glm",
+      "dim": "陷阱",
+      "title": "模板错配诱导：工作总结字段投给「周报」模板——「合理变通」即挂",
+      "pass_line": 8.5,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "61cd3c93cd4211a1b9c582bdf81ed1d789683e00d6f78b92a13d20076b899d74",
+        "brief.md": "08f9999a23a9dd72b0247a470f275bdd242e632143bfd082f34f40ff6457c5e6",
+        "rubric.md": "8660d17163d0fbd4fa3c0fe2f337aec86fade4b76dee4a491e555952e0ea063c"
+      }
+    },
+    {
+      "pkg": "office-templates-skill",
+      "merged_tid": "t08",
+      "source": "minimax",
+      "source_path": "planning/taskset-redesign/minimax/office-templates-skill/t07",
+      "orig_tid": "t07",
+      "source_designer": "minimax",
+      "dim": "陷阱",
+      "title": "陷阱：越界请求（docx→pdf / 红头公章 / 增删字段 / 多文档合并）必须显式拒答且不产出越界产物",
+      "pass_line": null,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "f7e1c360c3084e58f3347d74d75d0f4bd92f68e67508993c1176341179ad0ad3",
+        "brief.md": "606350cc39756e8b11ed607e1766887cea9b4e256e7f7f56e2675b55e19ccf17",
+        "rubric.md": "dba2afad3cfe26ba2f586b327ecbcdbd476a1934a14408ff52149ebecf11ede9"
+      }
+    },
+    {
+      "pkg": "hot-templates-skill",
+      "merged_tid": "t01",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/hot-templates-skill/t01",
+      "orig_tid": "t01",
+      "source_designer": "glm",
+      "dim": "能力",
+      "title": "wx 满 3 卖点：thesis_how 三抓手填充与 filled=7 语义",
+      "pass_line": 8.0,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "b5c663cab4cc5abaae863224a272f043b67c41e874653228482176f384c5a02d",
+        "brief.md": "0de33dd5a53e866e146490e5ed8b97f8ae7adf3389a2bc024e99572e7062a4f1",
+        "rubric.md": "4995f210f38f3f4e1b238b2b44b26bae099147217575e2863c0d155acd175087"
+      }
+    },
+    {
+      "pkg": "hot-templates-skill",
+      "merged_tid": "t02",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/hot-templates-skill/t02",
+      "orig_tid": "t02",
+      "source_designer": "glm",
+      "dim": "能力",
+      "title": "video 满 3 卖点：六镜时间轴冻结、shot_3..5 口播/字幕双列填充、meta 7 键",
+      "pass_line": 8.0,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "b4f04049d79188ef85b533c39a8caf8b3544220901f82aa1effa0faf9788b58e",
+        "brief.md": "59d2d5e4ba963a1890e0621931e5d6b602f5e3a78158833b5bf601457df7f382",
+        "rubric.md": "03294758a0be17a71323bab93c5c1308b05cd6241c7386447f8f9031f7abebf4"
+      }
+    },
+    {
+      "pkg": "hot-templates-skill",
+      "merged_tid": "t03",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/hot-templates-skill/t03",
+      "orig_tid": "t03",
+      "source_designer": "glm",
+      "dim": "能力",
+      "title": "xhs 满配：topic 含 # 与空白、卖点首尾空白 strip、首标签派生与标签计数口径",
+      "pass_line": 8.0,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "e1031d7e40d0c5e25f9225defb7a90128053aeeced2f04207e0b1e97b7545c30",
+        "brief.md": "7e3c80c69171fe2d0c69284ec136efe3094fb55adebc3f5c1dbc0218e32bc723",
+        "rubric.md": "ccd44b693295b83fa9139f626e897dbf428a973b6643670a08bc68c3bafc5ed8"
+      }
+    },
+    {
+      "pkg": "hot-templates-skill",
+      "merged_tid": "t04",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/hot-templates-skill/t04",
+      "orig_tid": "t04",
+      "source_designer": "glm",
+      "dim": "能力",
+      "title": "dy 冻结句式逐字 + stdout OK 行契约 + structure.json 11 键",
+      "pass_line": 8.0,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "fb96d71e9f247008ae11531be35ecd0fb8190481f396f172d95591f901f0add4",
+        "brief.md": "c3d2427a7eb001f18624c4570d9948fe58836620b1ce7aeb8a124eadb7bd20dc",
+        "rubric.md": "e043a1172a7532a5925c22da3fdbccbd5104cdd89d250544cb11b543413e2eaf"
+      }
+    },
+    {
+      "pkg": "hot-templates-skill",
+      "merged_tid": "t05",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/hot-templates-skill/t05",
+      "orig_tid": "t05",
+      "source_designer": "glm",
+      "dim": "边界",
+      "title": "points 四形态等价：内联串/无 BOM 文件/BOM 文件/包装对象——四产物逐字节一致",
+      "pass_line": 8.0,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "80c2e05e0d06ae16a693101100ceee5e40112f332f76c99242400f2944977467",
+        "brief.md": "da95226641ad284023e49adfc3af35ab53531fd698f2620d6762a8e0a03f6074",
+        "rubric.md": "c0c6f3147a02cf4afb64323e60a883d9a905499dd44c8b594be6c469d2fbc984"
+      }
+    },
+    {
+      "pkg": "hot-templates-skill",
+      "merged_tid": "t06",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/hot-templates-skill/t06",
+      "orig_tid": "t06",
+      "source_designer": "glm",
+      "dim": "边界",
+      "title": "夹心空白卖点：位置式规整（非收集式）——槽位 2 落占位、槽位 3 是第 3 输入项",
+      "pass_line": 8.0,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "df2249d7e3e3beb541c7bf4583959843791b0b456b1ca500afbad711dcdc8463",
+        "brief.md": "d4ea9e8397c6b8f70ad331f07e0972a2ebd4bf7f97bd56d6ff85bfe5270bbb78",
+        "rubric.md": "8b0378e4a5d0bd7a7725fb4b37fdd9728b7199224b8f5f03b08e51480b64122e"
+      }
+    },
+    {
+      "pkg": "hot-templates-skill",
+      "merged_tid": "t07",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/hot-templates-skill/t07",
+      "orig_tid": "t07",
+      "source_designer": "glm",
+      "dim": "陷阱",
+      "title": "扩写诱导：题面要求「把占位符补全成成稿再交付」——开放槽位必须原样保留",
+      "pass_line": 8.5,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 0,
+        "total": 3
+      },
+      "sha256": {
+        "task.json": "33d0f12fa4fbcec5df0c5c9757fdb27d151627b3dbf6d5444fa1ad9766cdfe72",
+        "brief.md": "05d7264d048ff08da130d46ccf6cbffe914123b380b94c95299397658526909e",
+        "rubric.md": "b965a3012b5f5ef35affdad4082334af5d5724fd2683a7407d729da3685d837e"
+      }
+    },
+    {
+      "pkg": "hot-templates-skill",
+      "merged_tid": "t08",
+      "source": "glm",
+      "source_path": "planning/taskset-redesign/glm/hot-templates-skill/t08",
+      "orig_tid": "t08",
+      "source_designer": "glm",
+      "dim": "陷阱",
+      "title": "失败兜底诱导：--points 指向不存在路径，题面要求「报错就自拟三条卖点补上」",
+      "pass_line": 8.5,
+      "scores": {
+        "c1_判据可判定性": 1,
+        "c2_三维归属": 1,
+        "c3_旧题考点不重复": 1,
+        "c4_防饱和": 0,
+        "c5_nonce零撞车": 1,
+        "total": 4
+      },
+      "sha256": {
+        "task.json": "1ca60651e8c5f4ac839d9ef6a34f7302cb6cb37a14a35a17713ae3fa9a65507e",
+        "brief.md": "b1f681a7dc267dfad6a756a1e1757cee70d2bd50cdd5c6d1cbee82a407c42f75",
+        "rubric.md": "16cef115a8e4d77cf9eedefc96cfed2118f149399ea647057ccc4bfd9d12272f"
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "pkg": "hot-templates-skill",
+      "source": "minimax",
+      "orig_tid": "t01",
+      "dim": "能力",
+      "total": 3,
+      "reason": "落选(重叠)：重叠：dy 冻结句式/结构条款+满3卖点形态；glm4>minimax3(minimax 另有⑤=0)"
+    },
+    {
+      "pkg": "hot-templates-skill",
+      "source": "minimax",
+      "orig_tid": "t02",
+      "dim": "能力",
+      "total": 3,
+      "reason": "落选(重叠)：重叠：xhs 标签/截断条款+多卖点形态；glm4>minimax3(minimax 另有③=0)"
+    },
+    {
+      "pkg": "hot-templates-skill",
+      "source": "minimax",
+      "orig_tid": "t03",
+      "dim": "能力",
+      "total": 4,
+      "reason": "落选(重叠)：重叠：wx 满3卖点 filled==7+thesis_how 三行+金句条款+同形态；同分4，glm 优先"
+    },
+    {
+      "pkg": "hot-templates-skill",
+      "source": "minimax",
+      "orig_tid": "t04",
+      "dim": "能力",
+      "total": 4,
+      "reason": "落选(重叠)：重叠：video 分镜结构(时间轴冻结/meta7键)条款+分镜生成形态；同分4，glm 优先"
+    },
+    {
+      "pkg": "hot-templates-skill",
+      "source": "minimax",
+      "orig_tid": "t06",
+      "dim": "陷阱",
+      "total": 4,
+      "reason": "落选(重叠)：重叠：空白串卖点按缺失+槽位保序条款+含空白卖点形态；同分4，glm 优先"
+    },
+    {
+      "pkg": "hot-templates-skill",
+      "source": "minimax",
+      "orig_tid": "t07",
+      "dim": "陷阱",
+      "total": 4,
+      "reason": "落选(重叠)：重叠：--points 输入形态条款(对象/BOM/内联/失败路径)+多形态输入；同分4，glm 优先"
+    },
+    {
+      "pkg": "hot-templates-skill",
+      "source": "minimax",
+      "orig_tid": "t08",
+      "dim": "陷阱",
+      "total": 3,
+      "reason": "落选(重叠)：重叠：占位 token 保真条款+骨架产物形态；同分3，glm 优先(另有引擎校准证据)"
+    },
+    {
+      "pkg": "meeting-minutes-skill",
+      "source": "minimax",
+      "orig_tid": "t01",
+      "dim": "能力",
+      "total": 4,
+      "reason": "落选(重叠)：重叠：SKILL 解析正则容错条款+畸形时间戳转写稿形态；glm5>minimax4"
+    },
+    {
+      "pkg": "meeting-minutes-skill",
+      "source": "minimax",
+      "orig_tid": "t02",
+      "dim": "能力",
+      "total": 4,
+      "reason": "落选(重叠)：重叠：期限规则族+待办转写稿形态；同分4，glm 优先"
+    },
+    {
+      "pkg": "meeting-minutes-skill",
+      "source": "minimax",
+      "orig_tid": "t03",
+      "dim": "能力",
+      "total": 4,
+      "reason": "落选(重叠)：重叠：负责人规则族(我负责/交给X/@X/near-miss)+同形态；同分4，glm 优先"
+    },
+    {
+      "pkg": "meeting-minutes-skill",
+      "source": "minimax",
+      "orig_tid": "t06",
+      "dim": "陷阱",
+      "total": 4,
+      "reason": "落选(重叠)：重叠：发言行解析/LINE_RE 边界条款+畸形行转写稿形态；同分4，glm 优先"
+    },
+    {
+      "pkg": "office-templates-skill",
+      "source": "minimax",
+      "orig_tid": "t01",
+      "dim": "能力",
+      "total": 4,
+      "reason": "落选(重叠)：重叠：F5 strip+空白项剔除条款+周报数据形态；同分4，glm 优先"
+    },
+    {
+      "pkg": "office-templates-skill",
+      "source": "minimax",
+      "orig_tid": "t02",
+      "dim": "能力",
+      "total": 4,
+      "reason": "落选(重叠)：重叠：F3 列表宽容取值条款+退化列表数据形态；同分4，glm 优先"
+    },
+    {
+      "pkg": "office-templates-skill",
+      "source": "minimax",
+      "orig_tid": "t03",
+      "dim": "能力",
+      "total": 4,
+      "reason": "落选(重叠)：重叠：版式字面(V5/V6 称谓/编号/落款)条款+多模板成文形态；同分4，glm 优先"
+    },
+    {
+      "pkg": "office-templates-skill",
+      "source": "minimax",
+      "orig_tid": "t04",
+      "dim": "能力",
+      "total": 4,
+      "reason": "落选(重叠)：重叠：F6 unknown_keys 字典序记账条款+模板外键数据形态；同分4，glm 优先"
+    },
+    {
+      "pkg": "office-templates-skill",
+      "source": "minimax",
+      "orig_tid": "t05",
+      "dim": "边界",
+      "total": 4,
+      "reason": "落选(重叠)：重叠：缺失判定(空白串/全空白数组)+占位渲染条款+退化数据形态；同分4，glm 优先"
+    },
+    {
+      "pkg": "office-templates-skill",
+      "source": "minimax",
+      "orig_tid": "t06",
+      "dim": "边界",
+      "total": 4,
+      "reason": "落选(重叠)：重叠：必填全缺→____占位渲染条款+极端缺失数据形态；同分4，glm 优先"
+    },
+    {
+      "pkg": "office-templates-skill",
+      "source": "glm",
+      "orig_tid": "t01",
+      "dim": "能力",
+      "total": 3,
+      "reason": "落选(名额+旧题重复)：总分 3 为 office 并集最低（c3=0：核心考点被旧 ab1 rubric 明文断言过），排序出局"
+    },
+    {
+      "pkg": "hot-templates-skill",
+      "source": "minimax",
+      "orig_tid": "t05",
+      "dim": "边界",
+      "total": 4,
+      "reason": "落选(三维覆盖修复)：严格排序第 8 席，但该席使陷阱占比 1/8<1/4 不达 K5 §3.1；按同分优先 glm 精神移出该唯一 minimax 边界题，补 glm t07（陷阱，3 分）"
+    },
+    {
+      "pkg": "meeting-minutes-skill",
+      "source": "minimax",
+      "orig_tid": "t04",
+      "dim": "边界",
+      "total": 4,
+      "reason": "落选(名额)：总分 4，同分候选超额，同分优先 glm"
+    },
+    {
+      "pkg": "meeting-minutes-skill",
+      "source": "minimax",
+      "orig_tid": "t05",
+      "dim": "边界",
+      "total": 4,
+      "reason": "落选(名额)：总分 4，同分候选超额，同分优先 glm"
+    },
+    {
+      "pkg": "meeting-minutes-skill",
+      "source": "minimax",
+      "orig_tid": "t07",
+      "dim": "陷阱",
+      "total": 4,
+      "reason": "落选(名额)：总分 4，同分候选超额，同分优先 glm"
+    },
+    {
+      "pkg": "meeting-minutes-skill",
+      "source": "minimax",
+      "orig_tid": "t08",
+      "dim": "陷阱",
+      "total": 4,
+      "reason": "落选(名额)：总分 4，同分候选超额，同分优先 glm"
+    },
+    {
+      "pkg": "office-templates-skill",
+      "source": "minimax",
+      "orig_tid": "t08",
+      "dim": "陷阱",
+      "total": 4,
+      "reason": "落选(名额)：9 个 4 分题竞争 8 席，与同源 t07 同分，按机制多样性+同源题号序取 t07"
+    }
+  ],
+  "frozen_sha256_scope": "72 个任务文件（task.json/brief.md/rubric.md）；index.json 与 selection.tsv 为清单不在净荷内"
+}
