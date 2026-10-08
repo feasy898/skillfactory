@@ -52,7 +52,8 @@
         }
       }
     ],
-    "counted_rule": "正式臂进程数以 budget 记账为准（spawn 前 pending、事后按 db model_usage 实测回填，照 sf0006-b/c 先例）；rate_limited 退避重试每臂 ≤1，重试进程不占正式额度、逐条留痕"
+    "counted_rule": "正式臂进程数以 budget 记账为准（spawn 前 pending、事后按 db model_usage 实测回填，照 sf0006-b/c 先例）；rate_limited 退避重试每臂 ≤1，重试进程不占正式额度、逐条留痕",
+    "counted_so_far": 11
   },
   "judge_calls": {
     "floor": 36,
@@ -61,7 +62,8 @@
     "consistency_basis": "EVAL-SPEC v0.2 §3.4-1 每任务 ≥1 次同裁判匿名复评（必做）",
     "rejudge_on_delta_gt_2": "按实发记账，不预批（触发即留痕，不静默）",
     "registered_judge_budget": 54,
-    "registered_judge_budget_note": "下限口径合计 54；rejudge 与冒烟另计、按实发如实入 entries"
+    "registered_judge_budget_note": "下限口径合计 54；rejudge 与冒烟另计、按实发如实入 entries",
+    "used_so_far": 1
   },
   "retry_policy": {
     "cap_per_arm": 1,
@@ -291,5 +293,214 @@
     "以退出码为准；判不了 fail-closed 记 unjudgeable，不放宽口径",
     "登记后的任何超预算调用须先经 planner 批准，超额进程不计入结果（SF-0006 P5 口径沿用）",
     "run 期间本文件由登记态转为台账态：每进程 spawn 前记 pending、事后按实测回填（照 sf0006-b-smoke-2/sf0006-c 先例）；只增不改历史行"
+  ],
+  "ledger_entries": [
+    {
+      "judge": "step-router-v1",
+      "channel": "http-api",
+      "task": "smoke",
+      "purpose": "通道连通性冒烟（登记 open_items 承诺）",
+      "ts_intent": "11:01:18",
+      "status": "done",
+      "slot": 1,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 586,
+      "tokens": {
+        "prompt": 479,
+        "completion": 23,
+        "total": 502
+      },
+      "model_observed": "step-router-v1",
+      "api_id": "8dc7056d189a361ca3f34c36ca567e5e.e3757f85651ceff12c8bfafc2b1af6a9",
+      "finish": "stop",
+      "reply_head": "ok"
+    },
+    {
+      "arm": "glm/hot-templates-ab-001-rep1/baseline",
+      "kind": "arm",
+      "pkg": "hot-templates",
+      "task": "ab-001",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "11:01:25",
+      "status": "skipped_harness_bug",
+      "slot": 2,
+      "note": "SCRATCH_ENV 赋值 bug（存整 dict 未取 extra_env），spawn 前崩溃，未发起模型调用、不占预算；修复后重跑"
+    },
+    {
+      "arm": "glm/hot-templates-ab-001-rep1/baseline",
+      "kind": "arm",
+      "pkg": "hot-templates",
+      "task": "ab-001",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "13:56:46",
+      "status": "done",
+      "slot": 3,
+      "exit_code": 0,
+      "session_id": "sess_224a2e20-3852-4eaa-a686-f8c9807b9dff",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/hot-templates-ab-001-rep1/treatment",
+      "kind": "arm",
+      "pkg": "hot-templates",
+      "task": "ab-001",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "13:58:26",
+      "status": "done",
+      "slot": 4,
+      "exit_code": 0,
+      "session_id": "sess_108c217c-4c21-447e-bd8d-0667b53ab43d",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/hot-templates-ab-002-rep1/baseline",
+      "kind": "arm",
+      "pkg": "hot-templates",
+      "task": "ab-002",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "14:02:05",
+      "status": "done",
+      "slot": 5,
+      "exit_code": 0,
+      "session_id": "sess_383bd37d-5581-46f1-a7df-b5bba0179eb5",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/hot-templates-ab-001-rep2/baseline",
+      "kind": "arm",
+      "pkg": "hot-templates",
+      "task": "ab-001",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "14:02:05",
+      "status": "done",
+      "slot": 6,
+      "exit_code": 0,
+      "session_id": "sess_ae3072d7-ccdf-4f28-9c93-f16729d43008",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/hot-templates-ab-001-rep2/treatment",
+      "kind": "arm",
+      "pkg": "hot-templates",
+      "task": "ab-001",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "14:03:52",
+      "status": "done",
+      "slot": 7,
+      "exit_code": 0,
+      "session_id": "sess_22666b77-697f-4a73-b8fd-ea3a26c36089",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/hot-templates-ab-002-rep1/treatment",
+      "kind": "arm",
+      "pkg": "hot-templates",
+      "task": "ab-002",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "14:04:06",
+      "status": "done",
+      "slot": 8,
+      "exit_code": 0,
+      "session_id": "sess_c0470999-5028-461c-b820-bc0e358b086a",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/hot-templates-ab-002-rep2/baseline",
+      "kind": "arm",
+      "pkg": "hot-templates",
+      "task": "ab-002",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "14:04:28",
+      "status": "done",
+      "slot": 9,
+      "exit_code": 0,
+      "session_id": "sess_6ed2550a-93b5-4970-9e5f-0d4412dd5519",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/hot-templates-ab-001-rep3/baseline",
+      "kind": "arm",
+      "pkg": "hot-templates",
+      "task": "ab-001",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "14:04:45",
+      "status": "pending",
+      "slot": 10
+    },
+    {
+      "arm": "minimax/hot-templates-ab-002-rep2/treatment",
+      "kind": "arm",
+      "pkg": "hot-templates",
+      "task": "ab-002",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "14:05:01",
+      "status": "done",
+      "slot": 11,
+      "exit_code": 0,
+      "session_id": "sess_df90f4d1-c870-4a16-924f-a9777b7df4e3",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/hot-templates-ab-002-rep3/baseline",
+      "kind": "arm",
+      "pkg": "hot-templates",
+      "task": "ab-002",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "14:05:33",
+      "status": "pending",
+      "slot": 12
+    }
   ]
 }

@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_df90f4d1-c870-4a16-924f-a9777b7df4e3",
+  "traceId": "c1023d51-e34f-445a-9501-570f5de41c9b",
+  "turnId": "turn_484cf669-8b95-4579-9643-a65d7acc3093",
+  "response": "Done. The 小红书图文 skeleton is generated and in place at `out/`.\n\n**What was produced** (via the skill's deterministic engine `scripts/gen.py`, not hand-written):\n\n- `out/骨架.md` — human-readable skeleton, 7 frozen elements: 标题（带数字）`🔥` → 开头钩子块 `✅` → 三个干货块 `💡` → 划重点 `📌` → 标签组 `🏷️`, plus the 占位符统计 section.\n- `out/structure.json` — machine-readable: `template_version=1.0`, platform `xhs`, structure name 标题带数字 + emoji规则 + 正文分块 + 标签组, 7 elements with 9 keys each, and placeholder stats.\n\n**How the 5 selling points mapped.** The xhs template has exactly 3 干货块 slots, so points 1–3 filled `point_block_1..3` verbatim after strip (签约前查房东房产证与身份证一致性 / 押金条款写明退还条件与时限 / 入住当天拍照录像留档). Points 4–5 (水电燃气表底数写进合同附件 / 转租条款提前约定违约金) did not fit any slot and are preserved in order in `structure.json.points_unused` rather than dropped — worth knowing if you want all five in the final post, since the frozen template won't hold them in the body.\n\n**Acceptance checks, all passing:** engine exited 0 with the required `OK platform=xhs topic=租房避坑指南 elements=7 open_placeholders=7 filled_from_input=10 -> out` line; both files exist and are non-empty; `open_placeholders=7` and `filled_from_input=10` match the SKILL's stated full-3-point reference values for xhs; zero `{{ }}` unfilled-template residue. A second identical run produced byte-identical files, confirming determinism.\n\nI did not fill any `【占位:…】` slots — per the skill's red line those are open slots reserved for the user/AI at expansion time, and the engine intentionally ships structure only. The skill's own `eval/runner.py` acceptance harness is not present in this distribution copy, so the 8-case structural comparison against `reference/out` could not be run.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 8,
+    "inputTokens": 192146,
+    "outputTokens": 1639,
+    "totalTokens": 193785,
+    "cacheReadTokens": 165550,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 368,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 193785,
+    "contextUsed": 27274,
+    "contextWindow": 200000
+  }
+}

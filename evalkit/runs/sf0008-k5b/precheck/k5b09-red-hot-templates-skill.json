@@ -1,0 +1,213 @@
+{
+  "ok": false,
+  "summary": {
+    "cases": 8,
+    "checks_total": 40,
+    "passed": 0,
+    "failed": 40,
+    "consistency_threshold": 0.9,
+    "consistency_min": null
+  },
+  "checks": [
+    {
+      "name": "dy/case1/artifacts_present",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/dy/case1"
+    },
+    {
+      "name": "dy/case1/structure_json_self_consistent",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/dy/case1"
+    },
+    {
+      "name": "dy/case1/platform_template_complete",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/dy/case1"
+    },
+    {
+      "name": "dy/case1/sample_data_filled_no_template_residue",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/dy/case1"
+    },
+    {
+      "name": "dy/case1/structure_consistency_with_reference",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/dy/case1"
+    },
+    {
+      "name": "dy/case2/artifacts_present",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/dy/case2"
+    },
+    {
+      "name": "dy/case2/structure_json_self_consistent",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/dy/case2"
+    },
+    {
+      "name": "dy/case2/platform_template_complete",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/dy/case2"
+    },
+    {
+      "name": "dy/case2/sample_data_filled_no_template_residue",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/dy/case2"
+    },
+    {
+      "name": "dy/case2/structure_consistency_with_reference",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/dy/case2"
+    },
+    {
+      "name": "xhs/case1/artifacts_present",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/xhs/case1"
+    },
+    {
+      "name": "xhs/case1/structure_json_self_consistent",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/xhs/case1"
+    },
+    {
+      "name": "xhs/case1/platform_template_complete",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/xhs/case1"
+    },
+    {
+      "name": "xhs/case1/sample_data_filled_no_template_residue",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/xhs/case1"
+    },
+    {
+      "name": "xhs/case1/structure_consistency_with_reference",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/xhs/case1"
+    },
+    {
+      "name": "xhs/case2/artifacts_present",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/xhs/case2"
+    },
+    {
+      "name": "xhs/case2/structure_json_self_consistent",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/xhs/case2"
+    },
+    {
+      "name": "xhs/case2/platform_template_complete",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/xhs/case2"
+    },
+    {
+      "name": "xhs/case2/sample_data_filled_no_template_residue",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/xhs/case2"
+    },
+    {
+      "name": "xhs/case2/structure_consistency_with_reference",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/xhs/case2"
+    },
+    {
+      "name": "wx/case1/artifacts_present",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/wx/case1"
+    },
+    {
+      "name": "wx/case1/structure_json_self_consistent",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/wx/case1"
+    },
+    {
+      "name": "wx/case1/platform_template_complete",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/wx/case1"
+    },
+    {
+      "name": "wx/case1/sample_data_filled_no_template_residue",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/wx/case1"
+    },
+    {
+      "name": "wx/case1/structure_consistency_with_reference",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/wx/case1"
+    },
+    {
+      "name": "wx/case2/artifacts_present",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/wx/case2"
+    },
+    {
+      "name": "wx/case2/structure_json_self_consistent",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/wx/case2"
+    },
+    {
+      "name": "wx/case2/platform_template_complete",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/wx/case2"
+    },
+    {
+      "name": "wx/case2/sample_data_filled_no_template_residue",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/wx/case2"
+    },
+    {
+      "name": "wx/case2/structure_consistency_with_reference",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/wx/case2"
+    },
+    {
+      "name": "video/case1/artifacts_present",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/video/case1"
+    },
+    {
+      "name": "video/case1/structure_json_self_consistent",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/video/case1"
+    },
+    {
+      "name": "video/case1/platform_template_complete",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/video/case1"
+    },
+    {
+      "name": "video/case1/sample_data_filled_no_template_residue",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/video/case1"
+    },
+    {
+      "name": "video/case1/structure_consistency_with_reference",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/video/case1"
+    },
+    {
+      "name": "video/case2/artifacts_present",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/video/case2"
+    },
+    {
+      "name": "video/case2/structure_json_self_consistent",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/video/case2"
+    },
+    {
+      "name": "video/case2/platform_template_complete",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/video/case2"
+    },
+    {
+      "name": "video/case2/sample_data_filled_no_template_residue",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/video/case2"
+    },
+    {
+      "name": "video/case2/structure_consistency_with_reference",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.jbvC9XgKkP/video/case2"
+    }
+  ]
+}

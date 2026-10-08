@@ -1,0 +1,105 @@
+{
+  "ok": false,
+  "checks": [
+    {
+      "name": "case1/docx_opens_with_three_sections",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.pR1n6QCReS/case1"
+    },
+    {
+      "name": "case1/todo_is_table_with_owner_deadline_columns",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.pR1n6QCReS/case1"
+    },
+    {
+      "name": "case1/summary_counts_match_docx",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.pR1n6QCReS/case1"
+    },
+    {
+      "name": "case1/no_fabricated_entries",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.pR1n6QCReS/case1"
+    },
+    {
+      "name": "case1/entry_counts_within_tolerance_of_reference",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.pR1n6QCReS/case1"
+    },
+    {
+      "name": "case2/docx_opens_with_three_sections",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.pR1n6QCReS/case2"
+    },
+    {
+      "name": "case2/todo_is_table_with_owner_deadline_columns",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.pR1n6QCReS/case2"
+    },
+    {
+      "name": "case2/summary_counts_match_docx",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.pR1n6QCReS/case2"
+    },
+    {
+      "name": "case2/no_fabricated_entries",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.pR1n6QCReS/case2"
+    },
+    {
+      "name": "case2/entry_counts_within_tolerance_of_reference",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.pR1n6QCReS/case2"
+    },
+    {
+      "name": "case3/docx_opens_with_three_sections",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.pR1n6QCReS/case3"
+    },
+    {
+      "name": "case3/todo_is_table_with_owner_deadline_columns",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.pR1n6QCReS/case3"
+    },
+    {
+      "name": "case3/summary_counts_match_docx",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.pR1n6QCReS/case3"
+    },
+    {
+      "name": "case3/no_fabricated_entries",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.pR1n6QCReS/case3"
+    },
+    {
+      "name": "case3/entry_counts_within_tolerance_of_reference",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.pR1n6QCReS/case3"
+    },
+    {
+      "name": "case4/docx_opens_with_three_sections",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.pR1n6QCReS/case4"
+    },
+    {
+      "name": "case4/todo_is_table_with_owner_deadline_columns",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.pR1n6QCReS/case4"
+    },
+    {
+      "name": "case4/summary_counts_match_docx",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.pR1n6QCReS/case4"
+    },
+    {
+      "name": "case4/no_fabricated_entries",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.pR1n6QCReS/case4"
+    },
+    {
+      "name": "case4/entry_counts_within_tolerance_of_reference",
+      "pass": false,
+      "detail": "被测用例目录不存在: /tmp/tmp.pR1n6QCReS/case4"
+    }
+  ]
+}

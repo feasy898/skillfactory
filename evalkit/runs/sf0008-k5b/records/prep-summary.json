@@ -1,0 +1,25 @@
+{
+  "units": 41,
+  "arm_calls_planned": 82,
+  "allocation": {
+    "meeting-minutes|t1": "glm",
+    "meeting-minutes|t3": "glm",
+    "meeting-minutes|t5": "glm",
+    "meeting-minutes|t7": "glm",
+    "meeting-minutes|t2": "minimax",
+    "meeting-minutes|t4": "minimax",
+    "meeting-minutes|t6": "minimax",
+    "meeting-minutes|t8": "minimax",
+    "office-templates|ab1-standard-four-templates": "glm",
+    "office-templates|ab3-empty-and-string-lists": "glm",
+    "office-templates|ab5-determinism-layout-selfeval": "glm",
+    "office-templates|ab2-boundary-missing-required": "minimax",
+    "office-templates|ab4-invalid-input-rejection": "minimax",
+    "hot-templates|ab-001": "glm",
+    "hot-templates|ab-003": "glm",
+    "hot-templates|ab-005": "glm",
+    "hot-templates|ab-002": "minimax",
+    "hot-templates|ab-004": "minimax"
+  },
+  "opened_at": "2026-10-08T11:00:13+0800"
+}

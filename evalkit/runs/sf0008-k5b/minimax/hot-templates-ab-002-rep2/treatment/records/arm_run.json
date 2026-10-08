@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/hot-templates-ab-002-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 29840,
+  "started_at_ms": 1791439501516,
+  "session_id": "sess_df90f4d1-c870-4a16-924f-a9777b7df4e3",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/hot-templates-ab-002-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 192146,
+      "ot": 1639,
+      "dur": 26137,
+      "n": 8
+    }
+  ],
+  "input_tokens": 192146,
+  "output_tokens": 1639,
+  "stdout_bytes": 2660,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " 4–5 (水电燃气表底数写进合同附件 / 转租条款提前约定违约金) did not fit any slot and are preserved in order in `structure.json.points_unused` rather than dropped — worth knowing if you want all five in the final post, since the frozen template won't hold them in the body.\\n\\n**Acceptance checks, all passing:** engine exited 0 with the required `OK platform=xhs topic=租房避坑指南 elements=7 open_placeholders=7 filled_from_input=10 -> out` line; both files exist and are non-empty; `open_placeholders=7` and `filled_from_input=10` match the SKILL's stated full-3-point reference values for xhs; zero `{{ }}` unfilled-template residue. A second identical run produced byte-identical files, confirming determinism.\\n\\nI did not fill any `【占位:…】` slots — per the skill's red line those are open slots reserved for the user/AI at expansion time, and the engine intentionally ships structure only. The skill's own `eval/runner.py` acceptance harness is not present in this distribution copy, so the 8-case structural comparison against `reference/out` could not be run.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 8,\n    \"inputTokens\": 192146,\n    \"outputTokens\": 1639,\n    \"totalTokens\": 193785,\n    \"cacheReadTokens\": 165550,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 368,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 193785,\n    \"contextUsed\": 27274,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

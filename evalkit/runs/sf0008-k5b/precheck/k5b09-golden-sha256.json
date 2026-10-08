@@ -1,0 +1,20 @@
+{
+  "meeting-minutes-skill": {
+    "sha256": "b3be400ae3b4984a1537d4909b9ea379246d8b978d3c8a179c90182c5c854315",
+    "registry": "b3be400ae3b4984a1537d4909b9ea379246d8b978d3c8a179c90182c5c854315",
+    "match": true,
+    "registry_has": true
+  },
+  "office-templates-skill": {
+    "sha256": "2fa58b07481b44bc2840b2fdd757ef19faa5ebe37e1918baf936b2b923f4ecbf",
+    "registry": "2fa58b07481b44bc2840b2fdd757ef19faa5ebe37e1918baf936b2b923f4ecbf",
+    "match": true,
+    "registry_has": true
+  },
+  "hot-templates-skill": {
+    "sha256": "19e4b6e11bee018ed8c0842a3a39a651a98c97f2fead0c8e16ee2ed6ddeff186",
+    "registry": "19e4b6e11bee018ed8c0842a3a39a651a98c97f2fead0c8e16ee2ed6ddeff186",
+    "match": true,
+    "registry_has": true
+  }
+}

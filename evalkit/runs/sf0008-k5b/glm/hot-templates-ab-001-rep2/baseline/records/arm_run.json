@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-001-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 105395,
+  "started_at_ms": 1791439325563,
+  "session_id": "sess_ae3072d7-ccdf-4f28-9c93-f16729d43008",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-001-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 166276,
+      "ot": 6085,
+      "dur": 100659,
+      "n": 7
+    }
+  ],
+  "input_tokens": 166276,
+  "output_tokens": 6085,
+  "stdout_bytes": 1984,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "{\n  \"sessionId\": \"sess_ae3072d7-ccdf-4f28-9c93-f16729d43008\",\n  \"traceId\": \"e88cb655-0987-4f55-9b40-2ee708590cc8\",\n  \"turnId\": \"turn_c73a5ad7-28d3-4c1b-9961-de8efb65e056\",\n  \"response\": \"任务完成。两份产物已生成并通过校验：\\n\\n- **`out/骨架.md`** — 抖音口播爆款内容骨架（约60秒），严格按冻结模板组织：3秒钩子（0-3s，数字冲击「2小时/天=30天/年」）→ 痛点（3-15s，地铁刷手机、到岗进不了状态的场景共鸣）→ 价值点×3（15-45s，每条约10秒）→ CTA（45-60s，行动门槛+评论区互动钩子）。每个段落含目标、完整口播文案和画面/字幕提示，另附发布建议（标题、封面、话题标签、置顶评论）。\\n- **`out/structure.json`** — 同一骨架的机器可读版本，含 `platform=dy`、`topic=通勤时间管理`、模板声明（frozen=true）、6 个 section 的类型/时间轴/文案，以及发布元数据。\\n\\n校验结果：JSON 可解析，section 序列恰为 `hook, pain_point, value_point×3, cta`，三条价值点（前一天晚上定好三件要事 / 通勤路上只听行业播客不刷短视频 / 到公司先花10分钟写当日清单）在 md 和 json 中均逐字保留。\\n\\n一点说明：这是 baseline 运行，`hot-templates` 技能仅安装在 treatment 臂（`treatment/.zcode/skills/`），本会话技能列表中没有它——按基线条件我从自含的 brief 直接完成了产物，未读取 treatment 的技能文件以避免污染 A/B 对比。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 7,\n    \"inputTokens\": 166276,\n    \"outputTokens\": 6085,\n    \"totalTokens\": 172361,\n    \"cacheReadTokens\": 154176,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 3567,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 172361,\n    \"contextUsed\": 27973,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

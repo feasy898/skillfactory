@@ -1,0 +1,11 @@
+{
+  "run_id": "minimax/office-templates-ab4-invalid-input-rejection-rep1",
+  "run_dir": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/office-templates-ab4-invalid-input-rejection-rep1",
+  "arms": {
+    "baseline": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/office-templates-ab4-invalid-input-rejection-rep1/baseline",
+    "treatment": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment"
+  },
+  "treatment_skill_mount": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/.zcode/skills/office-templates",
+  "baseline_has_skill": false,
+  "pack": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/packs/office-templates-ab4-invalid-input-rejection"
+}

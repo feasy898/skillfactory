@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-001-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 63624,
+  "started_at_ms": 1791439106757,
+  "session_id": "sess_108c217c-4c21-447e-bd8d-0667b53ab43d",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-001-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 198893,
+      "ot": 2565,
+      "dur": 59551,
+      "n": 8
+    }
+  ],
+  "input_tokens": 198893,
+  "output_tokens": 2565,
+  "stdout_bytes": 2177,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "{\n  \"sessionId\": \"sess_108c217c-4c21-447e-bd8d-0667b53ab43d\",\n  \"traceId\": \"1040ea1e-dabf-4c3c-9954-a5ca760a7812\",\n  \"turnId\": \"turn_f6fa3ae0-89d6-41da-8108-f2aa272599ed\",\n  \"response\": \"任务完成。抖音口播爆款骨架已生成并落盘到 `out/` 目录，两份交付物均在位且验证通过。\\n\\n**执行过程**：按 hot-templates 技能规程先完整读取 `SKILL.md` 与 `references/dy.md`，然后用确定性渲染引擎 `scripts/gen.py` 生成（未手写任何产物），命令退出码 0，stdout 打印成功行 `OK platform=dy topic=通勤时间管理 elements=6 open_placeholders=6 filled_from_input=4 -> out`。\\n\\n**产物内容**：\\n- `out/骨架.md`（人读骨架）：首行 `# 抖音口播稿 · 爆款骨架`，6 个要素节按冻结顺序排列——3秒钩子（含冻结标记「别划走！还在为「通勤时间管理」反复内耗的人」）、痛点共鸣、价值点1-3、行动号召（含冻结标记「点赞收藏，评论区扣「1」」），尾部含占位符统计节。\\n- `out/structure.json`（机器可读）：顶层 11 键齐全，`platform=dy`、`template_version=\\\"1.0\\\"`、`points_input_count=3`、`points_used` 逐字填入 3 条卖点（「前一天晚上定好三件要事」「通勤路上只听行业播客不刷短视频」「到公司先花10分钟写当日清单」），`points_unused=[]`，6 要素 id 为 `hook_3s / pain_point / value_1..3 / cta`。\\n\\n**红线核验**：3 条卖点原文 strip 后逐字入槽、零改写；`filled_from_input=4`（topic + point#1-3）与满 3 卖点的 dy 参考值一致；6 处 `【占位:…】` 开放槽位保持原样未被编造填充；两份文件中 `{{ }}` 类模板变量残留为 0。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 8,\n    \"inputTokens\": 198893,\n    \"outputTokens\": 2565,\n    \"totalTokens\": 201458,\n    \"cacheReadTokens\": 186496,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 2083,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 201458,\n    \"contextUsed\": 28343,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

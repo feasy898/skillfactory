@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_c0470999-5028-461c-b820-bc0e358b086a",
+  "traceId": "2beaa985-d1d8-4d90-8213-6efddd383518",
+  "turnId": "turn_3e33f70b-cab4-4652-89b1-3fd84c5414fa",
+  "response": "Done. The xhs skeleton is generated in `out/`.\n\n**What I did:** loaded the `hot-templates` skill, read `references/xhs.md` (the required platform reference), and ran the deterministic engine rather than hand-writing anything:\n\n```\npython .zcode/skills/hot-templates/scripts/gen.py --platform xhs --topic 租房避坑指南 \\\n  --points '[…5 条…]' --outdir out\n→ exit 0, OK platform=xhs topic=租房避坑指南 elements=7 open_placeholders=7 filled_from_input=10\n```\n\n**Deliverables in `out/`:**\n- `骨架.md` (2647 B) — 7 frozen elements: title with 🔥 +数字 3, hook block ✅, three 💡 dry-goods blocks, 📌 summary, 🏷️ tag group, plus the 占位符统计 section.\n- `structure.json` (5520 B) — 11 top-level keys, 9 keys per element, 5-key placeholder stats.\n\n**One thing worth flagging:** the brief supplied 5 points, but every platform template has exactly 3 value-point slots. The engine normalized5 → 3: the first three points filled `point_block_1..3`, and `水电燃气表底数写进合同附件` and `转租条款提前约定违约金` were preserved in order in `points_unused` rather than silently dropped. If those two should carry real weight, they'd need a second run or a manual extension after the frozen structure — I left them untouched per the template-freeze rule.\n\nThe 7 `【占位:…】` tokens are by-design open slots (left for the writer to fill, not a defect), and there are zero `{{ }}` unfilled template variables. Verified determinism inputs are clean; `structure.json` has 11 top keys and the emoji mapping matches 🔥/✅/💡/💡/💡/📌/🏷️ per the frozen table.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 7,
+    "inputTokens": 165414,
+    "outputTokens": 1204,
+    "totalTokens": 166618,
+    "cacheReadTokens": 139413,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 274,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 166618,
+    "contextUsed": 26610,
+    "contextWindow": 200000
+  }
+}

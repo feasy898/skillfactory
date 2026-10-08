@@ -1,0 +1,115 @@
+{
+  "meeting-minutes-skill": {
+    "source": "dist/meeting-minutes-skill",
+    "source_untouched": true,
+    "filter_whitelist": [
+      "SKILL.md",
+      "references",
+      "scripts",
+      "requirements.txt"
+    ],
+    "excluded": [
+      "reference",
+      "eval",
+      "EVALUATION.md",
+      "CHANGELOG.md",
+      "README.md",
+      "MANIFEST.md",
+      "LICENSE"
+    ],
+    "files": [
+      "SKILL.md",
+      "references/classification-rules.md",
+      "references/docx-and-summary.md",
+      "references/extraction-heuristics.md",
+      "requirements.txt",
+      "scripts/gen_docx.py",
+      "scripts/minutes.py"
+    ],
+    "file_sha256": {
+      "SKILL.md": "181c8daa8069640cf8a32e32e791d914e79fe4bfb1deca0f4dbdb7107cc56827",
+      "references/classification-rules.md": "4347864b3586e900170a88e5b3a53889107352852ada33a3335172b668ab70fc",
+      "references/docx-and-summary.md": "595000dac3ec67e09ed0c6b5b972dd5ffd334a566ecdd9f9225fd50d10813763",
+      "references/extraction-heuristics.md": "0c6a997ee56e4d1bd24c68689d0f6f7754fefd0af177eb79cf219e5c2fe6626c",
+      "requirements.txt": "dfea9cd01250f46caa09e7e7041e7105cd29d5383c7c3d3fff4a8dd24e79509b",
+      "scripts/gen_docx.py": "2b252735a79a4e5df887b2ef079a9584510873167492cbe79b10c8cb9b823f0e",
+      "scripts/minutes.py": "630068f4d33206e863cf0f53d6111b6056fe481c25fffd030da8dd783e513f80"
+    }
+  },
+  "office-templates-skill": {
+    "source": "dist/office-templates-skill",
+    "source_untouched": true,
+    "filter_whitelist": [
+      "SKILL.md",
+      "references",
+      "scripts",
+      "requirements.txt"
+    ],
+    "excluded": [
+      "reference",
+      "eval",
+      "EVALUATION.md",
+      "CHANGELOG.md",
+      "README.md",
+      "MANIFEST.md",
+      "LICENSE"
+    ],
+    "files": [
+      "SKILL.md",
+      "references/会议通知.md",
+      "references/周报.md",
+      "references/工作总结.md",
+      "references/请示函.md",
+      "requirements.txt",
+      "scripts/gen_doc.py"
+    ],
+    "file_sha256": {
+      "SKILL.md": "a008db1642d72eea814e01f7aab75476cab7b53440bb535d758972f95abd084b",
+      "references/会议通知.md": "49e50d197508f0728e49e34b386b96713e840053180b4139a4c73e0c4ca58446",
+      "references/周报.md": "75a31ceba1184b749d216967f7e66fecf1f6295de2ceb0597b11f81e8ff31cc2",
+      "references/工作总结.md": "021a8367f9c0c1da388d240fc488ffc15a149b59e97b5f0bbbb8988ae51d3612",
+      "references/请示函.md": "d4dd35a9831118ec1339ff1b614cd76b6d85e3ba63b7f012578f913e107dbca2",
+      "requirements.txt": "ae4a6adc2ae696ce87d4e3ee0d46eb07a0d2d60a3b117981e8072d06093fac29",
+      "scripts/gen_doc.py": "1171b5a3738c99b71f6decf4b9ce6dd1bb3709cd3211d1d5a476095a007cad8e"
+    }
+  },
+  "hot-templates-skill": {
+    "source": "dist/hot-templates-skill",
+    "source_untouched": true,
+    "filter_whitelist": [
+      "SKILL.md",
+      "references",
+      "scripts",
+      "requirements.txt"
+    ],
+    "excluded": [
+      "reference",
+      "eval",
+      "EVALUATION.md",
+      "CHANGELOG.md",
+      "README.md",
+      "MANIFEST.md",
+      "LICENSE"
+    ],
+    "files": [
+      "SKILL.md",
+      "references/dy.md",
+      "references/frozen-tokens.md",
+      "references/video.md",
+      "references/wx.md",
+      "references/xhs.md",
+      "requirements.txt",
+      "scripts/gen.py"
+    ],
+    "file_sha256": {
+      "SKILL.md": "6ba95aeeafcbf7b9f76787aa2961081f58f777d2765eeb308499520e965ab69d",
+      "references/dy.md": "15f10bf4b5b558e58f7ebf3008767bdfb159c24fa3d4eef16e355e544acd6c90",
+      "references/frozen-tokens.md": "4229b293091b3483bb3cff1f8afc9c6ecf7be3e7cffa032340b785cb337e06e0",
+      "references/video.md": "4bfe30f234a33788a21b14ef12ca2de4b2a086d5d1a18fec8334e43dca32c52d",
+      "references/wx.md": "5d5bd63db4c1a57510f6bc941cd492167aa14b6c981278dcf84e94f8c04bc33d",
+      "references/xhs.md": "1ec677bbf7b91d7e3cf37f1549cd26ed3ac1fa36175561686a7e3d23fc14584d",
+      "requirements.txt": "8bc7053b27227a8b7969f823fa1b78aeef611746df71238d83f5f9763334f204",
+      "scripts/gen.py": "ec0ffe6a065a5f690a992e2053ffbe5e254c7fe941b14e130ed626038f54a0aa"
+    }
+  }
+}

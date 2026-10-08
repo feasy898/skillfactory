@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-001-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 50236,
+  "started_at_ms": 1791439432971,
+  "session_id": "sess_22666b77-697f-4a73-b8fd-ea3a26c36089",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-001-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 171741,
+      "ot": 2526,
+      "dur": 46357,
+      "n": 7
+    }
+  ],
+  "input_tokens": 171741,
+  "output_tokens": 2526,
+  "stdout_bytes": 2286,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "3-b8fd-ea3a26c36089\",\n  \"traceId\": \"949403e6-38ee-432a-8aa6-5e50ed2519af\",\n  \"turnId\": \"turn_fec11c53-9c74-4c64-b6a5-60d70516952c\",\n  \"response\": \"任务完成。已按 hot-templates 技能生成抖音口播爆款骨架，两份产物均在 `out/` 目录就位。\\n\\n**执行过程**：加载技能后完整读取 `references/dy.md`（平台必读文档），随后走技能红线指定的确定性渲染引擎 `scripts/gen.py` 生成，未手写或改写任何产物。\\n\\n**运行结果**：exit 0，stdout 打印 `OK platform=dy topic=通勤时间管理 elements=6 open_placeholders=6 filled_from_input=4 -> out`，与技能成功判据三条全部吻合（dy 满 3 卖点的参考值正是 open=6、filled=4）。\\n\\n**产物核验**：\\n- `out/骨架.md` — 首行 `# 抖音口播稿 · 爆款骨架`，6 要素按冻结顺序成节（3秒钩子 → 痛点共鸣 → 价值点1-3 → CTA），冻结标记逐字在位：钩子含「别划走！还在为「通勤时间管理」反复内耗的人」，CTA 含「点赞收藏，评论区扣「1」」，三个价值点以「第一/二/三招：」起头并分别填入三条卖点原文，尾部含占位符统计节。\\n- `out/structure.json` — 顶层 11 键齐全（template_version=\\\"1.0\\\"、platform=dy、structure_name=\\\"3秒钩子 + 痛点 + 价值点×3 + CTA\\\" 等）；`points_input_count=3`、`points_used` 为三条卖点原文、`points_unused=[]`；6 要素 id 顺序 `hook_3s → pain_point → value_1..3 → cta`；统计 `total_open=6`、`total_filled_from_input=4`（topic + point#1-3）。\\n\\n按技能红线，6 处 `【占位:…】` 开放槽位（钩子强句、痛点场景、三处一句话展开、配套资料/下期选题）保持原样未做任何编造填充，留待扩写成文阶段补写。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 7,\n    \"inputTokens\": 171741,\n    \"outputTokens\": 2526,\n    \"totalTokens\": 174267,\n    \"cacheReadTokens\": 159488,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 2094,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 174267,\n    \"contextUsed\": 28301,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "ab-001",
+  "rep": 2,
+  "slot": 7
+}

@@ -1,0 +1,19 @@
+10:58:12 packs: 18
+10:59:17 packs: 18
+10:59:27 packs: 18
+10:59:41 packs: 18
+10:59:41 PREP 完成：41 单元（82 臂目录），隔离断言全过
+11:00:13 packs: 18
+11:00:13 PREP 完成：41 单元（82 臂目录），隔离断言全过
+11:01:25 RUN 阶段结束：counted=0 redline=False
+13:58:26 ARM done glm/hot-templates-ab-001-rep1/baseline exit=0 tokens=321356+4339 pin=pass
+13:59:32 ARM done glm/hot-templates-ab-001-rep1/treatment exit=0 tokens=198893+2565 pin=pass
+13:59:32 RUN 阶段结束：counted=2 redline=False
+14:02:05 SKIP 已完成臂 glm/hot-templates-ab-001-rep1/baseline
+14:02:05 SKIP 已完成臂 glm/hot-templates-ab-001-rep1/treatment
+14:03:52 ARM done glm/hot-templates-ab-001-rep2/baseline exit=0 tokens=166276+6085 pin=pass
+14:04:06 ARM done minimax/hot-templates-ab-002-rep1/baseline exit=0 tokens=670949+11542 pin=pass
+14:04:28 ARM done minimax/hot-templates-ab-002-rep1/treatment exit=0 tokens=165414+1204 pin=pass
+14:04:45 ARM done glm/hot-templates-ab-001-rep2/treatment exit=0 tokens=171741+2526 pin=pass
+14:05:01 ARM done minimax/hot-templates-ab-002-rep2/baseline exit=0 tokens=271835+2197 pin=pass
+14:05:33 ARM done minimax/hot-templates-ab-002-rep2/treatment exit=0 tokens=192146+1639 pin=pass

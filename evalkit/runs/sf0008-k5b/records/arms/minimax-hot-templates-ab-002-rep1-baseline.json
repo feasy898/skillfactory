@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/hot-templates-ab-002-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 118601,
+  "started_at_ms": 1791439325562,
+  "session_id": "sess_383bd37d-5581-46f1-a7df-b5bba0179eb5",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/hot-templates-ab-002-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 670949,
+      "ot": 11542,
+      "dur": 111864,
+      "n": 21
+    }
+  ],
+  "input_tokens": 670949,
+  "output_tokens": 11542,
+  "stdout_bytes": 3129,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "k_1..5`, `summary_block` |\\n| 标签组 | `tag_group` — 8 tags, first derived from the topic (`#租房避坑指南`) |\\n\\n`structure.json` carries the 10 elements in frozen order plus `points_used` (all 5, `points_unused` empty) and `placeholder_stats`. Copy slots are written in the `【占位:名称】` form — 14 of them — left deliberately empty so nobody fills them with invented content.\\n\\n**Self-checks run, all passing:** `points_used` matches the brief's 5 points verbatim; `element_count` agrees with the element list; the placeholder list extracted from 骨架.md equals the one in structure.json (14 occurrences, 14 distinct, no duplicates or drops); the title's digit equals the point count; the tag count sits in 3–8 with the first tag derived from the topic; zero unfilled brace-style template variables; UTF-8, LF-only.\\n\\nTwo inconsistencies I introduced and fixed along the way: a dropped character in the block-5 placeholder (`占块` → `占位`) and a tag count in 骨架.md that said 6 while the list held 8. Both were caught by the cross-file check above.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 21,\n    \"inputTokens\": 670949,\n    \"outputTokens\": 11542,\n    \"totalTokens\": 682491,\n    \"cacheReadTokens\": 639488,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1649,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 682491,\n    \"contextUsed\": 41030,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "ab-002",
+  "rep": 1,
+  "slot": 5
+}

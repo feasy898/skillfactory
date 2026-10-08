@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_6ed2550a-93b5-4970-9e5f-0d4412dd5519",
+  "traceId": "7040c8c2-4d12-42e8-a2ed-48f8697ea693",
+  "turnId": "turn_39f7778d-fa32-4d5d-b95c-e173f41f346e",
+  "response": "任务已完成。使用 `hot-templates` 技能的分发副本（`evalkit/runs/sf0008-k5b/assets/hot-templates-skill`）按冻结模板渲染，小红书图文骨架已写入 `out/`，两份产物齐全且可复现。\n\n**产出文件**\n- `out/骨架.md`（2647 字节）— 首行 `# 小红书图文 · 爆款骨架`，7 个要素按冻结顺序展开：`title`（含 🔥 与数字 3）、`hook_block`（✅ 开头钩子）、`point_block_1..3`（💡 干货N｜卖点）、`summary_block`（📌 划重点）、`tag_group`（首标签由主题派生为 `#租房避坑指南`），末尾含占位符统计节。\n- `out/structure.json`（5520 字节）— 顶层 11 键、7 要素各 9 键、统计 5 键，UTF-8/LF。\n\n**关键口径**\n- 卖点 5 条 → 规整为 3 条入 `point_block_1..3`；第 4、5 条（\"水电燃气表底数写进合同附件\"、\"转租条款提前约定违约金\"）保序记入 `points_unused`，未丢弃、未改写。\n- `open_placeholders=7`（每要素各 1 处开放槽位）、`filled_from_input=10`，与 SKILL.md 记录的 xhs 满 3 卖点参考值（7）一致。\n- 成功判据 exit 0 + stdout 单行 `OK …` + 两文件非空，三条均满足；`{{ }}` 未填充变量残留为 0。\n- 骨架中的 `【占位:…】` 按红线保持原样未代为编造填充（目标人群、翻车现场、步骤拆解、互动引导、垂直标签留待扩写时补）。\n\n**验证**：同输入重跑一次，两份产物与首次输出逐字节一致（`diff -r` 无差异），确认引擎确定性。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 11,
+    "inputTokens": 271835,
+    "outputTokens": 2197,
+    "totalTokens": 274032,
+    "cacheReadTokens": 243712,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 386,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 274032,
+    "contextUsed": 29679,
+    "contextWindow": 200000
+  }
+}

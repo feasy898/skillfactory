@@ -1,0 +1,221 @@
+{
+  "ok": true,
+  "summary": {
+    "cases": 8,
+    "checks_total": 40,
+    "passed": 40,
+    "failed": 0,
+    "consistency_threshold": 0.9,
+    "consistency_min": 1.0
+  },
+  "checks": [
+    {
+      "name": "dy/case1/artifacts_present",
+      "pass": true,
+      "detail": "骨架.md（921 字符）+ structure.json（3001 字符）均存在且可解析"
+    },
+    {
+      "name": "dy/case1/structure_json_self_consistent",
+      "pass": true,
+      "detail": "schema 与计数全部自洽（6 要素）"
+    },
+    {
+      "name": "dy/case1/platform_template_complete",
+      "pass": true,
+      "detail": "dy 模板要素齐备（6 要素，卖点 3 条入正文/0 条截断）"
+    },
+    {
+      "name": "dy/case1/sample_data_filled_no_template_residue",
+      "pass": true,
+      "detail": "主题与 3 条卖点全部落位，无 {{ }} 残留"
+    },
+    {
+      "name": "dy/case1/structure_consistency_with_reference",
+      "pass": true,
+      "rate": 1.0,
+      "detail": "结构一致率 100.0%（35/35，阈值 90%）"
+    },
+    {
+      "name": "dy/case2/artifacts_present",
+      "pass": true,
+      "detail": "骨架.md（908 字符）+ structure.json（2972 字符）均存在且可解析"
+    },
+    {
+      "name": "dy/case2/structure_json_self_consistent",
+      "pass": true,
+      "detail": "schema 与计数全部自洽（6 要素）"
+    },
+    {
+      "name": "dy/case2/platform_template_complete",
+      "pass": true,
+      "detail": "dy 模板要素齐备（6 要素，卖点 2 条入正文/0 条截断）"
+    },
+    {
+      "name": "dy/case2/sample_data_filled_no_template_residue",
+      "pass": true,
+      "detail": "主题与 2 条卖点全部落位，无 {{ }} 残留"
+    },
+    {
+      "name": "dy/case2/structure_consistency_with_reference",
+      "pass": true,
+      "rate": 1.0,
+      "detail": "结构一致率 100.0%（35/35，阈值 90%）"
+    },
+    {
+      "name": "xhs/case1/artifacts_present",
+      "pass": true,
+      "detail": "骨架.md（1206 字符）+ structure.json（3992 字符）均存在且可解析"
+    },
+    {
+      "name": "xhs/case1/structure_json_self_consistent",
+      "pass": true,
+      "detail": "schema 与计数全部自洽（7 要素）"
+    },
+    {
+      "name": "xhs/case1/platform_template_complete",
+      "pass": true,
+      "detail": "xhs 模板要素齐备（7 要素，卖点 3 条入正文/0 条截断）"
+    },
+    {
+      "name": "xhs/case1/sample_data_filled_no_template_residue",
+      "pass": true,
+      "detail": "主题与 3 条卖点全部落位，无 {{ }} 残留"
+    },
+    {
+      "name": "xhs/case1/structure_consistency_with_reference",
+      "pass": true,
+      "rate": 1.0,
+      "detail": "结构一致率 100.0%（39/39，阈值 90%）"
+    },
+    {
+      "name": "xhs/case2/artifacts_present",
+      "pass": true,
+      "detail": "骨架.md（1157 字符）+ structure.json（3968 字符）均存在且可解析"
+    },
+    {
+      "name": "xhs/case2/structure_json_self_consistent",
+      "pass": true,
+      "detail": "schema 与计数全部自洽（7 要素）"
+    },
+    {
+      "name": "xhs/case2/platform_template_complete",
+      "pass": true,
+      "detail": "xhs 模板要素齐备（7 要素，卖点 3 条入正文/2 条截断）"
+    },
+    {
+      "name": "xhs/case2/sample_data_filled_no_template_residue",
+      "pass": true,
+      "detail": "主题与 5 条卖点全部落位，无 {{ }} 残留"
+    },
+    {
+      "name": "xhs/case2/structure_consistency_with_reference",
+      "pass": true,
+      "rate": 1.0,
+      "detail": "结构一致率 100.0%（39/39，阈值 90%）"
+    },
+    {
+      "name": "wx/case1/artifacts_present",
+      "pass": true,
+      "detail": "骨架.md（907 字符）+ structure.json（2934 字符）均存在且可解析"
+    },
+    {
+      "name": "wx/case1/structure_json_self_consistent",
+      "pass": true,
+      "detail": "schema 与计数全部自洽（5 要素）"
+    },
+    {
+      "name": "wx/case1/platform_template_complete",
+      "pass": true,
+      "detail": "wx 模板要素齐备（5 要素，卖点 3 条入正文/0 条截断）"
+    },
+    {
+      "name": "wx/case1/sample_data_filled_no_template_residue",
+      "pass": true,
+      "detail": "主题与 3 条卖点全部落位，无 {{ }} 残留"
+    },
+    {
+      "name": "wx/case1/structure_consistency_with_reference",
+      "pass": true,
+      "rate": 1.0,
+      "detail": "结构一致率 100.0%（31/31，阈值 90%）"
+    },
+    {
+      "name": "wx/case2/artifacts_present",
+      "pass": true,
+      "detail": "骨架.md（872 字符）+ structure.json（2862 字符）均存在且可解析"
+    },
+    {
+      "name": "wx/case2/structure_json_self_consistent",
+      "pass": true,
+      "detail": "schema 与计数全部自洽（5 要素）"
+    },
+    {
+      "name": "wx/case2/platform_template_complete",
+      "pass": true,
+      "detail": "wx 模板要素齐备（5 要素，卖点 0 条入正文/0 条截断）"
+    },
+    {
+      "name": "wx/case2/sample_data_filled_no_template_residue",
+      "pass": true,
+      "detail": "主题与 0 条卖点全部落位，无 {{ }} 残留"
+    },
+    {
+      "name": "wx/case2/structure_consistency_with_reference",
+      "pass": true,
+      "rate": 1.0,
+      "detail": "结构一致率 100.0%（31/31，阈值 90%）"
+    },
+    {
+      "name": "video/case1/artifacts_present",
+      "pass": true,
+      "detail": "骨架.md（2771 字符）+ structure.json（4897 字符）均存在且可解析"
+    },
+    {
+      "name": "video/case1/structure_json_self_consistent",
+      "pass": true,
+      "detail": "schema 与计数全部自洽（6 要素）"
+    },
+    {
+      "name": "video/case1/platform_template_complete",
+      "pass": true,
+      "detail": "video 模板要素齐备（6 要素，卖点 3 条入正文/0 条截断）"
+    },
+    {
+      "name": "video/case1/sample_data_filled_no_template_residue",
+      "pass": true,
+      "detail": "主题与 3 条卖点全部落位，无 {{ }} 残留"
+    },
+    {
+      "name": "video/case1/structure_consistency_with_reference",
+      "pass": true,
+      "rate": 1.0,
+      "detail": "结构一致率 100.0%（35/35，阈值 90%）"
+    },
+    {
+      "name": "video/case2/artifacts_present",
+      "pass": true,
+      "detail": "骨架.md（2761 字符）+ structure.json（4864 字符）均存在且可解析"
+    },
+    {
+      "name": "video/case2/structure_json_self_consistent",
+      "pass": true,
+      "detail": "schema 与计数全部自洽（6 要素）"
+    },
+    {
+      "name": "video/case2/platform_template_complete",
+      "pass": true,
+      "detail": "video 模板要素齐备（6 要素，卖点 1 条入正文/0 条截断）"
+    },
+    {
+      "name": "video/case2/sample_data_filled_no_template_residue",
+      "pass": true,
+      "detail": "主题与 1 条卖点全部落位，无 {{ }} 残留"
+    },
+    {
+      "name": "video/case2/structure_consistency_with_reference",
+      "pass": true,
+      "rate": 1.0,
+      "detail": "结构一致率 100.0%（35/35，阈值 90%）"
+    }
+  ]
+}

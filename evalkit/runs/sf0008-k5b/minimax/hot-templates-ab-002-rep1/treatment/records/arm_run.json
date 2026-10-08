@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/hot-templates-ab-002-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 20364,
+  "started_at_ms": 1791439446175,
+  "session_id": "sess_c0470999-5028-461c-b820-bc0e358b086a",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/hot-templates-ab-002-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 165414,
+      "ot": 1204,
+      "dur": 16499,
+      "n": 7
+    }
+  ],
+  "input_tokens": 165414,
+  "output_tokens": 1204,
+  "stdout_bytes": 2301,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "verables in `out/`:**\\n- `骨架.md` (2647 B) — 7 frozen elements: title with 🔥 +数字 3, hook block ✅, three 💡 dry-goods blocks, 📌 summary, 🏷️ tag group, plus the 占位符统计 section.\\n- `structure.json` (5520 B) — 11 top-level keys, 9 keys per element, 5-key placeholder stats.\\n\\n**One thing worth flagging:** the brief supplied 5 points, but every platform template has exactly 3 value-point slots. The engine normalized5 → 3: the first three points filled `point_block_1..3`, and `水电燃气表底数写进合同附件` and `转租条款提前约定违约金` were preserved in order in `points_unused` rather than silently dropped. If those two should carry real weight, they'd need a second run or a manual extension after the frozen structure — I left them untouched per the template-freeze rule.\\n\\nThe 7 `【占位:…】` tokens are by-design open slots (left for the writer to fill, not a defect), and there are zero `{{ }}` unfilled template variables. Verified determinism inputs are clean; `structure.json` has 11 top keys and the emoji mapping matches 🔥/✅/💡/💡/💡/📌/🏷️ per the frozen table.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 7,\n    \"inputTokens\": 165414,\n    \"outputTokens\": 1204,\n    \"totalTokens\": 166618,\n    \"cacheReadTokens\": 139413,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 274,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 166618,\n    \"contextUsed\": 26610,\n    \"contextWindow\": 200000\n  }\n}\n"
+}
