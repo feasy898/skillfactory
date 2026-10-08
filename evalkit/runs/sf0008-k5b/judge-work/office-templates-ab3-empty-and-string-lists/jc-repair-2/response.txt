@@ -1,0 +1,17 @@
+{"scores": {"Q1": {"total": [Advisor consultation #1]
+[Advisor review]
+
+Your analysis is largely on track, but you're overlooking a critical discrepancy in Rubric 5 that could affect the score. Before finalizing, verify the following:
+
+1. **Empty date rendering**: The rubric parenthetical states "工作总结空成文日期行为空段" (empty paragraph). The fields.json says `rendered_as: "留空（渲染为空字符串）"`, yet the docx extract shows `P007 align=RIGHT ... text=____`. This is *not* an empty paragraph—it's a placeholder. If the spec demands an empty paragraph, this is a clear violation of item 5, and you must adjust the score downward (likely to 1 or 1.5, depending on how you weight the two sub-requirements). Your current evidence doesn't mention this; you only flagged the numbering skip.
+
+2. **Numbering skip**: The jump from 二 to 四 in the 工作总结 document is indeed a flaw. Combined with the empty-date issue, item 5 likely deserves at most 1, not 1.5.
+
+3. **Evidence string**: Once you resolve item 5's score, re-craft the evidence to ≤150 characters, ensuring it includes the empty-date rendering discrepancy. Use escaped double quotes for literal text in JSON.
+
+4. **Process**: You started outputting JSON before invoking the advisor. Stop. Resolve the above, then output the final `verdict.json` with only the JSON object—no other text.
+
+Proceed only after reassessing item 5.
+[End of advisor consultation #1]
+
+{"scores":{"Q1":{"total":9.0,"evidence":"周报P003与总结P004为1．____占位条目；总结工作回顾value=[完成评测平台月度巡检]为单项条目；周报问题与需协调事项及总结存在问题均为required=false省略；周报缺部门等3项，总结缺总结主体等2项；总结小节编号跳二至四，成文日期P007为____占位，P006未右对齐。"}}}

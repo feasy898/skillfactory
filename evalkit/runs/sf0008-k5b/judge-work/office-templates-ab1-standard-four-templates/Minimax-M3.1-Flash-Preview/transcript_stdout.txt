@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_0a00919d-9ae4-4831-a5ab-805eee0d1f4c",
+  "traceId": "a4f24d2d-9998-45ac-867e-44db5b782d8a",
+  "turnId": "turn_753faa5b-6c6a-48c3-a873-5a51105626f4",
+  "response": "`verdict.json` is written and validates (single `scores` top-level key, one entry per product, evidence each under 150 characters).\n\n**Scores: P1 7.0, P2 6.5, P3 9.5, P4 9.5** (total = sum of the five rubric item scores, since 10/(2×5)=1).\n\nHow each product landed, per rubric item (1 file-completeness / 2 版式 V2–V5 / 3 版心+标题公式 / 4 fields.json 键集合与计数 / 5 字段填充一致率):\n\n**P1 (7.0)** — Every value in its `fields.json` matches the fixture exactly (33/33), and all four title formulas are right, but the document itself deviates from spec: the title run is 宋体 rather than 黑体, body line spacing is 365760 EMU = 28.8 pt rather than the specified 28 pt fixed, and its own ledger claims \"右空四字\" where V5 requires a two-character right indent. Its `fields.json` top level carries only 5 keys — missing `filled_fields`, `missing_fields`, `outputs`, and adding a non-spec `data_source` — `summary` has 3 keys instead of 6, and 7 of 33 `required` flags contradict the field table (e.g. 会议议题 and 成文日期 marked required when the spec makes them optional, 主要成绩 marked optional when it is required).\n\n**P2 (6.5)** — Same 100% value agreement, but the weakest layout: title declared 方正小标宋简体 and body 仿宋_GB2312 (neither is the spec's 黑体/仿宋), no section headers at all — every field is dumped as one flat \"字段名：值\" paragraph with semicolon-joined list items — and the signature dates carry labels (\"发文日期：2026年9月28日\"), violating V5's bare-date rule. Ledger keys are also off-spec (missing `outputs`, extra `source_data`, 3-key `summary`) with 8 wrong `required` flags.\n\n**P3 and P4 (9.5 each)** — Byte-identical deliverables, and they reproduce the reference rendering paragraph-for-paragraph: 黑体 22 pt centered titles, 仿宋 16 pt body with `firstLineChars=200` and `spacing=355600` EMU (exactly 28 pt), 称谓 flush-left for 请示函/会议通知, right-aligned signature, and the correct 一、二、三 section headers with full-width 1．2．3． item numbering. Their `fields.json` top level is exactly the 7 spec keys, `summary` exactly the 6, detail items carry `kind`, all 33 `required` flags match the field table, and filled=total on all four templates.\n\nOne caveat I applied uniformly: rubric item 3 also requires the A4 版心 margins (3.7/3.5/2.8/2.6 cm), but the staged extracts contain only paragraph-level facts (alignment, indent, font, size, line spacing) — no section geometry for any product. Since all four title-formula halves pass and no product has margin evidence either way, I scored item 3 at 1.5 for all four rather than penalizing unverifiable margins, which keeps that item neutral across the board.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 25,
+    "inputTokens": 1006030,
+    "outputTokens": 12074,
+    "totalTokens": 1018104,
+    "cacheReadTokens": 948723,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 2922,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1018104,
+    "contextUsed": 58222,
+    "contextWindow": 200000
+  }
+}

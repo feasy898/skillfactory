@@ -1,0 +1,194 @@
+{
+  "platform": "xhs",
+  "topic": "租房避坑指南",
+  "generated_at": "2026-10-08",
+  "frozen_template": {
+    "components": [
+      "标题带数字",
+      "emoji规则",
+      "正文分块",
+      "标签组"
+    ],
+    "frozen": true
+  },
+  "title": {
+    "component": "标题带数字",
+    "pattern": "{emoji}{主题}｜{数字钩子}句{后果承诺}",
+    "number": 5,
+    "number_semantics": "与正文要点条数一致",
+    "primary": "🏠租房必看｜签合同前必查的 5 件事，少踩一个坑都算我输",
+    "char_count": 24,
+    "alternatives": [
+      "🏠租房避坑｜房东合同里的 5 个细节，90% 的人没看这一页",
+      "🏠签完这 5 项再付钱！租房新手最容易被坑的地方"
+    ],
+    "emoji": ["🏠"]
+  },
+  "emoji_rules": {
+    "component": "emoji规则",
+    "max_total": 8,
+    "total_used": 8,
+    "slots": [
+      {"position": "标题", "rule": "最多 1 个 emoji 前置，必选"},
+      {"position": "分块小标题", "rule": "每块开头 1 个 emoji，必选"},
+      {"position": "正文行内", "rule": "最多 1 个，用于强调或风险提示"},
+      {"position": "结尾互动", "rule": "1 个，引导评论区"}
+    ],
+    "prohibitions": [
+      "单行堆叠多个 emoji",
+      "连续使用 3 个及以上 emoji",
+      "同一 emoji 在同一块重复出现"
+    ],
+    "assigned": {
+      "标题": "🏠",
+      "开场钩子": "👉",
+      "分块1": "✅",
+      "分块2": "🔍",
+      "分块3": "📸",
+      "分块4": "🔢",
+      "分块5": "⚠️",
+      "分块4_风险提示": "⚠️",
+      "结尾互动": "💬"
+    }
+  },
+  "body": {
+    "component": "正文分块",
+    "block_order": ["hook", "point", "point", "point", "point", "point", "cta"],
+    "blocks": [
+      {
+        "id": "hook",
+        "type": "hook",
+        "emoji": null,
+        "title": "开场钩子",
+        "line_count": 3,
+        "lines": [
+          "刚毕业租房被坑 3000 块，才明白签合同这几个细节比讨价还价重要。",
+          "下面 5 条我全踩过，拿去直接对照你的合同 👉"
+        ]
+      },
+      {
+        "id": "point-1",
+        "type": "point",
+        "emoji": "✅",
+        "title": "查房东身份",
+        "point_index": 1,
+        "point": "签约前查房东房产证与身份证一致性",
+        "bullets": [
+          "房产权证编号 + 产权人姓名，必须与身份证同名同号",
+          "房东是二房东的，必须出示原合同 + 房产证原件（拍照留档）",
+          "核对不到一致，当场不签，别怕对方催",
+          "把核对结果拍照发到与房东的聊天记录里"
+        ]
+      },
+      {
+        "id": "point-2",
+        "type": "point",
+        "emoji": "🔍",
+        "title": "押金条款",
+        "point_index": 2,
+        "point": "押金条款写明退还条件与时限",
+        "bullets": [
+          "白纸黑字写清：什么情况下全额退、什么情况扣",
+          "时限具体到「退租验收后 X 个工作日内到账」，拒绝「退租后返还」这类模糊表述",
+          "扣款上限写进合同：押金 2000 元，扣款不超过 2000 元",
+          "没写进合同的口头承诺 = 不存在"
+        ]
+      },
+      {
+        "id": "point-3",
+        "type": "point",
+        "emoji": "📸",
+        "title": "入住当天留档",
+        "point_index": 3,
+        "point": "入住当天拍照录像留档",
+        "bullets": [
+          "全屋无死角拍照：家电、家具、墙面、门窗、卫生间",
+          "水电燃气表读数拍照特写（与分块 4 呼应）",
+          "已有破损当面拍，双方在照片上确认签字或微信确认",
+          "录像从门口连续走到卧室，一镜到底防止漏拍"
+        ]
+      },
+      {
+        "id": "point-4",
+        "type": "point",
+        "emoji": "🔢",
+        "title": "表底数写进合同",
+        "point_index": 4,
+        "point": "水电燃气表底数写进合同附件",
+        "bullets": [
+          "水表、电表、燃气表读数逐项抄进合同或附件，双方签字",
+          "单价写明：民用价 / 商用电价、燃气是民用还是商用",
+          "上一个租客欠费由谁承担，写清楚",
+          "⚠️ 没写表底数，是最容易被多算几百块的坑"
+        ]
+      },
+      {
+        "id": "point-5",
+        "type": "point",
+        "emoji": "⚠️",
+        "title": "转租违约金",
+        "point_index": 5,
+        "point": "转租条款提前约定违约金",
+        "bullets": [
+          "你中途退租，押金怎么扣、扣多少，写具体金额",
+          "房东提前收房，赔偿怎么算，写具体金额",
+          "转租给第三方是否需要房东书面同意",
+          "违约金比例对等：你违约 X%，房东违约也要 X%，不能单边"
+        ]
+      },
+      {
+        "id": "cta",
+        "type": "cta",
+        "emoji": "💬",
+        "title": "结尾互动",
+        "line_count": 3,
+        "lines": [
+          "以上 5 条我整理成了对照清单，评论区扣「避坑」我发你。",
+          "另外想问问：你租房时最离谱的一次经历是什么 💬"
+        ]
+      }
+    ]
+  },
+  "tags": {
+    "component": "标签组",
+    "count": 8,
+    "items": [
+      "#租房避坑",
+      "#租房攻略",
+      "#租房合同",
+      "#毕业季租房",
+      "#租房注意事项",
+      "#打工人租房",
+      "#租房干货",
+      "#租房避坑指南"
+    ],
+    "composition": {
+      "大标签": 1,
+      "场景或人群标签": 4,
+      "话题汇总标签": 3
+    },
+    "coverage": "覆盖正文 5 个要点分块（合同 / 入住 / 表底数 / 转租 均有对应标签）"
+  },
+  "image_plan": {
+    "count": 9,
+    "ratio": "3:4",
+    "slides": [
+      {"index": 1, "role": "封面", "content": "白底大字「租房必看的 5 件事」+ 🏠"},
+      {"index": 2, "role": "钩子", "content": "被坑 3000 元的聊天截图打码版"},
+      {"index": 3, "role": "要点图", "maps_to": "point-1", "content": "房产证与身份证并排对照示意"},
+      {"index": 4, "role": "要点图", "maps_to": "point-2", "content": "押金条款范例文字截图"},
+      {"index": 5, "role": "要点图", "maps_to": "point-3", "content": "全屋拍照机位图（门口→卧室）"},
+      {"index": 6, "role": "要点图", "maps_to": "point-4", "content": "水电燃气表读数特写"},
+      {"index": 7, "role": "要点图", "maps_to": "point-5", "content": "违约金条款范例文字截图"},
+      {"index": 8, "role": "汇总", "content": "5 条清单一张图（可长图保存）"},
+      {"index": 9, "role": "结尾", "content": "评论区引导「扣避坑」"}
+    ]
+  },
+  "validation": {
+    "points_in_input": 5,
+    "points_covered": 5,
+    "points_missing": [],
+    "frozen_components_present": 4,
+    "frozen_components_missing": []
+  }
+}

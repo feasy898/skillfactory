@@ -1,0 +1,109 @@
+{
+  "tested_family": "minimax",
+  "panel": [
+    "GLM-5.3",
+    "step-router-v1"
+  ],
+  "panel_rotation": "task_idx=4 parity=0",
+  "verdicts": {
+    "GLM-5.3": {
+      "scores": {
+        "P1": {
+          "total": 8.1,
+          "evidence": "2/1/1.5/2:6镜shot_1..6,表头五列齐;时间轴5/7/8/10/10/5秒仅后3镜合冻结,共45秒在;point#1入shot_3,shot_4/5占位在,points_used缺null;分镜总表6行,占位统计6=3+3同json"
+        },
+        "P2": {
+          "total": 3.1,
+          "evidence": "1/0.5/0.5/0.5:6槽无shot_1..6命名,表头首列#非序号;时间轴4/7/8/10/9/7秒全不合冻结,仅总45秒;卖点入槽4非shot_3,无point#1/占位token/points_used;无分镜总表/占位符统计节,json无placeholder_stats"
+        },
+        "P3": {
+          "total": 10.0,
+          "evidence": "2/2/2/2:6镜shot_1..6,表头五列齐;六镜3/7/10/10/10/5秒(00:00-00:03…00:40-00:45),共45秒;point#1入shot_3,占位2/3在shot_4/5,points_used=卖点,null,null;分镜总表6行,占位统计16同json"
+        },
+        "P4": {
+          "total": 10.0,
+          "evidence": "2/2/2/2:6镜shot_1..6,表头五列齐;六镜3/7/10/10/10/5秒(00:00-00:03…00:40-00:45),共45秒;point#1入shot_3,占位2/3在shot_4/5,points_used=卖点,null,null;分镜总表6行,占位统计16同json"
+        },
+        "P5": {
+          "total": 10.0,
+          "evidence": "2/2/2/2:6镜shot_1..6,表头五列齐;六镜3/7/10/10/10/5秒(00:00-00:03…00:40-00:45),共45秒;point#1入shot_3,占位2/3在shot_4/5,points_used=卖点,null,null;分镜总表6行,占位统计16同json"
+        },
+        "P6": {
+          "total": 10.0,
+          "evidence": "2/2/2/2:6镜shot_1..6,表头五列齐;六镜3/7/10/10/10/5秒(00:00-00:03…00:40-00:45),共45秒;point#1入shot_3,占位2/3在shot_4/5,points_used=卖点,null,null;分镜总表6行,占位统计16同json"
+        }
+      }
+    },
+    "step-router-v1": {
+      "scores": {
+        "P1": {
+          "total": 6.3,
+          "evidence": "六镜齐全且四列表头正确；时间轴为5/7/8/10/10/5秒，不符合冻结的3/7/10/10/10/5秒；shot_3含point#1且shot_4/5有【占位:价值点2/3】，但points_used为单元素数组而非[卖点,null,null]；分镜总表与占位统计6处同源。"
+        },
+        "P2": {
+          "total": 0.6,
+          "evidence": "六镜存在但表头为#而非序号，id未使用shot_1..shot_6命名；时间轴为4/7/8/10/9/7秒，完全偏离冻结时间轴；无filled_from_input point#1字段，shot_4/5为null而非【占位:价值点N】，points_used格式不符；无分镜总表与占位符统计节。"
+        },
+        "P3": {
+          "total": 10.0,
+          "evidence": "六镜shot_1..shot_6齐全，表头正确；时间轴严格符合冻结区间（3/7/10/10/10/5秒）；shot_3 filled_from_input含point#1，shot_4/5含【占位:价值点2/3】，points_used为[卖点,null,null]；分镜总表聚合6行，占位统计16处同源。"
+        },
+        "P4": {
+          "total": 10.0,
+          "evidence": "六镜shot_1..shot_6齐全，表头正确；时间轴严格符合冻结区间（3/7/10/10/10/5秒）；shot_3 filled_from_input含point#1，shot_4/5含【占位:价值点2/3】，points_used为[卖点,null,null]；分镜总表聚合6行，占位统计16处同源。"
+        },
+        "P5": {
+          "total": 10.0,
+          "evidence": "六镜shot_1..shot_6齐全，表头正确；时间轴严格符合冻结区间（3/7/10/10/10/5秒）；shot_3 filled_from_input含point#1，shot_4/5含【占位:价值点2/3】，points_used为[卖点,null,null]；分镜总表聚合6行，占位统计16处同源。"
+        },
+        "P6": {
+          "total": 10.0,
+          "evidence": "六镜shot_1..shot_6齐全，表头正确；时间轴严格符合冻结区间（3/7/10/10/10/5秒）；shot_3 filled_from_input含point#1，shot_4/5含【占位:价值点2/3】，points_used为[卖点,null,null]；分镜总表聚合6行，占位统计16处同源。"
+        }
+      }
+    }
+  },
+  "per_judge_scores": {
+    "P1": {
+      "GLM-5.3": 8.1,
+      "step-router-v1": 6.3
+    },
+    "P2": {
+      "GLM-5.3": 3.1,
+      "step-router-v1": 0.6
+    },
+    "P3": {
+      "GLM-5.3": 10.0,
+      "step-router-v1": 10.0
+    },
+    "P4": {
+      "GLM-5.3": 10.0,
+      "step-router-v1": 10.0
+    },
+    "P5": {
+      "GLM-5.3": 10.0,
+      "step-router-v1": 10.0
+    },
+    "P6": {
+      "GLM-5.3": 10.0,
+      "step-router-v1": 10.0
+    }
+  },
+  "final_scores": {
+    "P1": 7.199999999999999,
+    "P2": 1.85,
+    "P3": 10.0,
+    "P4": 10.0,
+    "P5": 10.0,
+    "P6": 10.0
+  },
+  "judge_consistency": {
+    "task": "ab-004",
+    "resample_of": "P4",
+    "first_score": 10.0,
+    "second_score": 10.0,
+    "delta": 0.0,
+    "action": "pass"
+  },
+  "judge_prompt_version": "S8-JUDGE-v1"
+}

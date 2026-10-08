@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_3e8d4a2c-59a1-4b06-a02d-36ac57f03166",
+  "traceId": "2b949f87-3b27-4498-aaa1-23d4a770f91d",
+  "turnId": "turn_8fc86511-7793-4e45-be53-be9b629b673a",
+  "response": "Judging complete — `verdict.json` is written and validated in the working directory.\n\n**Outcome:** the single product (manifest name **Q1**, staged at `_staging/office-templates-ab2-boundary-missing-required/P2_resample`) scores **9.5 / 10**.\n\nPer-item scores (each 0–2, with measured evidence):\n- **Item 1 — 2.0**: 请示函 renders「____：」as an indent-free top-aligned salutation and「____」as the requested item (2 `____` occurrences = 2 missing required); 会议通知 title is verbatim「关于召开____的通知」.\n- **Item 2 — 2.0**: both fields.json books exactly per spec §9 — missing_required `[主送机关,请示事项]` / `[会议名称,会议地点]`, optional missing `联系电话/成文日期`, `unknown_keys=[备注]`.\n- **Item 3 — 2.0**: optional fields carry 留空/省略 `rendered_as`, never enter `missing_required_names`; body has the exact inline-blank pattern「联系人：李工　　联系电话：」; 成文日期 line and 会议要求 section are omitted.\n- **Item 4 — 1.5**: 会议通知 signature is two right-aligned lines and salutations stay top-aligned, but the 请示函 signature has only one line (date omitted) and no evidence of the \"右空两字\" right-two-character inset in either document.\n- **Item 5 — 2.0**: no literal runner report was staged, so I verified the substance myself: all 19 fields across both documents reconcile with the docx extracts one-for-one (100% ≥ 90%), and the boundary accounting is exact.\n\nTotal = round(10 × 9.5 / 10, 1) = **9.5**. The file passes structural checks (only `scores` at top level, single product key `Q1` matching the manifest label, evidence ≤150 chars), and nothing else was written to the working directory.\n\nOne note: the brief said to read P* subdirectories \"in the same directory\", but none were materialized there — the product files live in `_staging`; I judged from those without modifying staging.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 12,
+    "inputTokens": 369753,
+    "outputTokens": 23017,
+    "totalTokens": 392770,
+    "cacheReadTokens": 336192,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 21903,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 392770,
+    "contextUsed": 49370,
+    "contextWindow": 200000
+  }
+}

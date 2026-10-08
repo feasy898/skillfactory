@@ -1,0 +1,69 @@
+{
+  "title": "研发部工作周报",
+  "template": "周报",
+  "data_source": "fixtures/周报/case1.json",
+  "fields": [
+    {
+      "name": "部门",
+      "required": true,
+      "status": "filled",
+      "value": "研发部",
+      "render": "标题「研发部工作周报」前缀呈现"
+    },
+    {
+      "name": "填报人",
+      "required": true,
+      "status": "filled",
+      "value": "王小明",
+      "render": "正文段「填报人：王小明」"
+    },
+    {
+      "name": "周期",
+      "required": true,
+      "status": "filled",
+      "value": "2026-09-21 至 2026-09-27",
+      "render": "标题下居中副行「（2026-09-21 至 2026-09-27）」"
+    },
+    {
+      "name": "本周工作内容",
+      "required": true,
+      "status": "filled",
+      "value": [
+        "完成打分器 v0.9 与评测台联调",
+        "修复评测集 3 处标注不一致问题"
+      ],
+      "render": "黑体段「一、本周工作内容」引领，逐条编号列出（2 条）"
+    },
+    {
+      "name": "下周工作计划",
+      "required": true,
+      "status": "filled",
+      "value": [
+        "启动回归测试全量跑批",
+        "输出周度质量报告初稿"
+      ],
+      "render": "黑体段「二、下周工作计划」引领，逐条编号列出（2 条）"
+    },
+    {
+      "name": "问题与需协调事项",
+      "required": true,
+      "status": "filled",
+      "value": [
+        "测试机资源紧张，需协调一台 GPU 机器"
+      ],
+      "render": "黑体段「三、问题与需协调事项」引领，逐条编号列出（1 条）"
+    },
+    {
+      "name": "报送日期",
+      "required": true,
+      "status": "filled",
+      "value": "2026-09-28",
+      "render": "文末右对齐段「报送日期：2026-09-28」"
+    }
+  ],
+  "summary": {
+    "filled": 7,
+    "missing": 0,
+    "total": 7
+  }
+}

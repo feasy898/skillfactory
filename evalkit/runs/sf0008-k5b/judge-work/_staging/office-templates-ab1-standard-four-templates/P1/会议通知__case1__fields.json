@@ -1,0 +1,92 @@
+{
+  "title": "关于召开三季度质量评审会的通知",
+  "template": "会议通知",
+  "data_source": "fixtures/会议通知/case1.json",
+  "fields": [
+    {
+      "name": "会议名称",
+      "required": true,
+      "status": "filled",
+      "value": "三季度质量评审会",
+      "render": "标题「关于召开三季度质量评审会的通知」呈现"
+    },
+    {
+      "name": "召开单位",
+      "required": true,
+      "status": "filled",
+      "value": "评测技术部",
+      "render": "落款右对齐「评测技术部」"
+    },
+    {
+      "name": "主送对象",
+      "required": true,
+      "status": "filled",
+      "value": "各部门、各项目组",
+      "render": "称谓行顶格「各部门、各项目组：」"
+    },
+    {
+      "name": "会议时间",
+      "required": true,
+      "status": "filled",
+      "value": "2026年10月9日（周五）14:00",
+      "render": "正文条目「一、会议时间：2026年10月9日（周五）14:00」"
+    },
+    {
+      "name": "会议地点",
+      "required": true,
+      "status": "filled",
+      "value": "3 号楼 501 会议室",
+      "render": "正文条目「二、会议地点：3 号楼 501 会议室」"
+    },
+    {
+      "name": "参会人员",
+      "required": true,
+      "status": "filled",
+      "value": "各部门负责人、各项目组 PM",
+      "render": "正文条目「三、参会人员：各部门负责人、各项目组 PM」"
+    },
+    {
+      "name": "会议议题",
+      "required": true,
+      "status": "filled",
+      "value": "三季度评测结果复盘与四季度计划",
+      "render": "正文条目「四、会议议题：三季度评测结果复盘与四季度计划」"
+    },
+    {
+      "name": "会议要求",
+      "required": false,
+      "status": "filled",
+      "value": [
+        "会前提交本部门质量简报",
+        "迟到 10 分钟以上按缺席处理"
+      ],
+      "render": "正文条目「五、会议要求」引领，逐条编号列出（2 条）"
+    },
+    {
+      "name": "联系人",
+      "required": false,
+      "status": "filled",
+      "value": "李工",
+      "render": "文末联系行「（联系人：李工；联系电话：010-88886666）」"
+    },
+    {
+      "name": "联系电话",
+      "required": false,
+      "status": "filled",
+      "value": "010-88886666",
+      "render": "文末联系行「（联系人：李工；联系电话：010-88886666）」"
+    },
+    {
+      "name": "发文日期",
+      "required": true,
+      "status": "filled",
+      "value": "2026年9月28日",
+      "render": "落款右对齐「2026年9月28日」（右空四字）"
+    }
+  ],
+  "summary": {
+    "filled": 11,
+    "missing": 0,
+    "total": 11
+  }
+}

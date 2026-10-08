@@ -1,0 +1,84 @@
+{
+  "tested_family": "minimax",
+  "panel": [
+    "GLM-5.3",
+    "step-router-v1"
+  ],
+  "panel_rotation": "task_idx=4 parity=0",
+  "verdicts": {
+    "GLM-5.3": {
+      "scores": {
+        "P1": {
+          "total": 7.5,
+          "evidence": "①4组非法exit均2=预期2；组①stderr为argparse英文句含中文字符，②③④中文句；②4组零残留outdir_created=false/file_count=0；③对照exit0两产物齐7/7；④无SKILL.md及§4.7表；⑤必填缺失组exit0产出、2必填____占位记账"
+        },
+        "P2": {
+          "total": 8.0,
+          "evidence": "①4组非法exit均2=预期2，stderr①-④全自撰中文句；②4组output_dir_created=false、零残留；③对照exit0两产物均present=true；④暂存无SKILL.md及§4.7表；⑤必填缺失边界组exit0产两产物、____占位"
+        },
+        "P3": {
+          "total": 7.5,
+          "evidence": "①4组非法exit均2=预期2；组①stderr为argparse英文句，②③④中文句；②4组new_file_count=0、out/invalid零残留；③case1 exit0恰两产物7/7；④暂存无SKILL.md仅引§7缺必填政策；⑤必填缺失组exit0产出、3必填____占位"
+        },
+        "P4": {
+          "total": 6.5,
+          "evidence": "①4组非法exit均2=预期2，stderr①-④全自撰中文句；②4组residue=false、unit_dir_exists=false零残留；③对照exit0两产物均true、7/7；④暂存无SKILL.md及§4.7表；⑤无必填缺失对照运行，仅stderr与口径声明，未实证exit0产出"
+        }
+      }
+    },
+    "step-router-v1": {
+      "scores": {
+        "P1": {
+          "total": 8.0,
+          "evidence": "run_log:4 illegal exit2,stderr含中文,0残留;valid exit0,2文件;补充missing-required exit0,fields.json missing_required_names=['本周工作内容','下周工作计划'],docx含'1．____'。"
+        },
+        "P2": {
+          "total": 8.0,
+          "evidence": "run_log:4 illegal exit2,stderr含中文,0残留;valid exit0,2文件;边界组exit0,placeholder_in_docx=true,missing_required=['部门','周期','本周工作内容']。"
+        },
+        "P3": {
+          "total": 8.0,
+          "evidence": "run_log:4 illegal exit2,stderr含中文,0残留;valid exit0,2文件;case-missing-required exit0,fields.json missing_required_names=['部门','周期','下周工作计划'],docx含'____'。"
+        },
+        "P4": {
+          "total": 6.0,
+          "evidence": "run_log:4 illegal exit2,stderr含中文,0残留;valid exit0,2文件;未测试missing-required case,该项0分。"
+        }
+      }
+    }
+  },
+  "per_judge_scores": {
+    "P1": {
+      "GLM-5.3": 7.5,
+      "step-router-v1": 8.0
+    },
+    "P2": {
+      "GLM-5.3": 8.0,
+      "step-router-v1": 8.0
+    },
+    "P3": {
+      "GLM-5.3": 7.5,
+      "step-router-v1": 8.0
+    },
+    "P4": {
+      "GLM-5.3": 6.5,
+      "step-router-v1": 6.0
+    }
+  },
+  "final_scores": {
+    "P1": 7.75,
+    "P2": 8.0,
+    "P3": 7.75,
+    "P4": 6.25
+  },
+  "judge_consistency": {
+    "task": "ab4-invalid-input-rejection",
+    "resample_of": "P4",
+    "first_score": 6.0,
+    "second_score": 6.0,
+    "delta": 0.0,
+    "action": "pass",
+    "repair_note": "原配对因 step 首轮 no-verdict 残缺；本对为同一裁判两个全新会话实例对同一抽样产物的独立评分（s8_jc_repair.py）"
+  },
+  "judge_prompt_version": "S8-JUDGE-v1"
+}

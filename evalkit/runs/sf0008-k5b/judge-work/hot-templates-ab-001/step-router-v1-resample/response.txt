@@ -1,0 +1,1 @@
+{"scores": {"Q1": {"total": {"scores": {"Q1": {"total": 10.0, "evidence": "结构：6 元素 id 顺序正确，hook_3s 与 cta text 非空。填充：value_1/2/3 各含一条卖点，filled_from_input 含 point#1/2/3，points_used 为 3 条原文，无【占位:价值点N】。自洽：各 element placeholder_count=1 且与 text 中【占位:…】数量一致；by_element 求和 6=total_open；骨架.md 主题行含「通勤时间管理」且尾部有「占位符统计」节。纯净：无 {{ 或 }}。"}}}

@@ -1,0 +1,88 @@
+{
+  "template": "周报",
+  "title": "研发部工作周报",
+  "filled_fields": [
+    "部门",
+    "填报人",
+    "周期",
+    "问题与需协调事项"
+  ],
+  "missing_fields": [
+    "本周工作内容",
+    "下周工作计划",
+    "报送日期"
+  ],
+  "fields": [
+    {
+      "name": "部门",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "研发部"
+    },
+    {
+      "name": "填报人",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "王小明"
+    },
+    {
+      "name": "周期",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "2026-09-21 至 2026-09-27"
+    },
+    {
+      "name": "本周工作内容",
+      "required": true,
+      "kind": "list",
+      "status": "missing",
+      "value": null,
+      "rendered_as": "以____占位条目"
+    },
+    {
+      "name": "下周工作计划",
+      "required": true,
+      "kind": "list",
+      "status": "missing",
+      "value": null,
+      "rendered_as": "以____占位条目"
+    },
+    {
+      "name": "问题与需协调事项",
+      "required": false,
+      "kind": "list",
+      "status": "filled",
+      "value": [
+        "测试机资源紧张"
+      ]
+    },
+    {
+      "name": "报送日期",
+      "required": false,
+      "kind": "text",
+      "status": "missing",
+      "value": null,
+      "rendered_as": "留空（渲染为空字符串）"
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "filled": 4,
+    "missing": 3,
+    "missing_required": 2,
+    "missing_required_names": [
+      "本周工作内容",
+      "下周工作计划"
+    ],
+    "unknown_keys": [
+      "多余键"
+    ]
+  },
+  "outputs": {
+    "docx": "out/补充/周报_必填缺失/文书.docx",
+    "fields_json": "out/补充/周报_必填缺失/fields.json"
+  }
+}

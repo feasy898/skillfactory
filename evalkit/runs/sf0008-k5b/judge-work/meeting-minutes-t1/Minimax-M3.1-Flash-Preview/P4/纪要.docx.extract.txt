@@ -1,0 +1,13 @@
+EXTRACT OF 纪要.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=330200 runs=[双十一直播专场备战会会议纪要/SimHei/22.0] text=双十一直播专场备战会会议纪要
+P001 align=None firstLineChars=None firstLineIndent=None spacing=1.3 runs=[一、决议事项/SimHei/16.0] text=一、决议事项
+P002 align=JUSTIFY (3) firstLineChars=None firstLineIndent=304800 spacing=1.3 runs=[1. 【10:03 · 运营/SimSun/12.0] text=1. 【10:03 · 运营小林】我们内部的结论是主会场必须挂新的装修稿。
+P003 align=JUSTIFY (3) firstLineChars=None firstLineIndent=304800 spacing=1.3 runs=[2. 【10:06 · 主持/SimSun/12.0] text=2. 【10:06 · 主持人】同意，临时坐席费用从客服预算里出。
+P004 align=JUSTIFY (3) firstLineChars=None firstLineIndent=304800 spacing=1.3 runs=[3. 【10:10 · 主持/SimSun/12.0] text=3. 【10:10 · 主持人】不行，48小时发货的承诺不能延期，这个结论请大家记牢。
+P005 align=None firstLineChars=None firstLineIndent=None spacing=1.3 runs=[二、待办事项/SimHei/16.0] text=二、待办事项
+P006 align=None firstLineChars=None firstLineIndent=None spacing=1.3 runs=[三、风险与关注/SimHei/16.0] text=三、风险与关注
+P007 align=JUSTIFY (3) firstLineChars=None firstLineIndent=304800 spacing=1.3 runs=[1. 【10:08 · 仓储/SimSun/12.0] text=1. 【10:08 · 仓储老周】提示一个风险，去年大促爆仓，今年单量预计还要涨四成。
+P008 align=JUSTIFY (3) firstLineChars=None firstLineIndent=304800 spacing=1.3 runs=[2. 【10:09 · 运营/SimSun/12.0] text=2. 【10:09 · 运营小林】补充一句，万一爆仓能不能延期发货？
+TABLE1 2行×3列:
+  事项 ┃ 负责人 ┃ 期限
+  【10:05 · 客服组长何姐】客服侧需要再签五十个临时坐席，我负责把排班表排出来。 ┃ 客服组长何姐 ┃ 待定

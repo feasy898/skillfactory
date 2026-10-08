@@ -1,0 +1,137 @@
+{
+  "task": "hot-templates 工程性验收：① 同输入确定性复跑逐字节比对；② 非法 platform 与空 topic 的失败路径",
+  "skill": "hot-templates@1.0.0",
+  "generator": "<ARMROOT>/<SKILL_MOUNT>/scripts/gen.py",
+  "generator_sha256": "ec0ffe6a065a5f690a992e2053ffbe5e254c7fe941b14e130ed626038f54a0aa",
+  "python": "3.12.3",
+  "working_directory": "<ARMROOT>",
+  "generation_call_count": 4,
+  "calls": [
+    {
+      "call_id": 1,
+      "purpose": "验收①确定性复跑 第1次（相同输入）",
+      "command": "python3 <SKILL_MOUNT>/scripts/gen.py --platform dy --topic '确定性复跑主题' --points '[\"要点甲\", \"要点乙\", \"要点丙\"]' --outdir out/run1",
+      "input": {
+        "platform": "dy",
+        "topic": "确定性复跑主题",
+        "points": ["要点甲", "要点乙", "要点丙"],
+        "points_form": "inline JSON string",
+        "outdir": "out/run1",
+        "outdir_abs": "<ARMROOT>/out/run1"
+      },
+      "exit_code": 0,
+      "stdout_summary": "OK platform=dy topic=确定性复跑主题 elements=6 open_placeholders=6 filled_from_input=4 -> out/run1",
+      "stderr_summary": "(empty)",
+      "stderr_raw_lines": [],
+      "outdir_created": true,
+      "files": [
+        {"path": "out/run1/骨架.md", "bytes": 2040, "sha256": "166692ba855c77fdb60636126ac8bf7f06b86bfef305a24bdb6445d08613b808"},
+        {"path": "out/run1/structure.json", "bytes": 4038, "sha256": "a331cdd8689e51a7675ffbf675ec1d61e02b3215309e6f8b56841888dad588d2"}
+      ],
+      "expectation": "exit 0；stdout 一行 OK 摘要；outdir 下骨架.md 与 structure.json 两文件非空",
+      "verdict": "PASS",
+      "note": "成功判据三条同时满足。骨架首行「# 抖音口播稿 · 爆款骨架」，钩子含冻结标记「别划走！还在为「确定性复跑主题」反复内耗的人」，CTA 含「点赞收藏，评论区扣「1」」；structure.json 顶层 11 键、element_ids=[hook_3s, pain_point, value_1..3, cta]、points_used=['要点甲','要点乙','要点丙']、points_unused=[]；open_placeholders=6 为 dy 满 3 卖点参考值，filled_from_input=4 = topic(hook_3s) + point#1..3(value_1..3)，与 references/dy.md、references/frozen-tokens.md 口径逐项一致；全文无 {{ }} 残留。原始 stdout/stderr 见 records/run1.stdout、records/run1.stderr。"
+    },
+    {
+      "call_id": 2,
+      "purpose": "验收①确定性复跑 第2次（相同输入，不同输出目录，紧随第1次连续执行）",
+      "command": "python3 <SKILL_MOUNT>/scripts/gen.py --platform dy --topic '确定性复跑主题' --points '[\"要点甲\", \"要点乙\", \"要点丙\"]' --outdir out/run2",
+      "input": {
+        "platform": "dy",
+        "topic": "确定性复跑主题",
+        "points": ["要点甲", "要点乙", "要点丙"],
+        "points_form": "inline JSON string",
+        "outdir": "out/run2",
+        "outdir_abs": "<ARMROOT>/out/run2"
+      },
+      "exit_code": 0,
+      "stdout_summary": "OK platform=dy topic=确定性复跑主题 elements=6 open_placeholders=6 filled_from_input=4 -> out/run2",
+      "stderr_summary": "(empty)",
+      "stderr_raw_lines": [],
+      "outdir_created": true,
+      "files": [
+        {"path": "out/run2/骨架.md", "bytes": 2040, "sha256": "166692ba855c77fdb60636126ac8bf7f06b86bfef305a24bdb6445d08613b808"},
+        {"path": "out/run2/structure.json", "bytes": 4038, "sha256": "a331cdd8689e51a7675ffbf675ec1d61e02b3215309e6f8b56841888dad588d2"}
+      ],
+      "expectation": "exit 0；stdout 一行 OK 摘要；outdir 下骨架.md 与 structure.json 两文件非空",
+      "verdict": "PASS",
+      "note": "与 call 1 除 --outdir 外命令行逐字符相同；产物与 call 1 逐字节一致（见 determinism_check）。原始 stdout/stderr 见 records/run2.stdout、records/run2.stderr。"
+    },
+    {
+      "call_id": 3,
+      "purpose": "验收②非法 platform（bilibili）",
+      "command": "python3 <SKILL_MOUNT>/scripts/gen.py --platform bilibili --topic '确定性复跑主题' --points '[\"要点甲\", \"要点乙\", \"要点丙\"]' --outdir out/invalid-platform",
+      "input": {
+        "platform": "bilibili",
+        "topic": "确定性复跑主题",
+        "points": ["要点甲", "要点乙", "要点丙"],
+        "points_form": "inline JSON string",
+        "outdir": "out/invalid-platform",
+        "outdir_abs": "<ARMROOT>/out/invalid-platform"
+      },
+      "exit_code": 2,
+      "stdout_summary": "(empty)",
+      "stderr_summary": "gen.py: error: argument --platform: invalid choice: 'bilibili' (choose from 'dy', 'video', 'wx', 'xhs')",
+      "stderr_raw_lines": [
+        "usage: gen.py [-h] --platform {dy,video,wx,xhs} --topic TOPIC --points POINTS",
+        "              --outdir OUTDIR",
+        "gen.py: error: argument --platform: invalid choice: 'bilibili' (choose from 'dy', 'video', 'wx', 'xhs')"
+      ],
+      "outdir_created": false,
+      "files": [],
+      "expectation": "exit 2；stderr 为 argparse 英文 invalid choice 报错（SKILL.md 判为预期）；输出目录不被创建",
+      "verdict": "PASS",
+      "note": "argparse 在参数解析阶段即拒绝（choices=sorted(PLATFORMS)），主流程未运行；out/ 下仅 run1/run2，out/invalid-platform 磁盘上不存在（[ -e ] 判定缺席）。原始 stdout/stderr 见 records/run3.stdout、records/run3.stderr。"
+    },
+    {
+      "call_id": 4,
+      "purpose": "验收②空 topic（纯空白串 '   '，三个空格）",
+      "command": "python3 <SKILL_MOUNT>/scripts/gen.py --platform dy --topic '   ' --points '[\"要点甲\", \"要点乙\", \"要点丙\"]' --outdir out/empty-topic",
+      "input": {
+        "platform": "dy",
+        "topic": "   ",
+        "points": ["要点甲", "要点乙", "要点丙"],
+        "points_form": "inline JSON string",
+        "outdir": "out/empty-topic",
+        "outdir_abs": "<ARMROOT>/out/empty-topic"
+      },
+      "exit_code": 2,
+      "stdout_summary": "(empty)",
+      "stderr_summary": "[gen.py] 错误：--topic 不能为空",
+      "stderr_raw_lines": [
+        "[gen.py] 错误：--topic 不能为空"
+      ],
+      "outdir_created": false,
+      "files": [],
+      "expectation": "exit 2；stderr 含 [gen.py] 错误：--topic 不能为空；输出目录不被创建",
+      "verdict": "PASS",
+      "note": "主题为 3 个空格的空白串，strip 后为空触发 fail()；fail 发生在 os.makedirs 之前（gen.py 全部校验通过才建目录写文件），out/empty-topic 磁盘上不存在。原始 stdout/stderr 见 records/run4.stdout、records/run4.stderr。"
+    }
+  ],
+  "determinism_check": {
+    "method": "cmp 逐字节比对 + sha256",
+    "骨架.md": {
+      "file_a": "out/run1/骨架.md",
+      "file_b": "out/run2/骨架.md",
+      "cmp_exit_code": 0,
+      "identical": true,
+      "cmp_output": "(no output, files identical)"
+    },
+    "structure.json": {
+      "file_a": "out/run1/structure.json",
+      "file_b": "out/run2/structure.json",
+      "cmp_exit_code": 0,
+      "identical": true,
+      "cmp_output": "(no output, files identical)"
+    },
+    "sha256": {
+      "out/run1/骨架.md": "166692ba855c77fdb60636126ac8bf7f06b86bfef305a24bdb6445d08613b808",
+      "out/run2/骨架.md": "166692ba855c77fdb60636126ac8bf7f06b86bfef305a24bdb6445d08613b808",
+      "out/run1/structure.json": "a331cdd8689e51a7675ffbf675ec1d61e02b3215309e6f8b56841888dad588d2",
+      "out/run2/structure.json": "a331cdd8689e51a7675ffbf675ec1d61e02b3215309e6f8b56841888dad588d2"
+    },
+    "verdict": "PASS",
+    "conclusion": "两次生成产物逐字节一致：骨架.md 与 structure.json 的 cmp 退出码均为 0，sha256 两两相等（2040/4038 字节，文件尾均恰一个 LF）。附注：本组 sha256 与同任务 rep1/rep2 留档值相同（gen.py sha256 亦同为 ec0ffe6a…），跨进程、跨会话复跑同样稳定，与引擎无时间戳/无随机数/无网络的设计声明一致。"
+  },
+  "overall_conclusion": "4/4 调用全部符合预期：同输入两次生成产物逐字节一致（cmp=0、sha256 相等）；非法 platform=bilibili 与空白 topic 均以 exit 2 失败、stderr 报错符合预期形态（argparse 英文 invalid choice / [gen.py] 错误：--topic 不能为空）、未创建任何输出目录（out/ 下仅 run1、run2 两个成功产物目录）。原始 stdout/stderr 捕获留存于 records/ 目录。"
+}

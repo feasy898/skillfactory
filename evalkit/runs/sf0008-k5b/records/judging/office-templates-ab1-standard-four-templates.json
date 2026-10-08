@@ -1,0 +1,83 @@
+{
+  "tested_family": "glm",
+  "panel": [
+    "step-router-v1",
+    "Minimax-M3.1-Flash-Preview"
+  ],
+  "panel_rotation": "task_idx=1 parity=1",
+  "verdicts": {
+    "step-router-v1": {
+      "scores": {
+        "P1": {
+          "total": 8.0,
+          "evidence": "R1文件完备；R2标题宋体非黑体，其余版式要素符合；R3标题文案符合公式，版心无实测；R4键集合简洁且filled/total满；R5字段值与文书一致。"
+        },
+        "P2": {
+          "total": 7.0,
+          "evidence": "R1文件完备；R2标题非黑体且正文含字段标签；R3标题文案符合公式；R4含多余键；R5字段值与文书一致。"
+        },
+        "P3": {
+          "total": 8.0,
+          "evidence": "R1文件完备；R2四要素全部符合（黑体二号居中、称谓顶格、正文firstLineChars=200仿宋三号28磅、落款右对齐）；R3标题文案符合公式；R4含多余键；R5字段值与文书一致。"
+        },
+        "P4": {
+          "total": 8.0,
+          "evidence": "R1文件完备；R2四要素全部符合（黑体二号居中、称谓顶格、正文firstLineChars=200仿宋三号28磅、落款右对齐）；R3标题文案符合公式；R4含多余键；R5字段值与文书一致。"
+        }
+      }
+    },
+    "Minimax-M3.1-Flash-Preview": {
+      "scores": {
+        "P1": {
+          "total": 7.0,
+          "evidence": "1齐全;2标题宋体非黑体、行距28.8磅非28磅、落款自述右空四字非两字、称谓顶格合;3四标题公式全符、版心extract未含;4顶层缺3键多data_source、summary仅3键、required错7处;5字段值33/33一致"
+        },
+        "P2": {
+          "total": 6.5,
+          "evidence": "1齐全;2标题方正小标宋简体非黑体、正文仿宋_GB2312非仿宋、落款日期带标签违V5、无小节节头;3四标题公式全符、版心未含;4顶层缺outputs多source_data、summary仅3键、required错8处;5字段值33/33一致"
+        },
+        "P3": {
+          "total": 9.5,
+          "evidence": "1齐全;2标题黑体22居中、正文仿宋16、firstLineChars=200、spacing=28磅、称谓顶格、落款右对齐，段序与参照一致;3四标题公式全符、版心未含;4顶层恰7键summary恰6键含kind、required33/33、filled=total;5字段值33/33一致"
+        },
+        "P4": {
+          "total": 9.5,
+          "evidence": "1齐全;2标题黑体22居中、正文仿宋16、firstLineChars=200、spacing=28磅、称谓顶格、落款右对齐，段序与参照一致;3四标题公式全符、版心未含;4顶层恰7键summary恰6键含kind、required33/33、filled=total;5字段值33/33一致"
+        }
+      }
+    }
+  },
+  "per_judge_scores": {
+    "P1": {
+      "step-router-v1": 8.0,
+      "Minimax-M3.1-Flash-Preview": 7.0
+    },
+    "P2": {
+      "step-router-v1": 7.0,
+      "Minimax-M3.1-Flash-Preview": 6.5
+    },
+    "P3": {
+      "step-router-v1": 8.0,
+      "Minimax-M3.1-Flash-Preview": 9.5
+    },
+    "P4": {
+      "step-router-v1": 8.0,
+      "Minimax-M3.1-Flash-Preview": 9.5
+    }
+  },
+  "final_scores": {
+    "P1": 7.5,
+    "P2": 6.75,
+    "P3": 8.75,
+    "P4": 8.75
+  },
+  "judge_consistency": {
+    "task": "ab1-standard-four-templates",
+    "resample_of": "P1",
+    "first_score": 8.0,
+    "second_score": 6.0,
+    "delta": 2.0,
+    "action": "pass"
+  },
+  "judge_prompt_version": "S8-JUDGE-v1"
+}

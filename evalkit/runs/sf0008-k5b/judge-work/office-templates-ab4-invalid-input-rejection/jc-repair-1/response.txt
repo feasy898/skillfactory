@@ -1,0 +1,7 @@
+{"scores": {"Q1": {"total": [Advisor consultation #1]
+[Advisor review]
+
+Your scoring approach is correct. Items 1–3 are fully satisfied by the run_log evidence. Items 4 and 5 lack any evidence in the provided product files (no SKILL.md, no case2 run), so 0 is the only supportable score. The total of 6.0 follows. Each evidence string you drafted is under 150 characters and cites specific run_log fields. Proceed to output the final verdict.json exactly as required, with no extra text.
+[End of advisor consultation #1]
+
+{"scores": {"Q1": {"total": 6.0, "evidence": "R1: 四组非法输入exit_code均为2，stderr含中文错误信息（run_log.runs[0..3].exit_code/stderr）。R2: 四组illegal runs的artifacts.文书.docx与fields.json均为false，residue_paths为空（run_log.runs[0..3]）。R3: 合法对照组exit_code=0，两产物齐全（run_log.runs[4]）。R4: 未提供SKILL.md，无法验证，0分。R5: 未提供case2运行记录，无法验证必填缺失exit 0，0分。"}}}

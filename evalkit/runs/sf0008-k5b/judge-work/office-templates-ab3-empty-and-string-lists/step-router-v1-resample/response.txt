@@ -1,0 +1,17 @@
+{"scores": {"Q1": {"total": [Advisor consultation #1]
+[Advisor review]
+
+The executor's partial scoring is on the right track. Verify the specific evidence for each rubric item and then finalize the JSON. The product Q1 appears to pass all items fully.
+
+**Actionable advice:**
+- Confirm that the evidence you draft covers each rubric item's key points in ≤150 characters total.
+- For item 1: explicitly cite the paragraph IDs (`P003` in 周报, `P004` in 工作总结) and the `rendered_as` fields.
+- For item 2: note `P002` and the single-element list in fields.json.
+- For item 3: confirm absence of the optional section headers in the txt extracts and the `required=false`/`rendered_as` values in fields.json.
+- For item 4: reference the `missing_required_names` arrays and the actual title strings.
+- For item 5: mention the `一、二、` and `1．` numbering in both extracts, and the `align=RIGHT` on the signature lines (`P006`/`P007`).
+- Build the evidence string compactly, e.g.: `"周报P003'1．____'且本周工作内容rendered_as占位;工作总结P004'1．____'且主要成绩rendered_as占位(1)。工作总结P002'1．完成评测平台月度巡检'且value单元素数组(2)。周报无'问题'节工作总结无'存在问题'节,均记missing且required=false(3)。周报missing_required=[部门,周期,本周工作内容];工作总结=[总结主体,主要成绩](4)。编号一/二/三+1．规范;落款P006/P007均align=RIGHT(5)。"` (count carefully to ensure ≤150 chars, likely fine).
+- The total score is 10.0. Complete the JSON as: `10.0, "evidence": "..."}}` and stop. No other text.
+[End of advisor consultation #1]
+
+{"scores":{"Q1":{"total":10.0,"evidence":"周报P003'1．____';工作总结P004'1．____'且rend_as条目(1)。工作总结P002单元素(2)。周报无'问题'节、工作总结无'存在问题'节,req=false(3)。周报[部门,周期,本周工作内容];工作总结=[总结主体,主要成绩](4)。编号规范;RIGHT(5)。"}}}

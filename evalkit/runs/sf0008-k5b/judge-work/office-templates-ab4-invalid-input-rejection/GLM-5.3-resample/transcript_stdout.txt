@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_20b54e05-e9fe-4725-9f6e-1efc607f3c6e",
+  "traceId": "ac98c011-cefd-47b0-9f25-7d2bc489a8e6",
+  "turnId": "turn_d8c01d07-0de6-4d04-a140-11a24bd97ad3",
+  "response": "verdict.json 已写入当前工作目录：`{\"scores\":{\"Q1\":{\"total\":7.0,\"evidence\":\"…148字逐项证据…\"}}}`。\n\n**判分过程说明**\n\n- **产物定位**：本目录是 §3.4 盲评抽检（resample）裁判位，brief 只列一件匿名产物 Q1（3 个文件）。装置的拷贝步骤有个路径 bug（去暂存根下找 `Q1/` 子目录，而文件直接放在暂存根里），导致工作目录只剩 brief.md。我按 brief 产物清单的文件名从对应暂存根恢复出 `Q1/` 三个文件后判分；判分仅依据暂存文件与 rubric，未参考首轮 verdict 或来源臂信息。\n- **逐项打分**（每项满分 2）：\n  1. **2 分** — run_log 中四组非法输入 `exit_code` 全为 2、逐组 `expect_exit=2` 且 `exit_code_as_expected=true`，stderr 均为自撰中文错误句（如「错误：模板名「证书」非法…」），非崩溃栈。\n  2. **2 分** — 四组全部 `residue=false`、`residue_paths=[]`、`文书.docx/fields.json` 均 false、`unit_dir_exists=false`；summary「产物残留组数=0」。\n  3. **2 分** — 合法对照组 exit 0、两产物 true；实测暂存件 `fields.json` 7 必填全 filled、missing 0，docx 抽取 13 段完整（居中标题/三节/右对齐落款）。\n  4. **0 分** — 暂存仅 3 个文件，无 SKILL.md，contract §4.7 错误处理节与退出码表无从核验。\n  5. **1 分** — run_log 口径字段与四组实测 stderr 均声明「必填缺失不属非法输入、____ 占位退出 0」，但整份 log 无 case2（含缺失）执行记录，case1 本身 missing_count=0，未形成实测对照。\n- **总分** = round(10×(2+2+2+0+1)÷(2×5), 1) = **7.0**。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 19,
+    "inputTokens": 591675,
+    "outputTokens": 12739,
+    "totalTokens": 604414,
+    "cacheReadTokens": 562496,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 10530,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 604414,
+    "contextUsed": 45052,
+    "contextWindow": 200000
+  }
+}

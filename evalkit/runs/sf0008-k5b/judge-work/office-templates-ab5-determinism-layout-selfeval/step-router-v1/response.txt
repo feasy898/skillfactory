@@ -1,0 +1,14 @@
+{"scores": {"P1": {"total": [Advisor consultation #1]
+[Advisor review]
+
+Finish the verdict JSON. Use these scores and evidence:
+
+P1: item1=2 (sha256 identical, parsed identical, no non-reproducible), item2=2 (outdir exactly two files), items3-5=0 (no runner/package evidence). Total = 4.0.
+P2: item1=1 (fields.json identical, docx parsed identical, but raw bytes differ due to zip timestamps → current time source), item2=2, others=0. Total = 3.0.
+P3: item1=2 (byte_equal & layout_equal), item2=2, others=0. Total = 4.0.
+P4: item1=2 (byte_identical after canonicalization, parsed identical), item2=2, others=0. Total = 4.0.
+
+Evidence strings: ≤150 characters each, cite run_log specifics. Output only the JSON blob, no surrounding text.
+[End of advisor consultation #1]
+
+{"scores": {"P1": {"total": 4.0, "evidence": "run_log.json: 两遍 sha256 相同（文书.docx a2c097...，fields.json 189030d...），docx 解析 14 段完全一致，outdir 恰含两文件。无 runner/package 证据。"}, "P2": {"total": 3.0, "evidence": "run_log.json: fields.json 两遍 sha256 相同，docx 解析一致；但文书.docx 两遍 sha256 不同（fde15d... vs 44970e...），因 zip 时间戳含当前时间。无 runner/package 证据。"}, "P3": {"total": 4.0, "evidence": "run_log.json: 两遍 sha256 相同（文书.docx 1645710a...，fields.json bd58b85...），docx 解析 layout_sha256 相同，outdir 恰含两文件。无 runner/package 证据。"}, "P4": {"total": 4.0, "evidence": "run_log.json: 两遍 sha256 相同（文书.docx 0de99668...，fields.json 6c67eef...），docx 解析 12 段完全一致，zip 时间戳已规范化为 1980-01-01。无 runner/package 证据。"}}}

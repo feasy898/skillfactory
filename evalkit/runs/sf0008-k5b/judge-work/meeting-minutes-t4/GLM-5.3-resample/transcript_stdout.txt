@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_522e46b0-8edd-4feb-9360-4b7c18d4f8f3",
+  "traceId": "43099b0a-ea05-4c80-9f35-927b54f91681",
+  "turnId": "turn_f83ce565-1987-40cc-9c4b-8d05a4adcc22",
+  "response": "Judging complete — `verdict.json` written with **Q1: total 10.0**.\n\nThe single anonymous product Q1 fully satisfied all four rubric items (2 points each, 10 × 8 ÷ 8 = 10.0):\n\n1. **边界收录 (2/2)** — 决议事项 section contains both boundary items: 13:09 「就议定下来」 as decision #2, and the 13:11 closing line 「结论：…散会」 as decision #3 (kept in decisions despite the 散会 marker).\n2. **期限提取 (2/2)** — the 待办 table's deadline column gives 「10月18日之前」 for the 13:02 修模/复检 item (「之前」 fully preserved) and 「待定」 for the 13:08 欧盟重新送检 item.\n3. **负责人 (2/2)** — both 待办 rows have 负责人 = 待定; no names were fabricated.\n4. **条数与噪声 (2/2)** — 决议 3 (13:06/13:09/13:11), 待办 2, 风险 1 (13:04), 合计 6, consistent between summary.json and the document header; no 13:00 pleasantries appear anywhere, and every entry carries a 【timestamp · speaker】 verbatim quote for traceability.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 5,
+    "inputTokens": 104025,
+    "outputTokens": 3465,
+    "totalTokens": 107490,
+    "cacheReadTokens": 99136,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 3049,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 107490,
+    "contextUsed": 24216,
+    "contextWindow": 200000
+  }
+}

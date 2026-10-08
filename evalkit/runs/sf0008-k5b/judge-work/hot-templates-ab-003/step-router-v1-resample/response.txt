@@ -1,0 +1,1 @@
+{"scores": {"Q1": {"total": {"scores": {"Q1": {"total": 10.0, "evidence": "结构5要素齐全且三段论标题正确；thesis_how含价值点1/2/3占位且points_used全null、filled_from_input无point#N；golden_ending含共勉，total_open=13等于by_element之和且与骨架.md一致。"}}}

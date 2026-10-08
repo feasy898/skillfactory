@@ -1,0 +1,1 @@
+{"scores": {"Q1": {"total": {"scores":{"Q1":{"total":3.0,"evidence":"1. run_log两遍sha256一致(文书.docx a2c097..., fields.json 189030...)，byte/layout identical，无不可复现源。2. outdir恰含两文件，但未见oracle目录无法核验配对。3-5. 无runner.py结果、package目录清单、SKILL.md/gen_doc.py/requirements.txt证据。"}}}

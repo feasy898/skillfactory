@@ -1,0 +1,16 @@
+{"scores": {"Q1": {"total": [Advisor consultation #1]
+[Advisor review]
+
+Your scoring logic is mostly correct, but note the following before you finalize:
+
+- **Rubric 4 (SKILL.md):** The product list for Q1 does **not** include SKILL.md. You have no evidence to verify the error‑handling section. Score must be **0**.
+- **Rubric 5 (missing‑fields case):** The provided data contains only case1 (all filled). There is no run record for a case2 with missing fields. You cannot confirm that missing required fields are treated as legal (exit 0, artifacts produced). Score must be **0**.
+
+Scores 1–3 are fully supported by the run_log.json and artifacts, each **2**.
+
+Final total: `round(10 × (2+2+2+0+0) ÷ 10, 1)` = **6.0**.
+
+Now output the verdict JSON exactly as required, using a concise evidence string that mentions the lack of SKILL.md and case2 for rubrics 4–5.
+[End of advisor consultation #1]
+
+{"scores": {"Q1": {"total": 6.0, "evidence": "R1: 4 illegal runs exit 2, stderr Chinese, matches oracle. R2: 4 illegal runs residue=false, no outdir/artifacts. R3: legal run exit 0, both artifacts present. R4: no SKILL.md provided, score 0. R5: no case2 missing-fields run provided, score 0."}}}

@@ -1,0 +1,79 @@
+{
+  "title": "关于采购评测用 GPU 服务器的请示",
+  "template": "请示函",
+  "source_data": "fixtures/请示函/case1.json",
+  "fields": [
+    {
+      "name": "请示事由",
+      "required": true,
+      "status": "filled",
+      "value": "采购评测用 GPU 服务器",
+      "rendered_as": "正文段落「请示事由：采购评测用 GPU 服务器」；并用于标题《关于采购评测用 GPU 服务器的请示》"
+    },
+    {
+      "name": "主送机关",
+      "required": true,
+      "status": "filled",
+      "value": "公司总经理办公会",
+      "rendered_as": "称谓顶格「公司总经理办公会：」"
+    },
+    {
+      "name": "请示缘由",
+      "required": true,
+      "status": "filled",
+      "value": "因评测规模扩大，现有设备无法满足批量推理需求，评测周期被迫拉长。",
+      "rendered_as": "正文段落「请示缘由：因评测规模扩大，现有设备无法满足批量推理需求，评测周期被迫拉长。」"
+    },
+    {
+      "name": "请示事项",
+      "required": true,
+      "status": "filled",
+      "value": "申请采购 V100S 服务器 2 台，预算 12 万元，本月内完成到货验收。",
+      "rendered_as": "正文段落「请示事项：申请采购 V100S 服务器 2 台，预算 12 万元，本月内完成到货验收。」"
+    },
+    {
+      "name": "请示单位",
+      "required": true,
+      "status": "filled",
+      "value": "评测技术部",
+      "rendered_as": "落款右对齐「请示单位：评测技术部」"
+    },
+    {
+      "name": "联系人",
+      "required": false,
+      "status": "filled",
+      "value": "李工",
+      "rendered_as": "成文日期下附注「联系人：李工」"
+    },
+    {
+      "name": "联系电话",
+      "required": false,
+      "status": "filled",
+      "value": "010-88886666",
+      "rendered_as": "成文日期下附注「联系电话：010-88886666」"
+    },
+    {
+      "name": "成文日期",
+      "required": true,
+      "status": "filled",
+      "value": "2026年9月28日",
+      "rendered_as": "落款右对齐「成文日期：2026年9月28日」"
+    }
+  ],
+  "filled_fields": [
+    "请示事由",
+    "主送机关",
+    "请示缘由",
+    "请示事项",
+    "请示单位",
+    "联系人",
+    "联系电话",
+    "成文日期"
+  ],
+  "missing_fields": [],
+  "summary": {
+    "filled": 8,
+    "missing": 0,
+    "total": 8
+  }
+}

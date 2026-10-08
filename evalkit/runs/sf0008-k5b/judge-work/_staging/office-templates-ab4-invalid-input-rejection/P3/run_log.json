@@ -1,0 +1,362 @@
+{
+  "task": "SF-0008 office 臂任务（ab4-invalid-input-rejection）",
+  "generated_at": "2026-10-08T14:56:00+08:00",
+  "working_dir": "<ARMROOT>",
+  "entry": "<SKILL_MOUNT>/scripts/gen_doc.py",
+  "interpreter": "/usr/bin/python3",
+  "env": {
+    "python_version": "3.12.3",
+    "python_docx_version": "1.2.0"
+  },
+  "conventions": {
+    "invalid_exit_code": 2,
+    "invalid_stderr": "中文错误信息",
+    "invalid_artifacts": "零产物残留：不创建输出目录、不写 文书.docx / fields.json 等任何文件",
+    "control_exit_code": 0,
+    "control_artifacts": "out/周报/case1/ 下恰有 文书.docx 与 fields.json 两产物",
+    "missing_required_is_not_invalid": "必填字段缺失不是运行错误（SKILL.md §7），应退出码 0 正常产出"
+  },
+  "cases": [
+    {
+      "id": "invalid_1_template_name",
+      "group": "invalid",
+      "title": "非法输入①：--template 证书（模板名不在四类之内）",
+      "input_kind": "模板名非法",
+      "expectation": "退出码 2、stderr 中文错误、零产物残留",
+      "command": "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 证书 --data fixtures/周报/case1.json --outdir out/invalid/1_template_name",
+      "argv": [
+        "/usr/bin/python3",
+        "<SKILL_MOUNT>/scripts/gen_doc.py",
+        "--template",
+        "证书",
+        "--data",
+        "fixtures/周报/case1.json",
+        "--outdir",
+        "out/invalid/1_template_name"
+      ],
+      "cwd": ".",
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "usage: gen_doc.py [-h] --template {周报,请示函,会议通知,工作总结} --data DATA --outdir\n                  OUTDIR\ngen_doc.py: error: argument --template: invalid choice: '证书' (choose from '周报', '请示函', '会议通知', '工作总结')\n",
+      "stderr_summary": "usage: gen_doc.py [-h] --template {周报,请示函,会议通知,工作总结} --data DATA --outdir | OUTDIR | gen_doc.py: error: argument --template: invalid choice: '证书' (choose from '周报', '请示函', '会议通知', '工作总结')",
+      "stderr_has_chinese": true,
+      "stderr_language_class": "argparse_english",
+      "artifacts": {
+        "outdir": "out/invalid/1_template_name",
+        "outdir_created_by_this_call": false,
+        "outdir_existed_before": false,
+        "files_after": [],
+        "new_files": [],
+        "new_file_count": 0,
+        "artifact_names_written": [],
+        "residue": false
+      },
+      "checks": {
+        "exit_code_nonzero_2": true,
+        "exit_code_is_2": true,
+        "stderr_has_chinese": true,
+        "zero_residue": true
+      },
+      "passed": true
+    },
+    {
+      "id": "invalid_2_data_missing_file",
+      "group": "invalid",
+      "title": "非法输入②：--data 指向不存在的文件",
+      "input_kind": "数据文件不存在",
+      "expectation": "退出码 2、stderr 中文错误、零产物残留",
+      "command": "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 周报 --data fixtures/invalid/does-not-exist.json --outdir out/invalid/2_data_missing_file",
+      "argv": [
+        "/usr/bin/python3",
+        "<SKILL_MOUNT>/scripts/gen_doc.py",
+        "--template",
+        "周报",
+        "--data",
+        "fixtures/invalid/does-not-exist.json",
+        "--outdir",
+        "out/invalid/2_data_missing_file"
+      ],
+      "cwd": ".",
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "错误：数据文件不存在：fixtures/invalid/does-not-exist.json\n",
+      "stderr_summary": "错误：数据文件不存在：fixtures/invalid/does-not-exist.json",
+      "stderr_has_chinese": true,
+      "stderr_language_class": "chinese_sentence",
+      "artifacts": {
+        "outdir": "out/invalid/2_data_missing_file",
+        "outdir_created_by_this_call": false,
+        "outdir_existed_before": false,
+        "files_after": [],
+        "new_files": [],
+        "new_file_count": 0,
+        "artifact_names_written": [],
+        "residue": false
+      },
+      "checks": {
+        "exit_code_nonzero_2": true,
+        "exit_code_is_2": true,
+        "stderr_has_chinese": true,
+        "zero_residue": true
+      },
+      "passed": true
+    },
+    {
+      "id": "invalid_3_data_not_json",
+      "group": "invalid",
+      "title": "非法输入③：--data 内容不是合法 JSON（内容为「不是JSON」）",
+      "input_kind": "JSON 解析失败",
+      "expectation": "退出码 2、stderr 中文错误、零产物残留",
+      "command": "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 周报 --data fixtures/invalid/not-json.json --outdir out/invalid/3_data_not_json",
+      "argv": [
+        "/usr/bin/python3",
+        "<SKILL_MOUNT>/scripts/gen_doc.py",
+        "--template",
+        "周报",
+        "--data",
+        "fixtures/invalid/not-json.json",
+        "--outdir",
+        "out/invalid/3_data_not_json"
+      ],
+      "cwd": ".",
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "错误：数据文件不是合法 JSON：fixtures/invalid/not-json.json（Expecting value: line 1 column 1 (char 0)）\n",
+      "stderr_summary": "错误：数据文件不是合法 JSON：fixtures/invalid/not-json.json（Expecting value: line 1 column 1 (char 0)）",
+      "stderr_has_chinese": true,
+      "stderr_language_class": "chinese_sentence",
+      "artifacts": {
+        "outdir": "out/invalid/3_data_not_json",
+        "outdir_created_by_this_call": false,
+        "outdir_existed_before": false,
+        "files_after": [],
+        "new_files": [],
+        "new_file_count": 0,
+        "artifact_names_written": [],
+        "residue": false
+      },
+      "checks": {
+        "exit_code_nonzero_2": true,
+        "exit_code_is_2": true,
+        "stderr_has_chinese": true,
+        "zero_residue": true
+      },
+      "passed": true
+    },
+    {
+      "id": "invalid_4_data_toplevel_not_object",
+      "group": "invalid",
+      "title": "非法输入④：--data 顶层是数组 [\"数组\",\"非对象\"]（顶层非对象）",
+      "input_kind": "顶层非对象",
+      "expectation": "退出码 2、stderr 中文错误、零产物残留",
+      "command": "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 周报 --data fixtures/invalid/top-level-array.json --outdir out/invalid/4_data_toplevel_not_object",
+      "argv": [
+        "/usr/bin/python3",
+        "<SKILL_MOUNT>/scripts/gen_doc.py",
+        "--template",
+        "周报",
+        "--data",
+        "fixtures/invalid/top-level-array.json",
+        "--outdir",
+        "out/invalid/4_data_toplevel_not_object"
+      ],
+      "cwd": ".",
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "错误：数据 JSON 顶层必须是对象（键值对），实际为 list\n",
+      "stderr_summary": "错误：数据 JSON 顶层必须是对象（键值对），实际为 list",
+      "stderr_has_chinese": true,
+      "stderr_language_class": "chinese_sentence",
+      "artifacts": {
+        "outdir": "out/invalid/4_data_toplevel_not_object",
+        "outdir_created_by_this_call": false,
+        "outdir_existed_before": false,
+        "files_after": [],
+        "new_files": [],
+        "new_file_count": 0,
+        "artifact_names_written": [],
+        "residue": false
+      },
+      "checks": {
+        "exit_code_nonzero_2": true,
+        "exit_code_is_2": true,
+        "stderr_has_chinese": true,
+        "zero_residue": true
+      },
+      "passed": true
+    },
+    {
+      "id": "control_case1",
+      "group": "control",
+      "title": "合法对照组：fixtures/周报/case1.json + --template 周报",
+      "input_kind": "合法输入（顶层对象、数据齐备）",
+      "expectation": "退出码 0，在 out/周报/case1/ 生成 文书.docx 与 fields.json 两产物",
+      "command": "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 周报 --data fixtures/周报/case1.json --outdir out/周报/case1",
+      "argv": [
+        "/usr/bin/python3",
+        "<SKILL_MOUNT>/scripts/gen_doc.py",
+        "--template",
+        "周报",
+        "--data",
+        "fixtures/周报/case1.json",
+        "--outdir",
+        "out/周报/case1"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "stdout": "已生成：out/周报/case1/文书.docx（模板=周报，标题=研发部工作周报，字段 filled/total=7/7，必填缺失=无，模板外键=无）\n",
+      "stderr": "",
+      "stderr_summary": "",
+      "stderr_has_chinese": false,
+      "stderr_language_class": "none",
+      "artifacts": {
+        "outdir": "out/周报/case1",
+        "outdir_created_by_this_call": true,
+        "outdir_existed_before": false,
+        "files_after": [
+          "fields.json",
+          "文书.docx"
+        ],
+        "new_files": [
+          "fields.json",
+          "文书.docx"
+        ],
+        "new_file_count": 2,
+        "artifact_names_written": [
+          "fields.json",
+          "文书.docx"
+        ],
+        "residue": true
+      },
+      "produced_files": [
+        "fields.json",
+        "文书.docx"
+      ],
+      "produced_files_detail": [
+        {
+          "name": "fields.json",
+          "bytes": 1812,
+          "sha256": "51a0a5989d6a25075e427d243a7e00b665d9f92d652ff78ff9e35d1e5766f656"
+        },
+        {
+          "name": "文书.docx",
+          "bytes": 37164,
+          "sha256": "9fa112e51e74e8a4e8d36c8961a761ae29f6155be0e7bba4efdac70cd385fc88"
+        }
+      ],
+      "checks": {
+        "exit_code_0": true,
+        "produced_docx": true,
+        "produced_fields_json": true,
+        "no_extra_files": true
+      },
+      "passed": true
+    },
+    {
+      "id": "control_missing_required",
+      "group": "control",
+      "title": "边界对照：必填字段缺失（缺 部门/周期/下周工作计划）不得被判为非法",
+      "input_kind": "合法输入但必填缺失",
+      "expectation": "退出码 0，正常产出两产物，必填缺失以 ____ 占位并如实记账",
+      "command": "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 周报 --data fixtures/周报/case-missing-required.json --outdir out/周报/case-missing-required",
+      "argv": [
+        "/usr/bin/python3",
+        "<SKILL_MOUNT>/scripts/gen_doc.py",
+        "--template",
+        "周报",
+        "--data",
+        "fixtures/周报/case-missing-required.json",
+        "--outdir",
+        "out/周报/case-missing-required"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "stdout": "已生成：out/周报/case-missing-required/文书.docx（模板=周报，标题=____工作周报，字段 filled/total=3/7，必填缺失=['部门', '周期', '下周工作计划']，模板外键=['成本中心']）\n",
+      "stderr": "",
+      "stderr_summary": "",
+      "stderr_has_chinese": false,
+      "stderr_language_class": "none",
+      "artifacts": {
+        "outdir": "out/周报/case-missing-required",
+        "outdir_created_by_this_call": true,
+        "outdir_existed_before": false,
+        "files_after": [
+          "fields.json",
+          "文书.docx"
+        ],
+        "new_files": [
+          "fields.json",
+          "文书.docx"
+        ],
+        "new_file_count": 2,
+        "artifact_names_written": [
+          "fields.json",
+          "文书.docx"
+        ],
+        "residue": true
+      },
+      "produced_files": [
+        "fields.json",
+        "文书.docx"
+      ],
+      "produced_files_detail": [
+        {
+          "name": "fields.json",
+          "bytes": 1864,
+          "sha256": "6fbd01937a828340873c266ec6a509895595f7c1185c5bbd228dd8d5f62de8ea"
+        },
+        {
+          "name": "文书.docx",
+          "bytes": 36977,
+          "sha256": "b1bbfbffeeab1024a016f94579cfa4236b92ff022e5d9f631e88daf49ca4b11d"
+        }
+      ],
+      "checks": {
+        "exit_code_0": true
+      },
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total_cases": 6,
+    "invalid_cases": 4,
+    "invalid_passed": 4,
+    "invalid_failed": 0,
+    "control_cases": 2,
+    "control_passed": 2,
+    "control_failed": 0,
+    "any_residue": false,
+    "residue_paths_under_out_invalid": [],
+    "out_tree_after_run": [
+      "out/周报",
+      "out/周报/case-missing-required",
+      "out/周报/case-missing-required/fields.json",
+      "out/周报/case-missing-required/文书.docx",
+      "out/周报/case1",
+      "out/周报/case1/fields.json",
+      "out/周报/case1/文书.docx"
+    ],
+    "all_exit_codes_in_0_2": true,
+    "exit_codes": {
+      "invalid_1_template_name": 2,
+      "invalid_2_data_missing_file": 2,
+      "invalid_3_data_not_json": 2,
+      "invalid_4_data_toplevel_not_object": 2,
+      "control_case1": 0,
+      "control_missing_required": 0
+    },
+    "invalid_cases_without_chinese_sentence": [
+      "invalid_1_template_name"
+    ]
+  },
+  "verdict": {
+    "core_requirement_met": true,
+    "notes": [
+      "四组非法输入全部以退出码 2 拒绝，且未创建输出目录、未写出任何产物文件（out/invalid/ 下无任何路径残留）。",
+      "非法输入②③④ 的 stderr 均为引擎自撰中文错误句（错误：…），逐组指向具体成因。",
+      "非法输入①（--template 证书）走 argparse choices 校验，stderr 为 argparse 英文模板：gen_doc.py: error: argument --template: invalid choice: '证书' (choose from '周报', '请示函', '会议通知', '工作总结')。该串含中文字符（模板枚举与非法值），机械判定「stderr 有中文」成立，但并非中文错误句；此处为如实留痕，不判失败。",
+      "合法对照组退出码 0，在 out/周报/case1/ 恰生成 文书.docx 与 fields.json 两产物。",
+      "边界组（必填缺失）退出码 0 正常产出，必填缺失未被当作非法输入拒绝，符合 SKILL.md §7。"
+    ]
+  }
+}

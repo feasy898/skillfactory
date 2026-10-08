@@ -1,0 +1,15 @@
+EXTRACT OF 纪要.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=None runs=[会议纪要/宋体/18.0] text=会议纪要
+P001 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[来源：transcript./宋体/None] text=来源：transcript.txt ｜ 解析发言 7 条（决议 2 · 待办 4 · 风险 1）
+P002 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[一、决议事项/宋体/14.0] text=一、决议事项
+P003 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[1. 【16:10 · 考务/宋体/None] text=1. 【16:10 · 考务中心孙老师】同意按清单推进，听课安排我需要再核一遍教室容量。
+P004 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[2. 【16:12 · 教务/宋体/None] text=2. 【16:12 · 教务处赵处】结论：未通过听课评测的课程一律重新打磨。散会，大家辛苦。
+P005 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[二、待办事项/宋体/14.0] text=二、待办事项
+P006 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[三、风险与关注/宋体/14.0] text=三、风险与关注
+P007 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[1. 【16:08 · 教务/宋体/None] text=1. 【16:08 · 教务处赵处】有个风险，评估材料如果返工两次，专家进校时间存在延期的可能。
+TABLE1 5行×3列:
+  事项 ┃ 负责人 ┃ 期限
+  评估材料的卷宗缺三份签字页，需要补齐，明天上午十点前交到考务中心。 ┃ 待定 ┃ 明天
+  材料补齐这件事让孙老师负责，卷宗周五前归档。 ┃ 孙老师 ┃ 周五前
+  评估专家下个月来校，听课安排表截止到下周五要发各院系。 ┃ 待定 ┃ 周五
+  等一下，我说错了，听课安排表是下周五截止，不是本周五。 ┃ 待定 ┃ 周五

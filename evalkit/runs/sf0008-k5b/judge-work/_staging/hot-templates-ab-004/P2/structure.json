@@ -1,0 +1,143 @@
+{
+  "schema": "hot-templates.storyboard.v1",
+  "platform": "video",
+  "topic": "居家哑铃入门",
+  "generated_by": "baseline arm (hot-templates skill NOT mounted; built from brief.md alone)",
+  "outputs": {
+    "markdown": "骨架.md",
+    "structure": "structure.json"
+  },
+  "template": {
+    "frozen": true,
+    "name": "6 镜 45 秒分镜表",
+    "shot_count": 6,
+    "total_duration_sec": 45,
+    "columns": ["时间轴", "画面", "口播", "字幕"]
+  },
+  "material": {
+    "self_contained": true,
+    "points_supplied": [
+      "用装满水的矿泉箱代替哑铃做划船"
+    ],
+    "point_count": 1
+  },
+  "slots": [
+    {
+      "index": 1,
+      "role": "hook",
+      "role_label": "钩子",
+      "time_axis": { "start_sec": 0, "end_sec": 4, "duration_sec": 4, "display": "00:00–00:04" },
+      "status": "missing",
+      "filled_by": null,
+      "picture": null,
+      "voiceover": null,
+      "subtitle": null,
+      "needed": "开场钩子素材（痛点反问或结果前置的画面构想）",
+      "voiceover_budget_chars": 12
+    },
+    {
+      "index": 2,
+      "role": "resonance",
+      "role_label": "共鸣",
+      "time_axis": { "start_sec": 4, "end_sec": 11, "duration_sec": 7, "display": "00:04–00:11" },
+      "status": "missing",
+      "filled_by": null,
+      "picture": null,
+      "voiceover": null,
+      "subtitle": null,
+      "needed": "共鸣场景素材（居家无器械/时间碎的具象画面）",
+      "voiceover_budget_chars": 28
+    },
+    {
+      "index": 3,
+      "role": "pivot",
+      "role_label": "转折",
+      "time_axis": { "start_sec": 11, "end_sec": 19, "duration_sec": 8, "display": "00:11–00:19" },
+      "status": "missing",
+      "filled_by": null,
+      "picture": null,
+      "voiceover": null,
+      "subtitle": null,
+      "needed": "转折引出素材（解决方案出现的那一镜）",
+      "voiceover_budget_chars": 32
+    },
+    {
+      "index": 4,
+      "role": "demo",
+      "role_label": "步骤演示",
+      "time_axis": { "start_sec": 19, "end_sec": 29, "duration_sec": 10, "display": "00:19–00:29" },
+      "status": "filled",
+      "filled_by": "points[0]",
+      "picture": "固定机位中景，画面左侧一只家用哑铃、右侧一只装满水并封口的 5L 矿泉水箱作对照。双手握住箱体两侧把手，弓身坐姿，背部发力把箱子拉向肚脐，肩胛收紧后缓慢放回，全程可见躯干与箱体位移。",
+      "voiceover": "没有哑铃？装满水的矿泉水箱一样能划。弓身坐稳，握住两侧把手，肩胛往中间挤，箱子拉到肚脐再慢慢放回。",
+      "subtitle": "没有哑铃？装满水的矿泉水箱 = 哑铃 / 拉到肚脐·肩胛夹紧 / 慢放·不憋气",
+      "needed": null,
+      "voiceover_budget_chars": 50,
+      "voiceover_chars": 49
+    },
+    {
+      "index": 5,
+      "role": "guardrail",
+      "role_label": "纠错",
+      "time_axis": { "start_sec": 29, "end_sec": 38, "duration_sec": 9, "display": "00:29–00:38" },
+      "status": "missing",
+      "filled_by": null,
+      "picture": null,
+      "voiceover": null,
+      "subtitle": null,
+      "needed": "常见错误/风险提示素材（如箱体渗水、塌腰、代偿耸肩的纠错画面）",
+      "voiceover_budget_chars": 36
+    },
+    {
+      "index": 6,
+      "role": "cta",
+      "role_label": "收尾",
+      "time_axis": { "start_sec": 38, "end_sec": 45, "duration_sec": 7, "display": "00:38–00:45" },
+      "status": "missing",
+      "filled_by": null,
+      "picture": null,
+      "voiceover": null,
+      "subtitle": null,
+      "needed": "收尾素材（成果定格或行动号召画面）",
+      "voiceover_budget_chars": 28
+    }
+  ],
+  "coverage": {
+    "total_slots": 6,
+    "filled_slots": 1,
+    "missing_slots": 5,
+    "fill_rate": 0.1667,
+    "timeline_sec_sum": 45,
+    "timeline_contiguous": true,
+    "timeline_overlaps": false
+  },
+  "gaps": [
+    { "id": "G1", "slot": 1, "needed": "开场钩子", "voiceover_budget_chars": 12 },
+    { "id": "G2", "slot": 2, "needed": "居家训练受限的具象场景", "voiceover_budget_chars": 28 },
+    { "id": "G3", "slot": 3, "needed": "解决方案引出的转折镜头", "voiceover_budget_chars": 32 },
+    { "id": "G4", "slot": 5, "needed": "动作错误与风险提示", "voiceover_budget_chars": 36 },
+    { "id": "G5", "slot": 6, "needed": "成果定格 / 行动号召", "voiceover_budget_chars": 28 }
+  ],
+  "fill_discipline": {
+    "fabricated": false,
+    "reused_point_across_slots": false,
+    "note": "缺失槽位一律标记 missing 并写明所需素材类型，不代写、不编造，也不把占位内容伪装成已确认素材。"
+  },
+  "open_questions": [
+    {
+      "id": "Q1",
+      "topic": "主题与素材口径落差",
+      "detail": "topic 为「居家哑铃入门」，唯一素材讲的是「用矿泉水箱替代哑铃」。两者可并存，但成片定位（哑铃入门教程 vs 零器械居家训练）需素材方确认，会影响槽位 2、5 的取材方向。"
+    },
+    {
+      "id": "Q2",
+      "topic": "素材可复用性",
+      "detail": "同一条 points[0] 也可支撑槽位 3（转折）画面；本骨架未擅自复用，仅在槽位 4 使用一次，是否复用由素材方决定。"
+    },
+    {
+      "id": "Q3",
+      "topic": "器材参数为实现假设",
+      "detail": "矿泉水箱按「5L 装满」处理，该参数直接影响负重与安全性，当前为骨架层假设，需素材方确认。"
+    }
+  ]
+}

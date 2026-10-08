@@ -108,8 +108,10 @@ def _step_endpoint():
     raise RuntimeError("provider_config 无 new-provider 规则，step 裁判通道不可用")
 
 
-def step_chat(messages, max_tokens=8000, temperature=0.2):
+def step_chat(messages, max_tokens=8000, temperature=0.2, assistant_prefill=None):
     base, key = _step_endpoint()
+    if assistant_prefill:
+        messages = list(messages) + [{"role": "assistant", "content": assistant_prefill}]
     body = json.dumps({"model": "step-router-v1", "messages": messages,
                        "max_tokens": max_tokens, "temperature": temperature}).encode("utf-8")
     req = urllib.request.Request(base.rstrip("/") + "/chat/completions", data=body,
@@ -120,7 +122,10 @@ def step_chat(messages, max_tokens=8000, temperature=0.2):
         data = json.loads(resp.read().decode("utf-8"))
     wall_ms = int((time.time() - t0) * 1000)
     u = data.get("usage") or {}
-    txt = (data.get("choices") or [{}])[0].get("message", {}).get("content", "")
+    msg = (data.get("choices") or [{}])[0].get("message", {}) or {}
+    txt = msg.get("content") or ""
+    if not txt.strip():
+        txt = msg.get("reasoning_content") or msg.get("reasoning") or ""
     return {"text": txt, "prompt_tokens": u.get("prompt_tokens"),
             "completion_tokens": u.get("completion_tokens"),
             "total_tokens": u.get("total_tokens"), "wall_ms": wall_ms,

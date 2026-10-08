@@ -1,0 +1,100 @@
+{
+  "template": "周报",
+  "data_source": "fixtures/周报/case2.json",
+  "unit": "case2",
+  "title": "____工作周报",
+  "fields": [
+    {
+      "name": "周期",
+      "kind": "scalar",
+      "required": true,
+      "status": "missing",
+      "value": null,
+      "raw_input": "",
+      "placeholder": "____"
+    },
+    {
+      "name": "填报人",
+      "kind": "scalar",
+      "required": true,
+      "status": "filled",
+      "value": "赵倩",
+      "raw_input": "赵倩"
+    },
+    {
+      "name": "本周工作内容",
+      "kind": "list",
+      "required": true,
+      "status": "missing",
+      "value": null,
+      "raw_input": [],
+      "placeholder": "____",
+      "placeholder_items": [
+        "1．____"
+      ]
+    },
+    {
+      "name": "下周工作计划",
+      "kind": "list",
+      "required": true,
+      "status": "filled",
+      "value": [
+        "整理缺陷清单并分派责任人"
+      ],
+      "raw_input": [
+        "整理缺陷清单并分派责任人"
+      ]
+    },
+    {
+      "name": "问题与需协调事项",
+      "kind": "list",
+      "required": false,
+      "status": "missing",
+      "value": null,
+      "raw_input": null,
+      "section_omitted": true
+    },
+    {
+      "name": "报送日期",
+      "kind": "scalar",
+      "required": true,
+      "status": "filled",
+      "value": "2026-09-28",
+      "raw_input": "2026-09-28"
+    }
+  ],
+  "sections": [
+    {
+      "number": "一",
+      "header": "一、本周工作内容",
+      "items": [
+        "1．____"
+      ],
+      "placeholder": true
+    },
+    {
+      "number": "二",
+      "header": "二、下周工作计划",
+      "items": [
+        "1．整理缺陷清单并分派责任人"
+      ],
+      "placeholder": false
+    }
+  ],
+  "omitted_sections": [
+    "问题与需协调事项"
+  ],
+  "signature": {
+    "alignment": "right",
+    "lines": [
+      {
+        "field": "填报人",
+        "text": "填报人：赵倩"
+      },
+      {
+        "field": "报送日期",
+        "text": "报送日期：2026-09-28"
+      }
+    ]
+  }
+}

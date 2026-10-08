@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_f3650d1b-f6f4-4304-a9ca-6f4cbd814319",
+  "traceId": "22f99df7-d2e5-49b3-93ee-2baa200c8966",
+  "turnId": "turn_9e5508ab-2867-49a2-a73a-5f6056e27d9a",
+  "response": "Judging complete — `verdict.json` is written in the working directory with the required compact schema (`{\"scores\": {P1..P6: {total, evidence}}}`).\n\n**Verdicts:** P1 = 10.0, P2 = 4.4, P3 = 10.0, P4 = 1.9, P5 = 10.0, P6 = 10.0.\n\n**How I judged:** P1/P3/P5/P6 are byte-identical (verified by sha256) and fully satisfy every rubric item — exactly 7 elements with the required ids, title `🔥…的3个方法…` containing 🔥 and 3, `meta.emoji` matching the frozen mapping (✅/💡×3/📌/🏷️), `points_used` = the first 3 input points verbatim with the 4th and 5th preserved in order in `points_unused` and point blocks filled from `point#1-3`, and 6 hashtags with the first being the topic-derived `#租房避坑指南` — so each scores 2/2/2/2 → 10.0. The 5-point input order was cross-verified from P2 and P4, which both list all 5 points in the same sequence.\n\n**P2 (4.4)** keeps the 7 required element ids but balloons to 10 elements (extra `emoji_rules`, `point_block_4/5`), its title uses 🏠 and the digit 5 instead of 🔥 and 3 (structure = 1); it has no `meta.emoji` and its own mapping assigns 🔥 to the hook and ✅ to point blocks, with only 📌 and 🏷️ matching the frozen table (emoji = 0.5); it puts all 5 points into the body with `points_unused: []`, i.e. no truncation at all (truncation = 0); its tag group is fully compliant — 8 tags, first is `#租房避坑指南` (tags = 2).\n\n**P4 (1.9)** abandons the required schema entirely (no `elements`/ids; body is hook + point-1..5 + cta, plus an image plan) and its title `🏠…5 件事` has neither 🔥 nor 3 (structure = 0.5); its assigned emojis (👉/✅/🔍/📸/🔢/⚠️/💬) match none of the frozen ✅/💡/📌/🏷️ slots (emoji = 0); all 5 points enter the body (`points_covered: 5`) with no `points_unused` (truncation = 0); it has 8 tags but the first is `#租房避坑` while the topic-derived `#租房避坑指南` sits last (tags = 1).\n\nAll evidence strings are itemized ①–④ per rubric item and capped under 150 characters, with totals computed as `round(10 × Σ ÷ 8, 1)`.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 13,
+    "inputTokens": 485053,
+    "outputTokens": 16896,
+    "totalTokens": 501949,
+    "cacheReadTokens": 442880,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 13555,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 501949,
+    "contextUsed": 58197,
+    "contextWindow": 200000
+  }
+}

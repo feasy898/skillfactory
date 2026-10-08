@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_df839d7e-7ee7-4ce2-bf1b-e9bad5883c05",
+  "traceId": "937ad3d6-466e-427b-8dce-fe9dfbe561ca",
+  "turnId": "turn_1e065f17-a07f-4fdc-be0e-f329f8c4812b",
+  "response": "Judging complete — `verdict.json` written to the working directory with **Q1: total 10.0**.\n\n**Setup note:** The resample workdir initially contained only brief.md (the harness's product-copy step skips flat staging layouts), so I located the staged product at `_staging/meeting-minutes-t6/P2_resample/`, staged it as `Q1/` (matching the pattern of the completed t2/t4 resample runs), and judged it blind against the rubric — no arm-identity information was used.\n\n**Scoring (4 rubric items, 2 points each, 10 × 8 ÷ 8 = 10.0):**\n\n1. **负责人提取 (2/2)** — the 待办 table's 负责人 column gives **Daniel** for the 20:04 item (“交给Daniel负责”) and **待定** for the 20:08 customer-complaint item.\n2. **期限提取 (2/2)** — the 期限 column gives **2026-10-09之前** for 20:04 (full date with 「之前」 suffix intact) and **本周底** for 20:08 (the trailing 「前」 correctly excluded).\n3. **条数 (2/2)** — docx has 决议 2 (20:06, 20:12), 待办 2 (table rows), 风险 1 (20:10); summary.json's four keys match the docx exactly and 合计=5.\n4. **噪声抑制 (2/2)** — verified programmatically: no 20:00 pleasantries, 20:02 line, or 20:14 散会 line anywhere in the document, and all five entries — including both table 事项 cells — match the source transcript character-for-character.\n\nThe verdict file validates: exactly `{\"scores\": {\"Q1\": {\"total\": 10.0, \"evidence\": \"…146 chars…\"}}}`, no extra keys, evidence within the 150-char limit.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 26,
+    "inputTokens": 807939,
+    "outputTokens": 9220,
+    "totalTokens": 817159,
+    "cacheReadTokens": 780736,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 6506,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 817159,
+    "contextUsed": 42753,
+    "contextWindow": 200000
+  }
+}

@@ -1,0 +1,13 @@
+[Advisor consultation #1]
+[Advisor review]
+
+Your analysis is sound overall, but there are two points worth a quick re‑check before finalizing the JSON:
+
+1. **P1 deadline scoring (criterion 2)** – The rubric states `13:02 期限=10月18日之前` with the parenthetical `(m月d日+「之前」完整保留)`. P1’s table cell contains `10月18日之前完成复检`. Decide whether the rubric demands the cell *value* to be exactly `10月18日之前` or merely that the phrase is preserved intact within the cell. If the former, score 1 or 1.5 (you chose 1.5); if the latter, it’s 2. The difference shifts P1’s total only slightly (6.2 vs 6.9 vs 7.5), but confirm your interpretation.
+
+2. **Verbatim tracing for table items (criterion 4)** – The rubric requires `每条目逐字溯源`. P3 and P4 omit the speaker‑tag prefix (`【13:02 · 模具科马工】`) from the “事项” column of TABLE1, while P1 and P2 include it. Verify whether this omission breaks verbatim traceability. If the rubric intends the full utterance (including the timestamp/name tag) to appear in the table cell, P3 and P4 would be partially deficient there; if only the substantive content matters, they are fine. Look at the original transcript structure: the utterance often *is* the full line including the tag. Make a deliberate choice and be consistent.
+
+Aside from those, your scoring for responsible person (P1=0) and boundary/count (all products) is solid. The evidence strings you drafted are concise and within limit. Once you decide on the two points above, output the compact JSON object directly — no code fences, no extra keys, nothing but `{"scores": {…}}`.
+[End of advisor consultation #1]
+
+{"scores":{"P1":{"total":7.5,"evidence":"1.边界：含13:06/13:09/13:11三条决议，13:11含「结论」「散会」。2.期限：13:02为10月18日之前完成复检，13:08待定。3.负责人：13:02填模具科马工、13:08填质检方主任，原文无负责表述，属编造。4.条数：决议3/待办2/风险1=6；13:02/13:08条目含完整发言标签可溯源。"},"P2":{"total":10.0,"evidence":"1.边界：含13:06/13:09/13:11三条决议，13:11含「结论」「散会」。2.期限：13:02为10月18日之前，13:08待定。3.负责人：13:02与13:08均填待定，未编造。4.条数：决议3/待办2/风险1=6；13:02/13:08条目含完整发言标签可溯源。"},"P3":{"total":8.8,"evidence":"1.边界：含13:06/13:09/13:11三条决议，13:11含「结论」「散会」。2.期限：13:02为10月18日之前，13:08待定。3.负责人：13:02与13:08均填待定，未编造。4.条数：决议3/待办2/风险1=6；但TABLE1的13:02/13:08条目省略发言标签，不满足逐字溯源。"},"P4":{"total":8.8,"evidence":"1.边界：含13:06/13:09/13:11三条决议，13:11含「结论」「散会」。2.期限：13:02为10月18日之前，13:08待定。3.负责人：13:02与13:08均填待定，未编造。4.条数：决议3/待办2/风险1=6；但TABLE1的13:02/13:08条目省略发言标签，不满足逐字溯源。"}}}

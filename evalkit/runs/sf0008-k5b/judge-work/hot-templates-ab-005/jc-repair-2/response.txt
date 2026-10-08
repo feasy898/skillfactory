@@ -1,0 +1,1 @@
+{"scores": {"Q1": {"total": {"scores": {"Q1": {"total": 10.0, "evidence": "①run1/run2的骨架.md与structure.json的sha256分别相等且cmp=0；②非法platform与空topic调用均exit 2、stderr报错且outdir_created=false；③合法输入两次均exit 0、stdout含OK前缀并写出两文件。"}}}

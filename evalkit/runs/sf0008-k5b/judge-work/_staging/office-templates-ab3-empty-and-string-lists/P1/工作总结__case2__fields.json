@@ -1,0 +1,112 @@
+{
+  "template": "工作总结",
+  "data_source": "fixtures/工作总结/case2.json",
+  "filled_fields": [
+    "总结时段",
+    "工作回顾",
+    "下一步工作打算"
+  ],
+  "missing_fields": [
+    "总结主体",
+    "主要成绩",
+    "存在问题",
+    "成文日期"
+  ],
+  "fields": [
+    {
+      "name": "总结主体",
+      "kind": "scalar",
+      "required": true,
+      "filled": false,
+      "missing": true,
+      "value": null,
+      "missing_reason": "absent",
+      "rendered_in": [
+        "title",
+        "signature"
+      ],
+      "placeholder_text": "____"
+    },
+    {
+      "name": "总结时段",
+      "kind": "scalar",
+      "required": true,
+      "filled": true,
+      "missing": false,
+      "value": "2026年9月",
+      "rendered_in": [
+        "title",
+        "header"
+      ]
+    },
+    {
+      "name": "工作回顾",
+      "kind": "list",
+      "required": true,
+      "filled": true,
+      "missing": false,
+      "value": [
+        "完成评测平台月度巡检"
+      ],
+      "input_type": "string",
+      "normalization": "single_item_list",
+      "rendered_in": [
+        "section"
+      ]
+    },
+    {
+      "name": "主要成绩",
+      "kind": "list",
+      "required": true,
+      "filled": false,
+      "missing": true,
+      "value": null,
+      "missing_reason": "empty_list",
+      "rendered_in": [
+        "section"
+      ],
+      "placeholder": true,
+      "placeholder_entries": [
+        "1．____"
+      ]
+    },
+    {
+      "name": "下一步工作打算",
+      "kind": "list",
+      "required": true,
+      "filled": true,
+      "missing": false,
+      "value": [
+        "制定四季度评测排期"
+      ],
+      "input_type": "list",
+      "rendered_in": [
+        "section"
+      ]
+    },
+    {
+      "name": "存在问题",
+      "kind": "list",
+      "required": false,
+      "filled": false,
+      "missing": true,
+      "value": null,
+      "missing_reason": "absent",
+      "rendered_in": [],
+      "section_omitted": true
+    },
+    {
+      "name": "成文日期",
+      "kind": "scalar",
+      "required": false,
+      "filled": false,
+      "missing": true,
+      "value": null,
+      "missing_reason": "absent",
+      "rendered_in": [
+        "signature"
+      ],
+      "placeholder_text": "____"
+    }
+  ]
+}

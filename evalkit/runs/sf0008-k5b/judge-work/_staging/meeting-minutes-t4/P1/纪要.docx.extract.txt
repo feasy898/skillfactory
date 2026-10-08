@@ -1,0 +1,13 @@
+EXTRACT OF 纪要.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=None runs=[会议纪要/宋体/18.0] text=会议纪要
+P001 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[一、决议事项/黑体/14.0] text=一、决议事项
+P002 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[1. 【13:06 · 厂长/宋体/11.0] text=1. 【13:06 · 厂长】贵就贵吧，改空运，就这么决定了，费用从模具预算出。
+P003 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[2. 【13:09 · 质检/宋体/11.0] text=2. 【13:09 · 质检方主任】就议定下来，周五前出首批报告。
+P004 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[3. 【13:11 · 厂长/宋体/11.0] text=3. 【13:11 · 厂长】结论：修模期间2号产线临时转产老型号。散会。
+P005 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[二、待办事项/黑体/14.0] text=二、待办事项
+P006 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[三、风险与关注/黑体/14.0] text=三、风险与关注
+P007 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[1. 【13:04 · 采购/宋体/11.0] text=1. 【13:04 · 采购吕经理】钢料海运要走二十天，如果赶不上，试产整体存在延期的风险。
+TABLE1 3行×3列:
+  事项 ┃ 负责人 ┃ 期限
+  【13:02 · 模具科马工】试模尺寸超差零点零二毫米，需要修模，10月18日之前完成复检。 ┃ 模具科马工 ┃ 10月18日之前完成复检
+  【13:08 · 质检方主任】新批次抽检方案有疑问，我们需要按欧盟标准重新送检。 ┃ 质检方主任 ┃ 待定

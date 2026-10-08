@@ -1,0 +1,7 @@
+{"scores": {"P1": {"total": [Advisor consultation #1]
+[Advisor review]
+
+Your analysis correctly finds that all four products meet every rubric item without deviation. The only source‑line difference (P2) does not affect scoring. The evidence strings are concise and within bounds. Proceed to output the verdict JSON with `"total": 10.0` for each product. Double‑check that the final JSON contains exactly the required keys and no extra text.
+[End of advisor consultation #1]
+
+{"scores": {"P1": {"total": 10.0, "evidence": "负责人：11:02/11:04 待办负责人均填“待定”，符合规则1；期限：11:02提取为“周一之前”，11:04前五条未命中走规则6提取为“监管平台关闭日”，符合规则2；11:08无更正行，符合规则3；条数：决议1（11:10）、待办2、风险1（11:06），summary合计4且与docx一致，符合规则4。"}, "P2": {"total": 10.0, "evidence": "负责人：11:02/11:04 待办负责人均填“待定”，符合规则1；期限：11:02提取为“周一之前”，11:04前五条未命中走规则6提取为“监管平台关闭日”，符合规则2；11:08无更正行，符合规则3；条数：决议1（11:10）、待办2、风险1（11:06），summary合计4且与docx一致，符合规则4。"}, "P3": {"total": 10.0, "evidence": "负责人：11:02/11:04 待办负责人均填“待定”，符合规则1；期限：11:02提取为“周一之前”，11:04前五条未命中走规则6提取为“监管平台关闭日”，符合规则2；11:08无更正行，符合规则3；条数：决议1（11:10）、待办2、风险1（11:06），summary合计4且与docx一致，符合规则4。"}, "P4": {"total": 10.0, "evidence": "负责人：11:02/11:04 待办负责人均填“待定”，符合规则1；期限：11:02提取为“周一之前”，11:04前五条未命中走规则6提取为“监管平台关闭日”，符合规则2；11:08无更正行，符合规则3；条数：决议1（11:10）、待办2、风险1（11:06），summary合计4且与docx一致，符合规则4。"}}}

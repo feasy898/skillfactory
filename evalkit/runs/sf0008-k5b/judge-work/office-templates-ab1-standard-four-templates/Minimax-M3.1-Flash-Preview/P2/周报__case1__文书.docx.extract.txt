@@ -1,0 +1,9 @@
+EXTRACT OF 周报__case1__文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=457200 runs=[研发部工作周报/方正小标宋简体/22.0] text=研发部工作周报
+P001 align=None firstLineChars=200 firstLineIndent=406400 spacing=355600 runs=[部门：研发部/仿宋_GB2312/16.0] text=部门：研发部
+P002 align=None firstLineChars=200 firstLineIndent=406400 spacing=355600 runs=[填报人：王小明/仿宋_GB2312/16.0] text=填报人：王小明
+P003 align=None firstLineChars=200 firstLineIndent=406400 spacing=355600 runs=[周期：2026-09-21 /仿宋_GB2312/16.0] text=周期：2026-09-21 至 2026-09-27
+P004 align=None firstLineChars=200 firstLineIndent=406400 spacing=355600 runs=[本周工作内容：1. 完成打分/仿宋_GB2312/16.0] text=本周工作内容：1. 完成打分器 v0.9 与评测台联调；2. 修复评测集 3 处标注不一致问题
+P005 align=None firstLineChars=200 firstLineIndent=406400 spacing=355600 runs=[下周工作计划：1. 启动回归/仿宋_GB2312/16.0] text=下周工作计划：1. 启动回归测试全量跑批；2. 输出周度质量报告初稿
+P006 align=None firstLineChars=200 firstLineIndent=406400 spacing=355600 runs=[问题与需协调事项：测试机资源/仿宋_GB2312/16.0] text=问题与需协调事项：测试机资源紧张，需协调一台 GPU 机器
+P007 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[报送日期：2026-09-2/仿宋_GB2312/16.0] text=报送日期：2026-09-28

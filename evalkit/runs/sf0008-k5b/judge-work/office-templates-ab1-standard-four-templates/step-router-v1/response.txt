@@ -1,0 +1,26 @@
+{"scores": {"P1": {"total": [Advisor consultation #1]
+[Advisor review]
+
+{
+  "scores": {
+    "P1": {
+      "total": 8.0,
+      "evidence": "R1文件完备；R2标题宋体非黑体，其余版式要素符合；R3标题文案符合公式，版心无实测数据；R4仅有fields+summary且filled/total满；R5全部filled一致率高。"
+    },
+    "P2": {
+      "total": 7.0,
+      "evidence": "R1文件完备；R2标题方正小标宋非黑体；R3标题文案符合公式，版心无实测数据；R4含filled_fields等多余键；R5全部filled。"
+    },
+    "P3": {
+      "total": 8.0,
+      "evidence": "R1文件完备；R2黑体二号居中，称谓顶格，正文firstLineChars=200仿宋三号28磅，落款右对齐；R3标题文案符合公式，版心无实测数据；R4含template等多余键；R5全部filled。"
+    },
+    "P4": {
+      "total": 8.0,
+      "evidence": "R1文件完备；R2黑体二号居中，称谓顶格，正文firstLineChars=200仿宋三号28磅，落款右对齐；R3标题文案符合公式，版心无实测数据；R4含template等多余键；R5全部filled。"
+    }
+  }
+}
+[End of advisor consultation #1]
+
+{"scores": {"P1": {"total": 8.0, "evidence": "R1文件完备；R2标题宋体非黑体，其余版式要素符合；R3标题文案符合公式，版心无实测；R4键集合简洁且filled/total满；R5字段值与文书一致。"}, "P2": {"total": 7.0, "evidence": "R1文件完备；R2标题非黑体且正文含字段标签；R3标题文案符合公式；R4含多余键；R5字段值与文书一致。"}, "P3": {"total": 8.0, "evidence": "R1文件完备；R2四要素全部符合（黑体二号居中、称谓顶格、正文firstLineChars=200仿宋三号28磅、落款右对齐）；R3标题文案符合公式；R4含多余键；R5字段值与文书一致。"}, "P4": {"total": 8.0, "evidence": "R1文件完备；R2四要素全部符合（黑体二号居中、称谓顶格、正文firstLineChars=200仿宋三号28磅、落款右对齐）；R3标题文案符合公式；R4含多余键；R5字段值与文书一致。"}}}

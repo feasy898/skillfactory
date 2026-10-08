@@ -1,0 +1,24 @@
+# SF-0008 盲评判分任务（meeting-minutes / t2）
+
+你是盲评裁判。以下为本任务的匿名化产物（P1..Pn，顺序随机，来源对你保密）。
+
+## rubric（冻结原文，逐条判分）
+1. 空输入边界：三节条数全 0，summary.json 四键全 0 且合计=0，三个节标题仍逐字保留、顺序正确
+2. 待办 0 条时表格仅表头行（事项/负责人/期限），无数据行；纪要.docx 仍可被 python-docx 正常打开
+3. 噪声抑制：15:00/15:02/15:05/15:30 四条发言与无时间戳的括号说明行均未进入任何章节
+4. 产物命名与位置：文件名精确为 纪要.docx 与 summary.json，写入 <outdir> 根目录，不得改名或加日期后缀
+
+评分规则（S8-JUDGE-v1）：
+- 对每条 rubric 项独立打分：0=完全不符 / 0.5 / 1=部分符合 / 1.5 / 2=完全符合。
+- 每条打分必须附实测证据（引用暂存文件中的具体事实/原文/数字）；无证据的分数无效。证据必须精简（每条 rubric 项 ≤150 字），优先保证 verdict JSON 完整输出。
+- 产物总分 total = round(10 × Σ项分 ÷ (2×项数), 1)，区间 [0,10]。
+- 你不知道也不得推测产物的来源臂、模型或顺序；只按 rubric 与证据判分。
+- verdict.json 结构：{"scores": {"P1": {"total": x.x, "items": [逐项分], "evidence": "逐项证据摘要"}}, ...}（每个产品一个键）。
+
+## 产物清单
+- P1: summary.json, 纪要.docx.extract.txt
+- P2: summary.json, 纪要.docx.extract.txt
+- P3: summary.json, 纪要.docx.extract.txt
+- P4: summary.json, 纪要.docx.extract.txt
+
+请阅读同目录各 P* 子目录内的文件后，把 verdict.json 写入当前工作目录（仅输出该文件）。

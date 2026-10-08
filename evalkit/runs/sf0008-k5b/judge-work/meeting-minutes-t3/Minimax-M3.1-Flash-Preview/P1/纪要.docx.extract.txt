@@ -1,0 +1,13 @@
+EXTRACT OF 纪要.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=None runs=[会议纪要/宋体/18.0] text=会议纪要
+P001 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[来源：对公系统切换部署会.t/宋体/None] text=来源：对公系统切换部署会.txt ｜ 解析发言 5 条（决议 1 · 待办 3 · 风险 1）
+P002 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[一、决议事项/宋体/14.0] text=一、决议事项
+P003 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[1. 【09:36 · 支行/宋体/None] text=1. 【09:36 · 支行长】同意，按这个方案办。
+P004 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[二、待办事项/宋体/14.0] text=二、待办事项
+P005 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[三、风险与关注/宋体/14.0] text=三、风险与关注
+P006 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[1. 【09:38 · 运营/宋体/None] text=1. 【09:38 · 运营老蒋】有个不确定的点，历史数据迁移口径还没定，这是个风险。
+TABLE1 4行×3列:
+  事项 ┃ 负责人 ┃ 期限
+  切换当晚需要科技部发停业公告，@何倩 请跟进柜面演练。 ┃ 何倩 ┃ 待定
+  负责人是我，本月底前把演练记录收齐归档。 ┃ 运营老蒋 ┃ 本月底
+  万一回滚失败需要二次切换，恢复时间存在延期一天的可能。 ┃ 待定 ┃ 待定

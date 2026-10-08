@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_85be5d88-9bd8-47f0-85da-f11e1c180a02",
+  "traceId": "db5d14d1-1ac5-43db-bfa8-c7796a28c038",
+  "turnId": "turn_57bdec94-620f-4145-9797-643db87d4e0c",
+  "response": "Judging complete — `verdict.json` is written in the working directory with totals: **P1 8.1, P2 3.1, P3–P6 10.0**.\n\nHow each product scored against the 4 rubric items (0–2 each, total = round(10×Σ/8, 1)):\n\n- **P1 (2 / 1 / 1.5 / 2 = 8.1)** — Exactly 6 `shot_1..shot_6` elements and the exact five-column header, plus a matching 分镜总表/占位符统计 pair. But it broke the frozen timeline: durations run 5/7/8/10/10/5 s instead of 3/7/10/10/10/5 s (only shots 4–6 match), and `points_used` is `[卖点]` without the required two `null`s.\n- **P2 (1 / 0.5 / 0.5 / 0.5 = 3.1)** — Has 6 slots and a 6-row table, but no `shot_1..shot_6` naming, header first column is `#` not `序号`; timeline is 4/7/8/10/9/7 s (only the 45 s total survives); the sole point went into slot 4 instead of shot_3 with no 占位 tokens or `points_used`; no 分镜总表/占位符统计 sections and no `placeholder_stats` in the JSON.\n- **P3–P6 (all 2s = 10.0)** — These four directories are byte-identical (same md5 for both files), so they score identically: exact `meta.time_range` sequence 00:00-00:03 … 00:40-00:45 (3/7/10/10/10/5 s), 「共 45 秒」 present, point#1 in shot_3 with `filled_from_input`, 【占位:价值点2/3】 in shots 4/5, `points_used = [卖点, null, null]`, and 占位符统计 (16 = 1+3+2+4+4+2) consistent with `placeholder_stats`.\n\nThe verdict file follows the required compact schema (`scores` → per-product `total` + `evidence` only), with every evidence string ≤150 characters citing the concrete facts above.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 12,
+    "inputTokens": 442267,
+    "outputTokens": 21669,
+    "totalTokens": 463936,
+    "cacheReadTokens": 401472,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 17082,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 463936,
+    "contextUsed": 56894,
+    "contextWindow": 200000
+  }
+}

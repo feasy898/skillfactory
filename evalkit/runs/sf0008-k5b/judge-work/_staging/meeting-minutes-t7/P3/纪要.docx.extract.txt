@@ -1,0 +1,14 @@
+EXTRACT OF 纪要.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=None runs=[会议纪要/宋体/18.0] text=会议纪要
+P001 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[来源：transcript./宋体/None] text=来源：transcript.txt ｜ 解析发言 6 条（决议 2 · 待办 2 · 风险 2）
+P002 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[一、决议事项/宋体/14.0] text=一、决议事项
+P003 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[1. 【09:06 · 街道/宋体/None] text=1. 【09:06 · 街道办钱主任】雨情一旦升级，转移预案立即启动，这个决定现在就定下来。
+P004 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[2. 【09:10 · 街道/宋体/None] text=2. 【09:10 · 街道办钱主任】升级当天值班室需要双人值守，一旦出现积水延期退去的情况，立即上报区防指，这个结论请记牢。
+P005 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[二、待办事项/宋体/14.0] text=二、待办事项
+P006 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[三、风险与关注/宋体/14.0] text=三、风险与关注
+P007 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[1. 【09:08 · 民政/宋体/None] text=1. 【09:08 · 民政科老白】有个风险要报，两个老小区的排水管网没改造，暴雨大概率积水，存在人员被困的不确定因素。
+P008 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[2. 【09:12 · 城建/宋体/None] text=2. 【09:12 · 城建科小冯】挡水板供应商的货能不能延期到月底？我们正在催。
+TABLE1 3行×3列:
+  事项 ┃ 负责人 ┃ 期限
+  地下车库入口的挡水板还有三个点位没装，需要本周三之前装完，由城建科负责。 ┃ 城建科 ┃ 周三之前
+  独居老人台账今天之内要摸排完，让网格员小许负责逐一电话确认。 ┃ 网格员小许 ┃ 今天

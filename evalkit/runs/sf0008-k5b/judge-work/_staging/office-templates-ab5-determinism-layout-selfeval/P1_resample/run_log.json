@@ -1,0 +1,90 @@
+{
+  "task": "ab5-determinism-layout-selfeval",
+  "template": "会议通知",
+  "case": "case1",
+  "input": {
+    "path": "fixtures/会议通知/case1.json",
+    "sha256": "89c0568932be989aff227912f06f67806ce95634034c054ac3841ac3e5a9f6b8",
+    "说明": "两遍使用完全相同的输入与命令行"
+  },
+  "outdir": "out/会议通知/case1",
+  "passes": [
+    {
+      "第几遍": 1,
+      "命令行": [
+        "/home/pan-ding/venvs/ml/bin/python3",
+        "generate.py",
+        "--template",
+        "会议通知",
+        "--data",
+        "fixtures/会议通知/case1.json",
+        "--outdir",
+        "out/会议通知/case1"
+      ],
+      "sha256": {
+        "文书.docx": "a2c097191b5eaab17af327f1b345d72ad27c2fffff3bae0cb1c27514d8429bd2",
+        "fields.json": "189030def619c545c1b127d0f9b3ff496004b82a470616652f0382ff832c7256"
+      }
+    },
+    {
+      "第几遍": 2,
+      "命令行": [
+        "/home/pan-ding/venvs/ml/bin/python3",
+        "generate.py",
+        "--template",
+        "会议通知",
+        "--data",
+        "fixtures/会议通知/case1.json",
+        "--outdir",
+        "out/会议通知/case1"
+      ],
+      "sha256": {
+        "文书.docx": "a2c097191b5eaab17af327f1b345d72ad27c2fffff3bae0cb1c27514d8429bd2",
+        "fields.json": "189030def619c545c1b127d0f9b3ff496004b82a470616652f0382ff832c7256"
+      }
+    }
+  ],
+  "byte_comparison": {
+    "conclusion": "一致",
+    "说明": "两遍产物逐字节相同（长度相等且逐字节比对无差异，sha256 相同）；fields.json 亦整体逐字节一致（本自评两遍输出目录相同，outputs 路径键本就无差异）",
+    "per_file": {
+      "文书.docx": {
+        "identical": true,
+        "bytes": 37335,
+        "first_diff_offset": null
+      },
+      "fields.json": {
+        "identical": true,
+        "bytes": 849,
+        "first_diff_offset": null
+      }
+    }
+  },
+  "docx_layout_comparison": {
+    "对比维度": [
+      "段落文本",
+      "对齐",
+      "缩进（首行/左右）",
+      "字体（中西文/字号/加粗）",
+      "行距（含规则）",
+      "段前段后间距",
+      "页面尺寸与页边距"
+    ],
+    "paragraph_count": 14,
+    "identical": true,
+    "结论": "第 1 遍与第 2 遍 docx 解析后的段落文本/对齐/缩进/字体/行距完全一致"
+  },
+  "nonreproducible_scan": {
+    "发现": [],
+    "docx_zip_mtime集合": [
+      "(1980, 1, 1, 0, 0, 0)"
+    ],
+    "结论": "未发现当前时间/随机内容等不可复现源（docx 全部 zip 条目 mtime 固定为 1980-01-01 00:00:00）"
+  },
+  "outdir_contents": [
+    "fields.json",
+    "文书.docx"
+  ],
+  "outdir_exactly_two_artifacts": true,
+  "verdict": "PASS（同输入连跑两遍，产物逐字节一致，版式一致，输出目录恰含两产物，未发现不可复现源）"
+}

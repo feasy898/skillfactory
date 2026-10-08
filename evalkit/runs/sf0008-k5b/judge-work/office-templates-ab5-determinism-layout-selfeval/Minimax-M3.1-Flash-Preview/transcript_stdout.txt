@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_c97fc49a-89c9-4295-b300-6ea3d1c0e0f2",
+  "traceId": "d36d69c0-abc2-48e8-8aef-a4b7b030375c",
+  "turnId": "turn_d69d1af0-1c20-44de-9c58-594e06206107",
+  "response": "verdict.json 已写入当前工作目录，四份产物全部判分完毕（P1 5.0、P2 5.0、P3 5.0、P4 6.0）。\n\n判分依据与结果（rubric 五项，各项 0/0.5/1/1.5/2，总分 = 10×Σ/(2×5)）：\n\n**rubric 1 确定性** — P1 得 2.0（两遍文书与 fields 的 sha256 完全相同，暂存 fields.json 实测哈希 189030d… 与台账记录一致，zip 条目 mtime 统一为 1980-01-01，无当前时间/随机源）；P2 得 1.5（fields.json 两遍一致、解析层 12 段版式 identical，但文书两遍 sha256 不同 fde15d…/44970e…，产物自陈差异来源是 zip 条目头的保存时刻墙钟，属容器层不可复现源）；P3 得 2.0（两遍 sha256 全同、逐字节差异 0 字节、layout sha256 相同）；P4 得 2.0（两遍 sha256 全同，17 个 zip 成员时间戳统一规范化为 1980-01-01 且成员内容/CRC 保持不变）。\n\n**rubric 2 交付布局** — 四份均 2.0：`out/会议通知/case1` 恰含 文书.docx 与 fields.json 两个产物，相对名与 oracle 侧配对。\n\n**rubric 3 runner 六类检查** — P4 得 1.0（41 项自检 all_pass，字段 11/11、标题一致、无占位符，但台账中并无 `eval/runner.py` 的 ok=true/exit 0 记录）；P1/P2/P3 各 0.5（仅 fields.json 侧 11/11 filled、missing 为空可间接佐证 field填充，无 runner 实际输出）。\n\n**rubric 4 runner 红绿双向自校验** — 四份均 0：没有任何一份记录了 oracle/oracle 全过 exit 0 与空目录 units_found 失败 exit 1 的实测结果。\n\n**rubric 5 三件套 + py_compile + 按契约运行** — P2/P4 各 1.0（gen_doc.py 两遍 exit 0，stdout 报 filled11/11；P4 另有 SKILL.md §6 自检依据，但无 requirements.txt、无 py_compile 记录）；P1/P3 各 0.5（仅 `generate.py` 运行，缺三件套与编译证据）。\n\n需要说明的一点：rubric 3、4 之所以普遍低分，是因为本任务暂存区只给了 run_log.json、fields.json 和 docx 抽取文本三份材料，其中没有任何一份包含 runner 的执行输出；如果 runner 结果原本应随产物一并暂存，那是暂存清单的问题而非产物本身的问题。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 21,
+    "inputTokens": 839896,
+    "outputTokens": 14447,
+    "totalTokens": 854343,
+    "cacheReadTokens": 786228,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 2708,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 854343,
+    "contextUsed": 54489,
+    "contextWindow": 200000
+  }
+}

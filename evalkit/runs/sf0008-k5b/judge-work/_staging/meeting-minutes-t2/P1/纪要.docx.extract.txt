@@ -1,0 +1,8 @@
+EXTRACT OF 纪要.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=None runs=[会议纪要/宋体/18.0] text=会议纪要
+P001 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[来源：meeting-tra/宋体/None] text=来源：meeting-transcript.txt ｜ 解析发言 0 条（决议 0 · 待办 0 · 风险 0）
+P002 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[一、决议事项/宋体/14.0] text=一、决议事项
+P003 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[二、待办事项/宋体/14.0] text=二、待办事项
+P004 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[三、风险与关注/宋体/14.0] text=三、风险与关注
+TABLE1 1行×3列:
+  事项 ┃ 负责人 ┃ 期限

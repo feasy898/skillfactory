@@ -1,0 +1,206 @@
+{
+  "task": "hot-templates 工程性验收：① 同输入确定性复跑逐字节比对；② 非法 platform 与空 topic 的失败路径",
+  "skill": "hot-templates@1.0.0",
+  "generator": "/home/pan-ding/workspace/skill工厂/skillfactory/dist/hot-templates-skill/scripts/gen.py",
+  "generator_note": "dist 分发副本与 evalkit 钉版挂载面 evalkit/runs/sf0008-k5b/assets/hot-templates-skill/scripts/gen.py sha256 相同（ec0ffe6a065a5f690a992e2053ffbe5e254c7fe941b14e130ed626038f54a0aa）",
+  "python": "Python 3.12.3",
+  "working_directory": "<ARMROOT>",
+  "generation_call_count": 4,
+  "calls": [
+    {
+      "call_id": 1,
+      "purpose": "验收①确定性复跑 第1次（相同输入）",
+      "command": "python3 /home/pan-ding/workspace/skill工厂/skillfactory/dist/hot-templates-skill/scripts/gen.py --platform dy --topic '确定性复跑主题' --points '[\"要点甲\", \"要点乙\", \"要点丙\"]' --outdir out/run1",
+      "input": {
+        "platform": "dy",
+        "topic": "确定性复跑主题",
+        "points": [
+          "要点甲",
+          "要点乙",
+          "要点丙"
+        ],
+        "points_form": "inline JSON string",
+        "outdir": "out/run1",
+        "outdir_abs": "<ARMROOT>/out/run1"
+      },
+      "exit_code": 0,
+      "expectation": "exit 0；stdout 一行 OK 摘要；outdir 下骨架.md 与 structure.json 两文件非空",
+      "stdout_summary": "OK platform=dy topic=确定性复跑主题 elements=6 open_placeholders=6 filled_from_input=4 -> out/run1",
+      "stderr_summary": "(empty)",
+      "stderr_raw_lines": [],
+      "outdir_created": true,
+      "files": [
+        {
+          "path": "out/run1/structure.json",
+          "bytes": 4038,
+          "sha256": "a331cdd8689e51a7675ffbf675ec1d61e02b3215309e6f8b56841888dad588d2"
+        },
+        {
+          "path": "out/run1/骨架.md",
+          "bytes": 2040,
+          "sha256": "166692ba855c77fdb60636126ac8bf7f06b86bfef305a24bdb6445d08613b808"
+        }
+      ],
+      "verdict": "PASS",
+      "note": "stdout 单行 OK 摘要与 SKILL.md 成功判据一致（elements=6、open_placeholders=6、filled_from_input=4 为 dy 满 3 卖点参考值）"
+    },
+    {
+      "call_id": 2,
+      "purpose": "验收①确定性复跑 第2次（相同输入，不同输出目录）",
+      "command": "python3 /home/pan-ding/workspace/skill工厂/skillfactory/dist/hot-templates-skill/scripts/gen.py --platform dy --topic '确定性复跑主题' --points '[\"要点甲\", \"要点乙\", \"要点丙\"]' --outdir out/run2",
+      "input": {
+        "platform": "dy",
+        "topic": "确定性复跑主题",
+        "points": [
+          "要点甲",
+          "要点乙",
+          "要点丙"
+        ],
+        "points_form": "inline JSON string",
+        "outdir": "out/run2",
+        "outdir_abs": "<ARMROOT>/out/run2"
+      },
+      "exit_code": 0,
+      "expectation": "exit 0；stdout 一行 OK 摘要；outdir 下骨架.md 与 structure.json 两文件非空",
+      "stdout_summary": "OK platform=dy topic=确定性复跑主题 elements=6 open_placeholders=6 filled_from_input=4 -> out/run2",
+      "stderr_summary": "(empty)",
+      "stderr_raw_lines": [],
+      "outdir_created": true,
+      "files": [
+        {
+          "path": "out/run2/structure.json",
+          "bytes": 4038,
+          "sha256": "a331cdd8689e51a7675ffbf675ec1d61e02b3215309e6f8b56841888dad588d2"
+        },
+        {
+          "path": "out/run2/骨架.md",
+          "bytes": 2040,
+          "sha256": "166692ba855c77fdb60636126ac8bf7f06b86bfef305a24bdb6445d08613b808"
+        }
+      ],
+      "verdict": "PASS",
+      "note": "stdout 单行 OK 摘要与 SKILL.md 成功判据一致（elements=6、open_placeholders=6、filled_from_input=4 为 dy 满 3 卖点参考值）"
+    },
+    {
+      "call_id": 3,
+      "purpose": "验收②非法 platform（bilibili）",
+      "command": "python3 /home/pan-ding/workspace/skill工厂/skillfactory/dist/hot-templates-skill/scripts/gen.py --platform bilibili --topic '确定性复跑主题' --points '[\"要点甲\", \"要点乙\", \"要点丙\"]' --outdir out/invalid-platform",
+      "input": {
+        "platform": "bilibili",
+        "topic": "确定性复跑主题",
+        "points": [
+          "要点甲",
+          "要点乙",
+          "要点丙"
+        ],
+        "points_form": "inline JSON string",
+        "outdir": "out/invalid-platform",
+        "outdir_abs": "<ARMROOT>/out/invalid-platform"
+      },
+      "exit_code": 2,
+      "expectation": "exit 2；stderr 为 argparse 英文 invalid choice 报错（SKILL.md 判为预期）；输出目录不被创建",
+      "stdout_summary": "(empty)",
+      "stderr_summary": "usage: gen.py [-h] --platform {dy,video,wx,xhs} --topic TOPIC --points POINTS\n              --outdir OUTDIR\ngen.py: error: argument --platform: invalid choice: 'bilibili' (choose from 'dy', 'video', 'wx', 'xhs')",
+      "stderr_raw_lines": [
+        "usage: gen.py [-h] --platform {dy,video,wx,xhs} --topic TOPIC --points POINTS",
+        "              --outdir OUTDIR",
+        "gen.py: error: argument --platform: invalid choice: 'bilibili' (choose from 'dy', 'video', 'wx', 'xhs')"
+      ],
+      "outdir_created": false,
+      "files": [],
+      "verdict": "PASS",
+      "note": "stderr 来自 argparse（英文报错），符合 SKILL.md 失败判据中『非法 platform 时为 argparse 英文报错，属预期』"
+    },
+    {
+      "call_id": 4,
+      "purpose": "验收②空 topic（纯空白串 '   '）",
+      "command": "python3 /home/pan-ding/workspace/skill工厂/skillfactory/dist/hot-templates-skill/scripts/gen.py --platform dy --topic '   ' --points '[\"要点甲\", \"要点乙\", \"要点丙\"]' --outdir out/empty-topic",
+      "input": {
+        "platform": "dy",
+        "topic": "   ",
+        "points": [
+          "要点甲",
+          "要点乙",
+          "要点丙"
+        ],
+        "points_form": "inline JSON string",
+        "outdir": "out/empty-topic",
+        "outdir_abs": "<ARMROOT>/out/empty-topic"
+      },
+      "exit_code": 2,
+      "expectation": "exit 2；stderr 含 [gen.py] 错误：--topic 不能为空；输出目录不被创建",
+      "stdout_summary": "(empty)",
+      "stderr_summary": "[gen.py] 错误：--topic 不能为空",
+      "stderr_raw_lines": [
+        "[gen.py] 错误：--topic 不能为空"
+      ],
+      "outdir_created": false,
+      "files": [],
+      "verdict": "PASS",
+      "note": ""
+    }
+  ],
+  "determinism_check": {
+    "method": "cmp 逐字节比对 + sha256",
+    "files": {
+      "骨架.md": {
+        "file_a": "out/run1/骨架.md",
+        "file_b": "out/run2/骨架.md",
+        "cmp_exit_code": 0,
+        "identical": true,
+        "cmp_output": "(no output, files identical)",
+        "sha256_file_a": "166692ba855c77fdb60636126ac8bf7f06b86bfef305a24bdb6445d08613b808",
+        "sha256_file_b": "166692ba855c77fdb60636126ac8bf7f06b86bfef305a24bdb6445d08613b808",
+        "sha256_equal": true
+      },
+      "structure.json": {
+        "file_a": "out/run1/structure.json",
+        "file_b": "out/run2/structure.json",
+        "cmp_exit_code": 0,
+        "identical": true,
+        "cmp_output": "(no output, files identical)",
+        "sha256_file_a": "a331cdd8689e51a7675ffbf675ec1d61e02b3215309e6f8b56841888dad588d2",
+        "sha256_file_b": "a331cdd8689e51a7675ffbf675ec1d61e02b3215309e6f8b56841888dad588d2",
+        "sha256_equal": true
+      }
+    },
+    "verdict": "PASS",
+    "conclusion": "两次生成产物逐字节一致：骨架.md 与 structure.json 的 cmp 退出码均为 0，sha256 两两相等。"
+  },
+  "failure_path_check": {
+    "invalid_platform": {
+      "outdir": "out/invalid-platform",
+      "outdir_created": false,
+      "expectation": "不被创建"
+    },
+    "empty_topic": {
+      "outdir": "out/empty-topic",
+      "outdir_created": false,
+      "expectation": "不被创建"
+    },
+    "out_dir_listing": [
+      "out/run1",
+      "out/run2"
+    ]
+  },
+  "contract_snapshot": {
+    "structure.json_top_keys": 11,
+    "element_ids": [
+      "hook_3s",
+      "pain_point",
+      "value_1",
+      "value_2",
+      "value_3",
+      "cta"
+    ],
+    "frozen_markers_verified": [
+      "骨架.md 首行 '# 抖音口播稿 · 爆款骨架'",
+      "钩子含「别划走！还在为「确定性复跑主题」反复内耗的人」",
+      "CTA 含「点赞收藏，评论区扣「1」」",
+      "points_used=要点甲/要点乙/要点丙 原文入槽，points_unused=[]",
+      "total_open=6 / total_filled_from_input=4（dy 满 3 卖点参考值）",
+      "产物中 {{ }} 模板变量残留为 0"
+    ]
+  },
+  "overall_conclusion": "4/4 调用全部符合预期：同输入两次生成产物逐字节一致（cmp=0、sha256 相等）；非法 platform=bilibili 与空白 topic 均以 exit 2 失败、stderr 报错符合预期形态、未创建任何输出目录。原始 stdout/stderr 捕获留存于 records/ 目录。"
+}

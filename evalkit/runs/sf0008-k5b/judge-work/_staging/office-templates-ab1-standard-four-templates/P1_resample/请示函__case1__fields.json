@@ -1,0 +1,68 @@
+{
+  "title": "关于采购评测用 GPU 服务器的请示",
+  "template": "请示函",
+  "data_source": "fixtures/请示函/case1.json",
+  "fields": [
+    {
+      "name": "请示事由",
+      "required": true,
+      "status": "filled",
+      "value": "采购评测用 GPU 服务器",
+      "render": "标题「关于采购评测用 GPU 服务器的请示」呈现"
+    },
+    {
+      "name": "主送机关",
+      "required": true,
+      "status": "filled",
+      "value": "公司总经理办公会",
+      "render": "称谓行顶格「公司总经理办公会：」"
+    },
+    {
+      "name": "请示缘由",
+      "required": true,
+      "status": "filled",
+      "value": "因评测规模扩大，现有设备无法满足批量推理需求，评测周期被迫拉长。",
+      "render": "正文首段原文呈现（首行缩进两字）"
+    },
+    {
+      "name": "请示事项",
+      "required": true,
+      "status": "filled",
+      "value": "申请采购 V100S 服务器 2 台，预算 12 万元，本月内完成到货验收。",
+      "render": "正文段「请示事项：申请采购 V100S 服务器 2 台，预算 12 万元，本月内完成到货验收。」"
+    },
+    {
+      "name": "请示单位",
+      "required": true,
+      "status": "filled",
+      "value": "评测技术部",
+      "render": "落款右对齐「评测技术部」"
+    },
+    {
+      "name": "联系人",
+      "required": false,
+      "status": "filled",
+      "value": "李工",
+      "render": "文末联系行「（联系人：李工；联系电话：010-88886666）」"
+    },
+    {
+      "name": "联系电话",
+      "required": false,
+      "status": "filled",
+      "value": "010-88886666",
+      "render": "文末联系行「（联系人：李工；联系电话：010-88886666）」"
+    },
+    {
+      "name": "成文日期",
+      "required": true,
+      "status": "filled",
+      "value": "2026年9月28日",
+      "render": "落款右对齐「2026年9月28日」（右空四字）"
+    }
+  ],
+  "summary": {
+    "filled": 8,
+    "missing": 0,
+    "total": 8
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "mapping": {
+    "P1": {
+      "rep": 1,
+      "arm": "baseline"
+    },
+    "P2": {
+      "rep": 1,
+      "arm": "treatment"
+    },
+    "P3": {
+      "rep": 2,
+      "arm": "baseline"
+    },
+    "P4": {
+      "rep": 2,
+      "arm": "treatment"
+    }
+  },
+  "staged": [
+    {
+      "pid": "P1",
+      "files": [
+        "会议通知__case2__fields.json",
+        "会议通知__case2__文书.docx.extract.txt",
+        "请示函__case2__fields.json",
+        "请示函__case2__文书.docx.extract.txt"
+      ]
+    },
+    {
+      "pid": "P2",
+      "files": [
+        "会议通知__case2__fields.json",
+        "会议通知__case2__文书.docx.extract.txt",
+        "请示函__case2__fields.json",
+        "请示函__case2__文书.docx.extract.txt"
+      ]
+    },
+    {
+      "pid": "P3",
+      "files": [
+        "会议通知__case2__fields.json",
+        "会议通知__case2__文书.docx.extract.txt",
+        "请示函__case2__fields.json",
+        "请示函__case2__文书.docx.extract.txt"
+      ]
+    },
+    {
+      "pid": "P4",
+      "files": [
+        "会议通知__case2__fields.json",
+        "会议通知__case2__文书.docx.extract.txt",
+        "请示函__case2__fields.json",
+        "请示函__case2__文书.docx.extract.txt"
+      ]
+    }
+  ],
+  "seed": 11848453
+}

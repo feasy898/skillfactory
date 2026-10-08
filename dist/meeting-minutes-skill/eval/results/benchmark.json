@@ -1,0 +1,697 @@
+{
+  "asset": {
+    "name": "meeting-minutes",
+    "version": "1.0.0",
+    "form": "skill"
+  },
+  "evalbench": {
+    "version": "v2/evalbench-v02（8 任务集冻结）",
+    "golden_version": "b3be400ae3b4984a1537d4909b9ea379246d8b978d3c8a179c90182c5c854315",
+    "gate_version": "v0.2"
+  },
+  "model_pin": {
+    "testers": {
+      "glm": {
+        "model_id": "GLM-5.3",
+        "provider_base_url": "account:bigmodel-individual-coding-plan",
+        "reasoning_variant": "max",
+        "mechanism": "M4"
+      },
+      "minimax": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_base_url": "minimax",
+        "reasoning_variant": "enabled",
+        "mechanism": "M2"
+      }
+    },
+    "judge_model_id": {
+      "tested_glm": [
+        "step-router-v1",
+        "Minimax-M3.1-Flash-Preview"
+      ],
+      "tested_minimax": [
+        "step-router-v1",
+        "GLM-5.3"
+      ]
+    },
+    "judge_prompt_version": "S8-JUDGE-v1",
+    "date": "2026-10-08",
+    "cli_version": "zcode-app-cli 3.14.4 (embedded) / zcode-runtime 0.16.9"
+  },
+  "tasks": [
+    {
+      "id": "t1",
+      "tested_family": "glm",
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 10.0,
+              "tokens": 576815,
+              "duration_s": 169.901,
+              "session_id": "sess_180b3d17-9857-4795-b628-9111f784aeb5",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            },
+            {
+              "score": 10.0,
+              "tokens": 436663,
+              "duration_s": 188.219,
+              "session_id": "sess_517d73ad-533b-448b-a019-dc5173bfec15",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 8.8,
+              "tokens": 1083822,
+              "duration_s": 472.158,
+              "session_id": "sess_cf7b6bf7-c080-4ad0-b077-00df3a04d734",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            },
+            {
+              "score": 10.0,
+              "tokens": 861440,
+              "duration_s": 452.847,
+              "session_id": "sess_3e5998c7-f7ff-46b5-a49e-9f1ee5268e7e",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            }
+          ]
+        }
+      },
+      "task_mean_t": 10.0,
+      "task_mean_b": 9.4,
+      "task_verdict": "tie",
+      "reverse_flag": false
+    },
+    {
+      "id": "t2",
+      "tested_family": "minimax",
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 10.0,
+              "tokens": 453703,
+              "duration_s": 49.516,
+              "session_id": "sess_cd1d0a9d-bb51-445c-a114-e0da945a9606",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            },
+            {
+              "score": 10.0,
+              "tokens": 432450,
+              "duration_s": 63.592,
+              "session_id": "sess_f000849e-fe14-4810-a5b6-99e92bc31d30",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 10.0,
+              "tokens": 719367,
+              "duration_s": 65.268,
+              "session_id": "sess_84485ca5-89c2-40a5-8afa-11da5e7563c4",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            },
+            {
+              "score": 10.0,
+              "tokens": 554539,
+              "duration_s": 103.719,
+              "session_id": "sess_32f920d2-4599-488d-b2ea-690dbd92c082",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            }
+          ]
+        }
+      },
+      "task_mean_t": 10.0,
+      "task_mean_b": 10.0,
+      "task_verdict": "tie",
+      "reverse_flag": false
+    },
+    {
+      "id": "t3",
+      "tested_family": "glm",
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 9.4,
+              "tokens": 407489,
+              "duration_s": 181.399,
+              "session_id": "sess_bd162183-d1cd-4bb1-bece-ffa2dc091d6c",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            },
+            {
+              "score": 9.4,
+              "tokens": 692990,
+              "duration_s": 220.778,
+              "session_id": "sess_476315f3-0cf6-4f70-a2f0-495a7d0e028b",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 3.1,
+              "tokens": 1430269,
+              "duration_s": 549.171,
+              "session_id": "sess_933f9f47-c4ea-45c1-a2c8-eed6b33798c7",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            },
+            {
+              "score": 10.0,
+              "tokens": 2571316,
+              "duration_s": 692.73,
+              "session_id": "sess_a9445752-db59-4ea0-8302-01a90fafdff3",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            }
+          ]
+        }
+      },
+      "task_mean_t": 9.4,
+      "task_mean_b": 6.55,
+      "task_verdict": "tie",
+      "reverse_flag": false
+    },
+    {
+      "id": "t4",
+      "tested_family": "minimax",
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 9.4,
+              "tokens": 547259,
+              "duration_s": 100.456,
+              "session_id": "sess_e88d8bbd-63e6-4ed3-b83b-796fa2227f6b",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            },
+            {
+              "score": 10.0,
+              "tokens": 501918,
+              "duration_s": 141.216,
+              "session_id": "sess_87d6993e-1fc0-4202-ab53-e44f6a025520",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 9.4,
+              "tokens": 879020,
+              "duration_s": 92.632,
+              "session_id": "sess_be73e98c-6b9d-4915-874d-c63b8684e003",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            },
+            {
+              "score": 7.2,
+              "tokens": 418699,
+              "duration_s": 121.26,
+              "session_id": "sess_81922a70-abec-4e7c-aca9-ae78f23e9649",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            }
+          ]
+        }
+      },
+      "task_mean_t": 9.7,
+      "task_mean_b": 8.3,
+      "task_verdict": "tie",
+      "reverse_flag": false
+    },
+    {
+      "id": "t5",
+      "tested_family": "glm",
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 10.0,
+              "tokens": 696539,
+              "duration_s": 340.261,
+              "session_id": "sess_1a0b34cc-d467-4845-9849-d91b58da662a",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            },
+            {
+              "score": 10.0,
+              "tokens": 449721,
+              "duration_s": 180.365,
+              "session_id": "sess_01d7e127-aa02-435c-bb6c-cf9ea51d4360",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 3.45,
+              "tokens": 1149201,
+              "duration_s": 657.418,
+              "session_id": "sess_0a6cadf0-7ede-4119-a186-c81eb39367e8",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            },
+            {
+              "score": 10.0,
+              "tokens": 561446,
+              "duration_s": 274.553,
+              "session_id": "sess_1dae077d-2318-45bd-b3d2-3617e959d7c6",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            }
+          ]
+        }
+      },
+      "task_mean_t": 10.0,
+      "task_mean_b": 6.725,
+      "task_verdict": "tie",
+      "reverse_flag": false
+    },
+    {
+      "id": "t6",
+      "tested_family": "minimax",
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 10.0,
+              "tokens": 357282,
+              "duration_s": 53.377,
+              "session_id": "sess_2bd53bbd-80b3-4358-bc5b-5044569913f6",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            },
+            {
+              "score": 10.0,
+              "tokens": 518666,
+              "duration_s": 88.576,
+              "session_id": "sess_d74627ec-31c3-4d7c-adf3-a5679d4cfe92",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 10.0,
+              "tokens": 335711,
+              "duration_s": 44.524,
+              "session_id": "sess_251475b2-98bc-47f7-b3f5-2a9dfc8692b4",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            },
+            {
+              "score": 7.2,
+              "tokens": 770735,
+              "duration_s": 113.372,
+              "session_id": "sess_697cef12-e5f6-48fb-8fdc-a4d7124dc5bf",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            }
+          ]
+        }
+      },
+      "task_mean_t": 10.0,
+      "task_mean_b": 8.6,
+      "task_verdict": "tie",
+      "reverse_flag": false
+    },
+    {
+      "id": "t7",
+      "tested_family": "glm",
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 9.7,
+              "tokens": 464931,
+              "duration_s": 205.788,
+              "session_id": "sess_134b4800-9211-4063-a667-48b436479f58",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            },
+            {
+              "score": 9.7,
+              "tokens": 611156,
+              "duration_s": 233.643,
+              "session_id": "sess_c068f46e-ff6d-4ad6-aad5-ebd958dc2bd4",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 3.75,
+              "tokens": 1448005,
+              "duration_s": 518.894,
+              "session_id": "sess_b1cce2c9-5a6f-4d5e-8b9a-e26e44974a97",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            },
+            {
+              "score": 3.75,
+              "tokens": 1358203,
+              "duration_s": 580.766,
+              "session_id": "sess_11d7b4bf-4279-4c4c-b552-c4014f833cfb",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            }
+          ]
+        }
+      },
+      "task_mean_t": 9.7,
+      "task_mean_b": 3.75,
+      "task_verdict": "win",
+      "reverse_flag": false
+    },
+    {
+      "id": "t8",
+      "tested_family": "minimax",
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 10.0,
+              "tokens": 452924,
+              "duration_s": 65.981,
+              "session_id": "sess_44d7ba52-f0e4-44ee-8e42-01f6b8096f0e",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            },
+            {
+              "score": 10.0,
+              "tokens": 585164,
+              "duration_s": 100.261,
+              "session_id": "sess_76f9057e-c053-4750-b1fe-84ea62dccdb0",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 10.0,
+              "tokens": 441931,
+              "duration_s": 62.263,
+              "session_id": "sess_63a6debf-0bef-4b44-85be-da6c24bf9a81",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            },
+            {
+              "score": 10.0,
+              "tokens": 938485,
+              "duration_s": 113.261,
+              "session_id": "sess_ceadd21e-a5fb-4c0c-89af-78176aa72dca",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": null,
+              "pin_verdict": null,
+              "format_check": "纪要.docx+summary.json 在位可解析",
+              "assertion": true
+            }
+          ]
+        }
+      },
+      "task_mean_t": 10.0,
+      "task_mean_b": 10.0,
+      "task_verdict": "tie",
+      "reverse_flag": false
+    }
+  ],
+  "judge_consistency": [
+    {
+      "task": "t1",
+      "resample_of": "P1",
+      "first_score": 10.0,
+      "second_score": 10.0,
+      "delta": 0.0,
+      "action": "pass",
+      "repair_note": "原配对因 step 首轮 no-verdict 残缺；本对为同一裁判两个全新会话实例对同一抽样产物的独立评分（s8_jc_repair.py）"
+    },
+    {
+      "task": "t2",
+      "resample_of": "P2",
+      "first_score": 10.0,
+      "second_score": 10.0,
+      "delta": 0.0,
+      "action": "pass"
+    },
+    {
+      "task": "t3",
+      "resample_of": "P3",
+      "first_score": 4.4,
+      "second_score": 2.5,
+      "delta": 1.9000000000000004,
+      "action": "pass",
+      "repair_note": "原配对因 step 首轮 no-verdict 残缺；本对为同一裁判两个全新会话实例对同一抽样产物的独立评分（s8_jc_repair.py）"
+    },
+    {
+      "task": "t4",
+      "resample_of": "P4",
+      "first_score": 10.0,
+      "second_score": 10.0,
+      "delta": 0.0,
+      "action": "pass"
+    },
+    {
+      "task": "t5",
+      "resample_of": "P1",
+      "first_score": 10.0,
+      "second_score": 10.0,
+      "delta": 0.0,
+      "action": "pass"
+    },
+    {
+      "task": "t6",
+      "resample_of": "P2",
+      "first_score": 10.0,
+      "second_score": 10.0,
+      "delta": 0.0,
+      "action": "pass"
+    },
+    {
+      "task": "t7",
+      "resample_of": "P3",
+      "first_score": 10.0,
+      "second_score": 9.4,
+      "delta": 0.5999999999999996,
+      "action": "pass"
+    },
+    {
+      "task": "t8",
+      "resample_of": "P4",
+      "first_score": 10.0,
+      "second_score": 10.0,
+      "delta": 0.0,
+      "action": "pass"
+    }
+  ],
+  "infra_errors": [],
+  "aggregate": {
+    "mean_baseline": 7.9156,
+    "mean_treatment": 9.85,
+    "delta": 1.9344,
+    "task_win_rate": 0.125,
+    "pair_win_rate": 0.4375,
+    "reverse_tasks": 0,
+    "ties": 7,
+    "valid_tasks": 8,
+    "total_tasks": 8
+  },
+  "acceptance": {
+    "gates": {
+      "deterministic": true,
+      "blind_v02": false,
+      "efficiency": true,
+      "format": true,
+      "assertion": true,
+      "real_recheck": false
+    },
+    "blind_detail": {
+      "delta_ok": true,
+      "winrate_ok": false,
+      "reverse_ok": true
+    },
+    "evidence_level": "provisional",
+    "verdict": "rejected"
+  },
+  "disclosure": {
+    "rounds": 2,
+    "single_round_signal": true,
+    "delta_range": [
+      1.9344,
+      5.25
+    ],
+    "round1_source": "v2/evalbench-v02/meeting-minutes/ab_summary.json",
+    "d3_note": null
+  },
+  "_efficiency": {
+    "token_ratio": 0.5274,
+    "duration_ratio": 0.4849,
+    "tokens_traceability": "每 run tokens=input_tokens+output_tokens（db model_usage session join，session_id 在 run 内）",
+    "n_non_infra_runs": 32
+  },
+  "_swap_check": {
+    "swap_delta": -1.9344,
+    "swap_win_rate": 0.0,
+    "tie_rate": 0.875,
+    "swap_reverse_tasks": 6,
+    "identity_note": "delta'=−delta 恒等；winRate'=1−winRate−tieRate（§3.3-3 平局计入分母不计胜；tieRate=0 时退化为 1−winRate）；reverse 按同定义在新treatment 侧复算留痕"
+  },
+  "_k5b02": {
+    "tasks": 8,
+    "runs_per_arm": 2,
+    "required": "mm/office≥2、hot≥3",
+    "pass": true
+  }
+}

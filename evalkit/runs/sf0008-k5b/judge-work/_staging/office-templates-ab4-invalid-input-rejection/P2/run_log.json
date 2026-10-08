@@ -1,0 +1,249 @@
+{
+  "task": "ab4-invalid-input-rejection",
+  "run_id": "<redacted>",
+  "arm": "<redacted>",
+  "entry": "gen_doc.py --template <模板> --data <json> --outdir <目录>",
+  "约定退出码": {
+    "非法输入": 2,
+    "合法输入": 0
+  },
+  "产物布局": {
+    "run_log": "run_log.json",
+    "对照组产物": "out/周报/case1/{文书.docx, fields.json}"
+  },
+  "runs": [
+    {
+      "name": "非法组①-模板名非法",
+      "kind": "illegal",
+      "group": "① --template 证书（模板名非法）",
+      "command": "python3 gen_doc.py --template '证书' --data 'fixtures/周报/case1.json' --outdir out-illegal-1",
+      "argv": [
+        "<ARMROOT>/.venv/bin/python",
+        "<ARMROOT>/gen_doc.py",
+        "--template",
+        "证书",
+        "--data",
+        "<ARMROOT>/fixtures/周报/case1.json",
+        "--outdir",
+        "<ARMROOT>/out-illegal-1"
+      ],
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "exit_ok": true,
+      "stderr_summary": "错误：模板名非法：'证书'。可选模板为：周报、请示函、会议通知、工作总结。",
+      "stderr_has_chinese": true,
+      "stdout_summary": "",
+      "output_dir": "out-illegal-1",
+      "output_dir_created": false,
+      "files_created": [],
+      "dirs_created": [],
+      "residue": [],
+      "产物残留": [],
+      "clean": true
+    },
+    {
+      "name": "非法组②-数据文件不存在",
+      "kind": "illegal",
+      "group": "② --data 指向不存在的文件",
+      "command": "python3 gen_doc.py --template '周报' --data '.tmp-invalid/非法-不存在.json' --outdir out-illegal-2",
+      "argv": [
+        "<ARMROOT>/.venv/bin/python",
+        "<ARMROOT>/gen_doc.py",
+        "--template",
+        "周报",
+        "--data",
+        "<ARMROOT>/.tmp-invalid/非法-不存在.json",
+        "--outdir",
+        "<ARMROOT>/out-illegal-2"
+      ],
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "exit_ok": true,
+      "stderr_summary": "错误：数据文件不存在：.tmp-invalid/非法-不存在.json",
+      "stderr_has_chinese": true,
+      "stdout_summary": "",
+      "output_dir": "out-illegal-2",
+      "output_dir_created": false,
+      "files_created": [],
+      "dirs_created": [],
+      "residue": [],
+      "产物残留": [],
+      "clean": true
+    },
+    {
+      "name": "非法组③-JSON解析失败",
+      "kind": "illegal",
+      "group": "③ --data 指向内容为「不是JSON」的文件",
+      "command": "python3 gen_doc.py --template '周报' --data '.tmp-invalid/非法-不是JSON.json' --outdir out-illegal-3",
+      "argv": [
+        "<ARMROOT>/.venv/bin/python",
+        "<ARMROOT>/gen_doc.py",
+        "--template",
+        "周报",
+        "--data",
+        "<ARMROOT>/.tmp-invalid/非法-不是JSON.json",
+        "--outdir",
+        "<ARMROOT>/out-illegal-3"
+      ],
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "exit_ok": true,
+      "stderr_summary": "错误：数据文件不是合法 JSON，解析失败：.tmp-invalid/非法-不是JSON.json（Expecting value: line 1 column 1 (char 0)）",
+      "stderr_has_chinese": true,
+      "stdout_summary": "",
+      "output_dir": "out-illegal-3",
+      "output_dir_created": false,
+      "files_created": [],
+      "dirs_created": [],
+      "residue": [],
+      "产物残留": [],
+      "clean": true
+    },
+    {
+      "name": "非法组④-顶层非对象",
+      "kind": "illegal",
+      "group": "④ --data 指向内容为 [\"数组\",\"非对象\"] 的文件",
+      "command": "python3 gen_doc.py --template '周报' --data '.tmp-invalid/非法-顶层数组.json' --outdir out-illegal-4",
+      "argv": [
+        "<ARMROOT>/.venv/bin/python",
+        "<ARMROOT>/gen_doc.py",
+        "--template",
+        "周报",
+        "--data",
+        "<ARMROOT>/.tmp-invalid/非法-顶层数组.json",
+        "--outdir",
+        "<ARMROOT>/out-illegal-4"
+      ],
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "exit_ok": true,
+      "stderr_summary": "错误：数据文件顶层必须是 JSON 对象，实际为 数组：.tmp-invalid/非法-顶层数组.json",
+      "stderr_has_chinese": true,
+      "stdout_summary": "",
+      "output_dir": "out-illegal-4",
+      "output_dir_created": false,
+      "files_created": [],
+      "dirs_created": [],
+      "residue": [],
+      "产物残留": [],
+      "clean": true
+    },
+    {
+      "name": "合法对照组-周报case1",
+      "kind": "legal",
+      "group": "⑤ 合法输入 fixtures/周报/case1.json",
+      "command": "python3 gen_doc.py --template '周报' --data 'fixtures/周报/case1.json' --outdir out",
+      "argv": [
+        "<ARMROOT>/.venv/bin/python",
+        "<ARMROOT>/gen_doc.py",
+        "--template",
+        "周报",
+        "--data",
+        "<ARMROOT>/fixtures/周报/case1.json",
+        "--outdir",
+        "<ARMROOT>/out"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "exit_ok": true,
+      "stderr_summary": "",
+      "stderr_has_chinese": false,
+      "stdout_summary": "已生成：out/周报/case1/文书.docx | 已生成：out/周报/case1/fields.json",
+      "output_dir": "out",
+      "output_dir_created": true,
+      "files_created": [
+        "周报/case1/fields.json",
+        "周报/case1/文书.docx"
+      ],
+      "dirs_created": [
+        "周报",
+        "周报/case1"
+      ],
+      "residue": [],
+      "产物残留": [],
+      "clean": true,
+      "expected_artifacts": [
+        "out/周报/case1/文书.docx",
+        "out/周报/case1/fields.json"
+      ],
+      "artifacts_present": {
+        "out/周报/case1/文书.docx": true,
+        "out/周报/case1/fields.json": true
+      }
+    },
+    {
+      "name": "边界组-必填缺失以占位处理",
+      "kind": "legal",
+      "group": "⑥ 必填字段缺失（部门/周期/本周工作内容）+模板外键「备注」",
+      "command": "python3 gen_doc.py --template '周报' --data '.tmp-invalid/边界-必填缺失.json' --outdir .tmp-invalid/out-boundary",
+      "argv": [
+        "<ARMROOT>/.venv/bin/python",
+        "<ARMROOT>/gen_doc.py",
+        "--template",
+        "周报",
+        "--data",
+        "<ARMROOT>/.tmp-invalid/边界-必填缺失.json",
+        "--outdir",
+        "<ARMROOT>/.tmp-invalid/out-boundary"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "exit_ok": true,
+      "stderr_summary": "",
+      "stderr_has_chinese": false,
+      "stdout_summary": "已生成：.tmp-invalid/out-boundary/周报/边界-必填缺失/文书.docx | 已生成：.tmp-invalid/out-boundary/周报/边界-必填缺失/fields.json",
+      "output_dir": ".tmp-invalid/out-boundary",
+      "output_dir_created": true,
+      "files_created": [
+        "周报/边界-必填缺失/fields.json",
+        "周报/边界-必填缺失/文书.docx"
+      ],
+      "dirs_created": [
+        "周报",
+        "周报/边界-必填缺失"
+      ],
+      "residue": [],
+      "产物残留": [],
+      "clean": true,
+      "expected_artifacts": [
+        ".tmp-invalid/out-boundary/周报/边界-必填缺失/文书.docx",
+        ".tmp-invalid/out-boundary/周报/边界-必填缺失/fields.json"
+      ],
+      "artifacts_present": {
+        ".tmp-invalid/out-boundary/周报/边界-必填缺失/文书.docx": true,
+        ".tmp-invalid/out-boundary/周报/边界-必填缺失/fields.json": true
+      },
+      "missing_required": [
+        "部门",
+        "周期",
+        "本周工作内容"
+      ],
+      "missing_optional": [
+        "下周工作计划",
+        "问题与需协调事项"
+      ],
+      "unknown_keys": [
+        "备注"
+      ],
+      "summary": {
+        "filled": 2,
+        "missing": 5,
+        "total": 7
+      },
+      "placeholder_in_docx": true,
+      "必填缺失占位": true
+    }
+  ],
+  "summary": {
+    "非法组数": 4,
+    "合法对照组数": 2,
+    "边界组数": 1,
+    "非法组退出码全为2": true,
+    "非法组stderr含中文": true,
+    "非法组零产物残留": true,
+    "对照组退出码0": true,
+    "对照组两产物齐全": true,
+    "必填缺失未被当作非法": true,
+    "全项通过": true
+  }
+}

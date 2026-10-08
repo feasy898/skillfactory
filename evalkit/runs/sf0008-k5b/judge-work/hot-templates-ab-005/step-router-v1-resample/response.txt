@@ -1,0 +1,7 @@
+{"scores": {"Q1": {"total": [Advisor consultation #1]
+[Advisor review]
+
+{"scores": {"Q1": {"total": 10.0, "evidence": "R1: run_log determinism_check 显示 run1/run2 的 骨架.md 与 structure.json cmp=0、sha256 两两相等。R2: call3 非法 platform exit=2、stderr argparse invalid choice、outdir_created=false；call4 空 topic exit=2、stderr『--topic 不能为空』、outdir_created=false。R3: call1/2 合法输入 exit=0、stdout 含 OK 前缀、写出 骨架.md+structure.json 两文件。"}}}
+[End of advisor consultation #1]
+
+{"scores": {"Q1": {"total": 10.0, "evidence": "R1: run_log determinism_check 显示 run1/run2 的 骨架.md 与 structure.json cmp=0、sha256 两两相等。R2: call3 非法 platform exit=2、stderr argparse invalid choice、outdir_created=false；call4 空 topic exit=2、stderr『--topic 不能为空』、outdir_created=false。R3: call1/2 合法输入 exit=0、stdout 含 OK 前缀、写出 骨架.md+structure.json 两文件。"}}}

@@ -1,0 +1,9 @@
+EXTRACT OF 请示函__case2__文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=381000 runs=[请  示/方正小标宋简体/22.0] text=请  示
+P001 align=LEFT (0) firstLineChars=None firstLineIndent=0 spacing=381000 runs=[主送机关：____/仿宋_GB2312/16.0] text=主送机关：____
+P002 align=LEFT (0) firstLineChars=None firstLineIndent=5161280000 spacing=381000 runs=[为延期举办季度评审会，现将有/仿宋_GB2312/16.0] text=为延期举办季度评审会，现将有关事项请示如下：
+P003 align=LEFT (0) firstLineChars=None firstLineIndent=5161280000 spacing=381000 runs=[一、请示缘由：因关键评审人出/仿宋_GB2312/16.0] text=一、请示缘由：因关键评审人出差，原定会议时间无法保证评审质量。
+P004 align=LEFT (0) firstLineChars=None firstLineIndent=5161280000 spacing=381000 runs=[二、请示事项：____/仿宋_GB2312/16.0] text=二、请示事项：____
+P005 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=381000 runs=[请示单位：评测技术部/仿宋_GB2312/16.0] text=请示单位：评测技术部
+P006 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=381000 runs=[成文日期：/仿宋_GB2312/16.0] text=成文日期：
+P007 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=381000 runs=[联系人：李工/仿宋_GB2312/16.0] text=联系人：李工

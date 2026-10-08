@@ -65,7 +65,7 @@
     "rejudge_on_delta_gt_2": "按实发记账，不预批（触发即留痕，不静默）",
     "registered_judge_budget": 54,
     "registered_judge_budget_note": "下限口径合计 54；rejudge 与冒烟另计、按实发如实入 entries",
-    "used_so_far": 1
+    "used_so_far": 99
   },
   "retry_policy": {
     "cap_per_arm": 1,
@@ -1913,6 +1913,1741 @@
         "variant": null
       },
       "pin_verdict": "pass"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "hot-templates-ab-001",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "18:31:26",
+      "status": "no-verdict",
+      "slot": 87,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 77573,
+      "session_id": "c54d7c0d81db1a5a0c592304df75c437.e5b38a6f1eba473debcf75867061ca6c",
+      "tokens": {
+        "input": 12521,
+        "output": 2712
+      },
+      "model_observed": "step-router-v1",
+      "verdict_salvage": "discarded",
+      "note": "；staging 种子为进程随机 hash，P#→rep/arm 映射不可复现，两条盲评 verdict 弃用不进判分（调用已消费如实记账），种子已改 crc32 确定性"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "hot-templates-ab-001",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "18:32:44",
+      "status": "done",
+      "slot": 88,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 55977,
+      "session_id": "sess_94148ad9-ce2f-4170-b0ce-ebe9044d29b4",
+      "tokens": {
+        "input": 246820,
+        "output": 6039
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview",
+      "verdict_salvage": "discarded",
+      "note": "；staging 种子为进程随机 hash，P#→rep/arm 映射不可复现，两条盲评 verdict 弃用不进判分（调用已消费如实记账），种子已改 crc32 确定性"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "hot-templates-ab-001-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "18:33:42",
+      "status": "killed_by_harness_stop",
+      "slot": 89,
+      "kind": "judge",
+      "note": "§3.4 复评调用在停批窗口被打断；HTTP 请求是否已发出不可确证，按未消费处理并由新条目承接（如实留痕）"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "hot-templates-ab-001",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "18:35:52",
+      "status": "done",
+      "slot": 90,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 73316,
+      "session_id": "1609cf69bd552d8c424528c72bb6edd6.98701766957106bf50c186a3d736e99f",
+      "tokens": {
+        "input": 12874,
+        "output": 4075
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "hot-templates-ab-001",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "18:37:06",
+      "status": "done",
+      "slot": 91,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 53382,
+      "session_id": "sess_831da655-fee6-4628-ab52-7069d959c2d4",
+      "tokens": {
+        "input": 258640,
+        "output": 5673
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "hot-templates-ab-001-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "18:38:01",
+      "status": "killed_by_harness_stop",
+      "slot": 92,
+      "kind": "judge",
+      "note": "第二次停批窗口（shell 组取消）打断复评；HTTP 是否发出不可确证，按未消费处理，由抢救+新条目承接"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t1",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "18:43:30",
+      "status": "no-verdict",
+      "slot": 93,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 97374,
+      "session_id": "19638b53372b76ef49df21374bdbd903.a76fc4b5ae15f0e5243c003c3d26c04b",
+      "tokens": {
+        "input": 3261,
+        "output": 8000
+      },
+      "model_observed": "step-router-v1",
+      "note": "step 裁判 8000 max_tokens 截断（finish=length）verdict 残缺；已修 16000+精简指令，调用如实记账，t1 step 盲评由新条目承接"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "meeting-minutes-t1",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "18:45:07",
+      "status": "done",
+      "slot": 94,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 67005,
+      "session_id": "sess_423d238c-8e33-432e-93ce-a44a7e53bc8b",
+      "tokens": {
+        "input": 354776,
+        "output": 6453
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t1-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "18:46:16",
+      "status": "done",
+      "slot": 95,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 80022,
+      "session_id": "70e1c9713debca14b8ffa84ea27e300a.a1bbf38dbfe158f9749464d2c16e2f85",
+      "tokens": {
+        "input": 1714,
+        "output": 1083
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "meeting-minutes-t2",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "18:47:36",
+      "status": "killed_by_harness_stop",
+      "slot": 96,
+      "kind": "judge",
+      "note": "停批修 step reasoning 兜底时打断；CLI 子进程已终止，无有效 verdict 不占判分"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t1",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "18:49:26",
+      "status": "no-verdict",
+      "slot": 97,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 141795,
+      "session_id": "04691776506ebcd4257ae1d9eb1b6085.aa830ba1a352da2813f0dcce00e454c2",
+      "tokens": {
+        "input": 3303,
+        "output": 16000
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "meeting-minutes-t1",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "18:51:47",
+      "status": "done",
+      "slot": 98,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 72219,
+      "session_id": "sess_83b3487f-6792-4cb6-adb2-94a431a29665",
+      "tokens": {
+        "input": 473441,
+        "output": 6418
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t1-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "18:53:02",
+      "status": "no-verdict",
+      "slot": 99,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 66156,
+      "session_id": "7dd330ec0b251aeab7b6683979c642f7.45d7254866498f8874e9d9ebedf80f79",
+      "tokens": {
+        "input": 1711,
+        "output": 16000
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "meeting-minutes-t2",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "18:54:08",
+      "status": "done",
+      "slot": 100,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 92392,
+      "session_id": "sess_05104670-3230-4485-9228-73fefa64fd04",
+      "tokens": {
+        "input": 212332,
+        "output": 5982
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t2",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "18:55:42",
+      "status": "done",
+      "slot": 101,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 54211,
+      "session_id": "58e8a9f6477b87c22203a5e63195e7fb.420fea93b2c216d7f3ee68188a1f905a",
+      "tokens": {
+        "input": 2121,
+        "output": 635
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "meeting-minutes-t2-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "18:56:36",
+      "status": "done",
+      "slot": 102,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 140642,
+      "session_id": "sess_6aa51d5e-0c73-44ce-a4f2-674fdec59218",
+      "tokens": {
+        "input": 433686,
+        "output": 8030
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t3",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "18:58:59",
+      "status": "killed_by_harness_stop",
+      "slot": 103,
+      "kind": "judge",
+      "note": "停批修 step reasoning 兜底时打断；CLI 子进程已终止，无有效 verdict 不占判分"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t1",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:01:40",
+      "status": "no-verdict",
+      "slot": 104,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 52672,
+      "session_id": "2b256d40bc3cc9418de828429a5adeda.a4150be10ffed9f3547b0ff9a36cdbd7",
+      "tokens": {
+        "input": 4957,
+        "output": 584
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "meeting-minutes-t1",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:02:32",
+      "status": "done",
+      "slot": 105,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 41981,
+      "session_id": "sess_5c6d86fc-ef13-4a53-a201-a40fb9721c2d",
+      "tokens": {
+        "input": 280233,
+        "output": 5683
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t1",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:03:16",
+      "status": "no-verdict",
+      "slot": 106,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 69784,
+      "session_id": "8d3bd9ad04f5fbe2588906aa0ec9cc0c.888def8efe6400f2f44f8b24bf4ea7a4",
+      "tokens": {
+        "input": 3693,
+        "output": 16000
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "meeting-minutes-t1",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:04:26",
+      "status": "done",
+      "slot": 107,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 68047,
+      "session_id": "sess_053ee600-8aa0-4359-bff3-0587a8dbd5dc",
+      "tokens": {
+        "input": 486233,
+        "output": 7325
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t1-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:05:36",
+      "status": "done",
+      "slot": 108,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 54482,
+      "session_id": "06f0850e4c70398c2329c64c3a3eb944.7148f0181a333826468db485e493b4a6",
+      "tokens": {
+        "input": 1760,
+        "output": 141
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t3",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:06:31",
+      "status": "no-verdict",
+      "slot": 109,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 74709,
+      "session_id": "a15b66882646e9e226ab23d2b1403c33.df58c5ece5918884003208ee3943a4d6",
+      "tokens": {
+        "input": 3294,
+        "output": 16000
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "meeting-minutes-t3",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:07:45",
+      "status": "done",
+      "slot": 110,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 59375,
+      "session_id": "sess_63568b5c-2b54-4371-9cbe-af7a499e56b9",
+      "tokens": {
+        "input": 338958,
+        "output": 5643
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t3",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:08:47",
+      "status": "no-verdict",
+      "slot": 111,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 71771,
+      "session_id": "ecf9eb6f9d39837c49e2980615df99f3.b49d8a0430f0081c7e7ee3d340f56119",
+      "tokens": {
+        "input": 3294,
+        "output": 16000
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "meeting-minutes-t3",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:09:58",
+      "status": "done",
+      "slot": 112,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 49038,
+      "session_id": "sess_66ef965d-42a0-42dd-ba4b-f0ca8802475d",
+      "tokens": {
+        "input": 263678,
+        "output": 5795
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t3-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:10:49",
+      "status": "done",
+      "slot": 113,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 78213,
+      "session_id": "a18639c815e3f577648b0e4a827d2712.c92e09684bf1ed62e8e551a74e8057cd",
+      "tokens": {
+        "input": 1691,
+        "output": 3729
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "meeting-minutes-t4",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:12:08",
+      "status": "killed_by_harness_stop",
+      "slot": 114,
+      "kind": "judge",
+      "note": "停批修 step reasoning 兜底时打断；CLI 子进程已终止，无有效 verdict 不占判分"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "meeting-minutes-t4",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:15:12",
+      "status": "done",
+      "slot": 115,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 281376,
+      "session_id": "sess_e04302f7-07e9-4fad-ada1-375988c343af",
+      "tokens": {
+        "input": 452993,
+        "output": 16725
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t4",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:19:55",
+      "status": "no-verdict",
+      "slot": 116,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 107856,
+      "session_id": "73a2e9d17776ba71099addad68914f8a.892d5ef70c6198baf85115f06f44ae06",
+      "tokens": {
+        "input": 3200,
+        "output": 9854
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "meeting-minutes-t4",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:21:43",
+      "status": "done",
+      "slot": 117,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 163251,
+      "session_id": "sess_ebbb298d-b72d-4bab-9127-44b660836d41",
+      "tokens": {
+        "input": 315091,
+        "output": 9206
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t4",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:24:28",
+      "status": "no-verdict",
+      "slot": 118,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 75225,
+      "session_id": "90403e1e002d215ac6df8816a96f638b.ce69f850843a06a1b7ca075c257f5099",
+      "tokens": {
+        "input": 3583,
+        "output": 16000
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "meeting-minutes-t4-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:25:44",
+      "status": "killed_by_harness_stop",
+      "slot": 119,
+      "kind": "judge",
+      "note": "停批修 step 输出纪律时打断；无有效 verdict 不占判分"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "meeting-minutes-t4",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:26:36",
+      "status": "done",
+      "slot": 120,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 164029,
+      "session_id": "sess_a1da0e6b-0ffc-4569-b20b-95c955aa2df8",
+      "tokens": {
+        "input": 202183,
+        "output": 10184
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t4",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:29:22",
+      "status": "done",
+      "slot": 121,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 117326,
+      "session_id": "f1e2e5f1c1cb3f8f0c10c5a3a2edbffe.03347e5cf4237e97f637523f863c2815",
+      "tokens": {
+        "input": 3646,
+        "output": 4805
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "meeting-minutes-t4-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:31:19",
+      "status": "done",
+      "slot": 122,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 84582,
+      "session_id": "sess_522e46b0-8edd-4feb-9360-4b7c18d4f8f3",
+      "tokens": {
+        "input": 104025,
+        "output": 3465
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t5",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:32:46",
+      "status": "no-verdict",
+      "slot": 123,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 150892,
+      "session_id": "3b4f601436e84219b38ae58959c1daf7.bdb82fadfc6534c4e13a94d99dbf15c3",
+      "tokens": {
+        "input": 3630,
+        "output": 32000
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "meeting-minutes-t5",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:35:17",
+      "status": "done",
+      "slot": 124,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 41031,
+      "session_id": "sess_08901de3-193f-4682-b25e-e7048d875b61",
+      "tokens": {
+        "input": 279313,
+        "output": 4186
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t5",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:36:00",
+      "status": "killed_by_harness_stop",
+      "slot": 125,
+      "kind": "judge",
+      "note": "停批换 assistant 预填方案时打断；无有效 verdict 不占判分"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "prefill-mechanism-test",
+      "purpose": "assistant 预填机制验证（4+3=7）",
+      "ts_intent": "19:39:06",
+      "status": "done",
+      "exit_code": 0,
+      "tokens": {
+        "input": 10,
+        "output": 2
+      },
+      "slot": 126,
+      "kind": "judge"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t5",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:39:07",
+      "status": "no-verdict",
+      "slot": 127,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 101333,
+      "session_id": "1efb6d4e1a4db8c5c541932f2591315d.d337c3a879ebc7660b0ceb2c13e9678f",
+      "tokens": {
+        "input": 3587,
+        "output": 444
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "meeting-minutes-t5",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:40:48",
+      "status": "done",
+      "slot": 128,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 74365,
+      "session_id": "sess_bfca6c15-13c2-4ef5-805e-af617a5cf49c",
+      "tokens": {
+        "input": 396683,
+        "output": 4908
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t5",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:42:04",
+      "status": "done",
+      "slot": 129,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 61508,
+      "session_id": "d73681f6165694362f96947cae7e871a.3fce1f30b1ee01a48ada913d3a38429e",
+      "tokens": {
+        "input": 3534,
+        "output": 668
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t5-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:43:06",
+      "status": "done",
+      "slot": 130,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 33336,
+      "session_id": "d29825d62957c3b26cd6c466a102a036.f7954ffb3170902efcba130ca3ef4657",
+      "tokens": {
+        "input": 1591,
+        "output": 151
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "meeting-minutes-t6",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:43:39",
+      "status": "done",
+      "slot": 131,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 161333,
+      "session_id": "sess_0376e748-e0bb-41f9-86c4-27f4e4ef0c77",
+      "tokens": {
+        "input": 284818,
+        "output": 8962
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t6",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:46:23",
+      "status": "done",
+      "slot": 132,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 42834,
+      "session_id": "e3891d0b09cfe896086c540c7cfd0e46.e18b08828448eb842b7831e9cc5169dd",
+      "tokens": {
+        "input": 3417,
+        "output": 7843
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "meeting-minutes-t6-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:47:06",
+      "status": "done",
+      "slot": 133,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 198527,
+      "session_id": "sess_df839d7e-7ee7-4ce2-bf1b-e9bad5883c05",
+      "tokens": {
+        "input": 807939,
+        "output": 9220
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t7",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:50:26",
+      "status": "no-verdict",
+      "slot": 134,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 100384,
+      "session_id": "337b17197581a0f2a2da348f1298abb8.744c170a05baced31f55bfc46cf5f76f",
+      "tokens": {
+        "input": 4023,
+        "output": 457
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "meeting-minutes-t7",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:52:07",
+      "status": "done",
+      "slot": 135,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 51588,
+      "session_id": "sess_d86b15bc-77b2-4868-9b63-6f9430ebd028",
+      "tokens": {
+        "input": 292162,
+        "output": 3864
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t7",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:53:00",
+      "status": "done",
+      "slot": 136,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 78655,
+      "session_id": "386fe4e145e70ee6694aa65e53812d76.e720a44ac2f22d7e373a82690908ad91",
+      "tokens": {
+        "input": 3999,
+        "output": 458
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t7-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:54:19",
+      "status": "done",
+      "slot": 137,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 93908,
+      "session_id": "430df16477754c21bdd4067957035462.ee8a37965577304bfb5531f0e36ebba0",
+      "tokens": {
+        "input": 1370,
+        "output": 6453
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "meeting-minutes-t8",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:55:53",
+      "status": "done",
+      "slot": 138,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 119603,
+      "session_id": "sess_dae52f06-9c98-4ae4-bfa7-50a2e06efbb3",
+      "tokens": {
+        "input": 299847,
+        "output": 6583
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t8",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:57:55",
+      "status": "done",
+      "slot": 139,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 44782,
+      "session_id": "72878caefd612918a6796c25e76dd4ca.cee64993e1d171f2cd736c3b7a1b7f2e",
+      "tokens": {
+        "input": 2864,
+        "output": 527
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "meeting-minutes-t8-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "19:58:40",
+      "status": "done",
+      "slot": 140,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 173569,
+      "session_id": "sess_e6039b02-dba5-49a1-9a9f-1653904a405e",
+      "tokens": {
+        "input": 499718,
+        "output": 8770
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "office-templates-ab1-standard-four-templates",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:01:36",
+      "status": "done",
+      "slot": 141,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 159931,
+      "session_id": "bbf86373f8cf9f7e7849ca6c1d9725e6.01a11b63eeba74aebcbbbc75aa2253f5",
+      "tokens": {
+        "input": 21259,
+        "output": 9177
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "office-templates-ab1-standard-four-templates",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:04:16",
+      "status": "done",
+      "slot": 142,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 130633,
+      "session_id": "sess_0a00919d-9ae4-4831-a5ab-805eee0d1f4c",
+      "tokens": {
+        "input": 1006030,
+        "output": 12074
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "office-templates-ab1-standard-four-templates-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:06:28",
+      "status": "done",
+      "slot": 143,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 133384,
+      "session_id": "1f040d04866dba13f0b4d8217e4d8c9a.ba50469a3e7bfacefdf098a9f9bef6c1",
+      "tokens": {
+        "input": 6495,
+        "output": 2408
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "office-templates-ab2-boundary-missing-required",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:08:43",
+      "status": "done",
+      "slot": 144,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 502792,
+      "session_id": "sess_f15dbd3a-de98-4d42-b482-d078b7a9633c",
+      "tokens": {
+        "input": 596543,
+        "output": 29913
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "office-templates-ab2-boundary-missing-required",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:17:07",
+      "status": "done",
+      "slot": 145,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 124910,
+      "session_id": "b7e089a7f10e4e817ba4972b7a494abc.3ff6b57d27eed7091cf08f0cc93968f9",
+      "tokens": {
+        "input": 11350,
+        "output": 22198
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "office-templates-ab2-boundary-missing-required-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:19:12",
+      "status": "done",
+      "slot": 146,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 398688,
+      "session_id": "sess_3e8d4a2c-59a1-4b06-a02d-36ac57f03166",
+      "tokens": {
+        "input": 369753,
+        "output": 23017
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "office-templates-ab3-empty-and-string-lists",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:25:55",
+      "status": "no-verdict",
+      "slot": 147,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 63294,
+      "session_id": "6392b059c897f26da66af339eec80591.fe1f77c22065496d11200b6ef7cf997e",
+      "tokens": {
+        "input": 9141,
+        "output": 10870
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "office-templates-ab3-empty-and-string-lists",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:26:58",
+      "status": "done",
+      "slot": 148,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 72147,
+      "session_id": "sess_fd991007-5053-4fc4-8cbd-93a12875e1a7",
+      "tokens": {
+        "input": 339204,
+        "output": 6413
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "office-templates-ab3-empty-and-string-lists",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:28:13",
+      "status": "no-verdict",
+      "slot": 149,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 92333,
+      "session_id": "50f8d814695993f4b724ac0639ca266b.b891a3c313b01e085323f148086c3036",
+      "tokens": {
+        "input": 8830,
+        "output": 1012
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "office-templates-ab3-empty-and-string-lists-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:29:45",
+      "status": "done",
+      "slot": 150,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 136910,
+      "session_id": "a4b382227f2184e5136bd3db99ff05b0.0a1064b1333004d3abb00507a909b67b",
+      "tokens": {
+        "input": 3058,
+        "output": 19996
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "office-templates-ab4-invalid-input-rejection",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:32:02",
+      "status": "done",
+      "slot": 151,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 352401,
+      "session_id": "sess_0400df87-abe3-4e90-ae9e-61448da50ee3",
+      "tokens": {
+        "input": 369543,
+        "output": 18276
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "office-templates-ab4-invalid-input-rejection",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:37:57",
+      "status": "done",
+      "slot": 152,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 59915,
+      "session_id": "6c447d39691600bd085fe56896af7b12.c8bdfcdd8afd1c06408f30f81bad51be",
+      "tokens": {
+        "input": 19630,
+        "output": 10603
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "office-templates-ab4-invalid-input-rejection-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:38:56",
+      "status": "done",
+      "slot": 153,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 255483,
+      "session_id": "sess_20b54e05-e9fe-4725-9f6e-1efc607f3c6e",
+      "tokens": {
+        "input": 591675,
+        "output": 12739
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "office-templates-ab5-determinism-layout-selfeval",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:43:14",
+      "status": "done",
+      "slot": 154,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 106778,
+      "session_id": "c87707b5bb24315baa272d9826a68cd0.dd0635e7cc6c0cd598cf64ca89f9b29a",
+      "tokens": {
+        "input": 18602,
+        "output": 1425
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "office-templates-ab5-determinism-layout-selfeval",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:45:01",
+      "status": "done",
+      "slot": 155,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 121408,
+      "session_id": "sess_c97fc49a-89c9-4295-b300-6ea3d1c0e0f2",
+      "tokens": {
+        "input": 839896,
+        "output": 14447
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "office-templates-ab5-determinism-layout-selfeval-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:47:04",
+      "status": "done",
+      "slot": 156,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 28526,
+      "session_id": "94227853b4a8b5dac081678055e8aa43.fdd47856d4fdc8578d47fd784b3714b8",
+      "tokens": {
+        "input": 3302,
+        "output": 4933
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "hot-templates-ab-001",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:47:33",
+      "status": "done",
+      "slot": 157,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 25713,
+      "session_id": "6c58618c09e05a13d2d20b04e9b792f0.77edf2b3820af9f2860a46e0150ca26d",
+      "tokens": {
+        "input": 12499,
+        "output": 4609
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "hot-templates-ab-001",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:47:59",
+      "status": "done",
+      "slot": 158,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 51672,
+      "session_id": "sess_1fd7003c-1ca0-47df-9f3d-cf6ecba11292",
+      "tokens": {
+        "input": 360938,
+        "output": 6423
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "hot-templates-ab-001-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:48:52",
+      "status": "done",
+      "slot": 159,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 20865,
+      "session_id": "1c83fd65ee8e18a0cd39ad42506e1624.fcdf30b8ad35cd18d211b344d1fae05f",
+      "tokens": {
+        "input": 2956,
+        "output": 4198
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "hot-templates-ab-002",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:49:13",
+      "status": "done",
+      "slot": 160,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 278684,
+      "session_id": "sess_f3650d1b-f6f4-4304-a9ca-6f4cbd814319",
+      "tokens": {
+        "input": 485053,
+        "output": 16896
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "hot-templates-ab-002",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:53:54",
+      "status": "done",
+      "slot": 161,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 77011,
+      "session_id": "ffaadefe2f7396a6fe158796cbd29e46.ecaadd0f2dbbb688b1f541ca34a71c8f",
+      "tokens": {
+        "input": 17945,
+        "output": 13945
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "hot-templates-ab-002-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:55:11",
+      "status": "done",
+      "slot": 162,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 247041,
+      "session_id": "sess_ac573a64-a5dd-44ad-a051-8a37065d5636",
+      "tokens": {
+        "input": 730187,
+        "output": 13055
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "hot-templates-ab-003",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "20:59:20",
+      "status": "no-verdict",
+      "slot": 163,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 102599,
+      "session_id": "24613c1af68fd1b0dc39a3865e70f871.e7c6e98b3f5c8026164132e5d95bc792",
+      "tokens": {
+        "input": 12882,
+        "output": 6700
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "hot-templates-ab-003",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:01:03",
+      "status": "done",
+      "slot": 164,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 62926,
+      "session_id": "sess_1f469246-a251-4ec9-ad1e-d5799e3acde6",
+      "tokens": {
+        "input": 357684,
+        "output": 6269
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "hot-templates-ab-003",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:02:08",
+      "status": "done",
+      "slot": 165,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 89783,
+      "session_id": "1ba06efee29ac55d736928bc0c71067d.6c3f7ecbf9f2e6382c79e97cbcc4b0f6",
+      "tokens": {
+        "input": 13036,
+        "output": 2100
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "hot-templates-ab-003-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:03:37",
+      "status": "done",
+      "slot": 166,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 11322,
+      "session_id": "0baf12c2e9c428d683cbf8bc1d205fdb.9cc27ab3edb25fe39d9cb7a997b5da9f",
+      "tokens": {
+        "input": 2808,
+        "output": 2048
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "hot-templates-ab-004",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:03:49",
+      "status": "done",
+      "slot": 167,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 326028,
+      "session_id": "sess_85be5d88-9bd8-47f0-85da-f11e1c180a02",
+      "tokens": {
+        "input": 442267,
+        "output": 21669
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "hot-templates-ab-004",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:09:17",
+      "status": "done",
+      "slot": 168,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 84885,
+      "session_id": "207647f58637c9149fe53e9db951ed19.16330c5a00f543608ea820bf179fbcb0",
+      "tokens": {
+        "input": 25074,
+        "output": 16075
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "hot-templates-ab-004-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:10:42",
+      "status": "done",
+      "slot": 169,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 240711,
+      "session_id": "sess_18269caa-51d8-4779-8bd7-f185552ea404",
+      "tokens": {
+        "input": 916598,
+        "output": 14136
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "hot-templates-ab-005",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:14:45",
+      "status": "no-verdict",
+      "slot": 170,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 65944,
+      "session_id": "2450ece260ea42242cda6597c190c61d.d61b11eb0dd083dac38e16ee2a8ab220",
+      "tokens": {
+        "input": 37002,
+        "output": 563
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "hot-templates-ab-005",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:15:50",
+      "status": "done",
+      "slot": 171,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 37395,
+      "session_id": "sess_e24eaa9d-5731-4879-8874-7e578345de2d",
+      "tokens": {
+        "input": 354153,
+        "output": 3071
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "hot-templates-ab-005",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:16:30",
+      "status": "no-verdict",
+      "slot": 172,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 12454,
+      "session_id": "1762ff50b8e9183f490171a0fdb60af0.eada64017ca4afd966eecebcc8ff0ed2",
+      "tokens": {
+        "input": 37077,
+        "output": 2486
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "hot-templates-ab-005-resample",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:16:42",
+      "status": "done",
+      "slot": 173,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 16503,
+      "session_id": "9e7d550e2f12828d8c13fda0b669969f.6c76623aafc6424ec9b6d0eb736cc121",
+      "tokens": {
+        "input": 6484,
+        "output": 155
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t1-jc-repair-1",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:21:17",
+      "status": "done",
+      "slot": 174,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 76946,
+      "session_id": "7d800495c3f5a3ef00b7e8c286943d6d.ca38e2d8f437cda1d2b4006f683d7dd6",
+      "tokens": {
+        "input": 1641,
+        "output": 1654
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t1-jc-repair-2",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:22:34",
+      "status": "done",
+      "slot": 175,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 22904,
+      "session_id": "be7d130045ae54abc36972d4a87048be.20b05d72643318888b0d7990a5c96736",
+      "tokens": {
+        "input": 1758,
+        "output": 3768
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t3-jc-repair-1",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:22:57",
+      "status": "done",
+      "slot": 176,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 48473,
+      "session_id": "f3f7845fd62092310257c5b877020546.ce82a9f6d8fba75899d2707e91f21fc3",
+      "tokens": {
+        "input": 1724,
+        "output": 8173
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "meeting-minutes-t3-jc-repair-2",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:23:45",
+      "status": "done",
+      "slot": 177,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 77134,
+      "session_id": "f8f82ad2d9f7072fa852654ae54d59b0.fc6a80b995a55b2f6110f9dbfc43d9f3",
+      "tokens": {
+        "input": 1724,
+        "output": 13979
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "office-templates-ab3-empty-and-string-lists-jc-repair-1",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:25:02",
+      "status": "done",
+      "slot": 178,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 29918,
+      "session_id": "c61d21f8095cd34948d64ce348e0d9e6.575b6126601f3ed8c236fc8cc8847e88",
+      "tokens": {
+        "input": 3013,
+        "output": 5455
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "office-templates-ab3-empty-and-string-lists-jc-repair-2",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:25:32",
+      "status": "done",
+      "slot": 179,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 174072,
+      "session_id": "f3dc1f9c63a6bf37800158a4bace8e4a.a901e2ef96b70383f673f73ea52e3e47",
+      "tokens": {
+        "input": 2938,
+        "output": 14913
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "office-templates-ab4-invalid-input-rejection-jc-repair-1",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:28:26",
+      "status": "done",
+      "slot": 180,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 54464,
+      "session_id": "1324f3cff69d08f987f34138292b6332.2ad13a40210b987979c3c7e868ecd924",
+      "tokens": {
+        "input": 4161,
+        "output": 175
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "office-templates-ab4-invalid-input-rejection-jc-repair-2",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:29:21",
+      "status": "done",
+      "slot": 181,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 35989,
+      "session_id": "768756ee0cc63b9448eef6e298604d1b.6617557ebd503ac776fdb07ee4a24441",
+      "tokens": {
+        "input": 4287,
+        "output": 295
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "hot-templates-ab-005-jc-repair-1",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:29:57",
+      "status": "done",
+      "slot": 182,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 39256,
+      "session_id": "7c082c23a4a27c0dcdf582c1aea601bf.53f903732ae2970351e4417e14da71f3",
+      "tokens": {
+        "input": 6669,
+        "output": 711
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "hot-templates-ab-005-jc-repair-2",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:30:36",
+      "status": "no-verdict",
+      "slot": 183,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 112745,
+      "session_id": "f383bd69c2c028019a5bae0efb372991.eaae8fe777c30be94b953b8526a2fbda",
+      "tokens": {
+        "input": 6457,
+        "output": 11492
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "hot-templates-ab-005-jc-repair-1",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:33:13",
+      "status": "done",
+      "slot": 184,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 7207,
+      "session_id": "0a9ba678a3adc1ad5e9fde284c819c4b.e926f4c80197d4f38739e897ac153a2e",
+      "tokens": {
+        "input": 6711,
+        "output": 1242
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "hot-templates-ab-005-jc-repair-2",
+      "judge_prompt_version": "S8-JUDGE-v1",
+      "ts_intent": "21:33:21",
+      "status": "done",
+      "slot": 185,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 2984,
+      "session_id": "96f0666f13f5306aad1fc65edf25b6e0.03f7e6538b0da93b8813068c0a78c327",
+      "tokens": {
+        "input": 6711,
+        "output": 476
+      },
+      "model_observed": "step-router-v1"
     }
   ]
 }

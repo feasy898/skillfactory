@@ -97,12 +97,16 @@ def product_files_ok(pkg, ad):
                 docx.Document(os.path.join(u, "文书.docx"))
                 jload(os.path.join(u, "fields.json"))
             return True, "%d 个单元产物在位可解析" % len(units)
-        hot = [f for f in ("骨架.md", "structure.json") if os.path.isfile(os.path.join(out, f))]
         if pkg == "hot-templates":
-            if len(hot) < 2:
-                return False, "骨架.md/structure.json 缺失"
-            jload(os.path.join(out, "structure.json"))
-            return True, "两产物在位可解析"
+            cands = [out] + [os.path.join(out, d) for d in sorted(os.listdir(out))
+                             if os.path.isdir(os.path.join(out, d))] \
+                if os.path.isdir(out) else [out]
+            for cd in cands:
+                if os.path.isfile(os.path.join(cd, "structure.json")) and \
+                        os.path.isfile(os.path.join(cd, "骨架.md")):
+                    jload(os.path.join(cd, "structure.json"))
+                    return True, "两产物在位可解析（%s）" % os.path.relpath(cd, out)
+            return False, "骨架.md/structure.json 缺失"
     except Exception as exc:
         return False, "解析失败:%s" % exc
     return False, "未知包"
@@ -124,7 +128,7 @@ def collect_pkg(pkg, checks):
     n_runs = 0
     for task in tasks_of(pkg):
         fam = fam_tasks[task]
-        runs = {"treatment": [], "baseline": []}
+        runs = {"treatment": {"runs": []}, "baseline": {"runs": []}}
         for rep in range(1, REPS[pkg] + 1):
             for arm in ("baseline", "treatment"):
                 ad = os.path.join(RUN, fam, "%s-%s-rep%d" % (pkg, task, rep), arm)
@@ -132,7 +136,7 @@ def collect_pkg(pkg, checks):
                 if not os.path.isfile(recp):
                     infra_errors.append({"task": task, "arm": arm, "run": rep,
                                          "reason": "records 缺失（臂未完成）"})
-                    runs[arm].append({"score": None, "tokens": None, "duration_s": None,
+                    runs[arm]["runs"].append({"score": None, "tokens": None, "duration_s": None,
                                       "session_id": None, "infra_error": True, "rep": rep})
                     continue
                 rec = jload(recp)
@@ -153,7 +157,7 @@ def collect_pkg(pkg, checks):
                                          "detail": chk.get("%s-rep%d" % (arm, rep), {}).get("detail")})
                 tokens = (rec.get("input_tokens") or 0) + (rec.get("output_tokens") or 0)
                 dur = round((rec.get("wall_ms") or 0) / 1000.0, 3)
-                runs[arm].append({"score": None, "tokens": tokens, "duration_s": dur,
+                runs[arm]["runs"].append({"score": None, "tokens": tokens, "duration_s": dur,
                                   "session_id": rec.get("session_id"),
                                   "infra_error": bool(is_infra), "rep": rep,
                                   "bucket": bucket, "pin_verdict": rec.get("pin_verdict"),
@@ -182,27 +186,27 @@ def attach_scores(pkg, data):
         mapping = (jd.get("mapping") or {})
         fin = jd.get("final_scores") or {}
         for arm in ("treatment", "baseline"):
-            for r in t["arms"][arm]:
+            for r in t["arms"][arm]["runs"]:
                 pid = next((p for p, m in mapping.items()
-                            if m.get("rep") == r.get("rep") and m.get("arm") == arm), None)
+                            if isinstance(m, dict) and m.get("rep") == r.get("rep")
+                            and m.get("arm") == arm), None)
                 r["score"] = fin.get(pid)
         means = {}
         for arm in ("treatment", "baseline"):
-            ss = [r["score"] for r in t["arms"][arm] if r["score"] is not None]
+            ss = [r["score"] for r in t["arms"][arm]["runs"] if r["score"] is not None]
             means[arm] = round(sum(ss) / len(ss), 4) if ss else None
         t["task_mean_t"] = means["treatment"]
         t["task_mean_b"] = means["baseline"]
-        n = len(t["arms"]["treatment"])
+        n = len(t["arms"]["treatment"]["runs"])
         unj = jd.get("judge_consistency", {}).get("action") == "unjudgeable"
         no_scores = means["treatment"] is None or means["baseline"] is None
         if unj or no_scores:
             t["task_verdict"] = "unjudgeable"
         else:
-            wins = sum(1 for a, b in zip([r["score"] for r in t["arms"]["treatment"]],
-                                         [r["score"] for r in t["arms"]["baseline"]])
+            tr = t["arms"]["treatment"]["runs"]; bs = t["arms"]["baseline"]["runs"]
+            wins = sum(1 for a, b in zip([r["score"] for r in tr], [r["score"] for r in bs])
                        if a is not None and b is not None and a > b)
-            losses = sum(1 for a, b in zip([r["score"] for r in t["arms"]["treatment"]],
-                                           [r["score"] for r in t["arms"]["baseline"]])
+            losses = sum(1 for a, b in zip([r["score"] for r in tr], [r["score"] for r in bs])
                          if a is not None and b is not None and a < b)
             if n == 3:
                 t["task_verdict"] = "win" if wins >= 2 else "loss"
@@ -227,7 +231,7 @@ def aggregate(data):
     total = len(valid)
     win_rate = round(wins / total, 4) if total else None
     pairs = [(r["score"], l["score"]) for t in valid
-             for r, l in zip(t["arms"]["treatment"], t["arms"]["baseline"])
+             for r, l in zip(t["arms"]["treatment"]["runs"], t["arms"]["baseline"]["runs"])
              if r["score"] is not None and l["score"] is not None]
     pair_win = round(sum(1 for a, b in pairs if a > b) / len(pairs), 4) if pairs else None
     reverse = sum(1 for t in valid if t["reverse_flag"])
@@ -282,7 +286,11 @@ def build_benchmark(pkg, data, checks, det):
             jc.append(c)
         if t["task_verdict"] == "unjudgeable":
             unj += 1
-    blind_ok = (unj == 0 and len(jc) == len(data["tasks"]) and data["tasks"])
+    # 盲评门 v0.2（EVAL-SPEC §3.6 复合线）：Δ≥1.0 ∧ 任务级胜率≥60% ∧ 反向≤1，且无 unjudgeable
+    blind_ok = (unj == 0 and len(jc) == len(data["tasks"]) and data["tasks"]
+                and agg["delta"] is not None and agg["delta"] >= 1.0
+                and agg["task_win_rate"] is not None and agg["task_win_rate"] >= 0.6
+                and agg["reverse_tasks"] <= 1)
     # K5B-04 面板零交集自证（逐任务）
     blind_panel_ok = all(
         set((data["judging"].get(t["id"]) or {}).get("panel", [])) ==

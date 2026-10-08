@@ -1,0 +1,106 @@
+{
+  "title": "关于召开三季度质量评审会的通知",
+  "template": "会议通知",
+  "source_data": "fixtures/会议通知/case1.json",
+  "fields": [
+    {
+      "name": "会议名称",
+      "required": true,
+      "status": "filled",
+      "value": "三季度质量评审会",
+      "rendered_as": "正文段落「会议名称：三季度质量评审会」；并用于标题《关于召开三季度质量评审会的通知》"
+    },
+    {
+      "name": "召开单位",
+      "required": true,
+      "status": "filled",
+      "value": "评测技术部",
+      "rendered_as": "落款右对齐「召开单位：评测技术部」"
+    },
+    {
+      "name": "主送对象",
+      "required": true,
+      "status": "filled",
+      "value": "各部门、各项目组",
+      "rendered_as": "称谓顶格「各部门、各项目组：」"
+    },
+    {
+      "name": "会议时间",
+      "required": true,
+      "status": "filled",
+      "value": "2026年10月9日（周五）14:00",
+      "rendered_as": "正文段落「会议时间：2026年10月9日（周五）14:00」"
+    },
+    {
+      "name": "会议地点",
+      "required": true,
+      "status": "filled",
+      "value": "3 号楼 501 会议室",
+      "rendered_as": "正文段落「会议地点：3 号楼 501 会议室」"
+    },
+    {
+      "name": "参会人员",
+      "required": false,
+      "status": "filled",
+      "value": "各部门负责人、各项目组 PM",
+      "rendered_as": "正文段落「参会人员：各部门负责人、各项目组 PM」"
+    },
+    {
+      "name": "会议议题",
+      "required": true,
+      "status": "filled",
+      "value": "三季度评测结果复盘与四季度计划",
+      "rendered_as": "正文段落「会议议题：三季度评测结果复盘与四季度计划」"
+    },
+    {
+      "name": "会议要求",
+      "required": false,
+      "status": "filled",
+      "value": [
+        "会前提交本部门质量简报",
+        "迟到 10 分钟以上按缺席处理"
+      ],
+      "rendered_as": "正文段落「会议要求：1. 会前提交本部门质量简报；2. 迟到 10 分钟以上按缺席处理」"
+    },
+    {
+      "name": "联系人",
+      "required": false,
+      "status": "filled",
+      "value": "李工",
+      "rendered_as": "正文段落「联系人：李工」"
+    },
+    {
+      "name": "联系电话",
+      "required": false,
+      "status": "filled",
+      "value": "010-88886666",
+      "rendered_as": "正文段落「联系电话：010-88886666」"
+    },
+    {
+      "name": "发文日期",
+      "required": true,
+      "status": "filled",
+      "value": "2026年9月28日",
+      "rendered_as": "落款右对齐「发文日期：2026年9月28日」"
+    }
+  ],
+  "filled_fields": [
+    "会议名称",
+    "召开单位",
+    "主送对象",
+    "会议时间",
+    "会议地点",
+    "参会人员",
+    "会议议题",
+    "会议要求",
+    "联系人",
+    "联系电话",
+    "发文日期"
+  ],
+  "missing_fields": [],
+  "summary": {
+    "filled": 11,
+    "missing": 0,
+    "total": 11
+  }
+}

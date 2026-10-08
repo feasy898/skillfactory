@@ -1,0 +1,62 @@
+{
+  "tested_family": "glm",
+  "panel": [
+    "step-router-v1",
+    "Minimax-M3.1-Flash-Preview"
+  ],
+  "panel_rotation": "task_idx=3 parity=1",
+  "verdicts": {
+    "step-router-v1": null,
+    "Minimax-M3.1-Flash-Preview": {
+      "scores": {
+        "P1": {
+          "total": 8.5,
+          "evidence": "①周报「一、本周工作内容」下 P003=1．____、总结「二、主要成绩」下 P005=1．____，两处 fields.json 均 placeholder:true/placeholder_entries[\"1．____\"] 占位条目语义。②工作回顾 value=[\"完成评测平台月度巡检\"]、input_type=string，文书 P003 单项条目。③周报无「问题与需协调事项」节头、总结无「存在问题」节，fields.json 均记 missing:true+required:false+section_omitted。④总结 required 缺失恰=[总结主体,主要成绩]、标题「____2026年9月工作总结」；周报标题「____工作周报」且 missing=[周期,本周工作内容]，但 schema 无「部门」字段，missing_required 缺「部门」且无 summary 块。⑤节号一、二、条目1．规范；落款 P006/P007（总结P008/P009）均 align=RIGHT，但空成文日期渲染为「____」占位而非空段（spec F2 要求空段），仅末段右对齐达标。"
+        },
+        "P2": {
+          "total": 8.5,
+          "evidence": "①周报 sections[0].items=[\"1．____\"]、总结 sections[1] items=[\"1．____\"]，fields 记 placeholder+placeholder_items 占位条目。②工作回顾 value=[\"完成评测平台月度巡检\"]、input_was_string=true，文书 P002 单项条目。③周报 omitted_sections=[\"问题与需协调事项\"]、总结 omitted_sections=[\"存在问题\"]，字段 status=missing、required=false，文书无该节头。④总结 required 缺失=[总结主体,主要成绩]、标题「____2026年9月工作总结」；周报标题正确、required 缺失=[周期,本周工作内容]，但 schema 无「部门」字段且无 missing_required/summary 记账。⑤节号一二三、条目1．规范，落款 P005/P006 与 P007/P008 均 RIGHT；但空成文日期渲染为「____」占位而非空段。"
+        },
+        "P3": {
+          "total": 10.0,
+          "evidence": "①周报 P003=1．____、总结 P004=1．____（二、主要成绩下），两 fields.json 均 rendered_as=\"以____占位条目\"，与 rendered_as 占位条目语义一致。②工作回顾 value=[\"完成评测平台月度巡检\"]，文书 P002 为单一条目。③周报/总结文书均无「问题与需协调事项」「存在问题」节头，两字段 status=missing、required=false、rendered_as=\"省略该条目/小节\"。④summary.missing_required_names 周报=[部门,周期,本周工作内容]、总结=[总结主体,主要成绩]，标题分别为「____工作周报」「____2026年9月工作总结」，与 spec §9 完全一致。⑤节号 一、二、四（下一步工作打算，依 spec §1 固定为小节四）、条目 1．规范；总结 P007「____」align=RIGHT 为末个非空段，成文日期 rendered_as 留空空段、未破坏右对齐。"
+        },
+        "P4": {
+          "total": 10.0,
+          "evidence": "①周报 P003=1．____、总结 P004=1．____，fields.json rendered_as=\"以____占位条目\"（required=true missing），占位条目语义正确。②工作回顾 value=[\"完成评测平台月度巡检\"]，文书 P002 渲染为单项条目。③周报「问题与需协调事项」与总结「存在问题」节头均未出现在文书；对应字段 status=missing、required=false、rendered_as=\"省略该条目/小节\"。④周报 summary.missing_required_names=[部门,周期,本周工作内容]、总结=[总结主体,主要成绩]，标题「____工作周报」「____2026年9月工作总结」，与 spec §9 一致。⑤节号一、二、四与条目 1． 合规范；总结 P007「____」align=RIGHT 且为空日期前的末个非空段，成文日期留空为空段未破坏落款右对齐。"
+        }
+      }
+    },
+    "step-router-v1#retry": null
+  },
+  "per_judge_scores": {
+    "P1": {
+      "Minimax-M3.1-Flash-Preview": 8.5
+    },
+    "P2": {
+      "Minimax-M3.1-Flash-Preview": 8.5
+    },
+    "P3": {
+      "Minimax-M3.1-Flash-Preview": 10.0
+    },
+    "P4": {
+      "Minimax-M3.1-Flash-Preview": 10.0
+    }
+  },
+  "final_scores": {
+    "P1": 8.5,
+    "P2": 8.5,
+    "P3": 10.0,
+    "P4": 10.0
+  },
+  "judge_consistency": {
+    "task": "ab3-empty-and-string-lists",
+    "resample_of": "P3",
+    "first_score": 9.0,
+    "second_score": 9.0,
+    "delta": 0.0,
+    "action": "pass",
+    "repair_note": "原配对因 step 首轮 no-verdict 残缺；本对为同一裁判两个全新会话实例对同一抽样产物的独立评分（s8_jc_repair.py）"
+  },
+  "judge_prompt_version": "S8-JUDGE-v1"
+}

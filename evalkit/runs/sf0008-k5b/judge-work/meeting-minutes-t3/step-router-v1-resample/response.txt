@@ -1,0 +1,21 @@
+[Advisor consultation #1]
+[Advisor review]
+
+Your analysis is largely correct, but tighten a few things before you output the verdict.
+
+1. **Rubric 4 (条数与噪声) score: 0.5 is acceptable.** The `summary.json` counts are wrong on risk (2 vs 1) and total (6 vs 5), which is more than a minor slip. That said, be ready to defend 0.5 in the evidence by explicitly noting the two concrete mismatches (风险-count, 合计) plus the inclusion of 09:42.
+
+2. **Evidence strings: must each be ≤150 chars.** Your planned evidence will need to be dense. For example, for rubric 4 you could write something like:  
+   `"决议1(对) 待办3(数对但含09:42无误判) 风险2(应为1:09:38) 合计6(应5) 09:42未排除"`  
+   Count the characters; if it exceeds 150, trim without losing the specific mismatches.
+
+3. **Rubric 2 (期限提取):** The table shows `本月底前`; the rubric demands extraction as `本月底`. This is a clear format deviation, not a total miss. Score=1 is fine. Your evidence should cite the exact cell value and the expected value.
+
+4. **No other ambiguities:** You've correctly identified that there is only one product (Q1), mapped to P1. No missing items like 09:30/09:45 noise appear; the extract is clean in that regard.
+
+5. **Final output:** Remember to emit **only** the compact JSON, no code fences or commentary. Double-check that `total` is calculated correctly: `10 × (2+1+0+0.5) ÷ 8 = 4.375` → rounds to **4.4**.
+
+Proceed to write the verdict JSON now.
+[End of advisor consultation #1]
+
+{"scores": {"P1": {"total": 4.4, "evidence": "R1:09:32何倩/09:34运营老蒋/09:40待定均对。R2:09:34期限表格为'本月底前'，rubric要求'本月底'。R3:09:40含'需要'与'延期'应归待办，但文本表格均未列入且归入风险。R4:决议1对，风险2(应1)，合计6(应5)，混入09:42。"}}}

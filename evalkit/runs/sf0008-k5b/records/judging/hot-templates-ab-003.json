@@ -1,0 +1,110 @@
+{
+  "tested_family": "glm",
+  "panel": [
+    "step-router-v1",
+    "Minimax-M3.1-Flash-Preview"
+  ],
+  "panel_rotation": "task_idx=3 parity=1",
+  "verdicts": {
+    "step-router-v1": null,
+    "Minimax-M3.1-Flash-Preview": {
+      "scores": {
+        "P1": {
+          "total": 2.5,
+          "evidence": "R1=1.0 五节齐备但用 sections(hook/what/why/how/golden_close) 非 lead_in/thesis_*，无「一、是什么」前缀。R2=0.5 有 points:[] 与零卖点红线，无 points_used/价值点占位。R3=0 无「共勉」及统计节。"
+        },
+        "P2": {
+          "total": 10.0,
+          "evidence": "R1=2 五要素齐，thesis_* 首行为一、是什么/二、为什么/三、怎么办。R2=2 三抓手落【占位:价值点1/2/3】，points_used 三 null，填充仅 topic。R3=2 含「共勉」，total_open 13=1+2+3+6+1，骨架.md 记 13 处。"
+        },
+        "P3": {
+          "total": 10.0,
+          "evidence": "R1=2 五要素齐，thesis_* 首行为一、是什么/二、为什么/三、怎么办。R2=2 三抓手落【占位:价值点1/2/3】，points_used 三 null，填充仅 topic。R3=2 含「共勉」，total_open 13=1+2+3+6+1，骨架.md 记 13 处。"
+        },
+        "P4": {
+          "total": 10.0,
+          "evidence": "R1=2 五要素齐，thesis_* 首行为一、是什么/二、为什么/三、怎么办。R2=2 三抓手落【占位:价值点1/2/3】，points_used 三 null，填充仅 topic。R3=2 含「共勉」，total_open 13=1+2+3+6+1，骨架.md 记 13 处。"
+        },
+        "P5": {
+          "total": 10.0,
+          "evidence": "R1=2 五要素齐，thesis_* 首行为一、是什么/二、为什么/三、怎么办。R2=2 三抓手落【占位:价值点1/2/3】，points_used 三 null，填充仅 topic。R3=2 含「共勉」，total_open 13=1+2+3+6+1，骨架.md 记 13 处。"
+        },
+        "P6": {
+          "total": 10.0,
+          "evidence": "R1=2 五要素齐，thesis_* 首行为一、是什么/二、为什么/三、怎么办。R2=2 三抓手落【占位:价值点1/2/3】，points_used 三 null，填充仅 topic。R3=2 含「共勉」，total_open 13=1+2+3+6+1，骨架.md 记 13 处。"
+        }
+      }
+    },
+    "step-router-v1#retry": {
+      "scores": {
+        "P1": {
+          "total": 1.7,
+          "evidence": "Item1: 骨架.md中thesis节编号为「二/三/四」非「一/二/三」，structure.json无text字段。Item2: 无points_used字段，thesis_how无占位符。Item3: golden_close无「共勉」，无placeholder_stats与占位符统计。"
+        },
+        "P2": {
+          "total": 10.0,
+          "evidence": "Item1: thesis_what/why/how.text分别以「一、」「二、」「三、」开头，5要素齐备。Item2: thesis_how含【占位:价值点1/2/3】，points_used=[null,null,null]，filled_from_input仅topic。Item3: golden_ending含「共勉」，total_open=13=by_element之和，骨架.md占位符统计13处。"
+        },
+        "P3": {
+          "total": 10.0,
+          "evidence": "Item1: thesis_what/why/how.text分别以「一、」「二、」「三、」开头，5要素齐备。Item2: thesis_how含【占位:价值点1/2/3】，points_used=[null,null,null]，filled_from_input仅topic。Item3: golden_ending含「共勉」，total_open=13=by_element之和，骨架.md占位符统计13处。"
+        },
+        "P4": {
+          "total": 10.0,
+          "evidence": "Item1: thesis_what/why/how.text分别以「一、」「二、」「三、」开头，5要素齐备。Item2: thesis_how含【占位:价值点1/2/3】，points_used=[null,null,null]，filled_from_input仅topic。Item3: golden_ending含「共勉」，total_open=13=by_element之和，骨架.md占位符统计13处。"
+        },
+        "P5": {
+          "total": 10.0,
+          "evidence": "Item1: thesis_what/why/how.text分别以「一、」「二、」「三、」开头，5要素齐备。Item2: thesis_how含【占位:价值点1/2/3】，points_used=[null,null,null]，filled_from_input仅topic。Item3: golden_ending含「共勉」，total_open=13=by_element之和，骨架.md占位符统计13处。"
+        },
+        "P6": {
+          "total": 10.0,
+          "evidence": "Item1: thesis_what/why/how.text分别以「一、」「二、」「三、」开头，5要素齐备。Item2: thesis_how含【占位:价值点1/2/3】，points_used=[null,null,null]，filled_from_input仅topic。Item3: golden_ending含「共勉」，total_open=13=by_element之和，骨架.md占位符统计13处。"
+        }
+      }
+    }
+  },
+  "per_judge_scores": {
+    "P1": {
+      "Minimax-M3.1-Flash-Preview": 2.5,
+      "step-router-v1": 1.7
+    },
+    "P2": {
+      "Minimax-M3.1-Flash-Preview": 10.0,
+      "step-router-v1": 10.0
+    },
+    "P3": {
+      "Minimax-M3.1-Flash-Preview": 10.0,
+      "step-router-v1": 10.0
+    },
+    "P4": {
+      "Minimax-M3.1-Flash-Preview": 10.0,
+      "step-router-v1": 10.0
+    },
+    "P5": {
+      "Minimax-M3.1-Flash-Preview": 10.0,
+      "step-router-v1": 10.0
+    },
+    "P6": {
+      "Minimax-M3.1-Flash-Preview": 10.0,
+      "step-router-v1": 10.0
+    }
+  },
+  "final_scores": {
+    "P1": 2.1,
+    "P2": 10.0,
+    "P3": 10.0,
+    "P4": 10.0,
+    "P5": 10.0,
+    "P6": 10.0
+  },
+  "judge_consistency": {
+    "task": "ab-003",
+    "resample_of": "P3",
+    "first_score": 10.0,
+    "second_score": 10.0,
+    "delta": 0.0,
+    "action": "pass"
+  },
+  "judge_prompt_version": "S8-JUDGE-v1"
+}

@@ -1,0 +1,98 @@
+{
+  "task": "SF-0008 ab5-determinism-layout-selfeval（office 臂，treatment）：同输入 fixtures/会议通知/case1.json 连续两遍生成到同一输出目录 out/会议通知/case1（第二遍覆盖复写第一遍），逐遍记录 sha256 并对两遍产物逐字节对比，结论写入本文件",
+  "skill": "office-templates@1.0.0",
+  "generator": "<SKILL_MOUNT>/scripts/gen_doc.py",
+  "generator_sha256": "1171b5a3738c99b71f6decf4b9ce6dd1bb3709cd3211d1d5a476095a007cad8e",
+  "python": "3.12.3 (/usr/bin/python3)",
+  "python_docx": "1.2.0",
+  "working_directory": "<ARMROOT>",
+  "input_data": "fixtures/会议通知/case1.json",
+  "input_data_sha256": "89c0568932be989aff227912f06f67806ce95634034c054ac3841ac3e5a9f6b8",
+  "outdir": "out/会议通知/case1",
+  "generation_call_count": 2,
+  "calls": [
+    {
+      "call_id": 1,
+      "pass": 1,
+      "purpose": "确定性自评第 1 遍生成（产物随后快照到 /tmp/sf0008-det-rep2/pass1/ 供第 2 遍覆盖后对比）",
+      "command": "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 会议通知 --data fixtures/会议通知/case1.json --outdir out/会议通知/case1",
+      "exit_code": 0,
+      "stdout_summary": "已生成：out/会议通知/case1/文书.docx（模板=会议通知，标题=关于召开三季度质量评审会的通知，字段 filled/total=11/11，必填缺失=无，模板外键=无）",
+      "files": [
+        {
+          "path": "out/会议通知/case1/文书.docx",
+          "bytes": 37200,
+          "sha256": "fde15d6915c10b093c5866a70d07c368ce41b4a1e67d22e4a0a396ca340713cf"
+        },
+        {
+          "path": "out/会议通知/case1/fields.json",
+          "bytes": 2458,
+          "sha256": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f"
+        }
+      ]
+    },
+    {
+      "call_id": 2,
+      "pass": 2,
+      "purpose": "确定性自评第 2 遍生成：完全相同的输入与命令、同一输出目录，覆盖复写第 1 遍产物",
+      "command": "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 会议通知 --data fixtures/会议通知/case1.json --outdir out/会议通知/case1",
+      "exit_code": 0,
+      "stdout_summary": "已生成：out/会议通知/case1/文书.docx（模板=会议通知，标题=关于召开三季度质量评审会的通知，字段 filled/total=11/11，必填缺失=无，模板外键=无）",
+      "files": [
+        {
+          "path": "out/会议通知/case1/文书.docx",
+          "bytes": 37200,
+          "sha256": "44970e575b15a852fa3b3dcb550c2cd016d1de9b6dfc705723e12feead9ef302"
+        },
+        {
+          "path": "out/会议通知/case1/fields.json",
+          "bytes": 2458,
+          "sha256": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f"
+        }
+      ]
+    }
+  ],
+  "byte_comparison": {
+    "method": "第 1 遍产物先复制快照（cp 到 /tmp/sf0008-det-rep2/pass1/，快照 sha256 与原位一致已核），第 2 遍覆盖复写后对快照与在位文件逐字节对比（cmp / sha256 / zip 成员解压后逐字节对比）",
+    "fields.json": {
+      "byte_identical": true,
+      "pass1_sha256": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+      "pass2_sha256": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+      "note": "逐字节完全一致（cmp 零差异）；本任务两遍同一 outdir，outputs 类路径键本身亦相同，无需豁免"
+    },
+    "文书.docx": {
+      "byte_identical": false,
+      "pass1_sha256": "fde15d6915c10b093c5866a70d07c368ce41b4a1e67d22e4a0a396ca340713cf",
+      "pass2_sha256": "44970e575b15a852fa3b3dcb550c2cd016d1de9b6dfc705723e12feead9ef302",
+      "first_diff": "第 11 字节起（zip 本地文件头时间戳字段）",
+      "diff_explanation": "容器层差异唯一来源为 zip 条目头 date_time=保存时刻墙钟：第 1 遍 (2026,10,8,18,19,16)、第 2 遍 (2026,10,8,18,19,52)（python-docx save 时 zipfile.writestr 按当前时间写 ZipInfo）。zip 成员清单 17 项两遍相等；17 个成员逐项 file_size 相等、CRC32 相等，且全部解压后逐字节对比无一差异——文档实质内容（全部 OOXML 部件与缩略图）两遍完全一致，文件字节差异仅来自 17 个 zip 头部的时间戳字段",
+      "zip_member_content_identical": true
+    }
+  },
+  "docx_parsed_comparison": {
+    "method": "python-docx 解析两遍 docx，逐段比对段落文本、对齐、缩进（w:ind/@w:firstLineChars、右缩进）、run 字体（ascii/hAnsi 与 w:eastAsia）与字号、行距、段前段后、页面几何",
+    "identical": true,
+    "paragraph_count": 12,
+    "details": [
+      "页面 A4（21.0×29.7cm）、GB/T 9704 版心边距（上3.7/下3.5/左2.8/右2.6cm）两遍一致",
+      "12 个段落逐段一致：标题『关于召开三季度质量评审会的通知』居中黑体22pt；称谓『各部门、各项目组：』顶格；会议时间/地点/参会人员/议题 4 个正文段首行缩进两字符（firstLineChars=200）；节头『一、会议要求』黑体；条目『1．会前提交本部门质量简报』『2．迟到 10 分钟以上按缺席处理』；联系行『联系人：李工　　联系电话：010-88886666』；落款两行『评测技术部』『2026年9月28日』右对齐、右缩进32pt",
+      "全部正文 run 仿宋16pt/ascii Times New Roman、行距固定28磅、段前段后0，两遍一致"
+    ]
+  },
+  "reproducibility_sources_check": {
+    "no_current_time_in_document": true,
+    "evidence": "全部 XML 部件中唯一 ISO 时间戳为 docProps/core.xml 的 dcterms:created/modified=2013-12-23T23:15:00Z（python-docx 内置模板固定常量，两遍逐字节相同，非当前时间）；正文中出现的日期均为输入数据原样值（2026年10月9日/2026年9月28日）；唯一随运行时刻变化的字节是 zip 容器头 date_time（见 byte_comparison 差异说明）",
+    "no_random_content": true,
+    "evidence": "文书与台账全部内容均由输入 JSON 公式化推导（fields.json 11/11 字段 filled，missing=0，unknown_keys=0），无随机源调用"
+  },
+  "outdir_check": {
+    "exact_two_artifacts": true,
+    "files": ["out/会议通知/case1/文书.docx", "out/会议通知/case1/fields.json"],
+    "note": "find 计数恰为 2，无多余文件；两遍均 exit 0，stdout 摘要相同"
+  },
+  "conclusion": {
+    "fields_json": "一致（逐字节完全一致，sha256 相同）",
+    "docx": "按任务书口径一致：文档内容层面（zip 17 成员解压逐字节 + 解析后段落文本/对齐/缩进/字体/行距）两遍完全一致；容器层文件字节因 zip 条目头保存时刻时间戳而不同（sha256 不同），属已知可解释差异，非内容不一致，正文中无当前时间、随机内容等不可复现源",
+    "overall": "同输入连跑两遍，fields.json 逐字节一致；文书.docx 内容与版式逐项一致、容器字节差异已定位并说明；输出目录恰含 文书.docx 与 fields.json 两产物——任务书核心行为要求满足"
+  }
+}

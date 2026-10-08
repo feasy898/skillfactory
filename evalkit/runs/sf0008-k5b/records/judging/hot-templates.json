@@ -1,0 +1,253 @@
+{
+  "ab-001": {
+    "status": "judged",
+    "tested_family": "glm",
+    "panel": [
+      "step-router-v1",
+      "Minimax-M3.1-Flash-Preview"
+    ],
+    "final_scores": {
+      "P1": 10.0,
+      "P2": 10.0,
+      "P3": 10.0,
+      "P4": 10.0,
+      "P5": 10.0,
+      "P6": 5.3
+    },
+    "mapping": {
+      "P1": {
+        "rep": 3,
+        "arm": "treatment"
+      },
+      "P2": {
+        "rep": 3,
+        "arm": "baseline"
+      },
+      "P3": {
+        "rep": 1,
+        "arm": "treatment"
+      },
+      "P4": {
+        "rep": 2,
+        "arm": "treatment"
+      },
+      "P5": {
+        "rep": 1,
+        "arm": "baseline"
+      },
+      "P6": {
+        "rep": 2,
+        "arm": "baseline"
+      }
+    },
+    "judge_consistency": {
+      "task": "ab-001",
+      "resample_of": "P1",
+      "first_score": 10.0,
+      "second_score": 10.0,
+      "delta": 0.0,
+      "action": "pass"
+    }
+  },
+  "ab-002": {
+    "status": "judged",
+    "tested_family": "minimax",
+    "panel": [
+      "GLM-5.3",
+      "step-router-v1"
+    ],
+    "final_scores": {
+      "P1": 10.0,
+      "P2": 4.7,
+      "P3": 10.0,
+      "P4": 2.5,
+      "P5": 10.0,
+      "P6": 10.0
+    },
+    "mapping": {
+      "P1": {
+        "rep": 2,
+        "arm": "treatment"
+      },
+      "P2": {
+        "rep": 1,
+        "arm": "baseline"
+      },
+      "P3": {
+        "rep": 2,
+        "arm": "baseline"
+      },
+      "P4": {
+        "rep": 3,
+        "arm": "baseline"
+      },
+      "P5": {
+        "rep": 1,
+        "arm": "treatment"
+      },
+      "P6": {
+        "rep": 3,
+        "arm": "treatment"
+      }
+    },
+    "judge_consistency": {
+      "task": "ab-002",
+      "resample_of": "P2",
+      "first_score": 4.4,
+      "second_score": 6.2,
+      "delta": 1.7999999999999998,
+      "action": "pass"
+    }
+  },
+  "ab-003": {
+    "status": "judged",
+    "tested_family": "glm",
+    "panel": [
+      "step-router-v1",
+      "Minimax-M3.1-Flash-Preview"
+    ],
+    "final_scores": {
+      "P1": 2.1,
+      "P2": 10.0,
+      "P3": 10.0,
+      "P4": 10.0,
+      "P5": 10.0,
+      "P6": 10.0
+    },
+    "mapping": {
+      "P1": {
+        "rep": 3,
+        "arm": "baseline"
+      },
+      "P2": {
+        "rep": 3,
+        "arm": "treatment"
+      },
+      "P3": {
+        "rep": 1,
+        "arm": "baseline"
+      },
+      "P4": {
+        "rep": 2,
+        "arm": "treatment"
+      },
+      "P5": {
+        "rep": 1,
+        "arm": "treatment"
+      },
+      "P6": {
+        "rep": 2,
+        "arm": "baseline"
+      }
+    },
+    "judge_consistency": {
+      "task": "ab-003",
+      "resample_of": "P3",
+      "first_score": 10.0,
+      "second_score": 10.0,
+      "delta": 0.0,
+      "action": "pass"
+    }
+  },
+  "ab-004": {
+    "status": "judged",
+    "tested_family": "minimax",
+    "panel": [
+      "GLM-5.3",
+      "step-router-v1"
+    ],
+    "final_scores": {
+      "P1": 7.199999999999999,
+      "P2": 1.85,
+      "P3": 10.0,
+      "P4": 10.0,
+      "P5": 10.0,
+      "P6": 10.0
+    },
+    "mapping": {
+      "P1": {
+        "rep": 2,
+        "arm": "baseline"
+      },
+      "P2": {
+        "rep": 1,
+        "arm": "baseline"
+      },
+      "P3": {
+        "rep": 1,
+        "arm": "treatment"
+      },
+      "P4": {
+        "rep": 2,
+        "arm": "treatment"
+      },
+      "P5": {
+        "rep": 3,
+        "arm": "baseline"
+      },
+      "P6": {
+        "rep": 3,
+        "arm": "treatment"
+      }
+    },
+    "judge_consistency": {
+      "task": "ab-004",
+      "resample_of": "P4",
+      "first_score": 10.0,
+      "second_score": 10.0,
+      "delta": 0.0,
+      "action": "pass"
+    }
+  },
+  "ab-005": {
+    "status": "judged",
+    "tested_family": "glm",
+    "panel": [
+      "step-router-v1",
+      "Minimax-M3.1-Flash-Preview"
+    ],
+    "final_scores": {
+      "P1": 10.0,
+      "P2": 10.0,
+      "P3": 10.0,
+      "P4": 10.0,
+      "P5": 10.0,
+      "P6": 10.0
+    },
+    "mapping": {
+      "P1": {
+        "rep": 1,
+        "arm": "treatment"
+      },
+      "P2": {
+        "rep": 3,
+        "arm": "baseline"
+      },
+      "P3": {
+        "rep": 2,
+        "arm": "treatment"
+      },
+      "P4": {
+        "rep": 2,
+        "arm": "baseline"
+      },
+      "P5": {
+        "rep": 1,
+        "arm": "baseline"
+      },
+      "P6": {
+        "rep": 3,
+        "arm": "treatment"
+      }
+    },
+    "judge_consistency": {
+      "task": "ab-005",
+      "resample_of": "P5",
+      "first_score": 10.0,
+      "second_score": 10.0,
+      "delta": 0.0,
+      "action": "pass",
+      "repair_note": "原配对因 step 首轮 no-verdict 残缺；本对为同一裁判两个全新会话实例对同一抽样产物的独立评分（s8_jc_repair.py）"
+    }
+  }
+}

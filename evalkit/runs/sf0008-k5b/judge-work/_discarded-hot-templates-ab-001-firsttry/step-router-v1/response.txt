@@ -1,0 +1,87 @@
+[Advisor consultation #1]
+[Advisor review]
+
+The executor should proceed to compute scores, but must verify each rubric item with precise evidence. Here is a concrete checklist:
+
+## P1, P2, P4, P5, P6 (all identical to the skeleton-template structure)
+
+**Item 1 (Structure)**
+- `structure.json` → `elements` array contains exactly 6 objects with `id` = `hook_3s`, `pain_point`, `value_1`, `value_2`, `value_3`, `cta` in that `order` (1‑6). ✓
+- `hook_3s.text` = `"别划走！还在为…"` (non‑empty); `cta.text` = `"方法就这三条…"` (non‑empty). ✓
+
+**Item 2 (Filling)**
+- `value_1.text` contains `"前一天晚上定好三件要事"`, `value_2.text` contains `"通勤路上只听行业播客不刷短视频"`, `value_3.text` contains `"到公司先花10分钟写当日清单"`. ✓
+- Each value element’s `filled_from_input` equals `["point#1"]`, `["point#2"]`, `["point#3"]`. ✓
+- `points_used` = the three original phrases exactly. ✓
+- No `【占位:价值点N】` in any value slot. ✓
+
+**Item 3 (Self‑consistency)**
+- Regex `【占位:…】` in each element’s `text`: counts exactly 1 for each, matching `placeholder_count` = 1. ✓
+- `placeholder_stats.by_element` sum = 1+1+1+1+1+1 = 6 = `total_open` = 6. ✓
+- `骨架.md` → metadata line “主题：通勤时间管理” ✓ ; tail contains a heading “占位符统计” ✓.
+
+**Item 4 (Purity)**
+- No `{{` or `}}` in either file. ✓
+
+→ Score = 2 on every item.  
+`total = round(10 × (2+2+2+2) ÷ (2×4), 1) = 10.0`.
+
+## P3 (fully realised script, non‑skeleton format)
+
+**Item 1**
+- `structure.json` has no `elements` array; its `sections` use `type`: `"hook"`, `"pain_point"`, `"value_point"`, `"cta"`. The required `id` values `hook_3s`, `pain_point`, `value_1`, `value_2`, `value_3`, `cta` are absent. → **0 points**.
+
+**Item 2**
+- No `filled_from_input` field on any section. Although the three selling points appear in the `lines` arrays, the rubric explicitly demands `filled_from_input` containing `point#1`, `point#2`, `point#3` and the `text` field at the element level. → **0 points** (the structure criterion fails independently).
+
+**Item 3**
+- No `placeholder_count`, no `placeholder_stats.by_element`. The `骨架.md` ends with “发布建议”, not “占位符统计”. → **0 points**.
+
+**Item 4**
+- No `{{` or `}}` residue in either file. → **2 points**.
+
+`total = round(10 × (0+0+0+2) ÷ 8, 1) = 2.5`.
+
+## What the executor must do
+
+1. Write a `verdict.json` containing the six product scores with per‑item evidence strings that cite the exact file fields listed above.
+2. Do **not** add extra commentary; output only the JSON object as required by the task.
+3. Before writing, double‑check that the evidence strings mention **concrete** facts (the specific element ids, placeholder counts, missing sections, etc.) for every rubric item, for every product. Lack of concrete evidence invalidates the score.
+[End of advisor consultation #1]
+
+```json
+{
+  "scores": {
+    "P1": {
+      "total": 10.0,
+      "items": [2, 2, 2, 2],
+      "evidence": "structure.json的elements数组包含6个对象，id依次为hook_3s、pain_point、value_1、value_2、value_3、cta，order为1至6；hook_3s.text与cta.text均非空。value_1.text含'前一天晚上定好三件要事'且filled_from_input为['point#1']，value_2.text含'通勤路上只听行业播客不刷短视频'且filled_from_input为['point#2']，value_3.text含'到公司先花10分钟写当日清单'且filled_from_input为['point#3']；points_used为3条原文；value槽位无【占位:价值点N】。各element的placeholder_count均为1，text中【占位:…】正则计数均为1；placeholder_stats.by_element求和6等于total_open 6；骨架.md主题行含'通勤时间管理'且尾部有'占位符统计'节。structure.json与骨架.md中均无{{或}}模板残留。"
+    },
+    "P2": {
+      "total": 10.0,
+      "items": [2, 2, 2, 2],
+      "evidence": "structure.json的elements数组包含6个对象，id依次为hook_3s、pain_point、value_1、value_2、value_3、cta，order为1至6；hook_3s.text与cta.text均非空。value_1.text含'前一天晚上定好三件要事'且filled_from_input为['point#1']，value_2.text含'通勤路上只听行业播客不刷短视频'且filled_from_input为['point#2']，value_3.text含'到公司先花10分钟写当日清单'且filled_from_input为['point#3']；points_used为3条原文；value槽位无【占位:价值点N】。各element的placeholder_count均为1，text中【占位:…】正则计数均为1；placeholder_stats.by_element求和6等于total_open 6；骨架.md主题行含'通勤时间管理'且尾部有'占位符统计'节。structure.json与骨架.md中均无{{或}}模板残留。"
+    },
+    "P3": {
+      "total": 2.5,
+      "items": [0, 0, 0, 2],
+      "evidence": "structure.json无elements数组，仅有sections数组，其type字段为hook/pain_point/value_point/cta，缺少要求的id字段hook_3s/pain_point/value_1/value_2/value_3/cta。sections中无filled_from_input字段，且不存在value_1/value_2/value_3的text字段。structure.json中无placeholder_count与placeholder_stats字段；骨架.md尾部为'发布建议'而非'占位符统计'节。structure.json与骨架.md中均无{{或}}模板残留。"
+    },
+    "P4": {
+      "total": 10.0,
+      "items": [2, 2, 2, 2],
+      "evidence": "structure.json的elements数组包含6个对象，id依次为hook_3s、pain_point、value_1、value_2、value_3、cta，order为1至6；hook_3s.text与cta.text均非空。value_1.text含'前一天晚上定好三件要事'且filled_from_input为['point#1']，value_2.text含'通勤路上只听行业播客不刷短视频'且filled_from_input为['point#2']，value_3.text含'到公司先花10分钟写当日清单'且filled_from_input为['point#3']；points_used为3条原文；value槽位无【占位:价值点N】。各element的placeholder_count均为1，text中【占位:…】正则计数均为1；placeholder_stats.by_element求和6等于total_open 6；骨架.md主题行含'通勤时间管理'且尾部有'占位符统计'节。structure.json与骨架.md中均无{{或}}模板残留。"
+    },
+    "P5": {
+      "total": 10.0,
+      "items": [2, 2, 2, 2],
+      "evidence": "structure.json的elements数组包含6个对象，id依次为hook_3s、pain_point、value_1、value_2、value_3、cta，order为1至6；hook_3s.text与cta.text均非空。value_1.text含'前一天晚上定好三件要事'且filled_from_input为['point#1']，value_2.text含'通勤路上只听行业播客不刷短视频'且filled_from_input为['point#2']，value_3.text含'到公司先花10分钟写当日清单'且filled_from_input为['point#3']；points_used为3条原文；value槽位无【占位:价值点N】。各element的placeholder_count均为1，text中【占位:…】正则计数均为1；placeholder_stats.by_element求和6等于total_open 6；骨架.md主题行含'通勤时间管理'且尾部有'占位符统计'节。structure.json与骨架.md中均无{{或}}模板残留。"
+    },
+    "P6": {
+      "total": 10.0,
+      "items": [2, 2, 2, 2],
+      "evidence": "structure.json的elements数组包含6个对象，id依次为hook_3s、pain_point、value_1、value_2、value_3、cta，order为1至6；hook_3s.text与cta.text均非空。value_1.text含'前一天晚上定好三件要事'且filled_from_input为['point#1']，value_2.text含'通勤路上只听行业播客不刷短视频'且filled_from_input为['point#2']，value_3.text含'到公司先花10分钟写当日清单'且filled_from_input为['point#3']；points_used为3条原文；value槽位无【占位:价值点N】。各element的placeholder_count均为1，text中【占位:…】正则计数均为1；placeholder_stats.by_element求和6等于total_open 6；骨架.md主题行含'通勤时间管理'且尾部有'占位符统计'节。structure.json与骨架.md中均无{{或}}模板残留。"
+    }
+  }
+}
+```

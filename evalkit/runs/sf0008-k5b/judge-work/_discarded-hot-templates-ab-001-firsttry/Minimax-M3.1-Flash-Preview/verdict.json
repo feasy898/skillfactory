@@ -1,0 +1,38 @@
+{
+  "judge": "Minimax-M3.1-Flash-Preview",
+  "rubric_version": "S8-JUDGE-v1",
+  "task": "hot-templates / ab-001",
+  "notes": "P1/P2/P4/P5/P6 五份产物逐字节相同（structure.json md5=67dd9b42…，骨架.md md5=6c5623ca…），采用 elements/value_1..3 骨架；P3 为唯一异形产物（structure.json md5=173e7706…，骨架.md md5=c4e40045…），采用 sections[].type=hook/value_point 骨架。六份产物实为两种形态。判分严格按 rubric 原文与实测证据，未推测来源臂、模型或顺序。",
+  "scores": {
+    "P1": {
+      "total": 10.0,
+      "items": [2.0, 2.0, 2.0, 2.0],
+      "evidence": "【1 结构=2】elements 数组 6 项，id 依序为 hook_3s(line17)/pain_point(34)/value_1(50)/value_2(67)/value_3(84)/cta(101)，order 1..6，与 rubric 要求顺序逐位相同；hook_3s.text=「别划走！还在为「通勤时间管理」反复内耗的人…」非空，cta.text=「方法就这三条，现在就去用。觉得有用就点赞收藏，评论区扣「1」…」非空。【2 填充=2】value_1.text 含「前一天晚上定好三件要事」、value_2.text 含「通勤路上只听行业播客不刷短视频」、value_3.text 含「到公司先花10分钟写当日清单」，与 points_used 三条原文逐字一致；filled_from_input 分别写 point#1/point#2/point#3（值槽位命中，另 hook_3s 为 [topic]、pain_point 与 cta 为 []）；points_used 长度 3、points_unused 为空；grep「占位:价值点」0 命中，value 槽位占位符统一为【占位:一句话展开：怎么做/效果/案例】。【3 自洽=2】6 个 element 的 placeholder_count 均为 1，structure.json 中【占位:…】正则重计数 6 处，逐 element 文本各 1 处，与声明一致；by_element 求和 1+1+1+1+1+1=6 == total_open 6；骨架.md 第 3 行「- 主题：通勤时间管理」含主题词，尾部第 47 行「## 占位符统计」节在位（未填 6 处/已填 4 处）。【4 纯净=2】structure.json 与骨架.md 全量 grep「{{」「}}」各 0 命中。"
+    },
+    "P2": {
+      "total": 10.0,
+      "items": [2.0, 2.0, 2.0, 2.0],
+      "evidence": "与 P1 逐字节相同（structure.json md5=67dd9b42…，骨架.md md5=6c5623ca…）。【1 结构=2】elements 6 项 id 依序 hook_3s/pain_point/value_1/value_2/value_3/cta，完全匹配；hook_3s.text 与 cta.text 均非空。【2 填充=2】value_1/2/3 的 text 分别嵌入「前一天晚上定好三件要事」「通勤路上只听行业播客不刷短视频」「到公司先花10分钟写当日清单」，与 points_used 三条原文逐字相同；filled_from_input 含 point#1/point#2/point#3；points_used 3 条、points_unused 空；grep「占位:价值点」0 命中。【3 自洽=2】各 element placeholder_count=1 与 text 正则重计数 1 处一致；by_element 求和 6 == total_open 6；骨架.md「- 主题：通勤时间管理」+ 尾部「## 占位符统计」节（6 处未填/4 处已填）。【4 纯净=2】两份文件 grep「{{」「}}」各 0 命中。"
+    },
+    "P3": {
+      "total": 5.6,
+      "items": [1.0, 1.0, 0.5, 2.0],
+      "evidence": "【1 结构=1】无 rubric 要求的 elements/element id 体系：structure.json 用 sections[].type，template.structure=[\"hook\",\"pain_point\",\"value_point\",\"value_point\",\"value_point\",\"cta\"](line8)，grep '\"id\":' 0 命中。6 个要素及先后次序语义正确，且 hook lines[0]「每天通勤2小时，一年就是整整30天——…」与 cta lines[0]「这三招不难，难的是明天就开始——…」均非空，但 id 为 hook 而非 hook_3s、三个价值点统一为 value_point（另用 index 1/2/3 区分）而非 value_1/value_2/value_3，不满足「id 顺序为 hook_3s、pain_point、value_1、value_2、value_3、cta」的字面要求，此子项部分符合。【2 填充=1】三条卖点原文确实分别落在 sections[3].point=「前一天晚上定好三件要事」、sections[4].point=「通勤路上只听行业播客不刷短视频」、sections[5].point=「到公司先花10分钟写当日清单」，points 数组亦为这 3 条原文；但全文件 grep「filled_from_input」0 命中（point#1/#2/#3 标注整体缺失）、grep「points_used」0 命中（仅以 points 承载 3 条），故两项无法按字面取证；value 槽位已写成完整台词、grep「占位:价值点」0 命中。【3 自洽=0.5】structure.json grep「placeholder_count」与「placeholder_stats」各 0 命中，无字段承载逐 element 占位符计数，by_element 求和与 total_open 的核对无对象可核（文本中【占位:…】正则 0 处，与「无未填占位」自洽，但无计数字段可证）；骨架.md 第 6 行「| 选题 | 通勤时间管理 |」含主题词，此点符合；但尾部章节为「## 发布建议」(line58)，grep「占位符统计」0 命中，该节缺失。三子条件中一项成立、两项无法取证，判 0.5。【4 纯净=2】structure.json 与骨架.md 全量 grep「{{」「}}」各 0 命中，无模板语法残留。"
+    },
+    "P4": {
+      "total": 10.0,
+      "items": [2.0, 2.0, 2.0, 2.0],
+      "evidence": "与 P1 逐字节相同（structure.json md5=67dd9b42…，骨架.md md5=6c5623ca…）。【1 结构=2】elements 6 项 id 顺序 hook_3s/pain_point/value_1/value_2/value_3/cta 完全对应；hook_3s.text 与 cta.text 均非空。【2 填充=2】三条卖点原文分别出现在 value_1/value_2/value_3 的 text；filled_from_input 含 point#1、point#2、point#3；points_used 为 3 条原文；value 槽位无【占位:价值点N】（grep 0 命中）。【3 自洽=2】每个 element 的 placeholder_count=1 与 text 中【占位:…】正则重计数 1 处一致；placeholder_stats.by_element 求和 6 == total_open 6；骨架.md 主题行「- 主题：通勤时间管理」，尾部「## 占位符统计」节存在。【4 纯净=2】structure.json 与骨架.md 均无「{{」「}}」残留（各 0 命中）。"
+    },
+    "P5": {
+      "total": 10.0,
+      "items": [2.0, 2.0, 2.0, 2.0],
+      "evidence": "与 P1 逐字节相同（structure.json md5=67dd9b42…，骨架.md md5=6c5623ca…）。【1 结构=2】elements 6 项 id 顺序 hook_3s/pain_point/value_1/value_2/value_3/cta，与 rubric 规定顺序逐位相同；hook_3s.text=「别划走！还在为「通勤时间管理」反复内耗的人…」非空；cta.text=「方法就这三条，现在就去用。觉得有用就点赞收藏…」非空。【2 填充=2】value_1.text「第一招：前一天晚上定好三件要事…」、value_2.text「第二招：通勤路上只听行业播客不刷短视频…」、value_3.text「第三招：到公司先花10分钟写当日清单…」，三点原文齐备；filled_from_input 为 point#1/point#2/point#3；points_used 3 条；无【占位:价值点N】。【3 自洽=2】6 个 element 的 placeholder_count 均 1，与 text 正则重计数一致；by_element 求和 6 == total_open 6；骨架.md 主题行含「通勤时间管理」，尾部有「## 占位符统计」节。【4 纯净=2】两份文件无「{{」「}}」模板残留（各 0 命中）。"
+    },
+    "P6": {
+      "total": 10.0,
+      "items": [2.0, 2.0, 2.0, 2.0],
+      "evidence": "与 P1 逐字节相同（structure.json md5=67dd9b42…，骨架.md md5=6c5623ca…）。【1 结构=2】elements 6 项 id 顺序 hook_3s/pain_point/value_1/value_2/value_3/cta 逐位相同；hook_3s.text 与 cta.text 均非空。【2 填充=2】value_1/2/3 的 text 分别嵌入三条卖点原文；filled_from_input 含 point#1/point#2/point#3；points_used 3 条、points_unused 空；value 槽位无【占位:价值点N】（grep 0 命中）。【3 自洽=2】各 element placeholder_count=1 与 text 正则重计数 1 处一致；by_element 求和 6 == total_open 6；骨架.md「- 主题：通勤时间管理」+ 尾部「## 占位符统计」节（6 处未填/4 处已填）。【4 纯净=2】两份文件 grep「{{」「}}」各 0 命中。"
+    }
+  }
+}

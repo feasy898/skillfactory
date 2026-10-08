@@ -1,0 +1,109 @@
+{
+  "tested_family": "minimax",
+  "panel": [
+    "GLM-5.3",
+    "step-router-v1"
+  ],
+  "panel_rotation": "task_idx=2 parity=0",
+  "verdicts": {
+    "GLM-5.3": {
+      "scores": {
+        "P1": {
+          "total": 10.0,
+          "evidence": "①7要素齐备无多余，title含🔥与3；②meta.emoji ✅/💡×3/📌/🏷️全符冻结；③points_used=前3条原文，干货块point#1-3，第4、5条保序入unused；④标签6个#（3-8内），首#租房避坑指南=主题派生"
+        },
+        "P2": {
+          "total": 4.4,
+          "evidence": "①7 id齐备但共10要素（多emoji_rules/point4/5），标题无🔥无3（🏠…5个…）；②无meta.emoji，钩子=🔥分块=✅，仅📌🏷️符合；③points_used=全5条、unused=[]未截断；④8个#，首#租房避坑指南=主题派生"
+        },
+        "P3": {
+          "total": 10.0,
+          "evidence": "①7要素齐备无多余，title含🔥与3；②meta.emoji ✅/💡×3/📌/🏷️全符冻结；③points_used=前3条原文，干货块point#1-3，第4、5条保序入unused；④标签6个#（3-8内），首#租房避坑指南=主题派生"
+        },
+        "P4": {
+          "total": 1.9,
+          "evidence": "①无elements/规定id（hook+point-1..5+cta），标题无🔥无3（🏠…5件事）；②emoji👉✅🔍📸🔢⚠️💬无一符合✅💡📌🏷️；③5条全进正文（points_covered=5）无unused；④8个#但首标签#租房避坑，派生#租房避坑指南居末"
+        },
+        "P5": {
+          "total": 10.0,
+          "evidence": "①7要素齐备无多余，title含🔥与3；②meta.emoji ✅/💡×3/📌/🏷️全符冻结；③points_used=前3条原文，干货块point#1-3，第4、5条保序入unused；④标签6个#（3-8内），首#租房避坑指南=主题派生"
+        },
+        "P6": {
+          "total": 10.0,
+          "evidence": "①7要素齐备无多余，title含🔥与3；②meta.emoji ✅/💡×3/📌/🏷️全符冻结；③points_used=前3条原文，干货块point#1-3，第4、5条保序入unused；④标签6个#（3-8内），首#租房避坑指南=主题派生"
+        }
+      }
+    },
+    "step-router-v1": {
+      "scores": {
+        "P1": {
+          "total": 10.0,
+          "evidence": "结构：7要素齐全，title含🔥和3；截断：points_used前3条、points_unused后2条保序；标签：text含4个#，首标签#租房避坑指南；emoji：各block meta.emoji符合映射。"
+        },
+        "P2": {
+          "total": 5.0,
+          "evidence": "结构：有7类要素但共10元素且title无🔥无3；截断：points_used含5条、unused为空；标签：8个#首标签正确；emoji：hook用🔥非✅，point用✅非💡。"
+        },
+        "P3": {
+          "total": 10.0,
+          "evidence": "同P1，7要素齐全，title含🔥和3；截断前3后2保序；标签4个#首标签#租房避坑指南；各block meta.emoji符合映射。"
+        },
+        "P4": {
+          "total": 3.1,
+          "evidence": "结构：10元素且title无🔥无3；截断：points_covered=5全用；标签：tag_group text含8个#首标签#租房避坑指南；emoji：hook无前导✅，point用✅🔍📸等非💡。"
+        },
+        "P5": {
+          "total": 10.0,
+          "evidence": "同P1，完全符合所有 rubric 项。"
+        },
+        "P6": {
+          "total": 10.0,
+          "evidence": "同P1，完全符合所有 rubric 项。"
+        }
+      }
+    }
+  },
+  "per_judge_scores": {
+    "P1": {
+      "GLM-5.3": 10.0,
+      "step-router-v1": 10.0
+    },
+    "P2": {
+      "GLM-5.3": 4.4,
+      "step-router-v1": 5.0
+    },
+    "P3": {
+      "GLM-5.3": 10.0,
+      "step-router-v1": 10.0
+    },
+    "P4": {
+      "GLM-5.3": 1.9,
+      "step-router-v1": 3.1
+    },
+    "P5": {
+      "GLM-5.3": 10.0,
+      "step-router-v1": 10.0
+    },
+    "P6": {
+      "GLM-5.3": 10.0,
+      "step-router-v1": 10.0
+    }
+  },
+  "final_scores": {
+    "P1": 10.0,
+    "P2": 4.7,
+    "P3": 10.0,
+    "P4": 2.5,
+    "P5": 10.0,
+    "P6": 10.0
+  },
+  "judge_consistency": {
+    "task": "ab-002",
+    "resample_of": "P2",
+    "first_score": 4.4,
+    "second_score": 6.2,
+    "delta": 1.7999999999999998,
+    "action": "pass"
+  },
+  "judge_prompt_version": "S8-JUDGE-v1"
+}

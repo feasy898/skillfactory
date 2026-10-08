@@ -1,0 +1,14 @@
+EXTRACT OF 纪要.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=355600 runs=[汛期防汛部署会会议纪要/SimSun/22.0] text=汛期防汛部署会会议纪要
+P001 align=None firstLineChars=None firstLineIndent=None spacing=355600 runs=[一、决议事项/SimHei/16.0] text=一、决议事项
+P002 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[1. 【09:06 · 街道/FangSong/16.0] text=1. 【09:06 · 街道办钱主任】雨情一旦升级，转移预案立即启动，这个决定现在就定下来。
+P003 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[2. 【09:10 · 街道/FangSong/16.0] text=2. 【09:10 · 街道办钱主任】升级当天值班室需要双人值守，一旦出现积水延期退去的情况，立即上报区防指，这个结论请记牢。
+P004 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[3. 【09:14 · 街道/FangSong/16.0] text=3. 【09:14 · 街道办钱主任】不行，物资必须在下周二之前全部到位，就这么定了。
+P005 align=None firstLineChars=None firstLineIndent=None spacing=355600 runs=[二、待办事项/SimHei/16.0] text=二、待办事项
+P006 align=None firstLineChars=None firstLineIndent=None spacing=355600 runs=[三、风险与关注/SimHei/16.0] text=三、风险与关注
+P007 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[1. 【09:08 · 民政/FangSong/16.0] text=1. 【09:08 · 民政科老白】有个风险要报，两个老小区的排水管网没改造，暴雨大概率积水，存在人员被困的不确定因素。
+P008 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[2. 【09:12 · 城建/FangSong/16.0] text=2. 【09:12 · 城建科小冯】挡水板供应商的货能不能延期到月底？我们正在催。
+TABLE1 3行×3列:
+  事项 ┃ 负责人 ┃ 期限
+  【09:02 · 城建科小冯】地下车库入口的挡水板还有三个点位没装，需要本周三之前装完，由城建科负责。 ┃ 城建科 ┃ 本周三之前
+  【09:04 · 民政科老白】独居老人台账今天之内要摸排完，让网格员小许负责逐一电话确认。 ┃ 网格员小许 ┃ 今天之内

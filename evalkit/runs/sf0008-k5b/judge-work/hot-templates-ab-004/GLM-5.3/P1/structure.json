@@ -1,0 +1,178 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-10-08T14:10:30+08:00",
+  "platform": "video",
+  "topic": "居家哑铃入门",
+  "template": {
+    "id": "video-storyboard-6shot-45s",
+    "name": "6 镜 45 秒分镜表",
+    "frozen": true,
+    "shots": 6,
+    "duration_seconds": 45,
+    "columns": ["序号", "时间轴", "画面", "口播", "字幕"],
+    "slot_roles": [
+      {"shot": 1, "role": "hook", "role_label": "钩子", "owner": "template"},
+      {"shot": 2, "role": "pain_point", "role_label": "痛点", "owner": "template"},
+      {"shot": 3, "role": "value_1", "role_label": "价值点1", "owner": "input"},
+      {"shot": 4, "role": "value_2", "role_label": "价值点2", "owner": "input"},
+      {"shot": 5, "role": "value_3", "role_label": "价值点3", "owner": "input"},
+      {"shot": 6, "role": "cta", "role_label": "CTA 收尾", "owner": "template"}
+    ]
+  },
+  "points_in": [
+    "用装满水的矿泉箱代替哑铃做划船"
+  ],
+  "points_used": [
+    "用装满水的矿泉箱代替哑铃做划船"
+  ],
+  "points_unused": [],
+  "elements": [
+    {
+      "id": "shot_1",
+      "index": 1,
+      "role": "hook",
+      "role_label": "钩子",
+      "duration_seconds": 5,
+      "time": {"start": "00:00", "end": "00:05", "label": "0:00–0:05（5s）"},
+      "columns": {
+        "画面": "出租屋客厅，固定正面机位。人物手举一只空矿泉水箱入画，箱体占据画面中心。",
+        "口播": "没哑铃，还想练背？先别下单。",
+        "字幕": "没哑铃 ≠ 不能练背"
+      },
+      "text": "画面：出租屋客厅，固定正面机位。人物手举一只空矿泉水箱入画，箱体占据画面中心。\n口播：没哑铃，还想练背？先别下单。\n字幕：没哑铃 ≠ 不能练背",
+      "source": {"kind": "template", "derived_from": ["topic"], "consumed_points": []},
+      "open_placeholders": 0
+    },
+    {
+      "id": "shot_2",
+      "index": 2,
+      "role": "pain_point",
+      "role_label": "痛点",
+      "duration_seconds": 7,
+      "time": {"start": "00:05", "end": "00:12", "label": "0:05–0:12（7s）"},
+      "columns": {
+        "画面": "人物坐在地板上刷健身房办卡页面，屏幕反打在脸上；切一记健身房器械区的空镜。",
+        "口播": "哑铃嫌贵，健身房办不起卡，居家练背最容易卡在第一步：没器材。",
+        "字幕": "器材劝退 = 第一道门槛"
+      },
+      "text": "画面：人物坐在地板上刷健身房办卡页面，屏幕反打在脸上；切一记健身房器械区的空镜。\n口播：哑铃嫌贵，健身房办不起卡，居家练背最容易卡在第一步：没器材。\n字幕：器材劝退 = 第一道门槛",
+      "source": {"kind": "template", "derived_from": ["topic"], "consumed_points": []},
+      "open_placeholders": 0
+    },
+    {
+      "id": "shot_3",
+      "index": 3,
+      "role": "value_1",
+      "role_label": "价值点1",
+      "duration_seconds": 8,
+      "time": {"start": "00:12", "end": "00:20", "label": "0:12–0:20（8s）"},
+      "columns": {
+        "画面": "特写：矿泉水箱灌满水、拧紧箱盖；切侧面机位，双手握箱呈划船起始位，肘部后拉带动箱体贴向腰腹，再缓慢放回起始位（1 次完整节奏示范）。",
+        "口播": "用装满水的矿泉箱代替哑铃做划船，水量就是重量。",
+        "字幕": "装满水的矿泉箱 = 家用哑铃"
+      },
+      "text": "画面：特写：矿泉水箱灌满水、拧紧箱盖；切侧面机位，双手握箱呈划船起始位，肘部后拉带动箱体贴向腰腹，再缓慢放回起始位（1 次完整节奏示范）。\n口播：用装满水的矿泉箱代替哑铃做划船，水量就是重量。\n字幕：装满水的矿泉箱 = 家用哑铃",
+      "source": {"kind": "input", "derived_from": ["point#1"], "consumed_points": ["point#1"]},
+      "filled_from_input": ["point#1"],
+      "open_placeholders": 0
+    },
+    {
+      "id": "shot_4",
+      "index": 4,
+      "role": "value_2",
+      "role_label": "价值点2",
+      "duration_seconds": 10,
+      "time": {"start": "00:20", "end": "00:30", "label": "0:20–0:30（10s）"},
+      "columns": {
+        "画面": "【占位:价值点2】待补：该镜具体演示动作与道具，规格同 shot_3（特写 + 侧面机位完整节奏示范）。",
+        "口播": "【占位:价值点2】待补：该镜口播 1–2 句，按 10 秒 ≈ 45 字控制。",
+        "字幕": "【占位:价值点2】待补：该镜屏幕主标题，≤ 14 字。"
+      },
+      "text": "画面：【占位:价值点2】待补：该镜具体演示动作与道具，规格同 shot_3（特写 + 侧面机位完整节奏示范）。\n口播：【占位:价值点2】待补：该镜口播 1–2 句，按 10 秒 ≈ 45 字控制。\n字幕：【占位:价值点2】待补：该镜屏幕主标题，≤ 14 字。",
+      "source": {"kind": "missing_slot", "derived_from": [], "consumed_points": []},
+      "missing_slot": "价值点2",
+      "open_placeholders": 3
+    },
+    {
+      "id": "shot_5",
+      "index": 5,
+      "role": "value_3",
+      "role_label": "价值点3",
+      "duration_seconds": 10,
+      "time": {"start": "00:30", "end": "00:40", "label": "0:30–0:40（10s）"},
+      "columns": {
+        "画面": "【占位:价值点3】待补：该镜具体演示动作与道具，规格同 shot_3（特写 + 侧面机位完整节奏示范）。",
+        "口播": "【占位:价值点3】待补：该镜口播 1–2 句，按 10 秒 ≈ 45 字控制。",
+        "字幕": "【占位:价值点3】待补：该镜屏幕主标题，≤ 14 字。"
+      },
+      "text": "画面：【占位:价值点3】待补：该镜具体演示动作与道具，规格同 shot_3（特写 + 侧面机位完整节奏示范）。\n口播：【占位:价值点3】待补：该镜口播 1–2 句，按 10 秒 ≈ 45 字控制。\n字幕：【占位:价值点3】待补：该镜屏幕主标题，≤ 14 字。",
+      "source": {"kind": "missing_slot", "derived_from": [], "consumed_points": []},
+      "missing_slot": "价值点3",
+      "open_placeholders": 3
+    },
+    {
+      "id": "shot_6",
+      "index": 6,
+      "role": "cta",
+      "role_label": "CTA 收尾",
+      "duration_seconds": 5,
+      "time": {"start": "00:40", "end": "00:45", "label": "0:40–0:45（5s）"},
+      "columns": {
+        "画面": "人物把矿泉箱靠墙放回，转身出画；镜头缓慢拉远，露出收拾整齐的居家训练角，右下角弹出关注按钮动效。",
+        "口播": "想要这套居家动作表，评论区扣「划船」。",
+        "字幕": "评论区扣「划船」领动作表"
+      },
+      "text": "画面：人物把矿泉箱靠墙放回，转身出画；镜头缓慢拉远，露出收拾整齐的居家训练角，右下角弹出关注按钮动效。\n口播：想要这套居家动作表，评论区扣「划船」。\n字幕：评论区扣「划船」领动作表",
+      "source": {"kind": "template", "derived_from": ["topic"], "consumed_points": []},
+      "open_placeholders": 0
+    }
+  ],
+  "missing_slots": [
+    {
+      "slot_id": "shot_4",
+      "token": "【占位:价值点2】",
+      "role_label": "价值点2",
+      "time_label": "0:20–0:30（10s）",
+      "columns_open": ["画面", "口播", "字幕"],
+      "need_input": "输入 points 列表中的第 2 条卖点，用于该镜 10 秒演示。",
+      "blocking": true
+    },
+    {
+      "slot_id": "shot_5",
+      "token": "【占位:价值点3】",
+      "role_label": "价值点3",
+      "time_label": "0:30–0:40（10s）",
+      "columns_open": ["画面", "口播", "字幕"],
+      "need_input": "输入 points 列表中的第 3 条卖点，用于该镜 10 秒演示。",
+      "blocking": true
+    }
+  ],
+  "placeholder_stats": {
+    "total_open": 6,
+    "by_element": {
+      "shot_1": 0,
+      "shot_2": 0,
+      "shot_3": 0,
+      "shot_4": 3,
+      "shot_5": 3,
+      "shot_6": 0
+    },
+    "tokens": {
+      "【占位:价值点2】": 3,
+      "【占位:价值点3】": 3
+    },
+    "note": "缺失槽位一律以【占位:价值点N】显式标记，未使用输入 points 之外的信息自行编造。"
+  },
+  "totals": {
+    "shots": 6,
+    "duration_seconds": 45,
+    "duration_check": "5 + 7 + 8 + 10 + 10 + 5 = 45",
+    "slots_total": 6,
+    "slots_filled": 4,
+    "slots_filled_from_input": 1,
+    "slots_filled_from_template": 3,
+    "slots_missing": 2,
+    "input_points_supplied": 1,
+    "input_points_consumed": 1
+  }
+}

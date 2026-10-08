@@ -1,0 +1,6 @@
+{"scores": {"Q1": {"total": [Advisor consultation #1]
+[Advisor review]
+(advisor returned no content)
+[End of advisor consultation #1]
+
+{"scores":{"Q1":{"total":9.4,"evidence":"09:10含需要/延期/结论仅归决议(P004)不重复；09:14就这么定了未收录；TABLE1显示城建科/周三之前、网格员小许/今天且本周前缀已去除；决议2(09:06/10)、风险2(08/12)、待办2合计6，无09:00/14/15，文本逐字溯源。待办表格未置于待办节下且缺时间戳。"}}}

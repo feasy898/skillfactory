@@ -1,0 +1,14 @@
+EXTRACT OF 纪要.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=None runs=[会议纪要/宋体/18.0] text=会议纪要
+P001 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[来源：transcript./宋体/None] text=来源：transcript.txt ｜ 解析发言 6 条（决议 3 · 待办 1 · 风险 2）
+P002 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[一、决议事项/宋体/14.0] text=一、决议事项
+P003 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[1. 【10:03 · 运营/宋体/None] text=1. 【10:03 · 运营小林】我们内部的结论是主会场必须挂新的装修稿。
+P004 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[2. 【10:06 · 主持/宋体/None] text=2. 【10:06 · 主持人】同意，临时坐席费用从客服预算里出。
+P005 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[3. 【10:10 · 主持/宋体/None] text=3. 【10:10 · 主持人】不行，48小时发货的承诺不能延期，这个结论请大家记牢。
+P006 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[二、待办事项/宋体/14.0] text=二、待办事项
+P007 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[三、风险与关注/宋体/14.0] text=三、风险与关注
+P008 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[1. 【10:08 · 仓储/宋体/None] text=1. 【10:08 · 仓储老周】提示一个风险，去年大促爆仓，今年单量预计还要涨四成。
+P009 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[2. 【10:09 · 运营/宋体/None] text=2. 【10:09 · 运营小林】补充一句，万一爆仓能不能延期发货？
+TABLE1 2行×3列:
+  事项 ┃ 负责人 ┃ 期限
+  客服侧需要再签五十个临时坐席，我负责把排班表排出来。 ┃ 客服组长何姐 ┃ 待定

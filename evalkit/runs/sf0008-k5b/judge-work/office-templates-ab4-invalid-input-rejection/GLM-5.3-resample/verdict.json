@@ -1,0 +1,1 @@
+{"Q1":{"total":7.0,"evidence":"①非法4组exit均2=逐组expect2、stderr中文错误句；②4组零残留paths=[]、未建outdir；③对照exit0两产物齐：fields填7缺0、docx13段；④暂存无SKILL.md，§4.7无从核验；⑤口径+stderr称必填缺失____占位exit0，但无case2实测"}}

@@ -1,0 +1,25 @@
+[Advisor consultation #1]
+[Advisor review]
+
+You're on the right track. A few specific checks and adjustments:
+
+1. **Product key naming**: The task says “产物清单：Q1: …” and “P1..Pn” appears only as a generic description. The verdict format example uses `P1` but that's a placeholder. Therefore, using `"Q1"` as the key matches the given product identifier—this is consistent. Do not change it to `P1`.
+
+2. **Evidence completeness**: Your evidence string covers all four rubric items concisely. Verify it stays within 150 characters before finalizing; a quick count shows it's safe. No need to expand.
+
+3. **Scoring double-check**:  
+   - Rubric 1: counts match perfectly (3/1/2, sum=6). Score 2.  
+   - Rubric 2: 10:10 line correctly placed under 决议事项, full sentence retained. Score 2.  
+   - Rubric 3: table has 3 columns, 1 row; 负责人 derived from speaker rule (“我负责” → 客服组长何姐); 期限=待定. Score 2.  
+   - Rubric 4: no 10:00/10:02/10:12/10:13 entries appear; each item has a timestamp reference, supporting traceability. Score 2.  
+
+   All four are 2, so total = round(10 × 8 / 8, 1) = 10.0. That's correct.
+
+4. **Output discipline**: The task demands “仅输出该文件” and “禁止任何解释文字”. Ensure the final response contains **only** the JSON object, no markdown fences, no trailing text.
+
+5. **No further verification possible**: You lack the full transcript, so you can't perform byte-level traceability. Accept the extract as given and judge accordingly; the rubric only requires that the *submitted* product allows tracing via timestamps, not that you personally validate every sentence.
+
+Proceed to output the verdict.json exactly as planned.
+[End of advisor consultation #1]
+
+{"scores": {"Q1": {"total": 10.0, "evidence": "summary.json 四键与 docx 条数一致且合计=6；10:10 归决议并整句保留；待办表格 3 列 1 行，负责人=客服组长何姐，期限=待定；未混入 10:00/10:02/10:12/10:13 噪声。"}}}

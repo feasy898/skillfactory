@@ -1,0 +1,83 @@
+{
+  "tested_family": "glm",
+  "panel": [
+    "step-router-v1",
+    "Minimax-M3.1-Flash-Preview"
+  ],
+  "panel_rotation": "task_idx=5 parity=1",
+  "verdicts": {
+    "step-router-v1": {
+      "scores": {
+        "P1": {
+          "total": 4.0,
+          "evidence": "run_log.json: 两遍 sha256 相同（文书.docx a2c097...，fields.json 189030d...），docx 解析 14 段完全一致，outdir 恰含两文件。无 runner/package 证据。"
+        },
+        "P2": {
+          "total": 3.0,
+          "evidence": "run_log.json: fields.json 两遍 sha256 相同，docx 解析一致；但文书.docx 两遍 sha256 不同（fde15d... vs 44970e...），因 zip 时间戳含当前时间。无 runner/package 证据。"
+        },
+        "P3": {
+          "total": 4.0,
+          "evidence": "run_log.json: 两遍 sha256 相同（文书.docx 1645710a...，fields.json bd58b85...），docx 解析 layout_sha256 相同，outdir 恰含两文件。无 runner/package 证据。"
+        },
+        "P4": {
+          "total": 4.0,
+          "evidence": "run_log.json: 两遍 sha256 相同（文书.docx 0de99668...，fields.json 6c67eef...），docx 解析 12 段完全一致，zip 时间戳已规范化为 1980-01-01。无 runner/package 证据。"
+        }
+      }
+    },
+    "Minimax-M3.1-Flash-Preview": {
+      "scores": {
+        "P1": {
+          "total": 5.0,
+          "evidence": "①两遍sha256相同(文书a2c0971/fields 189030d，与暂存件一致)、14段版式一致、zip mtime=1980-01-01、无时间/随机源②outdir恰两产物③无runner记录，仅11/11旁证④无红绿记录⑤仅generate.py，无三件套/py_compile。"
+        },
+        "P2": {
+          "total": 5.0,
+          "evidence": "①fields两遍sha256同6c67eef、12段版式一致；docx两遍sha256异(fde15d/44970e)，自陈差异为zip头墙钟时间戳，容器层仍含时间源②outdir恰两产物③无runner，仅11/11旁证④无红绿记录⑤gen_doc.py exit 0，无三件套/py_compile。"
+        },
+        "P3": {
+          "total": 5.0,
+          "evidence": "①两遍sha256全同(1645710a/bd58b85，与暂存件一致)、逐字节差0、layout sha256同f6df9b3、无不可复现源②outdir恰两产物③无runner，仅11/11旁证④无红绿记录⑤仅generate.py exit 0，无三件套/py_compile。"
+        },
+        "P4": {
+          "total": 6.0,
+          "evidence": "①两遍sha256全同(0de9966/6c67eef，与暂存件一致)、17成员mtime统一1980-01-01、12段版式一致、无时间/随机源②outdir恰两产物③41项自检all_pass但未跑runner④无红绿记录⑤gen_doc.py exit 0据SKILL.md §6。"
+        }
+      }
+    }
+  },
+  "per_judge_scores": {
+    "P1": {
+      "step-router-v1": 4.0,
+      "Minimax-M3.1-Flash-Preview": 5.0
+    },
+    "P2": {
+      "step-router-v1": 3.0,
+      "Minimax-M3.1-Flash-Preview": 5.0
+    },
+    "P3": {
+      "step-router-v1": 4.0,
+      "Minimax-M3.1-Flash-Preview": 5.0
+    },
+    "P4": {
+      "step-router-v1": 4.0,
+      "Minimax-M3.1-Flash-Preview": 6.0
+    }
+  },
+  "final_scores": {
+    "P1": 4.5,
+    "P2": 4.0,
+    "P3": 4.5,
+    "P4": 5.0
+  },
+  "judge_consistency": {
+    "task": "ab5-determinism-layout-selfeval",
+    "resample_of": "P1",
+    "first_score": 4.0,
+    "second_score": 3.0,
+    "delta": 1.0,
+    "action": "pass"
+  },
+  "judge_prompt_version": "S8-JUDGE-v1"
+}

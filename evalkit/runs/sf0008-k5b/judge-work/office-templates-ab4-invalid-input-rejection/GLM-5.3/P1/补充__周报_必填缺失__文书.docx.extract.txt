@@ -1,0 +1,10 @@
+EXTRACT OF 补充__周报_必填缺失__文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=None runs=[研发部工作周报/黑体/22.0] text=研发部工作周报
+P001 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[填报人：王小明　　周期：20/仿宋/16.0] text=填报人：王小明　　周期：2026-09-21 至 2026-09-27
+P002 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[一、本周工作内容/黑体/16.0] text=一、本周工作内容
+P003 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[1．____/仿宋/16.0] text=1．____
+P004 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[二、下周工作计划/黑体/16.0] text=二、下周工作计划
+P005 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[1．____/仿宋/16.0] text=1．____
+P006 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[三、问题与需协调事项/黑体/16.0] text=三、问题与需协调事项
+P007 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[1．测试机资源紧张/仿宋/16.0] text=1．测试机资源紧张
+P008 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[报送日期：/仿宋/16.0] text=报送日期：

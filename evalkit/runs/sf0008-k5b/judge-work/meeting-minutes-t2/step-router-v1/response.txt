@@ -1,0 +1,42 @@
+[Advisor consultation #1]
+[Advisor review]
+
+The executor is on the right track: all four products produce identical, fully compliant outputs. The key now is to convert that reasoning into a precise verdict.json with evidence.
+
+**Pre-output checks:**
+
+1. **Confirm rubric item 3 thoroughly** – the extracts show a meeting with zero parsed utterances and no mention of the specific timestamp lines or parenthetical noise. That is sufficient evidence. You may note that the source line mentions “转录稿” or “transcript”, but the rule is only about the output files, not about source metadata.
+
+2. **File naming (rubric 4)** – The extracts are from `纪要.docx` and `summary.json`. The task says these files are inside each P* subdirectory. The rubric’s requirement about “写入 <outdir> 根目录” is satisfied by the directory structure you’re given. No date suffix or renaming is present. Score 2 for all.
+
+**Constructing the JSON:**
+
+- Structure: `{"scores": {"P1": {...}, "P2":
+[End of advisor consultation #1]
+
+```json
+{
+  "scores": {
+    "P1": {
+      "total": 10.0,
+      "items": [2, 2, 2, 2],
+      "evidence": "summary.json四键全0且合计=0；三节标题逐字保留；待办表格仅表头；无时间戳/括号行进入章节；文件命名正确。"
+    },
+    "P2": {
+      "total": 10.0,
+      "items": [2, 2, 2, 2],
+      "evidence": "summary.json四键全0且合计=0；三节标题逐字保留；待办表格仅表头；无时间戳/括号行进入章节；文件命名正确。"
+    },
+    "P3": {
+      "total": 10.0,
+      "items": [2, 2, 2, 2],
+      "evidence": "summary.json四键全0且合计=0；三节标题逐字保留；待办表格仅表头；无时间戳/括号行进入章节；文件命名正确。"
+    },
+    "P4": {
+      "total": 10.0,
+      "items": [2, 2, 2, 2],
+      "evidence": "summary.json四键全0且合计=0；三节标题逐字保留；待办表格仅表头；无时间戳/括号行进入章节；文件命名正确。"
+    }
+  }
+}
+```

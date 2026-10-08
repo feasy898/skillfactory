@@ -18,6 +18,7 @@ import os
 import random
 import re
 import sys
+import zlib
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import s8_judge_lib as J  # noqa: E402
@@ -33,10 +34,10 @@ MODEL_OF_JUDGE = {v: k for k, v in JUDGE_OF_MODEL.items()}
 
 SCORING_RULE = """评分规则（S8-JUDGE-v1）：
 - 对每条 rubric 项独立打分：0=完全不符 / 0.5 / 1=部分符合 / 1.5 / 2=完全符合。
-- 每条打分必须附实测证据（引用暂存文件中的具体事实/原文/数字）；无证据的分数无效。
+- 每条打分必须附实测证据（引用暂存文件中的具体事实/原文/数字）；无证据的分数无效。证据必须精简（每条 rubric 项 ≤150 字），优先保证 verdict JSON 完整输出。
 - 产物总分 total = round(10 × Σ项分 ÷ (2×项数), 1)，区间 [0,10]。
 - 你不知道也不得推测产物的来源臂、模型或顺序；只按 rubric 与证据判分。
-- verdict.json 结构：{"scores": {"P1": {"total": x.x, "items": [逐项分], "evidence": "逐项证据摘要"}}, ...}（每个产品一个键）。"""
+- verdict.json 结构（紧凑，必须遵守）：{"scores": {"P1": {"total": x.x, "evidence": "≤150 字逐项证据摘要"}}, ...}（每个产品一个键；不要 items 数组、不要其他顶层键）。"""
 
 
 def redact_text(s, arm_root):
@@ -173,33 +174,59 @@ def build_brief(pkg, task, staged, rubric):
 
 
 def parse_verdict_json(text):
-    t = text.strip()
-    m = re.search(r"\{.*\}", t, re.S)
-    if not m:
-        return None
-    try:
-        return json.loads(m.group(0))
-    except Exception:
-        return None
+    """提取含 "scores" 的最后一个平衡 JSON 对象（容忍围栏/推理散文）。"""
+    best = None
+    for m in re.finditer(r'"scores"', text):
+        i = text.rfind("{", 0, m.start())
+        if i < 0:
+            continue
+        depth = 0
+        for j in range(i, len(text)):
+            if text[j] == "{":
+                depth += 1
+            elif text[j] == "}":
+                depth -= 1
+                if depth == 0:
+                    cand = text[i:j + 1]
+                    try:
+                        obj = json.loads(cand)
+                        if isinstance(obj, dict) and isinstance(obj.get("scores"), dict):
+                            best = obj
+                    except Exception:
+                        pass
+                    break
+    return best
+
+
+STAGING_ROOTS = {}
 
 
 def judge_call(judge, workdir, brief, staged, task_label):
     """单裁判单次调用。step=HTTP（产物内容内联）；glm/minimax=headless CLI。返回 (rec, verdict)。"""
-    model = MODEL_OF_JUDGE[judge]
-    slot = J.budget_judge({"judge": judge, "channel": judge,
+    model = judge
+    chan = JUDGE_OF_MODEL[judge]
+    slot = J.budget_judge({"judge": judge, "channel": chan,
                            "task": task_label, "judge_prompt_version": J.JUDGE_PROMPT_VERSION,
                            "ts_intent": __import__("time").strftime("%H:%M:%S"),
                            "status": "pending"})
     try:
-        if judge == "step":
-            parts = [brief, "", "# 产物内容（暂存文件全文）"]
+        if chan == "step":
+            parts = ["【输出纪律（最高优先级）】你是评分器。禁止展示任何思考、草稿、advisor 对话或分步分析；你的回复必须直接以 { 开头、以 } 结尾，内容仅为最终 verdict JSON。", "", brief, "", "# 产物内容（暂存文件全文）"]
             for s in staged:
+                src_base = STAGING_ROOTS[task_label]
                 for fn in s["files"]:
-                    p = os.path.join(workdir, s["pid"], fn)
+                    cand = [os.path.join(src_base, s["pid"], fn), os.path.join(src_base, fn)]
+                    p = next((c for c in cand if os.path.isfile(c)), None)
+                    if p is None:
+                        continue
                     parts.append("=== %s/%s ===\n%s" % (s["pid"], fn,
-                                 open(p, encoding="utf-8", errors="replace").read()[:60000]))
+                                 open(p, encoding="utf-8", errors="replace").read()[:24000]))
+            pids_tpl = ", ".join('"%s"' % s2["pid"] for s2 in staged)
             r = J.step_chat([{"role": "user", "content": "\n".join(
-                parts + ["", '输出：仅一个 JSON 对象（verdict），结构 {"scores": {"P1": {"total": x, "items": [...], "evidence": "..."}}, ...}'])}])
+                parts + ["", '现在直接输出最终评分 JSON：必须恰好包含这些键：%s；每个键为 {"total": 0-10 数值, "evidence": "≤150 字"}；除该 JSON 外不得输出任何文字。'])}],
+                max_tokens=32000,
+                assistant_prefill='{"scores": {"' + staged[0]["pid"] + '": {"total": ')
+            r["text"] = '{"scores": {"' + staged[0]["pid"] + '": {"total": ' + (r["text"] or "")
             v = parse_verdict_json(r["text"])
             rec = {"exit_code": 0 if v else 1, "wall_ms": r["wall_ms"], "session_id": r["id"],
                    "model_id_observed": r["model"], "channel": "http-api",
@@ -212,13 +239,12 @@ def judge_call(judge, workdir, brief, staged, task_label):
                       newline="\n") as f:
                 f.write(brief + "\n")
             for s in staged:
-                src_pdir = os.path.join(os.path.dirname(workdir), "_staging", task_label, s["pid"])
+                src_pdir = os.path.join(STAGING_ROOTS[task_label], s["pid"])
                 dst_pdir = os.path.join(workdir, s["pid"])
                 if os.path.isdir(src_pdir):
-                    import shutil
                     import shutil as sh
                     sh.copytree(src_pdir, dst_pdir, dirs_exist_ok=True)
-            rec = J.cli_judge(workdir, judge)
+            rec = J.cli_judge(workdir, chan)
             vp = os.path.join(workdir, "verdict.json")
             v = json.load(open(vp, encoding="utf-8")) if os.path.isfile(vp) else None
             with open(os.path.join(workdir, "transcript_stdout.txt"), "w", encoding="utf-8",
@@ -268,8 +294,12 @@ def main():
                                             "office-templates": "office-templates-skill",
                                             "hot-templates": "hot-templates-skill"}[pkg],
                     "eval/golden.json"), encoding="utf-8"))["ab_tasks"]])
-        results[pkg] = {}
+        jp = os.path.join(RUN, "records", "judging", "%s.json" % pkg)
+        results[pkg] = json.load(open(jp, encoding="utf-8")) if os.path.isfile(jp) else {}
         for ti, task in enumerate(tasks, 1):
+            if isinstance(results[pkg].get(task), dict) and results[pkg][task].get("status") in ("judged", "unjudgeable"):
+                print("SKIP judged %s/%s" % (pkg, task), flush=True)
+                continue
             fam, units = task_unit_dirs(pkg, task, None, REPS[pkg])
             # 装置完整性：单元臂 records 必须齐（缺=装置失败，不进判分）
             missing = [u for u in units if not os.path.isfile(
@@ -278,12 +308,13 @@ def main():
                 results[pkg][task] = {"status": "infra_error", "missing": [m[1] for m in missing]}
                 continue
             staging = os.path.join(RUN, "judge-work", "_staging", "%s-%s" % (pkg, task))
+            STAGING_ROOTS["%s-%s" % (pkg, task)] = staging
             staged, mapping, meta = stage_products(
                 pkg, task, units, staging,
-                seed=hash((pkg, task)) & 0xffffff)
+                seed=zlib.crc32(("%s|%s" % (pkg, task)).encode()) & 0xffffff)
             J.write_json(os.path.join(RUN, "records", "judge-staging",
                                       "%s-%s.mapping.json" % (pkg, task)),
-                         {"mapping": mapping, "staged": staged, "seed": hash((pkg, task)) & 0xffffff})
+                         {"mapping": mapping, "staged": staged, "seed": zlib.crc32(("%s|%s" % (pkg, task)).encode()) & 0xffffff})
             rubric = rubric_of(pkg, task)
             brief = build_brief(pkg, task, staged, rubric)
             panel = PANEL[fam][:]
@@ -292,16 +323,31 @@ def main():
             scores = {}   # pid -> {judge: score}
             verdicts = {}
             ok = True
-            for judge in panel:
+            def _one_judge(judge):
                 wdir = os.path.join(RUN, "judge-work", "%s-%s" % (pkg, task), judge.replace("/", "_"))
                 os.makedirs(wdir, exist_ok=True)
-                rec, v = judge_call(judge, wdir, brief, staged, "%s-%s" % (pkg, task))
+                return judge_call(judge, wdir, brief, staged, "%s-%s" % (pkg, task))
+            for judge in panel:
+                rec, v = _one_judge(judge)
                 verdicts[judge] = v
                 if not v or not isinstance(v.get("scores"), dict):
                     ok = False
                     continue
                 for pid, sv in v["scores"].items():
                     scores.setdefault(pid, {})[judge] = sv.get("total")
+            def _scored_judges():
+                return {j for d in scores.values() for j in d if d[j] is not None}
+            if len(_scored_judges()) < 2:
+                for judge in panel:
+                    if len(_scored_judges()) >= 2:
+                        break
+                    if judge in _scored_judges():
+                        continue
+                    rec, v = _one_judge(judge)
+                    verdicts[judge + "#retry"] = v
+                    if v and isinstance(v.get("scores"), dict):
+                        for pid, sv in v["scores"].items():
+                            scores.setdefault(pid, {})[judge] = sv.get("total")
             # pid 并集对齐（裁判漏判的 pid 按缺考处理=该 judge 无分）
             # §3.4 抽检：按任务序轮换抽 1 份（覆盖两臂），同裁判匿名复评
             sampled_pid = staged[(ti - 1) % len(staged)]["pid"]
@@ -312,6 +358,11 @@ def main():
             staged2 = [s for s in staged if s["pid"] == sampled_pid]
             staged2 = [{"pid": "Q1", "files": staged2[0]["files"]}]
             brief2 = build_brief(pkg, task, staged2, rubric)
+            STAGING_ROOTS["%s-%s-resample" % (pkg, task)] = os.path.join(staging, sampled_pid + "_resample")
+            os.makedirs(STAGING_ROOTS["%s-%s-resample" % (pkg, task)], exist_ok=True)
+            import shutil as _sh
+            _sh.copytree(os.path.join(staging, sampled_pid),
+                         STAGING_ROOTS["%s-%s-resample" % (pkg, task)], dirs_exist_ok=True)
             rec2, v2 = judge_call(judge0, wdir2, brief2, staged2, "%s-%s-resample" % (pkg, task))
             first = scores.get(sampled_pid, {}).get(judge0)
             second = v2.get("scores", {}).get("Q1", {}).get("total") if v2 else None
@@ -345,6 +396,7 @@ def main():
                                       "task": task, "resample_of": sampled_pid,
                                       "first_score": first, "second_score": second,
                                       "delta": jc_delta, "action": action}}
+            J.write_json(os.path.join(RUN, "records", "judging", "%s.json" % pkg), results[pkg])
             print("JUDGED %s/%s fam=%s action=%s" % (pkg, task, fam, action), flush=True)
     J.write_json(os.path.join(RUN, "records", "judge-results.json"), results)
     bad = [1 for p in results.values() for t in p.values()

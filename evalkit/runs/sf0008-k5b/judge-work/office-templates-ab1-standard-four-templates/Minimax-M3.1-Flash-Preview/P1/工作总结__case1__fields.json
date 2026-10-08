@@ -1,0 +1,73 @@
+{
+  "title": "评测技术部2026年第三季度工作总结",
+  "template": "工作总结",
+  "data_source": "fixtures/工作总结/case1.json",
+  "fields": [
+    {
+      "name": "总结主体",
+      "required": true,
+      "status": "filled",
+      "value": "评测技术部",
+      "render": "标题「评测技术部2026年第三季度工作总结」前缀呈现；落款右对齐「评测技术部」"
+    },
+    {
+      "name": "总结时段",
+      "required": true,
+      "status": "filled",
+      "value": "2026年第三季度",
+      "render": "标题「评测技术部2026年第三季度工作总结」中呈现"
+    },
+    {
+      "name": "工作回顾",
+      "required": true,
+      "status": "filled",
+      "value": [
+        "完成 P0 打分器三轮迭代",
+        "建设 12 份评测 JSON 台账"
+      ],
+      "render": "黑体段「一、工作回顾」引领，逐条编号列出（2 条）"
+    },
+    {
+      "name": "主要成绩",
+      "required": false,
+      "status": "filled",
+      "value": [
+        "打分一致性从 6.1 提升到 7.4",
+        "评测周期缩短 30%"
+      ],
+      "render": "黑体段「二、主要成绩」引领，逐条编号列出（2 条）"
+    },
+    {
+      "name": "存在问题",
+      "required": false,
+      "status": "filled",
+      "value": [
+        "标注规范仍有歧义",
+        "GPU 资源排期紧张"
+      ],
+      "render": "黑体段「三、存在问题」引领，逐条编号列出（2 条）"
+    },
+    {
+      "name": "下一步工作打算",
+      "required": true,
+      "status": "filled",
+      "value": [
+        "发布标注规范 v2",
+        "引入自动化回归评测"
+      ],
+      "render": "黑体段「四、下一步工作打算」引领，逐条编号列出（2 条）"
+    },
+    {
+      "name": "成文日期",
+      "required": true,
+      "status": "filled",
+      "value": "2026年9月30日",
+      "render": "落款右对齐「2026年9月30日」（右空四字）"
+    }
+  ],
+  "summary": {
+    "filled": 7,
+    "missing": 0,
+    "total": 7
+  }
+}

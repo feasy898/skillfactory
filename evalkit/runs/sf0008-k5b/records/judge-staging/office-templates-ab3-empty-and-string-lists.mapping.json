@@ -1,0 +1,59 @@
+{
+  "mapping": {
+    "P1": {
+      "rep": 1,
+      "arm": "baseline"
+    },
+    "P2": {
+      "rep": 2,
+      "arm": "baseline"
+    },
+    "P3": {
+      "rep": 1,
+      "arm": "treatment"
+    },
+    "P4": {
+      "rep": 2,
+      "arm": "treatment"
+    }
+  },
+  "staged": [
+    {
+      "pid": "P1",
+      "files": [
+        "周报__case2__fields.json",
+        "周报__case2__文书.docx.extract.txt",
+        "工作总结__case2__fields.json",
+        "工作总结__case2__文书.docx.extract.txt"
+      ]
+    },
+    {
+      "pid": "P2",
+      "files": [
+        "周报__case2__fields.json",
+        "周报__case2__文书.docx.extract.txt",
+        "工作总结__case2__fields.json",
+        "工作总结__case2__文书.docx.extract.txt"
+      ]
+    },
+    {
+      "pid": "P3",
+      "files": [
+        "周报__case2__fields.json",
+        "周报__case2__文书.docx.extract.txt",
+        "工作总结__case2__fields.json",
+        "工作总结__case2__文书.docx.extract.txt"
+      ]
+    },
+    {
+      "pid": "P4",
+      "files": [
+        "周报__case2__fields.json",
+        "周报__case2__文书.docx.extract.txt",
+        "工作总结__case2__fields.json",
+        "工作总结__case2__文书.docx.extract.txt"
+      ]
+    }
+  ],
+  "seed": 12742780
+}

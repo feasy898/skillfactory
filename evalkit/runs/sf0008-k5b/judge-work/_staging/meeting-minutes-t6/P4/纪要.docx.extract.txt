@@ -1,0 +1,13 @@
+EXTRACT OF 纪要.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=254000 runs=[线上事故复盘会会议纪要/SimHei/16.0] text=线上事故复盘会会议纪要
+P001 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=1.3 runs=[本纪要依据线上事故复盘会转写/SimSun/10.5] text=本纪要依据线上事故复盘会转写稿整理，各条目均按原句逐字引用并标注发言时间与说话人。
+P002 align=None firstLineChars=None firstLineIndent=None spacing=1.3 runs=[一、决议事项/SimHei/14.0] text=一、决议事项
+P003 align=None firstLineChars=None firstLineIndent=None spacing=1.3 runs=[【20:12 · 值班经理老/SimSun/12.0] text=【20:12 · 值班经理老唐】结论：今后所有变更必须走灰度，决不允许直接上生产。
+P004 align=None firstLineChars=None firstLineIndent=None spacing=1.3 runs=[二、待办事项/SimHei/14.0] text=二、待办事项
+P005 align=None firstLineChars=None firstLineIndent=None spacing=1.3 runs=[三、风险与关注/SimHei/14.0] text=三、风险与关注
+P006 align=None firstLineChars=None firstLineIndent=None spacing=1.3 runs=[【20:10 · SRE阿凯/SimSun/12.0] text=【20:10 · SRE阿凯】还有隐患，降级预案没演练过，真出事大概率延期恢复，这是最大风险。
+TABLE1 4行×3列:
+  事项 ┃ 负责人 ┃ 期限
+  【20:04 · SRE阿凯】防复发方案需要评审，交给Daniel负责，2026-10-09之前上线。 ┃ Daniel ┃ 2026-10-09之前
+  【20:06 · 值班经理老唐】同意，开关自动化本周内要排期。 ┃ 待定 ┃ 本周内
+  【20:08 · 客服侧小鹿】事故期间客诉积压两百单，需要逐单回访，本周底前完成。 ┃ 待定 ┃ 本周底前

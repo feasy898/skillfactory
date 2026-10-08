@@ -1,0 +1,125 @@
+{
+  "meeting-minutes": {
+    "gates": {
+      "deterministic": true,
+      "blind_v02": false,
+      "efficiency": true,
+      "format": true,
+      "assertion": true,
+      "real_recheck": false
+    },
+    "verdict": "rejected",
+    "aggregate": {
+      "mean_baseline": 7.9156,
+      "mean_treatment": 9.85,
+      "delta": 1.9344,
+      "task_win_rate": 0.125,
+      "pair_win_rate": 0.4375,
+      "reverse_tasks": 0,
+      "ties": 7,
+      "valid_tasks": 8,
+      "total_tasks": 8
+    },
+    "k5b02": {
+      "tasks": 8,
+      "runs_per_arm": 2,
+      "required": "mm/office≥2、hot≥3",
+      "pass": true
+    },
+    "efficiency": {
+      "token_ratio": 0.5274,
+      "duration_ratio": 0.4849,
+      "tokens_traceability": "每 run tokens=input_tokens+output_tokens（db model_usage session join，session_id 在 run 内）",
+      "n_non_infra_runs": 32
+    },
+    "swap": {
+      "swap_delta": -1.9344,
+      "swap_win_rate": 0.0,
+      "tie_rate": 0.875,
+      "swap_reverse_tasks": 6,
+      "identity_note": "delta'=−delta 恒等；winRate'=1−winRate−tieRate（§3.3-3 平局计入分母不计胜；tieRate=0 时退化为 1−winRate）；reverse 按同定义在新treatment 侧复算留痕"
+    }
+  },
+  "office-templates": {
+    "gates": {
+      "deterministic": true,
+      "blind_v02": false,
+      "efficiency": true,
+      "format": true,
+      "assertion": true,
+      "real_recheck": false
+    },
+    "verdict": "rejected",
+    "aggregate": {
+      "mean_baseline": 7.125,
+      "mean_treatment": 7.85,
+      "delta": 0.725,
+      "task_win_rate": 0.4,
+      "pair_win_rate": 0.6,
+      "reverse_tasks": 1,
+      "ties": 3,
+      "valid_tasks": 5,
+      "total_tasks": 5
+    },
+    "k5b02": {
+      "tasks": 5,
+      "runs_per_arm": 2,
+      "required": "mm/office≥2、hot≥3",
+      "pass": true
+    },
+    "efficiency": {
+      "token_ratio": 0.6177,
+      "duration_ratio": 0.431,
+      "tokens_traceability": "每 run tokens=input_tokens+output_tokens（db model_usage session join，session_id 在 run 内）",
+      "n_non_infra_runs": 20
+    },
+    "swap": {
+      "swap_delta": -0.725,
+      "swap_win_rate": 0.0,
+      "tie_rate": 0.6,
+      "swap_reverse_tasks": 3,
+      "identity_note": "delta'=−delta 恒等；winRate'=1−winRate−tieRate（§3.3-3 平局计入分母不计胜；tieRate=0 时退化为 1−winRate）；reverse 按同定义在新treatment 侧复算留痕"
+    }
+  },
+  "hot-templates": {
+    "gates": {
+      "deterministic": true,
+      "blind_v02": false,
+      "efficiency": true,
+      "format": true,
+      "assertion": true,
+      "real_recheck": false
+    },
+    "verdict": "rejected",
+    "aggregate": {
+      "mean_baseline": 7.5767,
+      "mean_treatment": 10.0,
+      "delta": 2.4233,
+      "task_win_rate": 0.4,
+      "pair_win_rate": 0.4,
+      "reverse_tasks": 0,
+      "ties": 0,
+      "valid_tasks": 5,
+      "total_tasks": 5
+    },
+    "k5b02": {
+      "tasks": 5,
+      "runs_per_arm": 3,
+      "required": "mm/office≥2、hot≥3",
+      "pass": true
+    },
+    "efficiency": {
+      "token_ratio": 0.7359,
+      "duration_ratio": 0.6305,
+      "tokens_traceability": "每 run tokens=input_tokens+output_tokens（db model_usage session join，session_id 在 run 内）",
+      "n_non_infra_runs": 30
+    },
+    "swap": {
+      "swap_delta": -2.4233,
+      "swap_win_rate": 0.6,
+      "tie_rate": 0.0,
+      "swap_reverse_tasks": 4,
+      "identity_note": "delta'=−delta 恒等；winRate'=1−winRate−tieRate（§3.3-3 平局计入分母不计胜；tieRate=0 时退化为 1−winRate）；reverse 按同定义在新treatment 侧复算留痕"
+    }
+  }
+}
