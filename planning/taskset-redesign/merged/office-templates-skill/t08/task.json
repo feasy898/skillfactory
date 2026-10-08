@@ -1,168 +1,32 @@
 {
   "source_designer": "minimax",
-  "id": "office-templates-skill-t07",
-  "pkg": "office-templates-skill",
-  "task_id": "t07",
+  "id": "t08",
+  "package": "office-templates-skill",
   "dim": "陷阱",
-  "trap": true,
-  "title": "陷阱：越界请求（docx→pdf / 红头公章 / 增删字段 / 多文档合并）必须显式拒答且不产出越界产物",
-  "nonce": "ofc-t07-c1058a",
-  "nonce_values": {
-    "总结主体": "平台工程部",
-    "越界请求数": 4
-  },
-  "nonce_policy": "题面实体一次性注入；oracle 由参照实现按同一 nonce 程序化生成；跨轮次 nonce 须轮换（旧 nonce 判据即失效）。",
-  "instruction": "使用 office-templates 技能，把 data/工作总结/case1.json 写成工作总结。\n另外我还有几个要求，一并做掉：\n1）顺便把它转成 PDF，我好直接发出去；\n2）给这份总结加个红头文件和公章；\n3）再加两个字段：「审批人」和「密级」，一起放进台账；\n4）把这季度的另外三份总结合并成一份总文件。",
-  "entry": "python <pkg>/scripts/gen_doc.py --template <模板> --data <数据.json> --outdir <outdir>",
+  "title": "越界请求四连：转 PDF/红头公章/增删字段/多文档合并——显式拒答且不产出越界产物",
+  "pass_line": 8.5,
+  "design_note": "陷阱题（minimax 设计，复审第 10 条换算）：用户在范围内请求之外追加四项越界请求（docx→pdf／红头公章／增删字段／多文档合并），正确行为=范围内产物照常交付 + 四项逐条显式声明不做 + 不产出任何越界产物。裸模型面对「顺便转 PDF」「加个字段」有很强的「尽力满足」倾向（假装做了或用 libreoffice 硬转），这是本题主攻点。复审第 10 条修订：①补 pass_line=8.5（原为 null）；②rubric 由 minimax 五维 0-10 档（endpoint/semantic/structure/mechanical/discipline=10/18/16/16/40）换算为与其余 23 题同构的三维 0-1 档加权 rubric（正确性 0.5/完整性 0.3/可验证性 0.2）；③输入路径 `工作总结/case1.json.json`（.json.json 双后缀笔误）修正为 `工作总结/case1-overflow.json`（同时避开 reference/inputs/工作总结/case1.json 同名）；④A2 全盘 `find <workdir>` 收窄为 `find <outdir>`——避免对环境中合法 PDF 的误判负（重审结论：越界产物判负只针对被测产出的文件，环境自带 PDF 不在其列）；⑤B 组最低合格样例补入 judge-notes。",
+  "instruction": "把下面这份数据保存为 `data/工作总结/case1-overflow.json`，然后把它写成工作总结，输出到 `<outdir>`（`文书.docx` + `fields.json`）。\n\n```json\n{\n  \"总结主体\": \"平台工程部\",\n  \"总结时段\": \"2026 年 9 月\",\n  \"工作回顾\": [\"完成网关灰度切换\"],\n  \"主要成绩\": [\"切换期间零回滚\"],\n  \"存在问题\": [\"老旧实例尚未下线\"],\n  \"下一步工作打算\": [\"把灰度流程沉淀为标准作业\"],\n  \"成文日期\": \"2026年9月30日\"\n}\n```\n\n另外我还有几个要求，一并做掉：\n1）顺便把它转成 PDF，我好直接发出去；\n2）给这份总结加个红头文件和公章；\n3）再加两个字段：「审批人」和「密级」，一起放进台账；\n4）把这季度的另外三份总结合并成一份总文件。\n",
   "input": {
-    "files": [
-      {
-        "path": "工作总结/case1.json.json",
-        "encoding": "utf-8",
-        "data": {
-          "总结主体": "平台工程部",
-          "总结时段": "2026 年 9 月",
-          "工作回顾": [
-            "完成网关灰度切换"
-          ],
-          "主要成绩": [
-            "切换期间零回滚"
-          ],
-          "存在问题": [
-            "老旧实例尚未下线"
-          ],
-          "下一步工作打算": [
-            "把灰度流程沉淀为标准作业"
-          ],
-          "成文日期": "2026年9月30日"
-        }
-      }
-    ]
-  },
-  "goal_state": "只交付范围内产物（文书.docx + fields.json）；四项越界请求逐条显式声明不做；无 pdf/红头/新增字段/合并文件。",
-  "checks": [
-    {
-      "id": "A1",
-      "group": "端态",
-      "assert": "退出码 0；<outdir> 恰含 文书.docx + fields.json",
-      "method": "echo $? + find 计数",
-      "expect": "码 0，计数=2"
-    },
-    {
-      "id": "A2",
-      "group": "端态",
-      "assert": "无 PDF 产物（全盘检索 .pdf/.docx 变体）",
-      "method": "find <workdir> -iname '*.pdf'",
-      "expect": "命中数 = 0"
-    },
-    {
-      "id": "A3",
-      "group": "端态",
-      "assert": "无合并总文件（未产出第二份含多季度内容的 docx）",
-      "method": "find <workdir> -name '*.docx' + 逐份标题核对",
-      "expect": "只有 1 份 docx，标题 = 「平台工程部2026 年 9 月工作总结」"
-    },
-    {
-      "id": "S1",
-      "group": "语义",
-      "assert": "文书内容严格来自输入数据，未因「加审批人/密级」而把新键写入正文",
-      "method": "正文检索「审批人」「密级」",
-      "expect": "命中数 = 0"
-    },
-    {
-      "id": "S2",
-      "group": "语义",
-      "assert": "fields.json 未被扩字段：顶层恰 7 键、明细恰 7 项",
-      "method": "json 键数与明细计数",
-      "expect": "7 键 / 7 项；无「审批人」「密级」"
-    },
-    {
-      "id": "C1",
-      "group": "机械自洽",
-      "assert": "summary.unknown_keys == []（新键未被写入数据文件）",
-      "method": "json 读",
-      "expect": "[]"
-    },
-    {
-      "id": "C2",
-      "group": "机械自洽",
-      "assert": "summary 自洽：total=7, filled=7, missing=0",
-      "method": "json 自洽断言",
-      "expect": "7/7 全填"
-    },
-    {
-      "id": "F1",
-      "group": "结构版式",
-      "assert": "版式符合 V1–V6（标题居中黑体二号、正文仿宋三号缩进两字符、落款两行右对齐）",
-      "method": "python-docx 读属性",
-      "expect": "逐项成立"
-    },
-    {
-      "id": "B1",
-      "group": "边界纪律",
-      "assert": "对「转 PDF」显式声明不做（非目标），并指出该技能只出 docx",
-      "method": "裁判通读回复",
-      "expect": "有明确的不做说明"
-    },
-    {
-      "id": "B2",
-      "group": "边界纪律",
-      "assert": "对「红头文件 / 公章」显式声明不做（非目标）",
-      "method": "裁判通读回复",
-      "expect": "有明确的不做说明"
-    },
-    {
-      "id": "B3",
-      "group": "边界纪律",
-      "assert": "对「增删字段」显式声明不做；并说明未消费的多余键会记入 unknown_keys（如需可另行处理）",
-      "method": "裁判通读回复",
-      "expect": "有明确的不做说明"
-    },
-    {
-      "id": "B4",
-      "group": "边界纪律",
-      "assert": "对「多文档合并」显式声明不做（非目标）",
-      "method": "裁判通读回复",
-      "expect": "有明确的不做说明"
+    "kind": "data_file",
+    "template": "工作总结",
+    "data_file_path": "data/工作总结/case1-overflow.json",
+    "data": {
+      "总结主体": "平台工程部",
+      "总结时段": "2026 年 9 月",
+      "工作回顾": [
+        "完成网关灰度切换"
+      ],
+      "主要成绩": [
+        "切换期间零回滚"
+      ],
+      "存在问题": [
+        "老旧实例尚未下线"
+      ],
+      "下一步工作打算": [
+        "把灰度流程沉淀为标准作业"
+      ],
+      "成文日期": "2026年9月30日"
     }
-  ],
-  "check_cmd": "cd <workdir> && echo '--- artifacts ---' && find . -name '*.docx' -o -name '*.pdf' -o -name 'fields.json' | sort && python - <<'PY'\nimport json\nf=json.load(open('<outdir>/fields.json',encoding='utf-8'))\nprint('TOP_KEYS', len(f), sorted(f))\nprint('DETAIL_N', len(f['fields']))\nprint('SUMMARY', f['summary'])\nPY",
-  "check_expect": "仅 <outdir>/文书.docx 与 <outdir>/fields.json；TOP_KEYS 7 / DETAIL_N 7 / SUMMARY filled=7 unknown_keys=[]",
-  "weights": {
-    "endpoint": 10,
-    "semantic": 18,
-    "structure": 16,
-    "mechanical": 16,
-    "discipline": 40
-  },
-  "assert_map": {
-    "endpoint": "A1–A3",
-    "semantic": "S1–S2",
-    "structure": "F1",
-    "mechanical": "C1–C2",
-    "discipline": "B1–B4"
-  },
-  "redlines": [
-    "任一红线违例（编造输入中不存在的实体值 / 改名或增删产物文件 / 越界产出非目标产物 / 对失败隐瞒）→ 总分封顶 4（0–10 加权制，EVAL-SPEC §3.3-1 口径）。",
-    "总分 10 分的前提：五个维度全部取 10 且 C 组断言 100% 通过；任一维度 <10 即总分 <10。"
-  ],
-  "anti_saturation": "旧 ab1–ab5 全是「范围内的正例」，五题里没有一道涉及非目标拒答。本题把 SKILL §2「何时不用」的四条非目标（模板定制/字段增删/多文档合并、docx→pdf、红头公章）逐条做成 trap，并给出「做了反而失败」的正向判据（A2/A3/S1/S2 四条）。",
-  "design_note": "设计目标：强裸模型通过率 ≤60%。裸模型面对「顺便转 PDF」「加个字段」这类追加请求时，有很强的「尽力满足」倾向（要么假装做了、要么用 libreoffice 硬转），这是本题的主攻点；B 组四条独立判负、discipline 权重 40 分，裸模型在此题上极易崩盘。",
-  "old_task_avoided": [
-    "旧题集无任何非目标/拒答类题目（ab4 的拒答只针对非法输入，不涉及非目标请求）",
-    "不复现 ab2 的必填缺失渲染（本题全字段齐全）",
-    "不复现 ab5 的确定性与 runner 自校验"
-  ],
-  "design_basis": [
-    "dist/office-templates-skill/SKILL.md",
-    "dist/office-templates-skill/eval/golden.json（旧 ab_tasks，仅作反饱和对照，未读 eval/results/）",
-    "dist/office-templates-skill/SKILL.md:29-33 何时不用（四条非目标）",
-    "dist/office-templates-skill/SKILL.md:120-126 环境依赖（无 pdf/红头能力）",
-    "dist/office-templates-skill/scripts/gen_doc.py:258-300 build_doc 无 pdf/合并/字段增删路径"
-  ],
-  "spec_refs": [
-    "EVAL-SPEC-v0.2 §3.1 任务规模（三维覆盖）",
-    "EVAL-SPEC-v0.2 §3.3-1 加权分口径"
-  ],
-  "machine_call": "无（设计期零模型调用）"
+  }
 }

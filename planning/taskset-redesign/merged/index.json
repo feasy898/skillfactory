@@ -1,7 +1,7 @@
 {
   "taskset": "taskset-redesign/merged",
-  "date": "2026-10-08",
-  "method": "两候选（glm@704f17a / minimax@e0acd99）逐题 5 项机械判据打分（selection.tsv 留痕），同包同条款+同形态去重 17 对，并集按总分排序取每包 8 题，同分优先 glm；零模型调用",
+  "date": "2026-10-09",
+  "method": "两候选（glm@704f17a / minimax@e0acd99）逐题 5 项机械判据打分（selection.tsv 留痕），同包同条款+同形态去重 17 对，并集按总分排序取每包 8 题，同分优先 glm；零模型调用；2026-10-09 按 alpha 签盲复审 16 条必修完成修订（instruction/judge-notes 物理分离、泄题清除、算术收紧、引擎实测复校，见 REVISION-LOG.md）；2026-10-09 按 alpha 签盲复审 16 条必修完成修订（instruction/judge-notes 物理分离、泄题清除、算术收紧、引擎实测复校，见 REVISION-LOG.md）；2026-10-09 按 alpha 签盲复审 16 条必修完成修订（instruction/judge-notes 物理分离、泄题清除、算术收紧、引擎实测复校，见 REVISION-LOG.md）",
   "source_distribution": {
     "meeting-minutes-skill": {
       "glm": 8,
@@ -34,8 +34,8 @@
       "陷阱": 2
     }
   },
-  "frozen_sha256": "59203e0eb2665d9fda909a78d7d49874d6588756df6903b478863bfc8e88d976",
-  "frozen_sha256_cmd": "cd <ROOT> && find planning/taskset-redesign/merged -type f ! -name index.json ! -name selection.tsv | sort | xargs sha256sum | sha256sum",
+  "frozen_sha256": "2a931037e08198ca62bfbbf5438b2b8b6fb63525c7038681d71b2c46aa997bcc",
+  "frozen_sha256_cmd": "cd <ROOT> && find planning/taskset-redesign/merged -type f ! -name index.json ! -name selection.tsv ! -name 'BLIND-REVIEW*' ! -name 'REVISION-LOG.md' | sort | xargs sha256sum | sha256sum",
   "tasks": [
     {
       "pkg": "meeting-minutes-skill",
@@ -56,9 +56,10 @@
         "total": 5
       },
       "sha256": {
-        "task.json": "d0b26e47f38b50a27a45fe1b8ef5edfa088e8d4983f14d1effa97ffdac46c674",
-        "brief.md": "2bcb1f4f50a58f113765d0103ee4422413b6d4e896f46d81b7b048cca5e13544",
-        "rubric.md": "a6d40e58c4624f781955da60ca1c9dd989bc7799ba981d2253d347b470afe6ae"
+        "task.json": "41eaa3410406e24a82ab0b7582d65a69913895a63b16c30f7cd637212fb0e9d0",
+        "brief.md": "515875d23c12f729087ae8f5ecdf6eb6c594a91b623982d47bc959d77d7a38c7",
+        "rubric.md": "ac65c485c2b11193acf3d4be90ac6f7e090293cb6a811e35aa6bc5fd828bfad6",
+        "judge-notes.md": "c14d719b63d8d1d070fc2f32729a5aa486a1e9549e95bea5df067679b83e982b"
       }
     },
     {
@@ -80,9 +81,10 @@
         "total": 5
       },
       "sha256": {
-        "task.json": "a336b32aacb952d4a6870e962457a5adebf9b4efb7182c8c7ebc55278ec0611d",
-        "brief.md": "88260a52b175e756b91802d000207edc789e72cff6563cd961a44c45557c9131",
-        "rubric.md": "239cc587fb3fd020039a48d9c13bb90699dbeb8b10a646c2952a4d7d0128eda0"
+        "task.json": "b74e1709b2cc1771d0eb1b5d7f0444730ff51f6767159ceed1f6cf42fbdc2f22",
+        "brief.md": "ac953ac0558b607d2be01033c886839c06a8296509ec936940e3591cd248afc4",
+        "rubric.md": "50319311e26ea34a0b592474d08d21e1ac68963d29a4274b91b73ebd778cdab4",
+        "judge-notes.md": "2286e4e95effbbe40a680213e3492902bf22c744aa54ad052d898ea913c70753"
       }
     },
     {
@@ -104,9 +106,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "404843f90c1fdb6ef0e2afada211884a5d5e50b743764550171151357f10565e",
-        "brief.md": "6be15a37ae88f28bf9a129cecf8f7afa5c9b10379e7a92b0eda32857d9463971",
-        "rubric.md": "203e70bbca53c4e4f897a75b8d43cacb0b8fcecf7ac68ffd1b79b43077e4bcef"
+        "task.json": "2e891bafdb78f2f9d5b35c3fad0f5d8ce7b1cf28ec6b91a25ce618706f991c18",
+        "brief.md": "45660fab23dbe9aec66e792442af739d25cb9b8e964ce7ad71a3cb4723412576",
+        "rubric.md": "2f6f235f9d578ac7103102c6e3fe9ca3c09b51f54f6a4c5616881c4b715fbfa5",
+        "judge-notes.md": "6e3aea389ad42c799854458586f8cc794a01398187de980deb001673981cd15e"
       }
     },
     {
@@ -128,9 +131,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "802d02e8ffc5e71b624f0b3aed5e05bbe526999ac6d166c1924bde9251ccfd82",
-        "brief.md": "3f96e77ac9359d593ed8ec24263220e96705fa82e4951d4971e0c0fb8be929d0",
-        "rubric.md": "f97e068cdfa2ee89b8a178f00c99938545a4fe330850de14cf20bb4bcea7cdf5"
+        "task.json": "833eccfa8c16dbd31c049abcc3097ee4a430c97b987b0502b5080b71f39c96db",
+        "brief.md": "33ce8258702c334ec999cca94900ef308557bc2251620fc3ef6540bb31e92a39",
+        "rubric.md": "d3487cb8b628d1da772bea2f0ce8f1f3eb7b4bdbc2780d041dc27059a6fd2646",
+        "judge-notes.md": "57a5662b728adf7bd9c6865c69fe9e4b39aa796a5544ecd88c00faf52de9203e"
       }
     },
     {
@@ -152,9 +156,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "51a9649bc75feb316a03979c7153aa6943801a340fd7b500ad677b2ed2641db3",
-        "brief.md": "38fa886dcdf72998918ede7e4c13dd57a8060193a30c1742114a7b31ae620670",
-        "rubric.md": "cb23219ce73dea017430a055b92e73998afdb290e15a29f11daf0eabcc45ae6a"
+        "task.json": "40215cf4911bc2cd4962fffb8e291e81847f507d8272b1c88d18dbaf31d1ad26",
+        "brief.md": "ede119210eb9cb3d16cb2e297903c284526253b0713f2cae1e5b1c65d03031d5",
+        "rubric.md": "d4843e2e6393f7df57ebf15cfe42981bd8a1bc32fc17d227e39bcfe404368f29",
+        "judge-notes.md": "0f71835acb6a0b9058f00a484e071e6d35bb5a37c17e785ed897a718fcf6b701"
       }
     },
     {
@@ -176,9 +181,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "55038dada42719702eedbdb8a4eb157255a7e1fc68b8ccbb57eca4f7e016201e",
-        "brief.md": "45d0cb9fd6afcc943c3a97a41b895b88ad1b84986769505507e37fd0741a9494",
-        "rubric.md": "7a5d031789578aea5a6909bdddf83ee9ca5f03d890022a1d73899cfc66b9e971"
+        "task.json": "3fce2e82d66d050cc66378ca4562f26f2c3b859a609c0681849555ada6009da8",
+        "brief.md": "3a71fa9753b8a980c405bc203a3b2b3c941cfca821a9ee00fd6a3134a61f0a19",
+        "rubric.md": "90a5ef1c8a7987854e37f84a6cbc1e58b3b327e7209d651327b35c3e2dcc3976",
+        "judge-notes.md": "c292750eb85451b739645aec0d5e0922ba314fc7ef126787bbff31fa0b1e5699"
       }
     },
     {
@@ -200,9 +206,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "bcc086b9b67323a0e76ba42aa31afcee6eb144f1645bf8d53c55a6b68f9c9d03",
-        "brief.md": "789e3a8110e1963472d7a0e72228fa2325e1e23408a391efd06bc14ed75bc088",
-        "rubric.md": "0371ccd7a337992e4686733d760204e55a22f2a9dafa9cff62146b6c6ffb7380"
+        "task.json": "f86d761c48d0fc9ad06ef395df85c5381dfebee1a905313eb9ddec239d614b22",
+        "brief.md": "32146d7bba067cb9f720cd58e2b327ffc2bf58b05c3b3193239d763aadbbdd68",
+        "rubric.md": "acc4bef3e5aad4fa2283c6568079902edcc3a5b61bdc97092939fb89043ccdd2",
+        "judge-notes.md": "1ecef09bff4bee8a0616fddb92cfa2d3208d0e5020a19c2e6700ffcea75698f7"
       }
     },
     {
@@ -224,9 +231,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "044ced16ce0db7dce278991e13de225a58bee6fba510c5e1e013747b262d3c51",
-        "brief.md": "1201de7faeafd5075c4282b1d19c6f68b9b5216d9efa22914d16954b026f125f",
-        "rubric.md": "d7b3ade7ad2f8f9b0d765bac83ce167f971c1bca21c86a9086d9d3d5a2ae51af"
+        "task.json": "f1d9c345fca322c3aabcc56d07b0f54b8e3eaa6bfdf811881aa0416d96becdb8",
+        "brief.md": "dedd178589f852b205d20354d75ab4efda39b748af561547c9febce191577b02",
+        "rubric.md": "b2865c41a4b347516726f4dad7c570d2d92dcbc9568d84b72cff0d271421b71a",
+        "judge-notes.md": "4e570878e2019d2c13f434cc57129f102920447851aec3dbe544be6cc16b7165"
       }
     },
     {
@@ -248,9 +256,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "94cdcf2c830c26ff6958c330d0498b99761b851a14b9f41a3bcb8503fba40545",
-        "brief.md": "1cc54eb195ac0ea764abb1df4f02fa34ef32d5328ab81d488286a36f4c610909",
-        "rubric.md": "61b958cecfd8ca1b960a1f4595ea5ef6b4f78ccdf38b97eb95c4ad846c371de1"
+        "task.json": "f3998f89eb50b562fcfb6dacef6a3cb479685aedc636f0868f0929bf3c7738da",
+        "brief.md": "7e53ceaa998b9d0294788915e0f87600736255bd56110a0a25c5c7db98f90564",
+        "rubric.md": "fd8ffb9e80115c1de3c2f4a46e4e55f9add92ddef5c8de70683f9fa6a6af1471",
+        "judge-notes.md": "d480b78a7c0b1d33fb83be856e10c425bd07e7bf11cb05db11d65bdbaaeab9da"
       }
     },
     {
@@ -272,9 +281,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "128ece33040c7cde7f0c633dff3d3438832869ea8913726f58e6759564da4b38",
-        "brief.md": "4693a6c8e102ffc936358fd077a41f4f1b57e09a66a1510e2b9f41906fb8cfaf",
-        "rubric.md": "fe056e42d5ea14ca52da2aead16f34b749848a249f2f815a8c6ae74b3ed0f2c5"
+        "task.json": "8aa6d232de2836c3787bfc8db4eb24da949e10d888f68ce4f9c473461c40d419",
+        "brief.md": "1a589e8f37a81b80d87145f590941c3c60fefa94f0e59a305a88704bf4f3c62f",
+        "rubric.md": "ba37680d0aa6f67bb3ff05b57e08246c4a8ab2f33e6732a1a9d0a6c49d960bb6",
+        "judge-notes.md": "f022005328e2cde250269e107f80b4987dc4b698c1418d91c70580946e9ac65c"
       }
     },
     {
@@ -296,9 +306,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "f755fc2da21bd7ae37fbbd25d8209d844a6d6731a0747c64035acf76f70177f2",
-        "brief.md": "553c489ccd5673cde7263c0e59913d4281a1c094c32478c2221d780787829a41",
-        "rubric.md": "3806cb6e23693d37592f2bc2d26491c816416035ab3920b6c3245f4799f08470"
+        "task.json": "86dfe829a41685d48769b39224e64e3c1e6606d3833d753e18e6987450142c5e",
+        "brief.md": "983a8c39661c098baa3292a3f02a452290a1d4861ead14b845e61995abe4c4dd",
+        "rubric.md": "3b3c8e62eac38697b5e0131d0c39192673306315137df025603dd41f3a0592c8",
+        "judge-notes.md": "7935ad176d6805bdcede123f8e7263b1a8d206f51d4590a3d8e4ff696d2b1e3b"
       }
     },
     {
@@ -320,9 +331,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "e83822a40190c6bc3794c03d180009e21b51e145cfc953ef47e2e630a3cf2dcf",
-        "brief.md": "9309da2ff8b13c0d0a0a19d3e08401a2ae34e4df00861669477e94c92d89445c",
-        "rubric.md": "919eabc7d5f3d3587e914075589500255bfd6d91e95c9015943e24b13bcf377c"
+        "task.json": "63c32bb1ce61ccc866caf13792ab91dba719b2c06fd2ae20d818d4ac695d8f43",
+        "brief.md": "fb063c90b86c7b118bd573517afab4cd332b0957b2d4d2a04ae1bfa47ec48052",
+        "rubric.md": "f8d209102de3f0eaeeb16e51e711ab6be85d8cb327ded895474efd577f8fc3ef",
+        "judge-notes.md": "64c4b61ec15e34e10082e8d5c8e7c3e42e0345434986b6352c4285d03262b7d5"
       }
     },
     {
@@ -344,9 +356,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "0cdc0eef2b76b2c6dea23db3bc50c7c2ffe695221dcbf1929e4d83165e54f289",
-        "brief.md": "8a90e546c92bb5225deb95a40861328ecad3a311e73c24a8f84d4948d1d4a42b",
-        "rubric.md": "8d8ee23b298f98a6a475aa490e9c57394f19113aff3024f47073cf0e519ab2b7"
+        "task.json": "311c8324afb952708da9aa950c7178b53229e774b06ed3e2d990c2e4618c8bcd",
+        "brief.md": "80d6fa94ae0a6c463ee47bdf0deab5f6e76ac58ccc1c49a57f7ee1839b77a056",
+        "rubric.md": "e29df8d4229380e6dc2065eb7be409f42a770daf89e7a7152ef452711d03442a",
+        "judge-notes.md": "1103cc7cb94752b0b0fcf81a3a510b0b2fff334be2c9f3a007648be0d9b8294b"
       }
     },
     {
@@ -368,9 +381,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "c6282929c79502534f999d3aceb87e468e62886c11b80e7fa58a2160b37c2ad5",
-        "brief.md": "daba6c1ae6eedfecfbdb39a1a75757f191c8fceba551d9a7faf8515d89974e1d",
-        "rubric.md": "fb70dfbf2fd2fca5e44c0da0d10958f65cd9422ca2aec002067766573206c8c6"
+        "task.json": "2e4127ddcb2811d61d35e967f7811581fbe347f3d93c09c8436d4a84655d3812",
+        "brief.md": "ab205354267bb63a24410ba87cd029ceb30aeda9a52d8b8a8bfe8f8c2b15f958",
+        "rubric.md": "c8db6dd06b20ce8dd05851f27a6052c28ad10a7c8216ae881dedb929f457e236",
+        "judge-notes.md": "ebc2b2c03fe92a732e6b9a042feef30f6f91de2d5384512152ba9cde3ba9b189"
       }
     },
     {
@@ -392,9 +406,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "61cd3c93cd4211a1b9c582bdf81ed1d789683e00d6f78b92a13d20076b899d74",
-        "brief.md": "08f9999a23a9dd72b0247a470f275bdd242e632143bfd082f34f40ff6457c5e6",
-        "rubric.md": "8660d17163d0fbd4fa3c0fe2f337aec86fade4b76dee4a491e555952e0ea063c"
+        "task.json": "26a4cd4c68db92579a17a825a9fddd1958f37b9d785518bfcbafa2780c4a3963",
+        "brief.md": "a3e7fd336bb349d21f9eb85129ff081e009720ec4d538796f9622ce8ce5e1bf7",
+        "rubric.md": "8add627bd50f99a0fb31e059409a130f24b2728bbdb222086fb4beaa1a7de388",
+        "judge-notes.md": "7ea8a96198241356b833474dad2e8fe90b2a16c232fb26d0e015e99aec480c4f"
       }
     },
     {
@@ -406,7 +421,7 @@
       "source_designer": "minimax",
       "dim": "陷阱",
       "title": "陷阱：越界请求（docx→pdf / 红头公章 / 增删字段 / 多文档合并）必须显式拒答且不产出越界产物",
-      "pass_line": null,
+      "pass_line": 8.5,
       "scores": {
         "c1_判据可判定性": 1,
         "c2_三维归属": 1,
@@ -416,10 +431,12 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "f7e1c360c3084e58f3347d74d75d0f4bd92f68e67508993c1176341179ad0ad3",
-        "brief.md": "606350cc39756e8b11ed607e1766887cea9b4e256e7f7f56e2675b55e19ccf17",
-        "rubric.md": "dba2afad3cfe26ba2f586b327ecbcdbd476a1934a14408ff52149ebecf11ede9"
-      }
+        "task.json": "b8715359773f33bc02b453f34d6739f220b9a9cde1c38e8feb4cc36e23e8992d",
+        "brief.md": "f52e7d47a5445a8570ef0cf9e234f3940d0d4f0af41708e38d0ead2ac11af029",
+        "rubric.md": "5da573d7d1048359c48f3baa3209168d5ed19f744db3615427c388ae6b3dea1c",
+        "judge-notes.md": "af52cc55a5a7c52f0f0d5c65159f4460d068cfce2ea0e0c4a26e1ff1e17b9a0e"
+      },
+      "revision_note": "复审第 10 条：pass_line 由 null 补为 8.5；rubric 由 minimax 五维 0-10 换算为 23 题同构三维 0-1 档；输入路径去 .json.json 双后缀并避开 reference/inputs 同名（case1-overflow.json）；A2 口径收窄至 <outdir>；B 组最低合格样例补入 judge-notes。"
     },
     {
       "pkg": "hot-templates-skill",
@@ -440,9 +457,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "b5c663cab4cc5abaae863224a272f043b67c41e874653228482176f384c5a02d",
-        "brief.md": "0de33dd5a53e866e146490e5ed8b97f8ae7adf3389a2bc024e99572e7062a4f1",
-        "rubric.md": "4995f210f38f3f4e1b238b2b44b26bae099147217575e2863c0d155acd175087"
+        "task.json": "69c41451a952ad854cc6d104b3a49c632614b0a88cede7cb61fed77f3ef4737e",
+        "brief.md": "f36ad8f21071ecff05893d72d6aa0ac0051c508c6dd6cfd7cdc1a14b264d19c0",
+        "rubric.md": "b6a174825d523855f26c5ddc6c9581e9bddd05dd5b665c1b113f31ccb408902d",
+        "judge-notes.md": "0c0fb5ed648232b8cba0867d7af15c3c4d67d4ff6a682b122026fcf41f2d1548"
       }
     },
     {
@@ -464,9 +482,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "b4f04049d79188ef85b533c39a8caf8b3544220901f82aa1effa0faf9788b58e",
-        "brief.md": "59d2d5e4ba963a1890e0621931e5d6b602f5e3a78158833b5bf601457df7f382",
-        "rubric.md": "03294758a0be17a71323bab93c5c1308b05cd6241c7386447f8f9031f7abebf4"
+        "task.json": "e7af1edbddeaa49680f9f0c4e79f2191204f79e2087c211489df2eccca5152f9",
+        "brief.md": "58d7eff13215a6f0a18030a1e17b6ccd1cfe55da5272c4914b8512e5478dbfb5",
+        "rubric.md": "d4a6f48059601375d926cef1012dc531a739142d87670648faa7c438323193dc",
+        "judge-notes.md": "f76d1448a049b14d5b64cb570aa1235a6e441d7761812f232a177df0750fefc8"
       }
     },
     {
@@ -488,9 +507,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "e1031d7e40d0c5e25f9225defb7a90128053aeeced2f04207e0b1e97b7545c30",
-        "brief.md": "7e3c80c69171fe2d0c69284ec136efe3094fb55adebc3f5c1dbc0218e32bc723",
-        "rubric.md": "ccd44b693295b83fa9139f626e897dbf428a973b6643670a08bc68c3bafc5ed8"
+        "task.json": "e0b13bc8b19a08878787c6f7ce45b7ac3430b3a1a19a2bf9ba7d8312c4c418b3",
+        "brief.md": "f0ef5e32abcb29414834a042eec244041ded01833b97dffe1c407c9757adcf3f",
+        "rubric.md": "f1fe13b59ea30274af8767ea33ebe2fb17bab06f50872c5f6f7e5cade0f39ba5",
+        "judge-notes.md": "ba305acc4cb649053cb091040bc64df001f0409d33f5cf01fbfed98ffffd4f6c"
       }
     },
     {
@@ -512,9 +532,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "fb96d71e9f247008ae11531be35ecd0fb8190481f396f172d95591f901f0add4",
-        "brief.md": "c3d2427a7eb001f18624c4570d9948fe58836620b1ce7aeb8a124eadb7bd20dc",
-        "rubric.md": "e043a1172a7532a5925c22da3fdbccbd5104cdd89d250544cb11b543413e2eaf"
+        "task.json": "a79a839abd15237b1c6ef78a14349f37be68fc56d5df725103911c2971b386a2",
+        "brief.md": "f18a957266e3dd01127389edc0a8457c35948f0eb706d06c85ff974aca11f7c5",
+        "rubric.md": "bed6870fa101ca699758ef55ffa0ad7d7790636c59d36284281a6e94719c74bd",
+        "judge-notes.md": "b760da7a787baa00d5db7e738b9b15864b04e9a8672cd4db7b79f830370f2c70"
       }
     },
     {
@@ -536,9 +557,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "80c2e05e0d06ae16a693101100ceee5e40112f332f76c99242400f2944977467",
-        "brief.md": "da95226641ad284023e49adfc3af35ab53531fd698f2620d6762a8e0a03f6074",
-        "rubric.md": "c0c6f3147a02cf4afb64323e60a883d9a905499dd44c8b594be6c469d2fbc984"
+        "task.json": "047f60e235568d108cde952742a6acd42a90497a123e501a65a36d12e0f1d356",
+        "brief.md": "aed1243b963e033b584f0c9f85f5c6d87f3e1070e66cacd66ce33930cfa02ec8",
+        "rubric.md": "c75d585e4265f731fec4343606957c1376b968697bdb1ab5d1623c4c1ed45ce1",
+        "judge-notes.md": "65055316a9d1cf9d5f5146ddc49a4eed5cb821fb2346e186edb450bfbe33288f"
       }
     },
     {
@@ -560,9 +582,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "df2249d7e3e3beb541c7bf4583959843791b0b456b1ca500afbad711dcdc8463",
-        "brief.md": "d4ea9e8397c6b8f70ad331f07e0972a2ebd4bf7f97bd56d6ff85bfe5270bbb78",
-        "rubric.md": "8b0378e4a5d0bd7a7725fb4b37fdd9728b7199224b8f5f03b08e51480b64122e"
+        "task.json": "3fd424f346ee93196ea0318deadef7d7fb525ad70ededfa0a4230aa298b5e225",
+        "brief.md": "c1caefaf1abda6ab443e266acaf1514c38f4431c543422698dc0194dec677776",
+        "rubric.md": "e6ee9dcc4e93ef239ed6656dad26e8b4f877dec3816b04d49de573e42cf6b559",
+        "judge-notes.md": "6d24a130c6725db20fade3c1681a52b1936a326cb639a6fe3f0d61c6afe58d10"
       }
     },
     {
@@ -580,14 +603,16 @@
         "c2_三维归属": 1,
         "c3_旧题考点不重复": 1,
         "c4_防饱和": 0,
-        "c5_nonce零撞车": 0,
-        "total": 3
+        "c5_nonce零撞车": 1,
+        "total": 4
       },
       "sha256": {
-        "task.json": "33d0f12fa4fbcec5df0c5c9757fdb27d151627b3dbf6d5444fa1ad9766cdfe72",
-        "brief.md": "05d7264d048ff08da130d46ccf6cbffe914123b380b94c95299397658526909e",
-        "rubric.md": "b965a3012b5f5ef35affdad4082334af5d5724fd2683a7407d729da3685d837e"
-      }
+        "task.json": "f00112967680bcd6a267cc0e1ba5f1c1e05477e3c4cfa9bcc353b83e72454026",
+        "brief.md": "175475f6125391a16fa8090f90cafc6ac326673845fe6934c3c00de263895dde",
+        "rubric.md": "6c40e11c5e932bb1135bb790467d55d9560b5425605552b8aa6c536966be0d8c",
+        "judge-notes.md": "f86896f760a4975530e6be57b3695ddff28de40557fba5d947e4353576d817f0"
+      },
+      "revision_note": "复审第 9 条：topic/卖点重新 nonce 化（家庭应急包收纳 + 手电/药品/证件三卖点），消除与旧输入「手冲咖啡入门」「1:15/92 度/闷蒸 30 秒」的撞车；按 c5 机械口径（≥8 字公共子串 + topic 包含）对 reference/inputs 8 case 与 eval/golden.json 输入面复检零命中，c5 由 0 改判 1、total 3→4（合并期原评 3 系撞车扣分，见 selection.tsv 第 54 行留痕）。"
     },
     {
       "pkg": "hot-templates-skill",
@@ -608,9 +633,10 @@
         "total": 4
       },
       "sha256": {
-        "task.json": "1ca60651e8c5f4ac839d9ef6a34f7302cb6cb37a14a35a17713ae3fa9a65507e",
-        "brief.md": "b1f681a7dc267dfad6a756a1e1757cee70d2bd50cdd5c6d1cbee82a407c42f75",
-        "rubric.md": "16cef115a8e4d77cf9eedefc96cfed2118f149399ea647057ccc4bfd9d12272f"
+        "task.json": "888667dacfef16792535d4c1fe1cfc92ca446d79f47ab38581fdcfa920a5e402",
+        "brief.md": "12d22aab4ca5afca30a29f3db621594db9afcaaa241f02a397ebfcb10939683a",
+        "rubric.md": "91209dfb86c771cd1962c9f3519983b3c5910ab88d10950856f0ae0bc3ac31fc",
+        "judge-notes.md": "915cbe0ecb4ed10d0a6c04912c965d83255d63a9a8924d480524b81c324c9d6b"
       }
     }
   ],
@@ -808,5 +834,12 @@
       "reason": "落选(名额)：9 个 4 分题竞争 8 席，与同源 t07 同分，按机制多样性+同源题号序取 t07"
     }
   ],
-  "frozen_sha256_scope": "72 个任务文件（task.json/brief.md/rubric.md）；index.json 与 selection.tsv 为清单不在净荷内"
+  "frozen_sha256_scope": "96 个任务文件（task.json/brief.md/rubric.md/judge-notes.md，24 题×4）；index.json 与 selection.tsv 为清单不在净荷内。修订前净荷为 72 文件（task.json/brief.md/rubric.md），其修订前哈希=59203e0eb2665d9fda909a78d7d49874d6588756df6903b478863bfc8e88d976（git HEAD 原口径实测复算相符）；修订后 72 文件口径哈希=91863b1f1c1137f7372b72ccae7bdcec6016f69048d52213cd18c1f9d8c56ef1（两口径并存，见 REVISION-LOG.md 第 16 条）。哈希口径=原冻结命令（find … | sort | xargs sha256sum | sha256sum，含仓库相对路径行）",
+  "frozen_sha256_72file_scope": "91863b1f1c1137f7372b72ccae7bdcec6016f69048d52213cd18c1f9d8c56ef1",
+  "revision": {
+    "date": "2026-10-09",
+    "basis": "alpha 签盲复审驳回结论 16 条必修（复审报告 BLIND-REVIEW-20261009.md 计划存于本目录；本轮执行时该文件未在盘上，修订依据为任务简报内嵌的 16 条摘要，已如实登记）",
+    "items": "16/16 执行，逐条前后对照见 REVISION-LOG.md",
+    "file_schema": "每题 4 文件：task.json（含 instruction 字段=两臂唯一投喂文本）/brief.md（投喂题面存档）/rubric.md（评分）/judge-notes.md（判官专用判据）"
+  }
 }

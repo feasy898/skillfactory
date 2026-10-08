@@ -1,14 +1,21 @@
 # ht-t01 rubric（0–10 加权分，通过线 8.0）
 
-加权分 = Σ(维度分 × 权重) / Σ权重。通过 = 加权分 ≥ 8.0。
+加权分 = Σ(维度分 × 权重) / Σ权重，维度分 0–1，四舍五入到 1 位小数。通过 = 加权分 ≥ 8.0。
 
 | 维度 | 权重 | 满分档 | 中档 | 零分档 |
 |---|---|---|---|---|
-| 正确性（结构+填充） | 0.4 | 5 要素齐且序正；三抓手=3 卖点原文行格式逐字；filled 语义（4×topic+3×point#=7） | 1 处错 0.5 | 要素缺失/顺序错/卖点被改写 |
-| 完整性（产物与统计） | 0.3 | 两产物齐非空；占位 10 处重计一致；骨架.md 统计节同源；无 {{}} 残留 | 统计错 1 处 0.5 | 文件缺失 |
-| 可验证性（OK 行与台账式自洽） | 0.3 | OK 行精确（elements=5 open_placeholders=10 filled_from_input=7）；points_used=3 原文、points_unused=[]；golden_ending 含「共勉。」 | OK 行数值错 1 个 0.5 | stdout 无 OK 行 |
+| 正确性（结构+填充） | 0.4 | 5 要素齐且序正；三抓手=3 卖点原文行格式逐字；filled 语义（4×topic+3×point#=7） | 1 处错 0.4 | 要素缺失/顺序错/卖点被改写 |
+| 完整性（产物与统计） | 0.3 | 两产物齐非空；structure.json elements[].text 占位合计=10（复审第 6 条口径）且 stats 一致；骨架.md 统计节同源；无 {{}} 残留 | 统计错 1 处 0.3 | 文件缺失 |
+| 可验证性（端态自洽，复审第 14 条） | 0.3 | structure.json 端态值全对：element_count=5、placeholder_stats={total_open:10, total_filled_from_input:7}、points_used=3 条原文、points_unused=[]；骨架.md 统计节与 structure 同源 | 端态数值错 1 处 0.3 | 产物缺失或统计互相矛盾 |
+
+**算术自检（复审第 4 条）**：正确性错 1 处主考点 → 0.4×0.4+0.3+0.3=0.76 → **7.6 < 8.0** 必挂（修订前 0.5 档时恰 8.0 过线，已收紧）；统计/端态错 1 处 → 0.4+0.09+0.3=0.79 → **7.9** 必挂。
+
+## 判官执行
+
+判据与端态期望值见 `judge-notes.md`。stdout OK 行不作判分项（复审第 14 条）。
 
 ## design_note（防饱和依据）
 
-- 与旧题差异：旧 ab-003（wx 零卖点）考占位与 [null,null,null]；本题考**满配**下 wx 特有的「topic 记 4 次」语义与 thesis_how 三行格式——旧集 4 平台能力题（ab-001~004）各平台只考了一种卖点形态，wx 满配、video 满配均为空白。
-- 裸模型高发失分：thesis_how 三行误把卖点写进【占位】或漏「——」连接符；filled_from_input 只记 point# 不记 4 次 topic（total=3 而非 7）；OK 行数值与实产不符。
+- 与旧题差异：旧 ab-003（wx 零卖点）考占位与 [null,null,null]；本题考**满配**下 wx 特有的「topic 记 4 次」语义与 thesis_how 三行格式——旧集 4 平台能力题各平台只考了一种卖点形态，wx 满配、video 满配均为空白。
+- 裸模型高发失分：thesis_how 三行误把卖点写进【占位】或漏「——」连接符；filled_from_input 只记 point# 不记 4 次 topic（total=3 而非 7）；占位计数口径错。
+- 修订说明：可验证性原为「OK 行精确」过程判分，按复审第 14 条改端态断言（数值等价物不变：10/7 落在 placeholder_stats）；占位重计口径按复审第 6 条限定 structure.json elements[].text。

@@ -5,17 +5,34 @@
   "dim": "边界",
   "title": "points 四形态等价：内联串/无 BOM 文件/BOM 文件/包装对象——四产物逐字节一致",
   "pass_line": 8.0,
-  "design_note": "边界题（输入多义/多形态）：SKILL 输入格式表定义 --points 可为文件路径（utf-8-sig 容忍 BOM）或内联 JSON 串，且对象形态须含 points 键——四种合法形态旧集只考过单形态（ab 系列 input 全为 reference 文件）。本题要求同参数跑 4 次到 4 目录，判定四产物两两逐字节一致（md5 相等）+ points_input_count=3。『多形态同一性』是引擎层口径的边界考题：任何一次形态处理不一致（BOM 未剥、包装对象漏解、内联串转义错）即立现。通过线 8.0。",
+  "design_note": "边界题（输入多义/多形态）：SKILL 输入格式表定义卖点输入可为文件路径（utf-8-sig 容忍 BOM）或内联 JSON 串，且对象形态须含 points 键——四种合法形态旧集只考过单形态（ab 系列 input 全为 reference 文件）。本题要求同参数跑 4 次到 4 目录，判定四产物两两逐字节一致（md5 相等）+ points_input_count=3。『多形态同一性』是引擎层口径的边界考题：任何一次形态处理不一致（BOM 未剥、包装对象漏解、内联串转义错）即立现。通过线 8.0；修订后算术（复审第 4 条收紧）：1 种形态失败（正确性 0.4 档）→ 0.16+0.6=0.76 → 7.6 必挂（修订前 0.5 档时恰 8.0 过线）；任一对 md5 不相等（完整性 0 档，同一性全有全无）→ 0.4+0+0.3=0.70 → 7.0 必挂（修订前 0.5 档时 0.85→8.5 过线，不达复审第 4 条，已收紧）。",
+  "instruction": "帮我做一次生成输入形态的验证：platform=`xhs`、topic=`阳台种菜入门`、同一份卖点（`[\"泡沫箱打孔防涝\", \"蛋壳补钙碾碎拌土\", \"北侧种耐阴生菜\"]`）以四种合法输入形态各生成一次，分别输出到 `<outdir>/A-inline/`、`<outdir>/B-plain/`、`<outdir>/C-bom/`、`<outdir>/D-wrapped/`：\n\n- A：卖点以内联 JSON 串形态直接给出；\n- B：存成 `points_plain.json`（UTF-8 无 BOM，内容=该数组）后以文件形态给出；\n- C：存成 `points_bom.json`（UTF-8 **带 BOM**，内容同 B）后以文件形态给出；\n- D：存成 `points_wrapped.json`（内容=`{\"points\": [同数组]}`）后以文件形态给出。\n\n三个 JSON 文件由你自备（保存到工作目录）。四次生成都要成功出产物（各含 `骨架.md` + `structure.json`）。\n",
   "input": {
     "kind": "four_invocations",
     "platform": "xhs",
     "topic": "阳台种菜入门",
-    "points_literal": ["泡沫箱打孔防涝", "蛋壳补钙碾碎拌土", "北侧种耐阴生菜"],
+    "points_literal": [
+      "泡沫箱打孔防涝",
+      "蛋壳补钙碾碎拌土",
+      "北侧种耐阴生菜"
+    ],
     "forms": [
-      { "name": "A-inline", "points_arg": "'[\"泡沫箱打孔防涝\", \"蛋壳补钙碾碎拌土\", \"北侧种耐阴生菜\"]'（内联 JSON 串）" },
-      { "name": "B-plain-file", "points_arg": "points_plain.json（UTF-8 无 BOM，内容为同一 JSON 数组）" },
-      { "name": "C-bom-file", "points_arg": "points_bom.json（UTF-8 with BOM，内容同 B；用 utf-8-sig 可读）" },
-      { "name": "D-wrapped-file", "points_arg": "points_wrapped.json（UTF-8 无 BOM，内容为 {\"points\": [同数组]}）" }
+      {
+        "name": "A-inline",
+        "points_arg": "'[\"泡沫箱打孔防涝\", \"蛋壳补钙碾碎拌土\", \"北侧种耐阴生菜\"]'（内联 JSON 串）"
+      },
+      {
+        "name": "B-plain-file",
+        "points_arg": "points_plain.json（UTF-8 无 BOM，内容为同一 JSON 数组）"
+      },
+      {
+        "name": "C-bom-file",
+        "points_arg": "points_bom.json（UTF-8 with BOM，内容同 B；用 utf-8-sig 可读）"
+      },
+      {
+        "name": "D-wrapped-file",
+        "points_arg": "points_wrapped.json（UTF-8 无 BOM，内容为 {\"points\": [同数组]}）"
+      }
     ],
     "outdir_convention": "四次分别输出到 <outdir>/A-inline/、<outdir>/B-plain/、<outdir>/C-bom/、<outdir>/D-wrapped/"
   }
