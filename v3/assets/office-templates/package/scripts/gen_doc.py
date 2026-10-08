@@ -14,7 +14,9 @@
 
 退出码：0 成功（含必填缺失等数据边界）；2 非法输入（模板名非法 / 数据文件不存在 /
 JSON 解析失败 / JSON 顶层非对象），此时不产生产物、不建产物目录。
-确定性：正文无当前时间、无随机源；同输入连跑两次产物语义逐字节一致（D1）。
+确定性：正文无当前时间、无随机源；同输入连跑两次 `fields.json` 与 `文书.docx` 均
+整文件逐字节一致（D1 下限之上再增强：docx zip 容器条目时间戳归一化为固定值，
+消除 python-docx 写包时的墙钟时间源）。
 """
 
 from __future__ import annotations
@@ -22,6 +24,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import zipfile
 from pathlib import Path
 
 from docx import Document
@@ -52,6 +55,11 @@ LINE_SPACING = Pt(28)                      # V4 固定行距（w:line=560, exact
 SIGN_RIGHT_INDENT = Pt(32)                 # V5 落款右缩进两字（≈32pt）
 
 CN_NUMS = ("一", "二", "三", "四", "五", "六", "七", "八", "九", "十")
+
+# D1+ zip 容器归一化：docx 全部条目时间戳固定为此值（DOS 时间戳下限）。
+# python-docx 保存时按墙钟写各条目时间戳（2 秒粒度），是产物中唯一不可复现源
+# （实测两遍 docx 仅时间戳字节不同，17 个条目内容/顺序/压缩方式逐字节全同）。
+ZIP_FIXED_DATE = (1980, 1, 1, 0, 0, 0)
 
 # spec §3.3 字段表：template -> [(name, required, kind), ...]（顺序冻结）
 FIELDS_SPEC = {
@@ -310,6 +318,36 @@ def build_doc(template: str, title: str, values: dict) -> Document:
     return doc
 
 
+# ---------------------------------------------------------------- D1+ zip 容器归一化
+
+def canonicalize_docx_zip(path: Path) -> bool:
+    """把 docx（zip 容器）全部条目的时间戳归一化为 ZIP_FIXED_DATE，使 `文书.docx`
+    整文件逐字节可复现（同输入连跑两次 sha256 相同）。条目名、顺序、压缩方式、
+    权限位、内容字节一律保持原样，只改各条目本地文件头/中央目录的时间戳字段；
+    重写经同目录临时文件原子替换。失败时保留原文件退回 D1 语义确定性下限
+    （此时仅失去字节级一致，不影响退出码与产物有效性）。"""
+    tmp = path.with_name(path.name + ".canon.tmp")
+    try:
+        with zipfile.ZipFile(path) as zin:
+            items = [(info, zin.read(info.filename)) for info in zin.infolist()]
+        with zipfile.ZipFile(tmp, "w") as zout:
+            for info, data in items:
+                zi = zipfile.ZipInfo(info.filename, date_time=ZIP_FIXED_DATE)
+                zi.compress_type = info.compress_type
+                zi.external_attr = info.external_attr
+                zi.internal_attr = info.internal_attr
+                zi.create_system = info.create_system
+                zout.writestr(zi, data)
+        tmp.replace(path)
+        return True
+    except OSError:
+        try:
+            tmp.unlink()
+        except OSError:
+            pass
+        return False
+
+
 # ---------------------------------------------------------------- CLI（C1–C3）
 
 def fail(msg: str) -> int:
@@ -360,6 +398,7 @@ def main(argv=None) -> int:
     try:
         outdir.mkdir(parents=True, exist_ok=True)
         doc.save(str(docx_path))
+        canonicalize_docx_zip(docx_path)   # D1+：消除 zip 墙钟时间戳，整文件逐字节可复现
         fields_path.write_text(
             json.dumps(meta, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     except OSError as e:

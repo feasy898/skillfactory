@@ -106,7 +106,7 @@
     "unknown_keys": []
   },
   "outputs": {
-    "docx": "package\\out\\会议通知\\case1\\文书.docx",
-    "fields_json": "package\\out\\会议通知\\case1\\fields.json"
+    "docx": "package/out/会议通知/case1/文书.docx",
+    "fields_json": "package/out/会议通知/case1/fields.json"
   }
 }

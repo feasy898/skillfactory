@@ -87,7 +87,7 @@
     "unknown_keys": []
   },
   "outputs": {
-    "docx": "package\\out\\请示函\\case2\\文书.docx",
-    "fields_json": "package\\out\\请示函\\case2\\fields.json"
+    "docx": "package/out/请示函/case2/文书.docx",
+    "fields_json": "package/out/请示函/case2/fields.json"
   }
 }
