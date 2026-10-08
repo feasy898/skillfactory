@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-005-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 151488,
+  "started_at_ms": 1791440873433,
+  "session_id": "sess_923bac37-952a-41c0-839c-2966a370d6ca",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-005-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 620156,
+      "ot": 9295,
+      "dur": 145027,
+      "n": 16
+    }
+  ],
+  "input_tokens": 620156,
+  "output_tokens": 9295,
+  "stdout_bytes": 2675,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "exit 0、stdout 各打印一行 OK 摘要（`elements=6 open_placeholders=6 filled_from_input=4`，符合 frozen-tokens.md 中 dy 满 3 卖点的冻结口径）。逐字节比对：`骨架.md` 与 `structure.json` 的 `cmp` 退出码均为 0，sha256 两两相等（2040 / 4038 字节）。\\n\\n**② 失败路径（PASS ×2）**：\\n- 非法 `platform=bilibili`：exit 2，stderr 为 argparse 英文报错 `invalid choice: 'bilibili' (choose from 'dy', 'video', 'wx', 'xhs')`（SKILL.md 明示此形态属预期），`out/invalid-platform` 未被创建。\\n- 空白 topic（`'   '`）：exit 2，stderr 为 `[gen.py] 错误：--topic 不能为空`（strip 后为空触发 fail()，发生在建目录之前），`out/empty-topic` 未被创建。\\n\\n## 交付物（均在 treatment 工作目录）\\n\\n| 路径 | 内容 |\\n|---|---|\\n| `run_log.json` | 全部 4 次生成调用记录：输入参数、命令、退出码、stdout/stderr 摘要与原始行、输出目录是否创建、产物清单（字节数+sha256）、期望与判定，外加 determinism_check 比对区块 |\\n| `out/run1/`、`out/run2/` | 验收①的两份产物（`骨架.md` + `structure.json`） |\\n| `records/run1–run4.{stdout,stderr}` | 4 次调用的原始 stdout/stderr 捕获 |\\n\\n生成引擎为本目录技能包的 `.zcode/skills/hot-templates/scripts/gen.py`（其 sha256 `ec0ffe6a…` 也登记在 run_log.json 中以便追溯）。附注：本组产物 sha256 与同任务 rep1 留档值完全相同，说明引擎跨进程复跑同样逐字节稳定，与“无时间戳、无随机数”的设计声明一致。验收未要求常规骨架交付目录，产物按上述工程记录形态留存。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 16,\n    \"inputTokens\": 620156,\n    \"outputTokens\": 9295,\n    \"totalTokens\": 629451,\n    \"cacheReadTokens\": 583232,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 5333,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 629451,\n    \"contextUsed\": 52790,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

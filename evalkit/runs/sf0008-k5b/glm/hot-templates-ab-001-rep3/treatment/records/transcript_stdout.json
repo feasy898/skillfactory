@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_80fdd859-5a9c-43c5-981e-ee632716f598",
+  "traceId": "34dbfbd7-e007-48f8-8dc7-776fd7119593",
+  "turnId": "turn_576ad898-f8ed-4406-9c5c-30048b0e07c6",
+  "response": "Task complete. The Douyin spoken-script viral content skeleton was generated via the hot-templates skill's deterministic engine (`scripts/gen.py`), and both deliverables are in place.\n\n**Deliverables** (in `out/`):\n- `out/骨架.md` (2.1 KB, human-readable) — first line `# 抖音口播稿 · 爆款骨架`, meta info, one section per element with 写法要点, and the 占位符统计 tail section.\n- `out/structure.json` (4.2 KB, machine-readable) — all 11 top-level keys, `template_version \"1.0\"`, `platform dy`, `structure_name` = the frozen template 3秒钩子 + 痛点 + 价值点×3 + CTA.\n\n**Input binding**: topic 通勤时间管理 filled the hook (`filled_from_input: topic`); the exactly-3 points went verbatim into `value_1..3` (each opening with 第一/二/三招：), so `points_used` has no nulls, `points_input_count=3`, `points_unused=[]`.\n\n**Verification**:\n- Engine exit 0 with the expected OK line: `elements=6 open_placeholders=6 filled_from_input=4` (6 open placeholders is the reference value for dy with a full 3 points; 4 filled = 1 topic + 3 points).\n- Element ids in frozen order: `hook_3s, pain_point, value_1, value_2, value_3, cta`; frozen markers intact (hook 「别划走！还在为「通勤时间管理」反复内耗的人」, CTA 「点赞收藏，评论区扣「1」」).\n- All `【占位:…】` open slots left unfilled as designed — nothing fabricated; zero `{{ }}` template-variable residue.\n- Re-ran the same command and sha256-verified both files are byte-identical (deterministic output confirmed).",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 8,
+    "inputTokens": 199545,
+    "outputTokens": 2573,
+    "totalTokens": 202118,
+    "cacheReadTokens": 186944,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 1933,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 202118,
+    "contextUsed": 28563,
+    "contextWindow": 200000
+  }
+}

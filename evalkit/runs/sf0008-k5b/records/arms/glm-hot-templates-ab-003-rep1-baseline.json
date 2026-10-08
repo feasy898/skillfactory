@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-003-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 89641,
+  "started_at_ms": 1791439664479,
+  "session_id": "sess_9d3aba24-18e9-47c6-95dd-7886cdd2febe",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-003-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 309704,
+      "ot": 3282,
+      "dur": 84850,
+      "n": 12
+    }
+  ],
+  "input_tokens": 309704,
+  "output_tokens": 3282,
+  "stdout_bytes": 2714,
+  "stderr_bytes": 2686,
+  "stderr_head": "ProviderBusinessError: [1302][您的账户已达到速率限制，请您控制请求频率][202610081408128ea8c94e5af943ce]\n    at detectProviderBusinessError (/opt/ZCode/resources/glm/zcode.cjs:2067:11088)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.fetch (/opt/ZCode/resources/glm/zcode.cjs:2067:10584)\n    at async /opt/ZCode/resources/glm/zcode.cjs:2058:21545\n    at async postToApi (/opt/ZCode/resources/glm/zcode.cjs:2031:22186)\n    at async gIs.doStream (/opt/ZCode/resources/glm/zcode.cjs:2032:51208)\n    at async fn (/opt/ZCode/resources/glm/zcode.cjs:2099:15517)\n    at async /opt/ZCode/resources/glm/zcode.cjs:2094:964\n    at async _retryWithExponentialBackoff (/opt/ZCode/resources/glm/zcode.cjs:2094:5143)\n    at async streamStep (/opt/ZCode/resources/glm/zcode.cjs:2099:14640) {\n  code: 'PROVIDER_BUSINESS_ERROR',\n  isProviderBusinessError: true,\n  providerCode: '1302',\n  providerId: 'account:bigmodel-individual-coding-plan',\n  providerKind: 'anthropic',\n  providerMessage: '[1302][您的账户已达到速率限制，请您控制请求频率][202610081408128ea8c94e5af943ce]',\n  providerRequestId: '202610081408128ea8c94e5af943ce',\n  responseBodySummary: {\n    keys: [ 'type', 'error', 'request_id' ],\n    success: undefined,\n    code: undefined,\n    error_code: undefined,\n    msg: undefined,\n    message: undefined,\n    request_id: '202610081408128ea8c94e5af943ce',\n    requestId: undefined,\n    error: {\n      keys: [Array],\n      code: '1302',\n      error_code: undefined,\n      msg: undefined,\n      message: '[1302][您的账户已达到速率限制，请您控制请求频率][202610081408128ea8c94e5af943ce]',\n      request_id: undefined,\n      requestId: undefined,\n      type: 'rate_limit_error'\n    }\n  },\n  responseHeaders: {\n    'alt-svc': 'h3=\":443\"; ma=3600',\n    'anthropic-ratelimit-unified-status': 'rejected',\n    connection: 'keep-alive',\n    'content-length': '225',\n    'content-type': 'application/json',\n    date: 'Thu, 08 Oct 2026 06:08:12 GMT',\n    'ga-traceid': '3f615f8eb9fa14b4c34c07a50bea4c58',\n    'request-id': '",
+  "stdout_tail": "至 `out/`，并通过了技能定义的所有验收标准。\\n\\n**已完成的工作：**\\n- 遵循 `hot-templates` 技能的权威规则：重新读取了 `SKILL.md`，完整读取了平台参考资料 `references/wx.md`，然后通过确定性引擎 `scripts/gen.py` 生成了骨架——没有手动编写输出。\\n- 运行命令：`gen.py --platform wx --topic 非暴力沟通 --points '[]' --outdir out` → exit 0，单行成功输出：`OK platform=wx topic=非暴力沟通 elements=5 open_placeholders=13 filled_from_input=4 -> out`。\\n\\n**交付物（位于 `baseline/out/`）：**\\n- `骨架.md` (2 KB) — 5 个冻结顺序的元素：引子 → 一、是什么 → 二、为什么 → 三、怎么办 → 金句收尾，每个元素均包含其写法要点和末尾的占位符统计部分。\\n- `structure.json` (3.9 KB) — 机器可读结构，包含所有 11 个顶级键，`structure_name` = 引子 + 三段论 + 金句收尾。\\n\\n**对照冻结合约的零卖点边界验证：**\\n- `points_input_count=0`，因此 `thesis_how` 中的所有三个价值点插槽均正确回退至 `【占位:价值点1/2/3】`，且 `points_unused` 为空——根据技能红线，这些开放式插槽特意保持未填充状态。\\n- `total_open=13`（10 个基础微信占位符 + 3 个未填充的价值点插槽）和 `total_filled_from_input=4`（主题在 lead_in/thesis_what/thesis_why/golden_ending 中各记录一次）——两者均完全符合该技能文档记载的 0 点微信预期。\\n- 冻结标记完整：「一、是什么」「二、为什么」「三、怎么办」段首标记，`落到操作层面，给你三个抓手：` 抓手行，以及带有「共勉。」的「非暴力沟通这件事，…」结尾。\\n- 附加检查：同输入重新运行在字节上完全一致，且两个文件中均无 `{{ }}` 模板残留。\\n\\n按照 brief 要求，仅生成了骨架（不包含文章扩写）——开放式插槽由作者在写阶段进行填充。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 12,\n    \"inputTokens\": 309704,\n    \"outputTokens\": 3282,\n    \"totalTokens\": 312986,\n    \"cacheReadTokens\": 291776,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 2790,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 312986,\n    \"contextUsed\": 33880,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "ab-003",
+  "rep": 1,
+  "slot": 16
+}

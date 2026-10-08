@@ -43,6 +43,11 @@ def redact_text(s, arm_root):
     s = s.replace(arm_root, "<ARMROOT>")
     s = re.sub(r"\.zcode/skills/[A-Za-z0-9_\-]+", "<SKILL_MOUNT>", s)
     s = re.sub(r"\.zcode\\\\skills\\\\[A-Za-z0-9_\-]+", "<SKILL_MOUNT>", s)
+    # 盲态按键名脱敏：臂标/来源自述字段一律 <redacted>（run_log 等自述 JSON 常带 arm/engine/run_id）
+    for key in ("arm", "engine", "run_id", "runId", "side", "arm_label", "session_id",
+                "sessionId", "skill_mount", "asset"):
+        s = re.sub(r'"%s"\s*:\s*"[^"]*"' % key, '"%s": "<redacted>"' % key, s)
+        s = re.sub(r"'%s'\s*:\s*'[^']*'" % key, "'%s': '<redacted>'" % key, s)
     return s
 
 

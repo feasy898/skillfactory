@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_38172c41-d4ce-4dfa-b017-33361d25e7c4",
+  "traceId": "cc3e034c-e00e-4515-b003-e23d8d8bb2a7",
+  "turnId": "turn_e6f8200b-ea58-4d0c-b7f5-8c9faba439af",
+  "response": "任务完成。两个单元目录已生成并通过全部核验，每目录恰含 `文书.docx` 与 `fields.json` 两产物，两次调用均退出码 0。\n\n**执行方式**：用工作区内 `office-templates` 技能的生成引擎（`.zcode/skills/office-templates/scripts/gen_doc.py`），按 brief 的命令行契约各调用一次（python-docx 1.2.0 装在 /tmp 临时 venv，未污染工作目录）：\n\n- `--template 周报 --data fixtures/周报/case2.json --outdir out/周报/case2`\n- `--template 工作总结 --data fixtures/工作总结/case2.json --outdir out/工作总结/case2`\n\n**周报 case2**（7 段）：标题 `____工作周报`（部门必填缺失占位）；基本信息行 `填报人：赵倩　　周期：____`（空字符串按缺失处理）；小节一 `一、本周工作内容` 下条目 `1．____`（空数组按必填缺失渲染占位条目）；小节二正常渲染 `1．整理缺陷清单并分派责任人`；「三、问题与需协调事项」选填缺失整节省略、正文无节头；落款 `报送日期：2026-09-28` 右对齐右缩进 32pt。台账 filled 3/7，missing_required=[部门, 周期, 本周工作内容]，空数组记 `rendered_as: \"以____占位条目\"`，选填列表记 `required=false` + `\"省略该条目/小节\"`。\n\n**工作总结 case2**（9 段）：标题 `____2026年9月工作总结`（总结主体缺失占位）；小节一 `一、工作回顾` 下 `1．完成评测平台月度巡检`——字符串型列表按单项化处理，台账 value 为单元素数组 `[\"完成评测平台月度巡检\"]`；小节二 `二、主要成绩` 下 `1．____`（空数组占位条目）；「三、存在问题」整节省略，小节编号保持模板固的一、二、四序列；落款一 `____` 右对齐、落款二为空段且仍右对齐（缺主体/空日期未破坏落款版式）。台账 filled 3/7，missing_required=[总结主体, 主要成绩]。\n\n**版式核验**：标题居中黑体 22pt、节头黑体 16pt、正文仿宋 16pt 首行缩进两字符（firstLineChars=200）、28 磅固定行距、条目用全角点「1．」编号，均与 GB/T 9704 风格规范一致。**确定性核验**：同参重跑 fields.json 逐字节一致，docx 内部 XML 逐字节一致（仅 zip 容器时间戳随构建时刻不同，属格式固有）；core 属性无当前时间源。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 25,
+    "inputTokens": 901130,
+    "outputTokens": 8920,
+    "totalTokens": 910050,
+    "cacheReadTokens": 869632,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 5723,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 910050,
+    "contextUsed": 47169,
+    "contextWindow": 200000
+  }
+}

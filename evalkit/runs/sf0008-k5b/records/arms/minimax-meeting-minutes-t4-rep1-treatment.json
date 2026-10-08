@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t4-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 100456,
+  "started_at_ms": 1791440405685,
+  "session_id": "sess_e88d8bbd-63e6-4ed3-b83b-796fa2227f6b",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t4-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 539338,
+      "ot": 7921,
+      "dur": 93301,
+      "n": 18
+    }
+  ],
+  "input_tokens": 539338,
+  "output_tokens": 7921,
+  "stdout_bytes": 3671,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "les are byte-exact and in order; decision and risk numbering runs 1..n unbroken; the todo table is 3 columns with the 事项/负责人/期限 header; every item (including the table's 事项 column) matches a source line with the correct time and speaker; each owner/deadline value is either 「待定」 or found verbatim in its own source line; no item appears in two sections. Re-running the script reproduces an identical `summary.json`.\\n\\nOne environment note: the skill's script needs `python-docx`, which was not installed and the system Python is PEP 668 externally-managed. Rather than forcing a package into your system interpreter, I installed it into a throwaway venv at `/tmp/mmvenv` and ran the script with that interpreter. The deliverables are ordinary files and carry no dependency on it. If you want to regenerate later, `python3 -m venv` plus `pip install python-docx` in a local venv is the clean route. I also left the transcript at `fixtures/新模具试产评审会.txt` as the script input — the docx metadata line records that filename as its source.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 18,\n    \"inputTokens\": 539338,\n    \"outputTokens\": 7921,\n    \"totalTokens\": 547259,\n    \"cacheReadTokens\": 507029,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 540,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 547259,\n    \"contextUsed\": 39551,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t4",
+  "rep": 1,
+  "slot": 33
+}

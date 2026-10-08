@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_0e2b72ff-d7db-47d2-826e-4b0d7415895f",
+  "traceId": "0e16db8e-d616-4e85-a099-9ea2f53002d8",
+  "turnId": "turn_2d44ef90-f956-47de-8d82-69450993d37d",
+  "response": "All six runs pass and the deliverables are in place.\n\n## What was tested\n\nI ran the skill's generation entrypoint (`.zcode/skills/office-templates/scripts/gen_doc.py`) six times and recorded every run. Four illegal-input groups all rejected correctly, the legal control group produced both artifacts, and a supplementary run confirmed that required-field-missing input is *not* treated as an error.\n\n| Case | Exit | stderr | Residue |\n|---|---|---|---|\n| ① `--template 证书` | 2 | argparse `invalid choice: '证书'` | none |\n| ② `--data` 缺文件 | 2 | `错误：数据文件不存在：…` | none |\n| ③ 非 JSON 内容 | 2 | `错误：数据文件不是合法 JSON：…` | none |\n| ④ 顶层为数组 | 2 | `错误：数据 JSON 顶层必须是对象（键值对），实际为 list` | none |\n| 合法对照 `fixtures/周报/case1.json` | 0 | — | `文书.docx` + `fields.json` |\n| 补充：缺两个必填列表 | 0 | — | `文书.docx` + `fields.json` |\n\nZero-residue is verified positively rather than assumed: each illegal case was given its own output directory (`out/invalid/case1`…`case4`), and after all runs `out/invalid` does not exist — no directory, no partial file. The engine validates all input before touching the output filesystem, which is what makes this hold.\n\nThe legal control group writes to `out/周报/case1/` with a `fields.json` ledger showing 7/7 fields filled, no missing, no unknown keys. The supplementary run (data missing the required `本周工作内容` and `下周工作计划` lists) exits 0, renders `1．____` placeholders in the document, and honestly books the two missing required fields plus one off-template key in `summary` — this is the brief's requirement that missing data must not be rejected as illegal input.\n\n## One caveat worth flagging\n\nCase ① is rejected by argparse's built-in `choices` validation, so its stderr is an English sentence (`invalid choice: '证书' (choose from '周报', '请示函', '会议通知', '工作总结')`) rather than a full Chinese error message. It does contain Chinese — the rejected template name and all four valid candidates — and exits 2 with no artifacts, so it meets the contract as written (\"stderr 有中文错误信息\"). Cases ②③④ emit complete Chinese sentences from the engine's own `fail()` path. I recorded this distinction verbatim in `run_log.json` rather than papering over it, since it's a real difference in message quality between the two rejection paths.\n\n## Deliverables\n\n- `run_log.json` — per-case full command, exit code, stdout, stderr summary, residue check (outdir created? files written?), and pass/fail on each criterion; generated programmatically from real re-runs rather than transcribed by hand.\n- `out/周报/case1/` — the legal control group's `文书.docx` and `fields.json`.\n- `out/补充/周报_必填缺失/` — supplementary artifact for the missing-required check, clearly separated from the brief's specified layout.\n\nOne environment note: the default `python3` on PATH has no `python-docx` and no `pip`, so I used `/usr/bin/python3`, which already had it (Python 3.12.3, python-docx 1.2.0). The exact interpreter and library versions are recorded in `run_log.json` under `engine` so the run is reproducible.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 12,
+    "inputTokens": 372164,
+    "outputTokens": 6758,
+    "totalTokens": 378922,
+    "cacheReadTokens": 334038,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 995,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 378922,
+    "contextUsed": 39093,
+    "contextWindow": 200000
+  }
+}

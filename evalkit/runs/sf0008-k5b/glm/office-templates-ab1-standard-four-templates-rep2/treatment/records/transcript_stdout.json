@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_305e25f5-b1ed-47a0-8831-29e9f4c8b026",
+  "traceId": "dda37a3f-f997-4cd9-8608-b67384e6d170",
+  "turnId": "turn_8dc4fc30-71a7-48ec-bd6a-a4f918d41b39",
+  "response": "任务完成。四个单元目录与产物已全部就位并通过验证。\n\n**做了什么**：调用本项目的 `office-templates` 技能引擎（`.zcode/skills/office-templates/scripts/gen_doc.py`，命令行契约与任务书一致：`--template/--data/--outdir`），把 `fixtures/` 下四类模板的 case1 数据分别生成为公文产物。因系统 Python 受 PEP 668 管控，`python-docx 1.2.0` 安装在 `/tmp` 临时 venv 中（仅作工具环境，不落在交付目录里）。\n\n**产物**（`out/<模板>/case1/`，每目录恰含两个文件）：\n\n| 模板 | 文书标题 | 字段台账 |\n|---|---|---|\n| 周报 | 研发部工作周报 | 7/7 全填 |\n| 请示函 | 关于采购评测用 GPU 服务器的请示 | 8/8 全填 |\n| 会议通知 | 关于召开三季度质量评审会的通知 | 11/11 全填 |\n| 工作总结 | 评测技术部2026年第三季度工作总结 | 7/7 全填 |\n\n四份 case1 数据字段全部齐全，故无必填缺失、无 `____` 占位、无编造；每份 `fields.json` 顶层含 `title`、逐字段明细（名称/是否必填/kind/状态/值）与 `summary` 计数（filled+missing=total 自洽，unknown_keys 均为空）。\n\n**验证情况**：\n- 版式按 GB/T 9704 逐项核对到 XML 层：A4 版面（页边距上3.7/下3.5/左2.8/右2.6 cm）、标题居中黑体二号(22pt)、请示函与会议通知称谓顶格全角冒号、正文仿宋三号(16pt) 首行缩进两字符（`firstLineChars=200`）固定行距28磅、落款右对齐右缩进32pt、小节「一、二、三、」黑体节头加「1．2．3．」全角点条目、ASCII 字体 Times New Roman。\n- 标题均与公式相符（如 `{部门}工作周报`、`关于{请示事由}的请示`），落款行数符合规则（周报一行、其余两行）。\n- 确定性复现：另起目录重跑四份，docx 内部 XML 逐字节一致（整文件哈希差异仅来自 zip 容器时间戳，属 python-docx 写包元数据，内容无随机性）。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 15,
+    "inputTokens": 452650,
+    "outputTokens": 6982,
+    "totalTokens": 459632,
+    "cacheReadTokens": 414656,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 4941,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 459632,
+    "contextUsed": 38580,
+    "contextWindow": 200000
+  }
+}

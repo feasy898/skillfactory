@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t3-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 549171,
+  "started_at_ms": 1791442782367,
+  "session_id": "sess_933f9f47-c4ea-45c1-a2c8-eed6b33798c7",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t3-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1403116,
+      "ot": 27153,
+      "dur": 470481,
+      "n": 24
+    }
+  ],
+  "input_tokens": 1403116,
+  "output_tokens": 27153,
+  "stdout_bytes": 2671,
+  "stderr_bytes": 392,
+  "stderr_head": "AI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\n",
+  "stdout_tail": "nId\": \"turn_e88009e1-72e8-46c3-bd65-187df0fa4987\",\n  \"response\": \"Task complete. Both deliverables are in place and fully verified:\\n\\n- **`out/纪要.docx`** — 标题「对公系统切换部署会会议纪要」+ 三个节标题逐字为「一、决议事项」「二、待办事项」「三、风险与关注」（Heading 1 样式）\\n- **`out/summary.json`** — `{\\\"决议事项\\\": 1, \\\"待办事项\\\": 3, \\\"风险与关注\\\": 2, \\\"合计\\\": 6}`，与 docx 实际条数一致\\n\\n**条目分类**（每条均为原句逐字引用 + `【hh:mm · 说话人】` 前缀，生成脚本直接从 brief.md 运行时解析转写稿，杜绝手抄错字）：\\n\\n| 分类 | 条目 |\\n|---|---|\\n| 决议 1 条 | 09:36 支行长「同意，按这个方案办。」 |\\n| 待办 3 行表格 | 09:32（负责人 何倩，期限 待定）、09:34（运营老蒋，本月底前）、09:42（待定，待定） |\\n| 风险 2 条 | 09:38 迁移口径未定、09:40 恢复时间可能延期一天 |\\n\\n开场（09:30）与散会（09:45）两行程序性发言未计入。负责人/期限严格按确定性规则提取：`@姓名+请`指派 → 何倩；`负责人是我` → 说话人署名；显式期限短语 → 本月底前；其余（含「我们」「切换当晚」这类非专名、非历法期限的表达）一律填「待定」，未猜测任何日期或人名。\\n\\n一点说明：brief 中提到的 `meeting-minutes` 技能在本 baseline 臂并未安装（它只存在于 treatment 臂的 `.zcode/skills/` 下，为不污染 A/B 对照我没有读取），任务完全按 brief 自身规格完成，Word 文件用会话内可用的 docx 技能生成。\\n\\n验证均通过：docx 技能 postcheck 0 错误；对 brief 转写稿的逐字节比对全绿（节标题、编号条目、表格三列、引用原句、JSON 计数全一致，排除行未泄漏）；LibreOffice 渲染单页经 visual-judge 裁定 pass。构建产物均在 /tmp，工作目录只留两个交付文件。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 24,\n    \"inputTokens\": 1403116,\n    \"outputTokens\": 27153,\n    \"totalTokens\": 1430269,\n    \"cacheReadTokens\": 1341632,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 19716,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1430269,\n    \"contextUsed\": 77173,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

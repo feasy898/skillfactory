@@ -1,0 +1,58 @@
+ProviderBusinessError: [1302][您的账户已达到速率限制，请您控制请求频率][202610081408128ea8c94e5af943ce]
+    at detectProviderBusinessError (/opt/ZCode/resources/glm/zcode.cjs:2067:11088)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fetch (/opt/ZCode/resources/glm/zcode.cjs:2067:10584)
+    at async /opt/ZCode/resources/glm/zcode.cjs:2058:21545
+    at async postToApi (/opt/ZCode/resources/glm/zcode.cjs:2031:22186)
+    at async gIs.doStream (/opt/ZCode/resources/glm/zcode.cjs:2032:51208)
+    at async fn (/opt/ZCode/resources/glm/zcode.cjs:2099:15517)
+    at async /opt/ZCode/resources/glm/zcode.cjs:2094:964
+    at async _retryWithExponentialBackoff (/opt/ZCode/resources/glm/zcode.cjs:2094:5143)
+    at async streamStep (/opt/ZCode/resources/glm/zcode.cjs:2099:14640) {
+  code: 'PROVIDER_BUSINESS_ERROR',
+  isProviderBusinessError: true,
+  providerCode: '1302',
+  providerId: 'account:bigmodel-individual-coding-plan',
+  providerKind: 'anthropic',
+  providerMessage: '[1302][您的账户已达到速率限制，请您控制请求频率][202610081408128ea8c94e5af943ce]',
+  providerRequestId: '202610081408128ea8c94e5af943ce',
+  responseBodySummary: {
+    keys: [ 'type', 'error', 'request_id' ],
+    success: undefined,
+    code: undefined,
+    error_code: undefined,
+    msg: undefined,
+    message: undefined,
+    request_id: '202610081408128ea8c94e5af943ce',
+    requestId: undefined,
+    error: {
+      keys: [Array],
+      code: '1302',
+      error_code: undefined,
+      msg: undefined,
+      message: '[1302][您的账户已达到速率限制，请您控制请求频率][202610081408128ea8c94e5af943ce]',
+      request_id: undefined,
+      requestId: undefined,
+      type: 'rate_limit_error'
+    }
+  },
+  responseHeaders: {
+    'alt-svc': 'h3=":443"; ma=3600',
+    'anthropic-ratelimit-unified-status': 'rejected',
+    connection: 'keep-alive',
+    'content-length': '225',
+    'content-type': 'application/json',
+    date: 'Thu, 08 Oct 2026 06:08:12 GMT',
+    'ga-traceid': '3f615f8eb9fa14b4c34c07a50bea4c58',
+    'request-id': '202610081408128ea8c94e5af943ce',
+    'retry-after': '9',
+    'set-cookie': 'acw_tc=ac10e98317914396922621395e08f53e5cbbf8d6ec4c522bab3a0848d9a4b9;path=/;HttpOnly;Max-Age=1800',
+    vary: 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, Access-Control-Request-Method, Access-Control-Request-Headers, Origin',
+    'x-log-id': '202610081408128ea8c94e5af943ce',
+    'x-process-time': '0.186703',
+    'x-request-id': '05681358-7333-4d5e-a2b4-9274746ce2de',
+    'x-should-retry': 'true'
+  },
+  responseStatus: 429,
+  statusCode: undefined
+}

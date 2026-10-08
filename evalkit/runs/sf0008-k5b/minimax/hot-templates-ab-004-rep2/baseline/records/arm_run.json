@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/hot-templates-ab-004-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 99024,
+  "started_at_ms": 1791439775063,
+  "session_id": "sess_9bbb9995-1a56-4bba-a258-057faa873a5f",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/hot-templates-ab-004-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 385345,
+      "ot": 12254,
+      "dur": 94166,
+      "n": 13
+    }
+  ],
+  "input_tokens": 385345,
+  "output_tokens": 12254,
+  "stdout_bytes": 2943,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "econciles with `placeholder_stats.total_open` in the JSON. The hook, pain-point, and CTA shots are template-owned slots that don't consume input points, so those are written out normally from the topic — and the skeleton says so explicitly so the distinction isn't ambiguous.\\n\\nI also included a 补齐指引 section telling a user exactly which two points to append to regenerate a fully shootable table, and an opening checklist flagging that shots 4 and 5 are not yet shootable as-is.\\n\\n**One note on method:** this is the baseline arm, which per `arms_manifest.json` has no skill mounted (`baseline_has_skill: false`) while the treatment arm mounts `hot-templates`. I deliberately did not open the treatment's `SKILL.md` — reading it would have contaminated the control arm this A/B is measuring. The only harness file I consulted was `s8_checkers.py`, which defines the artifact contract.\\n\\nVerification run against all eight contract assertions passed, with the duration sum and the markdown/JSON consistency check passing as well.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 13,\n    \"inputTokens\": 385345,\n    \"outputTokens\": 12254,\n    \"totalTokens\": 397599,\n    \"cacheReadTokens\": 345696,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 2047,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 397599,\n    \"contextUsed\": 40397,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

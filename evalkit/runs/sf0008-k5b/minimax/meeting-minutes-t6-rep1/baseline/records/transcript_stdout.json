@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_251475b2-98bc-47f7-b3f5-2a9dfc8692b4",
+  "traceId": "88149eda-4b28-4287-a73e-52b3c17064ba",
+  "turnId": "turn_71591615-ad9d-43fa-8502-ce2f1455415d",
+  "response": "Done — the deliverables are in place and verified.\n\n**Output (`out/` in the baseline directory):**\n- `out/纪要.docx` — three sections with the exact headings 「一、决议事项」「二、待办事项」「三、风险与关注」; 决议 and 风险 are numbered entries, 待办 is a 3-column `Table Grid` (事项/负责人/期限).\n- `out/summary.json` — `{\"决议事项\": 2, \"待办事项\": 2, \"风险与关注\": 1, \"合计\": 5}`, consistent with the actual docx counts (2 numbered decision entries, 2 table data rows, 1 risk entry; 2+2+1=5, matching the meta line 「解析发言 5 条」).\n\n**How it was produced:** the transcript from the brief was written verbatim to `fixtures/transcript.txt` and passed to the skill's own entry point, `assets/meeting-minutes/package/scripts/minutes.py`. Note the environment quirk: the default `python3` has no `python-docx`, so I ran it with `/usr/bin/python3`, which does.\n\n**Classification result** (keyword-based, 决议 > 待办 > 风险): the opening line, the root-cause line, and the 散会 line carry none of the 11 keywords and are excluded; the remaining five each land in exactly one section — 20:06 (同意) and 20:12 (结论) as decisions, 20:04 and 20:08 as to-dos, 20:10 (延期/风险) as risk.\n\n**Verification I ran:** opened the docx with python-docx and read back every paragraph and table cell; confirmed all five entries and both to-do \"事项\" cells match their source transcript line verbatim including the 【hh:mm · 说话人】 prefix; and confirmed the extracted columns are literal substrings of the source line — owner `Daniel` from 「交给Daniel负责」, deadline `2026-10-09之前` and `本周底` from the original wording, with `待定` used for the to-do that names no owner. No name or date was invented.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 12,
+    "inputTokens": 332239,
+    "outputTokens": 3472,
+    "totalTokens": 335711,
+    "cacheReadTokens": 297524,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 721,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 335711,
+    "contextUsed": 35457,
+    "contextWindow": 200000
+  }
+}

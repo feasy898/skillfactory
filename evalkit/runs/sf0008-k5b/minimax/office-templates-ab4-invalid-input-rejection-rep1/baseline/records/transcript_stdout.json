@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_2a670bea-2536-44f8-a44c-a05f07560e67",
+  "traceId": "14a5354f-c14e-4d04-84ad-aa6ebed43ae8",
+  "turnId": "turn_9db67e31-7e40-4d02-aa4a-5d56439f2956",
+  "response": "Done. All six test groups pass, with `run_log.json` and the control-group artifacts in place.\n\n**What I built.** This arm has no skill mounted (`baseline_has_skill: false`), so I wrote the generation entry from scratch rather than adapting one. `gen_doc.py` implements the CLI contract from the brief — `--template <周报|请示函|会议通知|工作总结> --data <json> --outdir <dir>` — and writes `文书.docx` plus `fields.json` into `<outdir>/<模板>/<数据文件名>/`. `run_ab4.py` is the test bench that drives the six invocations and writes the log.\n\n**How the rejection behavior is guaranteed.** Rather than validating incrementally, every input check runs *before* the filesystem output surface is touched, and the docx is built entirely in memory. Files only appear at the final write step, and if `fields.json` fails to write the `.docx` is rolled back. That is why the four illegal runs create nothing at all — not even the output directory (`output_dir_created: false` for all four).\n\n**Results.** All four illegal groups exit with code 2 and a Chinese stderr message, with zero residue: bad template name (`错误：模板名非法：'证书'。可选模板为：…`), missing data file, unparseable JSON, and top-level array (`错误：数据文件顶层必须是 JSON 对象，实际为 数组：…`). The legal control group exits 0 and produced both artifacts under `out/周报/case1/`, with the title centered, body paragraphs at `firstLineChars=200`, and the signature line right-aligned — the GB/T 9704 layout anchors the harness checks for.\n\nTwo things worth flagging:\n\nThe brief's boundary requirement — missing required fields are *not* invalid input — needed a sixth case to prove, so I added one. A payload missing 部门/周期/本周工作内容 plus an off-template 备注 key exits 0, renders `____` placeholders, and records `missing_required: [部门, 周期, 本周工作内容]`, `missing_optional: [下周工作计划, 问题与需协调事项]`, `unknown_keys: [备注]`. I deliberately named it without the substring 非法 so the harness's illegal-group detector doesn't misclassify it as one of the four.\n\nSeparately, `s8_checkers.py:47` calls `r._p.rPr` on a docx `Run`, but python-docx exposes that as `r._r` — so `check_office` raises `AttributeError` before reaching any anchor, for any arm. That's pre-existing harness breakage rather than anything about my output, and I left it alone since the checker is outside this arm. I verified the layout anchors by re-implementing the same assertions against the correct attribute, which is where the centered/indent/right-align results above come from.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 37,
+    "inputTokens": 1571248,
+    "outputTokens": 24725,
+    "totalTokens": 1595973,
+    "cacheReadTokens": 1529192,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 1271,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1595973,
+    "contextUsed": 60005,
+    "contextWindow": 200000
+  }
+}

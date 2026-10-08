@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-003-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 66193,
+  "started_at_ms": 1791439756132,
+  "session_id": "sess_af8986bf-b4b8-4d90-93e2-5e161b34913e",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-003-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 204765,
+      "ot": 3757,
+      "dur": 61972,
+      "n": 8
+    }
+  ],
+  "input_tokens": 204765,
+  "output_tokens": 3757,
+  "stdout_bytes": 2013,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "{\n  \"sessionId\": \"sess_af8986bf-b4b8-4d90-93e2-5e161b34913e\",\n  \"traceId\": \"723a0fdd-8140-4a68-b796-ebb7279ba870\",\n  \"turnId\": \"turn_5d049658-6b4f-472d-adae-b34678f9742e\",\n  \"response\": \"任务已完成。wx 骨架已生成并验证，两份交付产物均位于 `out/` 中。\\n\\n**生成内容** — 针对 topic 非暴力沟通运行了确定性引擎（`scripts/gen.py --platform wx --topic 非暴力沟通 --points '[]' --outdir out`），生成：\\n- `out/骨架.md` — 5 要素骨架：引子 → 一、是什么 → 二、为什么 → 三、怎么办（三个抓手）→ 金句收尾（含「共勉」），每节附写法要点。\\n- `out/structure.json` — 机器可读结构：template_version 1.0，11 个顶层键，5 个要素按冻结顺序排列。\\n\\n**零卖点边界表现**（符合技能文档预期）：`points_input_count=0`，三个抓手全部落入 `【占位:价值点1..3】` 开放槽位，`points_used=[null,null,null]`，`total_open=13`（基础 10 + 3 个价值点槽位），`total_filled_from_input=4`（topic 在引子/是什么/为什么/金句四要素各记一次）。按红线要求，所有 `【占位:…】` 保持原样未填——它们是留给使用者的开放槽位。\\n\\n**验证通过**：引擎 exit 0 且 stdout 打印规范 OK 行；两文件非空、UTF-8/LF；冻结标记（「一、是什么」「二、怎么办」段首结构、「共勉」收尾）逐项在位；同输入重跑逐字节一致；`{{ }}` 类残留为 0。临时校验目录已清理，交付物原样留在 `out/`。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 8,\n    \"inputTokens\": 204765,\n    \"outputTokens\": 3757,\n    \"totalTokens\": 208522,\n    \"cacheReadTokens\": 191040,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 3115,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 208522,\n    \"contextUsed\": 29783,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "ab-003",
+  "rep": 1,
+  "slot": 18
+}

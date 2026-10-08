@@ -73,6 +73,7 @@ PROMPT = ("Read the file brief.md in the current working directory and complete 
 LOCK = threading.Lock()
 LOG_LOCK = threading.Lock()
 STOP = threading.Event()
+THREAD_ERROR = {"glm": None, "minimax": None}
 PROGRESS = os.path.join(RUN, "progress.log")
 QUEUE = {"items": [], "idx": 0}
 SCRATCH_ENV = {}
@@ -430,11 +431,13 @@ def budget_append(entry):
 
 
 def budget_reserved_arms():
-    """占位即计数（pending+done+no-model-call），与 C 层口径一致：防并发超预算。"""
+    """占位即计数（pending+done+no-model-call），与 C 层口径一致：防并发超预算。
+    装置 bug/无效尝试条目（skipped_harness_bug、rate_limited_attempt1_invalid）不占额度。"""
     p = os.path.join(RUN, "budget.json")
     b = json.load(open(p, encoding="utf-8"))
     return sum(1 for e in b.get("ledger_entries", [])
-               if e.get("kind") == "arm" and e.get("status") != "skipped_budget_or_stop")
+               if e.get("kind") == "arm"
+               and e.get("status") in ("pending", "done", "no-model-call"))
 
 
 def budget_update(slot, **kw):
@@ -502,6 +505,16 @@ def classify_arm(rec, retried):
 
 
 def family_worker(fam, fam_queue, redline):
+    try:
+        _family_worker(fam, fam_queue, redline)
+    except Exception as exc:
+        import traceback
+        THREAD_ERROR[fam] = traceback.format_exc()[-1500:]
+        log("WORKER CRASH %s: %s" % (fam, exc))
+        STOP.set()
+
+
+def _family_worker(fam, fam_queue, redline):
     for (pkg, task, rep) in fam_queue:
         if STOP.is_set():
             return
@@ -549,7 +562,6 @@ def family_worker(fam, fam_queue, redline):
                                        "kind": "rate_limited-retry", "pkg": pkg, "task": task,
                                        "family": fam, "rep": rep,
                                        "ts_intent": time.strftime("%H:%M:%S"), "status": "pending"})
-                budget_update(rslot, slot=rslot)
                 rec = run_once(ad, fam)
                 rec["attempt"] = 2
                 rec["rate_limited_retry"] = True
@@ -700,11 +712,15 @@ def stage_run(only_canary=False):
     th.start(); th2.start(); th.join(); th2.join()
     write_json(os.path.join(RUN, "records", "run-stage-summary.json"),
                {"redline_event": redline["event"], "redline_detail": redline["detail"],
+               "thread_errors": {k: v for k, v in THREAD_ERROR.items() if v},
                "counted_arms": budget_counted(),
                "closed_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
                "canary": only_canary})
-    log("RUN 阶段结束：counted=%d redline=%s" % (budget_counted(), redline["event"]))
-    return 0 if not redline["event"] else 1
+    log("RUN 阶段结束：counted=%d redline=%s thread_error=%s"
+        % (budget_counted(), redline["event"], [k for k, v in THREAD_ERROR.items() if v]))
+    if redline["event"] or any(THREAD_ERROR.values()):
+        return 1
+    return 0
 
 
 def stage_close():

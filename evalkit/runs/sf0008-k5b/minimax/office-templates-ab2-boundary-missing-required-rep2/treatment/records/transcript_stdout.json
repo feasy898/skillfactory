@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_097fa191-44f7-4b51-8698-ad9390ef2fa1",
+  "traceId": "da2a290b-6244-402f-9b3a-cf1d7a462a8b",
+  "turnId": "turn_efbf12fc-24b0-493f-b233-91026d0e28c9",
+  "response": "两份边界数据都已生成产物，退出码均为 0，台账与版式逐条核对通过。\n\n## 交付物\n\n```\nout/请示函/case2/    文书.docx  fields.json\nout/会议通知/case2/  文书.docx  fields.json\n```\n\n每个单元目录恰含两个产物，无多余文件。\n\n## 执行方式\n\n用技能自带的引擎 `office-templates/scripts/gen_doc.py` 按 `--template / --data / --outdir` 契约各跑一次。踩到一个环境坑：PATH 上的 `python3` 指向 `/home/pan-ding/venvs/ml/bin/python3`，既没有 pip 也没有 python-docx；改用 `/usr/bin/python3`（python-docx 1.2.0 装在 `~/.local` 下）即可正常出文。已把这条记进项目记忆。\n\n## 记账结果（与 references 边界示例逐项吻合）\n\n**请示函 case2** — filled 4/8，`missing_required_names = [\"主送机关\",\"请示事项\"]`，选填 missing 为 `联系电话`/`成文日期`（均记 `留空（渲染为空字符串）`），`unknown_keys` 为空。文中：称谓渲染为 `____：`（**仍顶格**，无首行缩进），请示事项段为 `____`，联系行为 `联系人：李工联系电话：`（标签保留、值留空），落款一 `评测技术部` 右对齐，落款二为空段——版式未因缺数据而破坏。\n\n**会议通知 case2** — filled 5/11，`missing_required_names = [\"会议名称\",\"会议地点\"]`，选填 missing 为 `会议议题`/`会议要求`/`联系人`/`联系电话`，`unknown_keys = [\"备注\"]`。文中标题 `关于召开____的通知`，`会议地点：____`，`会议议题：` 标签留空，**「一、会议要求」节头整节未出现**（选填列表缺失整节省略），联系行 `联系人：　　联系电话：`，落款两行均右对齐。\n\n两处必填缺失都以字面 `____` 占位、退出码 0、无编造数据。\n\n## 版式与确定性抽查\n\nA4 21.0×29.7cm，页边距 3.7/3.5/2.8/2.6cm；标题黑体 22pt 居中，正文仿宋 16pt 且 `firstLineChars=200`，称谓段无缩进，落款 RIGHT。同输入连跑两次 `fields.json` 逐字节一致、文书段落内容一致（仅 `outputs` 路径字段随 `--outdir` 变化，属预期）。台账 `title` 与文书首个非空段全文相等。\n\n## 需要你回填的数据\n\n这两份数据的必填缺口是真缺，不是渲染问题：请示函缺**主送机关**（收文单位）和**请示事项**（要批什么）；会议通知缺**会议名称**和**会议地点**。补齐后重跑同一条命令即可覆盖产物。另外会议通知数据里的 `备注` 键不在模板字段内，仅记入 `unknown_keys`，未进正文。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 22,
+    "inputTokens": 765113,
+    "outputTokens": 6189,
+    "totalTokens": 771302,
+    "cacheReadTokens": 721184,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 1161,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 771302,
+    "contextUsed": 44796,
+    "contextWindow": 200000
+  }
+}

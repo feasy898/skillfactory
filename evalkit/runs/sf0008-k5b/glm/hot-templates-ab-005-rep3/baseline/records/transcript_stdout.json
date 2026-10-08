@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_a794305f-04e4-4156-ac2a-7ca5b543e88b",
+  "traceId": "3cef45b5-f0c3-4b8e-b8e5-26fdc8fa9f99",
+  "turnId": "turn_b39713b8-e552-4842-8a61-02db0c6f6118",
+  "response": "两项工程性验收全部通过，4 次生成调用全部符合预期，`run_log.json` 已落盘在工作目录下与产物同级。\n\n**验收① 确定性复跑（PASS）**：用完全相同的输入（`platform=dy`、`topic=确定性复跑主题`、`points=[\"要点甲\",\"要点乙\",\"要点丙\"]`）连续跑两次到 `out/run1` 与 `out/run2`，均 exit 0、stdout 打出单行 `OK platform=dy … elements=6 open_placeholders=6 filled_from_input=4`（dy 满 3 卖点的参考值）。`骨架.md` 与 `structure.json` 的 `cmp` 退出码均为 0，sha256 两两相等（`166692ba…` / `a331cdd8…`）——逐字节一致。顺带核对了冻结契约：11 个顶层键、要素顺序 `hook_3s→pain_point→value_1..3→cta`、钩子与 CTA 冻结标记在位、卖点原文入槽、`{{ }}` 残留为 0。\n\n**验收② 失败路径（PASS）**：非法 platform 用 `bilibili` 触发——exit 2，stderr 为 argparse 英文报错 `invalid choice: 'bilibili' (choose from 'dy', 'video', 'wx', 'xhs')`（SKILL.md 判为预期形态），`out/invalid-platform` 未被创建；空 topic 用纯空白串 `'   '` 触发——exit 2，stderr 为 `[gen.py] 错误：--topic 不能为空`，`out/empty-topic` 未被创建。`out/` 下只有 `run1`、`run2` 两个目录。\n\n**留痕**：`run_log.json` 记录了全部 4 次调用（每条含命令、输入参数、退出码、stdout/stderr 摘要与原始行、文件清单及 sha256、判定），外加 `determinism_check`（cmp+sha256 明细）、`failure_path_check`（目录未创建实证）与契约快照；原始 stdout/stderr 捕获在 `records/run{1..4}.{stdout,stderr}`，`records/build_run_log.py` 是从捕获现场重组该日志的脚本。使用的生成器为 dist 分发副本，已验证与本次评测钉版挂载面 `evalkit/runs/sf0008-k5b/assets/hot-templates-skill/scripts/gen.py` sha256 相同。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 23,
+    "inputTokens": 825013,
+    "outputTokens": 12132,
+    "totalTokens": 837145,
+    "cacheReadTokens": 791040,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 6582,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 837145,
+    "contextUsed": 49494,
+    "contextWindow": 200000
+  }
+}

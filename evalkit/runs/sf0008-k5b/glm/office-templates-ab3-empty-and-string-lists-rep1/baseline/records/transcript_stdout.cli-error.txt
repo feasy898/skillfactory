@@ -1,0 +1,27 @@
+AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.
+{
+  "sessionId": "sess_c5c47e5d-7fb7-451d-b781-2a1621f31155",
+  "traceId": "b222f9aa-4a7c-4acc-84ab-89ca5f8d9564",
+  "turnId": "turn_561f387b-d5a7-4d51-bbc6-d51477aadb54",
+  "response": "任务完成。两个单元目录与产物齐全，独立校验全绿，视觉验收两页均 pass。\n\n## 交付物（均在 baseline/ 下）\n\n- **`out/周报/case2/`** 与 **`out/工作总结/case2/`** — 每目录恰含 `文书.docx` 与 `fields.json` 两件产物\n- **`gen_office.py`** — 生成器，按契约调用：`--template <周报|工作总结> --data <json> --outdir <目录>`，每次调用产出上述两件产物\n- **`verify_outputs.py`** — 独立验收脚本（期望值按 brief 手写、不复用生成器逻辑），当前 100+ 项检查全部通过\n\n## 边界语义的落实\n\n- **空数组 → 必填缺失**：「本周工作内容」「主要成绩」各渲染占位条目「1．____」，fields.json 记 `value=null`、`placeholder=true`、`placeholder_entries=[\"1．____\"]`\n- **字符串型列表 → 单项化**：「工作回顾」渲染为条目「1．完成评测平台月度巡检」，fields.json 值为单元素数组 `[\"完成评测平台月度巡检\"]`\n- **选填小节缺失 → 整节省略**：正文不出现「问题与需协调事项」「存在问题」节头（编号止于二、/三、），fields.json 仍记 `required=false`、`missing=true`、`section_omitted=true`\n- **必填缺失 → ____ 占位**：标题「____工作周报」「____2026年9月工作总结」，正文行「周期：____」（全角冒号）\n- **落款右对齐不被破坏**：周报落款「填报人：赵倩／报送日期：2026-09-28」右对齐；工作总结缺主体、缺成文日期，落款仍为两行右对齐的「____」占位\n\n## 验证方式\n\n程序化校验（docx 回读文本逐段断言、落款 `RIGHT` 对齐、fields.json 与原始输入逐字回对、zip 完整性、目录产物恰两件）全部通过；另经 LibreOffice 渲染 PDF/PNG 后由 visual-judge 视觉验收，两页 pass——标题居中、编号规范、禁出节头未出现、落款右边缘严格对齐，无乱码或版面错乱。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 25,
+    "inputTokens": 1123712,
+    "outputTokens": 33966,
+    "totalTokens": 1157678,
+    "cacheReadTokens": 1076992,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 27010,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1157678,
+    "contextUsed": 62237,
+    "contextWindow": 200000
+  }
+}

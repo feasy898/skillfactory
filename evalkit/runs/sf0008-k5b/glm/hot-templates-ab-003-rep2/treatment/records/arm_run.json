@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-003-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 88723,
+  "started_at_ms": 1791439959051,
+  "session_id": "sess_6ef6e5ee-e732-42c2-8ee2-8ac738b7cc0e",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-003-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 188487,
+      "ot": 4349,
+      "dur": 84887,
+      "n": 7
+    }
+  ],
+  "input_tokens": 188487,
+  "output_tokens": 4349,
+  "stdout_bytes": 2476,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "rm=wx topic=非暴力沟通 elements=5 open_placeholders=13 filled_from_input=4 -> out`.\\n\\n**Deliverables:**\\n- `out/骨架.md` — human-readable skeleton: 引子 → 三段论（一、是什么 / 二、为什么 / 三、怎么办）→ 金句收尾 with 「共勉。」, each section with its 写法要点\\n- `out/structure.json` — machine-readable structure: 11 top-level keys, `template_version \\\"1.0\\\"`, platform_name 公众号文章, structure_name 引子 + 三段论 + 金句收尾\\n\\n**Zero-points boundary verified against the frozen contract:** `points_input_count=0`, `points_used=[null, null, null]`, so all three selling-point slots in `thesis_how` correctly fell to `【占位:价值点N】`, giving 13 total open placeholders (base 10 + 3 missing-slot tokens) and `total_filled_from_input=4` (topic fills in exactly the four elements lead_in / thesis_what / thesis_why / golden_ending). Frozen markers (三段论 headings, 金句 structure, `# 公众号文章 · 爆款骨架` first line) all check out, `{{ }}` template-variable residue is 0, and per the red line no open slot was fabricated — all 13 `【占位:…】` remain open for the user to fill when expanding into a full article.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 7,\n    \"inputTokens\": 188487,\n    \"outputTokens\": 4349,\n    \"totalTokens\": 192836,\n    \"cacheReadTokens\": 171776,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 3841,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 192836,\n    \"contextUsed\": 33061,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_f63e8ceb-e679-4b35-97ac-fa86345fdcf6",
+  "traceId": "9fc1265f-e214-4511-915b-262e357851ad",
+  "turnId": "turn_d63724df-03bc-475d-abdf-afcfb76a738f",
+  "response": "任务完成。四个单元目录与产物齐全，全部校验通过。\n\n**做了什么**：按 brief.md 的命令行契约，用本目录挂载的 office-templates 技能引擎 `gen_doc.py`，把 `fixtures/` 下四类模板的 case1 数据 JSON（字段全部齐全）分别生成为公文产物，写入 `out/<模板>/case1/`：\n\n| 模板 | 标题 | 字段台账 |\n|---|---|---|\n| 周报 | 研发部工作周报 | filled 7/7 |\n| 请示函 | 关于采购评测用 GPU 服务器的请示 | filled 8/8 |\n| 会议通知 | 关于召开三季度质量评审会的通知 | filled 11/11 |\n| 工作总结 | 评测技术部2026年第三季度工作总结 | filled 7/7 |\n\n**验证结果**：\n- 四次调用全部 exit 0，每个单元目录恰含 `文书.docx` 与 `fields.json` 两个文件，无多余产物。\n- 四份 `fields.json` 顶层 7 键（template/title/filled_fields/missing_fields/fields/summary/outputs）齐全，summary 计数自洽（filled+missing=total），全部字段 status=filled、无必填缺失、无模板外键；`title` 与文书首段逐字相等，符合标题公式。\n- 四份 docx 均为 A4（21.0×29.7 cm）、GB/T 9704 版心边距（上 3.7 / 下 3.5 / 左 2.8 / 右 2.6 cm）；正文抽检确认小节按「一、二、三」编号、条目按「1．2．」全角点编号、落款行为裸日期形式。\n- 因数据字段全部齐全，本轮不涉及 `____` 占位或留空记账；如后续补数据缺字段，引擎会按 F1–F4 自动占位/省略并在 fields.json 如实记账。\n\n唯一环境处理：系统 Python 受 PEP 668 限制，`python-docx 1.2.0` 安装在 `/tmp/ot-venv` 虚拟环境中用于运行引擎，产物目录本身未受影响。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 12,
+    "inputTokens": 324474,
+    "outputTokens": 4302,
+    "totalTokens": 328776,
+    "cacheReadTokens": 308992,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 2864,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 328776,
+    "contextUsed": 31364,
+    "contextWindow": 200000
+  }
+}

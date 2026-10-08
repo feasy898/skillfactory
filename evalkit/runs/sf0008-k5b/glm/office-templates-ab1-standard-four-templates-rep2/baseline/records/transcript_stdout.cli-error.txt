@@ -1,0 +1,27 @@
+AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.
+{
+  "sessionId": "sess_0d28dcc4-49d2-42e5-99fd-644c08246e0b",
+  "traceId": "de59c5f1-31e5-4f8e-b7aa-207243d850ca",
+  "turnId": "turn_8b10edd3-4d5c-4129-a667-c240bf2ec540",
+  "response": "任务完成。四个单元目录与产物齐全，全部校验通过。\n\n**交付物**（均在 baseline 目录下）：\n\n- `gen_office.py` — 生成器脚本，实现任务书命令行契约 `--template <周报|请示函|会议通知|工作总结> --data <json> --outdir <dir>`，每次调用产出 文书.docx 与 fields.json\n- `out/{周报,请示函,会议通知,工作总结}/case1/` — 每目录恰含 文书.docx + fields.json 两个产物\n\n**文档风格**（GB/T 9704 公文版式，A4）：页边距上 37 / 下 35 / 左 28 / 右 26 mm（版心 156×225mm）；标题二号宋体居中，正文三号仿宋、固定行距约 28.8 磅、首行缩进两字；一级小节黑体引领；称谓行顶格；落款（单位 + 成文日期）右对齐右空四字；页脚「— 1 —」页码。四份均为单页，标题分别为「研发部工作周报」「关于采购评测用 GPU 服务器的请示」「关于召开三季度质量评审会的通知」「评测技术部2026年第三季度工作总结」。\n\n**fields.json 记账**：顶层含 title、template、fields、summary；每个字段含名称（name）、是否必填（required）、状态（status: filled/missing）、值（value）、渲染方式（render）；summary 为 filled/missing/total 计数。case1 字段全部齐全，四份分别记账 7/7、8/8、11/11、7/7 全 filled。\n\n**已做的验证**：\n1. 逐字段回对 — fields.json 中每个 value 与 fixtures 输入完全一致，summary 计数与 fields 状态自洽\n2. docx 结构 — A4 尺寸与四边距精确核对通过\n3. 视觉验收 — LibreOffice 渲染 PNG 后经 documents:visual-judge 单次把关，四页全部 pass、零问题（无乱码、无裁切、对齐正确）\n4. 缺失路径冒烟（临时目录，未入 out/）— 必填缺失以「____」占位、选填缺失整段省略且记账 value=null，符合「缺数据不编造」要求",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 24,
+    "inputTokens": 1045925,
+    "outputTokens": 33987,
+    "totalTokens": 1079912,
+    "cacheReadTokens": 984960,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 24176,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1079912,
+    "contextUsed": 61110,
+    "contextWindow": 200000
+  }
+}

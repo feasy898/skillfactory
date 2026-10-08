@@ -1,0 +1,27 @@
+AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.
+{
+  "sessionId": "sess_9556d13f-091f-40d6-8246-d851b3a55774",
+  "traceId": "f09750da-b26e-4e28-ba02-e22d6fb751d5",
+  "turnId": "turn_721a5f3c-df10-461d-9e86-1ced3b465255",
+  "response": "Task complete — the determinism self-eval verdict is **PASS**: two consecutive runs with identical input into the same output directory produced byte-identical artifacts.\n\n**Deliverables (all in the baseline directory):**\n- `generate.py` — implements the CLI contract `--template 会议通知 --data fixtures/会议通知/case1.json --outdir out/会议通知/case1`, each invocation producing `文书.docx` + `fields.json` (公文版式：居中二号标题、顶格主送、三号仿宋正文、黑体条目、首行缩进 2 字符、固定 28 磅行距、右对齐落款、A4 公文页边距)\n- `selfeval.py` — the self-eval driver: runs the generator twice into the same outdir (second pass overwrites), snapshots pass 1, byte-compares, writes the log\n- `out/会议通知/case1/` — contains exactly the two artifacts\n- `run_log.json` — per-pass sha256 (labeled 第1遍/第2遍), byte-compare results, layout-digest comparison, outdir listing check, and the conclusion\n- `records/determinism/` — pass-1 snapshot copies plus the two parsed layout dumps used for comparison\n\n**Results recorded in run_log.json:** both passes produced `文书.docx` sha256 `1645710a…d40f9` (37452 bytes) and `fields.json` sha256 `bd58b850…e181` (1769 bytes); full byte-by-byte comparison found zero differing bytes; the docx layout digest (paragraph text, alignment, indents, line spacing, fonts incl. east-Asian, page setup) hashed identically across passes (`f6df9b3c…50b41`); the output directory contains exactly the two products.\n\n**How determinism was achieved:** python-docx normally writes the current wall-clock time into every zip entry (and leaves volatile core properties), so the generator pins core properties (created/modified fixed at 2026-01-01, revision 1) and rewrites the saved zip with fixed entry timestamps (1980-01-01), fixed permissions, preserved entry order; `fields.json` uses canonical UTF-8 serialization with fixed indent.\n\n**Independent verification beyond the required two passes:** a third run to a *different* outdir still produced a byte-identical `文书.docx`; its `fields.json` differed only in the three exempted `outputs` path keys and was otherwise identical. Inspection of the committed docx confirmed all zip timestamps are pinned and no XML part contains any current-date string. LibreOffice opened and rendered the document to a clean one-page PDF, and the visual acceptance pass returned pass with no issues.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 27,
+    "inputTokens": 1154690,
+    "outputTokens": 34366,
+    "totalTokens": 1189056,
+    "cacheReadTokens": 1106816,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 24795,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1189056,
+    "contextUsed": 63550,
+    "contextWindow": 200000
+  }
+}

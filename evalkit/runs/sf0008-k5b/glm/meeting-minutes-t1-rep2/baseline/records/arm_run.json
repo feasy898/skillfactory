@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t1-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 452847,
+  "started_at_ms": 1791442137241,
+  "session_id": "sess_3e5998c7-f7ff-46b5-a49e-9f1ee5268e7e",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t1-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 836477,
+      "ot": 24963,
+      "dur": 412875,
+      "n": 17
+    }
+  ],
+  "input_tokens": 836477,
+  "output_tokens": 24963,
+  "stdout_bytes": 2976,
+  "stderr_bytes": 392,
+  "stderr_head": "AI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\n",
+  "stdout_tail": "umbered items; 待办 is a bordered 事项/负责人/期限 table.\\n- Created `::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t1-rep2/baseline/out/summary.json\\\" purpose=\\\"output\\\"}` — 决议事项 3 / 待办事项 1 / 风险与关注 2 / 合计 6.\\n\\n**Classification decisions** (every item is a full-verbatim quote with its 【时间 · 说话人】 prefix):\\n- 决议 3 条：10:03（主会场挂新装修稿的结论）、10:06（主持人同意、费用出客服预算）、10:10（48小时发货承诺不延期）。\\n- 待办 1 条：10:05 排班表 —— 负责人按原句「我负责」确定性提取为说话人「客服组长何姐」，原句无期限信息故填「待定」。\\n- 风险与关注 2 条：10:08 爆仓风险、10:09 延期发货疑问（属“关注”，其结论已单列为 10:10 决议）。\\n- 排除项：10:00/10:13 程序性开场散会、10:02 状态汇报（已定稿/预计上线，无人认领亦非决议）、10:12 会中口头更正（坐席数五十与 10:05 原句一致，逐字引用原句即已体现正确数字）。\\n\\n**Verification**: postcheck 9/9 passed (0 errors, 0 warnings); a script compared every quoted sentence byte-for-byte against the transcript in brief.md (all exact, including speaker tags and table row); summary.json counts match the docx (3+1+2=6); rendered page passed the visual-judge gate with no issues (clean fonts, no overflow, proper table grid).\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 17,\n    \"inputTokens\": 836477,\n    \"outputTokens\": 24963,\n    \"totalTokens\": 861440,\n    \"cacheReadTokens\": 782464,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 20743,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 861440,\n    \"contextUsed\": 69893,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

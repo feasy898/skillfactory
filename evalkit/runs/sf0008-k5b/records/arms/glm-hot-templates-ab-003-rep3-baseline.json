@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-003-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 187609,
+  "started_at_ms": 1791440049787,
+  "session_id": "sess_ce67fb2c-5516-4dbc-9dba-1fc06807dce1",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-003-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 245455,
+      "ot": 10752,
+      "dur": 181564,
+      "n": 9
+    }
+  ],
+  "input_tokens": 245455,
+  "output_tokens": 10752,
+  "stdout_bytes": 2802,
+  "stderr_bytes": 2687,
+  "stderr_head": "ProviderBusinessError: [1302][您的账户已达到速率限制，请您控制请求频率][20261008141558b534e1b2a5ea45c1]\n    at detectProviderBusinessError (/opt/ZCode/resources/glm/zcode.cjs:2067:11088)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.fetch (/opt/ZCode/resources/glm/zcode.cjs:2067:10584)\n    at async /opt/ZCode/resources/glm/zcode.cjs:2058:21545\n    at async postToApi (/opt/ZCode/resources/glm/zcode.cjs:2031:22186)\n    at async gIs.doStream (/opt/ZCode/resources/glm/zcode.cjs:2032:51208)\n    at async fn (/opt/ZCode/resources/glm/zcode.cjs:2099:15517)\n    at async /opt/ZCode/resources/glm/zcode.cjs:2094:964\n    at async _retryWithExponentialBackoff (/opt/ZCode/resources/glm/zcode.cjs:2094:5143)\n    at async streamStep (/opt/ZCode/resources/glm/zcode.cjs:2099:14640) {\n  code: 'PROVIDER_BUSINESS_ERROR',\n  isProviderBusinessError: true,\n  providerCode: '1302',\n  providerId: 'account:bigmodel-individual-coding-plan',\n  providerKind: 'anthropic',\n  providerMessage: '[1302][您的账户已达到速率限制，请您控制请求频率][20261008141558b534e1b2a5ea45c1]',\n  providerRequestId: '20261008141558b534e1b2a5ea45c1',\n  responseBodySummary: {\n    keys: [ 'type', 'error', 'request_id' ],\n    success: undefined,\n    code: undefined,\n    error_code: undefined,\n    msg: undefined,\n    message: undefined,\n    request_id: '20261008141558b534e1b2a5ea45c1',\n    requestId: undefined,\n    error: {\n      keys: [Array],\n      code: '1302',\n      error_code: undefined,\n      msg: undefined,\n      message: '[1302][您的账户已达到速率限制，请您控制请求频率][20261008141558b534e1b2a5ea45c1]',\n      request_id: undefined,\n      requestId: undefined,\n      type: 'rate_limit_error'\n    }\n  },\n  responseHeaders: {\n    'alt-svc': 'h3=\":443\"; ma=3600',\n    'anthropic-ratelimit-unified-status': 'rejected',\n    connection: 'keep-alive',\n    'content-length': '225',\n    'content-type': 'application/json',\n    date: 'Thu, 08 Oct 2026 06:15:58 GMT',\n    'ga-traceid': 'eb23125b4dc11ed269cc1794592f168c',\n    'request-id': '",
+  "stdout_tail": "g with a zero-selling-point self-check list.\\n- **`structure.json`** — machine-readable mirror carrying the exact input parameters (`platform: \\\"wx\\\"`, `topic: \\\"非暴力沟通\\\"`, `points: []`), the frozen template with `section_order: [hook, what, why, how, golden_close]`, per-section target lengths / content beats / transitions / golden quotes, and the redlines array.\\n\\nValidation run: JSON parses, section roles exactly match the frozen 引子→是什么→为什么→怎么办→金句收尾 order with no added or dropped sections, and a keyword scan of all section content confirms zero selling points (no product names, purchase/follow prompts, or conversion hooks anywhere).\\n\\nOne thing worth noting: this is the **baseline arm** of the A/B run — `arms_manifest.json` records `baseline_has_skill: false`, with the hot-templates skill mounted only in the treatment arm. I therefore produced the skeleton from the self-contained brief and my own knowledge of the genre, deliberately without reading the treatment's skill files, to keep the experiment uncontaminated.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 9,\n    \"inputTokens\": 245455,\n    \"outputTokens\": 10752,\n    \"totalTokens\": 256207,\n    \"cacheReadTokens\": 227776,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 6975,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 256207,\n    \"contextUsed\": 33679,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "ab-003",
+  "rep": 3,
+  "slot": 26
+}

@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t2-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 65268,
+  "started_at_ms": 1791440020909,
+  "session_id": "sess_84485ca5-89c2-40a5-8afa-11da5e7563c4",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t2-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 714781,
+      "ot": 4586,
+      "dur": 57762,
+      "n": 23
+    }
+  ],
+  "input_tokens": 714781,
+  "output_tokens": 4586,
+  "stdout_bytes": 3188,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "case is specified as a valid non-error output. Nothing was inferred to fill the void: no owner or deadline was fabricated, since there were no todo rows to fill.\\n\\n**Verification.** The skill's own acceptance runner reports all 5 checks passing for this case (three sections present, todo table with owner/deadline columns, summary counts matching the docx, no fabricated entries, counts within tolerance). The runner's remaining case2–4 failures are just that the runner is hardcoded to the asset's own four-case suite, which this single-transcript brief isn't part of.\\n\\n**Two environment notes.** `python-docx` isn't importable from the default `python3` because `~/.local/lib/python3.12/site-packages` is missing from `sys.path`, so I ran the skill script with `PYTHONPATH` pointed at that directory rather than installing anything. And since the brief gave the transcript inline rather than as a file, I wrote it verbatim to `fixtures/transcript.txt` to serve as the script's input; the docx meta line references that filename.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 23,\n    \"inputTokens\": 714781,\n    \"outputTokens\": 4586,\n    \"totalTokens\": 719367,\n    \"cacheReadTokens\": 677599,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 528,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 719367,\n    \"contextUsed\": 41912,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

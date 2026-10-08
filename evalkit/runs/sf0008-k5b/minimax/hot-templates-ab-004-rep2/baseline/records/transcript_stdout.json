@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_9bbb9995-1a56-4bba-a258-057faa873a5f",
+  "traceId": "cc99f72a-f41f-4f92-839d-7ba60c5dee66",
+  "turnId": "turn_0c513e28-7643-43d5-aa43-121e7c4c195a",
+  "response": "Done. The two deliverables are in `baseline/out/`.\n\n**What I produced**\n\n`out/骨架.md` — the readable storyboard skeleton, and `out/structure.json` — the machine-readable twin with an `elements` array, a `missing_slots` list, and `placeholder_stats`. The two are generated from one source of truth, and I verified programmatically that every cell in the markdown table matches its JSON counterpart verbatim.\n\nThe frozen template is a 6-shot, 45-second storyboard with the four required columns (序号 / 时间轴 / 画面 / 口播 / 字幕). The time axis runs continuously with no gaps or overlaps — 5s hook, 7s pain point, 8s + 10s + 10s for the three value points, 5s CTA — summing to exactly 45.\n\n**How the missing-slot case was handled**\n\nThe brief supplied only one point (\"用装满水的矿泉箱代替哑铃做划船\") against a template that needs three value-point slots. Rather than inventing content, I mapped the supplied point to shot 3 and left shots 4 and 5 explicitly unfilled: each of their three columns carries a `【占位:价值点N】` marker plus a note on what input is needed. That is 6 open placeholders total, distributed 3/3 across the two shots, and the markdown's 占位符统计 section reconciles with `placeholder_stats.total_open` in the JSON. The hook, pain-point, and CTA shots are template-owned slots that don't consume input points, so those are written out normally from the topic — and the skeleton says so explicitly so the distinction isn't ambiguous.\n\nI also included a 补齐指引 section telling a user exactly which two points to append to regenerate a fully shootable table, and an opening checklist flagging that shots 4 and 5 are not yet shootable as-is.\n\n**One note on method:** this is the baseline arm, which per `arms_manifest.json` has no skill mounted (`baseline_has_skill: false`) while the treatment arm mounts `hot-templates`. I deliberately did not open the treatment's `SKILL.md` — reading it would have contaminated the control arm this A/B is measuring. The only harness file I consulted was `s8_checkers.py`, which defines the artifact contract.\n\nVerification run against all eight contract assertions passed, with the duration sum and the markdown/JSON consistency check passing as well.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 13,
+    "inputTokens": 385345,
+    "outputTokens": 12254,
+    "totalTokens": 397599,
+    "cacheReadTokens": 345696,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 2047,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 397599,
+    "contextUsed": 40397,
+    "contextWindow": 200000
+  }
+}

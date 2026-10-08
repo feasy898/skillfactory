@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t2-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 103719,
+  "started_at_ms": 1791440139709,
+  "session_id": "sess_32f920d2-4599-488d-b2ea-690dbd92c082",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t2-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 549692,
+      "ot": 4847,
+      "dur": 97255,
+      "n": 19
+    }
+  ],
+  "input_tokens": 549692,
+  "output_tokens": 4847,
+  "stdout_bytes": 3702,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " rows.\\n- `summary.json` four keys match the docx exactly, 合计 = sum of the three.\\n- Re-ran the script: summary.json is byte-identical, so output is deterministic.\\n\\nTwo notes worth flagging. First, the default `python3` on this box is the `ml` venv, which has no `python-docx`; I used `/usr/bin/python3`, which does. Second, the skill's step-2 command `python eval/runner.py <被测out> oracle/out` is not applicable here — that runner iterates the four fixed golden cases (`case1`–`case4`), requires `<out>/<case>/` subdirectories, and looks up each transcript under `oracle/inputs/`. This brief's transcript is none of those, so I replicated all five of its checks by hand against this output instead (results above).\\n\\nOne thing I deliberately did not do: the meta line reads `解析发言 0 条`, which is the count of keyword-classified utterances per the spec, not the 4 parsed lines. That wording is slightly confusing on an empty document, but changing it would mean deviating from the frozen product contract, so I left it as specified.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 19,\n    \"inputTokens\": 549692,\n    \"outputTokens\": 4847,\n    \"totalTokens\": 554539,\n    \"cacheReadTokens\": 511681,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 640,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 554539,\n    \"contextUsed\": 39965,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

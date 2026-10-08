@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/office-templates-ab4-invalid-input-rejection-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 213926,
+  "started_at_ms": 1791442239957,
+  "session_id": "sess_da1f2207-bd6b-4bf5-9e12-0f02e5252b30",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/office-templates-ab4-invalid-input-rejection-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1320886,
+      "ot": 16905,
+      "dur": 194214,
+      "n": 36
+    }
+  ],
+  "input_tokens": 1320886,
+  "output_tokens": 16905,
+  "stdout_bytes": 4241,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "red.\\n\\nI did **not** fix it. The one-line correction (`r._p.rPr` → `r._r.rPr`, in two files) is unambiguous, but `s8_checkers.py` is documented as frozen and read-only, and changing the grader mid-run changes how both arms are measured — that's your call, not mine. To verify my own artifacts I imported the checker and patched the attribute access at runtime only, leaving the source untouched. If you want the fix landed, say so and I'll apply it and re-run scoring for all arms.\\n\\n## Deliverables in `baseline/`\\n\\n- `run_log.json` — per-group records: full command, exit code, stdout, stderr summary, created/removed path diffs, artifact presence, plus a `summary` block with the overall PASS verdict.\\n- `out/周报/case1/文书.docx` and `out/周报/case1/fields.json` — legal control artifacts.\\n- `office_tpl.py` — the entry point under test (four templates, fields ledger with filled/missing/unknown accounting).\\n- `run_ab4.py` — the snapshot-based test harness.\\n- `fixtures/非法输入/` — the two malformed-input fixtures I created.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 36,\n    \"inputTokens\": 1320886,\n    \"outputTokens\": 16905,\n    \"totalTokens\": 1337791,\n    \"cacheReadTokens\": 1288727,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1026,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1337791,\n    \"contextUsed\": 50102,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

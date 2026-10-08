@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-003-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 108473,
+  "started_at_ms": 1791440239409,
+  "session_id": "sess_9459ce15-e538-49e0-ab41-cc8d1093d8b3",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-003-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 228260,
+      "ot": 6242,
+      "dur": 103266,
+      "n": 8
+    }
+  ],
+  "input_tokens": 228260,
+  "output_tokens": 6242,
+  "stdout_bytes": 2613,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "e skeleton with the frozen 引子 + 三段论（一、是什么 / 二、为什么 / 三、怎么办）+ 金句收尾 structure, per-element 写法要点， and the 占位符统计 section.\\n- `structure.json` (3.9 KB) — machine-readable structure: 11 top-level keys, 5 elements in frozen order (`lead_in`, `thesis_what`, `thesis_why`, `thesis_how`, `golden_ending`), each with 9 keys.\\n\\n**Zero-points boundary verification (all checks passed):**\\n- All three selling-point slots fell to `【占位:价值点N】` in `thesis_how` — `points_used=[null,null,null]`, `points_unused=[]`; nothing was invented to fill open slots (skill red line respected).\\n- `total_open=13` — the base 10 wx placeholders plus one 价值点N count per missing slot, matching the documented rule; `total_filled_from_input=4` (topic fills 引子/是什么/为什么/金句 four elements, matching the \\\"0 卖点 = 4\\\" spec).\\n- Frozen markers intact: 「一、是什么」「二、为什么」「三、怎么办」 paragraph heads, 「落到操作层面，给你三个抓手：」, and the 「非暴力沟通这件事，…」\\\\n共勉。 ending.\\n- Determinism: a same-input rerun produced byte-identical files (sha256 equal); UTF-8/LF; zero `{{ }}` template-variable residue.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 8,\n    \"inputTokens\": 228260,\n    \"outputTokens\": 6242,\n    \"totalTokens\": 234502,\n    \"cacheReadTokens\": 208512,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 5373,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 234502,\n    \"contextUsed\": 35981,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t8-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 65981,
+  "started_at_ms": 1791441146829,
+  "session_id": "sess_44d7ba52-f0e4-44ee-8e42-01f6b8096f0e",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t8-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 446256,
+      "ot": 6668,
+      "dur": 58630,
+      "n": 16
+    }
+  ],
+  "input_tokens": 446256,
+  "output_tokens": 6668,
+  "stdout_bytes": 3019,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "下周一 — the skill's frozen rules explicitly forbid context-merging correction lines, so the 11:02 deadline remains 周一之前. This is the documented \\\"acceptable wrong\\\" behavior, not a bug I should have silently fixed.\\n\\n**Verification performed**\\n\\nThe skill mentions a bundled `eval/runner.py`, but no such file exists in the package, so I checked the 7-point acceptance list from `references/docx-and-summary.md` directly. All passed: three section headings verbatim and in order; decision/risk entries in `<i>. 【hh:mm · 说话人】内容` form with numbering from 1; a 3-column todo table whose data rows equal the todo count; summary's four keys exact and self-consistent; every item — including the table's 事项 column — traceable back to a verbatim transcript line carrying its own timestamp and speaker; and every 负责人/期限 either verbatim in the source or 待定 (no invented names or dates). I also confirmed 宋体 is set with the eastAsia attribute on all runs, and that a second run reproduces byte-identical `summary.json` and identical docx text.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 16,\n    \"inputTokens\": 446256,\n    \"outputTokens\": 6668,\n    \"totalTokens\": 452924,\n    \"cacheReadTokens\": 412189,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1610,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 452924,\n    \"contextUsed\": 34818,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t8",
+  "rep": 1,
+  "slot": 45
+}

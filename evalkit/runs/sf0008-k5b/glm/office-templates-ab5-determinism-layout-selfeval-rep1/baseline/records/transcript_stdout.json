@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_357ad365-af58-4443-a8b7-edfc6d52e2a4",
+  "traceId": "782b40d0-b592-4aa0-9c7d-3ffe64acb0d5",
+  "turnId": "turn_815f0d84-3a71-476a-94c9-4b34f46a6951",
+  "response": "任务完成，自评结论为 **PASS：同输入连跑两遍，产物逐字节一致**。\n\n## 交付物（baseline/ 下）\n\n| 文件 | 说明 |\n|---|---|\n| `generate.py` | 生成器 CLI，符合契约 `--template 会议通知 --data <json> --outdir <dir>`，每次调用生成 `文书.docx` + `fields.json` |\n| `selfeval.py` | 自评驱动：以完全相同命令行连跑两遍到同一 `out/会议通知/case1`（第二遍覆盖第一遍），每遍后登记 sha256，随后做逐字节对拍与版式对拍 |\n| `run_log.json` | 两遍的 sha256（标注第 1/2 遍）+ 逐字节对比结论 + 版式对比 + 不可复现源扫描 + 输出目录核验，verdict=PASS |\n| `out/会议通知/case1/{文书.docx, fields.json}` | 最终产物，目录恰含此两件 |\n\n## 确定性实现要点\n\n- 文档内容全部由输入数据 + 固定连接文案拼装，不读系统时间、不用随机源；连 python-docx 模板自带的 2013 年 core.xml 时间戳也一并清除。\n- docx 保存后将 zip 包整体归一化复写（所有条目 mtime 固定为 1980-01-01 00:00:00、统一权限/压缩方式、保持条目顺序），消除 zip 元数据这一唯一不可复现源。\n- `fields.json` 用固定键序 + 固定序列化参数（`ensure_ascii=False, indent=2` + 换行）落盘，逐字节可复现。\n\n## 验证结果\n\n- **逐字节对比**：两遍 `文书.docx`、`fields.json` 均完全相同（长度相等、逐字节无差异、sha256 相等），结论「一致」已写入 run_log.json。\n- **版式对比**：两遍 docx 解析后的 14 个段落的文本/对齐/缩进（首行 2 字）/字体（三号仿宋正文、二号黑体标题）/行距（固定 28 磅）及页面设置完全一致。\n- **独立交叉验证**（driver 之外另跑）：换一个 outdir 第三次调用，docx 与交付产物 `cmp` 逐字节相同；fields.json 仅 `outputs` 两个路径值不同——恰为任务书允许的「outputs 类路径键」豁免面，其余逐字节一致。\n- **输出目录**：`out/会议通知/case1` 恰含 `文书.docx`、`fields.json` 两产物；run_log 中登记的 sha256 与磁盘文件复算全部相符。\n- 另用 LibreOffice 渲染确认版式为标准公文样式（居中大标题、首行缩进、右下落款），无重叠乱码。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 39,
+    "inputTokens": 1741024,
+    "outputTokens": 33147,
+    "totalTokens": 1774171,
+    "cacheReadTokens": 1693440,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 23358,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1774171,
+    "contextUsed": 62388,
+    "contextWindow": 200000
+  }
+}

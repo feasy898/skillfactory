@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/office-templates-ab5-determinism-layout-selfeval-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 710186,
+  "started_at_ms": 1791453939756,
+  "session_id": "sess_9556d13f-091f-40d6-8246-d851b3a55774",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/office-templates-ab5-determinism-layout-selfeval-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1154690,
+      "ot": 34366,
+      "dur": 665951,
+      "n": 27
+    }
+  ],
+  "input_tokens": 1154690,
+  "output_tokens": 34366,
+  "stdout_bytes": 3225,
+  "stderr_bytes": 392,
+  "stderr_head": "AI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\n",
+  "stdout_tail": "shed identically across passes (`f6df9b3c…50b41`); the output directory contains exactly the two products.\\n\\n**How determinism was achieved:** python-docx normally writes the current wall-clock time into every zip entry (and leaves volatile core properties), so the generator pins core properties (created/modified fixed at 2026-01-01, revision 1) and rewrites the saved zip with fixed entry timestamps (1980-01-01), fixed permissions, preserved entry order; `fields.json` uses canonical UTF-8 serialization with fixed indent.\\n\\n**Independent verification beyond the required two passes:** a third run to a *different* outdir still produced a byte-identical `文书.docx`; its `fields.json` differed only in the three exempted `outputs` path keys and was otherwise identical. Inspection of the committed docx confirmed all zip timestamps are pinned and no XML part contains any current-date string. LibreOffice opened and rendered the document to a clean one-page PDF, and the visual acceptance pass returned pass with no issues.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 27,\n    \"inputTokens\": 1154690,\n    \"outputTokens\": 34366,\n    \"totalTokens\": 1189056,\n    \"cacheReadTokens\": 1106816,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 24795,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1189056,\n    \"contextUsed\": 63550,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

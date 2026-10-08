@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-005-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 262916,
+  "started_at_ms": 1791441026933,
+  "session_id": "sess_a794305f-04e4-4156-ac2a-7ca5b543e88b",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-005-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 825013,
+      "ot": 12132,
+      "dur": 255559,
+      "n": 23
+    }
+  ],
+  "input_tokens": 825013,
+  "output_tokens": 12132,
+  "stdout_bytes": 2540,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": ",\\\"要点乙\\\",\\\"要点丙\\\"]`）连续跑两次到 `out/run1` 与 `out/run2`，均 exit 0、stdout 打出单行 `OK platform=dy … elements=6 open_placeholders=6 filled_from_input=4`（dy 满 3 卖点的参考值）。`骨架.md` 与 `structure.json` 的 `cmp` 退出码均为 0，sha256 两两相等（`166692ba…` / `a331cdd8…`）——逐字节一致。顺带核对了冻结契约：11 个顶层键、要素顺序 `hook_3s→pain_point→value_1..3→cta`、钩子与 CTA 冻结标记在位、卖点原文入槽、`{{ }}` 残留为 0。\\n\\n**验收② 失败路径（PASS）**：非法 platform 用 `bilibili` 触发——exit 2，stderr 为 argparse 英文报错 `invalid choice: 'bilibili' (choose from 'dy', 'video', 'wx', 'xhs')`（SKILL.md 判为预期形态），`out/invalid-platform` 未被创建；空 topic 用纯空白串 `'   '` 触发——exit 2，stderr 为 `[gen.py] 错误：--topic 不能为空`，`out/empty-topic` 未被创建。`out/` 下只有 `run1`、`run2` 两个目录。\\n\\n**留痕**：`run_log.json` 记录了全部 4 次调用（每条含命令、输入参数、退出码、stdout/stderr 摘要与原始行、文件清单及 sha256、判定），外加 `determinism_check`（cmp+sha256 明细）、`failure_path_check`（目录未创建实证）与契约快照；原始 stdout/stderr 捕获在 `records/run{1..4}.{stdout,stderr}`，`records/build_run_log.py` 是从捕获现场重组该日志的脚本。使用的生成器为 dist 分发副本，已验证与本次评测钉版挂载面 `evalkit/runs/sf0008-k5b/assets/hot-templates-skill/scripts/gen.py` sha256 相同。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 23,\n    \"inputTokens\": 825013,\n    \"outputTokens\": 12132,\n    \"totalTokens\": 837145,\n    \"cacheReadTokens\": 791040,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 6582,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 837145,\n    \"contextUsed\": 49494,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

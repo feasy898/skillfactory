@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/hot-templates-ab-002-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 26018,
+  "started_at_ms": 1791439583033,
+  "session_id": "sess_f72c7ad9-9ee9-41f4-9217-72c57f7a68e0",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/hot-templates-ab-002-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 219211,
+      "ot": 1726,
+      "dur": 21860,
+      "n": 9
+    }
+  ],
+  "input_tokens": 219211,
+  "output_tokens": 1726,
+  "stdout_bytes": 2613,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "and `out/structure.json` (5.5 KB), both non-empty:\\n\\n- All 7 frozen elements in frozen order: `title` (🔥 + 数字), `hook_block` (✅), `point_block_1..3` (💡), `summary_block` (📌), `tag_group` (🏷️ in meta).\\n- The 5 selling points were normalized by the engine to its 3 fixed value-point slots: the first three became the 干货块 headings, and the remaining two (\\\"水电燃气表底数写进合同附件\\\", \\\"转租条款提前约定违约金\\\") are preserved verbatim and in order in `structure.json` `points_unused` — they were not silently dropped.\\n- 7 open `【占位:…】` slots left intact (目标人群 / 翻车现场 / 2-3步操作拆解 ×3 / 互动引导 / 垂直标签), and `{{ }}`-style unexpanded variables are 0.\\n\\n**Verification**\\n\\n- Re-ran with identical inputs into a temp dir: `diff -r` reports byte-identical output (deterministic, no timestamps/randomness).\\n- The package here ships no `eval/runner.py` or `reference/out`, so the README's 8-case acceptance command isn't runnable in this tree — I verified against the skill's own success criteria instead (exit 0, OK line, two non-empty files, byte-identical rerun).\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 9,\n    \"inputTokens\": 219211,\n    \"outputTokens\": 1726,\n    \"totalTokens\": 220937,\n    \"cacheReadTokens\": 191208,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 426,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 220937,\n    \"contextUsed\": 28692,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "ab-002",
+  "rep": 3,
+  "slot": 13
+}

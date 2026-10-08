@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t7-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 233643,
+  "started_at_ms": 1791447932794,
+  "session_id": "sess_c068f46e-ff6d-4ad6-aad5-ebd958dc2bd4",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t7-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 597945,
+      "ot": 13211,
+      "dur": 217946,
+      "n": 17
+    }
+  ],
+  "input_tokens": 597945,
+  "output_tokens": 13211,
+  "stdout_bytes": 2927,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "iority, per the frozen rules.\\n- 二、待办事项 (3-column table, 事项 verbatim): 挡水板三点位 → 负责人「城建科」、期限「周三之前」(\\\"本周\\\" prefix correctly dropped per the extraction rules); 独居老人台账 → 负责人「网格员小许」、期限「今天」。No value required 「待定」 — both rows extracted deterministically from the original sentences.\\n- 三、风险与关注: ① 09:08 老白 排水管网未改造、积水被困风险 ② 09:12 小冯 供应商能否延期到月底。\\n- Excluded by the keyword rules (correctly): 09:00 开场、09:14「物资必须……就这么定了」(contains none of the 11 keywords)、09:15 散会。\\n\\n**Verification** — the package ships no `eval/runner.py`, so I ran the full checklist from `references/docx-and-summary.md` programmatically: section headers exact and ordered; every 决议/风险 item and every table 事项 cell is byte-identical to its source line (time+speaker traceable); numbering continuous; summary.json four keys `{\\\"决议事项\\\": 2, \\\"待办事项\\\": 2, \\\"风险与关注\\\": 2, \\\"合计\\\": 6}` match the docx counts and the meta line; owner/deadline values all appear verbatim in their sentences; 宋体 eastAsia font is set; and a rerun produced identical summary/docx content (determinism).\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 17,\n    \"inputTokens\": 597945,\n    \"outputTokens\": 13211,\n    \"totalTokens\": 611156,\n    \"cacheReadTokens\": 569280,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 8394,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 611156,\n    \"contextUsed\": 44858,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

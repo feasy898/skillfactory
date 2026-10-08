@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_e8beadab-53e9-4aaf-94ad-a90620003ec1",
+  "traceId": "f3f98e38-682f-491e-9490-d0a83077a0b4",
+  "turnId": "turn_43606a6f-b452-4d52-90c5-ec254c00933d",
+  "response": "任务完成。产物已按 brief 落盘在 `out/` 目录，且与技能包内同输入的金标参照逐字节一致。\n\n**执行过程**\n\n1. 定位到 `hot-templates` 技能包（`dist/hot-templates-skill/`，与 `v4/assets/hot-templates/package/` 的 `gen.py`、`references/` 逐字节一致），并按 SKILL.md 权威规则完整读完 `references/wx.md` 与 `references/frozen-tokens.md`。\n2. 按红线规则走确定性渲染引擎执行：\n   `python scripts/gen.py --platform wx --topic 非暴力沟通 --points '[]' --outdir out`\n   → exit 0，stdout 打印 `OK platform=wx topic=非暴力沟通 elements=5 open_placeholders=13 filled_from_input=4 -> out`。\n\n**产物**（`baseline/out/`）\n- `骨架.md`：公众号文章爆款骨架，5 要素冻结顺序——引子、三段论·一（是什么）、三段论·二（为什么）、三段论·三（怎么办）、金句收尾（含「共勉」），每要素附写法要点，尾部占位符统计节。\n- `structure.json`：机器可读结构，顶层 11 键、每要素 9 键齐全。\n\n**零卖点边界处理**：3 个价值点槽位全部落 `【占位:价值点N】`（同居 `thesis_how` 三抓手），`points_used=[null,null,null]`、`points_unused=[]`；topic 在 lead_in/thesis_what/thesis_why/golden_ending 四要素各填充一次，`total_filled_from_input=4`、`total_open=13`，与 frozen-tokens.md 常量表口径完全一致。\n\n**验收**（全部通过）\n- 两份产物存在且非空，JSON 可解析，无 `{{ }}` 模板残留；\n- 确定性复跑逐字节一致；\n- 与技能包 `reference/out/wx/case2`（金标恰为同输入：topic=非暴力沟通、points=[]）diff 为空——**逐字节金标对拍通过**。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 17,
+    "inputTokens": 539801,
+    "outputTokens": 5857,
+    "totalTokens": 545658,
+    "cacheReadTokens": 515392,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 4570,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 545658,
+    "contextUsed": 40109,
+    "contextWindow": 200000
+  }
+}

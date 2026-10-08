@@ -1,0 +1,17 @@
+{
+  "arm": "treatment",
+  "run_label": "rep1",
+  "run_id": "sf0008-k5b",
+  "model_id": "Minimax-M3.1-Flash-Preview",
+  "provider_base_url": "minimax",
+  "cli_runtime": "zcode-app-cli 3.14.4 (embedded) / zcode-runtime 0.16.9",
+  "date": "2026-10-08",
+  "reasoning_variant": "enabled",
+  "asset_mount": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t6-rep1/treatment/.zcode/skills/meeting-minutes",
+  "family": "minimax",
+  "mechanism": "m2",
+  "pkg": "meeting-minutes",
+  "task": "t6",
+  "rep": 1,
+  "note": "SF-0008 K5B 实测钉版：model_id/provider_base_url 抄 db model_usage join 落点（逐字大小写敏感）；机制 glm=M4、minimax=M2（照 sf0006-c）"
+}

@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/office-templates-ab2-boundary-missing-required-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 70676,
+  "started_at_ms": 1791441593085,
+  "session_id": "sess_fbfbddfb-adfc-46f4-9b01-57b8f00bddbd",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/office-templates-ab2-boundary-missing-required-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 578177,
+      "ot": 4788,
+      "dur": 61227,
+      "n": 18
+    }
+  ],
+  "input_tokens": 578177,
+  "output_tokens": 4788,
+  "stdout_bytes": 3309,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "the A4 page with GB/T 9704 margins (3.7/3.5/2.8/2.6 cm), centered 黑体 22pt titles, 仿宋 16pt body at 28pt fixed line spacing with `firstLineChars=200` first-line indent, top-flush salutation (no indent set), and right-aligned 落款 with 32pt right indent. Every `missing` entry in both ledgers carries `value: null`, `filled + missing == total` holds, and `summary` and `missing_fields` match the input's missing facts exactly.\\n\\n## One thing worth flagging\\n\\nRe-running the same command with the same `--outdir` produces a byte-identical `fields.json` and a docx whose every zip entry payload is byte-identical — but the `.docx` file bytes themselves differ. That is python-docx stamping fresh mtimes into the zip container at save time, not content nondeterminism. The skill's own docstring claims \\\"产物语义逐字节一致\\\", which holds at the XML-payload level; I verified it entry by entry rather than assuming. I did not change the engine, since this is pre-existing behavior outside the brief's scope, and the visible deliverable is unaffected.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 18,\n    \"inputTokens\": 578177,\n    \"outputTokens\": 4788,\n    \"totalTokens\": 582965,\n    \"cacheReadTokens\": 543968,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 465,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 582965,\n    \"contextUsed\": 40068,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

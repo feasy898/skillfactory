@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_be363631-c832-4ce1-9c8f-b39a671cc3cd",
+  "traceId": "defee4b7-da22-4fc3-abf6-39d60cbc4f35",
+  "turnId": "turn_feda321c-239d-4c06-9243-ae515784b1fd",
+  "response": "Done — the storyboard skeleton is generated and verified in `out/`.\n\n**What was produced** (via the skill's deterministic engine, `scripts/gen.py`, as the skill mandates — no hand-writing):\n\n```\nout/骨架.md         5844 B\nout/structure.json  7112 B\n```\n\nThe command run was `python .zcode/skills/hot-templates/scripts/gen.py --platform video --topic 居家哑铃入门 --points '[\"用装满水的矿泉箱代替哑铃做划船\"]' --outdir out`, which exited 0 and printed the expected success line: `OK platform=video topic=居家哑铃入门 elements=6 open_placeholders=16 filled_from_input=2 -> out`.\n\n**The missing-slot case behaved as specified.** Only one selling point was supplied, so the second and third value slots fell through to open placeholders: `points_used` is `[\"用装满水的矿泉箱代替哑铃做划船\", null, null]`, `points_input_count=1`, `points_unused=[]`. The one real point landed in `shot_3` (00:10-00:20) in both the 口播 and 字幕 columns, while `shot_4` and `shot_5` each carry `【占位:价值点2】` / `【占位:价值点3】` in voiceover and subtitle. `total_open=16` matches the reference table's documented figure for the 1-point case (12 at 3 points, +2 per missing slot).\n\n**Template freeze checks all pass.** Six elements with ids `shot_1..6` in order, names frozen as `分镜N（起-止）`; durations 3/7/10/10/10/5 summing to 45; timeline `00:00-00:03` through `00:40-00:45`; the table header is the frozen `| 序号 | 时间轴 | 画面 | 口播 | 字幕 |`; the first line is `# 短视频分镜表 · 爆款骨架`; `structure.json` has the 11 top-level keys, 9 keys per element, 7 in each `meta`, and 5 in `placeholder_stats`.\n\n**Two invariants I verified rather than assumed:** re-running the same command produced byte-identical files (matching sha256 for both), and there are zero `{{ }}`-style leftover template variables in the markdown — only the intentional `【占位:…】` open slots, which per the skill's red line I left unfilled rather than inventing content for. Line endings are LF, no CRLF.\n\nOne thing to note: the skill documents an acceptance command, `python eval/runner.py <out> reference/out`, but this package contains no `eval/` directory or `reference/` outputs — only `brief.md`, an empty `fixtures/`, `.zcode/skills/hot-templates/`, and `out/`. That structural-consistency gate is therefore not runnable here; the checks above are what I could verify directly.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 13,
+    "inputTokens": 361829,
+    "outputTokens": 2680,
+    "totalTokens": 364509,
+    "cacheReadTokens": 328644,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 313,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 364509,
+    "contextUsed": 36267,
+    "contextWindow": 200000
+  }
+}

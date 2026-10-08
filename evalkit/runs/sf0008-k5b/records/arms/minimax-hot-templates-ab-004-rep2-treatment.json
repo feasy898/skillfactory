@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/hot-templates-ab-004-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 49890,
+  "started_at_ms": 1791439876100,
+  "session_id": "sess_87ec9c96-51a3-41c2-9607-3a0dd68feb04",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/hot-templates-ab-004-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 293610,
+      "ot": 4092,
+      "dur": 45525,
+      "n": 11
+    }
+  ],
+  "input_tokens": 293610,
+  "output_tokens": 4092,
+  "stdout_bytes": 3856,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "。`），第 2、3 条缺失，各自如实落 `【占位:价值点2】`/`【占位:价值点3】`（在 `shot_4`/`shot_5` 的画面、口播、字幕三列同时出现）。`points_used` 为 `[\\\"用装满水的矿泉箱代替哑铃做划船\\\", null, null]`，`points_unused` 为空（输入只有 1 条，无第 4 条起被截断）。统计为 16 处未填占位、12 个去重 token、`filled_from_input` 2 处（topic 与 point#1）。\\n\\n我**没有**为「看起来完整」去编造画面描述或痛点文案补空槽位——`【占位:…】` 是留给扩写步骤的开放槽位，按红线保持原样。\\n\\n**核验结果**\\n\\n- exit 0，stdout 打印 OK 行，两个文件存在且非空（成功判据三条全中）。\\n- 冻结模板完好：6 要素 id `shot_1..6` 顺序不变，时长 `[3,7,10,10,10,5]` 合计 45 秒，时间轴 `00:00-00:03`…`00:40-00:45` 正确，`meta.beat` 四条冻结文案一致。\\n- `structure.json` 顶层 11 键、每要素 9 键、meta 7 键且顺序为 `shot_no/time_range/duration_sec/visual/voiceover/subtitle/beat`，统计节 5 键；UTF-8、LF、无 CR。\\n- 残留缺陷 `{{ }}` 计 0 处（两文件均为 0）。\\n- 幂等：删除 `out/` 重跑一次，两文件 sha256 逐字节相同（骨架 `f4865ec6…`、结构 `a0df42ab…`）。\\n- 失败路径负例确认：`--platform bilibili` 走 argparse 报 `invalid choice`、exit 2 且未创建输出目录。\\n- gotcha 复核：把首条卖点换成空白串 `\\\"  \\\"` 重跑，按缺失处理（落 `【占位:价值点1】`），与文档描述一致。\\n\\n一处需要说明的偏差：技能里提到的验收脚本 `eval/runner.py` 与参照目录 `reference/out` 在本运行目录中不存在（`fixtures/` 为空目录），所以「8 case × 5 检查、结构一致率阈值 90%」这一条无法在此环境执行。我用上面那组等价的结构化断言逐项代替核验，均通过。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 11,\n    \"inputTokens\": 293610,\n    \"outputTokens\": 4092,\n    \"totalTokens\": 297702,\n    \"cacheReadTokens\": 259968,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 580,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 297702,\n    \"contextUsed\": 33448,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "ab-004",
+  "rep": 2,
+  "slot": 21
+}

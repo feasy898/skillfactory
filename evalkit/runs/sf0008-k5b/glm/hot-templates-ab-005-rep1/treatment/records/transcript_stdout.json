@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_7cf80a13-906f-4efb-a140-167209805172",
+  "traceId": "b37489aa-890f-4ce7-8c0d-65bdb6f04e47",
+  "turnId": "turn_7f806284-897a-416c-9a33-82bdf5a210de",
+  "response": "两项工程性验收全部通过（4/4 调用），所有交付物已留在工作目录下。\n\n## 验收结果\n\n**① 确定性复跑（PASS）**：用完全相同的输入（`--platform dy --topic 确定性复跑主题 --points '[\"要点甲\", \"要点乙\", \"要点丙\"]'`）连续生成两次到 `out/run1` 与 `out/run2`，两次均 exit 0、stdout 各打印一行 OK 摘要（`elements=6 open_placeholders=6 filled_from_input=4`，符合 dy 满 3 卖点的冻结口径）。逐字节比对结果：`骨架.md` 与 `structure.json` 的 `cmp` 退出码均为 0，sha256 两两相等（2040 / 4038 字节）。\n\n**② 失败路径（PASS ×2）**：\n- 非法 `platform=bilibili`：exit 2，stderr 为 argparse 英文报错 `invalid choice: 'bilibili' (choose from 'dy', 'video', 'wx', 'xhs')`（SKILL.md 明示此形态属预期），`out/invalid-platform` 未被创建。\n- 空白 topic（`'   '`）：exit 2，stderr 为 `[gen.py] 错误：--topic 不能为空`，`out/empty-topic` 未被创建。\n\n## 交付物（均在 treatment 工作目录）\n\n| 路径 | 内容 |\n|---|---|\n| `run_log.json` | 全部 4 次生成调用记录：输入参数、命令、退出码、stdout/stderr 摘要与原始行、输出目录是否创建、产物清单（字节数+sha256）、期望与判定，外加 determinism_check 区块 |\n| `out/run1/`、`out/run2/` | 验收①的两份产物（`骨架.md` + `structure.json`） |\n| `records/run1–run4.{stdout,stderr}` | 4 次调用的原始 stdout/stderr 捕获 |\n\n生成引擎为本目录技能包的 `.zcode/skills/hot-templates/scripts/gen.py`（gen.py 的 sha256 也登记在 run_log.json 中以便追溯）。验收未要求常规骨架交付目录，产物按上述工程记录形态留存。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 16,
+    "inputTokens": 585577,
+    "outputTokens": 8694,
+    "totalTokens": 594271,
+    "cacheReadTokens": 553408,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 4441,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 594271,
+    "contextUsed": 47850,
+    "contextWindow": 200000
+  }
+}

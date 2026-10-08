@@ -1,0 +1,27 @@
+AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.
+{
+  "sessionId": "sess_329ed24d-ee52-4688-a85e-b091fefddf5e",
+  "traceId": "a637b966-4fe2-4589-b624-2a138df0c1f8",
+  "turnId": "turn_364c1067-6663-47ad-83e9-ec53bdcb20ef",
+  "response": "任务完成。四个单元目录与产物齐全，程序化自检与视觉验收全部通过。\n\n**交付物**（均在 `baseline/out/` 下，每目录恰含两个产物）：\n\n| 单元目录 | 文书.docx 标题 | fields.json 摘要 |\n|---|---|---|\n| `out/周报/case1` | 研发部工作周报 | filled=7, missing=0, total=7 |\n| `out/请示函/case1` | 关于采购评测用 GPU 服务器的请示 | filled=8, missing=0, total=8 |\n| `out/会议通知/case1` | 关于召开三季度质量评审会的通知 | filled=11, missing=0, total=11 |\n| `out/工作总结/case1` | 评测技术部2026年第三季度工作总结 | filled=7, missing=0, total=7 |\n\n**实现**：`gen_doc.py`（依赖装在 `.venv`），按命令行契约 `--template <周报|请示函|会议通知|工作总结> --data <json> --outdir <dir>` 每次调用生成 `文书.docx` 与 `fields.json`。版式为 GB/T 9704 公文风格：A4 版面，页边距上 3.7 / 下 3.5 / 左 2.8 / 右 2.6 cm，标题二号方正小标宋居中，正文三号仿宋_GB2312、首行缩进两字、28pt 固定行距，西文 Times New Roman。结构上按文种安排：主送机关/主送对象作顶格称谓，正文逐字段以「字段名：值」全角冒号段落呈现（列表值编号内联），请示函/会议通知带「妥否，请批示。」「特此通知。」固定结语，单位与日期右对齐落款，请示函联系人信息作成文日期下圆括号附注。标题由字段值代入模式派生（如「关于{请示事由}的请示」），缺失部分以 `____` 代入，不编造。\n\n**防编造记账**：fields.json 顶层含 `title`、`fields`（每字段：name / required / status / value / rendered_as 渲染方式）、`summary`（filled/missing/total）及 filled_fields/missing_fields 名单；filled 的 value 与输入逐字段深相等，missing 的 value 为 null。必填缺失正文以 `____` 占位、选填缺失省略——该路径经临时目录冒烟验证（missing=2 时占位/省略/记账均正确）。\n\n**验证**：`verify_outputs.py` 共 130 项检查全部通过，覆盖目录契约（每目录恰含两文件）、A4 几何与页边距、字体声明、每个输入值忠实出现在正文、全角冒号形态、正文无未记账内容、summary 自洽；另将四份 docx 经 LibreOffice 渲染为单页 A4 PNG，视觉验收四页均 pass（标题居中、缩进、落款对齐、无裁切；渲染机缺 GB/T 字体故字形为回退字体，字体本身已在 docx 中正确声明）。`render/` 下保留了 PDF/PNG 渲染证据。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 25,
+    "inputTokens": 1181919,
+    "outputTokens": 35875,
+    "totalTokens": 1217794,
+    "cacheReadTokens": 1108032,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 25939,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1217794,
+    "contextUsed": 65850,
+    "contextWindow": 200000
+  }
+}

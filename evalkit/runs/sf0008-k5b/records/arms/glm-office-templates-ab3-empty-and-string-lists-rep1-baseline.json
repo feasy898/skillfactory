@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/office-templates-ab3-empty-and-string-lists-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 822308,
+  "started_at_ms": 1791449841088,
+  "session_id": "sess_c5c47e5d-7fb7-451d-b781-2a1621f31155",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/office-templates-ab3-empty-and-string-lists-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1123712,
+      "ot": 33966,
+      "dur": 535799,
+      "n": 25
+    }
+  ],
+  "input_tokens": 1123712,
+  "output_tokens": 33966,
+  "stdout_bytes": 2729,
+  "stderr_bytes": 1176,
+  "stderr_head": "AI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\n",
+  "stdout_tail": "nse\": \"任务完成。两个单元目录与产物齐全，独立校验全绿，视觉验收两页均 pass。\\n\\n## 交付物（均在 baseline/ 下）\\n\\n- **`out/周报/case2/`** 与 **`out/工作总结/case2/`** — 每目录恰含 `文书.docx` 与 `fields.json` 两件产物\\n- **`gen_office.py`** — 生成器，按契约调用：`--template <周报|工作总结> --data <json> --outdir <目录>`，每次调用产出上述两件产物\\n- **`verify_outputs.py`** — 独立验收脚本（期望值按 brief 手写、不复用生成器逻辑），当前 100+ 项检查全部通过\\n\\n## 边界语义的落实\\n\\n- **空数组 → 必填缺失**：「本周工作内容」「主要成绩」各渲染占位条目「1．____」，fields.json 记 `value=null`、`placeholder=true`、`placeholder_entries=[\\\"1．____\\\"]`\\n- **字符串型列表 → 单项化**：「工作回顾」渲染为条目「1．完成评测平台月度巡检」，fields.json 值为单元素数组 `[\\\"完成评测平台月度巡检\\\"]`\\n- **选填小节缺失 → 整节省略**：正文不出现「问题与需协调事项」「存在问题」节头（编号止于二、/三、），fields.json 仍记 `required=false`、`missing=true`、`section_omitted=true`\\n- **必填缺失 → ____ 占位**：标题「____工作周报」「____2026年9月工作总结」，正文行「周期：____」（全角冒号）\\n- **落款右对齐不被破坏**：周报落款「填报人：赵倩／报送日期：2026-09-28」右对齐；工作总结缺主体、缺成文日期，落款仍为两行右对齐的「____」占位\\n\\n## 验证方式\\n\\n程序化校验（docx 回读文本逐段断言、落款 `RIGHT` 对齐、fields.json 与原始输入逐字回对、zip 完整性、目录产物恰两件）全部通过；另经 LibreOffice 渲染 PDF/PNG 后由 visual-judge 视觉验收，两页 pass——标题居中、编号规范、禁出节头未出现、落款右边缘严格对齐，无乱码或版面错乱。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 25,\n    \"inputTokens\": 1123712,\n    \"outputTokens\": 33966,\n    \"totalTokens\": 1157678,\n    \"cacheReadTokens\": 1076992,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 27010,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1157678,\n    \"contextUsed\": 62237,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "ab3-empty-and-string-lists",
+  "rep": 1,
+  "slot": 79
+}

@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/office-templates-ab1-standard-four-templates-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 99414,
+  "started_at_ms": 1791448865388,
+  "session_id": "sess_f63e8ceb-e679-4b35-97ac-fa86345fdcf6",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/office-templates-ab1-standard-four-templates-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 324474,
+      "ot": 4302,
+      "dur": 91512,
+      "n": 12
+    }
+  ],
+  "input_tokens": 324474,
+  "output_tokens": 4302,
+  "stdout_bytes": 2366,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "1-915b-262e357851ad\",\n  \"turnId\": \"turn_d63724df-03bc-475d-abdf-afcfb76a738f\",\n  \"response\": \"任务完成。四个单元目录与产物齐全，全部校验通过。\\n\\n**做了什么**：按 brief.md 的命令行契约，用本目录挂载的 office-templates 技能引擎 `gen_doc.py`，把 `fixtures/` 下四类模板的 case1 数据 JSON（字段全部齐全）分别生成为公文产物，写入 `out/<模板>/case1/`：\\n\\n| 模板 | 标题 | 字段台账 |\\n|---|---|---|\\n| 周报 | 研发部工作周报 | filled 7/7 |\\n| 请示函 | 关于采购评测用 GPU 服务器的请示 | filled 8/8 |\\n| 会议通知 | 关于召开三季度质量评审会的通知 | filled 11/11 |\\n| 工作总结 | 评测技术部2026年第三季度工作总结 | filled 7/7 |\\n\\n**验证结果**：\\n- 四次调用全部 exit 0，每个单元目录恰含 `文书.docx` 与 `fields.json` 两个文件，无多余产物。\\n- 四份 `fields.json` 顶层 7 键（template/title/filled_fields/missing_fields/fields/summary/outputs）齐全，summary 计数自洽（filled+missing=total），全部字段 status=filled、无必填缺失、无模板外键；`title` 与文书首段逐字相等，符合标题公式。\\n- 四份 docx 均为 A4（21.0×29.7 cm）、GB/T 9704 版心边距（上 3.7 / 下 3.5 / 左 2.8 / 右 2.6 cm）；正文抽检确认小节按「一、二、三」编号、条目按「1．2．」全角点编号、落款行为裸日期形式。\\n- 因数据字段全部齐全，本轮不涉及 `____` 占位或留空记账；如后续补数据缺字段，引擎会按 F1–F4 自动占位/省略并在 fields.json 如实记账。\\n\\n唯一环境处理：系统 Python 受 PEP 668 限制，`python-docx 1.2.0` 安装在 `/tmp/ot-venv` 虚拟环境中用于运行引擎，产物目录本身未受影响。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 12,\n    \"inputTokens\": 324474,\n    \"outputTokens\": 4302,\n    \"totalTokens\": 328776,\n    \"cacheReadTokens\": 308992,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 2864,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 328776,\n    \"contextUsed\": 31364,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

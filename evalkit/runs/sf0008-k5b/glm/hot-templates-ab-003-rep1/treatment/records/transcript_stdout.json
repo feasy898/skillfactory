@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_af8986bf-b4b8-4d90-93e2-5e161b34913e",
+  "traceId": "723a0fdd-8140-4a68-b796-ebb7279ba870",
+  "turnId": "turn_5d049658-6b4f-472d-adae-b34678f9742e",
+  "response": "任务已完成。wx 骨架已生成并验证，两份交付产物均位于 `out/` 中。\n\n**生成内容** — 针对 topic 非暴力沟通运行了确定性引擎（`scripts/gen.py --platform wx --topic 非暴力沟通 --points '[]' --outdir out`），生成：\n- `out/骨架.md` — 5 要素骨架：引子 → 一、是什么 → 二、为什么 → 三、怎么办（三个抓手）→ 金句收尾（含「共勉」），每节附写法要点。\n- `out/structure.json` — 机器可读结构：template_version 1.0，11 个顶层键，5 个要素按冻结顺序排列。\n\n**零卖点边界表现**（符合技能文档预期）：`points_input_count=0`，三个抓手全部落入 `【占位:价值点1..3】` 开放槽位，`points_used=[null,null,null]`，`total_open=13`（基础 10 + 3 个价值点槽位），`total_filled_from_input=4`（topic 在引子/是什么/为什么/金句四要素各记一次）。按红线要求，所有 `【占位:…】` 保持原样未填——它们是留给使用者的开放槽位。\n\n**验证通过**：引擎 exit 0 且 stdout 打印规范 OK 行；两文件非空、UTF-8/LF；冻结标记（「一、是什么」「二、怎么办」段首结构、「共勉」收尾）逐项在位；同输入重跑逐字节一致；`{{ }}` 类残留为 0。临时校验目录已清理，交付物原样留在 `out/`。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 8,
+    "inputTokens": 204765,
+    "outputTokens": 3757,
+    "totalTokens": 208522,
+    "cacheReadTokens": 191040,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 3115,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 208522,
+    "contextUsed": 29783,
+    "contextWindow": 200000
+  }
+}

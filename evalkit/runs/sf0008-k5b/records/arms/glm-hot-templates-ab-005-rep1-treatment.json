@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-005-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 176268,
+  "started_at_ms": 1791440509973,
+  "session_id": "sess_7cf80a13-906f-4efb-a140-167209805172",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-005-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 585577,
+      "ot": 8694,
+      "dur": 169913,
+      "n": 16
+    }
+  ],
+  "input_tokens": 585577,
+  "output_tokens": 8694,
+  "stdout_bytes": 2410,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "ASS）**：用完全相同的输入（`--platform dy --topic 确定性复跑主题 --points '[\\\"要点甲\\\", \\\"要点乙\\\", \\\"要点丙\\\"]'`）连续生成两次到 `out/run1` 与 `out/run2`，两次均 exit 0、stdout 各打印一行 OK 摘要（`elements=6 open_placeholders=6 filled_from_input=4`，符合 dy 满 3 卖点的冻结口径）。逐字节比对结果：`骨架.md` 与 `structure.json` 的 `cmp` 退出码均为 0，sha256 两两相等（2040 / 4038 字节）。\\n\\n**② 失败路径（PASS ×2）**：\\n- 非法 `platform=bilibili`：exit 2，stderr 为 argparse 英文报错 `invalid choice: 'bilibili' (choose from 'dy', 'video', 'wx', 'xhs')`（SKILL.md 明示此形态属预期），`out/invalid-platform` 未被创建。\\n- 空白 topic（`'   '`）：exit 2，stderr 为 `[gen.py] 错误：--topic 不能为空`，`out/empty-topic` 未被创建。\\n\\n## 交付物（均在 treatment 工作目录）\\n\\n| 路径 | 内容 |\\n|---|---|\\n| `run_log.json` | 全部 4 次生成调用记录：输入参数、命令、退出码、stdout/stderr 摘要与原始行、输出目录是否创建、产物清单（字节数+sha256）、期望与判定，外加 determinism_check 区块 |\\n| `out/run1/`、`out/run2/` | 验收①的两份产物（`骨架.md` + `structure.json`） |\\n| `records/run1–run4.{stdout,stderr}` | 4 次调用的原始 stdout/stderr 捕获 |\\n\\n生成引擎为本目录技能包的 `.zcode/skills/hot-templates/scripts/gen.py`（gen.py 的 sha256 也登记在 run_log.json 中以便追溯）。验收未要求常规骨架交付目录，产物按上述工程记录形态留存。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 16,\n    \"inputTokens\": 585577,\n    \"outputTokens\": 8694,\n    \"totalTokens\": 594271,\n    \"cacheReadTokens\": 553408,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 4441,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 594271,\n    \"contextUsed\": 47850,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "ab-005",
+  "rep": 1,
+  "slot": 35
+}

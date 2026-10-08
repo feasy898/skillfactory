@@ -1,0 +1,97 @@
+{
+  "template": "请示函",
+  "doc_title": "请  示",
+  "source_data": "fixtures/请示函/case2.json",
+  "generated_at": "2026-10-08T14:39:29+08:00",
+  "placeholder": "____",
+  "policy": "缺失不编造：必填缺失以 ____ 占位渲染，选填缺失留空或省略，模板外键记入 unknown_keys",
+  "fields": {
+    "主送机关": {
+      "required": true,
+      "section": "salutation",
+      "present": false,
+      "value": null,
+      "status": "missing_required",
+      "rendered": "____"
+    },
+    "请示事由": {
+      "required": true,
+      "section": "lead",
+      "present": true,
+      "value": "延期举办季度评审会",
+      "status": "filled",
+      "rendered": "延期举办季度评审会"
+    },
+    "请示缘由": {
+      "required": true,
+      "section": "body",
+      "present": true,
+      "value": "因关键评审人出差，原定会议时间无法保证评审质量。",
+      "status": "filled",
+      "rendered": "因关键评审人出差，原定会议时间无法保证评审质量。"
+    },
+    "请示事项": {
+      "required": true,
+      "section": "body",
+      "present": true,
+      "value": null,
+      "status": "missing_required",
+      "rendered": "____"
+    },
+    "请示单位": {
+      "required": true,
+      "section": "sign",
+      "present": true,
+      "value": "评测技术部",
+      "status": "filled",
+      "rendered": "评测技术部"
+    },
+    "成文日期": {
+      "required": false,
+      "section": "sign",
+      "present": false,
+      "value": null,
+      "status": "missing_optional",
+      "rendered": ""
+    },
+    "联系人": {
+      "required": false,
+      "section": "contact",
+      "present": true,
+      "value": "李工",
+      "status": "filled",
+      "rendered": "李工"
+    },
+    "联系电话": {
+      "required": false,
+      "section": "contact",
+      "present": false,
+      "value": null,
+      "status": "missing_optional",
+      "rendered": ""
+    }
+  },
+  "filled": [
+    "请示事由",
+    "请示缘由",
+    "请示单位",
+    "联系人"
+  ],
+  "missing_required": [
+    "主送机关",
+    "请示事项"
+  ],
+  "missing_optional": [
+    "成文日期",
+    "联系电话"
+  ],
+  "unknown_keys": [],
+  "unknown_key_details": [],
+  "counts": {
+    "total_fields": 8,
+    "filled": 4,
+    "missing_required": 2,
+    "missing_optional": 2,
+    "unknown_keys": 0
+  }
+}

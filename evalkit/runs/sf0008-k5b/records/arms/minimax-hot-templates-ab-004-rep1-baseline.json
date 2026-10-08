@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/hot-templates-ab-004-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 133996,
+  "started_at_ms": 1791439611063,
+  "session_id": "sess_0744741d-3269-4da6-af2e-ce49189e2fa3",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/hot-templates-ab-004-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 352693,
+      "ot": 7842,
+      "dur": 126947,
+      "n": 13
+    }
+  ],
+  "input_tokens": 352693,
+  "output_tokens": 7842,
+  "stdout_bytes": 3721,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "s about *substituting* a water box *for* dumbbells. Those coexist fine in a beginner tutorial, but whether the finished video is positioned as \\\"dumbbell intro\\\" or \\\"zero-equipment home training\\\" changes what slots 2 and 5 should pull. I noted it rather than silently picking one.\\n2. **I didn't reuse the single point across slots.** The same point could also carry slot 3 (转折). I used it once and left the reuse decision to the material owner.\\n3. **The 5L capacity is my assumption**, not from the brief — it materially affects load and safety, so it's called out as an assumption rather than baked in silently.\\n\\nOne self-correction during verification: I initially declared a 40-character voiceover budget for slot 4 but wrote 49 characters. I fixed the budget to 50 and added an explicit `voiceover_chars` field so the numbers are checkable instead of just asserted. A verification script confirms the JSON parses, the timeline math holds, and the filled slot's picture/voiceover/subtitle all appear verbatim in the Markdown.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 13,\n    \"inputTokens\": 352693,\n    \"outputTokens\": 7842,\n    \"totalTokens\": 360535,\n    \"cacheReadTokens\": 318724,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 694,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 360535,\n    \"contextUsed\": 35193,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "ab-004",
+  "rep": 1,
+  "slot": 15
+}

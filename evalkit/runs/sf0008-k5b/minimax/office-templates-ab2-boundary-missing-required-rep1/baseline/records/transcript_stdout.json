@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_c07c8e63-fe92-490d-b5c5-102d5395759d",
+  "traceId": "5eaedbb8-d447-4650-b5a2-633e552cf177",
+  "turnId": "turn_bcdd90f7-e00c-4779-b484-59d4de32050e",
+  "response": "Done. Both boundary cases are processed and the deliverables are in place, with an independent verifier passing 43/43 checks.\n\n**What I built** (in the baseline arm directory): `main.py` implements the CLI contract `--template / --data / --outdir`, emitting `文书.docx` and `fields.json` per call with exit code 0. `verify_outputs.py` re-derives the expected missing-fact lists straight from the fixtures (not from the generator's internals), diffs them against `fields.json`, and reads the docx paragraph properties to check layout. `README.md` documents the contract. Environment note: `python-docx` is only on `/usr/bin/python3`; the default `python3` on PATH lacks it.\n\n**The ledger matches the brief exactly.** For 请示函/case2: missing required `主送机关` (key absent) and `请示事项` (present but empty string), missing optional `联系电话` and `成文日期`, no unknown keys. For 会议通知/case2: missing required `会议名称` (key absent) and `会议地点` (empty string), missing optional `会议议题 / 会议要求 / 联系人 / 联系电话`, and `备注` recorded under `unknown_keys` with its original value kept in `unknown_key_details` so the stray key is accounted for without leaking into the document body.\n\n**On the two missing-data axes.** A missing required field renders as a `____` placeholder at its natural position — for 请示函 that means the salutation line reads `主送机关：____` rather than a bare `____：`, so the document itself names which required field is absent, and for 会议通知 the numbered body items read `一、会议名称：____` and `三、会议地点：____`. Missing optional fields are omitted as whole body items (会议议题/会议要求 drop out and the remaining numbering stays 一、二、三、四 with no gap), while a missing optional sign-off line is left blank so the right-aligned signature block keeps its shape. Nothing is ever invented: every `filled` value is byte-identical to the input.\n\n**Layout survives the missing data.** In both documents the title is centered, the salutation sits flush at the left margin with zero left and first-line indent, body paragraphs carry the two-character first-line indent, and every signature/contact line is right-aligned.\n\nOne judgment call worth flagging: I treated a key that is present with an empty or whitespace value as a missing fact, identical to an absent key, on the reasoning that \"empty string\" and \"no key\" mean the same thing to a template renderer. The two cases stay distinguishable for auditing — each field record carries `present` alongside `status` — so `会议地点` shows `present=true` while `会议名称` shows `present=false`, even though both land in `missing_required`.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 20,
+    "inputTokens": 574029,
+    "outputTokens": 12979,
+    "totalTokens": 587008,
+    "cacheReadTokens": 537520,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 2141,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 587008,
+    "contextUsed": 37285,
+    "contextWindow": 200000
+  }
+}

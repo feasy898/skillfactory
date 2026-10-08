@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_87ec9c96-51a3-41c2-9607-3a0dd68feb04",
+  "traceId": "f6a87777-5a7f-4910-9606-306d2406f419",
+  "turnId": "turn_6ec974ae-d113-44a4-9730-683d77e97801",
+  "response": "短视频分镜表骨架已生成并留在 `out/`，两个产物齐备且通过了全部技能内建判据。\n\n**做了什么**\n\n按 hot-templates 技能的红线，全程只走确定性渲染引擎 `scripts/gen.py`，未手写、未改写 `structure.json`：\n\n```bash\npython3 .zcode/skills/hot-templates/scripts/gen.py \\\n  --platform video --topic \"居家哑铃入门\" \\\n  --points '[\"用装满水的矿泉箱代替哑铃做划船\"]' --outdir out\n# OK platform=video topic=居家哑铃入门 elements=6 open_placeholders=16 filled_from_input=2 -> out\n```\n\n执行前按文档地图完整读了 `references/video.md`，没有中途截断。\n\n**产物**\n\n`out/骨架.md`（5844 B，人读）与 `out/structure.json`（7112 B，机器可读）。骨架是标准 6 镜 45 秒分镜表：每镜一节含冻结表头 `| 序号 | 时间轴 | 画面 | 口播 | 字幕 |`、该行表格、画面/口播/字幕三条明细和「> 写法要点：」，尾部有 `## 分镜总表（时间轴 00:00-00:45，共 45 秒）` 聚合 6 行，末尾 `## 占位符统计`。\n\n**brief 要求的「仅 1 条卖点、验证缺失槽位」已按设计生效**：卖点槽位在 `shot_3..5`，第 1 条落进 `shot_3` 口播列（`第一招，用装满水的矿泉箱代替哑铃做划船。`），第 2、3 条缺失，各自如实落 `【占位:价值点2】`/`【占位:价值点3】`（在 `shot_4`/`shot_5` 的画面、口播、字幕三列同时出现）。`points_used` 为 `[\"用装满水的矿泉箱代替哑铃做划船\", null, null]`，`points_unused` 为空（输入只有 1 条，无第 4 条起被截断）。统计为 16 处未填占位、12 个去重 token、`filled_from_input` 2 处（topic 与 point#1）。\n\n我**没有**为「看起来完整」去编造画面描述或痛点文案补空槽位——`【占位:…】` 是留给扩写步骤的开放槽位，按红线保持原样。\n\n**核验结果**\n\n- exit 0，stdout 打印 OK 行，两个文件存在且非空（成功判据三条全中）。\n- 冻结模板完好：6 要素 id `shot_1..6` 顺序不变，时长 `[3,7,10,10,10,5]` 合计 45 秒，时间轴 `00:00-00:03`…`00:40-00:45` 正确，`meta.beat` 四条冻结文案一致。\n- `structure.json` 顶层 11 键、每要素 9 键、meta 7 键且顺序为 `shot_no/time_range/duration_sec/visual/voiceover/subtitle/beat`，统计节 5 键；UTF-8、LF、无 CR。\n- 残留缺陷 `{{ }}` 计 0 处（两文件均为 0）。\n- 幂等：删除 `out/` 重跑一次，两文件 sha256 逐字节相同（骨架 `f4865ec6…`、结构 `a0df42ab…`）。\n- 失败路径负例确认：`--platform bilibili` 走 argparse 报 `invalid choice`、exit 2 且未创建输出目录。\n- gotcha 复核：把首条卖点换成空白串 `\"  \"` 重跑，按缺失处理（落 `【占位:价值点1】`），与文档描述一致。\n\n一处需要说明的偏差：技能里提到的验收脚本 `eval/runner.py` 与参照目录 `reference/out` 在本运行目录中不存在（`fixtures/` 为空目录），所以「8 case × 5 检查、结构一致率阈值 90%」这一条无法在此环境执行。我用上面那组等价的结构化断言逐项代替核验，均通过。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 11,
+    "inputTokens": 293610,
+    "outputTokens": 4092,
+    "totalTokens": 297702,
+    "cacheReadTokens": 259968,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 580,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 297702,
+    "contextUsed": 33448,
+    "contextWindow": 200000
+  }
+}

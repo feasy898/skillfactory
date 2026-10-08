@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t1-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 472158,
+  "started_at_ms": 1791441491154,
+  "session_id": "sess_cf7b6bf7-c080-4ad0-b077-00df3a04d734",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t1-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1056088,
+      "ot": 27734,
+      "dur": 446860,
+      "n": 22
+    }
+  ],
+  "input_tokens": 1056088,
+  "output_tokens": 27734,
+  "stdout_bytes": 3347,
+  "stderr_bytes": 392,
+  "stderr_head": "AI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\n",
+  "stdout_tail": "h with the exact【时间 · 说话人】prefix):\\n- 决议： 10:03（「我们内部的结论是主会场必须挂新的装修稿」）、10:06（主持人裁决临时坐席费用从客服预算出）、10:10（「48小时发货的承诺不能延期…记牢」）.\\n- 待办： 10:05 —「我负责把排班表排出来」gives owner 客服组长何姐 by deterministic rule; no date appears in the sentence, so 期限 = 待定 (no guessing, per the hard constraint).\\n- 风险： 10:08 — the only line that explicitly flags a risk (爆仓/单量涨四成).\\n- Excluded: opening (10:00), status report (10:02), the 10:09 question (answered and closed by the 10:10 decision), the 10:12 self-correction (it confirms 五十， same as 10:05 — the number was kept as 五十 with no drift toward 十五)， and the closing (10:13).\\n\\n**Verification**: a python-docx structural check confirmed the three headings verbatim and in order, item numbering, byte-verbatim quoting with correct prefixes, table header/row values, and summary.json↔docx count consistency (all pass); the skill's postcheck.py returned 9/9 with 0 errors/warnings; and the rendered page passed the visual-judge gate with no issues. The `out/` directory contains only the two expected files.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 22,\n    \"inputTokens\": 1056088,\n    \"outputTokens\": 27734,\n    \"totalTokens\": 1083822,\n    \"cacheReadTokens\": 1005952,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 22863,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1083822,\n    \"contextUsed\": 65882,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t1",
+  "rep": 1,
+  "slot": 50
+}

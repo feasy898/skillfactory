@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_e12886f3-6840-4ec5-9fcc-c54ed34b44cd",
+  "traceId": "50ec93db-fe67-41e8-9425-04baf3d46642",
+  "turnId": "turn_ce72a132-5999-407d-bfae-a8ddcf21cd61",
+  "response": "短视频分镜表骨架已生成并落在 `out/`：一份人读的 `骨架.md` 和一份机器可读的 `structure.json`。\n\n生成走的是 `scripts/gen.py` 确定性引擎（没有手写或改写 `structure.json`），命令与结果如下：\n\n```\npython .zcode/skills/hot-templates/scripts/gen.py --platform video \\\n  --topic \"居家哑铃入门\" \\\n  --points '[\"用装满水的矿泉箱代替哑铃做划船\"]' \\\n  --outdir out\n→ exit 0\n→ OK platform=video topic=居家哑铃入门 elements=6 open_placeholders=16 filled_from_input=2 -> out\n```\n\n产物符合 brief要求的冻结模板：6 镜 45 秒（3/7/10/10/10/5 秒，时间轴 00:00-00:03 到 00:40-00:45），四列表头 `| 序号 | 时间轴 | 画面 | 口播 | 字幕 |`，尾部带 `## 分镜总表（时间轴 00:00-00:45，共 45 秒）`。\n\nbrief 里只给了 1 条卖点，正是要验证的缺失槽位场景，处理结果符合技能文档的规整策略：1 条输入规整为 3 条槽位，`points_used` 为 `[\"用装满水的矿泉箱代替哑铃做划船\", null, null]`，卖点 1 落进 `shot_3`，缺位的卖点 2、卖点在 `shot_4`/`shot_5` 的口播列与字幕列各留出 `【占位:价值点2】`/`【占位:价值点3】`。开放槽位共 16 处（满 3 卖点时基准为 12，两处缺位各在口播+字幕两列多出计数），已填 2 处（topic、point#1）。按红线，这些 `【占位:…】` 一律原样保留，未编造内容填充。\n\n我额外做了三项核对：`structure.json` 顶层 11 键、6 个要素各 9 键齐全，`template_version=\"1.0\"`；两份产物中 `{{ }}` 类未填充模板变量为 0；同输入重跑到临时目录与本次产物 `diff -r` 逐字节一致，确认渲染确定性（临时目录已清理）。\n\n注：本包内未带 `eval/runner.py`，所以 brief 提到的验收命令（`python eval/runner.py out reference/out`）无法在此执行，上述校验是我手工完成的。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 10,
+    "inputTokens": 249219,
+    "outputTokens": 1855,
+    "totalTokens": 251074,
+    "cacheReadTokens": 220431,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 458,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 251074,
+    "contextUsed": 29523,
+    "contextWindow": 200000
+  }
+}

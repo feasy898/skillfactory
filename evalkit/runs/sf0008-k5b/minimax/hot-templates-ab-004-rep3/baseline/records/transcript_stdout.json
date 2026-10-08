@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_eb3e7663-234e-4631-944e-a1da14e3993a",
+  "traceId": "16a3d82b-a827-454c-aa4f-a97fd8cf93b5",
+  "turnId": "turn_edf820a6-58a2-4a5f-81c6-eaf233dc6b6e",
+  "response": "Done. The skeleton is generated and verified.\n\n**What ran:** one shot of the `hot-templates` skill's deterministic renderer (`scripts/gen.py`) with `--platform video --topic 居家哑铃入门 --points '[\"用装满水的矿泉箱代替哑铃做划船\"]' --outdir out`. Exit 0, stdout matched the success line: `OK platform=video topic=居家哑铃入门 elements=6 open_placeholders=16 filled_from_input=2 -> .../baseline/out`.\n\n**Deliverables** in `out/`:\n- `骨架.md` (5844 bytes) — first line `# 短视频分镜表 · 爆款骨架`, three meta lines, six `## N. 分镜N（时间轴）` sections each with the frozen `| 序号 | 时间轴 | 画面 | 口播 | 字幕 |` table, the aggregate `## 分镜总表（时间轴 00:00-00:45，共 45 秒）`, and the `## 占位符统计` section.\n- `structure.json` (7112 bytes) — 11 top-level keys, 6 elements × 9 keys each, 7-key `meta`, 5-key `placeholder_stats`.\n\n**The missing-slot case behaves as the frozen contract specifies.** Only 卖点 1 was supplied, so it landed in `shot_3` (id `shot_{2+1}`) filling the 口播 and 字幕 columns, while `shot_4` and `shot_5` fell back to `【占位:价值点2】` / `【占位:价值点3】`. Total open placeholders = 16, exactly the documented video value for a 1-point input (满3=12, 2条=14, 1条=16, 0条=18), with per-element counts 1/3/2/4/4/2 and 12 unique tokens. `filled_from_input=2` = `topic` + `point#1`.\n\n**Verification I ran:** no `{{ }}` template-variable residue in either file (0 occurrences each); timeline frozen at 3/7/10/10/10/5s = 45s; table header and `共 45 秒` present; `points_used` is `[\"用装满水的矿泉箱代替哑铃做划船\", null, null]` with `points_unused` empty; and a second run into a scratch directory produced byte-identical sha256 for both files, confirming determinism. I followed the skill's red line and left every `【占位:…】` slot unfilled — filling them would be content invention, and the brief asked for the skeleton only, not expanded prose.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 14,
+    "inputTokens": 371526,
+    "outputTokens": 2782,
+    "totalTokens": 374308,
+    "cacheReadTokens": 338044,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 644,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 374308,
+    "contextUsed": 34343,
+    "contextWindow": 200000
+  }
+}

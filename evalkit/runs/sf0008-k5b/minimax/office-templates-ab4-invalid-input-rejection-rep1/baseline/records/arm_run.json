@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/office-templates-ab4-invalid-input-rejection-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 216242,
+  "started_at_ms": 1791441947259,
+  "session_id": "sess_2a670bea-2536-44f8-a44c-a05f07560e67",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/office-templates-ab4-invalid-input-rejection-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1571248,
+      "ot": 24725,
+      "dur": 198331,
+      "n": 37
+    }
+  ],
+  "input_tokens": 1571248,
+  "output_tokens": 24725,
+  "stdout_bytes": 3334,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " the harness checks for.\\n\\nTwo things worth flagging:\\n\\nThe brief's boundary requirement — missing required fields are *not* invalid input — needed a sixth case to prove, so I added one. A payload missing 部门/周期/本周工作内容 plus an off-template 备注 key exits 0, renders `____` placeholders, and records `missing_required: [部门, 周期, 本周工作内容]`, `missing_optional: [下周工作计划, 问题与需协调事项]`, `unknown_keys: [备注]`. I deliberately named it without the substring 非法 so the harness's illegal-group detector doesn't misclassify it as one of the four.\\n\\nSeparately, `s8_checkers.py:47` calls `r._p.rPr` on a docx `Run`, but python-docx exposes that as `r._r` — so `check_office` raises `AttributeError` before reaching any anchor, for any arm. That's pre-existing harness breakage rather than anything about my output, and I left it alone since the checker is outside this arm. I verified the layout anchors by re-implementing the same assertions against the correct attribute, which is where the centered/indent/right-align results above come from.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 37,\n    \"inputTokens\": 1571248,\n    \"outputTokens\": 24725,\n    \"totalTokens\": 1595973,\n    \"cacheReadTokens\": 1529192,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1271,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1595973,\n    \"contextUsed\": 60005,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t7-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 580766,
+  "started_at_ms": 1791447350010,
+  "session_id": "sess_11d7b4bf-4279-4c4c-b552-c4014f833cfb",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t7-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1331502,
+      "ot": 26701,
+      "dur": 454695,
+      "n": 27
+    }
+  ],
+  "input_tokens": 1331502,
+  "output_tokens": 26701,
+  "stdout_bytes": 3574,
+  "stderr_bytes": 3079,
+  "stderr_head": "ProviderBusinessError: [1302][您的账户已达到速率限制，请您控制请求频率][20261008161812cb63cf3cba574cb2]\n    at detectProviderBusinessError (/opt/ZCode/resources/glm/zcode.cjs:2067:11088)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.fetch (/opt/ZCode/resources/glm/zcode.cjs:2067:10584)\n    at async /opt/ZCode/resources/glm/zcode.cjs:2058:21545\n    at async postToApi (/opt/ZCode/resources/glm/zcode.cjs:2031:22186)\n    at async gIs.doStream (/opt/ZCode/resources/glm/zcode.cjs:2032:51208)\n    at async fn (/opt/ZCode/resources/glm/zcode.cjs:2099:15517)\n    at async /opt/ZCode/resources/glm/zcode.cjs:2094:964\n    at async _retryWithExponentialBackoff (/opt/ZCode/resources/glm/zcode.cjs:2094:5143)\n    at async streamStep (/opt/ZCode/resources/glm/zcode.cjs:2099:14640) {\n  code: 'PROVIDER_BUSINESS_ERROR',\n  isProviderBusinessError: true,\n  providerCode: '1302',\n  providerId: 'account:bigmodel-individual-coding-plan',\n  providerKind: 'anthropic',\n  providerMessage: '[1302][您的账户已达到速率限制，请您控制请求频率][20261008161812cb63cf3cba574cb2]',\n  providerRequestId: '20261008161812cb63cf3cba574cb2',\n  responseBodySummary: {\n    keys: [ 'type', 'error', 'request_id' ],\n    success: undefined,\n    code: undefined,\n    error_code: undefined,\n    msg: undefined,\n    message: undefined,\n    request_id: '20261008161812cb63cf3cba574cb2',\n    requestId: undefined,\n    error: {\n      keys: [Array],\n      code: '1302',\n      error_code: undefined,\n      msg: undefined,\n      message: '[1302][您的账户已达到速率限制，请您控制请求频率][20261008161812cb63cf3cba574cb2]',\n      request_id: undefined,\n      requestId: undefined,\n      type: 'rate_limit_error'\n    }\n  },\n  responseHeaders: {\n    'alt-svc': 'h3=\":443\"; ma=3600',\n    'anthropic-ratelimit-unified-status': 'rejected',\n    connection: 'keep-alive',\n    'content-length': '225',\n    'content-type': 'application/json',\n    date: 'Thu, 08 Oct 2026 08:18:13 GMT',\n    'ga-traceid': '5d89e737621a1e74b1a91ec9b6480166',\n    'request-id': '",
+  "stdout_tail": "headers, counts, JSON consistency); the docx skill's `postcheck.py` (9/9, 0 warnings); and a two-round visual acceptance pass via the visual-judge agent on the LibreOffice render — the first round caught an orphaned 「三、风险与关注」 heading at the bottom of page 1, fixed with `keepNext` on headings, and the re-judge passed both pages.\\n\\nOne note: the brief says to use the meeting-minutes skill, but this arm intentionally has no skill mounted (`baseline_has_skill: false` in arms_manifest.json — that's the A/B design of this eval), so I executed the task directly from the brief's self-contained constraints and used the documents:docx skill only for document production standards.\\n\\n::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t7-rep2/baseline/out/纪要.docx\\\" purpose=\\\"output\\\"} ::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t7-rep2/baseline/out/summary.json\\\" purpose=\\\"output\\\"}\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 27,\n    \"inputTokens\": 1331502,\n    \"outputTokens\": 26701,\n    \"totalTokens\": 1358203,\n    \"cacheReadTokens\": 1280640,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 20853,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1358203,\n    \"contextUsed\": 66696,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t7",
+  "rep": 2,
+  "slot": 73
+}

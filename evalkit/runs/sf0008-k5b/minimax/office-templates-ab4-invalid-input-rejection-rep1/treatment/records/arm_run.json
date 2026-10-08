@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 72434,
+  "started_at_ms": 1791442165515,
+  "session_id": "sess_0e2b72ff-d7db-47d2-826e-4b0d7415895f",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 372164,
+      "ot": 6758,
+      "dur": 65183,
+      "n": 12
+    }
+  ],
+  "input_tokens": 372164,
+  "output_tokens": 6758,
+  "stdout_bytes": 3960,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " written (\\\"stderr 有中文错误信息\\\"). Cases ②③④ emit complete Chinese sentences from the engine's own `fail()` path. I recorded this distinction verbatim in `run_log.json` rather than papering over it, since it's a real difference in message quality between the two rejection paths.\\n\\n## Deliverables\\n\\n- `run_log.json` — per-case full command, exit code, stdout, stderr summary, residue check (outdir created? files written?), and pass/fail on each criterion; generated programmatically from real re-runs rather than transcribed by hand.\\n- `out/周报/case1/` — the legal control group's `文书.docx` and `fields.json`.\\n- `out/补充/周报_必填缺失/` — supplementary artifact for the missing-required check, clearly separated from the brief's specified layout.\\n\\nOne environment note: the default `python3` on PATH has no `python-docx` and no `pip`, so I used `/usr/bin/python3`, which already had it (Python 3.12.3, python-docx 1.2.0). The exact interpreter and library versions are recorded in `run_log.json` under `engine` so the run is reproducible.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 12,\n    \"inputTokens\": 372164,\n    \"outputTokens\": 6758,\n    \"totalTokens\": 378922,\n    \"cacheReadTokens\": 334038,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 995,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 378922,\n    \"contextUsed\": 39093,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

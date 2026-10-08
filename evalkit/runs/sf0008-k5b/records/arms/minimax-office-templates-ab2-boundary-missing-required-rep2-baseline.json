@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/office-templates-ab2-boundary-missing-required-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 197466,
+  "started_at_ms": 1791441665774,
+  "session_id": "sess_94c4bb13-e0d4-4e34-9458-5176aa6ea7b9",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/office-templates-ab2-boundary-missing-required-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 918281,
+      "ot": 15400,
+      "dur": 188888,
+      "n": 29
+    }
+  ],
+  "input_tokens": 918281,
+  "output_tokens": 15400,
+  "stdout_bytes": 3756,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "lines, so the missing会议议题 doesn't leave a hollow `会议议题：` line in the notice. And the missing 称谓 renders as `主送机关：____` with the field name visible, rather than a bare `____`, so the placeholder says what it stands for. Both are within the brief's \\\"留空或省略\\\" latitude, but they're choices I made rather than ones the brief dictated.\\n\\nMissing-value detection treats an absent key, a `null`, and a whitespace-only string identically — that's what makes 请示事项 (present but empty) and 会议名称 (absent) land in the same honest accounting.\\n\\n`selfcheck.py` re-derives every expectation independently from the fixtures rather than reading `render.py`'s internals, so it's a real cross-check rather than a restatement. It also verifies the run is idempotent — one early failure there turned out to be my check comparing an absolute input path against the stored relative one, not a defect in the renderer; I confirmed the outputs were byte-identical before fixing the check.\\n\\nNo memory-worthy facts came up here, so I didn't write to memory.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 29,\n    \"inputTokens\": 918281,\n    \"outputTokens\": 15400,\n    \"totalTokens\": 933681,\n    \"cacheReadTokens\": 873833,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 2317,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 933681,\n    \"contextUsed\": 45319,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "ab2-boundary-missing-required",
+  "rep": 2,
+  "slot": 52
+}

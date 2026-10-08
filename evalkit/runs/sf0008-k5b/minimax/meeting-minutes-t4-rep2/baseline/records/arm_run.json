@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t4-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 121260,
+  "started_at_ms": 1791440508153,
+  "session_id": "sess_81922a70-abec-4e7c-aca9-ae78f23e9649",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t4-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 409633,
+      "ot": 9066,
+      "dur": 113958,
+      "n": 15
+    }
+  ],
+  "input_tokens": 409633,
+  "output_tokens": 9066,
+  "stdout_bytes": 3710,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "only lifted verbatim from the sentence — an absolute date like 「10月18日之前完成复检」 or an original relative phrase like 「周五前」 — and is never converted to a computed calendar date. The 13:08 resend has no time expression in its own sentence, so it is filled 「待定」.\\n\\n**One judgment call worth flagging:** a line that could belong to two sections is assigned to exactly one, by the operative verb, with precedence 决议 > 待办 > 风险. That is why 13:08 (「有疑问…我们需要重新送检」) sits in 待办 rather than 风险 — its operative content is an action assignment, and 13:02 (「超差…需要修模」) likewise lands in 待办. If your convention is that any 疑虑/超差 signal should be logged under 风险与关注 instead, the split shifts and I can regenerate.\\n\\nThe generator is kept at `build_minutes.py` for reproducibility; re-running it regenerates both artifacts deterministically. Note that this baseline arm has no skill mounted (`arms_manifest.json` records `baseline_has_skill: false`), so the work was done directly against the brief's rules rather than through a `meeting-minutes` skill.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 15,\n    \"inputTokens\": 409633,\n    \"outputTokens\": 9066,\n    \"totalTokens\": 418699,\n    \"cacheReadTokens\": 383584,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 517,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 418699,\n    \"contextUsed\": 33780,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

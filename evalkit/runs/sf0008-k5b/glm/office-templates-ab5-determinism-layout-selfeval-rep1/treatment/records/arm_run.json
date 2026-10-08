@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/office-templates-ab5-determinism-layout-selfeval-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 768619,
+  "started_at_ms": 1791452709635,
+  "session_id": "sess_a5d91372-27fb-4ba7-8a76-036ebb8b56d2",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/office-templates-ab5-determinism-layout-selfeval-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1496239,
+      "ot": 36841,
+      "dur": 751432,
+      "n": 30
+    }
+  ],
+  "input_tokens": 1496239,
+  "output_tokens": 36841,
+  "stdout_bytes": 3780,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " | identical on paragraph text, alignment, indents (`w:firstLineChars`), fonts (ascii/hAnsi/eastAsia/size), 28pt exact line spacing, page setup, docProps, and all 17 zip member contents |\\n| Output dir contains exactly two products | yes — `文书.docx` + `fields.json` only |\\n| Layout/ledger self-checks vs skill spec (V1–V8, S1–S4) | 43/43 pass — 12 paragraphs per the 会议通知 structure (centered 黑体 22pt title, 顶格称谓, indented 仿宋 16pt body, 黑体 section header, right-aligned signature block), ledger reports 11/11 fields filled, 0 missing |\\n\\nThe recorded sha256s match the files currently on disk (run 2 = final state), and as an extra proof I re-ran the entire pipeline: both products **and** `run_log.json` itself regenerate byte-identically.\\n\\n## Deliverables in place\\n\\n- `out/会议通知/case1/文书.docx` + `fields.json` — the two products\\n- `run_log.json` — per-run sha256s (labeled 第1遍/第2遍), byte & parsed comparison results, conclusion\\n- `run_case.py` — the reproducible pipeline; `records/` — probe evidence and run-1 snapshot\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 30,\n    \"inputTokens\": 1496239,\n    \"outputTokens\": 36841,\n    \"totalTokens\": 1533080,\n    \"cacheReadTokens\": 1433664,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 25994,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1533080,\n    \"contextUsed\": 78127,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

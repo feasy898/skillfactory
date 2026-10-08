@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_6c8886a1-4994-4aef-b3a7-e8a9badec8e1",
+  "traceId": "3b781883-4ebf-4c8b-8464-64aa28b7ee39",
+  "turnId": "turn_e9ef2817-2372-4f66-8dfc-84b8b56f25c8",
+  "response": "两项工程性验收全部通过，4 次生成调用的完整记录已写入 `run_log.json`，与产物同级留在工作目录（`.../hot-templates-ab-005-rep2/baseline/`）。\n\n**验收① 确定性复跑（4/4 通过）**\n用完全相同的输入（`--platform dy --topic 确定性复跑主题 --points '[\"要点甲\", \"要点乙\", \"要点丙\"]'`）连续生成两次到 `out/run1` 和 `out/run2`。两次均 exit 0，stdout 打印 `OK platform=dy ... elements=6 open_placeholders=6 filled_from_input=4`。逐字节比对结果：两份 `骨架.md`（2040 字节）与两份 `structure.json`（4038 字节）的 `cmp` 退出码均为 0，sha256 两两相等（骨架.md = `166692ba…`，structure.json = `a331cdd8…`）——引擎确定性成立。\n\n**验收② 失败路径（2/2 通过）**\n- 非法 platform `bilibili`：exit 2，stderr 为 argparse 英文报错 `invalid choice: 'bilibili' (choose from 'dy', 'video', 'wx', 'xhs')`（SKILL.md 明示此形态属预期），`out/invalid-platform` 未被创建。\n- 空白 topic `'   '`：exit 2，stderr 为 `[gen.py] 错误：--topic 不能为空`，`out/empty-topic` 未被创建。两条失败路径均零产物、零目录。\n\n**交付物**（均在 baseline 工作目录下）\n- `run_log.json`：4 次调用的输入参数、退出码、stdout/stderr 摘要与原文行、产物文件清单（字节数+sha256）、逐条 verdict，以及 determinism_check 比对明细与总结论；由 `records/build_run_log.py` 从现场捕获文件派生生成的 JSON，已重新解析验证。\n- `out/run1/`、`out/run2/`：验收①的两份产物（各含 `骨架.md` + `structure.json`，内容与冻结 dy 模板口径一致，3 条卖点全部入槽、无残留 `{{ }}`）。\n- `records/`：4 次调用的原始 stdout/stderr 捕获文件及日志构建脚本，供留痕复核。\n\n另注：本目录 `fixtures/` 为空目录（任务前即如此），points 按技能规范以内联 JSON 串传入，未影响任何验收判据。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 19,
+    "inputTokens": 647043,
+    "outputTokens": 9352,
+    "totalTokens": 656395,
+    "cacheReadTokens": 617152,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 5601,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 656395,
+    "contextUsed": 45566,
+    "contextWindow": 200000
+  }
+}

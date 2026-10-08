@@ -1,0 +1,247 @@
+{
+  "task": "SF-0008 office 臂任务（ab4-invalid-input-rejection）",
+  "task_id": "sf0008-k5b/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment",
+  "generated_at": "2026-10-08T14:50:23+08:00",
+  "engine": {
+    "skill": "office-templates v1.0.0",
+    "entrypoint": ".zcode/skills/office-templates/scripts/gen_doc.py",
+    "cli": "python <entrypoint> --template <模板> --data <数据.json> --outdir <输出目录>",
+    "python": "Python 3.12.3",
+    "python_docx": "1.2.0"
+  },
+  "input_fixtures": {
+    "fixtures/周报/case1.json": "合法对照组数据（七字段齐全），原样取自冻结任务集。",
+    "/tmp/office_t_ab4/notjson.json": "非法输入③用，内容：不是JSON（无 JSON 结构）。",
+    "/tmp/office_t_ab4/arr.json": "非法输入④用，内容：[\"数组\",\"非对象\"]（顶层为数组）。",
+    "/tmp/office_t_ab4/missing_required.json": "补充验证用，内容为顶层对象，仅含 部门/填报人/周期/问题与需协调事项 四个键，缺 两个必填列表字段，并含一个模板外键 多余键。"
+  },
+  "cases": [
+    {
+      "id": "illegal-1",
+      "kind": "illegal",
+      "label": "① 模板名非法（--template 证书）",
+      "description": "模板名不在 周报/请示函/会议通知/工作总结 四选一内，应由 argparse 拒绝。",
+      "command": "/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 证书 --data fixtures/周报/case1.json --outdir out/invalid/case1",
+      "cwd_relative": true,
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "stdout": "",
+      "stderr": "usage: gen_doc.py [-h] --template {周报,请示函,会议通知,工作总结} --data DATA --outdir\n                  OUTDIR\ngen_doc.py: error: argument --template: invalid choice: '证书' (choose from '周报', '请示函', '会议通知', '工作总结')",
+      "stderr_has_chinese": true,
+      "residue_check": {
+        "outdir": "out/invalid/case1",
+        "outdir_created": false,
+        "files_written": [],
+        "file_count": 0,
+        "residual_artifacts": [],
+        "zero_residue": true
+      },
+      "checks": {
+        "exit_code_matches": true,
+        "file_count_matches": true,
+        "stderr_contains_chinese": true,
+        "stderr_contains_keywords": true,
+        "zero_residue": true
+      },
+      "pass": true
+    },
+    {
+      "id": "illegal-2",
+      "kind": "illegal",
+      "label": "② 数据文件不存在",
+      "description": "--data 指向不存在的路径，应拒绝且不产出。",
+      "command": "/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data fixtures/周报/不存在.json --outdir out/invalid/case2",
+      "cwd_relative": true,
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "stdout": "",
+      "stderr": "错误：数据文件不存在：fixtures/周报/不存在.json",
+      "stderr_has_chinese": true,
+      "residue_check": {
+        "outdir": "out/invalid/case2",
+        "outdir_created": false,
+        "files_written": [],
+        "file_count": 0,
+        "residual_artifacts": [],
+        "zero_residue": true
+      },
+      "checks": {
+        "exit_code_matches": true,
+        "file_count_matches": true,
+        "stderr_contains_chinese": true,
+        "stderr_contains_keywords": true,
+        "zero_residue": true
+      },
+      "pass": true
+    },
+    {
+      "id": "illegal-3",
+      "kind": "illegal",
+      "label": "③ JSON 解析失败（内容为「不是JSON」）",
+      "description": "--data 文件存在但内容不是合法 JSON，应拒绝且不产出。",
+      "command": "/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data /tmp/office_t_ab4/notjson.json --outdir out/invalid/case3",
+      "cwd_relative": true,
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "stdout": "",
+      "stderr": "错误：数据文件不是合法 JSON：/tmp/office_t_ab4/notjson.json（Expecting value: line 1 column 1 (char 0)）",
+      "stderr_has_chinese": true,
+      "residue_check": {
+        "outdir": "out/invalid/case3",
+        "outdir_created": false,
+        "files_written": [],
+        "file_count": 0,
+        "residual_artifacts": [],
+        "zero_residue": true
+      },
+      "checks": {
+        "exit_code_matches": true,
+        "file_count_matches": true,
+        "stderr_contains_chinese": true,
+        "stderr_contains_keywords": true,
+        "zero_residue": true
+      },
+      "pass": true
+    },
+    {
+      "id": "illegal-4",
+      "kind": "illegal",
+      "label": "④ 顶层非对象（[\"数组\",\"非对象\"]）",
+      "description": "JSON 解析成功但顶层是数组，应拒绝且不产出。",
+      "command": "/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data /tmp/office_t_ab4/arr.json --outdir out/invalid/case4",
+      "cwd_relative": true,
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "stdout": "",
+      "stderr": "错误：数据 JSON 顶层必须是对象（键值对），实际为 list",
+      "stderr_has_chinese": true,
+      "residue_check": {
+        "outdir": "out/invalid/case4",
+        "outdir_created": false,
+        "files_written": [],
+        "file_count": 0,
+        "residual_artifacts": [],
+        "zero_residue": true
+      },
+      "checks": {
+        "exit_code_matches": true,
+        "file_count_matches": true,
+        "stderr_contains_chinese": true,
+        "stderr_contains_keywords": true,
+        "zero_residue": true
+      },
+      "pass": true
+    },
+    {
+      "id": "valid-control",
+      "kind": "valid",
+      "label": "合法对照组（fixtures/周报/case1.json）",
+      "description": "七字段齐全的合法周报数据，应退出码 0 并恰产出 文书.docx + fields.json。",
+      "command": "/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data fixtures/周报/case1.json --outdir out/周报/case1",
+      "cwd_relative": true,
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "已生成：out/周报/case1/文书.docx（模板=周报，标题=研发部工作周报，字段 filled/total=7/7，必填缺失=无，模板外键=无）",
+      "stderr": "",
+      "stderr_has_chinese": false,
+      "residue_check": {
+        "outdir": "out/周报/case1",
+        "outdir_created": true,
+        "files_written": [
+          "out/周报/case1/fields.json",
+          "out/周报/case1/文书.docx"
+        ],
+        "file_count": 2,
+        "residual_artifacts": [
+          "out/周报/case1/fields.json",
+          "out/周报/case1/文书.docx"
+        ],
+        "zero_residue": false
+      },
+      "checks": {
+        "exit_code_matches": true,
+        "file_count_matches": true,
+        "stderr_contains_chinese": true,
+        "stderr_contains_keywords": true
+      },
+      "pass": true
+    },
+    {
+      "id": "supplementary-missing-required",
+      "kind": "supplementary",
+      "label": "补充验证：含必填缺失的输入不得被当作非法输入拒绝",
+      "description": "缺 本周工作内容/下周工作计划 两个必填列表，并含一个模板外键；按 F1/F7 应退出码 0、以 ____ 占位并如实记账。",
+      "command": "/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data /tmp/office_t_ab4/missing_required.json --outdir out/补充/周报_必填缺失",
+      "cwd_relative": true,
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout": "已生成：out/补充/周报_必填缺失/文书.docx（模板=周报，标题=研发部工作周报，字段 filled/total=4/7，必填缺失=['本周工作内容', '下周工作计划']，模板外键=['多余键']）",
+      "stderr": "",
+      "stderr_has_chinese": false,
+      "residue_check": {
+        "outdir": "out/补充/周报_必填缺失",
+        "outdir_created": true,
+        "files_written": [
+          "out/补充/周报_必填缺失/fields.json",
+          "out/补充/周报_必填缺失/文书.docx"
+        ],
+        "file_count": 2,
+        "residual_artifacts": [
+          "out/补充/周报_必填缺失/fields.json",
+          "out/补充/周报_必填缺失/文书.docx"
+        ],
+        "zero_residue": false
+      },
+      "checks": {
+        "exit_code_matches": true,
+        "file_count_matches": true,
+        "stderr_contains_chinese": true,
+        "stderr_contains_keywords": true
+      },
+      "pass": true
+    }
+  ],
+  "verdict": {
+    "illegal_cases": 4,
+    "illegal_all_exit_2": true,
+    "illegal_all_stderr_chinese": true,
+    "illegal_all_zero_residue": true,
+    "out_invalid_dir_exists": false,
+    "valid_control_exit_0": true,
+    "valid_control_outputs": [
+      "out/周报/case1/fields.json",
+      "out/周报/case1/文书.docx"
+    ],
+    "valid_control_summary": {
+      "total": 7,
+      "filled": 7,
+      "missing": 0,
+      "missing_required": 0,
+      "missing_required_names": [],
+      "unknown_keys": []
+    },
+    "missing_required_not_rejected": true,
+    "missing_required_summary": {
+      "total": 7,
+      "filled": 4,
+      "missing": 3,
+      "missing_required": 2,
+      "missing_required_names": [
+        "本周工作内容",
+        "下周工作计划"
+      ],
+      "unknown_keys": [
+        "多余键"
+      ]
+    },
+    "overall_pass": true
+  },
+  "notes": [
+    "四组非法输入均以退出码 2 拒绝，stderr 含中文错误信息，且未创建任何输出目录或文件；运行后 out/ 下不存在 invalid/ 目录，可证零产物残留。",
+    "非法输入①的报错由 argparse 内建生成，正文为英文句式，但其中含中文字符（被拒模板名「证书」与四个合法模板名候选），符合“非零退出码 + 中文可辨识信息”的契约要求。",
+    "非法输入②③④的报错由引擎自身 fail() 抛出，为完整中文句子。",
+    "合法对照组退出码 0，在 out/周报/case1/ 恰生成 文书.docx 与 fields.json 两个产物；fields.json 台账 7/7 字段全部 filled，无缺失、无模板外键。",
+    "brief 明确要求「含必填缺失的输入不算非法」，故补充一组 missing-required 验证：退出码 0、产物照常生成，缺的两个必填列表以「1．____」占位并在 summary 中如实记账。",
+    "引擎全程未触碰 out/invalid/；out/补充/ 为补充验证产物，不属于 brief 指定的对照产物布局。"
+  ]
+}

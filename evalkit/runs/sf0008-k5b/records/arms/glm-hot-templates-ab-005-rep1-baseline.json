@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-005-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 158064,
+  "started_at_ms": 1791440349894,
+  "session_id": "sess_dd3777fc-18be-4a8d-97ca-5831a206ee9f",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-005-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 512995,
+      "ot": 9167,
+      "dur": 151467,
+      "n": 15
+    }
+  ],
+  "input_tokens": 512995,
+  "output_tokens": 9167,
+  "stdout_bytes": 2928,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "open_placeholders=6 filled_from_input=4 -> <outdir>`。\\n- 逐字节比对：两份 `骨架.md` 与两份 `structure.json` 的 `cmp` 退出码均为 0，sha256 两两相等（骨架.md = `166692ba…`，structure.json = `a331cdd8…`）。\\n- 产物内容与 dy 模板规范一致：6 要素 `hook_3s/pain_point/value_1..3/cta`、冻结标记（钩子「别划走！还在为「确定性复跑主题」反复内耗的人」、CTA「点赞收藏，评论区扣「1」」）齐全，三条卖点按序入槽（`第一招：要点甲…`），`points_unused=[]`。\\n\\n**验收② 非法输入失败路径 — PASS**\\n- `--platform bilibili`：exit 2，stderr 为 argparse 英文报错 `invalid choice: 'bilibili' (choose from 'dy', 'video', 'wx', 'xhs')`（SKILL.md 明示此形态属预期），输出目录未创建。\\n- `--topic '   '`（纯空白）：exit 2，stderr 为 `[gen.py] 错误：--topic 不能为空`，输出目录未创建。\\n- 事后核查 `out/` 下仅有 `run1`、`run2`，两个失败调用的目录从未落盘。\\n\\n## 交付物（均在 baseline 工作目录下）\\n\\n| 路径 | 内容 |\\n|---|---|\\n| `run_log.json` | 全部 4 次生成调用的记录：输入参数、命令行、退出码、stdout/stderr 摘要（含原始行）、输出目录是否创建、文件清单（字节数+sha256）、逐条预期与 PASS 判定，另含确定性比对专节（cmp 退出码 + sha256） |\\n| `out/run1/`、`out/run2/` | 两次成功生成的 `骨架.md` 与 `structure.json` |\\n| `records/` | 4 次调用的原始 stdout/stderr 捕获，供追溯 |\\n\\n结论：hot-templates 引擎在确定性（同输入逐字节一致）与失败路径（exit 2、报错形态正确、零目录零文件残留）两个工程性验收面上行为均符合 SKILL.md 契约。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 15,\n    \"inputTokens\": 512995,\n    \"outputTokens\": 9167,\n    \"totalTokens\": 522162,\n    \"cacheReadTokens\": 483200,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 6087,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 522162,\n    \"contextUsed\": 45849,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "ab-005",
+  "rep": 1,
+  "slot": 32
+}

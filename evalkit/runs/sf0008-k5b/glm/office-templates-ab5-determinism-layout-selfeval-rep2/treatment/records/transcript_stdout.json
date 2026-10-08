@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_87fd2774-1482-46e1-9ba2-ceda0f70ebae",
+  "traceId": "58704b18-ef00-4110-8e7e-be32ce008f7f",
+  "turnId": "turn_4b8e0973-3f1e-4294-9f80-60e6283d12a4",
+  "response": "确定性自评完成，任务书核心行为要求满足。所有交付物已就位。\n\n## 结果\n\n用 `fixtures/会议通知/case1.json` 以 `--template 会议通知 --outdir out/会议通知/case1` 连续生成两遍（第 2 遍覆盖第 1 遍，均 exit 0），对比结论：\n\n| 产物 | 第 1 遍 sha256 | 第 2 遍 sha256 | 结论 |\n|---|---|---|---|\n| fields.json | `6c67eef5…709589f` | `6c67eef5…709589f` | **逐字节完全一致**（cmp 零差异；两遍同 outdir，outputs 路径键本身也相同，豁免未用到） |\n| 文书.docx | `fde15d69…0713cf` | `44970e57…d9ef302` | **内容层面完全一致**，文件字节有差异但已定位唯一来源 |\n\n## docx 字节差异的定位与说明\n\n- zip 成员清单 17 项两遍相等；**17 个成员逐项解压后逐字节对比无一差异**（file_size、CRC32 全等）——即全部 OOXML 部件与缩略图内容完全一致。\n- 唯一差异是 zip 条目头的 `date_time` 时间戳：第 1 遍写入于 18:19:16、第 2 遍 18:19:52（python-docx 保存时 `zipfile.writestr` 按当前墙钟写 ZipInfo），首次字节分歧在第 11 字节，正是该字段。\n- 解析层按任务书口径逐项比对：12 个段落的**文本、对齐、缩进（firstLineChars=200/落款右缩进 32pt）、字体（eastAsia 黑体/仿宋、ascii Times New Roman）、字号、固定行距 28 磅、段前段后、A4 版心边距**全部一致。\n- 不可复现源排查：XML 部件中唯一 ISO 时间戳是 `docProps/core.xml` 的 `2013-12-23T23:15:00Z`（python-docx 模板固定常量，两遍相同）；正文日期均为输入数据原样值；11/11 字段 filled、missing=0，无随机内容。\n\n## 交付物（均在 treatment 目录）\n\n- `out/会议通知/case1/文书.docx`（37200 B）与 `out/会议通知/case1/fields.json`（2458 B）——输出目录恰含这两产物，无多余文件\n- `run_log.json`——含两遍各自的命令、退出码、stdout 摘要与 sha256，逐字节对比结论（fields.json 一致；docx 差异说明即上述 zip 时间戳定位），以及解析层比对、时间/随机源排查、输出目录核验的完整留痕\n\n一点过程说明：中途有一次调用因 `cd` 瞬时失败导致生成器未执行（该次输出的哈希仍是第 1 遍产物），已重试并以重试成功的那次作为第 2 遍，`run_log.json` 记录的两次调用均真实生效（exit 0）。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 31,
+    "inputTokens": 1244098,
+    "outputTokens": 15050,
+    "totalTokens": 1259148,
+    "cacheReadTokens": 1204288,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 8867,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1259148,
+    "contextUsed": 55309,
+    "contextWindow": 200000
+  }
+}

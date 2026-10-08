@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/office-templates-ab2-boundary-missing-required-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 158711,
+  "started_at_ms": 1791441432362,
+  "session_id": "sess_c07c8e63-fe92-490d-b5c5-102d5395759d",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/office-templates-ab2-boundary-missing-required-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 574029,
+      "ot": 12979,
+      "dur": 152593,
+      "n": 20
+    }
+  ],
+  "input_tokens": 574029,
+  "output_tokens": 12979,
+  "stdout_bytes": 3415,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " omitted as whole body items (会议议题/会议要求 drop out and the remaining numbering stays 一、二、三、四 with no gap), while a missing optional sign-off line is left blank so the right-aligned signature block keeps its shape. Nothing is ever invented: every `filled` value is byte-identical to the input.\\n\\n**Layout survives the missing data.** In both documents the title is centered, the salutation sits flush at the left margin with zero left and first-line indent, body paragraphs carry the two-character first-line indent, and every signature/contact line is right-aligned.\\n\\nOne judgment call worth flagging: I treated a key that is present with an empty or whitespace value as a missing fact, identical to an absent key, on the reasoning that \\\"empty string\\\" and \\\"no key\\\" mean the same thing to a template renderer. The two cases stay distinguishable for auditing — each field record carries `present` alongside `status` — so `会议地点` shows `present=true` while `会议名称` shows `present=false`, even though both land in `missing_required`.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 20,\n    \"inputTokens\": 574029,\n    \"outputTokens\": 12979,\n    \"totalTokens\": 587008,\n    \"cacheReadTokens\": 537520,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 2141,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 587008,\n    \"contextUsed\": 37285,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

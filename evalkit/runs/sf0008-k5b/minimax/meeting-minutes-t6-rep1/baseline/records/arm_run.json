@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t6-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 44524,
+  "started_at_ms": 1791440774656,
+  "session_id": "sess_251475b2-98bc-47f7-b3f5-2a9dfc8692b4",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t6-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 332239,
+      "ot": 3472,
+      "dur": 38021,
+      "n": 12
+    }
+  ],
+  "input_tokens": 332239,
+  "output_tokens": 3472,
+  "stdout_bytes": 2474,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "ranscript.txt` and passed to the skill's own entry point, `assets/meeting-minutes/package/scripts/minutes.py`. Note the environment quirk: the default `python3` has no `python-docx`, so I ran it with `/usr/bin/python3`, which does.\\n\\n**Classification result** (keyword-based, 决议 > 待办 > 风险): the opening line, the root-cause line, and the 散会 line carry none of the 11 keywords and are excluded; the remaining five each land in exactly one section — 20:06 (同意) and 20:12 (结论) as decisions, 20:04 and 20:08 as to-dos, 20:10 (延期/风险) as risk.\\n\\n**Verification I ran:** opened the docx with python-docx and read back every paragraph and table cell; confirmed all five entries and both to-do \\\"事项\\\" cells match their source transcript line verbatim including the 【hh:mm · 说话人】 prefix; and confirmed the extracted columns are literal substrings of the source line — owner `Daniel` from 「交给Daniel负责」, deadline `2026-10-09之前` and `本周底` from the original wording, with `待定` used for the to-do that names no owner. No name or date was invented.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 12,\n    \"inputTokens\": 332239,\n    \"outputTokens\": 3472,\n    \"totalTokens\": 335711,\n    \"cacheReadTokens\": 297524,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 721,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 335711,\n    \"contextUsed\": 35457,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

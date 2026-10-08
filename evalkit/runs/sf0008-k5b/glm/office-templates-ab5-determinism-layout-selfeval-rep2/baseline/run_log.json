@@ -1,0 +1,96 @@
+{
+  "task": "ab5-determinism-layout-selfeval",
+  "template": "会议通知",
+  "case": "case1",
+  "data": "fixtures/会议通知/case1.json",
+  "outdir": "out/会议通知/case1",
+  "command": "/home/pan-ding/venvs/ml/bin/python3 generate.py --template '会议通知' --data 'fixtures/会议通知/case1.json' --outdir 'out/会议通知/case1'",
+  "note_no_wallclock": "run_log 为确定性证据台账，不记录墙钟时间；遍次以 pass 序号标注",
+  "passes": [
+    {
+      "pass": 1,
+      "command": "/home/pan-ding/venvs/ml/bin/python3 generate.py --template '会议通知' --data 'fixtures/会议通知/case1.json' --outdir 'out/会议通知/case1'",
+      "exit_code": 0,
+      "outdir_entries_after": [
+        "fields.json",
+        "文书.docx"
+      ],
+      "artifacts": {
+        "文书.docx": {
+          "sha256": "1645710a0a350ff15e7d9a52910226369b7fad8688a02a35179a44316b3d40f9",
+          "bytes": 37452
+        },
+        "fields.json": {
+          "sha256": "bd58b8509cbefda809caf9a73603686d527e5248030fff77c8c79f462fd1e181",
+          "bytes": 1769
+        }
+      }
+    },
+    {
+      "pass": 2,
+      "command": "/home/pan-ding/venvs/ml/bin/python3 generate.py --template '会议通知' --data 'fixtures/会议通知/case1.json' --outdir 'out/会议通知/case1'",
+      "exit_code": 0,
+      "outdir_entries_after": [
+        "fields.json",
+        "文书.docx"
+      ],
+      "artifacts": {
+        "文书.docx": {
+          "sha256": "1645710a0a350ff15e7d9a52910226369b7fad8688a02a35179a44316b3d40f9",
+          "bytes": 37452
+        },
+        "fields.json": {
+          "sha256": "bd58b8509cbefda809caf9a73603686d527e5248030fff77c8c79f462fd1e181",
+          "bytes": 1769
+        }
+      }
+    }
+  ],
+  "byte_compare": {
+    "文书.docx": {
+      "equal": true,
+      "differing_bytes": 0,
+      "size_pass1": 37452,
+      "size_pass2": 37452,
+      "method": "全量读入逐字节比较（快照第1遍 vs 第2遍现存产物）",
+      "pass1_sha256": "1645710a0a350ff15e7d9a52910226369b7fad8688a02a35179a44316b3d40f9",
+      "pass2_sha256": "1645710a0a350ff15e7d9a52910226369b7fad8688a02a35179a44316b3d40f9",
+      "sha256_equal": true
+    },
+    "fields.json": {
+      "equal": true,
+      "differing_bytes": 0,
+      "size_pass1": 1769,
+      "size_pass2": 1769,
+      "method": "全量读入逐字节比较（快照第1遍 vs 第2遍现存产物）",
+      "pass1_sha256": "bd58b8509cbefda809caf9a73603686d527e5248030fff77c8c79f462fd1e181",
+      "pass2_sha256": "bd58b8509cbefda809caf9a73603686d527e5248030fff77c8c79f462fd1e181",
+      "sha256_equal": true
+    }
+  },
+  "docx_layout_compare": {
+    "parsed_facets": [
+      "段落文本",
+      "对齐(alignment)",
+      "缩进(first_line/left)",
+      "行距(line_spacing/rule)",
+      "字体(ascii/eastAsia/size/bold)",
+      "段前段后间距",
+      "页面设置(尺寸/页边距)"
+    ],
+    "pass1_layout_sha256": "f6df9b3cca8e649f3750f12f0b0f0d176cc0768d9e5563e5cf6e36dfc8f50b41",
+    "pass2_layout_sha256": "f6df9b3cca8e649f3750f12f0b0f0d176cc0768d9e5563e5cf6e36dfc8f50b41",
+    "equal": true,
+    "detail_files": [
+      "records/determinism/layout_pass1.json",
+      "records/determinism/layout_pass2.json"
+    ]
+  },
+  "outdir_final_entries": [
+    "fields.json",
+    "文书.docx"
+  ],
+  "outdir_exactly_two_artifacts": true,
+  "conclusion": "一致：同输入连跑两遍（第二遍覆盖复写第一遍）产物逐字节一致——文书.docx 与 fields.json 的两遍 sha256 相同且全量逐字节比较零差异（fields.json 含 outputs 类路径键亦逐字节一致，两遍 outdir 相同）；docx 解析后段落文本/对齐/缩进/字体/行距（含页面设置）完全一致，产物中无当前时间、随机内容等不可复现源；输出目录恰含 文书.docx 与 fields.json 两产物。",
+  "verdict": "PASS"
+}

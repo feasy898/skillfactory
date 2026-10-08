@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/hot-templates-ab-004-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 38055,
+  "started_at_ms": 1791439980849,
+  "session_id": "sess_be363631-c832-4ce1-9c8f-b39a671cc3cd",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/hot-templates-ab-004-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 361829,
+      "ot": 2680,
+      "dur": 34200,
+      "n": 13
+    }
+  ],
+  "input_tokens": 361829,
+  "output_tokens": 2680,
+  "stdout_bytes": 3128,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "10/10/5 summing to 45; timeline `00:00-00:03` through `00:40-00:45`; the table header is the frozen `| 序号 | 时间轴 | 画面 | 口播 | 字幕 |`; the first line is `# 短视频分镜表 · 爆款骨架`; `structure.json` has the 11 top-level keys, 9 keys per element, 7 in each `meta`, and 5 in `placeholder_stats`.\\n\\n**Two invariants I verified rather than assumed:** re-running the same command produced byte-identical files (matching sha256 for both), and there are zero `{{ }}`-style leftover template variables in the markdown — only the intentional `【占位:…】` open slots, which per the skill's red line I left unfilled rather than inventing content for. Line endings are LF, no CRLF.\\n\\nOne thing to note: the skill documents an acceptance command, `python eval/runner.py <out> reference/out`, but this package contains no `eval/` directory or `reference/` outputs — only `brief.md`, an empty `fixtures/`, `.zcode/skills/hot-templates/`, and `out/`. That structural-consistency gate is therefore not runnable here; the checks above are what I could verify directly.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 13,\n    \"inputTokens\": 361829,\n    \"outputTokens\": 2680,\n    \"totalTokens\": 364509,\n    \"cacheReadTokens\": 328644,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 313,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 364509,\n    \"contextUsed\": 36267,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

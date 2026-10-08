@@ -1,0 +1,27 @@
+AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.
+{
+  "sessionId": "sess_0a6cadf0-7ede-4119-a186-c81eb39367e8",
+  "traceId": "a7b7894e-b3ad-4d17-bdad-fb9a85f94ac1",
+  "turnId": "turn_515d8515-d199-461d-be35-457d465f6144",
+  "response": "任务完成，两份产物已落盘并通过全部校验。说明一点：本目录（baseline 臂）并未挂载 meeting-minutes 技能（arms_manifest 中 `baseline_has_skill: false`），因此我直接按 brief.md 的规格完成任务，文档生成走了 documents:docx 技能的公文（会议纪要）规范。\n\n**产物**（`out/`）\n- `纪要.docx`（1 页，仿宋正文＋黑体节标题的正式公文版式）：标题「教学评估整改会议纪要」，三个节标题逐字为「一、决议事项」「二、待办事项」「三、风险与关注」；决议与风险为编号条目，待办为 事项/负责人/期限 三列表格（5 行数据）。\n- `summary.json`：`{\"决议事项\":1, \"待办事项\":5, \"风险与关注\":1, \"合计\":7}`，与 docx 实际条数一致，合计=三者之和。\n\n**条目取舍与抽取依据**（每条均为整句逐字引用＋【时间 · 说话人】前缀，未改写/合并/截断）\n- 决议（1）：16:12 的「结论：未通过听课评测的课程一律重新打磨……」。\n- 待办（5）：16:02 补签字页、16:04 材料负责与归档、16:06 发听课安排表、16:10 核教室容量、16:13 截止时间更正。负责人/期限只从该条目自身原句确定性提取——16:04「让孙老师负责」「周五前」、16:10「我」指代说话人孙老师、16:02/16:06 期限照录「明天上午十点前」「下周五」，句中无主语或无期限的一律填「待定」，未换算也未猜测任何日期人名。\n- 风险（1）：16:08 返工两次或致专家进校延期。\n- 16:13 的更正按原文独立成行记录（禁止合并），其作用域仅限听课安排表：16:06 的期限维持「下周五」不变，16:04 卷宗的「周五前」未被波及。16:00 开场寒暄无实质内容，不收录。\n\n**校验**：postcheck 9/9 通过；另做了 XML 级内容硬校验（节标题逐字、表头三列、每条条目与转写稿逐字对拍、负责人/期限取值域、summary 计数一致性）全部通过；LibreOffice 渲染后经视觉验收单页通过（无乱码、无溢出、表格完整）。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 18,
+    "inputTokens": 1112985,
+    "outputTokens": 36216,
+    "totalTokens": 1149201,
+    "cacheReadTokens": 1021312,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 30225,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1149201,
+    "contextUsed": 83937,
+    "contextWindow": 200000
+  }
+}

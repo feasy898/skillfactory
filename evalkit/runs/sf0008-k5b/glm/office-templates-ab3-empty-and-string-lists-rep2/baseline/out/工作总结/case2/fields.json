@@ -1,0 +1,120 @@
+{
+  "template": "工作总结",
+  "data_source": "fixtures/工作总结/case2.json",
+  "unit": "case2",
+  "title": "____2026年9月工作总结",
+  "fields": [
+    {
+      "name": "总结主体",
+      "kind": "scalar",
+      "required": true,
+      "status": "missing",
+      "value": null,
+      "raw_input": null,
+      "placeholder": "____"
+    },
+    {
+      "name": "总结时段",
+      "kind": "scalar",
+      "required": true,
+      "status": "filled",
+      "value": "2026年9月",
+      "raw_input": "2026年9月"
+    },
+    {
+      "name": "工作回顾",
+      "kind": "list",
+      "required": true,
+      "status": "filled",
+      "value": [
+        "完成评测平台月度巡检"
+      ],
+      "raw_input": "完成评测平台月度巡检",
+      "input_was_string": true
+    },
+    {
+      "name": "主要成绩",
+      "kind": "list",
+      "required": true,
+      "status": "missing",
+      "value": null,
+      "raw_input": [],
+      "placeholder": "____",
+      "placeholder_items": [
+        "1．____"
+      ]
+    },
+    {
+      "name": "存在问题",
+      "kind": "list",
+      "required": false,
+      "status": "missing",
+      "value": null,
+      "raw_input": null,
+      "section_omitted": true
+    },
+    {
+      "name": "下一步工作打算",
+      "kind": "list",
+      "required": true,
+      "status": "filled",
+      "value": [
+        "制定四季度评测排期"
+      ],
+      "raw_input": [
+        "制定四季度评测排期"
+      ]
+    },
+    {
+      "name": "成文日期",
+      "kind": "scalar",
+      "required": false,
+      "status": "missing",
+      "value": null,
+      "raw_input": null,
+      "placeholder": "____"
+    }
+  ],
+  "sections": [
+    {
+      "number": "一",
+      "header": "一、工作回顾",
+      "items": [
+        "1．完成评测平台月度巡检"
+      ],
+      "placeholder": false
+    },
+    {
+      "number": "二",
+      "header": "二、主要成绩",
+      "items": [
+        "1．____"
+      ],
+      "placeholder": true
+    },
+    {
+      "number": "三",
+      "header": "三、下一步工作打算",
+      "items": [
+        "1．制定四季度评测排期"
+      ],
+      "placeholder": false
+    }
+  ],
+  "omitted_sections": [
+    "存在问题"
+  ],
+  "signature": {
+    "alignment": "right",
+    "lines": [
+      {
+        "field": "总结主体",
+        "text": "____"
+      },
+      {
+        "field": "成文日期",
+        "text": "____"
+      }
+    ]
+  }
+}

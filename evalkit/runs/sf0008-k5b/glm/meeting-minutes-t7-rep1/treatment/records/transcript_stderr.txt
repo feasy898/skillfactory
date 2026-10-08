@@ -1,0 +1,116 @@
+ProviderBusinessError: [1302][您的账户已达到速率限制，请您控制请求频率][20261008161355e12b1d701ca44395]
+    at detectProviderBusinessError (/opt/ZCode/resources/glm/zcode.cjs:2067:11088)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fetch (/opt/ZCode/resources/glm/zcode.cjs:2067:10584)
+    at async /opt/ZCode/resources/glm/zcode.cjs:2058:21545
+    at async postToApi (/opt/ZCode/resources/glm/zcode.cjs:2031:22186)
+    at async gIs.doStream (/opt/ZCode/resources/glm/zcode.cjs:2032:51208)
+    at async fn (/opt/ZCode/resources/glm/zcode.cjs:2099:15517)
+    at async /opt/ZCode/resources/glm/zcode.cjs:2094:964
+    at async _retryWithExponentialBackoff (/opt/ZCode/resources/glm/zcode.cjs:2094:5143)
+    at async streamStep (/opt/ZCode/resources/glm/zcode.cjs:2099:14640) {
+  code: 'PROVIDER_BUSINESS_ERROR',
+  isProviderBusinessError: true,
+  providerCode: '1302',
+  providerId: 'account:bigmodel-individual-coding-plan',
+  providerKind: 'anthropic',
+  providerMessage: '[1302][您的账户已达到速率限制，请您控制请求频率][20261008161355e12b1d701ca44395]',
+  providerRequestId: '20261008161355e12b1d701ca44395',
+  responseBodySummary: {
+    keys: [ 'type', 'error', 'request_id' ],
+    success: undefined,
+    code: undefined,
+    error_code: undefined,
+    msg: undefined,
+    message: undefined,
+    request_id: '20261008161355e12b1d701ca44395',
+    requestId: undefined,
+    error: {
+      keys: [Array],
+      code: '1302',
+      error_code: undefined,
+      msg: undefined,
+      message: '[1302][您的账户已达到速率限制，请您控制请求频率][20261008161355e12b1d701ca44395]',
+      request_id: undefined,
+      requestId: undefined,
+      type: 'rate_limit_error'
+    }
+  },
+  responseHeaders: {
+    'alt-svc': 'h3=":443"; ma=3600',
+    'anthropic-ratelimit-unified-status': 'rejected',
+    connection: 'keep-alive',
+    'content-length': '225',
+    'content-type': 'application/json',
+    date: 'Thu, 08 Oct 2026 08:13:55 GMT',
+    'ga-traceid': '6ce745fa684a51e503e18c34d4006594',
+    'request-id': '20261008161355e12b1d701ca44395',
+    'retry-after': '5',
+    'set-cookie': 'acw_tc=ac10e38817914472351981436e092ce9c195366802aed631353d3ba02f238d;path=/;HttpOnly;Max-Age=1800',
+    vary: 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, Access-Control-Request-Method, Access-Control-Request-Headers, Origin',
+    'x-log-id': '20261008161355e12b1d701ca44395',
+    'x-process-time': '0.279222',
+    'x-request-id': '6e14b541-33ce-4d2d-8bdf-858d7a418f19',
+    'x-should-retry': 'true'
+  },
+  responseStatus: 429,
+  statusCode: undefined
+}
+ProviderBusinessError: [1302][您的账户已达到速率限制，请您控制请求频率][202610081614004f9e22e4398945d2]
+    at detectProviderBusinessError (/opt/ZCode/resources/glm/zcode.cjs:2067:11088)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.fetch (/opt/ZCode/resources/glm/zcode.cjs:2067:10584)
+    at async /opt/ZCode/resources/glm/zcode.cjs:2058:21545
+    at async postToApi (/opt/ZCode/resources/glm/zcode.cjs:2031:22186)
+    at async gIs.doStream (/opt/ZCode/resources/glm/zcode.cjs:2032:51208)
+    at async fn (/opt/ZCode/resources/glm/zcode.cjs:2099:15517)
+    at async /opt/ZCode/resources/glm/zcode.cjs:2094:964
+    at async _retryWithExponentialBackoff (/opt/ZCode/resources/glm/zcode.cjs:2094:5143)
+    at async streamStep (/opt/ZCode/resources/glm/zcode.cjs:2099:14640) {
+  code: 'PROVIDER_BUSINESS_ERROR',
+  isProviderBusinessError: true,
+  providerCode: '1302',
+  providerId: 'account:bigmodel-individual-coding-plan',
+  providerKind: 'anthropic',
+  providerMessage: '[1302][您的账户已达到速率限制，请您控制请求频率][202610081614004f9e22e4398945d2]',
+  providerRequestId: '202610081614004f9e22e4398945d2',
+  responseBodySummary: {
+    keys: [ 'type', 'error', 'request_id' ],
+    success: undefined,
+    code: undefined,
+    error_code: undefined,
+    msg: undefined,
+    message: undefined,
+    request_id: '202610081614004f9e22e4398945d2',
+    requestId: undefined,
+    error: {
+      keys: [Array],
+      code: '1302',
+      error_code: undefined,
+      msg: undefined,
+      message: '[1302][您的账户已达到速率限制，请您控制请求频率][202610081614004f9e22e4398945d2]',
+      request_id: undefined,
+      requestId: undefined,
+      type: 'rate_limit_error'
+    }
+  },
+  responseHeaders: {
+    'alt-svc': 'h3=":443"; ma=3600',
+    'anthropic-ratelimit-unified-status': 'rejected',
+    connection: 'keep-alive',
+    'content-length': '225',
+    'content-type': 'application/json',
+    date: 'Thu, 08 Oct 2026 08:14:01 GMT',
+    'ga-traceid': 'cd64d203de1f49a66ac47da439c79b7a',
+    'request-id': '202610081614004f9e22e4398945d2',
+    'retry-after': '11',
+    'set-cookie': 'acw_tc=ac10e98417914472408026505e08e20ca4a771fbdd358e4409f05e398382b4;path=/;HttpOnly;Max-Age=1800',
+    vary: 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, Access-Control-Request-Method, Access-Control-Request-Headers, Origin',
+    'x-log-id': '202610081614004f9e22e4398945d2',
+    'x-process-time': '0.261852',
+    'x-request-id': '916f6f3a-3fdd-4d46-bd6d-91f7f9847780',
+    'x-should-retry': 'true'
+  },
+  responseStatus: 429,
+  statusCode: undefined
+}

@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-005-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 183172,
+  "started_at_ms": 1791440688247,
+  "session_id": "sess_6c8886a1-4994-4aef-b3a7-e8a9badec8e1",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-005-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 647043,
+      "ot": 9352,
+      "dur": 176357,
+      "n": 19
+    }
+  ],
+  "input_tokens": 647043,
+  "output_tokens": 9352,
+  "stdout_bytes": 2664,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " '[\\\"要点甲\\\", \\\"要点乙\\\", \\\"要点丙\\\"]'`）连续生成两次到 `out/run1` 和 `out/run2`。两次均 exit 0，stdout 打印 `OK platform=dy ... elements=6 open_placeholders=6 filled_from_input=4`。逐字节比对结果：两份 `骨架.md`（2040 字节）与两份 `structure.json`（4038 字节）的 `cmp` 退出码均为 0，sha256 两两相等（骨架.md = `166692ba…`，structure.json = `a331cdd8…`）——引擎确定性成立。\\n\\n**验收② 失败路径（2/2 通过）**\\n- 非法 platform `bilibili`：exit 2，stderr 为 argparse 英文报错 `invalid choice: 'bilibili' (choose from 'dy', 'video', 'wx', 'xhs')`（SKILL.md 明示此形态属预期），`out/invalid-platform` 未被创建。\\n- 空白 topic `'   '`：exit 2，stderr 为 `[gen.py] 错误：--topic 不能为空`，`out/empty-topic` 未被创建。两条失败路径均零产物、零目录。\\n\\n**交付物**（均在 baseline 工作目录下）\\n- `run_log.json`：4 次调用的输入参数、退出码、stdout/stderr 摘要与原文行、产物文件清单（字节数+sha256）、逐条 verdict，以及 determinism_check 比对明细与总结论；由 `records/build_run_log.py` 从现场捕获文件派生生成的 JSON，已重新解析验证。\\n- `out/run1/`、`out/run2/`：验收①的两份产物（各含 `骨架.md` + `structure.json`，内容与冻结 dy 模板口径一致，3 条卖点全部入槽、无残留 `{{ }}`）。\\n- `records/`：4 次调用的原始 stdout/stderr 捕获文件及日志构建脚本，供留痕复核。\\n\\n另注：本目录 `fixtures/` 为空目录（任务前即如此），points 按技能规范以内联 JSON 串传入，未影响任何验收判据。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 19,\n    \"inputTokens\": 647043,\n    \"outputTokens\": 9352,\n    \"totalTokens\": 656395,\n    \"cacheReadTokens\": 617152,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 5601,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 656395,\n    \"contextUsed\": 45566,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "ab-005",
+  "rep": 2,
+  "slot": 37
+}

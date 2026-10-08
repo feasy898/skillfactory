@@ -1,0 +1,27 @@
+AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.
+{
+  "sessionId": "sess_1dae077d-2318-45bd-b3d2-3617e959d7c6",
+  "traceId": "38a299c8-749b-4ef5-99cd-66e1e241fe95",
+  "turnId": "turn_3145bbc5-52e1-42ac-bac7-4ef129f92144",
+  "response": "All gates passed. The task is complete — deliverables are in place in `out/`.\n\n## 完成情况\n\n按 brief 要求用 **meeting-minutes 技能**（skillfactory 资产包 `assets/meeting-minutes/package`）处理了教学评估整改会转写稿，产物已写入 `out/`：\n\n| 交付物 | 状态 |\n|---|---|\n| `out/纪要.docx` | ✅ 三节标题逐字齐全，决议/风险编号条目，待办三列表格 |\n| `out/summary.json` | ✅ 决议事项 2 / 待办事项 4 / 风险与关注 1 / 合计 7 |\n\n输入转写稿逐字提取自 brief.md，存于 `fixtures/meeting-transcript.txt`（8 行发言，程序化提取避免转写误差）。\n\n## 归类结果（按技能冻结规则，逐字引用原句）\n\n- **一、决议事项（2 条）**：`[16:10]` 孙老师「同意按清单推进…」（含「同意」优先归决议）；`[16:12]` 赵处「结论：未通过听课评测的课程一律重新打磨」。\n- **二、待办事项（4 条）**：`[16:02]` 补齐签字页（负责人 待定 / 期限 明天）；`[16:04]` 材料补齐归档（负责人 孙老师 / 期限 周五前）；`[16:06]` 听课安排表发各院系（待定 / 周五）；`[16:13]` 口误更正行（待定 / 周五）。\n- **三、风险与关注（1 条）**：`[16:08]` 返工两次可能导致专家进校延期。\n- **丢弃**：`[16:00]` 开场寒暄（不含 11 个关键词，规则性排除）。\n\n两处规则口径值得说明：`[16:13]` 更正行独立收录（技能规则明确「口误更正不做上下文关联」，不与 `[16:06]` 合并）；`[16:06]/[16:13]` 的「下周五」期限提取为「周五」——本周/下周前缀只参与命中、不进提取结果，这是技能 gotchas 中钉死的口径。\n\n## 验收（全部通过）\n\n- **脚本成功判据**：exit 0 且两产物回读存在（SKILL.md 三态验证）✅\n- **结构对拍**（20 项独立检查全 PASS）：节标题逐字且有序、条目 `<i>. 【hh:mm · 说话人】内容` 格式、待办表 3 列含表头、summary 四键与 docx 实际条数逐项一致且合计=三者和=元信息行数字、每条目（含表格事项列）逐字溯源到含对应时间与说话人的原稿行、负责人/期限或逐字见于原句或为「待定」（零编造）✅\n- **确定性**：重跑后 summary.json 逐字一致、docx 全部段落+表格单元格文本逐字一致 ✅\n- **视觉验收**：渲染单页 PNG 交 visual-judge 裁判，verdict = pass（字体、表格、版式无问题）✅",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 16,
+    "inputTokens": 550118,
+    "outputTokens": 11328,
+    "totalTokens": 561446,
+    "cacheReadTokens": 522048,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 8404,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 561446,
+    "contextUsed": 44523,
+    "contextWindow": 200000
+  }
+}

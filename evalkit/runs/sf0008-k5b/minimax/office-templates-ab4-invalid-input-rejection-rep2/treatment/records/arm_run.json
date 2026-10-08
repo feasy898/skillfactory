@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/office-templates-ab4-invalid-input-rejection-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 128520,
+  "started_at_ms": 1791442455938,
+  "session_id": "sess_52adeb21-356c-4095-86d8-d83f098a872b",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/office-templates-ab4-invalid-input-rejection-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 715556,
+      "ot": 8562,
+      "dur": 112995,
+      "n": 22
+    }
+  ],
+  "input_tokens": 715556,
+  "output_tokens": 8562,
+  "stdout_bytes": 3958,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "al input. I added that as an explicit boundary case to substantiate the requirement: it exits 0, emits `____工作周报` and `1．____` placeholders, and records `missing_required_names: [部门, 周期, 下周工作计划]` plus the unconsumed key `成本中心` — missing data is accounted for, not rejected.\\n\\n**Deliverables in place:**\\n- `run_log.json` — per-group command, argv, cwd, exit code, stdout/stderr, stderr classification, artifact-residue snapshot, per-case checks, and a summary/verdict block\\n- `out/周报/case1/` — control products (`fields.json` shows 7/7 fields filled, title `研发部工作周报`; `文书.docx` renders 11 paragraphs)\\n- `out/周报/case-missing-required/` — boundary-case products\\n- `fixtures/invalid/{not-json.json, top-level-array.json}` — inputs for groups ③④ (group ② needs no file)\\n- `fixtures/周报/case-missing-required.json`, `run_cases.py` — the reproducible driver\\n\\nNote on the environment: `python3` on PATH lacks `python-docx`, so all runs used `/usr/bin/python3` (python-docx 1.2.0), recorded in `run_log.json` under `interpreter`/`env`.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 22,\n    \"inputTokens\": 715556,\n    \"outputTokens\": 8562,\n    \"totalTokens\": 724118,\n    \"cacheReadTokens\": 673905,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1235,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 724118,\n    \"contextUsed\": 42648,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

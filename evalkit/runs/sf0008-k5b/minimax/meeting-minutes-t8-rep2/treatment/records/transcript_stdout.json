@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_76f9057e-c053-4750-b1fe-84ea62dccdb0",
+  "traceId": "65492413-a6c0-47cf-81e7-77d3a88093aa",
+  "turnId": "turn_282b1fc7-0b63-4e25-8b1f-d3338fb43a65",
+  "response": "Done. Both deliverables are in `out/` and verified.\n\n**Output: 决议 1 条 / 待办 2 条 / 风险 1 条，合计 4。**\n\n`out/纪要.docx`:\n- 决议事项 — 【11:10 · 质量部总监】结论：缺陷整改实行清单化管理，一条一销号。\n- 待办事项表格（3 列）——① 关键偏差的调查报告……下周一之前提交质量部（负责人 待定，期限 周一之前）；② 变更备案的递交截止到监管平台关闭日（负责人 待定，期限 监管平台关闭日）\n- 风险与关注 — 【11:06 · 质量部总监】有个风险，审计缺陷如果带着过……不确定因素。\n\n`out/summary.json` 四键：决议事项 1、待办事项 2、风险与关注 1、合计 4，与 docx 实际条数逐项一致。\n\n**为什么是这个结果：** 转写稿 7 行里，[11:00] 开场寒暄、[11:08] 口误更正、[11:12] 散会三行零关键词命中，按技能的确定性规则整行丢弃（口误更正不做上下文关联、不合并回上一条），所以 4 条而非 5 条。两处「待定」和「周一之前」不是遗漏：待办①原文写的是「我来负责」而非「我负责」，负责人规则只认后者，宁可填待定也不猜人名；期限按规则剥掉「下周」前缀只取「周一之前」。\n\n**验证已通过：** 三节标题逐字且顺序正确、表格表头为事项/负责人/期限、每条（含表格「事项」列）都能在转写稿中找到含时间与说话人的逐字出处行、负责人与期限非「待定」者均能在原文逐字找到、重复运行 summary 与 docx 内容完全一致。转写稿存于 `fixtures/gmp-audit-transcript.txt`（brief 只给正文未给输入文件路径）。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 20,
+    "inputTokens": 578560,
+    "outputTokens": 6604,
+    "totalTokens": 585164,
+    "cacheReadTokens": 541703,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 1377,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 585164,
+    "contextUsed": 37751,
+    "contextWindow": 200000
+  }
+}

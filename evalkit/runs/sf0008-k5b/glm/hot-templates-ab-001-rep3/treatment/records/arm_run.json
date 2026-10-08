@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-001-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 54752,
+  "started_at_ms": 1791439607715,
+  "session_id": "sess_80fdd859-5a9c-43c5-981e-ee632716f598",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/hot-templates-ab-001-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 199545,
+      "ot": 2573,
+      "dur": 50477,
+      "n": 8
+    }
+  ],
+  "input_tokens": 199545,
+  "output_tokens": 2573,
+  "stdout_bytes": 2216,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "n.\\n- `out/structure.json` (4.2 KB, machine-readable) — all 11 top-level keys, `template_version \\\"1.0\\\"`, `platform dy`, `structure_name` = the frozen template 3秒钩子 + 痛点 + 价值点×3 + CTA.\\n\\n**Input binding**: topic 通勤时间管理 filled the hook (`filled_from_input: topic`); the exactly-3 points went verbatim into `value_1..3` (each opening with 第一/二/三招：), so `points_used` has no nulls, `points_input_count=3`, `points_unused=[]`.\\n\\n**Verification**:\\n- Engine exit 0 with the expected OK line: `elements=6 open_placeholders=6 filled_from_input=4` (6 open placeholders is the reference value for dy with a full 3 points; 4 filled = 1 topic + 3 points).\\n- Element ids in frozen order: `hook_3s, pain_point, value_1, value_2, value_3, cta`; frozen markers intact (hook 「别划走！还在为「通勤时间管理」反复内耗的人」, CTA 「点赞收藏，评论区扣「1」」).\\n- All `【占位:…】` open slots left unfilled as designed — nothing fabricated; zero `{{ }}` template-variable residue.\\n- Re-ran the same command and sha256-verified both files are byte-identical (deterministic output confirmed).\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 8,\n    \"inputTokens\": 199545,\n    \"outputTokens\": 2573,\n    \"totalTokens\": 202118,\n    \"cacheReadTokens\": 186944,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1933,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 202118,\n    \"contextUsed\": 28563,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

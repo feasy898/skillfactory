@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t1-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 169901,
+  "started_at_ms": 1791441965327,
+  "session_id": "sess_180b3d17-9857-4795-b628-9111f784aeb5",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t1-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 569316,
+      "ot": 7499,
+      "dur": 159516,
+      "n": 18
+    }
+  ],
+  "input_tokens": 569316,
+  "output_tokens": 7499,
+  "stdout_bytes": 2567,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "m-quoted entries\\n- `out/summary.json` — `{\\\"决议事项\\\": 3, \\\"待办事项\\\": 1, \\\"风险与关注\\\": 2, \\\"合计\\\": 6}`\\n\\n**How the 10 transcript lines classified** (keyword rules, priority 决议>待办>风险):\\n- **一、决议事项（3 条）**：[10:03]（含「结论」）、[10:06]（含「同意」）、[10:10]（同时含「延期」与「结论」，按优先级归决议）\\n- **二、待办事项（1 条）**：[10:05] 客服组长何姐（含「需要」「我负责」）；负责人按「我负责→说话人」规则填「客服组长何姐」，原文无任何日期语 → 期限「待定」\\n- **三、风险与关注（2 条）**：[10:08]（含「风险」）、[10:09]（含「延期」）\\n- **丢弃 4 行**：开场 [10:00]、[10:02]（零关键词）、口误更正 [10:12]（零关键词，按规则不做上下文关联）、散会 [10:13]\\n\\n**Verification** (the packaged `eval/runner.py` doesn't exist in this skill copy, so I ran the full acceptance checklist from `references/docx-and-summary.md` instead): section headers verbatim and in order, entries numbered continuously from 1 in `N. 【hh:mm · 说话人】原文` format, todo table is 3 columns (事项/负责人/期限) with 1 data row, every entry — including the table's 事项 column — traces verbatim to its source line with matching time and speaker, summary counts match the docx exactly with 合计 = 3+1+2, and a rerun reproduced `summary.json` byte-identically.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 18,\n    \"inputTokens\": 569316,\n    \"outputTokens\": 7499,\n    \"totalTokens\": 576815,\n    \"cacheReadTokens\": 545088,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 5158,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 576815,\n    \"contextUsed\": 40073,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t3-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 692730,
+  "started_at_ms": 1791444243063,
+  "session_id": "sess_a9445752-db59-4ea0-8302-01a90fafdff3",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t3-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 2539623,
+      "ot": 31693,
+      "dur": 649623,
+      "n": 43
+    }
+  ],
+  "input_tokens": 2539623,
+  "output_tokens": 31693,
+  "stdout_bytes": 3287,
+  "stderr_bytes": 10744,
+  "stderr_head": "ProviderBusinessError: [1302][您的账户已达到速率限制，请您控制请求频率][202610081524186c8331dd5b4c4e2e]\n    at detectProviderBusinessError (/opt/ZCode/resources/glm/zcode.cjs:2067:11088)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.fetch (/opt/ZCode/resources/glm/zcode.cjs:2067:10584)\n    at async /opt/ZCode/resources/glm/zcode.cjs:2058:21545\n    at async postToApi (/opt/ZCode/resources/glm/zcode.cjs:2031:22186)\n    at async gIs.doStream (/opt/ZCode/resources/glm/zcode.cjs:2032:51208)\n    at async fn (/opt/ZCode/resources/glm/zcode.cjs:2099:15517)\n    at async /opt/ZCode/resources/glm/zcode.cjs:2094:964\n    at async _retryWithExponentialBackoff (/opt/ZCode/resources/glm/zcode.cjs:2094:5143)\n    at async streamStep (/opt/ZCode/resources/glm/zcode.cjs:2099:14640) {\n  code: 'PROVIDER_BUSINESS_ERROR',\n  isProviderBusinessError: true,\n  providerCode: '1302',\n  providerId: 'account:bigmodel-individual-coding-plan',\n  providerKind: 'anthropic',\n  providerMessage: '[1302][您的账户已达到速率限制，请您控制请求频率][202610081524186c8331dd5b4c4e2e]',\n  providerRequestId: '202610081524186c8331dd5b4c4e2e',\n  responseBodySummary: {\n    keys: [ 'type', 'error', 'request_id' ],\n    success: undefined,\n    code: undefined,\n    error_code: undefined,\n    msg: undefined,\n    message: undefined,\n    request_id: '202610081524186c8331dd5b4c4e2e',\n    requestId: undefined,\n    error: {\n      keys: [Array],\n      code: '1302',\n      error_code: undefined,\n      msg: undefined,\n      message: '[1302][您的账户已达到速率限制，请您控制请求频率][202610081524186c8331dd5b4c4e2e]',\n      request_id: undefined,\n      requestId: undefined,\n      type: 'rate_limit_error'\n    }\n  },\n  responseHeaders: {\n    'alt-svc': 'h3=\":443\"; ma=3600',\n    'anthropic-ratelimit-unified-status': 'rejected',\n    connection: 'keep-alive',\n    'content-length': '225',\n    'content-type': 'application/json',\n    date: 'Thu, 08 Oct 2026 07:24:18 GMT',\n    'ga-traceid': '4da5d1ec3361650cee9ee621ce94e393',\n    'request-id': '",
+  "stdout_tail": "待办 > 风险 and the line contains 「需要」; and [09:42] is excluded because it matches none of the 11 keywords.\\n\\n**About the pre-existing out/ files.** The out/ directory already held output from an earlier, rate-limited attempt of this same arm run. That attempt had misclassified 09:40 as 风险 and the keyword-less 09:42 as a 待办, and had fabricated a merged owner 「科技部、何倩」 and a deadline 「切换当晚」 — none of which the skill's deterministic extraction rules can produce. I regenerated both files from scratch, overwriting it.\\n\\n**Verification.** A 13-point acceptance pass all green: section headings verbatim and ordered, entry numbering format, 3-column table header, every entry (including table cells) traced verbatim to the transcript with matching time and speaker, noise lines absent, summary counts matching the docx with 合计 = 5, owner/deadline values either rule-extractable or 待定, and 宋体 eastAsia fonts throughout. A determinism re-run produced an identical summary and a docx differing only by the three intentional prefixes.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 43,\n    \"inputTokens\": 2539623,\n    \"outputTokens\": 31693,\n    \"totalTokens\": 2571316,\n    \"cacheReadTokens\": 2455488,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 25354,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 2571316,\n    \"contextUsed\": 84268,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t3",
+  "rep": 2,
+  "slot": 65
+}

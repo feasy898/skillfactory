@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t5-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 180365,
+  "started_at_ms": 1791446438915,
+  "session_id": "sess_01d7e127-aa02-435c-bb6c-cf9ea51d4360",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t5-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 438232,
+      "ot": 11489,
+      "dur": 170875,
+      "n": 13
+    }
+  ],
+  "input_tokens": 438232,
+  "output_tokens": 11489,
+  "stdout_bytes": 2643,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "11-674b-4684-8c10-ee75e408d866\",\n  \"turnId\": \"turn_0cea597e-dfed-415c-ac92-e48d287b8625\",\n  \"response\": \"任务完成，产物已通过全部验收检查。\\n\\n**交付物**（均在 `treatment/` 下，已留档）：\\n- `out/纪要.docx` — 三段式纪要：节标题逐字为「一、决议事项」「二、待办事项」「三、风险与关注」；决议/风险为编号条目，待办为事项/负责人/期限三列表格；全文宋体。\\n- `out/summary.json` — `{\\\"决议事项\\\": 2, \\\"待办事项\\\": 4, \\\"风险与关注\\\": 1, \\\"合计\\\": 7}`，与 docx 实际条数逐项一致。\\n- `transcript.txt` — 从 brief 摘出的八行转写稿（脚本输入）。\\n\\n**分类结果**（逐行按关键词优先级 决议>待办>风险，与脚本输出及我独立手推一致）：\\n- 决议 2 条：[16:10]「同意按清单推进…」、[16:12]「结论：未通过听课评测的课程一律重新打磨。散会，大家辛苦。」\\n- 待办 4 条：[16:02]（需要）、[16:04]（负责）、[16:06]（截止）、[16:13]（截止，口误更正行按规则独立收录）\\n- 风险 1 条：[16:08]（风险/延期）\\n- [16:00] 开场寒暄零关键词，不收录；所有条目逐字引用原句并带【时间 · 说话人】前缀。\\n\\n**待办两列的确定性提取**：负责人仅 [16:04] 按「让孙老师负责」规则取到「孙老师」，其余三条抓不到填「待定」；期限分别为「明天」「周五前」「周五」「周五」（「下周」前缀按规则不进结果；未猜测任何日期或人名）。\\n\\n**验证过程**：环境里默认 venv 的 python 无 pip/docx，改用自带 python-docx 的 `/usr/bin/python3` 运行技能脚本，退出码 0 且两产物回读确认存在（技能的三态成功判据）。技能包内未随附 `eval/runner.py` 与 `reference/out`，故改用 `docx-and-summary.md` 的 7 项验收清单写了逐项核对脚本（24 项断言全 PASS，含每条目对转写稿的逐字溯源、负责人/期限或为原文子串或为「待定」、summary 与元信息行数字三方一致）。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 13,\n    \"inputTokens\": 438232,\n    \"outputTokens\": 11489,\n    \"totalTokens\": 449721,\n    \"cacheReadTokens\": 410944,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 7281,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 449721,\n    \"contextUsed\": 43642,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t5",
+  "rep": 2,
+  "slot": 70
+}

@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_52adeb21-356c-4095-86d8-d83f098a872b",
+  "traceId": "6a276713-625c-46f6-86d3-619aa79cefd9",
+  "turnId": "turn_8557725d-cdc1-4bc7-bca4-53e7b88c2697",
+  "response": "All six cases pass. The core behavior requirement is met.\n\n## Result\n\nThe office-templates skill's generation entrypoint rejects all four invalid-input groups with exit code 2 and leaves zero artifacts behind, while the legal control case exits 0 and produces both deliverables. `run_log.json` at the task root records each group in full.\n\n| Case | Input | Exit | stderr | Residue |\n|---|---|---|---|---|\n| ① `--template 证书` | bad template name | 2 | argparse `invalid choice` (see note) | none |\n| ② `--data` missing file | nonexistent path | 2 | `错误：数据文件不存在：…` | none |\n| ③ `--data` = `不是JSON` | parse failure | 2 | `错误：数据文件不是合法 JSON：…（Expecting value: line 1 column 1）` | none |\n| ④ `--data` = `[\"数组\",\"非对象\"]` | top-level array | 2 | `错误：数据 JSON 顶层必须是对象（键值对），实际为 list` | none |\n| control `case1.json` | legal | 0 | — | `out/周报/case1/{文书.docx, fields.json}` |\n| extra boundary | required fields missing | 0 | — | `out/周报/case-missing-required/{文书.docx, fields.json}` |\n\n**Residue check result: clean.** The engine validates all inputs before touching the filesystem, so none of the four invalid runs created `out/invalid/` or wrote any file. A full scan of the `out/` tree after the run lists only the two control directories.\n\n**One honest caveat on case ①.** The illegal template name is rejected by `argparse`'s `choices` constraint, so the stderr is argparse's English boilerplate (`gen_doc.py: error: argument --template: invalid choice: '证书' (choose from '周报', '请示函', '会议通知', '工作总结')`). The string does contain Chinese characters — but only as the enum values and the rejected input, not as an actual Chinese error sentence. Cases ②③④ do emit engine-authored `错误：…` sentences. I recorded the distinction explicitly as `stderr_language_class` in each case and flagged it in `verdict.notes` rather than scoring it as a pass on a technicality.\n\n**On the sixth case.** The brief lists five groups but also requires that missing required fields never be treated as illegal input. I added that as an explicit boundary case to substantiate the requirement: it exits 0, emits `____工作周报` and `1．____` placeholders, and records `missing_required_names: [部门, 周期, 下周工作计划]` plus the unconsumed key `成本中心` — missing data is accounted for, not rejected.\n\n**Deliverables in place:**\n- `run_log.json` — per-group command, argv, cwd, exit code, stdout/stderr, stderr classification, artifact-residue snapshot, per-case checks, and a summary/verdict block\n- `out/周报/case1/` — control products (`fields.json` shows 7/7 fields filled, title `研发部工作周报`; `文书.docx` renders 11 paragraphs)\n- `out/周报/case-missing-required/` — boundary-case products\n- `fixtures/invalid/{not-json.json, top-level-array.json}` — inputs for groups ③④ (group ② needs no file)\n- `fixtures/周报/case-missing-required.json`, `run_cases.py` — the reproducible driver\n\nNote on the environment: `python3` on PATH lacks `python-docx`, so all runs used `/usr/bin/python3` (python-docx 1.2.0), recorded in `run_log.json` under `interpreter`/`env`.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 22,
+    "inputTokens": 715556,
+    "outputTokens": 8562,
+    "totalTokens": 724118,
+    "cacheReadTokens": 673905,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 1235,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 724118,
+    "contextUsed": 42648,
+    "contextWindow": 200000
+  }
+}

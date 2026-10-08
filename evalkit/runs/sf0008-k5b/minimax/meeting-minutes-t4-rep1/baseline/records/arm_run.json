@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t4-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 92632,
+  "started_at_ms": 1791440311039,
+  "session_id": "sess_be73e98c-6b9d-4915-874d-c63b8684e003",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t4-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 872271,
+      "ot": 6749,
+      "dur": 83080,
+      "n": 27
+    }
+  ],
+  "input_tokens": 872271,
+  "output_tokens": 6749,
+  "stdout_bytes": 3318,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " confirmed all 6 entries (including the todo table's 事项 column) trace back to a verbatim source line carrying that entry's own timestamp and speaker; confirmed summary.json matches the docx counts exactly and 合计 = sum; confirmed the meta line's numbers agree; and confirmed every non-待定 owner/deadline value appears literally in the source. A rerun via the alias entry `gen_docx.py` produced a byte-identical `summary.json` and text-identical docx, so the output is deterministic.\\n\\nI also ran the skill's acceptance step. Its runner is hardcoded to the asset's own four-case layout (`out/case1`…`case4`) and reported 20 failures purely because those subdirectories don't exist for this single-transcript task — a misapplication, not a defect in the output. I instead reused the runner's own `check_case` function against my output in a temp layout, which passed all five checks: three headings present, todo table with 负责人/期限 columns, summary consistent with the docx, all 6 entries verbatim-traceable, and counts within tolerance.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 27,\n    \"inputTokens\": 872271,\n    \"outputTokens\": 6749,\n    \"totalTokens\": 879020,\n    \"cacheReadTokens\": 831051,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1305,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 879020,\n    \"contextUsed\": 42061,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

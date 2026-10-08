@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/office-templates-ab3-empty-and-string-lists-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 314708,
+  "started_at_ms": 1791451679724,
+  "session_id": "sess_8553d991-5807-4fc1-ac46-0848c79fa3da",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/office-templates-ab3-empty-and-string-lists-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 622416,
+      "ot": 11704,
+      "dur": 299829,
+      "n": 18
+    }
+  ],
+  "input_tokens": 622416,
+  "output_tokens": 11704,
+  "stdout_bytes": 3220,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "e-templates/scripts/gen_doc.py`，本地 `.venv` 装 python-docx 1.2.0）按 CLI 契约生成，两次调用均退出码 0。\\n\\n## 周报/case2 边界行为（数据：周期空串、本周工作内容空数组、问题与需协调事项选填缺失）\\n\\n- 标题 `____工作周报`（部门键缺席，必填缺失以____占位，居中黑体22pt）；基本信息行 `填报人：赵倩　　周期：____`（空字符串周期→____）\\n- `一、本周工作内容` 节头保留，条目渲染占位 `1．____`；台账记 `status=missing`、`rendered_as=\\\"以____占位条目\\\"`\\n- `三、问题与需协调事项` 整节省略，正文不出现该节头；台账仍记 `required=false`、`rendered_as=\\\"省略该条目/小节\\\"`\\n- 落款 `报送日期：2026-09-28` 右对齐 + 右缩进32pt；summary 自洽：filled 3/7，missing_required=[部门, 周期, 本周工作内容]\\n\\n## 工作总结/case2 边界行为（数据：总结主体缺失、主要成绩空数组、工作回顾字符串型、存在问题与成文日期选填缺失）\\n\\n- 标题 `____2026年9月工作总结`；`一、工作回顾` 下 `1．完成评测平台月度巡检`——字符串型列表按单项化处理，台账中该字段 `kind=list`、`value=[\\\"完成评测平台月度巡检\\\"]`（单元素数组）\\n- `二、主要成绩` 节头保留 + `1．____` 占位条目；`三、存在问题` 整节省略；小节编号保持冻结序位一、二、四\\n- 落款一 `____` 右对齐、落款二成空段但右对齐与32pt右缩进未破坏（空日期不损版式）；summary 自洽：filled 3/7，missing_required=[总结主体, 主要成绩]\\n\\n## 核验说明\\n\\n24 项内容断言全 PASS（目录构成、标题/占位/省略/单项化、落款对齐、台账 summary 与明细一致性）。确定性复核：同输入同路径连跑产物逐字节一致；跨 3 秒重跑时 docx 字节差异仅来自 zip 容器时间戳元数据（Python zipfile 写入墙钟），17 个条目内容逐一相等，文书正文完全由输入推导、不含时间/随机源。`.venv` 留在原处以便复现，无游离临时文件。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 18,\n    \"inputTokens\": 622416,\n    \"outputTokens\": 11704,\n    \"totalTokens\": 634120,\n    \"cacheReadTokens\": 591104,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 7490,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 634120,\n    \"contextUsed\": 47684,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "ab3-empty-and-string-lists",
+  "rep": 2,
+  "slot": 82
+}

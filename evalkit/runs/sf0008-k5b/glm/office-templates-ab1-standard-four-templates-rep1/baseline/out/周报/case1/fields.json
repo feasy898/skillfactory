@@ -1,0 +1,79 @@
+{
+  "title": "研发部工作周报",
+  "template": "周报",
+  "source_data": "fixtures/周报/case1.json",
+  "fields": [
+    {
+      "name": "部门",
+      "required": true,
+      "status": "filled",
+      "value": "研发部",
+      "rendered_as": "正文段落「部门：研发部」；并用于标题《研发部工作周报》"
+    },
+    {
+      "name": "填报人",
+      "required": true,
+      "status": "filled",
+      "value": "王小明",
+      "rendered_as": "正文段落「填报人：王小明」"
+    },
+    {
+      "name": "周期",
+      "required": true,
+      "status": "filled",
+      "value": "2026-09-21 至 2026-09-27",
+      "rendered_as": "正文段落「周期：2026-09-21 至 2026-09-27」"
+    },
+    {
+      "name": "本周工作内容",
+      "required": true,
+      "status": "filled",
+      "value": [
+        "完成打分器 v0.9 与评测台联调",
+        "修复评测集 3 处标注不一致问题"
+      ],
+      "rendered_as": "正文段落「本周工作内容：1. 完成打分器 v0.9 与评测台联调；2. 修复评测集 3 处标注不一致问题」"
+    },
+    {
+      "name": "下周工作计划",
+      "required": true,
+      "status": "filled",
+      "value": [
+        "启动回归测试全量跑批",
+        "输出周度质量报告初稿"
+      ],
+      "rendered_as": "正文段落「下周工作计划：1. 启动回归测试全量跑批；2. 输出周度质量报告初稿」"
+    },
+    {
+      "name": "问题与需协调事项",
+      "required": false,
+      "status": "filled",
+      "value": [
+        "测试机资源紧张，需协调一台 GPU 机器"
+      ],
+      "rendered_as": "正文段落「问题与需协调事项：测试机资源紧张，需协调一台 GPU 机器」"
+    },
+    {
+      "name": "报送日期",
+      "required": true,
+      "status": "filled",
+      "value": "2026-09-28",
+      "rendered_as": "落款右对齐「报送日期：2026-09-28」"
+    }
+  ],
+  "filled_fields": [
+    "部门",
+    "填报人",
+    "周期",
+    "本周工作内容",
+    "下周工作计划",
+    "问题与需协调事项",
+    "报送日期"
+  ],
+  "missing_fields": [],
+  "summary": {
+    "filled": 7,
+    "missing": 0,
+    "total": 7
+  }
+}

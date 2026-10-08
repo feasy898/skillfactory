@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_da1f2207-bd6b-4bf5-9e12-0f02e5252b30",
+  "traceId": "bcaf03f3-f844-4b7b-bbad-396f05ab329d",
+  "turnId": "turn_9360f79a-287f-44e4-82df-28ee3b4c9e81",
+  "response": "All five groups behaved to spec. Everything is left in place in the baseline arm directory.\n\n## What the run found\n\nI built the generation entry point from scratch (the baseline arm has no skill mounted, per `arms_manifest.json`: `baseline_has_skill: false`), then exercised it with the four illegal-input groups plus the legal control.\n\n| Group | Command | Exit | stderr | Residue |\n|---|---|---|---|---|\n| ① template name illegal | `--template 证书` | 2 | `错误：模板名「证书」非法。可用模板：周报、请示函、会议通知、工作总结。` | none |\n| ② data file missing | `--data fixtures/周报/__不存在的文件__.json` | 2 | `错误：数据文件不存在：…` | none |\n| ③ data not JSON | `--data fixtures/非法输入/not_json.json` | 2 | `错误：数据文件不是合法 JSON：…（第 1 行第 1 列：Expecting value）` | none |\n| ④ top level not object | `--data fixtures/非法输入/top_level_array.json` | 2 | `错误：数据文件顶层必须是 JSON 对象，实际为数组：…` | none |\n| Legal control | `--template 周报 --data fixtures/周报/case1.json` | 0 | — | `文书.docx` + `fields.json` in `out/周报/case1/` |\n\nResidue was measured the strict way: `run_ab4.py` does a full `os.walk` snapshot of the entire arm directory before and after *each* invocation and takes the set difference. The four illegal runs created zero paths — the tool validates everything before touching the filesystem, and generation itself goes to a temp directory that is atomically moved into place only on success. Missing required fields are deliberately *not* illegal input: they render as `____` placeholders and get recorded in the ledger with exit 0 (verified separately with a partial-data file).\n\nThe rendered `文书.docx` is a proper Chinese internal document — centered title, 2-character first-line indent, section headings, right-aligned signature block. Running the run's own `check_office` against the arm gives `assertion_pass: true` with all 7 anchors green.\n\n## One thing you need to decide\n\n**The run's grader crashes before it evaluates anything, for every arm.** `s8_checkers.py:47` and `s8_judges.py:71` both do `rPr = r._p.rPr` on a `docx` `Run`, but `Run` exposes `_r`, not `_p` — so `para_facts()` raises `AttributeError` on the first paragraph of any `.docx`. This is not specific to my arm; it will hit baseline and treatment alike, and `records/checker-results.json` doesn't exist yet, so nothing has been scored.\n\nI did **not** fix it. The one-line correction (`r._p.rPr` → `r._r.rPr`, in two files) is unambiguous, but `s8_checkers.py` is documented as frozen and read-only, and changing the grader mid-run changes how both arms are measured — that's your call, not mine. To verify my own artifacts I imported the checker and patched the attribute access at runtime only, leaving the source untouched. If you want the fix landed, say so and I'll apply it and re-run scoring for all arms.\n\n## Deliverables in `baseline/`\n\n- `run_log.json` — per-group records: full command, exit code, stdout, stderr summary, created/removed path diffs, artifact presence, plus a `summary` block with the overall PASS verdict.\n- `out/周报/case1/文书.docx` and `out/周报/case1/fields.json` — legal control artifacts.\n- `office_tpl.py` — the entry point under test (four templates, fields ledger with filled/missing/unknown accounting).\n- `run_ab4.py` — the snapshot-based test harness.\n- `fixtures/非法输入/` — the two malformed-input fixtures I created.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 36,
+    "inputTokens": 1320886,
+    "outputTokens": 16905,
+    "totalTokens": 1337791,
+    "cacheReadTokens": 1288727,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 1026,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1337791,
+    "contextUsed": 50102,
+    "contextWindow": 200000
+  }
+}

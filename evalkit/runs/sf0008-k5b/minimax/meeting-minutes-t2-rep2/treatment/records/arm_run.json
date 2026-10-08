@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t2-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 63592,
+  "started_at_ms": 1791440245434,
+  "session_id": "sess_f000849e-fe14-4810-a5b6-99e92bc31d30",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t2-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 429232,
+      "ot": 3218,
+      "dur": 57159,
+      "n": 15
+    }
+  ],
+  "input_tokens": 429232,
+  "output_tokens": 3218,
+  "stdout_bytes": 3768,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "-identical.\\n\\n## Two things worth flagging\\n\\n**Environment:** the default `python3` on this machine is the venv at `~/.venvs/ml`, which does not have python-docx on its path. I used `/usr/bin/python3`, which resolves python-docx 1.2.0 from `~/.local`. If you rerun the script yourself, use that interpreter.\\n\\n**No eval runner:** the skill's step 2 references `eval/runner.py <out> reference/out`, but this run directory contains only `arms_manifest.json`, `baseline/`, and `treatment/` — no eval harness or reference output is present. I could not run the 5-item automated check, so instead I did the 7-point manual acceptance checklist from `references/docx-and-summary.md` by hand. Items 1–5 pass as described above; items 6 and 7 (verbatim traceability of entries, and owner/deadline provenance) are vacuously satisfied since there are zero entries.\\n\\nI also left `转写稿.txt` in the treatment directory as the input, since the brief supplied the transcript inline rather than as a file, and the script requires one as `--input`.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 15,\n    \"inputTokens\": 429232,\n    \"outputTokens\": 3218,\n    \"totalTokens\": 432450,\n    \"cacheReadTokens\": 396314,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 818,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 432450,\n    \"contextUsed\": 33933,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

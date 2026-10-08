@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t5-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 340261,
+  "started_at_ms": 1791445820071,
+  "session_id": "sess_1a0b34cc-d467-4845-9849-d91b58da662a",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/glm/meeting-minutes-t5-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 685458,
+      "ot": 11081,
+      "dur": 327388,
+      "n": 20
+    }
+  ],
+  "input_tokens": 685458,
+  "output_tokens": 11081,
+  "stdout_bytes": 3042,
+  "stderr_bytes": 13431,
+  "stderr_head": "ProviderBusinessError: [1302][您的账户已达到速率限制，请您控制请求频率][20261008155138adc69183061f4dfe]\n    at detectProviderBusinessError (/opt/ZCode/resources/glm/zcode.cjs:2067:11088)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.fetch (/opt/ZCode/resources/glm/zcode.cjs:2067:10584)\n    at async /opt/ZCode/resources/glm/zcode.cjs:2058:21545\n    at async postToApi (/opt/ZCode/resources/glm/zcode.cjs:2031:22186)\n    at async gIs.doStream (/opt/ZCode/resources/glm/zcode.cjs:2032:51208)\n    at async fn (/opt/ZCode/resources/glm/zcode.cjs:2099:15517)\n    at async /opt/ZCode/resources/glm/zcode.cjs:2094:964\n    at async _retryWithExponentialBackoff (/opt/ZCode/resources/glm/zcode.cjs:2094:5143)\n    at async streamStep (/opt/ZCode/resources/glm/zcode.cjs:2099:14640) {\n  code: 'PROVIDER_BUSINESS_ERROR',\n  isProviderBusinessError: true,\n  providerCode: '1302',\n  providerId: 'account:bigmodel-individual-coding-plan',\n  providerKind: 'anthropic',\n  providerMessage: '[1302][您的账户已达到速率限制，请您控制请求频率][20261008155138adc69183061f4dfe]',\n  providerRequestId: '20261008155138adc69183061f4dfe',\n  responseBodySummary: {\n    keys: [ 'type', 'error', 'request_id' ],\n    success: undefined,\n    code: undefined,\n    error_code: undefined,\n    msg: undefined,\n    message: undefined,\n    request_id: '20261008155138adc69183061f4dfe',\n    requestId: undefined,\n    error: {\n      keys: [Array],\n      code: '1302',\n      error_code: undefined,\n      msg: undefined,\n      message: '[1302][您的账户已达到速率限制，请您控制请求频率][20261008155138adc69183061f4dfe]',\n      request_id: undefined,\n      requestId: undefined,\n      type: 'rate_limit_error'\n    }\n  },\n  responseHeaders: {\n    'alt-svc': 'h3=\":443\"; ma=3600',\n    'anthropic-ratelimit-unified-status': 'rejected',\n    connection: 'keep-alive',\n    'content-length': '225',\n    'content-type': 'application/json',\n    date: 'Thu, 08 Oct 2026 07:51:38 GMT',\n    'ga-traceid': '04ac1eb4cb0049fa8b78d333af7a5b84',\n    'request-id': '",
+  "stdout_tail": "ropped (no keywords). `[16:10]`「同意…」and `[16:12]`「结论：…散会」went to decisions; the `[16:13]` self-correction line was classified independently as a todo (contains「截止」)， which is the skill's specified no-context-merge behavior.\\n- Todo extraction stayed deterministic: 负责人「孙老师」from「让孙老师负责」；期限「周五前」from「周五前归档」、「明天」、「周五」(the「下周」prefix participates in matching but is stripped from the result per the rule); everything unmatchable is「待定」— no names or dates were guessed.\\n\\n**Verification**: a 31-point acceptance script (`verify_out.py`, left in place) independently re-derived the classification from the transcript and confirmed — section headers verbatim and in order, entry format and continuous numbering, table structure, every entry (including the table's 事项 column) traceable verbatim to a source line with matching time and speaker, summary/docx count consistency, SimSun eastAsia font, and meta line. A re-run also produced identical text content (deterministic). All checks passed; `transcript.txt` remains as the input record.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 20,\n    \"inputTokens\": 685458,\n    \"outputTokens\": 11081,\n    \"totalTokens\": 696539,\n    \"cacheReadTokens\": 656768,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 7905,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 696539,\n    \"contextUsed\": 44419,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t5",
+  "rep": 1,
+  "slot": 68
+}

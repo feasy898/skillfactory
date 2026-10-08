@@ -1,0 +1,21 @@
+{
+  "available": true,
+  "session_id": "sess_be73e98c-6b9d-4915-874d-c63b8684e003",
+  "session": {
+    "directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t4-rep1/baseline"
+  },
+  "directory_matches_arm": true,
+  "db_source": "global",
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 872271,
+      "ot": 6749,
+      "dur": 83080,
+      "n": 27
+    }
+  ]
+}

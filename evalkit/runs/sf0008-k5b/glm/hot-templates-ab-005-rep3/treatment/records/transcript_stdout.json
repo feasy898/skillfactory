@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_2d8a9a9b-ffdb-4ecb-b37a-eb9b56af08bb",
+  "traceId": "1110fdb9-cf42-456b-88d8-f049e24c7b0b",
+  "turnId": "turn_c3be6430-5a6f-48da-9f7d-1a1c4952cc16",
+  "response": "两项工程性验收全部通过，4 次生成调用的完整记录已写入 `run_log.json`，与产物同在工作目录下。\n\n**验收① 确定性复跑（PASS）**：用完全相同的输入（`platform=dy`、`topic=确定性复跑主题`、`points=[\"要点甲\",\"要点乙\",\"要点丙\"]`）连续生成两次到 `out/run1` 与 `out/run2`，两次均 exit 0、stdout 一行 `OK platform=dy … elements=6 open_placeholders=6 filled_from_input=4`。`cmp` 对两份 `骨架.md` 与两份 `structure.json` 逐字节比对退出码均为 0，sha256 两两相等（`骨架.md` 均为 2040 字节 / `166692ba…`，`structure.json` 均为 4038 字节 / `a331cdd8…`）。这组哈希与本任务 rep1/rep2 的留档值也完全相同，说明跨进程、跨会话同样稳定，与引擎「无时间戳、无随机数」的设计声明一致。产物内容同时按 `references/dy.md` 与 `references/frozen-tokens.md` 核过口径：钩子/CTA 冻结标记在位、`points_unused=[]`、`filled_slots = topic + point#1..3`、无 `{{ }}` 残留。\n\n**验收② 失败路径（PASS）**：\n- `--platform bilibili`：exit 2，stderr 为 argparse 英文报错 `invalid choice: 'bilibili' (choose from 'dy', 'video', 'wx', 'xhs')`（SKILL.md 明示此为预期形态），`out/invalid-platform` 未被创建；\n- `--topic '   '`（纯空白串）：exit 2，stderr 为 `[gen.py] 错误：--topic 不能为空`，`out/empty-topic` 未被创建——校验失败发生在 `os.makedirs` 之前，零产物零目录。\n\n**交付物**（均留在工作目录）：`run_log.json`（4 条调用记录，含输入参数、退出码、stdout/stderr 摘要与原始行、文件清单及 bytes/sha256，外加 determinism_check 比对结论）；`out/run1/`、`out/run2/` 两份骨架产物；`records/run1–4.stdout/.stderr` 原始捕获。终验脚本已将 run_log 中记录的每个文件哈希、目录缺席、stdout/stderr 摘要与磁盘实际状态逐项对拍，全部 PASS。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 18,
+    "inputTokens": 703242,
+    "outputTokens": 11640,
+    "totalTokens": 714882,
+    "cacheReadTokens": 667136,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 6230,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 714882,
+    "contextUsed": 51863,
+    "contextWindow": 200000
+  }
+}

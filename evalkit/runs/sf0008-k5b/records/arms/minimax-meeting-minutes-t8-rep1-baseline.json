@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t8-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 62263,
+  "started_at_ms": 1791441082553,
+  "session_id": "sess_63a6debf-0bef-4b44-85be-da6c24bf9a81",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t8-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 436976,
+      "ot": 4955,
+      "dur": 51966,
+      "n": 15
+    }
+  ],
+  "input_tokens": 436976,
+  "output_tokens": 4955,
+  "stdout_bytes": 3494,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "owner.\\n\\nVerification performed: both files exist and open (python-docx); three headings match character-for-character and in order; every item body, including the table事项 cells, is a verbatim substring of a transcript line carrying its own timestamp and speaker; each 负责人/期限 is either a verbatim substring of the item text or 待定; summary counts match the docx paragraph/table-row counts and 合计 equals the sum; and a rerun through the alternate `gen_docx.py` entry produced a byte-identical summary and identical docx text, confirming determinism.\\n\\nSupporting file: the transcript is saved at `transcript.txt` in the working directory (the empty `fixtures/` dir was left alone). The skill package lives at `evalkit/runs/sf0008-k5b/assets/meeting-minutes-skill`; its bundled `eval/runner.py` does not exist in that package, so acceptance was done with the checks above instead. `python-docx` was missing from the system Python, so it was installed into a throwaway venv at `/tmp/mmvenv` rather than touching the system environment.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 15,\n    \"inputTokens\": 436976,\n    \"outputTokens\": 4955,\n    \"totalTokens\": 441931,\n    \"cacheReadTokens\": 402465,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1165,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 441931,\n    \"contextUsed\": 35375,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t8",
+  "rep": 1,
+  "slot": 44
+}

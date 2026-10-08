@@ -1,0 +1,131 @@
+{
+  "template": "会议通知",
+  "doc_title": "会 议 通 知",
+  "source_data": "fixtures/会议通知/case2.json",
+  "generated_at": "2026-10-08T14:39:29+08:00",
+  "placeholder": "____",
+  "policy": "缺失不编造：必填缺失以 ____ 占位渲染，选填缺失留空或省略，模板外键记入 unknown_keys",
+  "fields": {
+    "主送对象": {
+      "required": false,
+      "section": "salutation",
+      "present": true,
+      "value": "各部门",
+      "status": "filled",
+      "rendered": "各部门"
+    },
+    "会议名称": {
+      "required": true,
+      "section": "body",
+      "present": false,
+      "value": null,
+      "status": "missing_required",
+      "rendered": "____"
+    },
+    "会议时间": {
+      "required": true,
+      "section": "body",
+      "present": true,
+      "value": "2026年10月16日（周五）10:00",
+      "status": "filled",
+      "rendered": "2026年10月16日（周五）10:00"
+    },
+    "会议地点": {
+      "required": true,
+      "section": "body",
+      "present": true,
+      "value": null,
+      "status": "missing_required",
+      "rendered": "____"
+    },
+    "参会人员": {
+      "required": true,
+      "section": "body",
+      "present": true,
+      "value": "全体评测组成员",
+      "status": "filled",
+      "rendered": "全体评测组成员"
+    },
+    "会议议题": {
+      "required": false,
+      "section": "body",
+      "present": false,
+      "value": null,
+      "status": "missing_optional",
+      "rendered": ""
+    },
+    "会议要求": {
+      "required": false,
+      "section": "body",
+      "present": false,
+      "value": null,
+      "status": "missing_optional",
+      "rendered": ""
+    },
+    "召开单位": {
+      "required": true,
+      "section": "sign",
+      "present": true,
+      "value": "评测技术部",
+      "status": "filled",
+      "rendered": "评测技术部"
+    },
+    "发文日期": {
+      "required": false,
+      "section": "sign",
+      "present": true,
+      "value": "2026年9月30日",
+      "status": "filled",
+      "rendered": "2026年9月30日"
+    },
+    "联系人": {
+      "required": false,
+      "section": "contact",
+      "present": false,
+      "value": null,
+      "status": "missing_optional",
+      "rendered": ""
+    },
+    "联系电话": {
+      "required": false,
+      "section": "contact",
+      "present": false,
+      "value": null,
+      "status": "missing_optional",
+      "rendered": ""
+    }
+  },
+  "filled": [
+    "主送对象",
+    "会议时间",
+    "参会人员",
+    "召开单位",
+    "发文日期"
+  ],
+  "missing_required": [
+    "会议名称",
+    "会议地点"
+  ],
+  "missing_optional": [
+    "会议议题",
+    "会议要求",
+    "联系人",
+    "联系电话"
+  ],
+  "unknown_keys": [
+    "备注"
+  ],
+  "unknown_key_details": [
+    {
+      "key": "备注",
+      "value": "此键不在模板字段内，用于测试 unknown_keys 记录"
+    }
+  ],
+  "counts": {
+    "total_fields": 11,
+    "filled": 5,
+    "missing_required": 2,
+    "missing_optional": 4,
+    "unknown_keys": 1
+  }
+}

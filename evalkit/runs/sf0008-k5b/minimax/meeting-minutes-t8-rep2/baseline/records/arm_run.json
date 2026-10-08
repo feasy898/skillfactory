@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t8-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 113261,
+  "started_at_ms": 1791441214816,
+  "session_id": "sess_ceadd21e-a5fb-4c0c-89af-78176aa72dca",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t8-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 930899,
+      "ot": 7586,
+      "dur": 105720,
+      "n": 30
+    }
+  ],
+  "input_tokens": 930899,
+  "output_tokens": 7586,
+  "stdout_bytes": 3271,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "跟进**我来负责**」, but the skill's负责人 rule 1 matches only the literal 「我负责」/「我们负责」, and the only permitted pronoun→speaker substitution is rule 3's. So the 负责人 cell is 待定 rather than 生产部2车间主任. I confirmed this is the intended behavior by reading the skill's reference implementation, whose regex is `我(?:们)?\\\\s*负责` — `\\\\s*` does not span the 来. Filling in the speaker's name would also violate the self-check \\\"表格里出现原文中不存在的人名即为违规\\\", since that name is not in the item's own text.\\n\\nVerification: the official `eval/runner.py` reports all five checks PASS against this transcript (three sections present, todo table headers事项/负责人/期限 with 2 data rows, summary four-key consistency,4/4 entries verbatim-traceable including time and speaker, count deltas 0). Re-running the script produces byte-identical `summary.json` and text-identical docx content, and Chinese font 宋体 is set explicitly with the eastAsia attribute. The runner's case2–4 failures in my last run were only because those case directories don't exist in this run's directory.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 30,\n    \"inputTokens\": 930899,\n    \"outputTokens\": 7586,\n    \"totalTokens\": 938485,\n    \"cacheReadTokens\": 888514,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1736,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 938485,\n    \"contextUsed\": 43189,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

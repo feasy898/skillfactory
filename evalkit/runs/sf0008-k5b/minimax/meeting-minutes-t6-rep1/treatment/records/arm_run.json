@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t6-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 53377,
+  "started_at_ms": 1791440821193,
+  "session_id": "sess_2bd53bbd-80b3-4358-bc5b-5044569913f6",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0008-k5b/minimax/meeting-minutes-t6-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 351938,
+      "ot": 5344,
+      "dur": 43429,
+      "n": 12
+    }
+  ],
+  "input_tokens": 351938,
+  "output_tokens": 5344,
+  "stdout_bytes": 3450,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "cts exist rather than trusting the exit code alone.\\n\\nVerification covered 27 assertions, all passing: the three section headings are character-exact and in order; decision and risk entries are numbered continuously from 1 in the `<i>. 【hh:mm · 说话人】内容` format; the todo table is a 3-column `Table Grid` with 事项/负责人/期限 headers; every item — including the table's 事项 column — was matched back to its source line verbatim, with time and speaker intact; and summary.json's four keys match the docx counts item by item with 合计 = the three-way sum. I also re-ran through the `gen_docx.py` alias entry and confirmed output is identical, so the result is deterministic.\\n\\nTwo environment notes worth flagging: the sandbox's default `python` lacks `python-docx` and rejects `pip install` under PEP 668, so I used the system `/usr/bin/python3`, which already has it. I also left `transcript.txt` in the working directory as the input artifact — it isn't one of the two required deliverables, so remove it if you want only the `out/` products.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 12,\n    \"inputTokens\": 351938,\n    \"outputTokens\": 5344,\n    \"totalTokens\": 357282,\n    \"cacheReadTokens\": 319616,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 849,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 357282,\n    \"contextUsed\": 37008,\n    \"contextWindow\": 200000\n  }\n}\n"
+}
