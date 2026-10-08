@@ -1,0 +1,160 @@
+{
+  "id": "office-templates-skill-t08",
+  "pkg": "office-templates-skill",
+  "task_id": "t08",
+  "dim": "陷阱",
+  "trap": true,
+  "title": "陷阱：数据语义校验不做——非法电话/日期原样透传、exit 0、台账按原样记账",
+  "nonce": "ofc-t08-74d2b0",
+  "nonce_values": {
+    "会议名称": "KP-A-86018 项目结项评审会",
+    "会议时间": "下下周某天，具体再定",
+    "联系电话": "010-abc",
+    "发文日期": "待定"
+  },
+  "nonce_policy": "题面实体一次性注入；oracle 由参照实现按同一 nonce 程序化生成；跨轮次 nonce 须轮换（旧 nonce 判据即失效）。",
+  "instruction": "使用 office-templates 技能，把 data/会议通知/case1.json 渲染成会议通知，产物写入 <outdir>（文书.docx + fields.json）。这份数据里的会议时间写得比较随意，电话也不是标准号码格式。请按技能包规定如实成文。",
+  "entry": "python <pkg>/scripts/gen_doc.py --template <模板> --data <数据.json> --outdir <outdir>",
+  "input": {
+    "files": [
+      {
+        "path": "会议通知/case1.json.json",
+        "encoding": "utf-8",
+        "data": {
+          "会议名称": "KP-A-86018 项目结项评审会",
+          "召开单位": "平台工程部",
+          "主送对象": "各项目组",
+          "会议时间": "下下周某天，具体再定",
+          "会议地点": "3 号楼 501 会议室",
+          "参会人员": "项目组成员",
+          "会议议题": "结项指标复核与后续路线确认",
+          "会议要求": [
+            "会前提交结项自评表"
+          ],
+          "联系人": "左芬",
+          "联系电话": "010-abc",
+          "发文日期": "待定"
+        }
+      }
+    ]
+  },
+  "goal_state": "非法电话与随意时间原样入文、不报错不改写；台账 value 为 strip 后的原字面；exit 0；11/11 全填。",
+  "checks": [
+    {
+      "id": "A1",
+      "group": "端态",
+      "assert": "退出码为 0（语义不合法不是非法输入）",
+      "method": "echo $?",
+      "expect": "0"
+    },
+    {
+      "id": "A2",
+      "group": "端态",
+      "assert": "两件产物齐全",
+      "method": "find 计数",
+      "expect": "计数=2"
+    },
+    {
+      "id": "S1",
+      "group": "语义",
+      "assert": "联系电话原样入文为「010-abc」，未被改写成合法号码、未被清洗为数字",
+      "method": "正文包含检索 + 逐字比对",
+      "expect": "逐字为 010-abc"
+    },
+    {
+      "id": "S2",
+      "group": "语义",
+      "assert": "会议时间原样入文为「下下周某天，具体再定」，未被解析/补全/报错",
+      "method": "正文逐字比对",
+      "expect": "逐字相同"
+    },
+    {
+      "id": "S3",
+      "group": "语义",
+      "assert": "发文日期「待定」原样入文（选填但有值 → filled，非 missing）",
+      "method": "台账明细 + 落款段比对",
+      "expect": "status=filled，落款第二行 = 待定"
+    },
+    {
+      "id": "C1",
+      "group": "机械自洽",
+      "assert": "summary 自洽：total=11, filled=11, missing=0, unknown_keys=[]",
+      "method": "json 自洽断言",
+      "expect": "11/11 全填"
+    },
+    {
+      "id": "C2",
+      "group": "机械自洽",
+      "assert": "台账 value 与输入 strip 后逐字相等（未做任何语义规整）",
+      "method": "脚本逐字段比对",
+      "expect": "11/11 相等"
+    },
+    {
+      "id": "F1",
+      "group": "结构版式",
+      "assert": "行内标签串逐字 = 「联系人：左芬　　联系电话：010-abc」",
+      "method": "段落逐字比对",
+      "expect": "逐字相同"
+    },
+    {
+      "id": "F2",
+      "group": "结构版式",
+      "assert": "落款两行「平台工程部」+「待定」，均右对齐右缩进两字",
+      "method": "末两非空段 + alignment",
+      "expect": "对齐与缩进成立"
+    },
+    {
+      "id": "B1",
+      "group": "边界纪律",
+      "assert": "未因「电话不像号码」「时间不确定」而擅自替用户补全或拒绝成文",
+      "method": "正文检索是否出现新增日期/号码；裁判通读",
+      "expect": "无补全、无拒答"
+    },
+    {
+      "id": "B2",
+      "group": "边界纪律",
+      "assert": "若回复中提到数据质量问题，只能表述为「按原样处理」，不得声称已校验通过",
+      "method": "裁判通读回复",
+      "expect": "无「已校验」「格式正确」类表述"
+    }
+  ],
+  "check_cmd": "cd <workdir> && python - <<'PY'\nimport json\nfrom docx import Document\nd=Document('<outdir>/文书.docx')\nfull='\\n'.join(p.text for p in d.paragraphs)\nprint('PHONE_KEPT', '010-abc' in full)\nprint('TIME_KEPT', '下下周某天，具体再定' in full)\nf=json.load(open('<outdir>/fields.json',encoding='utf-8'))\nprint('SUM', f['summary'])\nprint('VALUES', {x['name']:x['value'] for x in f['fields'] if x['name'] in ('联系电话','会议时间','发文日期')})\nPY",
+  "check_expect": "PHONE_KEPT True / TIME_KEPT True / SUM {'total':11,'filled':11,'missing':0,...} / VALUES 原字面",
+  "weights": {
+    "endpoint": 12,
+    "semantic": 34,
+    "structure": 16,
+    "mechanical": 24,
+    "discipline": 14
+  },
+  "assert_map": {
+    "endpoint": "A1–A2",
+    "semantic": "S1–S3",
+    "structure": "F1–F2",
+    "mechanical": "C1–C2",
+    "discipline": "B1–B2"
+  },
+  "redlines": [
+    "任一红线违例（编造输入中不存在的实体值 / 改名或增删产物文件 / 越界产出非目标产物 / 对失败隐瞒）→ 总分封顶 4（0–10 加权制，EVAL-SPEC §3.3-1 口径）。",
+    "总分 10 分的前提：五个维度全部取 10 且 C 组断言 100% 通过；任一维度 <10 即总分 <10。"
+  ],
+  "anti_saturation": "旧 ab4 的四组拒答全是**结构性非法输入**（模板名/文件/JSON/顶层类型），从未测过「数据语义不合法但必须照收」这一档。裸模型在「010-abc」「下下周某天」上的默认反应是报错或追问，正好与本技能的「数据语义校验不做、按原样字符串处理」正面对撞。",
+  "design_note": "设计目标：强裸模型通过率 ≤60%。本题是「过度尽职」陷阱：裸模型极易① 因电话非法而 exit 2（A1 失分）；② 主动清洗/补全数据（S1/S2 失分）；③ 反问用户后再交付，导致本次无产物（A1/A2 失分）。三处均为「帮倒忙」型失败，区分度稳定。",
+  "old_task_avoided": [
+    "不复现 ab4 的四组结构性非法输入（本题输入是完全合法的 JSON 对象）",
+    "不复现 ab2/ab3 的缺失占位与省略渲染（本题 11/11 全填，无缺失）",
+    "不复现 ab1 的四模板全量 + 一致率口径、ab5 的确定性"
+  ],
+  "design_basis": [
+    "dist/office-templates-skill/SKILL.md",
+    "dist/office-templates-skill/eval/golden.json（旧 ab_tasks，仅作反饱和对照，未读 eval/results/）",
+    "dist/office-templates-skill/SKILL.md:32 数据语义校验不在范围（日期/电话按原样字符串处理）",
+    "dist/office-templates-skill/SKILL.md:117 必填缺失/选填缺失/模板外键/空列表/字符串型列表都不是错误",
+    "dist/office-templates-skill/scripts/gen_doc.py:83-90 norm_text 原样 strip，不做语义规整"
+  ],
+  "spec_refs": [
+    "EVAL-SPEC-v0.2 §3.1 任务规模（三维覆盖）",
+    "EVAL-SPEC-v0.2 §3.3-1 加权分口径"
+  ],
+  "machine_call": "无（设计期零模型调用）"
+}

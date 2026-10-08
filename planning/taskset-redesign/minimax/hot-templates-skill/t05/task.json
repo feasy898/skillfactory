@@ -1,0 +1,161 @@
+{
+  "id": "hot-templates-skill-t05",
+  "pkg": "hot-templates-skill",
+  "task_id": "t05",
+  "dim": "边界",
+  "trap": false,
+  "title": "边界：一次一平台——四平台各跑一次，四份产物互不串台",
+  "nonce": "hot-t05-1c9e5d",
+  "nonce_values": {
+    "topic": "论文文献管理的最小工具",
+    "平台数": 4,
+    "卖点3": [
+      "先用 Zotero 收集再分类",
+      "标签体系控制在两层以内",
+      "每周固定半小时重读摘要"
+    ]
+  },
+  "nonce_policy": "题面实体一次性注入；oracle 由参照实现按同一 nonce 程序化生成；跨轮次 nonce 须轮换（旧 nonce 判据即失效）。",
+  "instruction": "我想要四个平台的爆款骨架：抖音口播、小红书图文、公众号文章、短视频分镜表，主题都是「论文文献管理的最小工具」，卖点用 data/points.json 里这三条。使用 hot-templates 技能，产物分别写入 out/dy、out/xhs、out/wx、out/video 四个目录。",
+  "entry": "python <pkg>/scripts/gen.py --platform <dy|xhs|wx|video> --topic <主题> --points <卖点.json 或内联 JSON> --outdir <outdir>（四个平台各跑一次，各自独立 outdir）",
+  "input": {
+    "files": [
+      {
+        "path": "points.json",
+        "encoding": "utf-8",
+        "data": [
+          "先用 Zotero 收集再分类",
+          "标签体系控制在两层以内",
+          "每周固定半小时重读摘要"
+        ]
+      }
+    ],
+    "args": {
+      "platform": [
+        "dy",
+        "xhs",
+        "wx",
+        "video"
+      ],
+      "topic": "论文文献管理的最小工具",
+      "points_arg": "points.json",
+      "outdirs": [
+        "out/dy",
+        "out/xhs",
+        "out/wx",
+        "out/video"
+      ]
+    }
+  },
+  "goal_state": "四个目录各恰含 骨架.md + structure.json；每个 structure.json 的 platform / platform_name / 要素数与所在目录一致，无跨平台串台。",
+  "checks": [
+    {
+      "id": "A1",
+      "group": "端态",
+      "assert": "四次调用退出码均为 0",
+      "method": "echo $? ×4",
+      "expect": "0,0,0,0"
+    },
+    {
+      "id": "A2",
+      "group": "端态",
+      "assert": "四个目录各恰含 2 件产物",
+      "method": "find 计数 ×4",
+      "expect": "四个目录各计数 2"
+    },
+    {
+      "id": "A3",
+      "group": "端态",
+      "assert": "未产出「一次生成四平台」的合并产物或第 5 个目录",
+      "method": "find <workdir> -name 骨架.md 计数 + 目录列举",
+      "expect": "骨架.md 恰 4 个；out 下恰 4 个子目录"
+    },
+    {
+      "id": "S1",
+      "group": "语义",
+      "assert": "每份 structure.json 的 platform 字段与所在目录一致（dy/xhs/wx/video）",
+      "method": "json 读 + 与路径比对",
+      "expect": "4/4 一一对应"
+    },
+    {
+      "id": "S2",
+      "group": "语义",
+      "assert": "platform_name 与 structure_name 逐平台正确（抖音口播稿 / 小红书图文 / 公众号文章 / 短视频分镜表 及各自 structure_name）",
+      "method": "json 读比对",
+      "expect": "4/4 正确，无串台"
+    },
+    {
+      "id": "F1",
+      "group": "结构版式",
+      "assert": "要素个数逐平台为 6 / 7 / 5 / 6，且 id 序列各自冻结",
+      "method": "structure.json element_count + ids 比对",
+      "expect": "dy=6、xhs=7、wx=5、video=6"
+    },
+    {
+      "id": "F2",
+      "group": "结构版式",
+      "assert": "骨架.md 首行分别为 `# 抖音口播稿 · 爆款骨架`、`# 小红书图文 · 爆款骨架`、`# 公众号文章 · 爆款骨架`、`# 短视频分镜表 · 爆款骨架`",
+      "method": "各 md 首行比对",
+      "expect": "4/4 逐字命中"
+    },
+    {
+      "id": "C1",
+      "group": "机械自洽",
+      "assert": "每份 elements 内不得出现其它平台的要素 id（如 dy 产物里不得有 shot_1、wx 产物里不得有 hook_3s）",
+      "method": "脚本：id 前缀跨平台污染检测",
+      "expect": "4/4 无污染"
+    },
+    {
+      "id": "C2",
+      "group": "机械自洽",
+      "assert": "四份产物均无 {{ 或 }} 模板残留；四份的 topic 都逐字等于「论文文献管理的最小工具」",
+      "method": "正则扫描 + json topic 比对",
+      "expect": "残留 0；topic 4/4 一致"
+    },
+    {
+      "id": "B1",
+      "group": "边界纪律",
+      "assert": "遵守「一次一跑」：未把四个平台合成一次调用（引擎无此能力），也未擅自扩写任一平台的成文",
+      "method": "复核执行轨迹为 4 次调用 + 裁判通读",
+      "expect": "4 次独立调用，无扩写"
+    }
+  ],
+  "check_cmd": "cd <workdir> && python - <<'PY'\nimport json,glob,os\nexp={'dy':6,'xhs':7,'wx':5,'video':6}\nfor p in ('dy','xhs','wx','video'):\n    s=json.load(open(f'out/{p}/structure.json',encoding='utf-8'))\n    print(p, s['platform'], s['platform_name'], s['element_count'], exp[p], s['element_count']==exp[p])\nprint('MD_COUNT', len(glob.glob('out/*/骨架.md')))\nPY",
+  "check_expect": "四行 platform 与所在目录一致、element_count 分别 6/7/5/6 全 True / MD_COUNT 4",
+  "weights": {
+    "endpoint": 16,
+    "semantic": 24,
+    "structure": 16,
+    "mechanical": 22,
+    "discipline": 22
+  },
+  "assert_map": {
+    "endpoint": "A1–A3",
+    "semantic": "S1–S2",
+    "structure": "F1–F2",
+    "mechanical": "C1–C2",
+    "discipline": "B1"
+  },
+  "redlines": [
+    "任一红线违例（编造输入中不存在的实体值 / 改名或增删产物文件 / 越界产出非目标产物 / 对失败隐瞒）→ 总分封顶 4（0–10 加权制，EVAL-SPEC §3.3-1 口径）。",
+    "总分 10 分的前提：五个维度全部取 10 且 C 组断言 100% 通过；任一维度 <10 即总分 <10。"
+  ],
+  "anti_saturation": "旧 ab-005 出现过「用户要多平台」的暗示，但它的断言只覆盖 dy 单平台一次生成 + 两次失败路径，从未真正跑过一次「四平台各一跑」。本题把 SKILL 的「一次一跑」边界做成可判的产物级断言，并新增**跨平台串台检测**（C1）——这是旧题集完全没有的类型。",
+  "design_note": "设计目标：强裸模型通过率 ≤60%。裸模型极可能自行发明「一次生成四平台」的产物形态（如在同一个 structure.json 里放四组 elements），C1 的串台检测会直接判负；此外容易把 platform 字段写错或沿用上一次的输出目录。",
+  "old_task_avoided": [
+    "不复现 ab-005 的确定性双跑（留给 t08）与非法 platform / 空 topic 失败路径（留给 t07）",
+    "不复现 ab-001/002/003/004 任何单平台的要素结构断言"
+  ],
+  "design_basis": [
+    "dist/hot-templates-skill/SKILL.md",
+    "dist/hot-templates-skill/eval/golden.json（旧 ab_tasks，仅作反饱和对照，未读 eval/results/）",
+    "dist/hot-templates-skill/SKILL.md:65 用户要多个平台时一次一跑",
+    "dist/hot-templates-skill/SKILL.md:32 不适用：多平台一次生成",
+    "dist/hot-templates-skill/scripts/gen.py BUILDERS 单平台映射"
+  ],
+  "spec_refs": [
+    "EVAL-SPEC-v0.2 §3.1 任务规模（三维覆盖）",
+    "EVAL-SPEC-v0.2 §3.3-1 加权分口径"
+  ],
+  "machine_call": "无（设计期零模型调用）"
+}

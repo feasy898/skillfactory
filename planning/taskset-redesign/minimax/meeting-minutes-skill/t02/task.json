@@ -1,0 +1,165 @@
+{
+  "id": "meeting-minutes-skill-t02",
+  "pkg": "meeting-minutes-skill",
+  "task_id": "t02",
+  "dim": "能力",
+  "trap": false,
+  "title": "期限规则 1/4/6 + 规则内前缀剥离 + 抓不到填「待定」",
+  "nonce": "mm-t02-b2d905",
+  "nonce_values": {
+    "说话人": [
+      "章明·计划",
+      "陆娟",
+      "施琳",
+      "田伟"
+    ],
+    "完整日期": "2026-11-03",
+    "季度": "本季度末",
+    "截止对象": "终稿闭环"
+  },
+  "nonce_policy": "题面实体一次性注入；oracle 由参照实现按同一 nonce 程序化生成；跨轮次 nonce 须轮换（旧 nonce 判据即失效）。",
+  "instruction": "使用 meeting-minutes 技能，把 <inbox>/transcript-8a6511.txt 整理成三段式纪要，产物写入 <outdir>（纪要.docx + summary.json）。请特别留意「待办事项」表格里的「期限」列：每条待办的期限都只能按技能包的确定性规则从原句里取，取不到就填「待定」，绝对不要推断或改写成别的日期表述。",
+  "entry": "python <pkg>/scripts/minutes.py --input <inbox>/transcript-8a6511.txt --outdir <outdir>",
+  "input": {
+    "files": [
+      {
+        "path": "transcript-8a6511.txt",
+        "encoding": "utf-8",
+        "lines": [
+          "[13:01] 章明·计划: 第一件事，设备点检表需要在本周内补齐，材料以 2026-11-03 定稿为准。",
+          "[13:02] 陆娟: 第二件，排期表需要在本季度末前给出，中间版本不用发。",
+          "[13:03] 施琳: 第三件，补充材料需要在本轮复盘前截止材料清单。",
+          "[13:04] 田伟: 第四件，这项我记不准，需要等下再确认，先不写日期。",
+          "[13:05] 章明·计划: 顺带把上个月的偏差说明一并补上，需要在星期二前交给我。",
+          "[13:06] 陆娟: 提醒一句，交期不能再往后拖，风险在于下游已经排了产。",
+          "[13:07] 田伟: 那就这样议定，偏差说明的口径以质量部意见为准。"
+        ]
+      }
+    ]
+  },
+  "goal_state": "待办表格期限列 4 个数据格中 3 格为规则提取结果、1 格为「待定」，逐格等于期望字面。",
+  "checks": [
+    {
+      "id": "A1",
+      "group": "端态",
+      "assert": "纪要.docx + summary.json 两件产物齐全",
+      "method": "find 计数",
+      "expect": "计数=2，文件名逐字一致"
+    },
+    {
+      "id": "A2",
+      "group": "端态",
+      "assert": "退出码 0",
+      "method": "echo $?",
+      "expect": "0"
+    },
+    {
+      "id": "S1",
+      "group": "语义",
+      "assert": "待办共 5 条（13:01/13:02/13:03/13:04/13:05）；决议 1 条（13:07）、风险 1 条（13:06）",
+      "method": "doc.tables[0] 数据行数",
+      "expect": "5 行"
+    },
+    {
+      "id": "S2",
+      "group": "语义",
+      "assert": "13:01 行期限 = 「2026-11-03」（完整日期规则命中；句中同现的「本周内」属规则3，顺序即优先级故不得抢占）",
+      "method": "取该行期限单元格文本，strip() 后逐字比对（参照实现对完整日期规则会带出一个尾随空格，判据按 strip 后字面比较，不把该空格设为考点）",
+      "expect": "2026-11-03"
+    },
+    {
+      "id": "S3",
+      "group": "语义",
+      "assert": "13:02 行期限 = 「本季度末」（季度规则整词命中，不剥离任何前缀）",
+      "method": "逐字比对",
+      "expect": "本季度末"
+    },
+    {
+      "id": "S4",
+      "group": "语义",
+      "assert": "13:03 行期限 = 「材料清单」（前五条规则零命中，落「截止…」兜底规则，取其后 1–8 个非空白且非 ，。；; 的字符）",
+      "method": "逐字比对",
+      "expect": "材料清单"
+    },
+    {
+      "id": "S5",
+      "group": "语义",
+      "assert": "13:04 行期限 = 「待定」（原句无任何时间语）",
+      "method": "逐字比对",
+      "expect": "待定，且不得写成「等下再确认」「未定」等自造值"
+    },
+    {
+      "id": "C1",
+      "group": "机械自洽",
+      "assert": "期限列每格（strip 后）要么能在该条目内容原文中逐字找到，要么恰为「待定」",
+      "method": "脚本：for each 期限 cell: (cell=='待定') or (cell in 对应事项原文)",
+      "expect": "5/5 满足，无编造日期（参照实现规则1 命中时带出一个尾随空格，按 strip 后比对，不设为考点）"
+    },
+    {
+      "id": "C2",
+      "group": "机械自洽",
+      "assert": "summary 待办数 == 表格数据行数 == 5；合计=三者和",
+      "method": "json + docx 互校",
+      "expect": "待办事项=5，合计=7（决议 1 / 待办 5 / 风险 1）"
+    },
+    {
+      "id": "F1",
+      "group": "结构版式",
+      "assert": "三节标题逐字齐全、顺序固定",
+      "method": "段落遍历",
+      "expect": "齐全无增节"
+    },
+    {
+      "id": "F2",
+      "group": "结构版式",
+      "assert": "待办表格 3 列表头为 事项/负责人/期限",
+      "method": "表格首行",
+      "expect": "三项齐全"
+    },
+    {
+      "id": "B1",
+      "group": "边界纪律",
+      "assert": "未对「记不准」的句子猜测日期；未把「本周内」之类写入期限格",
+      "method": "裁判逐格通读 + 命中表比对",
+      "expect": "无推断值"
+    }
+  ],
+  "check_cmd": "cd <workdir> && python - <<'PY'\nfrom docx import Document\nt=Document('<outdir>/纪要.docx').tables[0]\nexp=['2026-11-03','本季度末','材料清单','待定','星期二前']\ngot=[r.cells[2].text.strip() for r in t.rows[1:]]  # strip 后逐字比对\nprint('GOT', got)\nprint('DEADLINE_ALL_OK', got==exp)\nPY",
+  "check_expect": "GOT ['2026-11-03','本季度末','材料清单','待定','星期二前'] / DEADLINE_ALL_OK True",
+  "weights": {
+    "endpoint": 12,
+    "semantic": 34,
+    "structure": 18,
+    "mechanical": 22,
+    "discipline": 14
+  },
+  "assert_map": {
+    "endpoint": "A1–A2",
+    "semantic": "S1–S5",
+    "structure": "F1–F2",
+    "mechanical": "C1–C2",
+    "discipline": "B1"
+  },
+  "redlines": [
+    "任一红线违例（编造输入中不存在的实体值 / 改名或增删产物文件 / 越界产出非目标产物 / 对失败隐瞒）→ 总分封顶 4（0–10 加权制，EVAL-SPEC §3.3-1 口径）。",
+    "总分 10 分的前提：五个维度全部取 10 且 C 组断言 100% 通过；任一维度 <10 即总分 <10。"
+  ],
+  "anti_saturation": "本题只压 references/extraction-heuristics.md 的三条未测规则（完整日期 / 本(周|月|季度) / 「截止…」兜底）加一条 near-miss（无时间语 → 待定）。旧 ab-002 只测了「明天 vs 周五」，旧 ab-003 只测了规则2，规则 1/4/6 在旧题集里一次都没出现——裸模型最容易在规则6 上自由发挥（把「材料清单」改写成一个日期）或在规则1 上把「定稿为准」当成期限语义。",
+  "design_note": "设计目标：强裸模型通过率 ≤60%（三包合计 8 题里本题属「中高难」档）。理由：本题需要先读 SKILL.md 的红线（「只按确定性规则提取、抓不到填待定」）再读 references 的六条规则表，凭通用常识作答的模型几乎必然在规则6 与「待定」两格上失分；且五格逐格断言，不允许「大部分对」蒙混。",
+  "old_task_avoided": [
+    "不复现 ab-002 的「明天 vs 周五」规则3/规则5 对撞（同考点，本题刻意避开）",
+    "不复现 ab-003 的规则2「5月20日之前」字面（本题改用规则1 的两种变体）",
+    "不复现 ab-003 的「负责人是我」→说话人（留给 t03）"
+  ],
+  "design_basis": [
+    "dist/meeting-minutes-skill/SKILL.md",
+    "dist/meeting-minutes-skill/eval/golden.json（旧 ab_tasks，仅作反饱和对照，未读 eval/results/）",
+    "dist/meeting-minutes-skill/references/extraction-heuristics.md §2 六条期限规则与顺序即优先级",
+    "dist/meeting-minutes-skill/scripts/minutes.py:52-62 DEADLINE_RULES 实现顺序"
+  ],
+  "spec_refs": [
+    "EVAL-SPEC-v0.2 §3.1 任务规模（三维覆盖）",
+    "EVAL-SPEC-v0.2 §3.3-1 加权分口径"
+  ],
+  "machine_call": "无（设计期零模型调用）"
+}

@@ -1,0 +1,156 @@
+{
+  "id": "office-templates-skill-t05",
+  "pkg": "office-templates-skill",
+  "task_id": "t05",
+  "dim": "边界",
+  "trap": false,
+  "title": "边界：空白串与全空白数组一律判缺失（near-miss），必填缺失 → 占位条目与占位，仍 exit 0",
+  "nonce": "ofc-t05-2df916",
+  "nonce_values": {
+    "总结时段": "2026 年 9 月",
+    "下一步": "固化标注口径并冻结判定样例",
+    "空白文本字段": [
+      "总结主体",
+      "成文日期"
+    ],
+    "全空白列表字段": [
+      "工作回顾（空白串形态）",
+      "主要成绩（三项全空白数组）",
+      "存在问题（选填，两项全空白）"
+    ]
+  },
+  "nonce_policy": "题面实体一次性注入；oracle 由参照实现按同一 nonce 程序化生成；跨轮次 nonce 须轮换（旧 nonce 判据即失效）。",
+  "instruction": "使用 office-templates 技能，把 data/工作总结/case1.json 渲染成工作总结，产物写入 <outdir>（文书.docx + fields.json）。这份数据里有些字段是空字符串、有些是只有空白的数组、有些列表里的每一项都是空白。请按技能包规定判断哪些字段算缺失、缺失了怎么渲染，并在交付时把缺哪些字段说清楚。",
+  "entry": "python <pkg>/scripts/gen_doc.py --template <模板> --data <数据.json> --outdir <outdir>",
+  "input": {
+    "files": [
+      {
+        "path": "工作总结/case1.json.json",
+        "encoding": "utf-8",
+        "data": {
+          "总结主体": "   ",
+          "总结时段": "2026 年 9 月",
+          "工作回顾": "   ",
+          "主要成绩": [
+            "   ",
+            "\t",
+            ""
+          ],
+          "存在问题": [
+            "   ",
+            "\t"
+          ],
+          "下一步工作打算": [
+            "固化标注口径并冻结判定样例"
+          ],
+          "成文日期": "  "
+        }
+      }
+    ]
+  },
+  "goal_state": "3 个必填字段（总结主体/工作回顾/主要成绩）判缺失并按 F1/F4 渲染；2 个选填字段判缺失走省略或留空；exit 0；台账如实记账。",
+  "checks": [
+    {
+      "id": "A1",
+      "group": "端态",
+      "assert": "退出码为 0（必填缺失不是运行错误），两件产物齐全",
+      "method": "echo $? + find 计数",
+      "expect": "码 0，计数=2"
+    },
+    {
+      "id": "S1",
+      "group": "语义",
+      "assert": "总结主体为空白串「   」→ 判缺失，标题代入占位符，逐字 = 「____2026 年 9 月工作总结」",
+      "method": "标题段文本逐字比对 + fields.title 比对",
+      "expect": "两者相等且恰含一处 ____"
+    },
+    {
+      "id": "S2",
+      "group": "语义",
+      "assert": "工作回顾为空白串形态的必填列表 → 判缺失、value=null、rendered_as=「以____占位条目」",
+      "method": "台账明细三项（status/value/rendered_as）比对",
+      "expect": "missing / null / 以____占位条目"
+    },
+    {
+      "id": "S3",
+      "group": "语义",
+      "assert": "主要成绩为三项全空白数组（三项分别为空格串、制表符、空串）→ 判缺失，不得判为「有 3 个空条目」的 filled",
+      "method": "台账明细比对",
+      "expect": "missing / null / 以____占位条目"
+    },
+    {
+      "id": "C1",
+      "group": "机械自洽",
+      "assert": "summary 自洽：total=7, filled=2, missing=5, missing_required=3",
+      "method": "json 读 + 自洽断言",
+      "expect": "filled+missing=7；filled 仅 总结时段 与 下一步工作打算"
+    },
+    {
+      "id": "C2",
+      "group": "机械自洽",
+      "assert": "missing_required_names 逐字 == [\"总结主体\",\"工作回顾\",\"主要成绩\"]，顺序等于字段表顺序而非字典序",
+      "method": "脚本比对字段表顺序",
+      "expect": "顺序为 总结主体 → 工作回顾 → 主要成绩"
+    },
+    {
+      "id": "F1",
+      "group": "结构版式",
+      "assert": "两个必填列表缺失 → 各渲染一个占位条目「1．____」（小节标题保留）",
+      "method": "正文检索 `1．____` 计数",
+      "expect": "命中数 = 2，分别落在「一、工作回顾」「二、主要成绩」节下"
+    },
+    {
+      "id": "F2",
+      "group": "结构版式",
+      "assert": "选填小节「存在问题」缺失 → 整节省略（文中无该节头），其后一节编号仍为「四、」",
+      "method": "段落遍历 + 节头逐字比对",
+      "expect": "无「三、存在问题」；有「四、下一步工作打算」"
+    },
+    {
+      "id": "B1",
+      "group": "边界纪律",
+      "assert": "交付回复中点名缺失的必填字段；未因数据「几乎全空」而拒绝成文或编造总结内容",
+      "method": "裁判通读回复 + 正文检索具体实体",
+      "expect": "点名 3 个必填缺失；正文无编造条目"
+    }
+  ],
+  "check_cmd": "cd <workdir> && python - <<'PY'\nimport json\nfrom docx import Document\nf=json.load(open('<outdir>/fields.json',encoding='utf-8'))\nprint('SUM', f['summary'])\nprint('DETAIL', {x['name']: (x['status'], x['value'], x.get('rendered_as')) for x in f['fields']})\nfull='\\n'.join(p.text for p in Document('<outdir>/文书.docx').paragraphs)\nprint('PLACEHOLDER_ITEM_HITS', full.count('1．____'))\nprint('SECTIONS', [l for l in full.split('\\n') if l[:2] in ('一、','二、','三、','四、')])\nPY",
+  "check_expect": "SUM {'total':7,'filled':2,'missing':5,'missing_required':3,'missing_required_names':['总结主体','工作回顾','主要成绩'],'unknown_keys':[]} / PLACEHOLDER_ITEM_HITS 2 / SECTIONS 无「三、存在问题」",
+  "weights": {
+    "endpoint": 12,
+    "semantic": 30,
+    "structure": 20,
+    "mechanical": 24,
+    "discipline": 14
+  },
+  "assert_map": {
+    "endpoint": "A1–A2",
+    "semantic": "S1–S3",
+    "structure": "F1–F2",
+    "mechanical": "C1–C2",
+    "discipline": "B1"
+  },
+  "redlines": [
+    "任一红线违例（编造输入中不存在的实体值 / 改名或增删产物文件 / 越界产出非目标产物 / 对失败隐瞒）→ 总分封顶 4（0–10 加权制，EVAL-SPEC §3.3-1 口径）。",
+    "总分 10 分的前提：五个维度全部取 10 且 C 组断言 100% 通过；任一维度 <10 即总分 <10。"
+  ],
+  "anti_saturation": "旧 ab3 测的是**空数组** `[]` 与**空字符串** `\"\"`；本题改测**非空但全空白**的形态：必填 text 的空白串（\"   \"）、必填 list 的空白串形态、必填 list 的三项全空白数组（[\"   \",\"\\t\",\"\"]）、选填 list 的两项全空白数组。这是 SKILL §3.2 缺失判定里明写、但旧题集从未触发的一条。near-miss 变体是反饱和的标准做法。",
+  "design_note": "设计目标：强裸模型通过率 ≤60%。裸模型倾向把 `[\"   \",\"\\t\",\"\"]` 当作「有 3 个条目」从而判 filled（S3/C1 双否），或把选填的全空白数组当成有效小节照常成文（F2 失分）。本题是本包区分度最高的一类断言。",
+  "old_task_avoided": [
+    "不复现 ab3 的空数组 `[]` 与字符串型列表单项化（本题全部是空白形态，且模板换为工作总结）",
+    "不复现 ab2 的非法模板名/不存在文件/非法 JSON/顶层非对象四组拒答",
+    "复用了「必填缺失 → ____ 占位」这一 SKILL 规则，但断言维度是缺失**判定**（空白 vs 空）而非旧题的渲染形态枚举"
+  ],
+  "design_basis": [
+    "dist/office-templates-skill/SKILL.md",
+    "dist/office-templates-skill/eval/golden.json（旧 ab_tasks，仅作反饱和对照，未读 eval/results/）",
+    "dist/office-templates-skill/SKILL.md:52 缺失判定（空白字符串 / 空数组 / 全空白数组）",
+    "dist/office-templates-skill/SKILL.md:56-57 F4 列表缺失渲染分支",
+    "dist/office-templates-skill/scripts/gen_doc.py:92-106 norm_list 的 items 过滤与 bool 判定"
+  ],
+  "spec_refs": [
+    "EVAL-SPEC-v0.2 §3.1 任务规模（三维覆盖）",
+    "EVAL-SPEC-v0.2 §3.3-1 加权分口径"
+  ],
+  "machine_call": "无（设计期零模型调用）"
+}

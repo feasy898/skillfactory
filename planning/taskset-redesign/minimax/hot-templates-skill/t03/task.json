@@ -1,0 +1,146 @@
+{
+  "id": "hot-templates-skill-t03",
+  "pkg": "hot-templates-skill",
+  "task_id": "t03",
+  "dim": "能力",
+  "trap": false,
+  "title": "wx 满 3 卖点：total_filled_from_input == 7（4 topic + 3 point）/ thesis_how 三行逐字 / 金句收尾逐字",
+  "nonce": "hot-t03-5f24c8",
+  "nonce_values": {
+    "topic": "把周报写成三句话",
+    "卖点3": [
+      "把日程表改成九十分钟时间块",
+      "关掉所有推送建立一个免打扰岛",
+      "用固定的下班仪式给大脑按结束键"
+    ],
+    "总填充": 7,
+    "topic 填充要素数": 4
+  },
+  "nonce_policy": "题面实体一次性注入；oracle 由参照实现按同一 nonce 程序化生成；跨轮次 nonce 须轮换（旧 nonce 判据即失效）。",
+  "instruction": "使用 hot-templates 技能，生成公众号文章爆款内容骨架，产物写入 <outdir>（骨架.md + structure.json）。材料自含——platform=wx，topic=把周报写成三句话，points 见 data/points.json（恰好 3 条）。模板冻结：引子 + 三段论（是什么/为什么/怎么办）+ 金句收尾。",
+  "entry": "python <pkg>/scripts/gen.py --platform <dy|xhs|wx|video> --topic <主题> --points <卖点.json 或内联 JSON> --outdir <outdir>",
+  "input": {
+    "files": [
+      {
+        "path": "points.json",
+        "encoding": "utf-8",
+        "data": [
+          "把日程表改成九十分钟时间块",
+          "关掉所有推送建立一个免打扰岛",
+          "用固定的下班仪式给大脑按结束键"
+        ]
+      }
+    ],
+    "args": {
+      "platform": null,
+      "topic": "把周报写成三句话",
+      "points_arg": "points.json"
+    },
+    "note": ""
+  },
+  "goal_state": "5 要素冻结；thesis_how 三行结构逐字；三抓手同居 thesis_how；总填充 7（topic 记 4 次 + point 记 3 次）；金句结构逐字。",
+  "checks": [
+    {
+      "id": "A1",
+      "group": "端态",
+      "assert": "两件产物齐全非空、退出码 0",
+      "method": "find 计数 + echo $?",
+      "expect": "计数=2，码 0"
+    },
+    {
+      "id": "S1",
+      "group": "语义",
+      "assert": "thesis_how 文本首行逐字「三、怎么办」，次行逐字「落到操作层面，给你三个抓手：」，其后三行形如 `N. <卖点>——【占位:展开：具体做法+一个例子】`（N 为半角数字 + 空格）",
+      "method": "按 \\n 切分后逐行比对",
+      "expect": "共 5 行；三行序号为 1. 2. 3."
+    },
+    {
+      "id": "S2",
+      "group": "语义",
+      "assert": "golden_ending 文本结构逐字：`「把周报写成三句话这件事，【占位:金句主体——句式建议：真正的…不是靠…，而是靠…】」` + 换行 + `共勉。`",
+      "method": "逐字比对",
+      "expect": "逐字命中，两行结构"
+    },
+    {
+      "id": "S3",
+      "group": "语义",
+      "assert": "三个卖点全部同居 thesis_how 的三抓手，不得被拆到 thesis_what / thesis_why",
+      "method": "三个卖点文本的全文出现位置断言",
+      "expect": "每条只在 thesis_how 出现一次；其余两要素不含卖点原文"
+    },
+    {
+      "id": "F1",
+      "group": "结构版式",
+      "assert": "5 个要素 id 顺序恰为 lead_in、thesis_what、thesis_why、thesis_how、golden_ending",
+      "method": "elements[].id 序列比对",
+      "expect": "顺序一致"
+    },
+    {
+      "id": "F2",
+      "group": "结构版式",
+      "assert": "三个 thesis 要素的文本分别以「一、是什么」「二、为什么」「三、怎么办」开头",
+      "method": "startswith 断言",
+      "expect": "三处全中"
+    },
+    {
+      "id": "C1",
+      "group": "机械自洽",
+      "assert": "placeholder_stats.total_filled_from_input == 7（topic 在 4 个要素各记一次 + point#1..3 各一次）",
+      "method": "structure.json 逐要素 filled_from_input 汇总求和",
+      "expect": "7"
+    },
+    {
+      "id": "C2",
+      "group": "机械自洽",
+      "assert": "topic 填充恰出现在 4 个要素（lead_in / thesis_what / thesis_why / golden_ending），不出现在 thesis_how",
+      "method": "脚本：含 'topic' 的要素 id 集合比对",
+      "expect": "集合恰为那 4 个"
+    },
+    {
+      "id": "B1",
+      "group": "边界纪律",
+      "assert": "未把「三抓手」扩写成正文段落（骨架只给结构 + 开放槽位）",
+      "method": "文本比对",
+      "expect": "无扩写、无编造案例"
+    }
+  ],
+  "check_cmd": "cd <workdir> && python - <<'PY'\nimport json\ns=json.load(open('<outdir>/structure.json',encoding='utf-8'))\nels={e['id']:e for e in s['elements']}\nprint('IDS', [e['id'] for e in s['elements']])\nprint('HOW', els['thesis_how']['text'].split('\\n'))\nprint('ENDING', els['golden_ending']['text'].split('\\n'))\nprint('STATS', s['placeholder_stats']['total_filled_from_input'], s['placeholder_stats']['total_open'])\nprint('TOPIC_IN', [e['id'] for e in s['elements'] if 'topic' in e['filled_from_input']])\nPY",
+  "check_expect": "IDS 5 个 / HOW 五行（首两行为冻结文案，后三行为 `N. 卖点——【占位:…】`）/ ENDING 两行 / 填充总数 7、total_open 10 / TOPIC_IN 四要素",
+  "weights": {
+    "endpoint": 12,
+    "semantic": 30,
+    "structure": 18,
+    "mechanical": 26,
+    "discipline": 14
+  },
+  "assert_map": {
+    "endpoint": "A1–A2",
+    "semantic": "S1–S3",
+    "structure": "F1–F2",
+    "mechanical": "C1–C2",
+    "discipline": "B1"
+  },
+  "redlines": [
+    "任一红线违例（编造输入中不存在的实体值 / 改名或增删产物文件 / 越界产出非目标产物 / 对失败隐瞒）→ 总分封顶 4（0–10 加权制，EVAL-SPEC §3.3-1 口径）。",
+    "总分 10 分的前提：五个维度全部取 10 且 C 组断言 100% 通过；任一维度 <10 即总分 <10。"
+  ],
+  "anti_saturation": "旧 ab-003 用的是**零卖点**输入，因此 `total_filled_from_input` 在旧题集里永远等于 4（只记 topic），「满 3 卖点 = 7」这条 references 里写死的口径从未被断言过；thesis_how 的三行逐字格式与金句收尾的两行结构也从未被断言。本题全部补上。",
+  "design_note": "设计目标：强裸模型通过率 ≤60%。裸模型极可能把三个抓手分配到三个 thesis 要素里（S3 失分，这正是 references gotcha 点名的错误），或在 thesis_how 里加自己的小标题（S1 失分）。C1 的 ==7 需要精确到「topic 记 4 次」这一反直觉细节，是本包最细的机判点之一。",
+  "old_task_avoided": [
+    "不复现 ab-003 的零卖点边界（points_used 三 null、抓手全部占位）",
+    "不复现 ab-003 的 total_open 求和断言（本题 total_open=10 是满 3 卖点形态）",
+    "不复现 ab-004 的 video 要素结构"
+  ],
+  "design_basis": [
+    "dist/hot-templates-skill/SKILL.md",
+    "dist/hot-templates-skill/eval/golden.json（旧 ab_tasks，仅作反饱和对照，未读 eval/results/）",
+    "dist/hot-templates-skill/references/frozen-tokens.md wx 表与 thesis_how 行格式、金句结构、filled=7 口径",
+    "dist/hot-templates-skill/SKILL.md:103 wx 三个卖点槽位同居 thesis_how",
+    "dist/hot-templates-skill/scripts/gen.py:186-197 how_lines 与 golden_ending"
+  ],
+  "spec_refs": [
+    "EVAL-SPEC-v0.2 §3.1 任务规模（三维覆盖）",
+    "EVAL-SPEC-v0.2 §3.3-1 加权分口径"
+  ],
+  "machine_call": "无（设计期零模型调用）"
+}

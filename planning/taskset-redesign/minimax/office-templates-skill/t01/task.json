@@ -1,0 +1,154 @@
+{
+  "id": "office-templates-skill-t01",
+  "pkg": "office-templates-skill",
+  "task_id": "t01",
+  "dim": "能力",
+  "trap": false,
+  "title": "F5 strip 全链路：正文无首尾空白、台账 value 已 strip、缺失判定不受空白串影响",
+  "nonce": "ofc-t01-3e7b52",
+  "nonce_values": {
+    "部门": "智造事业部",
+    "填报人": "张浩",
+    "周期": "2026-10-05 至 2026-10-11",
+    "条目": [
+      "完成三批次评分器回归",
+      "复核 12 份标注台账",
+      "上线自动抽检脚本"
+    ],
+    "报送日期": "2026-10-11"
+  },
+  "nonce_policy": "题面实体一次性注入；oracle 由参照实现按同一 nonce 程序化生成；跨轮次 nonce 须轮换（旧 nonce 判据即失效）。",
+  "instruction": "使用 office-templates 技能，把 data/周报/case1.json 渲染成周报，产物写入 <outdir>（文书.docx + fields.json）。这份数据的字段值带着多余的前后空白与制表符。请按技能包规定的取值口径渲染，并把台账里的 value 一并处理干净。",
+  "entry": "python <pkg>/scripts/gen_doc.py --template <模板> --data <数据.json> --outdir <outdir>",
+  "input": {
+    "files": [
+      {
+        "path": "周报/case1.json.json",
+        "encoding": "utf-8",
+        "data": {
+          "部门": "  智造事业部　",
+          "填报人": "张浩\t",
+          "周期": "\n2026-10-05 至 2026-10-11\n",
+          "本周工作内容": [
+            "  完成三批次评分器回归  ",
+            "\t复核 12 份标注台账",
+            "　　"
+          ],
+          "下周工作计划": [
+            "  上线自动抽检脚本  "
+          ],
+          "问题与需协调事项": [
+            "\t压测机位排期冲突  "
+          ],
+          "报送日期": " 2026-10-11 "
+        }
+      }
+    ]
+  },
+  "goal_state": "文书正文不含任何首尾空白；台账 value 为 strip 后的值；全空白列表项被丢弃且不导致字段判缺失。",
+  "checks": [
+    {
+      "id": "A1",
+      "group": "端态",
+      "assert": "<outdir> 恰含 文书.docx 与 fields.json，退出码 0",
+      "method": "find 计数 + echo $?",
+      "expect": "计数=2，码 0"
+    },
+    {
+      "id": "S1",
+      "group": "语义",
+      "assert": "标题段逐字 = 「智造事业部工作周报」（无前后空白、无全角空格残留）",
+      "method": "doc.paragraphs[0].text",
+      "expect": "智造事业部工作周报"
+    },
+    {
+      "id": "S2",
+      "group": "语义",
+      "assert": "基本信息行逐字 = 「填报人：张浩　　周期：2026-10-05 至 2026-10-11」（两个全角空格分隔；值两端无空白）",
+      "method": "段落文本逐字比对（注意分隔符是两个全角空格 U+3000）",
+      "expect": "逐字相同"
+    },
+    {
+      "id": "S3",
+      "group": "语义",
+      "assert": "列表项入文已 strip：本周工作内容恰 2 条（第三条全空白项被丢弃），条目前后无空白",
+      "method": "抽取小节条目段落文本并 strip 后比对 + 断言原文无首尾空白",
+      "expect": "2 条；条目标题为「完成三批次评分器回归」「复核 12 份标注台账」"
+    },
+    {
+      "id": "C1",
+      "group": "机械自洽",
+      "assert": "fields.json 每个 filled 项的 value 均等于 strip 后的输入值（文本为字符串、list 为数组）",
+      "method": "脚本比对 fields.filled 项与输入 JSON 的 strip 值",
+      "expect": "7/7 相等"
+    },
+    {
+      "id": "C2",
+      "group": "机械自洽",
+      "assert": "fields.summary == {total:7, filled:7, missing:0, missing_required:0, missing_required_names:[], unknown_keys:[]}；filled+missing=total",
+      "method": "json 读 + 自洽断言",
+      "expect": "全部齐全，无字段因空白被判缺失"
+    },
+    {
+      "id": "F1",
+      "group": "结构版式",
+      "assert": "标题居中黑体 22pt；正文首行缩进两字符（firstLineChars=200）、仿宋 16pt、28 磅固定行距",
+      "method": "python-docx 读 alignment / run.font / w:firstLineChars",
+      "expect": "逐项成立"
+    },
+    {
+      "id": "F2",
+      "group": "结构版式",
+      "assert": "落款行逐字 = 「报送日期：2026-10-11」，右对齐且右缩进两字",
+      "method": "末个非空段文本 + alignment + right_indent",
+      "expect": "逐字相同，值不带尾随空格"
+    },
+    {
+      "id": "B1",
+      "group": "边界纪律",
+      "assert": "未因数据带空白就自行「美化」标点（如把全角空格改成两个半角空格或加逗号）",
+      "method": "正文逐字比对",
+      "expect": "未改写任何字符"
+    }
+  ],
+  "check_cmd": "cd <workdir> && python - <<'PY'\nimport json\nfrom docx import Document\nd=Document('<outdir>/文书.docx')\nps=[p.text for p in d.paragraphs]\nprint('TITLE', repr(ps[0]))\nprint('INFO', repr(ps[1]))\nprint('SIG', repr([p for p in ps if p.strip()][-1]))\nf=json.load(open('<outdir>/fields.json',encoding='utf-8'))\nprint('SUMMARY', f['summary'])\nprint('VALUES', {x['name']:x['value'] for x in f['fields']})\nPY",
+  "check_expect": "TITLE '智造事业部工作周报' / INFO '填报人：张浩　　周期：2026-10-05 至 2026-10-11' / SUMMARY total=7 filled=7 missing=0 / VALUES 全部 strip",
+  "weights": {
+    "endpoint": 12,
+    "semantic": 30,
+    "structure": 24,
+    "mechanical": 20,
+    "discipline": 14
+  },
+  "assert_map": {
+    "endpoint": "A1–A2",
+    "semantic": "S1–S3",
+    "structure": "F1–F2",
+    "mechanical": "C1–C2",
+    "discipline": "B1"
+  },
+  "redlines": [
+    "任一红线违例（编造输入中不存在的实体值 / 改名或增删产物文件 / 越界产出非目标产物 / 对失败隐瞒）→ 总分封顶 4（0–10 加权制，EVAL-SPEC §3.3-1 口径）。",
+    "总分 10 分的前提：五个维度全部取 10 且 C 组断言 100% 通过；任一维度 <10 即总分 <10。"
+  ],
+  "anti_saturation": "F5（填充值 strip）在旧题集里一次都没被断言过——旧 ab1 的四份 case1 全是干净输入，旧 ab2/ab3 断言的是「缺失怎么渲染」，不是「存在怎么规整」。本题把取值规整做成主考点，并叠一个 near-miss：列表里的全空白项被丢弃但**不**导致该字段判为缺失（F3 与缺失判定是两回事）。",
+  "design_note": "设计目标：强裸模型通过率 ≤60%。裸模型的典型失败是原样搬运带空白的值（正文出现「  智造事业部　工作周报」），或在台账里存未 strip 的原值；两者都会被 S1/S2/C1 三处独立判负，属稳定区分点。",
+  "old_task_avoided": [
+    "不复现 ab1 的四模板全量生成与版式四要素（本题单模板）",
+    "不复现 ab2 的必填缺失 ____ 占位与 missing_required 记账",
+    "不复现 ab3 的空数组占位条目与字符串型列表单项化",
+    "不复现 ab4 的非法输入拒答、ab5 的确定性"
+  ],
+  "design_basis": [
+    "dist/office-templates-skill/SKILL.md",
+    "dist/office-templates-skill/eval/golden.json（旧 ab_tasks，仅作反饱和对照，未读 eval/results/）",
+    "dist/office-templates-skill/SKILL.md:58 F5 填充值 strip",
+    "dist/office-templates-skill/SKILL.md:52 缺失判定（strip 后为空）",
+    "dist/office-templates-skill/scripts/gen_doc.py:92-106 norm_text / norm_list"
+  ],
+  "spec_refs": [
+    "EVAL-SPEC-v0.2 §3.1 任务规模（三维覆盖）",
+    "EVAL-SPEC-v0.2 §3.3-1 加权分口径"
+  ],
+  "machine_call": "无（设计期零模型调用）"
+}

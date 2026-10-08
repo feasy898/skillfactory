@@ -1,0 +1,143 @@
+{
+  "id": "office-templates-skill-t04",
+  "pkg": "office-templates-skill",
+  "task_id": "t04",
+  "dim": "能力",
+  "trap": false,
+  "title": "F6 模板外键：字典序记账、不进台账明细、不影响文书",
+  "nonce": "ofc-t04-b87a29",
+  "nonce_values": {
+    "部门": "供应链计划处",
+    "填报人": "魏娥",
+    "外键": [
+      "备注",
+      "审批人",
+      "密级"
+    ],
+    "外键期望序（Python sorted() 码位序）": [
+      "备注",
+      "审批人",
+      "密级"
+    ]
+  },
+  "nonce_policy": "题面实体一次性注入；oracle 由参照实现按同一 nonce 程序化生成；跨轮次 nonce 须轮换（旧 nonce 判据即失效）。",
+  "instruction": "使用 office-templates 技能，把 data/周报/case2.json 渲染成周报，产物写入 <outdir>（文书.docx + fields.json）。这份数据里有几个键不在周报模板的字段表内。请如实处理它们，并在交付时告诉我这些键的情况。",
+  "entry": "python <pkg>/scripts/gen_doc.py --template <模板> --data <数据.json> --outdir <outdir>",
+  "input": {
+    "files": [
+      {
+        "path": "周报/case2.json.json",
+        "encoding": "utf-8",
+        "data": {
+          "部门": "供应链计划处",
+          "填报人": "魏娥",
+          "周期": "2026-10-05 至 2026-10-11",
+          "本周工作内容": [
+            "完成四批物料到货核销"
+          ],
+          "下周工作计划": [
+            "编制下月采购计划"
+          ],
+          "问题与需协调事项": [
+            "到货台账需与仓储口径对齐"
+          ],
+          "报送日期": "2026-10-11",
+          "审批人": "魏娥",
+          "备注": "此键不在模板字段内",
+          "密级": "内部"
+        }
+      }
+    ]
+  },
+  "goal_state": "unknown_keys 按字典序恰为 [\"密级\",\"备注\",\"审批人\"]；三键不出现于 fields 明细与 filled/missing；不影响文书。",
+  "checks": [
+    {
+      "id": "A1",
+      "group": "端态",
+      "assert": "两件产物齐全、退出码 0",
+      "method": "find 计数 + echo $?",
+      "expect": "计数=2，码 0"
+    },
+    {
+      "id": "S1",
+      "group": "语义",
+      "assert": "summary.unknown_keys 逐字 == [\"备注\", \"审批人\", \"密级\"]（字典序 = Python sorted() 的码位序，非输入顺序：备 U+5907 < 审 U+5BA1 < 密 U+5BC6）",
+      "method": "json 读并做 == 比对",
+      "expect": "顺序为 备注→审批人→密级"
+    },
+    {
+      "id": "S2",
+      "group": "语义",
+      "assert": "三个外键的值（内部 / 此键不在模板字段内 / 魏娥）未被渲染进文书任何段落",
+      "method": "正文全文包含检索三个外键值",
+      "expect": "三处命中数均为 0"
+    },
+    {
+      "id": "C1",
+      "group": "机械自洽",
+      "assert": "外键不出现在 fields 明细、filled_fields、missing_fields 任何位置",
+      "method": "脚本：外键集合 ∩ (明细名 ∪ filled ∪ missing) == 空集",
+      "expect": "交集为空"
+    },
+    {
+      "id": "C2",
+      "group": "机械自洽",
+      "assert": "summary 自洽：total=7, filled=7, missing=0（外键不计入 total，明细仍恰 7 项）",
+      "method": "json 读 + 自洽断言",
+      "expect": "filled+missing=total=7"
+    },
+    {
+      "id": "F1",
+      "group": "结构版式",
+      "assert": "文书结构不受外键影响：小节一/二/三齐全（问题与需协调事项有值故不省略）",
+      "method": "段落遍历",
+      "expect": "三个节头齐全；节序 一→二→三"
+    },
+    {
+      "id": "B1",
+      "group": "边界纪律",
+      "assert": "交付回复中主动提示存在未被模板消费的键（SKILL 工作流第 4 步）",
+      "method": "裁判通读回复",
+      "expect": "点名 3 个外键或明确说明有未消费键"
+    }
+  ],
+  "check_cmd": "cd <workdir> && python - <<'PY'\nimport json\nfrom docx import Document\nf=json.load(open('<outdir>/fields.json',encoding='utf-8'))\nnames=[x['name'] for x in f['fields']]\nextra={'密级','备注','审批人'}\nprint('UNKNOWN', f['summary']['unknown_keys'])\nprint('LEAK_INTO_LEDGER', sorted(extra & (set(names)|set(f['filled_fields'])|set(f['missing_fields']))))\nfull='\\n'.join(p.text for p in Document('<outdir>/文书.docx').paragraphs)\nprint('VALUES_IN_DOC', {v: full.count(v) for v in ('内部','此键不在模板字段内')})\nPY",
+  "check_expect": "UNKNOWN ['密级','备注','审批人'] / LEAK_INTO_LEDGER [] / VALUES_IN_DOC 计数均 0",
+  "weights": {
+    "endpoint": 12,
+    "semantic": 30,
+    "structure": 24,
+    "mechanical": 20,
+    "discipline": 14
+  },
+  "assert_map": {
+    "endpoint": "A1–A2",
+    "semantic": "S1–S2",
+    "structure": "F1",
+    "mechanical": "C1–C2",
+    "discipline": "B1"
+  },
+  "redlines": [
+    "任一红线违例（编造输入中不存在的实体值 / 改名或增删产物文件 / 越界产出非目标产物 / 对失败隐瞒）→ 总分封顶 4（0–10 加权制，EVAL-SPEC §3.3-1 口径）。",
+    "总分 10 分的前提：五个维度全部取 10 且 C 组断言 100% 通过；任一维度 <10 即总分 <10。"
+  ],
+  "anti_saturation": "旧 ab2 只用一个外键「备注」，且 rubric 只断言 `unknown_keys=[备注]`，既没测**字典序**（单键时顺序不可观测），也没测外键**不进台账明细**这条负向断言。本题用三键把顺序变成可观测量，并新增两条负向断言。",
+  "design_note": "设计目标：强裸模型通过率 ≤60%。裸模型常按输入顺序记录外键（S1 失分）、或把外键一并塞进台账明细导致 total=10（S2/C1/C2 三处失分）。「total 仍为 7」这一条能把「顺手记账」的失败模式一次抓住。",
+  "old_task_avoided": [
+    "不复现 ab2 的必填缺失 ____ 占位与选填留空/省略渲染（本题全字段齐全，只缺选填列表）",
+    "不复现 ab3 的空数组占位条目",
+    "外键场景虽与 ab2 重叠，但断言维度完全不同（字典序 + 负向不进明细 + 不计入 total），且实例为全新 nonce"
+  ],
+  "design_basis": [
+    "dist/office-templates-skill/SKILL.md",
+    "dist/office-templates-skill/eval/golden.json（旧 ab_tasks，仅作反饱和对照，未读 eval/results/）",
+    "dist/office-templates-skill/SKILL.md:59 F6 模板外键按字典序记入 summary.unknown_keys",
+    "dist/office-templates-skill/SKILL.md:140 交付前核对 unknown_keys",
+    "dist/office-templates-skill/scripts/gen_doc.py:157 sorted(...)，外键不进 details"
+  ],
+  "spec_refs": [
+    "EVAL-SPEC-v0.2 §3.1 任务规模（三维覆盖）",
+    "EVAL-SPEC-v0.2 §3.3-1 加权分口径"
+  ],
+  "machine_call": "无（设计期零模型调用）"
+}

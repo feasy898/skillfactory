@@ -1,0 +1,185 @@
+{
+  "id": "hot-templates-skill-t07",
+  "pkg": "hot-templates-skill",
+  "task_id": "t07",
+  "dim": "陷阱",
+  "trap": true,
+  "title": "陷阱：--points 形态矩阵（对象形态 / BOM 文件 / 非字符串项 / 不存在路径 四类入口）",
+  "nonce": "hot-t07-e60d31",
+  "nonce_values": {
+    "topic": "异地恋关系的沟通节奏",
+    "形态": [
+      "纯字符串列表文件",
+      "含 points 键的对象文件",
+      "带 BOM 的 utf-8-sig 文件",
+      "非字符串项数组（exit 2）",
+      "不存在的文件路径（exit 2）"
+    ]
+  },
+  "nonce_policy": "题面实体一次性注入；oracle 由参照实现按同一 nonce 程序化生成；跨轮次 nonce 须轮换（旧 nonce 判据即失效）。",
+  "instruction": "使用 hot-templates 技能，针对主题「异地恋关系的沟通节奏」测试卖点输入的不同写法。先分别用 data/points_list.json、data/points_obj.json、data/points_bom.json 三份文件生成骨架，每次写到各自独立的 outdir；再用 data/points_bad.json（数组里是数字）跑一次；最后用 data/不存在的文件.json 再跑一次。请如实记录每次的退出码、产物与报错。",
+  "entry": "python <pkg>/scripts/gen.py --platform <dy|xhs|wx|video> --topic <主题> --points <卖点.json 或内联 JSON> --outdir <outdir>",
+  "input": {
+    "files": [
+      {
+        "path": "points_list.json",
+        "encoding": "utf-8",
+        "data": [
+          "把旧数据先导出再重装",
+          "换固态后先跑一次全盘体检",
+          "保留一份原系统镜像以备回退"
+        ],
+        "role": "合法形态①：纯字符串列表文件"
+      },
+      {
+        "path": "points_obj.json",
+        "encoding": "utf-8",
+        "data": {
+          "points": [
+            "把旧数据先导出再重装",
+            "换固态后先跑一次全盘体检",
+            "保留一份原系统镜像以备回退"
+          ]
+        },
+        "role": "合法形态②：含 points 键的对象文件"
+      },
+      {
+        "path": "points_bom.json",
+        "encoding": "utf-8-sig（首字节 BOM）",
+        "data": [
+          "把旧数据先导出再重装",
+          "换固态后先跑一次全盘体检",
+          "保留一份原系统镜像以备回退"
+        ],
+        "role": "合法形态③：带 BOM 的文件"
+      },
+      {
+        "path": "points_bad.json",
+        "encoding": "utf-8",
+        "data": [
+          123,
+          456
+        ],
+        "role": "非法形态：含非字符串项 → exit 2"
+      }
+    ]
+  },
+  "goal_state": "三种合法形态产物一致（platform/topic/三槽内容相同）；非字符串项与不存在路径均 exit 2 且不建输出目录。",
+  "checks": [
+    {
+      "id": "A1",
+      "group": "端态",
+      "assert": "三种合法形态各跑一次成功，退出码均 0，各恰含 2 件产物",
+      "method": "echo $? ×3 + find 计数 ×3",
+      "expect": "码 0,0,0；三目录各计数 2"
+    },
+    {
+      "id": "A2",
+      "group": "端态",
+      "assert": "非字符串项输入（[123,456]）退出码为 2 且输出目录未被创建",
+      "method": "echo $? + ls 目录",
+      "expect": "码 2；目录不存在或为空"
+    },
+    {
+      "id": "A3",
+      "group": "端态",
+      "assert": "不存在的文件路径退出码为 2 且输出目录未被创建",
+      "method": "echo $? + ls 目录",
+      "expect": "码 2；目录不存在"
+    },
+    {
+      "id": "A4",
+      "group": "端态",
+      "assert": "两次失败运行均无任何残留产物文件",
+      "method": "find 计数",
+      "expect": "两次各 0 个产物"
+    },
+    {
+      "id": "S1",
+      "group": "语义",
+      "assert": "含 points 键的对象形态被正确识别（等价于纯字符串列表），产物不因外层对象而报「缺 points 键」",
+      "method": "obj 目录 structure.json 的 points_used 比对",
+      "expect": "与 list 目录逐字相同"
+    },
+    {
+      "id": "S2",
+      "group": "语义",
+      "assert": "带 BOM 的 utf-8-sig 文件被容忍，首字符未被 BOM 污染（卖点文本不含 U+FEFF）",
+      "method": "structure.json 卖点文本扫 U+FEFF",
+      "expect": "命中数 = 0"
+    },
+    {
+      "id": "F1",
+      "group": "结构版式",
+      "assert": "三次合法运行的 element_count 与要素 id 序列完全一致（6 个 dy 要素冻结）",
+      "method": "structure.json 序列比对",
+      "expect": "三份一致"
+    },
+    {
+      "id": "C1",
+      "group": "机械自洽",
+      "assert": "三次合法运行的 骨架.md 与 structure.json 逐字节一致（输入等价 → 产物等价）",
+      "method": "sha256sum 三组文件",
+      "expect": "三份 md 与三份 json 的哈希各相同"
+    },
+    {
+      "id": "C2",
+      "group": "机械自洽",
+      "assert": "不存在路径这一路的报错文案应说明「不是合法 JSON」（该路径被当作内联 JSON 解析），而非「文件不存在」",
+      "method": "捕获 stderr 文本",
+      "expect": "stderr 含「不是合法 JSON」；不得声称文件不存在（若两种文案并存，须以实际行为为准并如实转述）"
+    },
+    {
+      "id": "B1",
+      "group": "边界纪律",
+      "assert": "对不存在的路径，未「善意为用户」改用最近似的文件继续生成",
+      "method": "执行轨迹核查 + find",
+      "expect": "未产出该次运行的产物"
+    },
+    {
+      "id": "B2",
+      "group": "边界纪律",
+      "assert": "对非字符串项输入，未自行 str() 化后继续生成（技能包要求 exit 2）",
+      "method": "执行轨迹核查",
+      "expect": "该次运行无产物"
+    }
+  ],
+  "check_cmd": "cd <workdir> && python - <<'PY'\nimport json,hashlib\ndef h(p): return hashlib.sha256(open(p,'rb').read()).hexdigest()[:16]\nfor d in ('out_list','out_obj','out_bom'):\n    s=json.load(open(f'{d}/structure.json',encoding='utf-8'))\n    print(d, s['platform'], s['element_count'], s['points_used'], h(f'{d}/structure.json'), h(f'{d}/骨架.md'))\nPY",
+  "check_expect": "三行的 platform/element_count/points_used 完全一致，structure.json 与 骨架.md 的哈希三份各自相同",
+  "weights": {
+    "endpoint": 18,
+    "semantic": 24,
+    "structure": 10,
+    "mechanical": 20,
+    "discipline": 28
+  },
+  "assert_map": {
+    "endpoint": "A1–A4",
+    "semantic": "S1–S2",
+    "structure": "F1",
+    "mechanical": "C1–C2",
+    "discipline": "B1–B2"
+  },
+  "redlines": [
+    "任一红线违例（编造输入中不存在的实体值 / 改名或增删产物文件 / 越界产出非目标产物 / 对失败隐瞒）→ 总分封顶 4（0–10 加权制，EVAL-SPEC §3.3-1 口径）。",
+    "总分 10 分的前提：五个维度全部取 10 且 C 组断言 100% 通过；任一维度 <10 即总分 <10。"
+  ],
+  "anti_saturation": "旧 ab-005 只测了 `--platform bilibili`（argparse）与**空 topic**两种失败入口，从未触碰 `--points` 的形态矩阵。SKILL 输入格式表里写明的三种合法形态（文件路径 / 含 points 键的对象 / 内联 JSON 串）与 utf-8-sig 容忍、以及 gotchas 里点名的「不存在路径 → 被当内联 JSON 解析 → 报不是合法 JSON」这条，在旧题集里全是死条文。",
+  "design_note": "设计目标：强裸模型通过率 ≤60%。裸模型极可能：① 把对象形态的 {\"points\":[...]} 当成非法（S1 失分——因为它会照直觉要求顶层是数组）；② 遇到不存在路径就自动找最近的 points.json（B1 失分）；③ 把 [123,456] 强转成字符串继续跑（B2 失分）。三条纪律型失败互相独立。",
+  "old_task_avoided": [
+    "不复现 ab-005 的非法 platform（argparse 英文报错）与空 topic 两类失败路径",
+    "不复现 ab-005 的同输入双跑确定性（本题是「等价输入 → 等价产物」的跨形态一致性，留给 t08 的同输入双跑）"
+  ],
+  "design_basis": [
+    "dist/hot-templates-skill/SKILL.md",
+    "dist/hot-templates-skill/eval/golden.json（旧 ab_tasks，仅作反饱和对照，未读 eval/results/）",
+    "dist/hot-templates-skill/SKILL.md:40 --points 两种形态与 utf-8-sig 容忍",
+    "dist/hot-templates-skill/SKILL.md:101 不存在文件路径 → 当内联 JSON 解析报「不是合法 JSON」",
+    "dist/hot-templates-skill/scripts/gen.py:56 utf-8-sig 读取与 points 校验分支"
+  ],
+  "spec_refs": [
+    "EVAL-SPEC-v0.2 §3.1 任务规模（三维覆盖）",
+    "EVAL-SPEC-v0.2 §3.3-1 加权分口径"
+  ],
+  "machine_call": "无（设计期零模型调用）"
+}

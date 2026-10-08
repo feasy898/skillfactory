@@ -1,0 +1,152 @@
+{
+  "id": "meeting-minutes-skill-t06",
+  "pkg": "meeting-minutes-skill",
+  "task_id": "t06",
+  "dim": "陷阱",
+  "trap": true,
+  "title": "陷阱：无时间戳 / 空说话人的行即使含关键词也必须丢弃；收录集合必须精确等于期望集合",
+  "nonce": "mm-t06-d3b85f",
+  "nonce_values": {
+    "说话人": [
+      "田伟",
+      "陆娟",
+      "章明·计划",
+      "施琳"
+    ],
+    "诱导关键词行": [
+      "结论：下次带方案再来讨论。",
+      "同意这个方案。",
+      "有延期风险，大家注意。",
+      "这是散会行"
+    ]
+  },
+  "nonce_policy": "题面实体一次性注入；oracle 由参照实现按同一 nonce 程序化生成；跨轮次 nonce 须轮换（旧 nonce 判据即失效）。",
+  "instruction": "使用 meeting-minutes 技能，把 <inbox>/transcript-8a6511.txt 整理成三段式纪要，产物写入 <outdir>（纪要.docx + summary.json）。这份稿子里有几行只有半句话、没有时间戳，也有说话人写漏的。请严格按技能包规定判断哪些行算「发言」，哪些算噪声，不要凭语义感觉收录。",
+  "entry": "python <pkg>/scripts/minutes.py --input <inbox>/transcript-8a6511.txt --outdir <outdir>",
+  "input": {
+    "files": [
+      {
+        "path": "transcript-8a6511.txt",
+        "encoding": "utf-8",
+        "lines": [
+          "结论：下次带方案再来讨论。",
+          "[15:01] 田伟: 本次验收口径我同意按新版执行，旧版作废。",
+          "[15:02] : 这条没有说话人，应该被丢弃。",
+          "同意这个方案。",
+          "[15:04] 陆娟: 质检窗口需要提前预约，预约不到就会延期，这点要盯住。",
+          "有延期风险，大家注意。",
+          "[15:06] 章明·计划: 我同意把回访口径写进纪要，后面按这个执行。",
+          "[15:07] 施琳: 结论待会再议，这里先散会。",
+          "这是散会行",
+          "[15:09] 田伟: 风险点已经同步过了，没有别的要补充。"
+        ]
+      }
+    ]
+  },
+  "goal_state": "收录条目集合精确等于 {15:01 决议, 15:04 待办, 15:06 决议, 15:07 决议, 15:09 风险}，五行噪声零收录。",
+  "checks": [
+    {
+      "id": "A1",
+      "group": "端态",
+      "assert": "两件产物齐全、退出码 0",
+      "method": "find 计数 + echo $?",
+      "expect": "计数=2，码 0"
+    },
+    {
+      "id": "S1",
+      "group": "语义",
+      "assert": "5 行噪声零收录：「结论：下次带方案再来讨论。」（无时间戳且含关键词）「同意这个方案。」（无时间戳且含关键词）「有延期风险，大家注意。」（无时间戳且含关键词）「[15:02] : …」（说话人为空，不可解析）「这是散会行」（不可解析且零关键词）",
+      "method": "把上述四行内容作为子串在 docx 全文中做包含检索",
+      "expect": "5/5 命中数 = 0"
+    },
+    {
+      "id": "S2",
+      "group": "语义",
+      "assert": "收录集合精确等于 5 条：15:01（决议）、15:04（待办，含「需要」+「延期」故按待办>风险归待办）、15:06（决议）、15:07（决议）、15:09（风险）",
+      "method": "docx 条目前缀集合 == 期望集合（逐条双向差集）",
+      "expect": "双向差集均为空；条数=5"
+    },
+    {
+      "id": "S3",
+      "group": "语义",
+      "assert": "命中关键词的发言整句收录、不截断（「[15:07] 施琳: 结论待会再议，这里先散会。」整句进决议）",
+      "method": "条目全文 == 源行内容",
+      "expect": "15:07 条目全文与源行逐字相同"
+    },
+    {
+      "id": "C1",
+      "group": "机械自洽",
+      "assert": "5 类噪声行（无时间戳含关键词 ×3、空说话人 ×1、不可解析零关键词 ×1）全部不出现在任何章节",
+      "method": "脚本：噪声集合 × docx 全文逐条包含检索",
+      "expect": "5/5 命中数 = 0"
+    },
+    {
+      "id": "C2",
+      "group": "机械自洽",
+      "assert": "summary == {决议事项:3, 待办事项:1, 风险与关注:1, 合计:5}，且与 docx 实际条数逐项一致",
+      "method": "json + docx 互校",
+      "expect": "三处一致"
+    },
+    {
+      "id": "F1",
+      "group": "结构版式",
+      "assert": "三节标题齐全、顺序固定",
+      "method": "段落遍历",
+      "expect": "三节都在"
+    },
+    {
+      "id": "F2",
+      "group": "结构版式",
+      "assert": "待办表格 1 个数据行，负责人/期限两列分别为「陆娟」「待定」",
+      "method": "表格单元格逐字比对",
+      "expect": "15:04 行 期限无时间语 → 待定"
+    },
+    {
+      "id": "B1",
+      "group": "边界纪律",
+      "assert": "未对噪声行做「语义补全」（例如替无时间戳行编造 [15:03] 前缀）",
+      "method": "条目前缀时间戳集合 == 源行时间戳集合",
+      "expect": "无源文件中不存在的时间戳"
+    }
+  ],
+  "check_cmd": "cd <workdir> && python - <<'PY'\nimport json,re\nfrom docx import Document\nd=Document('<outdir>/纪要.docx')\nfull='\\n'.join([p.text for p in d.paragraphs]+[c.text for t in d.tables for r in t.rows for c in r.cells])\nnoise=['结论：下次带方案再来讨论。','同意这个方案。','有延期风险，大家注意。','这条没有说话人，应该被丢弃。','这是散会行']\nprint('NOISE_HITS', {n: full.count(n) for n in noise})\ngot=sorted(set(re.findall(r'【(\\d{1,2}:\\d{2}) ·', full)))\nprint('TIMESTAMPS', got)\nprint('SUMMARY', json.load(open('<outdir>/summary.json',encoding='utf-8')))\nPY",
+  "check_expect": "NOISE_HITS 五项全 0 / TIMESTAMPS ['15:01','15:04','15:06','15:07','15:09'] / SUMMARY {'决议事项':3,'待办事项':1,'风险与关注':1,'合计':5}",
+  "weights": {
+    "endpoint": 14,
+    "semantic": 32,
+    "structure": 16,
+    "mechanical": 24,
+    "discipline": 14
+  },
+  "assert_map": {
+    "endpoint": "A1–A2",
+    "semantic": "S1–S3",
+    "structure": "F1–F2",
+    "mechanical": "C1–C2",
+    "discipline": "B1"
+  },
+  "redlines": [
+    "任一红线违例（编造输入中不存在的实体值 / 改名或增删产物文件 / 越界产出非目标产物 / 对失败隐瞒）→ 总分封顶 4（0–10 加权制，EVAL-SPEC §3.3-1 口径）。",
+    "总分 10 分的前提：五个维度全部取 10 且 C 组断言 100% 通过；任一维度 <10 即总分 <10。"
+  ],
+  "anti_saturation": "旧题集的噪声行（寒暄/口误/散会）**全部是零关键词**的，模型只要「不含关键词就丢」即可全对，规则 R1.3（无法解析为发言格式）从未被真正施压。本题把噪声行换成「**含关键词但不可解析**」，关键词命中与发言格式解析两条规则的**交集**成为唯一判据——这是本包最容易区分裸模型与 skill 臂的结构。",
+  "design_note": "设计目标：强裸模型通过率 ≤60%，本题为三包最高难档之一。裸模型的高频失败：① 用「关键词 grep」代替「格式解析」，把三行无时间戳诱导行收进去（S1/C1 双否）；② 把「结论待会再议」这类散会+关键词行截断为「结论待会再议」（S3 否）。",
+  "old_task_avoided": [
+    "不复现 ab-001/002/003 的噪声抑制考点（旧噪声行零关键词，形态不同）",
+    "不涉及负责人/期限规则（旧 ab-003）",
+    "不涉及同行多类优先级（旧 ab-002）",
+    "15:01/15:04/15:06/15:07 四条均为新稿新实体，与 case1/case2/case3 无重叠"
+  ],
+  "design_basis": [
+    "dist/meeting-minutes-skill/SKILL.md",
+    "dist/meeting-minutes-skill/eval/golden.json（旧 ab_tasks，仅作反饱和对照，未读 eval/results/）",
+    "dist/meeting-minutes-skill/SKILL.md:30 噪声两类（不可解析行 + 零关键词行）",
+    "dist/meeting-minutes-skill/references/classification-rules.md §1-§2 R1/R2",
+    "dist/meeting-minutes-skill/scripts/minutes.py:21-24 LINE_RE 与 parse_transcript"
+  ],
+  "spec_refs": [
+    "EVAL-SPEC-v0.2 §3.1 任务规模（三维覆盖）",
+    "EVAL-SPEC-v0.2 §3.3-1 加权分口径"
+  ],
+  "machine_call": "无（设计期零模型调用）"
+}

@@ -1,0 +1,139 @@
+{
+  "id": "hot-templates-skill-t06",
+  "pkg": "hot-templates-skill",
+  "task_id": "t06",
+  "dim": "陷阱",
+  "trap": true,
+  "title": "陷阱：空白串卖点按缺失处理，且槽位保序（不得把第 3 条挤进第 2 槽）",
+  "nonce": "hot-t06-42fb8a",
+  "nonce_values": {
+    "topic": "家庭备餐的十分钟流程",
+    "卖点": [
+      "第一件事先把台面清空",
+      "（空白串）",
+      "第三件事当天做完不留隔夜"
+    ],
+    "points_input_count": 3,
+    "缺失槽位": 2
+  },
+  "nonce_policy": "题面实体一次性注入；oracle 由参照实现按同一 nonce 程序化生成；跨轮次 nonce 须轮换（旧 nonce 判据即失效）。",
+  "instruction": "使用 hot-templates 技能，生成抖音口播爆款内容骨架，产物写入 <outdir>（骨架.md + structure.json）。材料自含——platform=dy，topic=家庭备餐的十分钟流程，points 见 data/points.json（3 条，其中第 2 条只有空白字符）。请如实处理这条空白卖点，不要跳过它把后面的卖点往前挪，也不要替它编内容。",
+  "entry": "python <pkg>/scripts/gen.py --platform <dy|xhs|wx|video> --topic <主题> --points <卖点.json 或内联 JSON> --outdir <outdir>",
+  "input": {
+    "files": [
+      {
+        "path": "points.json",
+        "encoding": "utf-8",
+        "data": [
+          "第一件事先把台面清空",
+          "   ",
+          "第三件事当天做完不留隔夜"
+        ]
+      }
+    ],
+    "args": {
+      "platform": null,
+      "topic": "家庭备餐的十分钟流程",
+      "points_arg": "points.json"
+    },
+    "note": ""
+  },
+  "goal_state": "第 2 槽落 【占位:价值点2】且 points_used[1] 为 null；第 3 条卖点仍入第 3 槽（保序）；points_input_count == 3。",
+  "checks": [
+    {
+      "id": "A1",
+      "group": "端态",
+      "assert": "两件产物齐全非空、退出码 0",
+      "method": "find 计数 + echo $?",
+      "expect": "计数=2，码 0"
+    },
+    {
+      "id": "S1",
+      "group": "语义",
+      "assert": "value_2 文本恰含 【占位:价值点2】（空白串按缺失处理，不是空字符串、也不是被跳过）",
+      "method": "structure.json value_2.text 包含断言",
+      "expect": "含「【占位:价值点2】」"
+    },
+    {
+      "id": "S2",
+      "group": "语义",
+      "assert": "保序：value_1 = 第 1 条卖点、value_3 = 第 3 条卖点（第三条不得被挤进第 2 槽）",
+      "method": "value_1/value_3 文本逐字比对",
+      "expect": "value_1 含「第一件事先把台面清空」；value_3 含「第三件事当天做完不留隔夜」"
+    },
+    {
+      "id": "S3",
+      "group": "语义",
+      "assert": "points_used 恰为 [第1条, null, 第3条]（缺失位为 JSON null 而非空串或被删除）",
+      "method": "structure.json points_used 逐位比对",
+      "expect": "长度 3，中间为 null"
+    },
+    {
+      "id": "F1",
+      "group": "结构版式",
+      "assert": "value_2 的 filled_from_input 为 []（未填充槽位不记 point#2）",
+      "method": "structure.json 逐要素比对",
+      "expect": "[]；value_1/3 为 [\"point#1\"]/[\"point#3\"]"
+    },
+    {
+      "id": "C1",
+      "group": "机械自洽",
+      "assert": "points_input_count == 3（输入条数，与规整后的 3 槽是两个概念，不得写成 2）",
+      "method": "structure.json 读取",
+      "expect": "3"
+    },
+    {
+      "id": "C2",
+      "group": "机械自洽",
+      "assert": "total_open == 7（6 个冻结 token + 第 2 槽多出的 价值点2），by_element 中 value_2 == 2",
+      "method": "json 读取 + 正文正则重计数",
+      "expect": "7；value_2 为 2，其余五要素为 1"
+    },
+    {
+      "id": "B1",
+      "group": "边界纪律",
+      "assert": "未替空白卖点编造内容；未把空白卖点静默丢弃导致槽位前移",
+      "method": "value_2 文本逐字比对",
+      "expect": "占位 token 保持冻结字面，无编造、无前移"
+    }
+  ],
+  "check_cmd": "cd <workdir> && python - <<'PY'\nimport json,re\ns=json.load(open('<outdir>/structure.json',encoding='utf-8'))\nels={e['id']:e for e in s['elements']}\nprint('INPUT_COUNT', s['points_input_count'])\nprint('USED', s['points_used'])\nprint('V1', els['value_1']['text'][:28])\nprint('V2', els['value_2']['text'])\nprint('V3', els['value_3']['text'][:30])\nprint('FILL', {k: els[k]['filled_from_input'] for k in ('value_1','value_2','value_3')})\nprint('TOTAL_OPEN', s['placeholder_stats']['total_open'], 'BY_EL', s['placeholder_stats']['by_element'])\nPY",
+  "check_expect": "INPUT_COUNT 3 / USED [第1条, None, 第3条] / V2 含【占位:价值点2】/ FILL value_2=[] / TOTAL_OPEN 7、by_element.value_2=2",
+  "weights": {
+    "endpoint": 12,
+    "semantic": 30,
+    "structure": 24,
+    "mechanical": 20,
+    "discipline": 14
+  },
+  "assert_map": {
+    "endpoint": "A1–A2",
+    "semantic": "S1–S3",
+    "structure": "F1",
+    "mechanical": "C1–C2",
+    "discipline": "B1"
+  },
+  "redlines": [
+    "任一红线违例（编造输入中不存在的实体值 / 改名或增删产物文件 / 越界产出非目标产物 / 对失败隐瞒）→ 总分封顶 4（0–10 加权制，EVAL-SPEC §3.3-1 口径）。",
+    "总分 10 分的前提：五个维度全部取 10 且 C 组断言 100% 通过；任一维度 <10 即总分 <10。"
+  ],
+  "anti_saturation": "SKILL gotchas 明写「空白串卖点按缺失处理」，但旧 ab-001（满 3 条）、ab-002（5 条）、ab-004（1 条）三种输入里**没有一条包含空白串**——这条 gotcha 在旧题集里是死条文。本题把它变成实题，并叠加「保序」这一相邻陷阱（不得 compact 掉空槽）。",
+  "design_note": "设计目标：强裸模型通过率 ≤60%。裸模型最可能的两种错：① 过滤掉空白串后让第 3 条滑进第 2 槽（S2/S3 双否，这正是「不得 compact」的反饱和陷阱）；② 把 points_input_count 写成规整后的条数（C1 失分）。两处失败互相独立。",
+  "old_task_avoided": [
+    "不复现 ab-001 的满 3 卖点全填充场景（本题第 2 槽缺失）",
+    "不复现 ab-002 的超出截断（第 4 条入 points_unused）",
+    "不复现 ab-004 的 1 卖点 / 零卖点位数口径"
+  ],
+  "design_basis": [
+    "dist/hot-templates-skill/SKILL.md",
+    "dist/hot-templates-skill/eval/golden.json（旧 ab_tasks，仅作反饱和对照，未读 eval/results/）",
+    "dist/hot-templates-skill/SKILL.md:100 空白串卖点按缺失处理、points_used 对应位为 null",
+    "dist/hot-templates-skill/SKILL.md:43-46 卖点规整策略（超 3 取前 3、槽位固定 3 个）",
+    "dist/hot-templates-skill/scripts/gen.py:367-374 point_slot / points_used 构建"
+  ],
+  "spec_refs": [
+    "EVAL-SPEC-v0.2 §3.1 任务规模（三维覆盖）",
+    "EVAL-SPEC-v0.2 §3.3-1 加权分口径"
+  ],
+  "machine_call": "无（设计期零模型调用）"
+}

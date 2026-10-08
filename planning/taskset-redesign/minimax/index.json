@@ -1,0 +1,871 @@
+{
+  "project": "SF-0011 task-set-redesign（K-5 产线指令第 2 条）",
+  "designer": "独立设计方 minimax族任务集设计师（未接触任何盲评结果）",
+  "generated_by": "planning/taskset-redesign/minimax/gen/build.py（零模型调用）",
+  "date": "2026-10-08",
+  "spec_refs": [
+    "EVAL-SPEC-v0.2 §3.1 任务规模：ab_tasks ≥5、目标 8；三维覆盖（能力/难度·边界/陷阱）",
+    "EVAL-SPEC-v0.2 §3.3-1：加权分 = Σ(维度分×权重)/Σ权重（0–10）",
+    "planning/test-cards-20261008/K5-ruling-20261008.md 产线指令第 2 条（仅该节）"
+  ],
+  "sha256_scope": "包级 sha256 = sha256(包名 + \"\\n\" + 按相对路径排序的 \"<relpath>  <file_sha256>\\n\" 串)。复算：gen/build.py 重跑即可得同值（生成确定性，无时间戳入内容）。",
+  "read_discipline": [
+    "未读取 dist/*/eval/results/、**/ab_summary.json、**/benchmark.json、evidence/publish-approval-REQUEST.md",
+    "K5 裁决文档仅读「产线指令」节第 2 条设计要求",
+    "设计依据仅：三包 SKILL.md / references/*.md / eval/golden.json（旧 ab_tasks 作反饱和对照）/ 资产脚本"
+  ],
+  "global_rules": {
+    "tasks_per_pkg": 8,
+    "dims_required": [
+      "能力",
+      "边界",
+      "陷阱"
+    ],
+    "trap_min": "≥2（占 8 题的 1/4），实配 3",
+    "nonce_policy": "每题关键实体（人名/部门/日期/金额/编号/主题）一次性注入；题面、判据、oracle 共用同一 nonce",
+    "rubric": "五维加权分项（endpoint/semantic/structure/mechanical/discipline），权重和 = 100，红线封顶 ≤4",
+    "baseline_target": "强裸模型（不挂 skill）通过率 ≤60%，逐题 design_note 已写入 task.json"
+  },
+  "packages": [
+    {
+      "pkg": "meeting-minutes-skill",
+      "task_count": 8,
+      "dims": {
+        "能力": 3,
+        "边界": 2,
+        "陷阱": 3
+      },
+      "dims_note": "能力/边界/陷阱三维覆盖，陷阱 3 条（≥1/4）",
+      "sha256": "0683a08666e2050418b97b9025ea7f9c19402b75dd17cc1815209bfbb43dc47a",
+      "sha256_scope": "包级 sha256 = sha256(包名 + \"\\n\" + 按相对路径排序的 \"<relpath>  <file_sha256>\\n\" 串)。复算：gen/build.py 重跑即可得同值（生成确定性，无时间戳入内容）。",
+      "files": [
+        {
+          "relpath": "t01/brief.md",
+          "sha256": "60fd45a59fe887f7641e06ed34274d3f370b445af5321ecc557627bf1511488f"
+        },
+        {
+          "relpath": "t01/rubric.md",
+          "sha256": "d1687a48e8e3c544aee3831614bb1869ae6b09de7e81a10d9e5b7f654f2409fc"
+        },
+        {
+          "relpath": "t01/task.json",
+          "sha256": "961c2991b4c66ba438b502ab1be25b62c2ee44bb36ff99883e16a61e75fbcb5d"
+        },
+        {
+          "relpath": "t02/brief.md",
+          "sha256": "8f334ae6ad2f10c2b8491280fd6043276589c8a6f4684829f9b37759c78630c2"
+        },
+        {
+          "relpath": "t02/rubric.md",
+          "sha256": "7a088c24dad357758d8ba49decd373f1d6d98c613425902d0f5ba986d1bbf8a2"
+        },
+        {
+          "relpath": "t02/task.json",
+          "sha256": "7fb0bc7028ebc0bc16f7f2dbfe1594d153f537efeb6dcd9180cd4e73977541da"
+        },
+        {
+          "relpath": "t03/brief.md",
+          "sha256": "15664a5b8ef86260cba2ae352893697127a50c055daae929b3de9fa8c321f888"
+        },
+        {
+          "relpath": "t03/rubric.md",
+          "sha256": "5fd4d95345139673edded66ac794e69e8727bc0c1ae35c55750056b0b495676f"
+        },
+        {
+          "relpath": "t03/task.json",
+          "sha256": "33a065e94cfc403ba64b76047056581e419b88859bb4510de56c972120a27843"
+        },
+        {
+          "relpath": "t04/brief.md",
+          "sha256": "d9d597fe26f198c4910459aba8e792d3ecf7585e396351b2c89cde5fe17b23a8"
+        },
+        {
+          "relpath": "t04/rubric.md",
+          "sha256": "c340e62d3af2baa37b27c551f9dbbbe48bf2b57e4dea657675a4a0b28571cfa0"
+        },
+        {
+          "relpath": "t04/task.json",
+          "sha256": "65ece45bda65d3f97ca79ee9ac3d7dd7eb33877444be2ad8aa71c438c220b060"
+        },
+        {
+          "relpath": "t05/brief.md",
+          "sha256": "f05fd9d737e3c337ec663a2e762c67d9da995d4d63274c80e440f1210ccdd423"
+        },
+        {
+          "relpath": "t05/rubric.md",
+          "sha256": "c887c2f9bf3fffcc337bd86db463d7434f472324d1e77ea2b322be749911e3d2"
+        },
+        {
+          "relpath": "t05/task.json",
+          "sha256": "ca615c58a420d7acc4330c6b6565035ca38dc8e820bcc3da40562c4f1d02f4b8"
+        },
+        {
+          "relpath": "t06/brief.md",
+          "sha256": "a5a0cd9c54fd226cd11f61d416e55af3cb517d0d541437d2fbc2688de1ce81ef"
+        },
+        {
+          "relpath": "t06/rubric.md",
+          "sha256": "7b7fd315e9484c508a97c8d6ec4328dd34d1ac5fd63ccf7d4aaecb994c6dbc91"
+        },
+        {
+          "relpath": "t06/task.json",
+          "sha256": "2b4568a6c51a24e7de1531206c5eb72130e4327ea1cbbbff1d83b913c793f044"
+        },
+        {
+          "relpath": "t07/brief.md",
+          "sha256": "b8280604912b8b2362ed332b75deecd940bd3f112164b8d4bcc295442785163d"
+        },
+        {
+          "relpath": "t07/rubric.md",
+          "sha256": "de8a77c07b4f5baa3dba70fd30b1d0bbd82a92935f925905fec64add692081a9"
+        },
+        {
+          "relpath": "t07/task.json",
+          "sha256": "13a76f9578100c8301568ff5c01e082c39318871a97bbee701a54e08d621e29b"
+        },
+        {
+          "relpath": "t08/brief.md",
+          "sha256": "f67a49b88f1f75c5abbea6c5c6b0868eb02900502154f582403022475bf2b8ed"
+        },
+        {
+          "relpath": "t08/rubric.md",
+          "sha256": "7c16601d2f601b2f8629a7620cc2bd83eee3b2769ca2aca57ed98f66f98d4b6b"
+        },
+        {
+          "relpath": "t08/task.json",
+          "sha256": "e9e9b23521d1d154f6e379e3909c48461e070027a247c12af52fcc8272082e4e"
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "t01",
+          "path": "meeting-minutes-skill/t01",
+          "dim": "能力",
+          "trap": false,
+          "title": "解析正则容错 + 三段分类 + 元信息行逐字格式",
+          "nonce": "mm-t01-7c41e0",
+          "weights": {
+            "endpoint": 12,
+            "semantic": 30,
+            "structure": 24,
+            "mechanical": 20,
+            "discipline": 14
+          },
+          "checks": 12,
+          "sha256": {
+            "task.json": "961c2991b4c66ba438b502ab1be25b62c2ee44bb36ff99883e16a61e75fbcb5d",
+            "brief.md": "60fd45a59fe887f7641e06ed34274d3f370b445af5321ecc557627bf1511488f",
+            "rubric.md": "d1687a48e8e3c544aee3831614bb1869ae6b09de7e81a10d9e5b7f654f2409fc"
+          }
+        },
+        {
+          "task_id": "t02",
+          "path": "meeting-minutes-skill/t02",
+          "dim": "能力",
+          "trap": false,
+          "title": "期限规则 1/4/6 + 规则内前缀剥离 + 抓不到填「待定」",
+          "nonce": "mm-t02-b2d905",
+          "weights": {
+            "endpoint": 12,
+            "semantic": 34,
+            "structure": 18,
+            "mechanical": 22,
+            "discipline": 14
+          },
+          "checks": 12,
+          "sha256": {
+            "task.json": "7fb0bc7028ebc0bc16f7f2dbfe1594d153f537efeb6dcd9180cd4e73977541da",
+            "brief.md": "8f334ae6ad2f10c2b8491280fd6043276589c8a6f4684829f9b37759c78630c2",
+            "rubric.md": "7a088c24dad357758d8ba49decd373f1d6d98c613425902d0f5ba986d1bbf8a2"
+          }
+        },
+        {
+          "task_id": "t03",
+          "path": "meeting-minutes-skill/t03",
+          "dim": "能力",
+          "trap": false,
+          "title": "负责人四规则齐用 + 规则序（我负责 优先于 由X负责）+ near-miss 落「待定」",
+          "nonce": "mm-t03-5ae318",
+          "weights": {
+            "endpoint": 12,
+            "semantic": 30,
+            "structure": 24,
+            "mechanical": 20,
+            "discipline": 14
+          },
+          "checks": 12,
+          "sha256": {
+            "task.json": "33a065e94cfc403ba64b76047056581e419b88859bb4510de56c972120a27843",
+            "brief.md": "15664a5b8ef86260cba2ae352893697127a50c055daae929b3de9fa8c321f888",
+            "rubric.md": "5fd4d95345139673edded66ac794e69e8727bc0c1ae35c55750056b0b495676f"
+          }
+        },
+        {
+          "task_id": "t04",
+          "path": "meeting-minutes-skill/t04",
+          "dim": "边界",
+          "trap": false,
+          "title": "全噪声输入 → 合法空纪要（三节保留 + 待办仅表头 + summary 全 0 + BOM 容忍）",
+          "nonce": "mm-t04-91f6c2",
+          "weights": {
+            "endpoint": 12,
+            "semantic": 30,
+            "structure": 24,
+            "mechanical": 20,
+            "discipline": 14
+          },
+          "checks": 11,
+          "sha256": {
+            "task.json": "65ece45bda65d3f97ca79ee9ac3d7dd7eb33877444be2ad8aa71c438c220b060",
+            "brief.md": "d9d597fe26f198c4910459aba8e792d3ecf7585e396351b2c89cde5fe17b23a8",
+            "rubric.md": "c340e62d3af2baa37b27c551f9dbbbe48bf2b57e4dea657675a4a0b28571cfa0"
+          }
+        },
+        {
+          "task_id": "t05",
+          "path": "meeting-minutes-skill/t05",
+          "dim": "边界",
+          "trap": false,
+          "title": "输入文件不存在 → 非 0 退出、不建产物目录、不拿同名诱导文件顶替、不编造转写稿",
+          "nonce": "mm-t05-4e0ad7",
+          "weights": {
+            "endpoint": 10,
+            "semantic": 26,
+            "structure": 6,
+            "mechanical": 26,
+            "discipline": 32
+          },
+          "checks": 11,
+          "sha256": {
+            "task.json": "ca615c58a420d7acc4330c6b6565035ca38dc8e820bcc3da40562c4f1d02f4b8",
+            "brief.md": "f05fd9d737e3c337ec663a2e762c67d9da995d4d63274c80e440f1210ccdd423",
+            "rubric.md": "c887c2f9bf3fffcc337bd86db463d7434f472324d1e77ea2b322be749911e3d2"
+          }
+        },
+        {
+          "task_id": "t06",
+          "path": "meeting-minutes-skill/t06",
+          "dim": "陷阱",
+          "trap": true,
+          "title": "陷阱：无时间戳 / 空说话人的行即使含关键词也必须丢弃；收录集合必须精确等于期望集合",
+          "nonce": "mm-t06-d3b85f",
+          "weights": {
+            "endpoint": 14,
+            "semantic": 32,
+            "structure": 16,
+            "mechanical": 24,
+            "discipline": 14
+          },
+          "checks": 9,
+          "sha256": {
+            "task.json": "2b4568a6c51a24e7de1531206c5eb72130e4327ea1cbbbff1d83b913c793f044",
+            "brief.md": "a5a0cd9c54fd226cd11f61d416e55af3cb517d0d541437d2fbc2688de1ce81ef",
+            "rubric.md": "7b7fd315e9484c508a97c8d6ec4328dd34d1ac5fd63ccf7d4aaecb994c6dbc91"
+          }
+        },
+        {
+          "task_id": "t07",
+          "path": "meeting-minutes-skill/t07",
+          "dim": "陷阱",
+          "trap": true,
+          "title": "陷阱：条目精确集合 + 三类互斥 + 编号连续 + 待办「事项」列逐字 + 0 条节标题保留",
+          "nonce": "mm-t07-6a29e4",
+          "weights": {
+            "endpoint": 12,
+            "semantic": 30,
+            "structure": 24,
+            "mechanical": 20,
+            "discipline": 14
+          },
+          "checks": 11,
+          "sha256": {
+            "task.json": "13a76f9578100c8301568ff5c01e082c39318871a97bbee701a54e08d621e29b",
+            "brief.md": "b8280604912b8b2362ed332b75deecd940bd3f112164b8d4bcc295442785163d",
+            "rubric.md": "de8a77c07b4f5baa3dba70fd30b1d0bbd82a92935f925905fec64add692081a9"
+          }
+        },
+        {
+          "task_id": "t08",
+          "path": "meeting-minutes-skill/t08",
+          "dim": "陷阱",
+          "trap": true,
+          "title": "陷阱：三向自洽（docx↔summary↔元信息）+ 同输入双跑确定性 + 显式回读验收",
+          "nonce": "mm-t08-c814b6",
+          "weights": {
+            "endpoint": 16,
+            "semantic": 26,
+            "structure": 12,
+            "mechanical": 32,
+            "discipline": 14
+          },
+          "checks": 11,
+          "sha256": {
+            "task.json": "e9e9b23521d1d154f6e379e3909c48461e070027a247c12af52fcc8272082e4e",
+            "brief.md": "f67a49b88f1f75c5abbea6c5c6b0868eb02900502154f582403022475bf2b8ed",
+            "rubric.md": "7c16601d2f601b2f8629a7620cc2bd83eee3b2769ca2aca57ed98f66f98d4b6b"
+          }
+        }
+      ]
+    },
+    {
+      "pkg": "office-templates-skill",
+      "task_count": 8,
+      "dims": {
+        "能力": 4,
+        "边界": 2,
+        "陷阱": 2
+      },
+      "dims_note": "能力/边界/陷阱三维覆盖，陷阱 2 条（≥1/4）",
+      "sha256": "e73da92c6bc871294bd7941148227b70d77987f8da9c3b09a2b5eb76bc4685e5",
+      "sha256_scope": "包级 sha256 = sha256(包名 + \"\\n\" + 按相对路径排序的 \"<relpath>  <file_sha256>\\n\" 串)。复算：gen/build.py 重跑即可得同值（生成确定性，无时间戳入内容）。",
+      "files": [
+        {
+          "relpath": "t01/brief.md",
+          "sha256": "a2cce072a7dc3de92028c453792b9d0ab17f4f091dd40c3a8e9eb16635ec90c1"
+        },
+        {
+          "relpath": "t01/rubric.md",
+          "sha256": "4ec9f1fdf2a54f096f9bf5c65046b94a98898d1cf300dab17ec042b3c35d9536"
+        },
+        {
+          "relpath": "t01/task.json",
+          "sha256": "99f8a54f4d4a048244832d9f455dc70ce1fe1b39dbfd173726c508090ea153b2"
+        },
+        {
+          "relpath": "t02/brief.md",
+          "sha256": "09ad3e3c81e846691190dcd7188865d13741e60bf489fdb7827697c5e94606c6"
+        },
+        {
+          "relpath": "t02/rubric.md",
+          "sha256": "ad38145fc4084acac465f0b805b3ffa3cea48d4942fee575a21dfa981b98c695"
+        },
+        {
+          "relpath": "t02/task.json",
+          "sha256": "b7777a5ba24a1eec6db7f36a6b4ef6d3a3cc507667db6b4463bfcadbf41c7c24"
+        },
+        {
+          "relpath": "t03/brief.md",
+          "sha256": "3ee8282aeec4b496f183a28097635625209b79690c8f9a1b99233807f0cc80b2"
+        },
+        {
+          "relpath": "t03/rubric.md",
+          "sha256": "adc57e42a5f10d4f10948aa8a93be6419f685425df62723f26dfd3a2e2e12488"
+        },
+        {
+          "relpath": "t03/task.json",
+          "sha256": "0ec4956d7043948e1c91f89b3ee6481a0abae14a341b53ec77720ae5128f2e18"
+        },
+        {
+          "relpath": "t04/brief.md",
+          "sha256": "1eac30aaf0eb7ffb8093883c1efff14ebbbf077ad7d6fdabe5e519e1b617ade2"
+        },
+        {
+          "relpath": "t04/rubric.md",
+          "sha256": "9e8a1bcd1c2a58cc774d02f050dd45d5c7edf924cfcca3532d6ec0fd7078dcde"
+        },
+        {
+          "relpath": "t04/task.json",
+          "sha256": "c853d59884d0b4db63e4218b3c558d3ebf1e6e4aa16c9ccb46cda7b694145af5"
+        },
+        {
+          "relpath": "t05/brief.md",
+          "sha256": "978355e1b2c25f5d169039df263a92657733f791c07d4484e0419069362598ba"
+        },
+        {
+          "relpath": "t05/rubric.md",
+          "sha256": "b061abc7cdcc6c65cbd5303454acde26121d0e14d72958c054ac903b1b40e4dd"
+        },
+        {
+          "relpath": "t05/task.json",
+          "sha256": "6fa7150148f3c8e50c0b14750826f1454c32e20afead3edb514176cd9484e720"
+        },
+        {
+          "relpath": "t06/brief.md",
+          "sha256": "b36365fa586cb6588959743e0610a6d76dfa0e334715688d9fd4eaf66743accb"
+        },
+        {
+          "relpath": "t06/rubric.md",
+          "sha256": "bf0c70860d27b56ce99234552db852fae9ca464cf5cde6487e309c92f24e67d5"
+        },
+        {
+          "relpath": "t06/task.json",
+          "sha256": "716434e982eea29b5e3d1c4d6b3ad63099d4193a9862c3104befd43262624577"
+        },
+        {
+          "relpath": "t07/brief.md",
+          "sha256": "606350cc39756e8b11ed607e1766887cea9b4e256e7f7f56e2675b55e19ccf17"
+        },
+        {
+          "relpath": "t07/rubric.md",
+          "sha256": "dba2afad3cfe26ba2f586b327ecbcdbd476a1934a14408ff52149ebecf11ede9"
+        },
+        {
+          "relpath": "t07/task.json",
+          "sha256": "1ee13307d99f7c5c79f9e175e5329e425d6f4bf3cad02d03cf5aab96131b6e2d"
+        },
+        {
+          "relpath": "t08/brief.md",
+          "sha256": "423a0d4da2ae6b8ab04b5a2eac187fa78f95fad84435ba095b187e1c38caaa2f"
+        },
+        {
+          "relpath": "t08/rubric.md",
+          "sha256": "b1c8c99b0ced60c4d38887bfc4d12a4a05ca8cc12a669f3ef0b9046cae4b8667"
+        },
+        {
+          "relpath": "t08/task.json",
+          "sha256": "14ecdfc66d613fff622fa3905f8b1d0fe30df829ba67289240e3fce80f373cc8"
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "t01",
+          "path": "office-templates-skill/t01",
+          "dim": "能力",
+          "trap": false,
+          "title": "F5 strip 全链路：正文无首尾空白、台账 value 已 strip、缺失判定不受空白串影响",
+          "nonce": "ofc-t01-3e7b52",
+          "weights": {
+            "endpoint": 12,
+            "semantic": 30,
+            "structure": 24,
+            "mechanical": 20,
+            "discipline": 14
+          },
+          "checks": 9,
+          "sha256": {
+            "task.json": "99f8a54f4d4a048244832d9f455dc70ce1fe1b39dbfd173726c508090ea153b2",
+            "brief.md": "a2cce072a7dc3de92028c453792b9d0ab17f4f091dd40c3a8e9eb16635ec90c1",
+            "rubric.md": "4ec9f1fdf2a54f096f9bf5c65046b94a98898d1cf300dab17ec042b3c35d9536"
+          }
+        },
+        {
+          "task_id": "t02",
+          "path": "office-templates-skill/t02",
+          "dim": "能力",
+          "trap": false,
+          "title": "F3 列表取值宽容：字符串→单项 / 数组含空白项 / 非字符串类型 str().strip() 单项",
+          "nonce": "ofc-t02-9a04d8",
+          "weights": {
+            "endpoint": 12,
+            "semantic": 34,
+            "structure": 20,
+            "mechanical": 20,
+            "discipline": 14
+          },
+          "checks": 10,
+          "sha256": {
+            "task.json": "b7777a5ba24a1eec6db7f36a6b4ef6d3a3cc507667db6b4463bfcadbf41c7c24",
+            "brief.md": "09ad3e3c81e846691190dcd7188865d13741e60bf489fdb7827697c5e94606c6",
+            "rubric.md": "ad38145fc4084acac465f0b805b3ffa3cea48d4942fee575a21dfa981b98c695"
+          }
+        },
+        {
+          "task_id": "t03",
+          "path": "office-templates-skill/t03",
+          "dim": "能力",
+          "trap": false,
+          "title": "四类模板版式细节：称谓仅两类模板生效 / 条目全角点编号 / 会议通知行内标签 / 两行落款右对齐",
+          "nonce": "ofc-t03-51c6ef",
+          "weights": {
+            "endpoint": 14,
+            "semantic": 20,
+            "structure": 34,
+            "mechanical": 18,
+            "discipline": 14
+          },
+          "checks": 13,
+          "sha256": {
+            "task.json": "0ec4956d7043948e1c91f89b3ee6481a0abae14a341b53ec77720ae5128f2e18",
+            "brief.md": "3ee8282aeec4b496f183a28097635625209b79690c8f9a1b99233807f0cc80b2",
+            "rubric.md": "adc57e42a5f10d4f10948aa8a93be6419f685425df62723f26dfd3a2e2e12488"
+          }
+        },
+        {
+          "task_id": "t04",
+          "path": "office-templates-skill/t04",
+          "dim": "能力",
+          "trap": false,
+          "title": "F6 模板外键：字典序记账、不进台账明细、不影响文书",
+          "nonce": "ofc-t04-b87a29",
+          "weights": {
+            "endpoint": 12,
+            "semantic": 30,
+            "structure": 24,
+            "mechanical": 20,
+            "discipline": 14
+          },
+          "checks": 7,
+          "sha256": {
+            "task.json": "c853d59884d0b4db63e4218b3c558d3ebf1e6e4aa16c9ccb46cda7b694145af5",
+            "brief.md": "1eac30aaf0eb7ffb8093883c1efff14ebbbf077ad7d6fdabe5e519e1b617ade2",
+            "rubric.md": "9e8a1bcd1c2a58cc774d02f050dd45d5c7edf924cfcca3532d6ec0fd7078dcde"
+          }
+        },
+        {
+          "task_id": "t05",
+          "path": "office-templates-skill/t05",
+          "dim": "边界",
+          "trap": false,
+          "title": "边界：空白串与全空白数组一律判缺失（near-miss），必填缺失 → 占位条目与占位，仍 exit 0",
+          "nonce": "ofc-t05-2df916",
+          "weights": {
+            "endpoint": 12,
+            "semantic": 30,
+            "structure": 20,
+            "mechanical": 24,
+            "discipline": 14
+          },
+          "checks": 9,
+          "sha256": {
+            "task.json": "6fa7150148f3c8e50c0b14750826f1454c32e20afead3edb514176cd9484e720",
+            "brief.md": "978355e1b2c25f5d169039df263a92657733f791c07d4484e0419069362598ba",
+            "rubric.md": "b061abc7cdcc6c65cbd5303454acde26121d0e14d72958c054ac903b1b40e4dd"
+          }
+        },
+        {
+          "task_id": "t06",
+          "path": "office-templates-skill/t06",
+          "dim": "边界",
+          "trap": false,
+          "title": "边界：必填字段全部缺失 → 占位标题 + 占位正文 + 台账 10 missing 仍 exit 0（本模板无必填 list，故无占位条目）",
+          "nonce": "ofc-t06-6e3b47",
+          "weights": {
+            "endpoint": 12,
+            "semantic": 30,
+            "structure": 24,
+            "mechanical": 20,
+            "discipline": 14
+          },
+          "checks": 9,
+          "sha256": {
+            "task.json": "716434e982eea29b5e3d1c4d6b3ad63099d4193a9862c3104befd43262624577",
+            "brief.md": "b36365fa586cb6588959743e0610a6d76dfa0e334715688d9fd4eaf66743accb",
+            "rubric.md": "bf0c70860d27b56ce99234552db852fae9ca464cf5cde6487e309c92f24e67d5"
+          }
+        },
+        {
+          "task_id": "t07",
+          "path": "office-templates-skill/t07",
+          "dim": "陷阱",
+          "trap": true,
+          "title": "陷阱：越界请求（docx→pdf / 红头公章 / 增删字段 / 多文档合并）必须显式拒答且不产出越界产物",
+          "nonce": "ofc-t07-c1058a",
+          "weights": {
+            "endpoint": 10,
+            "semantic": 18,
+            "structure": 16,
+            "mechanical": 16,
+            "discipline": 40
+          },
+          "checks": 12,
+          "sha256": {
+            "task.json": "1ee13307d99f7c5c79f9e175e5329e425d6f4bf3cad02d03cf5aab96131b6e2d",
+            "brief.md": "606350cc39756e8b11ed607e1766887cea9b4e256e7f7f56e2675b55e19ccf17",
+            "rubric.md": "dba2afad3cfe26ba2f586b327ecbcdbd476a1934a14408ff52149ebecf11ede9"
+          }
+        },
+        {
+          "task_id": "t08",
+          "path": "office-templates-skill/t08",
+          "dim": "陷阱",
+          "trap": true,
+          "title": "陷阱：数据语义校验不做——非法电话/日期原样透传、exit 0、台账按原样记账",
+          "nonce": "ofc-t08-74d2b0",
+          "weights": {
+            "endpoint": 12,
+            "semantic": 34,
+            "structure": 16,
+            "mechanical": 24,
+            "discipline": 14
+          },
+          "checks": 11,
+          "sha256": {
+            "task.json": "14ecdfc66d613fff622fa3905f8b1d0fe30df829ba67289240e3fce80f373cc8",
+            "brief.md": "423a0d4da2ae6b8ab04b5a2eac187fa78f95fad84435ba095b187e1c38caaa2f",
+            "rubric.md": "b1c8c99b0ced60c4d38887bfc4d12a4a05ca8cc12a669f3ef0b9046cae4b8667"
+          }
+        }
+      ]
+    },
+    {
+      "pkg": "hot-templates-skill",
+      "task_count": 8,
+      "dims": {
+        "能力": 4,
+        "边界": 1,
+        "陷阱": 3
+      },
+      "dims_note": "能力/边界/陷阱三维覆盖，陷阱 3 条（≥1/4）",
+      "sha256": "13c609f96f56b10d8651b2a1f78857d5d696ef2083cb0bc0c0f09f95d00b0a53",
+      "sha256_scope": "包级 sha256 = sha256(包名 + \"\\n\" + 按相对路径排序的 \"<relpath>  <file_sha256>\\n\" 串)。复算：gen/build.py 重跑即可得同值（生成确定性，无时间戳入内容）。",
+      "files": [
+        {
+          "relpath": "t01/brief.md",
+          "sha256": "42a065351c0962f805d1a827d232a1402f6702b6773b9b6268977e7a68cff2c5"
+        },
+        {
+          "relpath": "t01/rubric.md",
+          "sha256": "844bf516c1b85805fdf4b11296f2391faa708414c568aed679e8a24ad2f6d851"
+        },
+        {
+          "relpath": "t01/task.json",
+          "sha256": "58bcd015bbd478eac180378578a19ca501d262b1a23b9c8031b43d06dd059364"
+        },
+        {
+          "relpath": "t02/brief.md",
+          "sha256": "5299d406daea2b0b965467701b5dcf7f8f3f4516836ac2653574b58b95647995"
+        },
+        {
+          "relpath": "t02/rubric.md",
+          "sha256": "76866127f25ad2d22de7c8ee73448d5cf502c7d09ddd849623e0afcd254b1cd6"
+        },
+        {
+          "relpath": "t02/task.json",
+          "sha256": "e722c768ecb71827fd8745ba1ea9974c482e851cac751973f87cf95256033f8c"
+        },
+        {
+          "relpath": "t03/brief.md",
+          "sha256": "885204dc64f84a7bfab8dcd0c101d3a0569f0652c9bef15a382a09cf8f5cb05b"
+        },
+        {
+          "relpath": "t03/rubric.md",
+          "sha256": "7c4354cddc5dc4cdb04a86d6facc48528696deb5260ae8a8c690d76b4f5690a1"
+        },
+        {
+          "relpath": "t03/task.json",
+          "sha256": "e14b92f645dcf5b9bd91fa905fcb7397e12e04e4955cf6af2bf3e1d273ea2165"
+        },
+        {
+          "relpath": "t04/brief.md",
+          "sha256": "46e10cdf2624335cd6fbd2d7da2cfebeec020a188f2628f6494824557883223e"
+        },
+        {
+          "relpath": "t04/rubric.md",
+          "sha256": "3ac1de3f05615b5e087f59c71aa6032f97d8a475c963970f684f15b4c8f8dcc5"
+        },
+        {
+          "relpath": "t04/task.json",
+          "sha256": "bd100c9d055f4ba4bc7e977223108f271d20e083c1c1e975d3e4f42da7c79a6d"
+        },
+        {
+          "relpath": "t05/brief.md",
+          "sha256": "137abb72cfda5de0fd1b97f51c06a7e8451ad3bbe04f5b52e65edcabb0f5e11c"
+        },
+        {
+          "relpath": "t05/rubric.md",
+          "sha256": "31c2be3a1c8c4637c16e5c41a8df2af832402ca6e421127f58907347ce5a6e6b"
+        },
+        {
+          "relpath": "t05/task.json",
+          "sha256": "6ba758aebb72a447a78520c32e8d99d8177ef5e9d490fc977d223655a42ad54f"
+        },
+        {
+          "relpath": "t06/brief.md",
+          "sha256": "09273c360367f6746f524841736034f970c6af2090e44f15853873a8383d89c5"
+        },
+        {
+          "relpath": "t06/rubric.md",
+          "sha256": "91687b004a2a220089bf465fa64d1691210cd92d6456274f279577b0f9f7bc31"
+        },
+        {
+          "relpath": "t06/task.json",
+          "sha256": "21a679ecbd05b03d82ec6303ce5399f940d5859ebbd6751694b7cdda6eebf9e9"
+        },
+        {
+          "relpath": "t07/brief.md",
+          "sha256": "65c6a09a5060cef1d325940604ef64f252db1ab445624b9abc045ae7e5fd7327"
+        },
+        {
+          "relpath": "t07/rubric.md",
+          "sha256": "645a44a61acb4c4abb1755f0fe2f77ced4dedbc608c04b505510d55e79ebeefa"
+        },
+        {
+          "relpath": "t07/task.json",
+          "sha256": "e5816fd6d794ca5b030a69a1c80d2a0cbe5fc6c45111d8f3e36d6f949b2d12f3"
+        },
+        {
+          "relpath": "t08/brief.md",
+          "sha256": "77077e2058363973babf8ddb09f19297522e32733b4774fa54381557cacbcafc"
+        },
+        {
+          "relpath": "t08/rubric.md",
+          "sha256": "d4f37b9b31a30a83e0ae757da83ecc6ddc94115d231fd9fdd8db36e97c17f971"
+        },
+        {
+          "relpath": "t08/task.json",
+          "sha256": "316854374020974c8219d305223ea8b48c870923a8739dd5cff6c7560b3d26f4"
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "t01",
+          "path": "hot-templates-skill/t01",
+          "dim": "能力",
+          "trap": false,
+          "title": "dy 冻结字面与槽位口径：6 要素每恰 1 个 token、total_open=6、钩子/CTA 句式冻结、痛点与 CTA 无填充",
+          "nonce": "hot-t01-8a12f7",
+          "weights": {
+            "endpoint": 12,
+            "semantic": 30,
+            "structure": 24,
+            "mechanical": 20,
+            "discipline": 14
+          },
+          "checks": 10,
+          "sha256": {
+            "task.json": "58bcd015bbd478eac180378578a19ca501d262b1a23b9c8031b43d06dd059364",
+            "brief.md": "42a065351c0962f805d1a827d232a1402f6702b6773b9b6268977e7a68cff2c5",
+            "rubric.md": "844bf516c1b85805fdf4b11296f2391faa708414c568aed679e8a24ad2f6d851"
+          }
+        },
+        {
+          "task_id": "t02",
+          "path": "hot-templates-skill/t02",
+          "dim": "能力",
+          "trap": false,
+          "title": "xhs 精确口径：标签组 `#[^\\s#]+` 计数恰 6、标题数字恒为 3、emoji 四映射、4 卖点截断",
+          "nonce": "hot-t02-3d6b90",
+          "weights": {
+            "endpoint": 12,
+            "semantic": 32,
+            "structure": 24,
+            "mechanical": 18,
+            "discipline": 14
+          },
+          "checks": 10,
+          "sha256": {
+            "task.json": "e722c768ecb71827fd8745ba1ea9974c482e851cac751973f87cf95256033f8c",
+            "brief.md": "5299d406daea2b0b965467701b5dcf7f8f3f4516836ac2653574b58b95647995",
+            "rubric.md": "76866127f25ad2d22de7c8ee73448d5cf502c7d09ddd849623e0afcd254b1cd6"
+          }
+        },
+        {
+          "task_id": "t03",
+          "path": "hot-templates-skill/t03",
+          "dim": "能力",
+          "trap": false,
+          "title": "wx 满 3 卖点：total_filled_from_input == 7（4 topic + 3 point）/ thesis_how 三行逐字 / 金句收尾逐字",
+          "nonce": "hot-t03-5f24c8",
+          "weights": {
+            "endpoint": 12,
+            "semantic": 30,
+            "structure": 18,
+            "mechanical": 26,
+            "discipline": 14
+          },
+          "checks": 9,
+          "sha256": {
+            "task.json": "e14b92f645dcf5b9bd91fa905fcb7397e12e04e4955cf6af2bf3e1d273ea2165",
+            "brief.md": "885204dc64f84a7bfab8dcd0c101d3a0569f0652c9bef15a382a09cf8f5cb05b",
+            "rubric.md": "7c4354cddc5dc4cdb04a86d6facc48528696deb5260ae8a8c690d76b4f5690a1"
+          }
+        },
+        {
+          "task_id": "t04",
+          "path": "hot-templates-skill/t04",
+          "dim": "能力",
+          "trap": false,
+          "title": "video 零卖点全缺失：要素 name 冻结 + meta 7 键 + shot_4 占位 4 次/去重 3 token + 总 open 18",
+          "nonce": "hot-t04-b70a36",
+          "weights": {
+            "endpoint": 12,
+            "semantic": 24,
+            "structure": 28,
+            "mechanical": 22,
+            "discipline": 14
+          },
+          "checks": 10,
+          "sha256": {
+            "task.json": "bd100c9d055f4ba4bc7e977223108f271d20e083c1c1e975d3e4f42da7c79a6d",
+            "brief.md": "46e10cdf2624335cd6fbd2d7da2cfebeec020a188f2628f6494824557883223e",
+            "rubric.md": "3ac1de3f05615b5e087f59c71aa6032f97d8a475c963970f684f15b4c8f8dcc5"
+          }
+        },
+        {
+          "task_id": "t05",
+          "path": "hot-templates-skill/t05",
+          "dim": "边界",
+          "trap": false,
+          "title": "边界：一次一平台——四平台各跑一次，四份产物互不串台",
+          "nonce": "hot-t05-1c9e5d",
+          "weights": {
+            "endpoint": 16,
+            "semantic": 24,
+            "structure": 16,
+            "mechanical": 22,
+            "discipline": 22
+          },
+          "checks": 10,
+          "sha256": {
+            "task.json": "6ba758aebb72a447a78520c32e8d99d8177ef5e9d490fc977d223655a42ad54f",
+            "brief.md": "137abb72cfda5de0fd1b97f51c06a7e8451ad3bbe04f5b52e65edcabb0f5e11c",
+            "rubric.md": "31c2be3a1c8c4637c16e5c41a8df2af832402ca6e421127f58907347ce5a6e6b"
+          }
+        },
+        {
+          "task_id": "t06",
+          "path": "hot-templates-skill/t06",
+          "dim": "陷阱",
+          "trap": true,
+          "title": "陷阱：空白串卖点按缺失处理，且槽位保序（不得把第 3 条挤进第 2 槽）",
+          "nonce": "hot-t06-42fb8a",
+          "weights": {
+            "endpoint": 12,
+            "semantic": 30,
+            "structure": 24,
+            "mechanical": 20,
+            "discipline": 14
+          },
+          "checks": 8,
+          "sha256": {
+            "task.json": "21a679ecbd05b03d82ec6303ce5399f940d5859ebbd6751694b7cdda6eebf9e9",
+            "brief.md": "09273c360367f6746f524841736034f970c6af2090e44f15853873a8383d89c5",
+            "rubric.md": "91687b004a2a220089bf465fa64d1691210cd92d6456274f279577b0f9f7bc31"
+          }
+        },
+        {
+          "task_id": "t07",
+          "path": "hot-templates-skill/t07",
+          "dim": "陷阱",
+          "trap": true,
+          "title": "陷阱：--points 形态矩阵（对象形态 / BOM 文件 / 非字符串项 / 不存在路径 四类入口）",
+          "nonce": "hot-t07-e60d31",
+          "weights": {
+            "endpoint": 18,
+            "semantic": 24,
+            "structure": 10,
+            "mechanical": 20,
+            "discipline": 28
+          },
+          "checks": 11,
+          "sha256": {
+            "task.json": "e5816fd6d794ca5b030a69a1c80d2a0cbe5fc6c45111d8f3e36d6f949b2d12f3",
+            "brief.md": "65c6a09a5060cef1d325940604ef64f252db1ab445624b9abc045ae7e5fd7327",
+            "rubric.md": "645a44a61acb4c4abb1755f0fe2f77ced4dedbc608c04b505510d55e79ebeefa"
+          }
+        },
+        {
+          "task_id": "t08",
+          "path": "hot-templates-skill/t08",
+          "dim": "陷阱",
+          "trap": true,
+          "title": "陷阱：冻结 token 防改写 + {{ }} 残留为 0 + 三向统计同源 + 同输入双跑逐字节一致",
+          "nonce": "hot-t08-9a7c04",
+          "weights": {
+            "endpoint": 14,
+            "semantic": 26,
+            "structure": 10,
+            "mechanical": 36,
+            "discipline": 14
+          },
+          "checks": 9,
+          "sha256": {
+            "task.json": "316854374020974c8219d305223ea8b48c870923a8739dd5cff6c7560b3d26f4",
+            "brief.md": "77077e2058363973babf8ddb09f19297522e32733b4774fa54381557cacbcafc",
+            "rubric.md": "d4f37b9b31a30a83e0ae757da83ecc6ddc94115d231fd9fdd8db36e97c17f971"
+          }
+        }
+      ]
+    }
+  ]
+}

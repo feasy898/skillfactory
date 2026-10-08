@@ -1,0 +1,170 @@
+{
+  "id": "meeting-minutes-skill-t01",
+  "pkg": "meeting-minutes-skill",
+  "task_id": "t01",
+  "dim": "能力",
+  "trap": false,
+  "title": "解析正则容错 + 三段分类 + 元信息行逐字格式",
+  "nonce": "mm-t01-7c41e0",
+  "nonce_values": {
+    "说话人": [
+      "田伟",
+      "陆娟",
+      "章明·计划",
+      "施琳"
+    ],
+    "输入文件名": "transcript-8a6511.txt",
+    "关键口播字面": [
+      "按批次走，不按单件",
+      "先过一遍这季度的排产"
+    ]
+  },
+  "nonce_policy": "题面实体一次性注入；oracle 由参照实现按同一 nonce 程序化生成；跨轮次 nonce 须轮换（旧 nonce 判据即失效）。",
+  "instruction": "使用 meeting-minutes 技能，把 <inbox>/transcript-8a6511.txt 这份会议转写稿整理成三段式纪要，产物写入 <outdir>，必须含 <outdir>/纪要.docx 与 <outdir>/summary.json。本稿的时间戳写法不统一（有一位的时、也有两位的时），分隔冒号中英文混用，有一个说话人的名字里带间隔点。请按技能包规则原样解析，不要自创格式，也不要把任何一句发言改写或概括。",
+  "entry": "python <pkg>/scripts/minutes.py --input <inbox>/transcript-8a6511.txt --outdir <outdir>",
+  "input": {
+    "files": [
+      {
+        "path": "transcript-8a6511.txt",
+        "encoding": "utf-8",
+        "lines": [
+          "[9:05] 田伟: 早，人到齐了咱们先过一遍这季度的排产，口头同步一下细节。",
+          "[09:07] 陆娟: 这个季度的交付口径我们内部结论是按批次走，不按单件。",
+          "[09:08] 田伟:同意,那这条写进纪要,后面谁再改要走变更流程。",
+          "[09:12] 章明·计划: 供应商那边我负责去谈价格，谈完我同步给你们。",
+          "[09:14] 施琳: 我担心排产如果延期，会连带影响后端验收，这块要提前准备。",
+          "[09:16] 陆娟: 另外需要确认一下质检窗口，质检组那边还没回话。",
+          "散会散会，大家辛苦了。",
+          "[09:18] 施琳: 补充一句，纪要发出前麻烦各方过一眼，结论以会签版为准。"
+        ]
+      }
+    ]
+  },
+  "goal_state": "三节齐全的纪要 docx + summary.json；解析容错正确（元信息行解析发言数与实际收录条目数相等）。",
+  "checks": [
+    {
+      "id": "A1",
+      "group": "端态",
+      "assert": "<outdir> 恰含 纪要.docx 与 summary.json 两个文件，文件名逐字为「纪要.docx」「summary.json」",
+      "method": "ls/find 计数 + python-docx 打开",
+      "expect": "两文件存在且非空，find 计数=2"
+    },
+    {
+      "id": "A2",
+      "group": "端态",
+      "assert": "脚本退出码为 0",
+      "method": "echo $?",
+      "expect": "0"
+    },
+    {
+      "id": "A3",
+      "group": "端态",
+      "assert": "纪要.docx 可被 python-docx 打开并遍历段落与表格",
+      "method": "python -c \"from docx import Document; ...\"",
+      "expect": "无异常"
+    },
+    {
+      "id": "S1",
+      "group": "语义",
+      "assert": "8 行中 7 行可解析为发言、1 行无法解析（散会行）；可解析行里恰好 6 行被收录（[9:05] 因零关键词丢弃）",
+      "method": "逐条与源行逐字比对（去条目前缀后 == 源行内容）",
+      "expect": "收录 6 条：决议 3（09:07 / 09:08 / 09:18）、待办 2（09:12 / 09:16）、风险 1（09:14）"
+    },
+    {
+      "id": "S2",
+      "group": "语义",
+      "assert": "条目内容逐字等于源行内容，未改写、未概括、未补标点",
+      "method": "docx 条目段落全文 in 源文件行集合",
+      "expect": "6/6 逐字命中"
+    },
+    {
+      "id": "S3",
+      "group": "语义",
+      "assert": "条目前缀时间为源行方括号内文本原样回显，一位时写法不回填零",
+      "method": "正则 `^\\d+\\. 【([^】]+) · ([^】]+)】` 抽取前缀，与源行时间/说话人逐字比对",
+      "expect": "09:12 行的条目前缀为「【09:12 · 章明·计划】」；若源用一位时则原样保留、不改写为两位"
+    },
+    {
+      "id": "F1",
+      "group": "结构版式",
+      "assert": "三节标题逐字为「一、决议事项」「二、待办事项」「三、风险与关注」，顺序固定",
+      "method": "遍历段落取加粗 14pt 段",
+      "expect": "三节齐全、顺序一致、无增节"
+    },
+    {
+      "id": "F2",
+      "group": "结构版式",
+      "assert": "待办节为 3 列表格，表头逐字为 事项/负责人/期限，Table Grid",
+      "method": "doc.tables[0] 列数/首行单元格文本/样式名",
+      "expect": "3 列；表头三项齐全；2 个数据行"
+    },
+    {
+      "id": "F3",
+      "group": "结构版式",
+      "assert": "决议/风险条目格式为 `<i>. 【hh:mm · 说话人】内容`，编号从 1 连续",
+      "method": "正则匹配 + 编号序列断言",
+      "expect": "编号连续无跳号"
+    },
+    {
+      "id": "C1",
+      "group": "机械自洽",
+      "assert": "元信息段逐字匹配 `来源：transcript-8a6511.txt ｜ 解析发言 6 条（决议 3 · 待办 2 · 风险 1）`",
+      "method": "正则 `^来源：.* ｜ 解析发言 \\d+ 条（决议 \\d+ · 待办 \\d+ · 风险 \\d+）$` + 捕获数字比对",
+      "expect": "格式与三个数字全部一致；合计数字 == 实际收录条目数 6"
+    },
+    {
+      "id": "C2",
+      "group": "机械自洽",
+      "assert": "summary.json 四键与 docx 实际条数逐项一致，合计=三者和",
+      "method": "json 读 summary + docx 计数互校",
+      "expect": "{决议事项:3, 待办事项:2, 风险与关注:1, 合计:6}"
+    },
+    {
+      "id": "B1",
+      "group": "边界纪律",
+      "assert": "未改写发言、未把「章明·计划」的间隔点删掉、未把半角冒号行丢弃后补写内容",
+      "method": "条目全文与源行集合比对 + 裁判通读",
+      "expect": "无改写、无编造"
+    }
+  ],
+  "check_cmd": "cd <workdir> && python - <<'PY'\nimport json,re\nfrom docx import Document\nd=Document('<outdir>/纪要.docx')\nparas=[p.text for p in d.paragraphs]\nmeta=[p for p in paras if p.startswith('来源：')][0]\nprint('META_OK', bool(re.match(r'^来源：transcript-8a6511\\.txt ｜ 解析发言 6 条（决议 3 · 待办 2 · 风险 1）$', meta)))\nt=d.tables[0]\nprint('TODO_HEADER', [c.text for c in t.rows[0].cells], 'ROWS', len(t.rows)-1)\nprint('SUMMARY', json.load(open('<outdir>/summary.json',encoding='utf-8')))\nPY",
+  "check_expect": "META_OK True / TODO_HEADER ['事项','负责人','期限'] ROWS 2 / SUMMARY {'决议事项': 3, '待办事项': 2, '风险与关注': 1, '合计': 6}",
+  "weights": {
+    "endpoint": 12,
+    "semantic": 30,
+    "structure": 24,
+    "mechanical": 20,
+    "discipline": 14
+  },
+  "assert_map": {
+    "endpoint": "A1–A3",
+    "semantic": "S1–S3",
+    "structure": "F1–F3",
+    "mechanical": "C1–C2",
+    "discipline": "B1"
+  },
+  "redlines": [
+    "任一红线违例（编造输入中不存在的实体值 / 改名或增删产物文件 / 越界产出非目标产物 / 对失败隐瞒）→ 总分封顶 4（0–10 加权制，EVAL-SPEC §3.3-1 口径）。",
+    "总分 10 分的前提：五个维度全部取 10 且 C 组断言 100% 通过；任一维度 <10 即总分 <10。"
+  ],
+  "anti_saturation": "题面刻意打散格式（一位时 `[9:05]`、半角冒号、间隔点说话人），逐条断言精确到「期望条数 + 归属章节 + 前缀逐字」。旧 ab-001/002/003 的输入全部是两位时 + 全角冒号 + 规整说话人，裸模型凭常识即可一次做对；本题里任何一处把 `[9:05]` 补零成 `09:05`、把 `章明·计划` 截断、或丢掉半角冒号行，都会同时打掉 S1/S2/S3 与 C1，加权分至少掉 2 个维度的满分可能。",
+  "design_note": "设计目标：强裸模型（不挂 skill，仅凭通用文档常识）通过率 ≤60%。分母=8 题，即 ≤4 题可判过。落点：旧 3 题考点已被完全排除，本题是格式容错题，裸模型最常见的失败是「统一格式后再输出」——这是 SKILL 明确禁止的（条目逐字引用、关键词命中即整句收录）。",
+  "old_task_avoided": [
+    "不含 ab-001 的 case1 常规分类 / 「不能延期」归风险",
+    "不含 ab-002 的同行多类优先级与「明天 vs 周五」期限对撞",
+    "不含 ab-003 的「负责人是我」→说话人与规则2 期限",
+    "不使用 case1/case2/case3 任一旧转写稿，也未使用旧 nonce 实体"
+  ],
+  "design_basis": [
+    "dist/meeting-minutes-skill/SKILL.md",
+    "dist/meeting-minutes-skill/eval/golden.json（旧 ab_tasks，仅作反饱和对照，未读 eval/results/）",
+    "dist/meeting-minutes-skill/SKILL.md:28 解析正则",
+    "dist/meeting-minutes-skill/references/docx-and-summary.md 元信息行与条目格式",
+    "dist/meeting-minutes-skill/scripts/minutes.py:19-24 元信息格式串与条目前缀"
+  ],
+  "spec_refs": [
+    "EVAL-SPEC-v0.2 §3.1 任务规模（三维覆盖）",
+    "EVAL-SPEC-v0.2 §3.3-1 加权分口径"
+  ],
+  "machine_call": "无（设计期零模型调用）"
+}

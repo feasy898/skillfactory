@@ -1,0 +1,215 @@
+{
+  "id": "office-templates-skill-t03",
+  "pkg": "office-templates-skill",
+  "task_id": "t03",
+  "dim": "能力",
+  "trap": false,
+  "title": "四类模板版式细节：称谓仅两类模板生效 / 条目全角点编号 / 会议通知行内标签 / 两行落款右对齐",
+  "nonce": "ofc-t03-51c6ef",
+  "nonce_values": {
+    "主送机关": "数据治理组",
+    "请示单位": "度量研究院",
+    "预算": "33万元",
+    "主送对象": "各标注小组、各质量负责人",
+    "召开单位": "度量研究院",
+    "总结主体": "数据治理组",
+    "成文日期": "2026年9月30日"
+  },
+  "nonce_policy": "题面实体一次性注入；oracle 由参照实现按同一 nonce 程序化生成；跨轮次 nonce 须轮换（旧 nonce 判据即失效）。",
+  "instruction": "使用 office-templates 技能，分别把 data/请示函/case1.json、data/会议通知/case1.json、data/工作总结/case1.json 三份数据各渲染成一份文书，输出到三个独立目录 <outdir>/请示函、<outdir>/会议通知、<outdir>/工作总结，每个目录下放该次调用的 文书.docx 与 fields.json。请严格按各模板的版式规范成文。",
+  "entry": "python <pkg>/scripts/gen_doc.py --template <模板> --data <数据.json> --outdir <outdir>（三份数据各跑一次，各自独立 outdir）",
+  "input": {
+    "files": [
+      {
+        "path": "请示函/case1.json",
+        "encoding": "utf-8",
+        "data": {
+          "请示事由": "申请扩容标注平台算力",
+          "主送机关": "数据治理组",
+          "请示缘由": "标注量环比增长四成，现有算力无法满足批量推理排期。",
+          "请示事项": "申请购置八卡服务器一台，预算 33万元，三个月内到货验收。",
+          "请示单位": "度量研究院",
+          "联系人": "田怡",
+          "联系电话": "017-05171598",
+          "成文日期": "2026年9月30日"
+        }
+      },
+      {
+        "path": "会议通知/case1.json",
+        "encoding": "utf-8",
+        "data": {
+          "会议名称": "四季度标注规范宣贯会",
+          "召开单位": "度量研究院",
+          "主送对象": "各标注小组、各质量负责人",
+          "会议时间": "2026年10月15日（周四）15:30",
+          "会议地点": "5 号楼 302 培训室",
+          "参会人员": "各标注小组组长",
+          "会议议题": "标注规范 v2 宣贯与答疑",
+          "会议要求": [
+            "会前阅读规范 v2 全文",
+            "现场提交本组疑问清单"
+          ],
+          "联系人": "左芬",
+          "联系电话": "087-15250114",
+          "发文日期": "2026年9月30日"
+        }
+      },
+      {
+        "path": "工作总结/case1.json",
+        "encoding": "utf-8",
+        "data": {
+          "总结主体": "数据治理组",
+          "总结时段": "2026 年 9 月",
+          "工作回顾": [
+            "完成标注规范 v2 起草",
+            "组织两轮标注一致性抽检"
+          ],
+          "主要成绩": [
+            "一致性抽检合格率提升 9 个百分点"
+          ],
+          "存在问题": [
+            "跨组判定口径仍有分歧"
+          ],
+          "下一步工作打算": [
+            "发布规范 v2 并冻结判定样例"
+          ],
+          "成文日期": "2026年9月30日"
+        }
+      }
+    ]
+  },
+  "goal_state": "三类模板的称谓/落款/编号/行内标签四组版式细节各自成立，无串味（不得给工作总结加称谓段）。",
+  "checks": [
+    {
+      "id": "A1",
+      "group": "端态",
+      "assert": "三个子目录各恰含 2 件产物，三次调用退出码均 0",
+      "method": "find 计数 ×3 + echo $?",
+      "expect": "三个目录各计数 2，码均 0"
+    },
+    {
+      "id": "A2",
+      "group": "端态",
+      "assert": "文件名逐字为 文书.docx / fields.json，未改名",
+      "method": "ls",
+      "expect": "逐字一致"
+    },
+    {
+      "id": "A3",
+      "group": "端态",
+      "assert": "三份 fields.json 的 template 字段与实际模板一一对应，未串台",
+      "method": "json 读 template",
+      "expect": "请示函/会议通知/工作总结 各归其位"
+    },
+    {
+      "id": "S1",
+      "group": "语义",
+      "assert": "三份 title 逐字：请示函=「关于申请扩容标注平台算力的请示」；会议通知=「关于召开四季度标注规范宣贯会的通知」；工作总结=「数据治理组2026 年 9 月工作总结」",
+      "method": "title 段文本 + fields.title 双向比对（要求两者相等）",
+      "expect": "三条公式全中；fields.title == 标题段全文"
+    },
+    {
+      "id": "S2",
+      "group": "语义",
+      "assert": "台账 value 已 strip：总结时段「 2026 年 9 月 」渲染为「2026 年 9 月」，标题不含首尾空白",
+      "method": "台账 value 比对",
+      "expect": "strip 后相等"
+    },
+    {
+      "id": "F1",
+      "group": "结构版式",
+      "assert": "称谓段仅请示函/会议通知有：请示函第二段 = 「数据治理组：」顶格无首行缩进；会议通知第二段 = 「各标注小组、各质量负责人：」顶格",
+      "method": "段落文本 + w:ind 首行为空",
+      "expect": "两段顶格；总结内文全文无「：」结尾称谓段"
+    },
+    {
+      "id": "F2",
+      "group": "结构版式",
+      "assert": "工作总结不得出现称谓段（V3 只适用请示函/会议通知）",
+      "method": "遍历段落找以全角冒号结尾的顶格段",
+      "expect": "命中数 = 0"
+    },
+    {
+      "id": "F3",
+      "group": "结构版式",
+      "assert": "会议通知行内标签串逐字 = 「联系人：左芬　　联系电话：087-15250114」（两个全角空格）",
+      "method": "段落文本逐字比对",
+      "expect": "逐字相同"
+    },
+    {
+      "id": "F4",
+      "group": "结构版式",
+      "assert": "条目编号使用全角点「1．2．3．」；会议通知选填小节节头为「一、会议要求」",
+      "method": "正则 `^\\d+．` 计数 + 节头文本比对",
+      "expect": "编号全为全角点；节头存在"
+    },
+    {
+      "id": "F5",
+      "group": "结构版式",
+      "assert": "落款：请示函两行「度量研究院」+「2026年9月30日」；会议通知两行「度量研究院」+「2026年9月30日」；工作总结两行「数据治理组」+「2026年9月30日」；三份均右对齐且右缩进两字",
+      "method": "末两非空段文本 + alignment=right + right_indent≈32pt",
+      "expect": "六个落款段全对；三份的第二行为裸日期"
+    },
+    {
+      "id": "C1",
+      "group": "机械自洽",
+      "assert": "三份台账 summary 自洽（filled+missing=total，missing_required_names 与明细一致）",
+      "method": "脚本三份逐项断言",
+      "expect": "3/3 自洽；请示函 8/8、会议通知 11/11、工作总结 7/7 全填"
+    },
+    {
+      "id": "C2",
+      "group": "机械自洽",
+      "assert": "三份 fields.json 顶层恰 7 键、summary 恰 6 键",
+      "method": "json 键集断言",
+      "expect": "键数 7/6"
+    },
+    {
+      "id": "B1",
+      "group": "边界纪律",
+      "assert": "未给周报/工作总结补称谓段，未给请示函/会议通知合并落款为一行",
+      "method": "版式断言 + 裁判通读",
+      "expect": "无越界版式"
+    }
+  ],
+  "check_cmd": "cd <workdir> && python - <<'PY'\nimport json\nfrom docx import Document\nfor t in ('请示函','会议通知','工作总结'):\n    d=Document(f'<outdir>/{t}/文书.docx')\n    ps=[p.text for p in d.paragraphs]\n    f=json.load(open(f'<outdir>/{t}/fields.json',encoding='utf-8'))\n    print(t, 'TITLE', repr(ps[0]), '| SIG', [p for p in ps if p.strip()][-2:], '| SUM', f['summary'])\nPY",
+  "check_expect": "三行：TITLE 逐字命中三条公式 / SIG 两行且第二行为裸日期 / SUMMARY 8-0-0、11-0-0、7-0-0",
+  "weights": {
+    "endpoint": 14,
+    "semantic": 20,
+    "structure": 34,
+    "mechanical": 18,
+    "discipline": 14
+  },
+  "assert_map": {
+    "endpoint": "A1–A3",
+    "semantic": "S1–S2",
+    "structure": "F1–F5",
+    "mechanical": "C1–C2",
+    "discipline": "B1"
+  },
+  "redlines": [
+    "任一红线违例（编造输入中不存在的实体值 / 改名或增删产物文件 / 越界产出非目标产物 / 对失败隐瞒）→ 总分封顶 4（0–10 加权制，EVAL-SPEC §3.3-1 口径）。",
+    "总分 10 分的前提：五个维度全部取 10 且 C 组断言 100% 通过；任一维度 <10 即总分 <10。"
+  ],
+  "anti_saturation": "旧 ab1 断言过「请示函/会议通知称谓顶格」，但从未断言**工作总结/周报不得有称谓段**（负向版式），也未断言行内标签的全角空格分隔字面与「裸日期无标签」这两处字面。本题把版式断言从「四要素对四类成立」收紧到「逐字字面 + 负向断言」，且换成全新 nonce 实例。",
+  "design_note": "设计目标：强裸模型通过率 ≤60%。裸模型常给工作总结加「各位领导：」式称谓（F2 负向断言失分）、把全角空格分隔写成半角（F3 失分）、给裸日期加标签（F5 失分）。负向断言（F2）是旧题集完全没有的类型，对裸模型的区分度最高。",
+  "old_task_avoided": [
+    "不复现 ab1 的「四模板 × case1 全量生成 + 字段一致率 ≥90%」口径（本题只跑三类、断言落在版式字面）",
+    "不复现 ab2/ab3 的缺失记账与占位渲染（本题三份数据全字段齐全）",
+    "不复现 ab5 的确定性与 runner 红绿自校验"
+  ],
+  "design_basis": [
+    "dist/office-templates-skill/SKILL.md",
+    "dist/office-templates-skill/eval/golden.json（旧 ab_tasks，仅作反饱和对照，未读 eval/results/）",
+    "dist/office-templates-skill/SKILL.md:99 V3 称谓仅两类模板",
+    "dist/office-templates-skill/SKILL.md:101 V5 落款与裸日期",
+    "dist/office-templates-skill/SKILL.md:102 V6 全角点编号",
+    "dist/office-templates-skill/scripts/gen_doc.py:252-300 build_doc 三分支"
+  ],
+  "spec_refs": [
+    "EVAL-SPEC-v0.2 §3.1 任务规模（三维覆盖）",
+    "EVAL-SPEC-v0.2 §3.3-1 加权分口径"
+  ],
+  "machine_call": "无（设计期零模型调用）"
+}

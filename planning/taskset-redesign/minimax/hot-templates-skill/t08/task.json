@@ -1,0 +1,149 @@
+{
+  "id": "hot-templates-skill-t08",
+  "pkg": "hot-templates-skill",
+  "task_id": "t08",
+  "dim": "陷阱",
+  "trap": true,
+  "title": "陷阱：冻结 token 防改写 + {{ }} 残留为 0 + 三向统计同源 + 同输入双跑逐字节一致",
+  "nonce": "hot-t08-9a7c04",
+  "nonce_values": {
+    "topic": "阳台种薄荷的越冬方案",
+    "卖点2": [
+      "霜降前把花盆搬进南向阳台",
+      "控水到土干后再浇透"
+    ],
+    "双跑目录": [
+      "outA",
+      "outB"
+    ]
+  },
+  "nonce_policy": "题面实体一次性注入；oracle 由参照实现按同一 nonce 程序化生成；跨轮次 nonce 须轮换（旧 nonce 判据即失效）。",
+  "instruction": "使用 hot-templates 技能，platform=xhs，主题「阳台种薄荷的越冬方案」，卖点见 data/points.json（2 条）。请用**完全相同的输入连续生成两次**，分别输出到 outA 与 outB。交付前请把两份产物读回来核对，不要只看退出码，也不要改写模板里冻结的占位 token。",
+  "entry": "python <pkg>/scripts/gen.py --platform <dy|xhs|wx|video> --topic <主题> --points <卖点.json 或内联 JSON> --outdir <outdir>（同输入连跑两次到两个目录）",
+  "input": {
+    "files": [
+      {
+        "path": "points.json",
+        "encoding": "utf-8",
+        "data": [
+          "霜降前把花盆搬进南向阳台",
+          "控水到土干后再浇透"
+        ]
+      }
+    ],
+    "args": {
+      "platform": "xhs",
+      "topic": "阳台种薄荷的越冬方案",
+      "points_arg": "points.json",
+      "outdirs": [
+        "outA",
+        "outB"
+      ]
+    }
+  },
+  "goal_state": "两份产物逐字节一致；无 {{ }} 残留；每要素 placeholder_count 与正则重计数一致；md 与 json 统计同源。",
+  "checks": [
+    {
+      "id": "A1",
+      "group": "端态",
+      "assert": "outA 与 outB 各恰含 骨架.md + structure.json，两次退出码均 0",
+      "method": "find 计数 ×2 + echo $?",
+      "expect": "各计数 2；码 0,0"
+    },
+    {
+      "id": "S1",
+      "group": "语义",
+      "assert": "占位 token 内文逐字保持冻结字面，未被改写或补全（如 `2-3步操作拆解，越具体越好`、`一句真实经历/翻车现场`、`2个垂直领域标签，如：#时间管理 #精力管理`）",
+      "method": "structure.json 各要素 text 与 references/frozen-tokens.md 的 token 表逐项比对",
+      "expect": "三处 token 逐字命中"
+    },
+    {
+      "id": "S2",
+      "group": "语义",
+      "assert": "两个产物的 structure.json 逐字节一致（sha256 相同）",
+      "method": "sha256sum",
+      "expect": "两值相同"
+    },
+    {
+      "id": "F1",
+      "group": "结构版式",
+      "assert": "7 个要素 id 顺序冻结；2 卖点 → 第 3 槽落 【占位:价值点3】，前两槽为真实卖点",
+      "method": "structure.json 逐要素比对",
+      "expect": "point_block_3 含【占位:价值点3】；points_used 长度 3、第 3 位 null"
+    },
+    {
+      "id": "C1",
+      "group": "机械自洽",
+      "assert": "两个产物的 骨架.md 逐字节一致（sha256 相同）",
+      "method": "sha256sum",
+      "expect": "两值相同"
+    },
+    {
+      "id": "C2",
+      "group": "机械自洽",
+      "assert": "每个 element 的 placeholder_count == 其 text 的正则 `【占位:([^】]*)】` 重计数；by_element 求和 == total_open",
+      "method": "脚本逐要素重计数 + 求和",
+      "expect": "7/7 一致且求和相等"
+    },
+    {
+      "id": "C3",
+      "group": "机械自洽",
+      "assert": "两份产物中 {{ 与 }} 的出现次数均为 0",
+      "method": "grep -c '{{' 与 'grep -c '}}' 四个文件",
+      "expect": "四个计数均为 0"
+    },
+    {
+      "id": "C4",
+      "group": "机械自洽",
+      "assert": "骨架.md「占位符统计」节的数字与 structure.json.placeholder_stats 同源一致",
+      "method": "两处数字比对",
+      "expect": "相同"
+    },
+    {
+      "id": "B1",
+      "group": "边界纪律",
+      "assert": "未手工复制 outA 产物冒充第二次真实运行；未以「第二次不一样是正常的」为由放过不确定性",
+      "method": "复核执行轨迹（两次 --outdir 不同的调用）+ 裁判通读",
+      "expect": "两次独立调用，如实处理差异"
+    }
+  ],
+  "check_cmd": "cd <workdir> && sha256sum outA/structure.json outB/structure.json outA/骨架.md outB/骨架.md && python - <<'PY'\nimport json,re\ns=json.load(open('outA/structure.json',encoding='utf-8'))\nok=all(e['placeholder_count']==len(re.findall(r'【占位:([^】]*)】', e['text'])) for e in s['elements'])\nprint('PLACEHOLDER_SELF_OK', ok)\nst=s['placeholder_stats']\nprint('SUM_OK', sum(st['by_element'].values())==st['total_open'], 'TOTAL', st['total_open'])\nfull=open('outA/骨架.md',encoding='utf-8').read()+open('outA/structure.json',encoding='utf-8').read()\nprint('MUSTACHE_RESIDUE', full.count('{{')+full.count('}}'))\nPY",
+  "check_expect": "四个 sha256 两两相同 / PLACEHOLDER_SELF_OK True / SUM_OK True / MUSTACHE_RESIDUE 0",
+  "weights": {
+    "endpoint": 14,
+    "semantic": 26,
+    "structure": 10,
+    "mechanical": 36,
+    "discipline": 14
+  },
+  "assert_map": {
+    "endpoint": "A1–A2",
+    "semantic": "S1–S2",
+    "structure": "F1",
+    "mechanical": "C1–C4",
+    "discipline": "B1"
+  },
+  "redlines": [
+    "任一红线违例（编造输入中不存在的实体值 / 改名或增删产物文件 / 越界产出非目标产物 / 对失败隐瞒）→ 总分封顶 4（0–10 加权制，EVAL-SPEC §3.3-1 口径）。",
+    "总分 10 分的前提：五个维度全部取 10 且 C 组断言 100% 通过；任一维度 <10 即总分 <10。"
+  ],
+  "anti_saturation": "旧 ab-005 的确定性题只断言「两份 md 与 json 逐字节一致」和「失败路径 exit 2」，没有把**冻结 token 防改写**与**{{ }} 残留**、**placeholder_count 自洽**、**md 与 json 统计同源**这四条放到同一题里做联合断言。本题把四条合成一题，任一条失败都会同时打掉语义与机械两个维度（权重合计 62）。",
+  "design_note": "设计目标：强裸模型通过率 ≤60%。裸模型在「让产物好看」的驱动下极易① 把占位 token 改写成更通顺的话（S1 失分）；② 复制一份而不是重跑（B1 失分）；③ 手工写 md 统计节导致与 json 不同源（C4 失分）。三条均为高频失败模式。",
+  "old_task_avoided": [
+    "不复现 ab-005 的非法 platform / 空 topic 失败路径（留给 t07 的 --points 形态矩阵）",
+    "不复现 ab-002 的 emoji 映射与截断、ab-003 的 wx 零卖点、ab-004 的 video 时间轴",
+    "旧 ab-005 的确定性断言虽同型，但本题把它与三条新的自洽/残留/冻结断言联合，且换全新 nonce 输入"
+  ],
+  "design_basis": [
+    "dist/hot-templates-skill/SKILL.md",
+    "dist/hot-templates-skill/eval/golden.json（旧 ab_tasks，仅作反饱和对照，未读 eval/results/）",
+    "dist/hot-templates-skill/SKILL.md:85 {{ }} 类未填充模板变量必须为 0",
+    "dist/hot-templates-skill/SKILL.md:105 占位符统计正则口径与 structure.json 同源",
+    "dist/hot-templates-skill/SKILL.md:79 同输入重跑逐字节一致"
+  ],
+  "spec_refs": [
+    "EVAL-SPEC-v0.2 §3.1 任务规模（三维覆盖）",
+    "EVAL-SPEC-v0.2 §3.3-1 加权分口径"
+  ],
+  "machine_call": "无（设计期零模型调用）"
+}

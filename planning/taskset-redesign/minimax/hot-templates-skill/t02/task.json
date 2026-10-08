@@ -1,0 +1,162 @@
+{
+  "id": "hot-templates-skill-t02",
+  "pkg": "hot-templates-skill",
+  "task_id": "t02",
+  "dim": "能力",
+  "trap": false,
+  "title": "xhs 精确口径：标签组 `#[^\\s#]+` 计数恰 6、标题数字恒为 3、emoji 四映射、4 卖点截断",
+  "nonce": "hot-t02-3d6b90",
+  "nonce_values": {
+    "topic": "小户型厨房的收纳动线",
+    "卖点4": [
+      "签约前核对房东房产证与承租人证件是否一致",
+      "押金退还条件与时限逐条写进合同",
+      "入住当天全屋拍照录像留档",
+      "水电燃气表底数抄进合同附件"
+    ],
+    "标签期望（正则 #[^\\s#]+ 计数，含占位 token 内 2 个示例标签）": [
+      "#小户型厨房的收纳动线",
+      "#干货分享",
+      "#方法论",
+      "#自我提升",
+      "#时间管理",
+      "#精力管理】"
+    ],
+    "标签计数": 6
+  },
+  "nonce_policy": "题面实体一次性注入；oracle 由参照实现按同一 nonce 程序化生成；跨轮次 nonce 须轮换（旧 nonce 判据即失效）。",
+  "instruction": "使用 hot-templates 技能，生成小红书图文爆款内容骨架，产物写入 <outdir>（骨架.md + structure.json）。材料自含——platform=xhs，topic=小户型厨房的收纳动线，points 见 data/points.json（共 4 条）。模板冻结：标题带数字 + emoji 规则 + 正文分块 + 标签组。请按包内规定的标签口径与截断口径如实产出。",
+  "entry": "python <pkg>/scripts/gen.py --platform <dy|xhs|wx|video> --topic <主题> --points <卖点.json 或内联 JSON> --outdir <outdir>",
+  "input": {
+    "files": [
+      {
+        "path": "points.json",
+        "encoding": "utf-8",
+        "data": [
+          "签约前核对房东房产证与承租人证件是否一致",
+          "押金退还条件与时限逐条写进合同",
+          "入住当天全屋拍照录像留档",
+          "水电燃气表底数抄进合同附件"
+        ]
+      }
+    ],
+    "args": {
+      "platform": null,
+      "topic": "小户型厨房的收纳动线",
+      "points_arg": "points.json"
+    },
+    "note": ""
+  },
+  "goal_state": "7 要素冻结；标签组按正则恰 6 个 # 标签且首标签由主题派生；标题数字恒为 3；4 卖点取前 3、第 4 条入 points_unused。",
+  "checks": [
+    {
+      "id": "A1",
+      "group": "端态",
+      "assert": "两件产物齐全非空、退出码 0",
+      "method": "find 计数 + echo $?",
+      "expect": "计数=2，码 0"
+    },
+    {
+      "id": "S1",
+      "group": "语义",
+      "assert": "标签组文本逐字 = 「#小户型厨房的收纳动线 #干货分享 #方法论 #自我提升 【占位:2个垂直领域标签，如：#时间管理 #精力管理】」",
+      "method": "structure.json tag_group.text 逐字比对",
+      "expect": "逐字命中（首标签为主题派生，已去 # 与空白）"
+    },
+    {
+      "id": "S2",
+      "group": "语义",
+      "assert": "标题文本中的数字恒为 3（模板冻结为价值点数 3），即便输入给了 4 条卖点也不得变成 4",
+      "method": "正则提取 title.text 里的数字",
+      "expect": "恰含数字 3，且不含数字 4"
+    },
+    {
+      "id": "S3",
+      "group": "语义",
+      "assert": "截断：points_used 恰为前 3 条原文；points_unused 恰含第 4 条原文，保序不乱",
+      "method": "structure.json points_used / points_unused 比对",
+      "expect": "used 长度 3、unused 长度 1；points_input_count == 4"
+    },
+    {
+      "id": "F1",
+      "group": "结构版式",
+      "assert": "7 个要素 id 顺序恰为 title、hook_block、point_block_1..3、summary_block、tag_group",
+      "method": "elements[].id 序列比对",
+      "expect": "顺序一致，无增删"
+    },
+    {
+      "id": "F2",
+      "group": "结构版式",
+      "assert": "标签计数口径：按正则 `#[^\\s#]+` 在 tag_group.text 上计数恰为 6（4 个字面标签 + 占位 token 内 2 个示例标签）",
+      "method": "re.findall(r'#[^\\s#]+', text) 计数",
+      "expect": "6；末个 token 因正则不排除右括号而形如「#精力管理】」（口径说明，不另设考点）；不得按「3-8 个」的宽口径判过"
+    },
+    {
+      "id": "F3",
+      "group": "结构版式",
+      "assert": "emoji 映射冻结：title=🔥、hook_block=✅、point_block_*=💡、summary_block=📌、tag_group=🏷️（meta.emoji 逐项比对）",
+      "method": "structure.json meta.emoji 逐要素比对",
+      "expect": "五项全对"
+    },
+    {
+      "id": "C1",
+      "group": "机械自洽",
+      "assert": "title / hook_block / summary_block 的 filled_from_input 含 topic；summary_block 另含 point#1..3",
+      "method": "structure.json 逐要素比对",
+      "expect": "三要素含 topic；summary 含 4 项"
+    },
+    {
+      "id": "C2",
+      "group": "机械自洽",
+      "assert": "placeholder_stats.by_element 求和 == total_open（满 3 卖点应为 7），且与骨架.md「占位符统计」节数字一致",
+      "method": "json 求和 + md 数字比对",
+      "expect": "total_open == 7；两处数字相同"
+    },
+    {
+      "id": "B1",
+      "group": "边界纪律",
+      "assert": "未自行给标签组增删标签以「凑到 3-8 个」的直觉区间；未把第 4 条卖点塞进正文块",
+      "method": "标签计数 + points_used 比对",
+      "expect": "计数恰 6、正文仅前 3 条"
+    }
+  ],
+  "check_cmd": "cd <workdir> && python - <<'PY'\nimport json,re\ns=json.load(open('<outdir>/structure.json',encoding='utf-8'))\nels={e['id']:e for e in s['elements']}\ntg=els['tag_group']['text']\nprint('TAGS', re.findall(r'#[^\\s#]+', tg))\nprint('TAG_COUNT', len(re.findall(r'#[^\\s#]+', tg)))\nprint('TITLE', els['title']['text'])\nprint('NUM_IN_TITLE', re.findall(r'\\d', els['title']['text']))\nprint('INPUT/USED/UNUSED', s['points_input_count'], s['points_used'], s['points_unused'])\nprint('EMOJI', {e['id']: e['meta'].get('emoji') for e in s['elements']})\nprint('TOTAL_OPEN', s['placeholder_stats']['total_open'])\nPY",
+  "check_expect": "TAGS 6 个（前 5 个为 #小户型厨房的收纳动线/#干货分享/#方法论/#自我提升/#时间管理，第 6 个带尾部 】）/ TAG_COUNT 6 / NUM_IN_TITLE ['3'] / INPUT 4、USED 3 条、UNUSED 1 条 / EMOJI 五项冻结 / TOTAL_OPEN 7",
+  "weights": {
+    "endpoint": 12,
+    "semantic": 32,
+    "structure": 24,
+    "mechanical": 18,
+    "discipline": 14
+  },
+  "assert_map": {
+    "endpoint": "A1–A2",
+    "semantic": "S1–S3",
+    "structure": "F1–F3",
+    "mechanical": "C1–C2",
+    "discipline": "B1"
+  },
+  "redlines": [
+    "任一红线违例（编造输入中不存在的实体值 / 改名或增删产物文件 / 越界产出非目标产物 / 对失败隐瞒）→ 总分封顶 4（0–10 加权制，EVAL-SPEC §3.3-1 口径）。",
+    "总分 10 分的前提：五个维度全部取 10 且 C 组断言 100% 通过；任一维度 <10 即总分 <10。"
+  ],
+  "anti_saturation": "旧 ab-002 的标签断言是「含 3-8 个 # 话题标签」——这个宽口径**任何**产物都能蒙混过关，是旧题集最接近饱和的一条。本题换成 references/frozen-tokens.md 明确写死的「计数口径 = 6」，并新增「标题数字恒为 3」这一在 4 卖点输入下的负向断言。",
+  "design_note": "设计目标：强裸模型通过率 ≤60%。宽口径「3-8 个」被换成精确到 6 的口径后，裸模型凭「标签要 3-8 个」的常识几乎必然给错个数或漏掉占位 token 内的两个示例标签；标题数字在 4 卖点输入下保持 3 也需要读 references 才能守住。",
+  "old_task_avoided": [
+    "不复现 ab-002 的 3-8 个宽口径标签断言与 points_unused 存在性断言（本题断言精确计数与保序内容）",
+    "不复现 ab-003 的 wx 零卖点边界（留给 t03）",
+    "不复现 ab-004 的 video 时间轴冻结（留给 t04）"
+  ],
+  "design_basis": [
+    "dist/hot-templates-skill/SKILL.md",
+    "dist/hot-templates-skill/eval/golden.json（旧 ab_tasks，仅作反饱和对照，未读 eval/results/）",
+    "dist/hot-templates-skill/references/frozen-tokens.md xhs 表与标签计数口径 = 6",
+    "dist/hot-templates-skill/scripts/gen.py:160-164 tag_group 字面",
+    "dist/hot-templates-skill/scripts/gen.py:132-136 title 字面（数字 3 冻结）"
+  ],
+  "spec_refs": [
+    "EVAL-SPEC-v0.2 §3.1 任务规模（三维覆盖）",
+    "EVAL-SPEC-v0.2 §3.3-1 加权分口径"
+  ],
+  "machine_call": "无（设计期零模型调用）"
+}

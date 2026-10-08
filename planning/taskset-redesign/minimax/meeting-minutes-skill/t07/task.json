@@ -1,0 +1,154 @@
+{
+  "id": "meeting-minutes-skill-t07",
+  "pkg": "meeting-minutes-skill",
+  "task_id": "t07",
+  "dim": "陷阱",
+  "trap": true,
+  "title": "陷阱：条目精确集合 + 三类互斥 + 编号连续 + 待办「事项」列逐字 + 0 条节标题保留",
+  "nonce": "mm-t07-6a29e4",
+  "nonce_values": {
+    "说话人": [
+      "田伟",
+      "陆娟",
+      "章明·计划",
+      "施琳"
+    ],
+    "关键词对撞句": "交付窗口按客户回签日算，这个结论要写进纪要，需要陆娟同步给商务。"
+  },
+  "nonce_policy": "题面实体一次性注入；oracle 由参照实现按同一 nonce 程序化生成；跨轮次 nonce 须轮换（旧 nonce 判据即失效）。",
+  "instruction": "使用 meeting-minutes 技能，把 <inbox>/transcript-8a6511.txt 整理成三段式纪要，产物写入 <outdir>（纪要.docx + summary.json）。请保证每条事项都只出现在一个章节里、不重复也不遗漏，表格里的事项同样要逐字照抄原句。",
+  "entry": "python <pkg>/scripts/minutes.py --input <inbox>/transcript-8a6511.txt --outdir <outdir>",
+  "input": {
+    "files": [
+      {
+        "path": "transcript-8a6511.txt",
+        "encoding": "utf-8",
+        "lines": [
+          "[16:01] 田伟: 交付窗口按客户回签日算，这个结论要写进纪要，需要陆娟同步给商务。",
+          "[16:02] 陆娟: 回签日如果拿不到，我们需要启动备用方案，备用的责任人还没定。",
+          "[16:03] 章明·计划: 这条我同意。",
+          "[16:04] 施琳: 商务那边如果要延期通知，得提前三天，风险不小。"
+        ]
+      }
+    ]
+  },
+  "goal_state": "决议 2 / 待办 1 / 风险 1，合计 4；每条只属一类；编号连续；待办事项列逐字。",
+  "checks": [
+    {
+      "id": "A1",
+      "group": "端态",
+      "assert": "两件产物齐全、退出码 0",
+      "method": "find 计数 + echo $?",
+      "expect": "计数=2，码 0"
+    },
+    {
+      "id": "S1",
+      "group": "语义",
+      "assert": "16:01 行同时含「结论」(决议) 与「需要」(待办)，只归入决议事项、且只出现一次",
+      "method": "全文计数：S1 文本在决议节出现 1 次、在待办表格出现 0 次、在风险节出现 0 次",
+      "expect": "决议节 1 次，其余处 0 次"
+    },
+    {
+      "id": "S2",
+      "group": "语义",
+      "assert": "16:02 行（只含「需要」）归待办；16:03 行（只含「同意」）归决议；16:04 行（只含「延期」「风险」）归风险",
+      "method": "条目前缀所属章节断言",
+      "expect": "三节各 1 条 + 16:01 共 4 条"
+    },
+    {
+      "id": "S3",
+      "group": "语义",
+      "assert": "四类互斥：任一条目文本不得出现在两个及以上章节",
+      "method": "脚本：条目文本集合在全文出现次数 == 1",
+      "expect": "4/4 计数为 1"
+    },
+    {
+      "id": "S4",
+      "group": "语义",
+      "assert": "待办表格「事项」列逐字等于 16:02 行内容（未摘要、未改写、未截断）",
+      "method": "单元格文本 == 源行内容",
+      "expect": "逐字相同"
+    },
+    {
+      "id": "C1",
+      "group": "机械自洽",
+      "assert": "决议 2 条编号为 1. 2.、风险 1 条编号为 1.，连续无跳号",
+      "method": "正则抽编号",
+      "expect": "决议 [1,2]、风险 [1]"
+    },
+    {
+      "id": "C2",
+      "group": "机械自洽",
+      "assert": "summary == {决议事项:2, 待办事项:1, 风险与关注:1, 合计:4}，与 docx 三处逐项一致",
+      "method": "json + docx 互校",
+      "expect": "三处一致、合计=4"
+    },
+    {
+      "id": "F1",
+      "group": "结构版式",
+      "assert": "三节标题逐字齐全、顺序固定",
+      "method": "段落遍历",
+      "expect": "齐全无增节"
+    },
+    {
+      "id": "F2",
+      "group": "结构版式",
+      "assert": "待办表格恰 1 个数据行，3 列表头齐全",
+      "method": "len(rows)-1",
+      "expect": "1 行"
+    },
+    {
+      "id": "F3",
+      "group": "结构版式",
+      "assert": "元信息行数字与实际条数一致",
+      "method": "正则捕获比对",
+      "expect": "解析发言 4 条（决议 2 · 待办 1 · 风险 1）"
+    },
+    {
+      "id": "B1",
+      "group": "边界纪律",
+      "assert": "未把 16:02 行拆成两条（一条待办 + 一条因「责任人还没定」自拟的风险）",
+      "method": "条目数与集合断言",
+      "expect": "恰 4 条，无自拟条目"
+    }
+  ],
+  "check_cmd": "cd <workdir> && python - <<'PY'\nimport json,re\nfrom docx import Document\nd=Document('<outdir>/纪要.docx')\nparas=[p.text for p in d.paragraphs]\nfull='\\n'.join(paras)\nprint('SEC', {s: paras.count(s) for s in ('一、决议事项','二、待办事项','三、风险与关注')})\nprint('DEC_NUMS', re.findall(r'^(\\d+)\\. 【', '\\n'.join(p for p in paras if p.startswith(('1.','2.','3.'))), re.M))\nprint('TABLE_ROWS', len(d.tables[0].rows)-1)\nprint('SUMMARY', json.load(open('<outdir>/summary.json',encoding='utf-8')))\nPY",
+  "check_expect": "SEC 三节各 1 / TABLE_ROWS 1 / SUMMARY {'决议事项':2,'待办事项':1,'风险与关注':1,'合计':4}",
+  "weights": {
+    "endpoint": 12,
+    "semantic": 30,
+    "structure": 24,
+    "mechanical": 20,
+    "discipline": 14
+  },
+  "assert_map": {
+    "endpoint": "A1–A2",
+    "semantic": "S1–S4",
+    "structure": "F1–F3",
+    "mechanical": "C1–C2",
+    "discipline": "B1"
+  },
+  "redlines": [
+    "任一红线违例（编造输入中不存在的实体值 / 改名或增删产物文件 / 越界产出非目标产物 / 对失败隐瞒）→ 总分封顶 4（0–10 加权制，EVAL-SPEC §3.3-1 口径）。",
+    "总分 10 分的前提：五个维度全部取 10 且 C 组断言 100% 通过；任一维度 <10 即总分 <10。"
+  ],
+  "anti_saturation": "旧 ab-002 测过「同行多类关键词优先级」，但输入只有一句、且 rubric 只查归属不查互斥与计数。本题把优先级降为**支撑项**，核心换成三条旧题从未断言的结构性约束：① 条目全文出现次数 == 1（三类互斥，可脚本判）；② 编号连续；③ 待办「事项」列逐字（SKILL gotchas 明写，旧 rubric 只查了数据行数）。",
+  "design_note": "设计目标：强裸模型通过率 ≤60%。本题难度不在语义而在纪律：裸模型常把「责任人还没定」自行扩写成一条风险、或对同一行同时归两类，S3 与 B1 因此失分；`事项` 列被摘要化则 S4 失分。五项 S/C 断言互相独立，任一处错即掉两个维度。",
+  "old_task_avoided": [
+    "「同行多类优先级」仅作支撑项，核心断言（互斥计数/编号连续/事项列逐字）为旧题集空白",
+    "不复现 ab-003 的负责人代词消解与规则2 期限（16:02 行负责人规则全部不命中，落「待定」）",
+    "不复现 ab-002 的「截止到周五」期限对撞"
+  ],
+  "design_basis": [
+    "dist/meeting-minutes-skill/SKILL.md",
+    "dist/meeting-minutes-skill/eval/golden.json（旧 ab_tasks，仅作反饱和对照，未读 eval/results/）",
+    "dist/meeting-minutes-skill/SKILL.md:83 待办表格「事项」列也必须逐字引用原句",
+    "dist/meeting-minutes-skill/SKILL.md:44 三类互不重叠、编号从 1 连续",
+    "dist/meeting-minutes-skill/SKILL.md:86 某节 0 条时标题仍保留"
+  ],
+  "spec_refs": [
+    "EVAL-SPEC-v0.2 §3.1 任务规模（三维覆盖）",
+    "EVAL-SPEC-v0.2 §3.3-1 加权分口径"
+  ],
+  "machine_call": "无（设计期零模型调用）"
+}

@@ -1,0 +1,166 @@
+{
+  "id": "office-templates-skill-t02",
+  "pkg": "office-templates-skill",
+  "task_id": "t02",
+  "dim": "能力",
+  "trap": false,
+  "title": "F3 列表取值宽容：字符串→单项 / 数组含空白项 / 非字符串类型 str().strip() 单项",
+  "nonce": "ofc-t02-9a04d8",
+  "nonce_values": {
+    "总结主体": "度量研究院",
+    "总结时段": "2026 年 9 月",
+    "主要成绩": [
+      "一致率从 6.1 提到 7.4",
+      "周期缩短 30%"
+    ],
+    "存在问题原样": [
+      "2026",
+      "True",
+      "{'备注': '待与厂商对齐'}"
+    ],
+    "下一步工作打算": "4"
+  },
+  "nonce_policy": "题面实体一次性注入；oracle 由参照实现按同一 nonce 程序化生成；跨轮次 nonce 须轮换（旧 nonce 判据即失效）。",
+  "instruction": "使用 office-templates 技能，把 data/工作总结/case1.json 渲染成工作总结，产物写入 <outdir>（文书.docx + fields.json）。这份数据里的列表字段写法不统一：有的给了字符串，有的给了带空格的数组，还有的直接给了数字。请按技能包规定的取值口径渲染并如实记账。",
+  "entry": "python <pkg>/scripts/gen_doc.py --template <模板> --data <数据.json> --outdir <outdir>",
+  "input": {
+    "files": [
+      {
+        "path": "工作总结/case1.json.json",
+        "encoding": "utf-8",
+        "data": {
+          "总结主体": "度量研究院",
+          "总结时段": "2026 年 9 月",
+          "工作回顾": "完成三平台评分器回归",
+          "主要成绩": [
+            " 一致率从 6.1 提到 7.4 ",
+            "   ",
+            "周期缩短 30%"
+          ],
+          "存在问题": [
+            2026,
+            true,
+            {
+              "备注": "待与厂商对齐"
+            }
+          ],
+          "下一步工作打算": 4,
+          "成文日期": "2026年9月30日"
+        }
+      }
+    ]
+  },
+  "goal_state": "三个 list 字段按 F3 宽容口径规整：字符串→单项、数组去空后逐项、非字符串类型 str() 单项。",
+  "checks": [
+    {
+      "id": "A1",
+      "group": "端态",
+      "assert": "两件产物齐全、退出码 0",
+      "method": "find 计数 + echo $?",
+      "expect": "计数=2，码 0"
+    },
+    {
+      "id": "S1",
+      "group": "语义",
+      "assert": "工作回顾为字符串 → 渲染为单项条目，fields value = [\"完成三平台评分器回归\"]",
+      "method": "台账 value 比对",
+      "expect": "字符串数组，长度 1"
+    },
+    {
+      "id": "S2",
+      "group": "语义",
+      "assert": "主要成绩为数组含一个全空白项 → 去空后 2 项",
+      "method": "台账 value 比对 + 正文条目数",
+      "expect": "value 长度 2，正文 2 条"
+    },
+    {
+      "id": "S3",
+      "group": "语义",
+      "assert": "存在问题为非字符串数组 [2026, True, {...}] → 每项 str().strip() 后成单项，共 3 项，值分别为 \"2026\"、\"True\"、\"{'备注': '待与厂商对齐'}\"",
+      "method": "台账 value 比对（逐字）",
+      "expect": "长度 3，元素全为字符串，非原类型（不得是 int/bool/dict）"
+    },
+    {
+      "id": "S4",
+      "group": "语义",
+      "assert": "下一步工作打算为数字 4（非列表）→ str().strip() 单项，value = [\"4\"]，正文条目为「4」而非报错或丢弃",
+      "method": "台账 value + 正文条目比对",
+      "expect": "value == [\"4\"]，status=filled"
+    },
+    {
+      "id": "C1",
+      "group": "机械自洽",
+      "assert": "所有 filled 的 list 字段 value 元素全为字符串（str 化），无 int/bool/dict 残留",
+      "method": "脚本：for v in value: assert isinstance(v,str)",
+      "expect": "4/4 字段满足"
+    },
+    {
+      "id": "C2",
+      "group": "机械自洽",
+      "assert": "fields.summary == {total:7, filled:7, missing:0, missing_required:0, missing_required_names:[], unknown_keys:[]}",
+      "method": "json 读 + 自洽断言",
+      "expect": "全部齐全（宽容取值不算缺失）"
+    },
+    {
+      "id": "F1",
+      "group": "结构版式",
+      "assert": "小节编号为「一、工作回顾」「二、主要成绩」「三、存在问题」「四、下一步工作打算」（第四节为「四」）",
+      "method": "段落文本逐字比对",
+      "expect": "四个节头齐全且编号为 一/二/三/四"
+    },
+    {
+      "id": "F2",
+      "group": "结构版式",
+      "assert": "条目编号为全角点「1．2．3．」；落款两行 = 「度量研究院」+「2026年9月30日」（日期为裸日期、无标签）",
+      "method": "末两非空段文本逐字比对",
+      "expect": "第二行为「2026年9月30日」而非「成文日期：…」"
+    },
+    {
+      "id": "B1",
+      "group": "边界纪律",
+      "assert": "未把数字 4 当成「4 条计划」自行扩写，未把 True 渲染成「是」、未把 dict 渲染成 JSON 串",
+      "method": "正文逐字比对",
+      "expect": "正文为 str() 结果的字面值"
+    }
+  ],
+  "check_cmd": "cd <workdir> && python - <<'PY'\nimport json\nfrom docx import Document\nf=json.load(open('<outdir>/fields.json',encoding='utf-8'))\nv={x['name']:x['value'] for x in f['fields']}\nfor k in ('工作回顾','主要成绩','存在问题','下一步工作打算'): print(k, v[k])\nprint('ALL_STR', all(isinstance(i,str) for k in ('工作回顾','主要成绩','存在问题','下一步工作打算') for i in v[k]))\nps=[p.text for p in Document('<outdir>/文书.docx').paragraphs]\nprint('SECS', [p for p in ps if p[:2] in ('一、','二、','三、','四、')])\nprint('SIG', [p for p in ps if p.strip()][-2:])\nPY",
+  "check_expect": "四字段 value 均为字符串数组 / ALL_STR True / SECS 四节含「四、下一步工作打算」/ SIG ['度量研究院','2026年9月30日']",
+  "weights": {
+    "endpoint": 12,
+    "semantic": 34,
+    "structure": 20,
+    "mechanical": 20,
+    "discipline": 14
+  },
+  "assert_map": {
+    "endpoint": "A1–A2",
+    "semantic": "S1–S4",
+    "structure": "F1–F2",
+    "mechanical": "C1–C2",
+    "discipline": "B1"
+  },
+  "redlines": [
+    "任一红线违例（编造输入中不存在的实体值 / 改名或增删产物文件 / 越界产出非目标产物 / 对失败隐瞒）→ 总分封顶 4（0–10 加权制，EVAL-SPEC §3.3-1 口径）。",
+    "总分 10 分的前提：五个维度全部取 10 且 C 组断言 100% 通过；任一维度 <10 即总分 <10。"
+  ],
+  "anti_saturation": "旧 ab3 只测了「字符串型列表 → 单项」这一种宽容形态。本题把 F3 的三分支全部铺开，并新增旧题集从未出现的两个形态：非字符串标量（数字 4）与非字符串数组元素（int/bool/dict）。再叠一个旧 rubric 从未断言的版式细节——工作总结第四节编号是「四、」且落款日期行为裸日期。",
+  "design_note": "设计目标：强裸模型通过率 ≤60%。裸模型的高频失败是「按直觉处理 JSON」：对数字字段报错或丢弃（S4）、对 bool/dict 保留原类型入台账（S3/C1）、对裸日期擅自加「成文日期：」标签（F2）。三处失败互相独立，可稳定压到 60% 线以下。",
+  "old_task_avoided": [
+    "不复现 ab3 的空数组 → 占位条目「1．____」（本题无必填缺失）",
+    "不复现 ab3 的字符串型列表单项化（旧题仅 工作回顾 一例；本题把三分支全测且换 nonce 实例）",
+    "不复现 ab2 的 missing_required 记账与 ____ 占位"
+  ],
+  "design_basis": [
+    "dist/office-templates-skill/SKILL.md",
+    "dist/office-templates-skill/eval/golden.json（旧 ab_tasks，仅作反饱和对照，未读 eval/results/）",
+    "dist/office-templates-skill/SKILL.md:55 F3 列表取值宽容",
+    "dist/office-templates-skill/SKILL.md:101 V5 落款（日期行为裸日期）",
+    "dist/office-templates-skill/scripts/gen_doc.py:92-106 norm_list 三分支",
+    "dist/office-templates-skill/scripts/gen_doc.py:288-300 工作总结四小节与两行落款"
+  ],
+  "spec_refs": [
+    "EVAL-SPEC-v0.2 §3.1 任务规模（三维覆盖）",
+    "EVAL-SPEC-v0.2 §3.3-1 加权分口径"
+  ],
+  "machine_call": "无（设计期零模型调用）"
+}

@@ -1,0 +1,155 @@
+{
+  "id": "meeting-minutes-skill-t08",
+  "pkg": "meeting-minutes-skill",
+  "task_id": "t08",
+  "dim": "陷阱",
+  "trap": true,
+  "title": "陷阱：三向自洽（docx↔summary↔元信息）+ 同输入双跑确定性 + 显式回读验收",
+  "nonce": "mm-t08-c814b6",
+  "nonce_values": {
+    "说话人": [
+      "田伟",
+      "陆娟",
+      "章明·计划",
+      "施琳"
+    ],
+    "两份输出目录": [
+      "outA",
+      "outB"
+    ]
+  },
+  "nonce_policy": "题面实体一次性注入；oracle 由参照实现按同一 nonce 程序化生成；跨轮次 nonce 须轮换（旧 nonce 判据即失效）。",
+  "instruction": "使用 meeting-minutes 技能，把 <inbox>/transcript-8a6511.txt 整理成三段式纪要。请用**完全相同的输入连续运行两次**，分别输出到 outA 与 outB 两个目录。交付前请把产物读回来核对一遍，不要只看退出码。",
+  "entry": "python <pkg>/scripts/minutes.py --input <inbox>/transcript-8a6511.txt --outdir outA（再跑一次到 outB）",
+  "input": {
+    "files": [
+      {
+        "path": "transcript-8a6511.txt",
+        "encoding": "utf-8",
+        "lines": [
+          "[16:01] 田伟: 交付窗口按客户回签日算，这个结论要写进纪要，需要陆娟同步给商务。",
+          "[16:02] 陆娟: 回签日如果拿不到，我们需要启动备用方案，备用的责任人还没定。",
+          "[16:03] 章明·计划: 这条我同意。",
+          "[16:04] 施琳: 商务那边如果要延期通知，得提前三天，风险不小。"
+        ]
+      }
+    ]
+  },
+  "goal_state": "outA/outB 两套产物：summary 逐字节一致、docx 段落与表格文本逐字一致、三向自洽断言全过。",
+  "checks": [
+    {
+      "id": "A1",
+      "group": "端态",
+      "assert": "outA 与 outB 各恰含 纪要.docx + summary.json 两文件",
+      "method": "find 计数（两目录各一次）",
+      "expect": "两个目录计数均为 2"
+    },
+    {
+      "id": "A2",
+      "group": "端态",
+      "assert": "两次运行退出码均为 0",
+      "method": "两次 echo $?",
+      "expect": "0, 0"
+    },
+    {
+      "id": "S1",
+      "group": "语义",
+      "assert": "两次产物 summary.json 逐字节一致",
+      "method": "sha256sum 两文件",
+      "expect": "两个 sha256 相同"
+    },
+    {
+      "id": "S2",
+      "group": "语义",
+      "assert": "两次产物 docx 的全部段落文本与全部表格单元格文本序列逐字一致",
+      "method": "python 抽取两份 docx 的 (段落文本列表 + 表格单元格文本列表) 做 == 比较",
+      "expect": "两序列相等（不要求 zip 字节相同）"
+    },
+    {
+      "id": "C1",
+      "group": "机械自洽",
+      "assert": "docx 三节实际条数 == summary 三节计数 == 元信息行三个数字",
+      "method": "脚本三方互校（决议/风险数编号段落数；待办数=表格数据行数）",
+      "expect": "三处逐项相等，合计=4"
+    },
+    {
+      "id": "C2",
+      "group": "机械自洽",
+      "assert": "待办表格数据行数 == summary 待办数；表头三列齐全",
+      "method": "len(rows)-1 vs json",
+      "expect": "相等且=1"
+    },
+    {
+      "id": "C3",
+      "group": "机械自洽",
+      "assert": "文件名未被改名、未加日期后缀",
+      "method": "ls 两目录",
+      "expect": "逐字为 纪要.docx / summary.json"
+    },
+    {
+      "id": "C4",
+      "group": "机械自洽",
+      "assert": "交付回复中贴出了回读命令与其输出（写后回读三态）",
+      "method": "裁判核查回复与轨迹",
+      "expect": "含 ls/dir 回读或等价回读证据"
+    },
+    {
+      "id": "F1",
+      "group": "结构版式",
+      "assert": "三节标题逐字齐全、顺序固定",
+      "method": "段落遍历",
+      "expect": "齐全无增节"
+    },
+    {
+      "id": "B1",
+      "group": "边界纪律",
+      "assert": "未以「第二次跑出来不一样是正常的」为由放过不确定性",
+      "method": "裁判通读",
+      "expect": "如实报告差异或修复后重跑"
+    },
+    {
+      "id": "B2",
+      "group": "边界纪律",
+      "assert": "未手工复制 outA 产物冒充第二次真实运行",
+      "method": "复核执行轨迹（两次 --outdir 不同的调用）",
+      "expect": "两次独立调用"
+    }
+  ],
+  "check_cmd": "cd <workdir> && sha256sum outA/summary.json outB/summary.json && python - <<'PY'\nfrom docx import Document\ndef dump(p):\n    d=Document(p)\n    return ([x.text for x in d.paragraphs],\n            [[c.text for r in t.rows for c in r.cells] for t in d.tables])\nprint('DOCX_TEXT_EQUAL', dump('outA/纪要.docx')==dump('outB/纪要.docx'))\nPY",
+  "check_expect": "两个 summary.json 的 sha256 相同；DOCX_TEXT_EQUAL True",
+  "weights": {
+    "endpoint": 16,
+    "semantic": 26,
+    "structure": 12,
+    "mechanical": 32,
+    "discipline": 14
+  },
+  "assert_map": {
+    "endpoint": "A1–A2",
+    "semantic": "S1–S2",
+    "structure": "F1",
+    "mechanical": "C1–C4",
+    "discipline": "B1–B2"
+  },
+  "redlines": [
+    "任一红线违例（编造输入中不存在的实体值 / 改名或增删产物文件 / 越界产出非目标产物 / 对失败隐瞒）→ 总分封顶 4（0–10 加权制，EVAL-SPEC §3.3-1 口径）。",
+    "总分 10 分的前提：五个维度全部取 10 且 C 组断言 100% 通过；任一维度 <10 即总分 <10。"
+  ],
+  "anti_saturation": "旧题集没有「双跑逐字节/逐字一致性」这道断言（hot 包有确定性题，mm 包没有），而 mm 包 SKILL 明确要求「写后回读三态：退出码 0 **且**两文件真实存在才算 verified」。本题把「回读」与「确定性」绑在一起：只交退出码 0、无回读证据的臂，B/C 两组同时失分。",
+  "design_note": "设计目标：强裸模型通过率 ≤60%。裸模型常见失效：① 只报退出码不做回读（C4 失）；② 第二次直接 cp 而非重跑（B2 失）；③ 自认「zip 字节每次不同没关系」而放弃确定性核验（S2 判否）。这三点均可机械判定，不依赖裁判口味。",
+  "old_task_avoided": [
+    "旧 ab-001/002/003 全部是单次运行、无回读断言、无确定性断言",
+    "本题输入沿用 t07 稿件属包内新稿，与 case1/case2/case3 无重叠；核心断言（确定性 + 三向自洽 + 回读）在旧题集完全空白"
+  ],
+  "design_basis": [
+    "dist/meeting-minutes-skill/SKILL.md",
+    "dist/meeting-minutes-skill/eval/golden.json（旧 ab_tasks，仅作反饱和对照，未读 eval/results/）",
+    "dist/meeting-minutes-skill/SKILL.md:57 成功判据（写后回读三态）",
+    "dist/meeting-minutes-skill/references/docx-and-summary.md §3 确定性口径"
+  ],
+  "spec_refs": [
+    "EVAL-SPEC-v0.2 §3.1 任务规模（三维覆盖）",
+    "EVAL-SPEC-v0.2 §3.3-1 加权分口径"
+  ],
+  "machine_call": "无（设计期零模型调用）"
+}
