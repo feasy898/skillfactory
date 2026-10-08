@@ -1,0 +1,58 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/mm-01-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 32648,
+  "started_at_ms": 1791414100567,
+  "session_id": "sess_f487f181-ac19-4208-84a3-0e80a56ac7de",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/mm-01-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 213695,
+      "ot": 4595,
+      "dur": 28153,
+      "n": 10
+    }
+  ],
+  "input_tokens": 213695,
+  "output_tokens": 4595,
+  "stdout_bytes": 2347,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "m's person, content, and deadline is found verbatim in the transcript.\\n\\n**The content, and how each piece traces back:**\\n\\n决议事项 (2) — 赵静怡's line on proceeding per the original plan with milestones unchanged, and 黄雨桐's line approving the 300万元 special-column budget.\\n\\n待办事项 (4) — 黄雨桐 completing the review notes for finance (this Friday), 徐静怡 archiving the migration script (7月4日), 吴志远 preparing contingency plans (this year), 赵静怡 filling in the baseline data (before the review).\\n\\n风险与关注 (2) — 吴志远's fulfillment/fulfilment backlog risk on the finance side, and 赵静怡's note that the grayscale rollout data definitions aren't yet aligned.\\n\\nTwo judgment calls worth flagging: the transcript splits 赵静怡 and 徐静怡 as two distinct people, and I kept them distinct throughout. And the transcript's closing remark from the 主持人 (\\\"这几项就议定下来\\\") is a confirmation of the two decisions rather than a distinct decision itself, so I folded it into them instead of counting it as a third item — everything else in the transcript is accounted for.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 10,\n    \"inputTokens\": 213695,\n    \"outputTokens\": 4595,\n    \"totalTokens\": 218290,\n    \"cacheReadTokens\": 189318,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 670,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 218290,\n    \"contextUsed\": 24997,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "task": "mm-01",
+  "rep": 1,
+  "slot": 21
+}

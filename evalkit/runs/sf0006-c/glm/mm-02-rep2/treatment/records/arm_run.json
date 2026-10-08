@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/mm-02-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 463362,
+  "started_at_ms": 1791415726857,
+  "session_id": "sess_b8802b79-56d7-45a9-9d36-046b9def3372",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/mm-02-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 456749,
+      "ot": 34360,
+      "dur": 453595,
+      "n": 11
+    }
+  ],
+  "input_tokens": 456749,
+  "output_tokens": 34360,
+  "stdout_bytes": 2835,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "4-1ad5-4f9d-80b1-6fc0625dbcaf\",\n  \"response\": \"已完成 — 两个交付物均已写入 `out/` 目录并通过了完整的回读验证（53 项结构/来源检查全部通过）。\\n\\n**交付物**\\n- `out/纪要.docx` — 标题《云岭数据看板项目推进会议纪要》，三节标题逐字为 `一、决议事项` / `二、待办事项` / `三、风险与关注`；全文字体宋体（含 eastAsia），待办为 Table Grid 三列表格\\n- `out/summary.json` — `{\\\"决议事项\\\": 3, \\\"待办事项\\\": 4, \\\"风险与关注\\\": 2, \\\"合计\\\": 9}`，与 docx 实际条数逐项一致\\n\\n**条目抽取**（每条内容均为转写稿逐字子串，已程序化断言溯源）\\n- 决议 3 条：按原计划推进（周丽娜）、预算 45 万专项列支（徐志远）、验收标准按新版执行（吴雨桐）\\n- 待办 4 行：演练脚本（徐志远·下周一前）、验收清单归档（刘晓雯·本周五）、梳理责任分工（吴志远·**未明确**，满足\\\"至少一条\\\"要求）、灰度资料发群（周丽娜·随后）\\n- 风险 2 条：供应链履约风险（吴志远）、灰度口径未对齐（周丽娜）；第 1 行\\\"现在开会\\\"为程序性开场，不收录\\n\\n**两处记录缺陷的处理**（关键判断）\\n- **无时间戳**：纪要全文经正则验证不含任何 `[HH:MM]` 或 `H:MM` 形式的时间，未补造\\n- **同名归属**：稿内五个姓名字符串互不相同且无任何区分标记，按 brief\\\"同一姓名可能对应不止一位与会者\\\"的口径，出现在多行的姓名（周丽娜×4、徐志远×2、吴志远×2）视为无法唯一归属，其条目末尾追加 `（归属待核）`（共 4 条）；仅出现一次的吴雨桐可唯一归属、不加后缀；未发明任何\\\"甲/乙\\\"类区分标记，待办表格亦不加后缀（保持事项列纯逐字）\\n\\n另外：PATH 上的 `python3` 没有 python-docx，实际用 `/usr/bin/python3`（装有 python-docx 1.2.0）完成生成；meeting-minutes 技能的脚本因要求 `[hh:mm]` 行格式、明确声明本输入格式超范围，故按其 fallback 手工产出，但沿用了其结构约定（元信息行、宋体、Table Grid、缩进 2 不转义中文的 summary）。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 11,\n    \"inputTokens\": 456749,\n    \"outputTokens\": 34360,\n    \"totalTokens\": 491109,\n    \"cacheReadTokens\": 410944,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 29402,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 491109,\n    \"contextUsed\": 61945,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

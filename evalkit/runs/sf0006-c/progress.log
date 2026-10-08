@@ -1,0 +1,34 @@
+06:33:29 PREP 完成：10 oracle 树 + 40 单元 + A-12/13/14 断言全过
+06:33:45 RUN 开始：40 单元（40 正式臂进程上限；rate_limited 退避重试 ≤1/臂）
+06:33:45 RUN 结束：counted=0 retry=0 scratch_purged=True
+06:37:03 RUN 开始：40 单元（40 正式臂进程上限；rate_limited 退避重试 ≤1/臂）
+07:01:40 RUN 开始/续跑：40 单元队列（正式臂进程上限 40；已计 20；rate_limited 退避重试 ≤1/臂）
+07:01:40 SKIP 已完成臂 glm/mm-01-rep1/baseline
+07:01:40 SKIP 已完成臂 glm/mm-01-rep1/treatment
+07:03:28 UNIT mm-01 rep1 完成：glm wall=0ms pin= bucket= | minimax wall=104236ms pin=pass/pass bucket=measured_failure/measured_failure
+07:03:28 SKIP 已完成臂 minimax/mm-01-rep2/baseline
+07:03:28 SKIP 已完成臂 minimax/mm-01-rep2/treatment
+07:03:28 SKIP 已完成臂 minimax/mm-02-rep1/baseline
+07:03:28 SKIP 已完成臂 minimax/mm-02-rep1/treatment
+07:03:28 SKIP 已完成臂 minimax/mm-02-rep2/baseline
+07:03:28 SKIP 已完成臂 minimax/mm-02-rep2/treatment
+07:04:33 SKIP 已完成臂 minimax/hot-01-rep2/baseline
+07:04:33 SKIP 已完成臂 minimax/hot-01-rep2/treatment
+07:04:33 SKIP 已完成臂 minimax/hot-02-rep1/baseline
+07:04:33 SKIP 已完成臂 minimax/hot-02-rep1/treatment
+07:06:20 SKIP 已完成臂 minimax/hot-03-rep1/baseline
+07:06:20 SKIP 已完成臂 minimax/hot-03-rep1/treatment
+07:06:20 SKIP 已完成臂 minimax/hot-03-rep2/baseline
+07:06:20 SKIP 已完成臂 minimax/hot-03-rep2/treatment
+07:08:41 UNIT mm-01 rep2 完成：glm wall=417358ms pin=pass/pass bucket=measured_failure/measured_failure | minimax wall=0ms pin= bucket=
+07:23:46 UNIT mm-02 rep1 完成：glm wall=900264ms pin=pass/pass bucket=measured_failure/measured_failure | minimax wall=0ms pin= bucket=
+07:36:32 UNIT mm-02 rep2 完成：glm wall=761982ms pin=pass/pass bucket=measured_failure/measured_failure | minimax wall=0ms pin= bucket=
+07:36:32 SKIP 已完成臂 glm/hot-01-rep1/baseline
+07:36:32 SKIP 已完成臂 glm/hot-01-rep1/treatment
+07:36:32 UNIT hot-01 rep1 完成：glm wall=0ms pin= bucket= | minimax wall=60652ms pin=pass/pass bucket=measured_failure/measured_failure
+07:41:49 UNIT hot-01 rep2 完成：glm wall=313056ms pin=pass/pass bucket=measured_failure/measured_failure | minimax wall=0ms pin= bucket=
+07:45:25 UNIT hot-02 rep1 完成：glm wall=212509ms pin=pass/pass bucket=measured_failure/measured_failure | minimax wall=0ms pin= bucket=
+07:45:25 SKIP 已完成臂 glm/hot-02-rep2/baseline
+07:49:17 UNIT hot-02 rep2 完成：glm wall=229515ms pin=pass bucket=measured_failure | minimax wall=102842ms pin=pass/pass bucket=measured_failure/measured_failure
+07:53:53 UNIT hot-03 rep1 完成：glm wall=271735ms pin=pass/pass bucket=measured_failure/measured_failure | minimax wall=0ms pin= bucket=
+07:55:31 RUN 结束：counted=40 retry=0 scratch_purged=True redline=False

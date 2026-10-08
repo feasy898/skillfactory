@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_a0fb0e82-5775-40a5-aed6-f713cfcbddf1",
+  "traceId": "8ab62a96-33dc-43ef-9857-53cb6fb6dbab",
+  "turnId": "turn_b1ab2627-fda4-447e-adda-d4dcd5c210c8",
+  "response": "Task complete — both deliverables are in `out/` and every judgment criterion from the brief verifies programmatically (all checks passed).\n\n**What was produced:**\n\n- `out/structure.json` — top-level keys in the exact required order (`template_version` → `placeholder_stats`), with `platform=xhs`, `platform_name=图文笔记`, `structure_name=数字标题 + 开头 + 要点×3 + 标签`, `topic=旧物改造`, `points_input_count=3`, all 3 input points in `points_used` (so used+unused equals the input set exactly), `element_count=6` with the element names `标题/开头/要点1/要点2/要点3/标签`, and `placeholder_stats={\"slots\":3,\"filled\":3,\"placeholders\":0}`.\n- `out/骨架.md` — six lines in element order, each formatted `【要素名】内容` and matching structure.json verbatim.\n\n**How the judgment points were satisfied** (confirmed by a verification script, not just by eye):\n\n- 标题 `旧物改造别瞎忙🔥3个习惯稳住你的改造节奏` contains the digit 3 and the emoji 🔥.\n- 标签 line has 6 space-separated hashtags (`#旧物改造 #手作日常 …`), within the 3–8 range.\n- Each 要点N contains its input point character-for-character, including the fixture's specific strings like `用四象限法给云岭数据看板相关任务排优先级`.\n- Neither file contains any of the 12 banned absolute-marketing terms (国家级/世界级/最高级/最佳/第一/顶级/独家/万能/百分百/绝对/永久有效/全网第一) — checked by scanning the raw file contents of both.\n- No `{{ }}` template placeholders remain anywhere.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 6,
+    "inputTokens": 129051,
+    "outputTokens": 5691,
+    "totalTokens": 134742,
+    "cacheReadTokens": 119360,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 3999,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 134742,
+    "contextUsed": 25572,
+    "contextWindow": 200000
+  }
+}

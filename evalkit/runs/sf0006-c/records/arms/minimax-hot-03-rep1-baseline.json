@@ -1,0 +1,58 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/hot-03-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 30130,
+  "started_at_ms": 1791413195391,
+  "session_id": "sess_700686c7-8ba4-4e2a-8acf-664f6badce44",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/hot-03-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 230890,
+      "ot": 3502,
+      "dur": 26064,
+      "n": 11
+    }
+  ],
+  "input_tokens": 230890,
+  "output_tokens": 3502,
+  "stdout_bytes": 2785,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "== input points` as sets, element name sequence and `element_count`, 引入/总结 length (52 and 49 chars, both over 8), verbatim containment of point 1 in 论点1 and point 2 in 论点2, placeholder accounting across all three places, markdown/JSON content equality, and two negative checks — zero hits against the 12 banned absolute terms (`国家级`…`全网第一`) and no `{{ }}` template residue. All pass.\\n\\n**One thing worth flagging about the fixture:** the topic is `家常快手菜` (home-style quick cooking) but both selling points are about enterprise productivity tooling — a Eisenhower-matrix triage for 青澜会员中台 tasks and a 25-minute focus-block habit. I did not \\\"correct\\\" this, since the brief requires the points to appear verbatim and says the point/shortfall gap is normal. The connective prose is deliberately topic-generic so it reads acceptably in either register, but if this fixture is meant to test topical coherence rather than just structural accounting, the mismatch itself is a real input defect rather than something the output can resolve.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 11,\n    \"inputTokens\": 230890,\n    \"outputTokens\": 3502,\n    \"totalTokens\": 234392,\n    \"cacheReadTokens\": 207453,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 624,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 234392,\n    \"contextUsed\": 24191,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "task": "hot-03",
+  "rep": 1,
+  "slot": 16
+}

@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/mm-01-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 204691,
+  "started_at_ms": 1791412731066,
+  "session_id": "sess_9a07843b-c460-4560-9ec2-0e12171cb32f",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/mm-01-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 581312,
+      "ot": 16091,
+      "dur": 196258,
+      "n": 16
+    }
+  ],
+  "input_tokens": 581312,
+  "output_tokens": 16091,
+  "stdout_bytes": 2721,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "9-4861-961b-4bc757c4e216\",\n  \"turnId\": \"turn_4cce6932-3ff3-49d7-ac6f-8e5a4e97392f\",\n  \"response\": \"任务完成。两份交付物已生成在 `out/` 并通过全部 30 项独立验收检查。\\n\\n**交付物**\\n\\n- `out/纪要.docx` — 标题「星帆订单系统项目例会会议纪要」，三节标题逐字为 `一、决议事项`／`二、待办事项`／`三、风险与关注`。决议 3 条、风险 2 条均为 `N. 【类别 · 相关人】内容` 格式，内容逐字取自转写稿；待办为 `事项/负责人/期限` 三列表格 2 行（期限分别为 `本周五前`、`7月4日`，均逐字出自原句）。\\n- `out/summary.json` — `{\\\"决议事项\\\": 3, \\\"待办事项\\\": 2, \\\"风险与关注\\\": 2, \\\"合计\\\": 7}`，与 docx 实际条数逐项一致。\\n\\n**关键处理说明**\\n\\n本项目的 `meeting-minutes` 技能与 brief 存在四处硬冲突，我以 brief（判定依据）为准、仅沿用技能的排版规范（宋体/eastAsia、Table Grid、标题居中加粗）：\\n\\n1. **条目格式**：技能脚本固定输出 `N. 【hh:mm · 说话人】内容`，而 brief 要求 `N. 【类别 · 相关人】内容`；\\n2. **分类**：技能的关键词优先级（待办 > 风险）会把两条含「需要」的风险行（履约风险、数据口径未对齐）错归待办，并因零关键词漏掉「黄雨桐本周五前完成复盘纪要」这条待办——我按语义正确归入三节，每条均通过逐字溯源断言；\\n3. **期限兜底**：brief 规定未提及时填「未明确」（技能填「待定」），本稿两条待办均有明确时限，未触发；\\n4. **标题**：自拟含会议主题，未使用技能固定的「会议纪要」标题和元信息行。\\n\\n验收方法：技能自带的 `eval/runner.py` 在本部署中不存在，我改用独立校验脚本（`/tmp/mm_verify.py`）只读产物回验——节标题、编号连续性、相关人/负责人属于转写稿说话人、每条内容（含表格事项列）与原句逐字一致、期限逐字可溯、summary 四键与 docx 条数一致，全部通过。生成脚本在 `/tmp/mm_gen.py`，工作区除 `out/` 外未新增文件。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 16,\n    \"inputTokens\": 581312,\n    \"outputTokens\": 16091,\n    \"totalTokens\": 597403,\n    \"cacheReadTokens\": 550400,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 12498,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 597403,\n    \"contextUsed\": 46847,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

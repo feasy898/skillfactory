@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/mm-02-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 51831,
+  "started_at_ms": 1791412875660,
+  "session_id": "sess_3d37a9e3-f686-448e-b75d-a1755744520f",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/mm-02-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 233419,
+      "ot": 4781,
+      "dur": 47332,
+      "n": 10
+    }
+  ],
+  "input_tokens": 233419,
+  "output_tokens": 4781,
+  "stdout_bytes": 2464,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " I handled the two recording defects:**\\n\\n- *No timestamps*: nothing of the form `[HH:MM]` appears anywhere. I added a regex guard in the generator that fails the build if one ever does.\\n- *Same-name speakers*: the confusable pair is 徐志远 / 吴志远. Entries attributed to either get the `（归属待核）` suffix; entries by 周丽娜, 吴雨桐, 刘晓雯 do not. I did not invent any 甲/乙 or department labels to disambiguate.\\n\\nEvery item's content is a verbatim substring of a transcript line — I verified this programmatically (a build-time trace check plus an independent re-read of the docx, which reported no errors). Where the transcript gave no time limit (吴志远's 责任分工梳理, 周丽娜's 发群里), 期限 is `未明确`; the other two carry 下周一 and 本周五.\\n\\nI also left `build_minutes.py` in the working directory — it regenerates both artifacts and re-runs the traceability checks. One environment note worth knowing: `python-docx` is installed under `/usr/bin/python3`, not the `ml` venv that `python3` resolves to on PATH, so I ran the script with the absolute interpreter path.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 10,\n    \"inputTokens\": 233419,\n    \"outputTokens\": 4781,\n    \"totalTokens\": 238200,\n    \"cacheReadTokens\": 207500,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 397,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 238200,\n    \"contextUsed\": 27536,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

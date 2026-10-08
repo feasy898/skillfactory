@@ -1,0 +1,10 @@
+{
+  "arms": {
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/hot-01-rep2/baseline": {
+      "hits": [],
+      "hit_count": 0,
+      "pass": true
+    }
+  },
+  "total_hits": 0
+}

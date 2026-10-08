@@ -1,0 +1,58 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/hot-02-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 229515,
+  "started_at_ms": 1791416725826,
+  "session_id": "sess_d02ef0f4-d473-4b3b-9b57-f79d55fd9f9c",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/hot-02-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 372447,
+      "ot": 18137,
+      "dur": 223309,
+      "n": 10
+    }
+  ],
+  "input_tokens": 372447,
+  "output_tokens": 18137,
+  "stdout_bytes": 2548,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "red reading), then ran the deterministic engine: `gen.py --platform xhs --topic 通勤读书 --points fixtures/input.json --outdir build/xhs-engine` (exit 0, `elements=7 open_placeholders=7`). Raw engine output is preserved there as provenance.\\n2. `build/make_deliverables.py` deterministically maps the engine skeleton to the brief's contract — title→标题, hook_block→开头, point_block_N→要点N, tag_group→标签 (summary_block isn't in the brief's 6-element list, so it's not carried over), flattening internal newlines to spaces so each element is one line. No copy was written or invented; the skill's `【占位:…】` open slots stay unfilled per its red line (the brief only bans `{{ }}`-style residue, and there is none).\\n\\n**Verification highlights** — title has digit \\\"3\\\" + emoji 🔥; tags count 6 (#通勤读书 #干货分享 #方法论 #自我提升 #时间管理 #精力管理), within 3–8; each 要点N contains its selling point verbatim; the 12 banned absolute-marketing words (国家级/最佳/第一/顶级/百分百/绝对 etc.) appear in neither file; no `{{ }}` anywhere; `out/` contains only the two deliverables.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 10,\n    \"inputTokens\": 372447,\n    \"outputTokens\": 18137,\n    \"totalTokens\": 390584,\n    \"cacheReadTokens\": 338816,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 15813,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 390584,\n    \"contextUsed\": 52996,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "task": "hot-02",
+  "rep": 2,
+  "slot": 37
+}

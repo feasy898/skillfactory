@@ -99,6 +99,57 @@ def derive_ready(line, d1_signoff, d3_rec):
     return bool(d1_ok and d3_signed and d3_real_ok and line in ("mm", "hot"))
 
 
+def derive_d4(tid, d4_default):
+    """SF-0006 C-08（2026-10-08，A-04 装置协议收口）：难度带从盘上 C 层 matrix 派生，
+    禁止手改 pool-state.json——与 derive_ready 同一派生纪律。
+
+    口径：取同时含 matrix-glm.json 与 matrix-minimax.json 的最新 run 目录（runs/ 下
+    mtime 最新者）；每题两族 treatment 通过率（artifact_pass is True 比例，与聚合器
+    delta_vs_none 同一「通过」口径）取均值分拣：>90% rotation / 60–90% iteration /
+    <60% attribution（PLAN §3.2 阈值）；band_reason 写明各族通过率与 matrix 来源。
+    matrix 缺席或该题无行 → 维持首轮未标定文案（d4_default）。"""
+    import glob
+    cands = []
+    for d in glob.glob(os.path.join(EVALKIT, "runs", "*")):
+        g = os.path.join(d, "matrix-glm.json")
+        m = os.path.join(d, "matrix-minimax.json")
+        if os.path.isfile(g) and os.path.isfile(m):
+            cands.append((os.path.getmtime(d), d))
+    if not cands:
+        return d4_default
+    run_dir = max(cands)[1]
+    rates = {}
+    for fam in ("glm", "minimax"):
+        try:
+            with io.open(os.path.join(run_dir, "matrix-%s.json" % fam), encoding="utf-8") as f:
+                mtx = json.load(f)
+        except (OSError, ValueError):
+            return d4_default
+        cols = (mtx.get("rows") or {}).get(tid)
+        if not cols:
+            return d4_default
+        cells = [c for c in cols.values() if c.get("arm") == "treatment"]
+        if not cells:
+            return d4_default
+        rates[fam] = sum(1 for c in cells if c.get("artifact_pass") is True) / len(cells)
+    avg = (rates["glm"] + rates["minimax"]) / 2
+    band = "rotation" if avg > 0.9 else ("iteration" if avg >= 0.6 else "attribution")
+    d4 = dict(d4_default)
+    d4.update({
+        "band": band,
+        "band_reason": ("SF-0006 C 层基线轮分拣（PLAN §3.2 阈值 >90%%/60–90%%/<60%%，"
+                        "两族 treatment 通过率均值=%.1f%%）：glm=%.1f%%、minimax=%.1f%%；"
+                        "来源=%s（matrix-glm.json+matrix-minimax.json，由本脚本从盘上派生，"
+                        "复算口径与聚合器一致：通过=artifact_pass is True）"
+                        % (avg * 100, rates["glm"] * 100, rates["minimax"] * 100,
+                           os.path.relpath(run_dir, EVALKIT))),
+        "band_basis": {"glm_treatment_rate": rates["glm"],
+                       "minimax_treatment_rate": rates["minimax"],
+                       "avg": avg, "sorter_source": "derive_d4（ws4_pool_state.py）"},
+    })
+    return d4
+
+
 def main(argv):
     ap = argparse.ArgumentParser(add_help=False)
     ap.add_argument("--evalbench-version", default="v6-mvp-0.3")
@@ -167,6 +218,8 @@ def main(argv):
             "first_round_distribution": "8 题全带外（built 未标定）；题型分布=positive 4 / near-negative 2 / adversarial 2",
             "sorter": "分拣规则（PLAN §3.2）：>90% 进轮换池、60-90% 迭代池、<60% 归因五分类；阈值卡 B 后可注入",
         }
+        # SF-0006 C-08：难度带从盘上 matrix 派生（可复算；matrix 缺席时维持首轮未标定）
+        d4 = derive_d4(tid, d4)
 
         # 包完整性清单：freeze 装置 glob（packs/*/checks/...）只覆盖一层目录，ws4-dev 嵌套包的
         # wrapper 不入冻结账本（已留 planner 裁）；本清单补位——重建 pool-state 即可比对 tampering。

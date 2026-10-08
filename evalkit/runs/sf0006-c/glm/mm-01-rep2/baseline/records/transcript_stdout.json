@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_05882af0-2dc8-42c6-890e-863cc090bfd8",
+  "traceId": "7e465ea9-dbd4-47df-9cce-71b79cf703b6",
+  "turnId": "turn_65ae21f7-6d84-42a1-9461-98423b17682e",
+  "response": "任务完成，两份交付物已生成在 `out/` 目录，且逐条规则校验全部通过（ALL PASS）。\n\n**产出内容：**\n\n- `out/纪要.docx` — 标题为《云岭数据看板项目例会纪要》，三节正文：\n  - **一、决议事项**（2 条）：按原计划推进且里程碑不变（相关人 陈静怡）、预算 16 万元专项列支（相关人 徐丽娜），均为转写稿原句逐字引用；\n  - **二、待办事项**（表格 2 行）：压测报告 7 月 4 日前完成并同步综合办（徐丽娜）；验收清单下周三归档（张文博）；\n  - **三、风险与关注**（2 条）：综合办履约风险与高峰期积压预案（黄丽娜）、灰度放量数据口径未对齐需补基线（陈静怡）。\n- `out/summary.json` — `{\"决议事项\": 2, \"待办事项\": 2, \"风险与关注\": 2, \"合计\": 6}`，与 docx 实际条目数一致。\n\n**校验方式：** 用 python-docx 读回生成的文档，程序化核对了标题、三个节标题逐字匹配、条目格式 `N. 【类别 · 相关人】内容`、每条内容与相关人/负责人均能在转写稿中逐字溯源、表格表头三列逐字、期限均有出处，以及 JSON 键名与计数一致性，全部通过。\n\n一点环境说明：默认 `python` 没装 python-docx，改用 `/usr/bin/python3`（该解释器已装）完成生成；生成脚本保留在 `build_minutes.py` 以便复现。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 8,
+    "inputTokens": 181336,
+    "outputTokens": 5957,
+    "totalTokens": 187293,
+    "cacheReadTokens": 170496,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 4225,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 187293,
+    "contextUsed": 26742,
+    "contextWindow": 200000
+  }
+}

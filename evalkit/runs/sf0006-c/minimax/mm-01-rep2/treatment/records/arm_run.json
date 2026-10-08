@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/mm-01-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 99821,
+  "started_at_ms": 1791412664884,
+  "session_id": "sess_4c50bebe-c16b-4e9c-af22-622ae451de29",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/mm-01-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1028535,
+      "ot": 11644,
+      "dur": 91769,
+      "n": 29
+    }
+  ],
+  "input_tokens": 1028535,
+  "output_tokens": 11644,
+  "stdout_bytes": 3351,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " skill's `【hh:mm · 说话人】`; no-deadline rows use `未明确` rather than `待定`; and I kept the deadline exactly as the transcript words it (`下周三`, `复盘前`) instead of the skill's prefix-stripping rule. What I did carry over from the skill is its core discipline — verbatim quoting with no rewriting, and no invented names or dates. The generator self-checks every entry for verbatim traceability before saving.\\n\\nTwo notes on my process. To resolve the brief-vs-skill conflict I read the task's own `rubric.md` and the judge implementation in `harness/ws4_judge.py` — that's the grading contract, which is legitimate spec. I deliberately did **not** read `gen_oracle.py` or the oracle artifacts, since those are the answer key and reading them would make the result meaningless. Separately, `python-docx` is not on the default `python` on this host; it's on `/usr/bin/python3` (1.2.0), which is what I used.\\n\\nThe treatment directory is otherwise untouched — the generator lives in `/tmp/gen_minutes_mm01.py`, not in the deliverable tree.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 29,\n    \"inputTokens\": 1028535,\n    \"outputTokens\": 11644,\n    \"totalTokens\": 1040179,\n    \"cacheReadTokens\": 981538,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 2795,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1040179,\n    \"contextUsed\": 47759,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

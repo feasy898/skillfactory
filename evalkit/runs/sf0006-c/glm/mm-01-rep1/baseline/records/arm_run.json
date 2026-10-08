@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/mm-01-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 105362,
+  "started_at_ms": 1791412623694,
+  "session_id": "sess_e11ba391-9b0e-4133-b38a-022a6a0024a6",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/mm-01-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 280366,
+      "ot": 8648,
+      "dur": 99170,
+      "n": 11
+    }
+  ],
+  "input_tokens": 280366,
+  "output_tokens": 8648,
+  "stdout_bytes": 2037,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "{\n  \"sessionId\": \"sess_e11ba391-9b0e-4133-b38a-022a6a0024a6\",\n  \"traceId\": \"06b43681-39a6-402b-9e80-9d060acf656b\",\n  \"turnId\": \"turn_bce3477b-182c-41cc-95c7-3cdb99ddb422\",\n  \"response\": \"任务完成，两份交付物已生成并通过逐项自证。\\n\\n**产出（均在 `out/` 目录）**\\n\\n- **`out/纪要.docx`** — 首段标题「星帆订单系统项目例会会议纪要」，三节标题逐字为 `一、决议事项`、`二、待办事项`、`三、风险与关注`：\\n  - 决议事项 2 条（赵静怡：按原计划推进、里程碑不变；黄雨桐：预算 300 万元专项列支）；\\n  - 待办事项为三列表格（表头 `事项`/`负责人`/`期限`），2 行：黄雨桐复盘纪要（本周五前）、徐静怡数据迁移脚本归档（7月4日）；\\n  - 风险与关注 2 条（吴志远：财务部履约风险；赵静怡：灰度数据口径未对齐）。\\n- **`out/summary.json`** — `{\\\"决议事项\\\": 2, \\\"待办事项\\\": 2, \\\"风险与关注\\\": 2, \\\"合计\\\": 6}`，与 docx 实际条目数一致。\\n\\n**纪律自证**：生成脚本 `make_minutes.py`（留在工作目录可复跑）内置断言并全部通过——每条决议/风险内容、每个待办事项均逐字存在于转写稿（仅去句末句号）；所有相关人/负责人（赵静怡、黄雨桐、徐静怡、吴志远）均为转写稿说话人；期限均取自转写稿原文，无编造、无概括改写。\\n\\n另注：环境里 PATH 默认的 `python3`（venvs/ml）没有 python-docx，实际用的是 `/usr/bin/python3`（python-docx 1.2.0）。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 11,\n    \"inputTokens\": 280366,\n    \"outputTokens\": 8648,\n    \"totalTokens\": 289014,\n    \"cacheReadTokens\": 251072,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 6369,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 289014,\n    \"contextUsed\": 29624,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

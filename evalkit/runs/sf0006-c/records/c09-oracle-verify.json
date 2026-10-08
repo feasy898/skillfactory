@@ -1,0 +1,42 @@
+{
+  "mm-01-rep1": {
+    "exit": 0,
+    "out": "{\n  \"root\": \"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/oracle/mm-01-rep1/oracle\",\n  \"baseline_tree_sha256\": \"d1d3a52fbc53b5f042da3355c95ca877c2d1f91a3ca56e69f2040e9493264a7f\""
+  },
+  "mm-01-rep2": {
+    "exit": 0,
+    "out": "{\n  \"root\": \"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/oracle/mm-01-rep2/oracle\",\n  \"baseline_tree_sha256\": \"8d35d754a148de29716e13767da2e53f3c3b2d2d0cf98e8aab854fcefb382611\""
+  },
+  "mm-02-rep1": {
+    "exit": 0,
+    "out": "{\n  \"root\": \"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/oracle/mm-02-rep1/oracle\",\n  \"baseline_tree_sha256\": \"8cb8daf258341833017392b8c4663c93421cb337804640533dc278a9728f3813\""
+  },
+  "mm-02-rep2": {
+    "exit": 0,
+    "out": "{\n  \"root\": \"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/oracle/mm-02-rep2/oracle\",\n  \"baseline_tree_sha256\": \"ededea813133407270f937bfed20b3b3d5e6a994da9555c4a1cc794a8a6ddd5a\""
+  },
+  "hot-01-rep1": {
+    "exit": 0,
+    "out": "{\n  \"root\": \"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/oracle/hot-01-rep1/oracle\",\n  \"baseline_tree_sha256\": \"c8a9134325f203180c411e1cd4c653ab2794cda0dfbc6d11b5cee75c1b8461a9"
+  },
+  "hot-01-rep2": {
+    "exit": 0,
+    "out": "{\n  \"root\": \"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/oracle/hot-01-rep2/oracle\",\n  \"baseline_tree_sha256\": \"0199b8d4850f846687bfc2b0b4941d229f44b05a8a18f093aee19ee6d66f1777"
+  },
+  "hot-02-rep1": {
+    "exit": 0,
+    "out": "{\n  \"root\": \"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/oracle/hot-02-rep1/oracle\",\n  \"baseline_tree_sha256\": \"3efbe173c3a708fb415c39064f81c048c4efac5b331a6138a19213eb84f20d0e"
+  },
+  "hot-02-rep2": {
+    "exit": 0,
+    "out": "{\n  \"root\": \"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/oracle/hot-02-rep2/oracle\",\n  \"baseline_tree_sha256\": \"3ab5165544ea3b0f6ba5eb0efd68509f765a9a8578853e6d7863eca31f226917"
+  },
+  "hot-03-rep1": {
+    "exit": 0,
+    "out": "{\n  \"root\": \"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/oracle/hot-03-rep1/oracle\",\n  \"baseline_tree_sha256\": \"3c19204b0a288d386852d7fad7bfa78c469f7be832d6812d84bc14d1e307d83d"
+  },
+  "hot-03-rep2": {
+    "exit": 0,
+    "out": "{\n  \"root\": \"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/oracle/hot-03-rep2/oracle\",\n  \"baseline_tree_sha256\": \"2be6864a8f059cb1a97584cbd5351aed3c6b5545e589dd7f84781a417d4c1d4d"
+  }
+}

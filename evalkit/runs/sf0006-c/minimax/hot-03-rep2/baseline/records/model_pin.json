@@ -1,0 +1,16 @@
+{
+  "arm": "baseline",
+  "run_label": "rep2",
+  "run_id": "sf0006-c",
+  "model_id": "Minimax-M3.1-Flash-Preview",
+  "provider_base_url": "minimax",
+  "cli_runtime": "zcode-app-cli 3.14.4 (embedded) / zcode-runtime 0.16.9",
+  "date": "2026-10-08",
+  "reasoning_variant": "enabled",
+  "judge_sha256": "bc7dd27326a2d092e60969e8e8b30143dac4f842ea78baafe3ef037f4b1130c4",
+  "family": "minimax",
+  "mechanism": "m2",
+  "task": "hot-03",
+  "rep": 2,
+  "note": "C-01 实测钉版：model_id/provider_base_url 抄 db model_usage join 落点（逐字大小写敏感）；机制照 b2（glm=M4、minimax=M2）"
+}

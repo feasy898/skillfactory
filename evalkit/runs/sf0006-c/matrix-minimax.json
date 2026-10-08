@@ -1,0 +1,337 @@
+{
+  "schema": "matrix.v6-mvp",
+  "matrix_kind": "devpool-baseline",
+  "layer": "dev",
+  "evalbench_version": "v6-mvp-0.3",
+  "run_id": "sf0006-c",
+  "family": "minimax",
+  "rows": {
+    "hot-01": {
+      "minimax|baseline|r1": {
+        "family": "minimax",
+        "arm": "baseline",
+        "model_id_observed": "Minimax-M3.1-Flash-Preview",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 79800,
+        "wall_ms": 14887,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_295791b0-2b9d-4c9e-a287-427ecc57e5a9"
+      },
+      "minimax|treatment|r1": {
+        "family": "minimax",
+        "arm": "treatment",
+        "model_id_observed": "Minimax-M3.1-Flash-Preview",
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 345811,
+        "wall_ms": 45765,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_bd20d327-58ef-47e8-97eb-56c600740606"
+      },
+      "minimax|baseline|r2": {
+        "family": "minimax",
+        "arm": "baseline",
+        "model_id_observed": "Minimax-M3.1-Flash-Preview",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 125481,
+        "wall_ms": 18951,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_13203b5f-210b-402a-840a-0b244efbd1b1"
+      },
+      "minimax|treatment|r2": {
+        "family": "minimax",
+        "arm": "treatment",
+        "model_id_observed": "Minimax-M3.1-Flash-Preview",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 900178,
+        "wall_ms": 112982,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_9faa749a-55d0-4dce-8642-39e3c23c2f91"
+      }
+    },
+    "hot-02": {
+      "minimax|baseline|r1": {
+        "family": "minimax",
+        "arm": "baseline",
+        "model_id_observed": "Minimax-M3.1-Flash-Preview",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 234669,
+        "wall_ms": 28325,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_11f50698-4569-4bba-bf4c-47329cc22918"
+      },
+      "minimax|treatment|r1": {
+        "family": "minimax",
+        "arm": "treatment",
+        "model_id_observed": "Minimax-M3.1-Flash-Preview",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 268216,
+        "wall_ms": 28557,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_50f75eb5-d61e-431b-8ca8-5449c5f14a50"
+      },
+      "minimax|baseline|r2": {
+        "family": "minimax",
+        "arm": "baseline",
+        "model_id_observed": "Minimax-M3.1-Flash-Preview",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 170824,
+        "wall_ms": 23422,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_083b5635-c3ab-4549-ae06-96dea7ec5a6f"
+      },
+      "minimax|treatment|r2": {
+        "family": "minimax",
+        "arm": "treatment",
+        "model_id_observed": "Minimax-M3.1-Flash-Preview",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 396590,
+        "wall_ms": 79420,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_f50ccde5-7597-4795-95ef-6ab623469a68"
+      }
+    },
+    "hot-03": {
+      "minimax|baseline|r1": {
+        "family": "minimax",
+        "arm": "baseline",
+        "model_id_observed": "Minimax-M3.1-Flash-Preview",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 234392,
+        "wall_ms": 30130,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_700686c7-8ba4-4e2a-8acf-664f6badce44"
+      },
+      "minimax|treatment|r1": {
+        "family": "minimax",
+        "arm": "treatment",
+        "model_id_observed": "Minimax-M3.1-Flash-Preview",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 264688,
+        "wall_ms": 57130,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_5b2df7d7-a1a1-4060-9f9a-be1f1671fc1b"
+      },
+      "minimax|baseline|r2": {
+        "family": "minimax",
+        "arm": "baseline",
+        "model_id_observed": "Minimax-M3.1-Flash-Preview",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 200829,
+        "wall_ms": 37579,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_060c9362-4a2b-4c1a-8664-069d0118548c"
+      },
+      "minimax|treatment|r2": {
+        "family": "minimax",
+        "arm": "treatment",
+        "model_id_observed": "Minimax-M3.1-Flash-Preview",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 209224,
+        "wall_ms": 55079,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_2ccfd36c-00cc-4d78-a8ec-97b25961b1df"
+      }
+    },
+    "mm-01": {
+      "minimax|baseline|r1": {
+        "family": "minimax",
+        "arm": "baseline",
+        "model_id_observed": "Minimax-M3.1-Flash-Preview",
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 218290,
+        "wall_ms": 32648,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_f487f181-ac19-4208-84a3-0e80a56ac7de"
+      },
+      "minimax|treatment|r1": {
+        "family": "minimax",
+        "arm": "treatment",
+        "model_id_observed": "Minimax-M3.1-Flash-Preview",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 665181,
+        "wall_ms": 71588,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_f4d73bf6-02db-4b40-a034-a2b048d3079b"
+      },
+      "minimax|baseline|r2": {
+        "family": "minimax",
+        "arm": "baseline",
+        "model_id_observed": "Minimax-M3.1-Flash-Preview",
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 337728,
+        "wall_ms": 39182,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_fcfb423d-6a3c-4c2e-b01a-77741def3ce6"
+      },
+      "minimax|treatment|r2": {
+        "family": "minimax",
+        "arm": "treatment",
+        "model_id_observed": "Minimax-M3.1-Flash-Preview",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 1040179,
+        "wall_ms": 99821,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_4c50bebe-c16b-4e9c-af22-622ae451de29"
+      }
+    },
+    "mm-02": {
+      "minimax|baseline|r1": {
+        "family": "minimax",
+        "arm": "baseline",
+        "model_id_observed": "Minimax-M3.1-Flash-Preview",
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 299513,
+        "wall_ms": 38758,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_c35b9164-78f6-47f6-ab56-5dd77cfd41c2"
+      },
+      "minimax|treatment|r1": {
+        "family": "minimax",
+        "arm": "treatment",
+        "model_id_observed": "Minimax-M3.1-Flash-Preview",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 293258,
+        "wall_ms": 66171,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_49d36888-a012-4477-9f11-f10d6b96244f"
+      },
+      "minimax|baseline|r2": {
+        "family": "minimax",
+        "arm": "baseline",
+        "model_id_observed": "Minimax-M3.1-Flash-Preview",
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 238200,
+        "wall_ms": 51831,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_3d37a9e3-f686-448e-b75d-a1755744520f"
+      },
+      "minimax|treatment|r2": {
+        "family": "minimax",
+        "arm": "treatment",
+        "model_id_observed": "Minimax-M3.1-Flash-Preview",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 492120,
+        "wall_ms": 67036,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_27791056-bbf1-49af-9569-4eacdc1f4891"
+      }
+    }
+  },
+  "delta_vs_none": 0.3,
+  "delta_vs_none_per_task": {
+    "hot-01": {
+      "treatment_rate": 0.5,
+      "baseline_rate": 1.0,
+      "delta": -0.5
+    },
+    "hot-02": {
+      "treatment_rate": 1.0,
+      "baseline_rate": 1.0,
+      "delta": 0.0
+    },
+    "hot-03": {
+      "treatment_rate": 1.0,
+      "baseline_rate": 1.0,
+      "delta": 0.0
+    },
+    "mm-01": {
+      "treatment_rate": 1.0,
+      "baseline_rate": 0.0,
+      "delta": 1.0
+    },
+    "mm-02": {
+      "treatment_rate": 1.0,
+      "baseline_rate": 0.0,
+      "delta": 1.0
+    }
+  },
+  "delta_vs_prev": null,
+  "delta_note": "首轮基线轮两臂（none/treatment），无 A_old → delta_vs_prev=显式 null（不是 0，防「首轮误报 0」AG-4；PLAN §3.2）。delta_vs_none 口径（PLAN §3.2 + C-05）：每题 treatment 通过率 − baseline 通过率，再对题取均值；通过 = artifact_pass is True（产物轨 checker 唯一计分来源，SF-0004 §7；质量轨 unjudgeable 不出分）；infra_error 单元 artifact_pass=None 计不通过、分母含全部单元——不做 infra 剔除，与独立复算口径逐位一致（复算脚本不得 import 本工具），infra 单元在 infra_errors 逐条披露（C-06/EI-19）。本轮只出基线信号，不出验收结论。",
+  "cross_family_comparable": false,
+  "cross_family_note": "跨族 Δ 不可比（被测模型本身是变量，PLAN §5.5；AG-6：混族输入拒绝出数，单份 matrix 内只有一个族）",
+  "infra_errors": [],
+  "unit_counts": {
+    "tasks": 5,
+    "cells": 20
+  }
+}

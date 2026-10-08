@@ -1,0 +1,337 @@
+{
+  "schema": "matrix.v6-mvp",
+  "matrix_kind": "devpool-baseline",
+  "layer": "dev",
+  "evalbench_version": "v6-mvp-0.3",
+  "run_id": "sf0006-c",
+  "family": "glm",
+  "rows": {
+    "hot-01": {
+      "glm|baseline|r1": {
+        "family": "glm",
+        "arm": "baseline",
+        "model_id_observed": "GLM-5.3",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 111407,
+        "wall_ms": 64194,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_965d0534-f9f7-4353-8010-c248e084137a"
+      },
+      "glm|treatment|r1": {
+        "family": "glm",
+        "arm": "treatment",
+        "model_id_observed": "GLM-5.3",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 349572,
+        "wall_ms": 179306,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_15516d95-b4b1-44d7-9af0-13fba1ea101e"
+      },
+      "glm|baseline|r2": {
+        "family": "glm",
+        "arm": "baseline",
+        "model_id_observed": "GLM-5.3",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 139568,
+        "wall_ms": 71656,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_838beb7e-f1ca-412f-8f42-f144ba3d71a3"
+      },
+      "glm|treatment|r2": {
+        "family": "glm",
+        "arm": "treatment",
+        "model_id_observed": "GLM-5.3",
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 321658,
+        "wall_ms": 241400,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_c98de07b-c490-4650-a914-6da75b3e54c3"
+      }
+    },
+    "hot-02": {
+      "glm|baseline|r1": {
+        "family": "glm",
+        "arm": "baseline",
+        "model_id_observed": "GLM-5.3",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 134742,
+        "wall_ms": 72679,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_a0fb0e82-5775-40a5-aed6-f713cfcbddf1"
+      },
+      "glm|treatment|r1": {
+        "family": "glm",
+        "arm": "treatment",
+        "model_id_observed": "GLM-5.3",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 232733,
+        "wall_ms": 139830,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_1cae3f88-24f5-4619-beef-8966f8378a67"
+      },
+      "glm|baseline|r2": {
+        "family": "glm",
+        "arm": "baseline",
+        "model_id_observed": "GLM-5.3",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 144203,
+        "wall_ms": 92371,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_1c476056-0ef4-41dc-a497-c3cda0c55501"
+      },
+      "glm|treatment|r2": {
+        "family": "glm",
+        "arm": "treatment",
+        "model_id_observed": "GLM-5.3",
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 390584,
+        "wall_ms": 229515,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_d02ef0f4-d473-4b3b-9b57-f79d55fd9f9c"
+      }
+    },
+    "hot-03": {
+      "glm|baseline|r1": {
+        "family": "glm",
+        "arm": "baseline",
+        "model_id_observed": "GLM-5.3",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 166763,
+        "wall_ms": 85581,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_fe664cb7-5921-406c-97d9-134d86c50219"
+      },
+      "glm|treatment|r1": {
+        "family": "glm",
+        "arm": "treatment",
+        "model_id_observed": "GLM-5.3",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 307076,
+        "wall_ms": 186154,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_826140e7-3b75-448f-bfcb-9f8b3ce6fcac"
+      },
+      "glm|baseline|r2": {
+        "family": "glm",
+        "arm": "baseline",
+        "model_id_observed": "GLM-5.3",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 170436,
+        "wall_ms": 96625,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_1969c686-d9f6-4448-981e-5b2c60ed4d53"
+      },
+      "glm|treatment|r2": {
+        "family": "glm",
+        "arm": "treatment",
+        "model_id_observed": "GLM-5.3",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 353553,
+        "wall_ms": 297470,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_7a5f36f2-ea98-4d77-a776-62f77206eee5"
+      }
+    },
+    "mm-01": {
+      "glm|baseline|r1": {
+        "family": "glm",
+        "arm": "baseline",
+        "model_id_observed": "GLM-5.3",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 289014,
+        "wall_ms": 105362,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_e11ba391-9b0e-4133-b38a-022a6a0024a6"
+      },
+      "glm|treatment|r1": {
+        "family": "glm",
+        "arm": "treatment",
+        "model_id_observed": "GLM-5.3",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 597403,
+        "wall_ms": 204691,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_9a07843b-c460-4560-9ec2-0e12171cb32f"
+      },
+      "glm|baseline|r2": {
+        "family": "glm",
+        "arm": "baseline",
+        "model_id_observed": "GLM-5.3",
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 187293,
+        "wall_ms": 77066,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_05882af0-2dc8-42c6-890e-863cc090bfd8"
+      },
+      "glm|treatment|r2": {
+        "family": "glm",
+        "arm": "treatment",
+        "model_id_observed": "GLM-5.3",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 604173,
+        "wall_ms": 340292,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_252403b0-91bf-4d79-9317-5c68bef6b20f"
+      }
+    },
+    "mm-02": {
+      "glm|baseline|r1": {
+        "family": "glm",
+        "arm": "baseline",
+        "model_id_observed": "GLM-5.3",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 1624189,
+        "wall_ms": 461268,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_de05933e-8064-4d8e-81a0-2b27bb8c4922"
+      },
+      "glm|treatment|r1": {
+        "family": "glm",
+        "arm": "treatment",
+        "model_id_observed": "GLM-5.3",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 734120,
+        "wall_ms": 438996,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_274a8e10-6820-4b3c-876c-61ff2f1c6be2"
+      },
+      "glm|baseline|r2": {
+        "family": "glm",
+        "arm": "baseline",
+        "model_id_observed": "GLM-5.3",
+        "process_pass": true,
+        "artifact_pass": true,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 906036,
+        "wall_ms": 298620,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_6566fa28-cb2a-4149-bd31-284242e6a7c4"
+      },
+      "glm|treatment|r2": {
+        "family": "glm",
+        "arm": "treatment",
+        "model_id_observed": "GLM-5.3",
+        "process_pass": true,
+        "artifact_pass": false,
+        "quality_score": null,
+        "quality_verdict": "unjudgeable",
+        "tokens": 491109,
+        "wall_ms": 463362,
+        "infra_error": false,
+        "exit_code": 0,
+        "session_id": "sess_b8802b79-56d7-45a9-9d36-046b9def3372"
+      }
+    }
+  },
+  "delta_vs_none": -0.2,
+  "delta_vs_none_per_task": {
+    "hot-01": {
+      "treatment_rate": 0.5,
+      "baseline_rate": 1.0,
+      "delta": -0.5
+    },
+    "hot-02": {
+      "treatment_rate": 0.5,
+      "baseline_rate": 1.0,
+      "delta": -0.5
+    },
+    "hot-03": {
+      "treatment_rate": 1.0,
+      "baseline_rate": 1.0,
+      "delta": 0.0
+    },
+    "mm-01": {
+      "treatment_rate": 1.0,
+      "baseline_rate": 0.5,
+      "delta": 0.5
+    },
+    "mm-02": {
+      "treatment_rate": 0.5,
+      "baseline_rate": 1.0,
+      "delta": -0.5
+    }
+  },
+  "delta_vs_prev": null,
+  "delta_note": "首轮基线轮两臂（none/treatment），无 A_old → delta_vs_prev=显式 null（不是 0，防「首轮误报 0」AG-4；PLAN §3.2）。delta_vs_none 口径（PLAN §3.2 + C-05）：每题 treatment 通过率 − baseline 通过率，再对题取均值；通过 = artifact_pass is True（产物轨 checker 唯一计分来源，SF-0004 §7；质量轨 unjudgeable 不出分）；infra_error 单元 artifact_pass=None 计不通过、分母含全部单元——不做 infra 剔除，与独立复算口径逐位一致（复算脚本不得 import 本工具），infra 单元在 infra_errors 逐条披露（C-06/EI-19）。本轮只出基线信号，不出验收结论。",
+  "cross_family_comparable": false,
+  "cross_family_note": "跨族 Δ 不可比（被测模型本身是变量，PLAN §5.5；AG-6：混族输入拒绝出数，单份 matrix 内只有一个族）",
+  "infra_errors": [],
+  "unit_counts": {
+    "tasks": 5,
+    "cells": 20
+  }
+}

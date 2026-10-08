@@ -1,0 +1,5 @@
+{
+  "pairs": 40,
+  "mismatches": [],
+  "note": "复算脚本（本文件）不 import evaluators/aggregate.py；口径=每单元重跑 run_check.py <产物> --input-basis <该 rep 输入>，(exit==0)==artifact_pass"
+}

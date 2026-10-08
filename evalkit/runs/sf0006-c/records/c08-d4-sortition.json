@@ -1,0 +1,36 @@
+{
+  "thresholds": ">90% rotation / 60-90% iteration / <60% attribution（PLAN §3.2）",
+  "sortition_basis": "两族 treatment 通过率均值（band_reason 另写各族通过率）",
+  "tasks": {
+    "mm-01": {
+      "glm_treatment_rate": 1.0,
+      "minimax_treatment_rate": 1.0,
+      "avg": 1.0,
+      "band": "rotation"
+    },
+    "mm-02": {
+      "glm_treatment_rate": 0.5,
+      "minimax_treatment_rate": 1.0,
+      "avg": 0.75,
+      "band": "iteration"
+    },
+    "hot-01": {
+      "glm_treatment_rate": 0.5,
+      "minimax_treatment_rate": 0.5,
+      "avg": 0.5,
+      "band": "attribution"
+    },
+    "hot-02": {
+      "glm_treatment_rate": 0.5,
+      "minimax_treatment_rate": 1.0,
+      "avg": 0.75,
+      "band": "iteration"
+    },
+    "hot-03": {
+      "glm_treatment_rate": 1.0,
+      "minimax_treatment_rate": 1.0,
+      "avg": 1.0,
+      "band": "rotation"
+    }
+  }
+}

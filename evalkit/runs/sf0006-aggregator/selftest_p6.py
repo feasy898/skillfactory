@@ -98,19 +98,43 @@ def recompute_delta(rows):
 
 
 def main():
-    # ---------- 场景 1：两族混合输入（C 层布局）→ 非零退出 + 不落盘 ----------
+    # ---------- 场景 1：两族混合输入（C 层布局）→ AG-6 否定式测试（2026-10-08 语义修订）----------
+    # 1a. 无 --family：全根扫描，发现 ≥2 族 → 非零退出 + 零落盘（C-05「两族数据喂同一次须拒绝」）
+    # 1b. --family glm：范围限定 glm/ 子树 → exit 0 出 matrix 且单份 matrix 只有一个族
+    #     （C-01 刚需：matrix-glm/minimax 两份来自同一物理 run 根的两次按族调用）
+    # 1c. glm/ 族子树内混入他族单元（arm_run family=minimax 放 glm/ 目录）→ 族一致性拒绝
     mixed = os.path.join(HERE, "selftest-mixed-families")
     shutil.rmtree(mixed, ignore_errors=True)
     build_family(mixed, "glm")
-    for rep in (1, 2):  # minimax 侧给合规单元（两臂齐），恰好触发两族
+    for rep in (1, 2):  # minimax 侧给合规单元（两臂齐）
         build_unit(mixed, "minimax", "mm-01", rep, [True, True], [False, False])
     before = set(matrix_files(mixed))
-    for label, extra in (("无 --family", []), ("--family glm", ["--family", "glm"])):
-        rc, _, err = run_agg(["--run-dir", mixed] + extra)
-        leaked = set(matrix_files(mixed)) - before
-        check("AG-6 混族(%s)非零退出" % label, rc != 0, "exit=%d" % rc)
-        check("AG-6 混族(%s)零落盘" % label, not leaked, "err头=%s" % err.strip().splitlines()[0][:60] if err.strip() else "")
-        check("AG-6 混族(%s)报AG-6" % label, "AG-6" in err, "")
+    rc, _, err = run_agg(["--run-dir", mixed])
+    leaked = set(matrix_files(mixed)) - before
+    check("AG-6 混族(无 --family)非零退出", rc != 0, "exit=%d" % rc)
+    check("AG-6 混族(无 --family)零落盘", not leaked, "err头=%s" % err.strip().splitlines()[0][:60] if err.strip() else "")
+    check("AG-6 混族(无 --family)报AG-6", "AG-6" in err, "")
+    out1b = os.path.join(mixed, "matrix-glm.json")
+    rc, _, err = run_agg(["--run-dir", mixed, "--family", "glm"])
+    m1b = json.load(io.open(out1b, encoding="utf-8")) if rc == 0 else {}
+    fams_in = {c["family"] for cols in m1b.get("rows", {}).values() for c in cols.values()}
+    check("C-01 --family 按族出份 exit 0", rc == 0 and m1b.get("family") == "glm", err.strip()[:60])
+    check("C-01 单份 matrix 只有一个族", fams_in == {"glm"}, str(fams_in))
+    os.remove(out1b)
+    # 1c：族子树混族
+    mixed2 = os.path.join(HERE, "selftest-mixed-in-family")
+    shutil.rmtree(mixed2, ignore_errors=True)
+    build_family(mixed2, "glm")
+    import shutil as _sh
+    intruder = os.path.join(mixed2, "glm", "mm-02-rep1")
+    build_unit(mixed2, "minimax", "mm-02", 1, [True], [False])
+    # 把 minimax 单元挪进 glm/ 族目录（目录族=glm，arm_run 族=minimax → 族一致性拒绝）
+    _sh.move(os.path.join(mixed2, "minimax", "mm-02-rep1"), intruder)
+    _sh.rmtree(os.path.join(mixed2, "minimax"), ignore_errors=True)
+    before = set(matrix_files(mixed2))
+    rc, _, err = run_agg(["--run-dir", mixed2, "--family", "glm"])
+    check("AG-6 族内混族非零退出", rc != 0 and not (set(matrix_files(mixed2)) - before),
+          "exit=%d err头=%s" % (rc, err.strip().splitlines()[0][:60] if err.strip() else ""))
 
     # ---------- 场景 2：单 pack 旧布局混族（红先同形态，改造前 exit 0）----------
     oldmixed = os.path.join(HERE, "red-probe-mixed")

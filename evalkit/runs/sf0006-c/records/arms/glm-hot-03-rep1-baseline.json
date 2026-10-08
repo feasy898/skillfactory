@@ -1,0 +1,58 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/hot-03-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 85581,
+  "started_at_ms": 1791416957353,
+  "session_id": "sess_fe664cb7-5921-406c-97d9-134d86c50219",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/hot-03-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 159815,
+      "ot": 6948,
+      "dur": 81156,
+      "n": 7
+    }
+  ],
+  "input_tokens": 159815,
+  "output_tokens": 6948,
+  "stdout_bytes": 1980,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "{\n  \"sessionId\": \"sess_fe664cb7-5921-406c-97d9-134d86c50219\",\n  \"traceId\": \"553b953c-0c93-45ae-9db2-da7c9c681407\",\n  \"turnId\": \"turn_de0b13b6-8f68-4713-a665-c4ee496b24c6\",\n  \"response\": \"任务完成，两个交付文件已生成并通过全部 22 项判定自检（ALL PASS）。\\n\\n**`out/structure.json`** — 顶层键按要求顺序排列（`template_version` 至 `placeholder_stats`），`elements` 的 name 序列为 引入/论点1/论点2/论点3/总结，两条输入卖点全部进 `points_used`、`points_unused` 为空，`placeholder_stats` 为 `{\\\"slots\\\": 3, \\\"filled\\\": 2, \\\"placeholders\\\": 1}`。\\n\\n**`out/骨架.md`** — 5 行，每行 `【要素名】内容`，与 structure.json 逐字一致。\\n\\n内容处理上的几个要点：\\n\\n- 主题是“家常快手菜”而两条卖点偏工作方法，我把文章立意做成“把工作里的时间管理方法搬进厨房”，让两条卖点自然嵌入正文：论点1 逐字包含“用四象限法给青澜会员中台相关任务排优先级”，论点2 逐字包含“把25分钟专注法写进每日安排”。\\n- 论点3 按占位规约处理：内容恰为 `【占位:价值点3】`，未编造新卖点也未留空；骨架.md 中 `【占位:` 出现 1 次，与 placeholder_stats、实际未填槽数三处一致。\\n- 合规红线已程序化扫描两个文件全文：12 个绝对化用语（含“第一”的子串情况，如刻意用“头一个”避开“第一个”）均未出现，也无 `{{ }}` 模板占位残留。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 7,\n    \"inputTokens\": 159815,\n    \"outputTokens\": 6948,\n    \"totalTokens\": 166763,\n    \"cacheReadTokens\": 148288,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 5184,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 166763,\n    \"contextUsed\": 27361,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "task": "hot-03",
+  "rep": 1,
+  "slot": 38
+}

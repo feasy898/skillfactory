@@ -1,0 +1,644 @@
+{
+  "cap_counted_arms": 40,
+  "retry_cap_per_arm": 1,
+  "counted_arm_procs": 40,
+  "retry_procs": 0,
+  "model_calls": 0,
+  "entries": [
+    {
+      "slot": 1,
+      "arm": "glm/mm-01-rep1/baseline",
+      "kind": "arm",
+      "ts_intent": "06:37:03",
+      "status": "pending",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "observed_source": "records/arms 权威重算"
+    },
+    {
+      "slot": 2,
+      "arm": "minimax/mm-01-rep2/baseline",
+      "kind": "arm",
+      "ts_intent": "06:37:03",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_fcfb423d-6a3c-4c2e-b01a-77741def3ce6",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 3,
+      "arm": "minimax/mm-01-rep2/treatment",
+      "kind": "arm",
+      "ts_intent": "06:37:44",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_e11ba391-9b0e-4133-b38a-022a6a0024a6",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass",
+      "observed_source": "records/arms 权威重算"
+    },
+    {
+      "slot": 4,
+      "arm": "glm/mm-01-rep1/treatment",
+      "kind": "arm",
+      "ts_intent": "06:38:51",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_4c50bebe-c16b-4e9c-af22-622ae451de29",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass",
+      "observed_source": "records/arms 权威重算"
+    },
+    {
+      "slot": 5,
+      "arm": "minimax/mm-02-rep1/baseline",
+      "kind": "arm",
+      "ts_intent": "06:39:26",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_c35b9164-78f6-47f6-ab56-5dd77cfd41c2",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 6,
+      "arm": "minimax/mm-02-rep1/treatment",
+      "kind": "arm",
+      "ts_intent": "06:40:07",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_49d36888-a012-4477-9f11-f10d6b96244f",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 7,
+      "arm": "minimax/mm-02-rep2/baseline",
+      "kind": "arm",
+      "ts_intent": "06:41:15",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_3d37a9e3-f686-448e-b75d-a1755744520f",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 8,
+      "arm": "minimax/mm-02-rep2/treatment",
+      "kind": "arm",
+      "ts_intent": "06:42:09",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_9a07843b-c460-4560-9ec2-0e12171cb32f",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass",
+      "observed_source": "records/arms 权威重算"
+    },
+    {
+      "slot": 9,
+      "arm": "glm/hot-01-rep1/baseline",
+      "kind": "arm",
+      "ts_intent": "06:42:17",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_27791056-bbf1-49af-9569-4eacdc1f4891",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass",
+      "observed_source": "records/arms 权威重算"
+    },
+    {
+      "slot": 10,
+      "arm": "minimax/hot-01-rep2/baseline",
+      "kind": "arm",
+      "ts_intent": "06:43:18",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_965d0534-f9f7-4353-8010-c248e084137a",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass",
+      "observed_source": "records/arms 权威重算"
+    },
+    {
+      "slot": 11,
+      "arm": "glm/hot-01-rep1/treatment",
+      "kind": "arm",
+      "ts_intent": "06:43:23",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_13203b5f-210b-402a-840a-0b244efbd1b1",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass",
+      "observed_source": "records/arms 权威重算"
+    },
+    {
+      "slot": 12,
+      "arm": "minimax/hot-01-rep2/treatment",
+      "kind": "arm",
+      "ts_intent": "06:43:39",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_9faa749a-55d0-4dce-8642-39e3c23c2f91",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 13,
+      "arm": "minimax/hot-02-rep1/baseline",
+      "kind": "arm",
+      "ts_intent": "06:45:34",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_11f50698-4569-4bba-bf4c-47329cc22918",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 14,
+      "arm": "minimax/hot-02-rep1/treatment",
+      "kind": "arm",
+      "ts_intent": "06:46:04",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_15516d95-b4b1-44d7-9af0-13fba1ea101e",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass",
+      "observed_source": "records/arms 权威重算"
+    },
+    {
+      "slot": 15,
+      "arm": "glm/hot-02-rep2/baseline",
+      "kind": "arm",
+      "ts_intent": "06:46:25",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_50f75eb5-d61e-431b-8ca8-5449c5f14a50",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass",
+      "observed_source": "records/arms 权威重算"
+    },
+    {
+      "slot": 16,
+      "arm": "minimax/hot-03-rep1/baseline",
+      "kind": "arm",
+      "ts_intent": "06:46:35",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_700686c7-8ba4-4e2a-8acf-664f6badce44",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 17,
+      "arm": "minimax/hot-03-rep1/treatment",
+      "kind": "arm",
+      "ts_intent": "06:47:07",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_1c476056-0ef4-41dc-a497-c3cda0c55501",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass",
+      "observed_source": "records/arms 权威重算"
+    },
+    {
+      "slot": 18,
+      "arm": "glm/hot-02-rep2/treatment",
+      "kind": "arm",
+      "ts_intent": "06:47:59",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_5b2df7d7-a1a1-4060-9f9a-be1f1671fc1b",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass",
+      "observed_source": "records/arms 权威重算"
+    },
+    {
+      "slot": 19,
+      "arm": "minimax/hot-03-rep2/baseline",
+      "kind": "arm",
+      "ts_intent": "06:48:06",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_060c9362-4a2b-4c1a-8664-069d0118548c",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 20,
+      "arm": "minimax/hot-03-rep2/treatment",
+      "kind": "arm",
+      "ts_intent": "06:48:46",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_2ccfd36c-00cc-4d78-a8ec-97b25961b1df",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 21,
+      "arm": "minimax/mm-01-rep1/baseline",
+      "kind": "arm",
+      "ts_intent": "07:01:40",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_f487f181-ac19-4208-84a3-0e80a56ac7de",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 22,
+      "arm": "glm/mm-01-rep2/baseline",
+      "kind": "arm",
+      "ts_intent": "07:01:40",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_05882af0-2dc8-42c6-890e-863cc090bfd8",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 23,
+      "arm": "minimax/mm-01-rep1/treatment",
+      "kind": "arm",
+      "ts_intent": "07:02:15",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_f4d73bf6-02db-4b40-a034-a2b048d3079b",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 24,
+      "arm": "glm/mm-01-rep2/treatment",
+      "kind": "arm",
+      "ts_intent": "07:02:59",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_252403b0-91bf-4d79-9317-5c68bef6b20f",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 25,
+      "arm": "minimax/hot-01-rep1/baseline",
+      "kind": "arm",
+      "ts_intent": "07:03:28",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_295791b0-2b9d-4c9e-a287-427ecc57e5a9",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 26,
+      "arm": "minimax/hot-01-rep1/treatment",
+      "kind": "arm",
+      "ts_intent": "07:03:45",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_bd20d327-58ef-47e8-97eb-56c600740606",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 27,
+      "arm": "minimax/hot-02-rep2/baseline",
+      "kind": "arm",
+      "ts_intent": "07:04:33",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_083b5635-c3ab-4549-ae06-96dea7ec5a6f",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 28,
+      "arm": "minimax/hot-02-rep2/treatment",
+      "kind": "arm",
+      "ts_intent": "07:04:58",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_f50ccde5-7597-4795-95ef-6ab623469a68",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 29,
+      "arm": "glm/mm-02-rep1/baseline",
+      "kind": "arm",
+      "ts_intent": "07:08:41",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_de05933e-8064-4d8e-81a0-2b27bb8c4922",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 30,
+      "arm": "glm/mm-02-rep1/treatment",
+      "kind": "arm",
+      "ts_intent": "07:16:25",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_274a8e10-6820-4b3c-876c-61ff2f1c6be2",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 31,
+      "arm": "glm/mm-02-rep2/baseline",
+      "kind": "arm",
+      "ts_intent": "07:23:46",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_6566fa28-cb2a-4149-bd31-284242e6a7c4",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 32,
+      "arm": "glm/mm-02-rep2/treatment",
+      "kind": "arm",
+      "ts_intent": "07:28:46",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_b8802b79-56d7-45a9-9d36-046b9def3372",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 33,
+      "arm": "glm/hot-01-rep2/baseline",
+      "kind": "arm",
+      "ts_intent": "07:36:32",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_838beb7e-f1ca-412f-8f42-f144ba3d71a3",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 34,
+      "arm": "glm/hot-01-rep2/treatment",
+      "kind": "arm",
+      "ts_intent": "07:37:45",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_c98de07b-c490-4650-a914-6da75b3e54c3",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 35,
+      "arm": "glm/hot-02-rep1/baseline",
+      "kind": "arm",
+      "ts_intent": "07:41:49",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_a0fb0e82-5775-40a5-aed6-f713cfcbddf1",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 36,
+      "arm": "glm/hot-02-rep1/treatment",
+      "kind": "arm",
+      "ts_intent": "07:43:03",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_1cae3f88-24f5-4619-beef-8966f8378a67",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 37,
+      "arm": "glm/hot-02-rep2/treatment",
+      "kind": "arm",
+      "ts_intent": "07:45:25",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_d02ef0f4-d473-4b3b-9b57-f79d55fd9f9c",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 38,
+      "arm": "glm/hot-03-rep1/baseline",
+      "kind": "arm",
+      "ts_intent": "07:49:17",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_fe664cb7-5921-406c-97d9-134d86c50219",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 39,
+      "arm": "glm/hot-03-rep1/treatment",
+      "kind": "arm",
+      "ts_intent": "07:50:44",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_826140e7-3b75-448f-bfcb-9f8b3ce6fcac",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 40,
+      "arm": "glm/hot-03-rep2/baseline",
+      "kind": "arm",
+      "ts_intent": "07:53:53",
+      "status": "done",
+      "exit_code": 0,
+      "session_id": "sess_1969c686-d9f6-4448-981e-5b2c60ed4d53",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "slot": 41,
+      "arm": "glm/hot-03-rep2/treatment",
+      "kind": "arm",
+      "status": "skipped_budget_or_stop",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "observed_source": "records/arms 权威重算"
+    }
+  ],
+  "scratch_purged": true,
+  "closed_at": "2026-10-08T07:55:31+0800",
+  "incident_procs": 1,
+  "incident_note": "slot1-20 区间 1 个臂进程（glm/hot-02-rep2/treatment 首跑）因编排器被外部分SIGKILL（TaskStop 误判停批）中断：db 显示主调用 completed 145s 后末次调用 cancelled、out 半成品，无有效 records——按 B 层 failed_infra 轮先例（无有效数据的臂进程不占正式臂预算）单列事故，不计数入正式额度；该臂由续跑重跑 1 次作为其正式臂进程。物理进程总数 41、正式 40。",
+  "rerun_after_incident": [
+    {
+      "arm": "glm/hot-03-rep2/treatment",
+      "reason": "预算触顶拦截（counted 已含 1 事故进程）；按 B 层 failed_infra 判例事故进程不占正式额度，本重跑为第 40 个正式臂进程",
+      "exit_code": 0,
+      "session_id": "sess_7a5f36f2-ea98-4d77-a776-62f77206eee5",
+      "model_id_observed": "GLM-5.3",
+      "provider_id_observed": "account:bigmodel-individual-coding-plan"
+    }
+  ],
+  "physical_procs_total": 41
+}

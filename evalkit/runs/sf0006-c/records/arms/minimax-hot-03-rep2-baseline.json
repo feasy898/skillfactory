@@ -1,0 +1,58 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/hot-03-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 37579,
+  "started_at_ms": 1791413286656,
+  "session_id": "sess_060c9362-4a2b-4c1a-8664-069d0118548c",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/hot-03-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 195763,
+      "ot": 5066,
+      "dur": 33616,
+      "n": 9
+    }
+  ],
+  "input_tokens": 195763,
+  "output_tokens": 5066,
+  "stdout_bytes": 2766,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "erbatim; `引入` (59 chars) and `总结` (73 chars) both clear the 8-character floor; none of the 12 广告法 red-line terms appear in either file (this includes substring traps like `第一`, so I avoided `第一步`/`第一时间`); no `{{ }}` residue.\\n\\n**Two things you should know:**\\n\\nThe input is internally inconsistent — the topic is `家常快手菜` but both selling points are productivity-methodology claims (`把25分钟专注法写进每日安排`, `用四象限法给望舒客服工作台相关任务排优先级`). The brief mandates those points appear verbatim, so I kept them literally and wrote framing around them rather than \\\"correcting\\\" them to fit the topic. That mismatch is in the fixture, not something I introduced.\\n\\nThe brief names `template_version` as a required key but never fixes its value. I set it to `\\\"hot-03-v1\\\"`, derived from the run's pack name. If your grader pins an exact string, that one field is the place to adjust.\\n\\nI deliberately did not read `oracle/hot-03-rep2/oracle/structure.json` or any sibling arm's `out/` — reading either would have contaminated this baseline arm's result.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 9,\n    \"inputTokens\": 195763,\n    \"outputTokens\": 5066,\n    \"totalTokens\": 200829,\n    \"cacheReadTokens\": 175104,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 846,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 200829,\n    \"contextUsed\": 26229,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "task": "hot-03",
+  "rep": 2,
+  "slot": 19
+}

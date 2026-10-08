@@ -1,0 +1,58 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/mm-02-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 38758,
+  "started_at_ms": 1791412766717,
+  "session_id": "sess_c35b9164-78f6-47f6-ab56-5dd77cfd41c2",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/mm-02-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 293345,
+      "ot": 6168,
+      "dur": 33949,
+      "n": 13
+    }
+  ],
+  "input_tokens": 293345,
+  "output_tokens": 6168,
+  "stdout_bytes": 3220,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "怡 appears only once and is uniquely attributable. So the four speakers in those two pairs get the `（归属待核）` suffix on their entries; 黄静怡's does not. I did not invent 甲/乙 or any other distinguishing marker — the note under the table just records which full names collide, so a reader can verify the ambiguity rather than trust it.\\n\\n**Verification**\\n\\n`build_minutes.py` (left in place) asserts before writing that every entry's content and every 待办 事项 appears verbatim in `fixtures/transcript.txt`, and that every 负责人/相关人 name is a speaker label found in the transcript. It passed. I also re-read the saved .docx and confirmed the entry counts (3 / 4 rows / 2), the exact table headers, and the empty timestamp scan.\\n\\nOne judgment call worth flagging: line 9's 「复盘前需要补齐基线数据」 could arguably be a 待办 (刘文博,期限 复盘前) rather than a 风险. I filed it under 风险与关注 since it describes an unresolved data problem rather than a committed action with an owner and deadline; if you want it as a fifth 待办 row, that's a one-line change to the script.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 13,\n    \"inputTokens\": 293345,\n    \"outputTokens\": 6168,\n    \"totalTokens\": 299513,\n    \"cacheReadTokens\": 267174,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1267,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 299513,\n    \"contextUsed\": 27052,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "task": "mm-02",
+  "rep": 1,
+  "slot": 5
+}

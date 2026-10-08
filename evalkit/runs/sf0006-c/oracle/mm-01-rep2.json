@@ -1,0 +1,18 @@
+{
+  "root": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/oracle/mm-01-rep2/oracle",
+  "file_count": 2,
+  "tree_sha256": "8d35d754a148de29716e13767da2e53f3c3b2d2d0cf98e8aab854fcefb382611",
+  "basis": "text LF-normalized (CRLF->LF) + sha256; binary raw bytes + sha256",
+  "files": [
+    {
+      "path": "summary.json",
+      "bytes": 84,
+      "sha256": "4c82acdccb7e76963dc6dc18c90e5cbf7e4c98c40ab2eadcbfe98dd2eef3bea5"
+    },
+    {
+      "path": "纪要.docx",
+      "bytes": 37324,
+      "sha256": "11096dfd7065feba136e771057aa12785628a140ca4044ce13d5f1811e3ed4a7"
+    }
+  ]
+}

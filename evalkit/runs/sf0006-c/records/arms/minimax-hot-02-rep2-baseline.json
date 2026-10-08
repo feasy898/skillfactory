@@ -1,0 +1,58 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/hot-02-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 23422,
+  "started_at_ms": 1791414273485,
+  "session_id": "sess_083b5635-c3ab-4549-ae06-96dea7ec5a6f",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/hot-02-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 167440,
+      "ot": 3384,
+      "dur": 19753,
+      "n": 8
+    }
+  ],
+  "input_tokens": 167440,
+  "output_tokens": 3384,
+  "stdout_bytes": 3046,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "eholders:0}`, the points partition being an exact no-dup-no-extra set match against the input, verbatim containment of each selling point in its 要点N, and no `{{ }}` placeholders. The advertising redline check is the part worth calling out: all 12 forbidden terms (国家级 … 全网第一) are scanned in **both** files independently, and all 24 sub-checks pass — the copy uses comparative phrasing like \\\"先啃当天最卡的那件\\\" and \\\"读透\\\" instead of superlatives, so nothing trips最佳/第一/绝对 while staying within compliance.\\n\\nTwo extra notes on how I worked: I generated both files from a single `build.py` script rather than hand-writing them, so the `骨架.md` lines are derived from the same element list that lands in `structure.json` and the two can never drift out of sync. I also made the checker assert that each line of `骨架.md` is byte-identical to `【name】content` from the JSON, which is the requirement most likely to break silently if the files are ever edited by hand. Both helper scripts are left in the working directory alongside the deliverables.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 8,\n    \"inputTokens\": 167440,\n    \"outputTokens\": 3384,\n    \"totalTokens\": 170824,\n    \"cacheReadTokens\": 144393,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 544,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 170824,\n    \"contextUsed\": 23836,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "task": "hot-02",
+  "rep": 2,
+  "slot": 27
+}

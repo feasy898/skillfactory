@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/hot-01-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 71656,
+  "started_at_ms": 1791416192223,
+  "session_id": "sess_838beb7e-f1ca-412f-8f42-f144ba3d71a3",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/hot-01-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 133409,
+      "ot": 6159,
+      "dur": 67277,
+      "n": 6
+    }
+  ],
+  "input_tokens": 133409,
+  "output_tokens": 6159,
+  "stdout_bytes": 2063,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "e exact required order (`template_version` → `placeholder_stats`), with `platform=dy`, the prescribed platform/structure names, `topic=阳台种菜`, all 3 input points in `points_used` (so `points_used` + `points_unused` equals the input set exactly, no duplicates), the 6 elements `钩子/痛点/价值点1/价值点2/价值点3/行动号召` with non-empty content, and `placeholder_stats = {slots:3, filled:3, placeholders:0}`.\\n- `out/骨架.md` — 6 lines, each `【要素名】内容`, matching structure.json exactly.\\n\\n**Notes on the tricky parts:** The fixture pairs the gardening topic with three task-management selling points, so the copy bridges them by framing balcony gardening as a project run with those methods (priority quadrant → 分轻重缓急照料菜苗， weekly review → 调整浇水和光照， 25+5 rhythm → 专注松土间苗). Each 价值点N contains its Nth input point verbatim, the hook is 33 characters (≥8 required), and the CTA contains both 关注 and 评论. The compliance red line is clean — none of the 12 banned absolute terms (第一， 最佳， 绝对， etc.) appear in either file, and there are no `{{ }}` template remnants.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 6,\n    \"inputTokens\": 133409,\n    \"outputTokens\": 6159,\n    \"totalTokens\": 139568,\n    \"cacheReadTokens\": 122944,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 4409,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 139568,\n    \"contextUsed\": 26399,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

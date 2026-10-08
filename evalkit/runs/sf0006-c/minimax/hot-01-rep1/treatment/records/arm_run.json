@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/hot-01-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 45765,
+  "started_at_ms": 1791414225709,
+  "session_id": "sess_bd20d327-58ef-47e8-97eb-56c600740606",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/hot-01-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 338375,
+      "ot": 7436,
+      "dur": 41385,
+      "n": 13
+    }
+  ],
+  "input_tokens": 338375,
+  "output_tokens": 7436,
+  "stdout_bytes": 3421,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " contains the string `第一`, which the brief's compliance redline explicitly bans. A literal scan of the raw output flagged it. I rewrote the three ordinal markers to `招式一/招式二/招式三` — meaning unchanged, and the only alternative was a guaranteed compliance failure.\\n\\n**Kept deliberately.** The six `【占位:…】` open slots remain in the content. The brief only forbids residual `{{ }}`-form placeholders (verified zero), and `placeholder_stats.placeholders: 0` refers to the three selling-point slots, which are all filled. Filling or stripping the open slots would have violated the skill's explicit prohibition on fabricating content for them.\\n\\nOne thing worth flagging: selling point 2 reads `用四象限法给望舒客服工作台相关任务排优先级`, which mentions a customer-service workbench name that has nothing to do with the `宿舍收纳` topic. The brief requires each value point to contain its selling point verbatim, so I passed it through as-is — but if that input is a fixture bug rather than intentional, the mismatch is in `fixtures/input.json`, not the output.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 13,\n    \"inputTokens\": 338375,\n    \"outputTokens\": 7436,\n    \"totalTokens\": 345811,\n    \"cacheReadTokens\": 305408,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1641,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 345811,\n    \"contextUsed\": 33848,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

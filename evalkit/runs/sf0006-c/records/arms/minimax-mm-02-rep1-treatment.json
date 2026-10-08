@@ -1,0 +1,58 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/mm-02-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 66171,
+  "started_at_ms": 1791412807486,
+  "session_id": "sess_49d36888-a012-4477-9f11-f10d6b96244f",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/mm-02-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 285881,
+      "ot": 7377,
+      "dur": 60916,
+      "n": 12
+    }
+  ],
+  "input_tokens": 285881,
+  "output_tokens": 7377,
+  "stdout_bytes": 3507,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "three section headings verbatim and in order, table headers verbatim, every numbered entry matching the `N. 【类别 · 相关人】内容` shape with its content traceable as a literal substring of the transcript, every named person drawn from the speaker set, and the `（归属待核）` suffix present on exactly the ambiguous entries and absent from the unique one. All 18 checks passed. LibreOffice also converted the file to PDF without complaint, confirming it opens in a real word processor.\\n\\nTwo notes on judgment calls. The brief scopes the `（归属待核）` rule to numbered entries, and the table has 负责人 rather than a 相关人 field, so I left the table cells as plain verbatim text — the suffix convention lives only in the two numbered sections. And I stripped the sentence-final 。 from quoted lines, which the brief permits. I also left `build_minutes.py` in the working directory; it asserts every quoted fragment against the source text and aborts on any non-verbatim string, so it documents how the minutes were derived and can be re-run to reproduce them.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 12,\n    \"inputTokens\": 285881,\n    \"outputTokens\": 7377,\n    \"totalTokens\": 293258,\n    \"cacheReadTokens\": 258021,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 558,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 293258,\n    \"contextUsed\": 28695,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "task": "mm-02",
+  "rep": 1,
+  "slot": 6
+}

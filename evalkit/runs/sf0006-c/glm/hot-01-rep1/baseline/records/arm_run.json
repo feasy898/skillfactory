@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/hot-01-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 64194,
+  "started_at_ms": 1791412937769,
+  "session_id": "sess_965d0534-f9f7-4353-8010-c248e084137a",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/hot-01-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 106131,
+      "ot": 5276,
+      "dur": 60112,
+      "n": 5
+    }
+  ],
+  "input_tokens": 106131,
+  "output_tokens": 5276,
+  "stdout_bytes": 2374,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "nts_unused=[]`), so the partition exactly equals the input set. The 6 elements follow the mandated name sequence 钩子/痛点/价值点1/价值点2/价值点3/行动号召, and `placeholder_stats` is `{\\\"slots\\\": 3, \\\"filled\\\": 3, \\\"placeholders\\\": 0}`.\\n- **`out/骨架.md`** — six lines, each in the `【要素名】内容` format, mirroring `structure.json` exactly.\\n\\n**Judgment rules verified programmatically:**\\n- Hook is 19 characters (≥ 8 required); the CTA contains 关注/评论/私信 keywords.\\n- Each 价值点N contains the Nth input selling point **verbatim** — including the unusual “望舒客服工作台” and “25分钟专注加5分钟休息” phrasing, bridged naturally into the 宿舍收纳 topic.\\n- Neither file contains any of the 12 banned absolute-superlative terms (国家级/世界级/最高级/最佳/第一/顶级/独家/万能/百分百/绝对/永久有效/全网第一), and no `{{ }}` template placeholders remain.\\n\\nOne note: the input points are productivity-habit methods rather than storage tips, so the copy frames them as methods applied to dorm organizing (e.g., the four-quadrant sort re-applied to belongings) while keeping the point text untouched inside each 价值点.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 5,\n    \"inputTokens\": 106131,\n    \"outputTokens\": 5276,\n    \"totalTokens\": 111407,\n    \"cacheReadTokens\": 96896,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 3473,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 111407,\n    \"contextUsed\": 25226,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

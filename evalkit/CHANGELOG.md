@@ -236,6 +236,27 @@
   keyfiles 覆盖本工具（evaluators/aggregate.py 一条更新，44 文件数不变，F5 变更集仍恰等
   DECLARED_CHANGED）；`python harness/verify_sf0003.py` 终跑 exit 0 全绿 34 门不回退
 
+**ADD-4｜SF-0006 C 层实跑装置双修正（2026-10-08，A-04 协议，版本保持 0.3）**
+- 题号：SF-0006 C 层收口（C-01/C-05/C-08）
+- ① `evaluators/aggregate.py` 模式二扫描范围修正：--family 显式时范围限定 `<run-dir>/<family>/`
+  子树——C-01 的 matrix-glm.json/matrix-minimax.json 两份是对同一物理 run 根的两次按族调用，
+  原实现扫全根撞见两族目录即 AG-6 拒绝，按族出份不可达（实跑红先：runs/sf0006-c/judge-stage.out
+  「aggregate glm exit=1: AG-6 跨族拒绝」）；族子树内混入他族单元仍由族一致性检查拒绝。
+  AG-6 否定式测试语义同步（runs/sf0006-aggregator/selftest_p6.py 场景 1/1b/1c，26 项 exit 0）。
+- ② `harness/ws4_pool_state.py` 新增 derive_d4：C-08 难度带从盘上 matrix 派生（取同时含
+  matrix-glm/minimax 的最新 run 目录；每题两族 treatment 通过率均值分拣 >90% rotation /
+  60–90% iteration / <60% attribution；band_reason 写各族通过率与来源；matrix 缺席维持首轮
+  未标定）——与 derive_ready 同一派生纪律，禁止手改 pool-state（原 d4 块无条件重建 band=null，
+  手写必被冲，故走装置派生）。
+- 缺陷类型：装置实跑适配（非判分语义变更）
+- 判定人：开发方（SF-0006 C 层条款授权；改前留档 runs/sf0006-c/precheck/keyfiles-pre-c08.sha256
+  = 提交 68949f9 版；verify_sf0003.py DECLARED_CHANGED +harness/ws4_pool_state.py 声明面同步，
+  ce7b1b2 先例）
+- 复现命令：`python harness/verify_sf0003.py` 终跑 exit 0 全绿 34 门（F5 变更集恰等
+  DECLARED_CHANGED 9 项）；`python runs/sf0006-aggregator/selftest_p6.py` exit 0；
+  `python harness/ws4_pool_state.py` 连跑两次 exit 0 且 pool-state 前后全量相等（A-05/A-10
+  复断言）、5 题 d4_record.band 由 matrix 派生非 null
+
 ---
 
 ## v6-mvp-0.2 · 2026-10-03（SF-0003 · worker-glm-m4）

@@ -1,0 +1,21 @@
+{
+  "available": true,
+  "session_id": "sess_fcfb423d-6a3c-4c2e-b01a-77741def3ce6",
+  "session": {
+    "directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/mm-01-rep2/baseline"
+  },
+  "directory_matches_arm": true,
+  "db_source": "global",
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 333069,
+      "ot": 4659,
+      "dur": 33747,
+      "n": 15
+    }
+  ]
+}

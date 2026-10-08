@@ -1,0 +1,10 @@
+{
+  "task": "hot-02",
+  "seed": 4204,
+  "nonce_set": "A",
+  "sha256": {
+    "fixtures/input.json": "835248a452b5a022fe9decf07e8eb409a3cecb2762a5e44bb06ebdcb70cb2c55",
+    "oracle/structure.json": "505d82cfc54beb6fc5f8b56116d8601636852558a9aab3b56aeec14fe834a60e",
+    "oracle/骨架.md": "a9be3e155b6ca2fab584152c1244ba3eda821cd3390d0b426c9d49db91f6a006"
+  }
+}

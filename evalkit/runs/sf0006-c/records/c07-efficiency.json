@@ -1,0 +1,18 @@
+{
+  "glm": {
+    "baseline_tokens_mean": 387365.1,
+    "baseline_wall_mean_ms": 142542.2,
+    "treatment_tokens_mean": 438198.1,
+    "treatment_wall_mean_ms": 272101.6,
+    "token_ratio": 1.1312276196280977,
+    "wall_ratio": 1.9089196041593293
+  },
+  "minimax": {
+    "baseline_tokens_mean": 213972.6,
+    "baseline_wall_mean_ms": 31571.3,
+    "treatment_tokens_mean": 487544.5,
+    "treatment_wall_mean_ms": 68354.9,
+    "token_ratio": 2.2785370650260828,
+    "wall_ratio": 2.1650961474503743
+  }
+}

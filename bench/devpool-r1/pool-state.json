@@ -124,10 +124,16 @@
       },
       "d4_record": {
         "stage": "D4 校准入池（难度带分拣）",
-        "band": null,
-        "band_reason": "首轮未标定：0 模型调用无臂数据，难度带（treatment 通过率锚）须待基线轮（SF-0006）后分拣",
+        "band": "rotation",
+        "band_reason": "SF-0006 C 层基线轮分拣（PLAN §3.2 阈值 >90%/60–90%/<60%，两族 treatment 通过率均值=100.0%）：glm=100.0%、minimax=100.0%；来源=runs/sf0006-c（matrix-glm.json+matrix-minimax.json，由本脚本从盘上派生，复算口径与聚合器一致：通过=artifact_pass is True）",
         "first_round_distribution": "8 题全带外（built 未标定）；题型分布=positive 4 / near-negative 2 / adversarial 2",
-        "sorter": "分拣规则（PLAN §3.2）：>90% 进轮换池、60-90% 迭代池、<60% 归因五分类；阈值卡 B 后可注入"
+        "sorter": "分拣规则（PLAN §3.2）：>90% 进轮换池、60-90% 迭代池、<60% 归因五分类；阈值卡 B 后可注入",
+        "band_basis": {
+          "glm_treatment_rate": 1.0,
+          "minimax_treatment_rate": 1.0,
+          "avg": 1.0,
+          "sorter_source": "derive_d4（ws4_pool_state.py）"
+        }
       }
     },
     {
@@ -230,10 +236,16 @@
       },
       "d4_record": {
         "stage": "D4 校准入池（难度带分拣）",
-        "band": null,
-        "band_reason": "首轮未标定：0 模型调用无臂数据，难度带（treatment 通过率锚）须待基线轮（SF-0006）后分拣",
+        "band": "iteration",
+        "band_reason": "SF-0006 C 层基线轮分拣（PLAN §3.2 阈值 >90%/60–90%/<60%，两族 treatment 通过率均值=75.0%）：glm=50.0%、minimax=100.0%；来源=runs/sf0006-c（matrix-glm.json+matrix-minimax.json，由本脚本从盘上派生，复算口径与聚合器一致：通过=artifact_pass is True）",
         "first_round_distribution": "8 题全带外（built 未标定）；题型分布=positive 4 / near-negative 2 / adversarial 2",
-        "sorter": "分拣规则（PLAN §3.2）：>90% 进轮换池、60-90% 迭代池、<60% 归因五分类；阈值卡 B 后可注入"
+        "sorter": "分拣规则（PLAN §3.2）：>90% 进轮换池、60-90% 迭代池、<60% 归因五分类；阈值卡 B 后可注入",
+        "band_basis": {
+          "glm_treatment_rate": 0.5,
+          "minimax_treatment_rate": 1.0,
+          "avg": 0.75,
+          "sorter_source": "derive_d4（ws4_pool_state.py）"
+        }
       }
     },
     {
@@ -336,10 +348,16 @@
       },
       "d4_record": {
         "stage": "D4 校准入池（难度带分拣）",
-        "band": null,
-        "band_reason": "首轮未标定：0 模型调用无臂数据，难度带（treatment 通过率锚）须待基线轮（SF-0006）后分拣",
+        "band": "attribution",
+        "band_reason": "SF-0006 C 层基线轮分拣（PLAN §3.2 阈值 >90%/60–90%/<60%，两族 treatment 通过率均值=50.0%）：glm=50.0%、minimax=50.0%；来源=runs/sf0006-c（matrix-glm.json+matrix-minimax.json，由本脚本从盘上派生，复算口径与聚合器一致：通过=artifact_pass is True）",
         "first_round_distribution": "8 题全带外（built 未标定）；题型分布=positive 4 / near-negative 2 / adversarial 2",
-        "sorter": "分拣规则（PLAN §3.2）：>90% 进轮换池、60-90% 迭代池、<60% 归因五分类；阈值卡 B 后可注入"
+        "sorter": "分拣规则（PLAN §3.2）：>90% 进轮换池、60-90% 迭代池、<60% 归因五分类；阈值卡 B 后可注入",
+        "band_basis": {
+          "glm_treatment_rate": 0.5,
+          "minimax_treatment_rate": 0.5,
+          "avg": 0.5,
+          "sorter_source": "derive_d4（ws4_pool_state.py）"
+        }
       }
     },
     {
@@ -442,10 +460,16 @@
       },
       "d4_record": {
         "stage": "D4 校准入池（难度带分拣）",
-        "band": null,
-        "band_reason": "首轮未标定：0 模型调用无臂数据，难度带（treatment 通过率锚）须待基线轮（SF-0006）后分拣",
+        "band": "iteration",
+        "band_reason": "SF-0006 C 层基线轮分拣（PLAN §3.2 阈值 >90%/60–90%/<60%，两族 treatment 通过率均值=75.0%）：glm=50.0%、minimax=100.0%；来源=runs/sf0006-c（matrix-glm.json+matrix-minimax.json，由本脚本从盘上派生，复算口径与聚合器一致：通过=artifact_pass is True）",
         "first_round_distribution": "8 题全带外（built 未标定）；题型分布=positive 4 / near-negative 2 / adversarial 2",
-        "sorter": "分拣规则（PLAN §3.2）：>90% 进轮换池、60-90% 迭代池、<60% 归因五分类；阈值卡 B 后可注入"
+        "sorter": "分拣规则（PLAN §3.2）：>90% 进轮换池、60-90% 迭代池、<60% 归因五分类；阈值卡 B 后可注入",
+        "band_basis": {
+          "glm_treatment_rate": 0.5,
+          "minimax_treatment_rate": 1.0,
+          "avg": 0.75,
+          "sorter_source": "derive_d4（ws4_pool_state.py）"
+        }
       }
     },
     {
@@ -548,10 +572,16 @@
       },
       "d4_record": {
         "stage": "D4 校准入池（难度带分拣）",
-        "band": null,
-        "band_reason": "首轮未标定：0 模型调用无臂数据，难度带（treatment 通过率锚）须待基线轮（SF-0006）后分拣",
+        "band": "rotation",
+        "band_reason": "SF-0006 C 层基线轮分拣（PLAN §3.2 阈值 >90%/60–90%/<60%，两族 treatment 通过率均值=100.0%）：glm=100.0%、minimax=100.0%；来源=runs/sf0006-c（matrix-glm.json+matrix-minimax.json，由本脚本从盘上派生，复算口径与聚合器一致：通过=artifact_pass is True）",
         "first_round_distribution": "8 题全带外（built 未标定）；题型分布=positive 4 / near-negative 2 / adversarial 2",
-        "sorter": "分拣规则（PLAN §3.2）：>90% 进轮换池、60-90% 迭代池、<60% 归因五分类；阈值卡 B 后可注入"
+        "sorter": "分拣规则（PLAN §3.2）：>90% 进轮换池、60-90% 迭代池、<60% 归因五分类；阈值卡 B 后可注入",
+        "band_basis": {
+          "glm_treatment_rate": 1.0,
+          "minimax_treatment_rate": 1.0,
+          "avg": 1.0,
+          "sorter_source": "derive_d4（ws4_pool_state.py）"
+        }
       }
     },
     {

@@ -1,0 +1,58 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/hot-01-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 241400,
+  "started_at_ms": 1791416265891,
+  "session_id": "sess_c98de07b-c490-4650-a914-6da75b3e54c3",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/hot-01-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 302230,
+      "ot": 19428,
+      "dur": 235107,
+      "n": 8
+    }
+  ],
+  "input_tokens": 302230,
+  "output_tokens": 19428,
+  "stdout_bytes": 2867,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "擎 `scripts/gen.py`（先读完 `references/dy.md` 与 `references/frozen-tokens.md`），以 `--platform dy --topic 阳台种菜 --points fixtures/input.json` 运行成功（exit 0、OK 行、产物非空），再把引擎骨架映射为本 brief 要求的简化 schema 写入 `out/`。\\n\\n**判定要点逐项核验**（对落盘文件回读检查，非生成时断言）：\\n\\n- 顶层 11 键顺序逐字一致；`platform_name=\\\"短视频口播稿\\\"`、`structure_name=\\\"3秒钩子 + 痛点 + 价值点×3 + 行动号召\\\"`、`element_count=6`、要素名序列 `钩子/痛点/价值点1/2/3/行动号召`，每要素恰 `{\\\"name\\\",\\\"content\\\"}` 两键且内容非空；\\n- 3 条卖点全部用上：`points_used` 为输入原串、`points_unused=[]`（合起来不多不少不重），三条价值点逐字包含对应卖点；\\n- 钩子 60 字符（≥8）；行动号召含「评论」；`placeholder_stats={\\\"slots\\\":3,\\\"filled\\\":3,\\\"placeholders\\\":0}`；\\n- 两文件零 `{{ }}` 残留，12 个绝对化用语词全部零命中；\\n- `骨架.md` 恰 6 行，逐行 `【要素名】内容`，与 structure.json 同源一致。\\n\\n**两点需要说明的处理**：\\n\\n1. **合规改写（对引擎冻结文本的唯一偏离）**：引擎冻结的价值点前缀是「第一招：/第二招：/第三招：」，其中「第一」命中广告法红线词表。已统一改写为「招式一：/招式二：/招式三：」（三条同步改，保持编排一致），其余文本逐字保留引擎输出。这是模板冻结与 brief 红线冲突时按 brief（判定依据）的取舍。\\n2. **`【占位:…】` 开放槽位按设计保留**：skill 红线明确这类槽位留给使用者补写、禁止编造填充；brief 仅禁 `{{ }}` 形式残留，故钩子强句、痛点场景、一句话展开、配套资料四处槽位原样保留，待扩写成文时补写。\\n\\n引擎原始产物留在 `/tmp/hot-templates-stage/dy/` 备查，`out/` 内仅含两份要求的交付物。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 8,\n    \"inputTokens\": 302230,\n    \"outputTokens\": 19428,\n    \"totalTokens\": 321658,\n    \"cacheReadTokens\": 264960,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 17489,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 321658,\n    \"contextUsed\": 53601,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "task": "hot-01",
+  "rep": 2,
+  "slot": 34
+}

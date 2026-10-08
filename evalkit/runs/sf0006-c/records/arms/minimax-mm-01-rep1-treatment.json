@@ -1,0 +1,58 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/mm-01-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 71588,
+  "started_at_ms": 1791414135227,
+  "session_id": "sess_f4d73bf6-02db-4b40-a034-a2b048d3079b",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/mm-01-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 653264,
+      "ot": 11917,
+      "dur": 64767,
+      "n": 23
+    }
+  ],
+  "input_tokens": 653264,
+  "output_tokens": 11917,
+  "stdout_bytes": 3421,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "use it also contains 需要), and left the risk section empty. It also formatted entries as `【09:31 · 赵静怡】` where the brief mandates `【类别 · 相关人】`, filled all owners with「待定」where the brief requires real speaker names, and used「待定」rather than「未明确」for missing deadlines. I rebuilt to the brief's contract instead; the skill's `eval/runner.py` referenced in its docs isn't present in the package, so I wrote my own independent verifier.\\n\\nThe brief's environment note is wrong: `python-docx` is not installed on the default interpreter (`~/venvs/ml`). It is available in `~/venvs/shenbao/bin/python`, which I used to build and verify. The build script is left at `build_minutes.py`; it self-checks every entry, owner, and deadline against the transcript and exits non-zero rather than emitting anything untraceable.\\n\\nOne judgment call: 吴志远's sentence is both a risk and an action item. I placed it only in 风险与关注 to avoid double-counting — the whole sentence, including the「提前准备预案」action, is preserved verbatim there, so nothing is lost.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 23,\n    \"inputTokens\": 653264,\n    \"outputTokens\": 11917,\n    \"totalTokens\": 665181,\n    \"cacheReadTokens\": 611968,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1461,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 665181,\n    \"contextUsed\": 38670,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "task": "mm-01",
+  "rep": 1,
+  "slot": 23
+}

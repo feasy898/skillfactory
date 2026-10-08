@@ -1,0 +1,10 @@
+{
+  "task": "mm-02",
+  "seed": 4202,
+  "nonce_set": "A",
+  "sha256": {
+    "fixtures/transcript.txt": "00320a0cc18a7ab6818ecca7ce2dbfdca5246e058f9f342a9fcd20029093e280",
+    "oracle/summary.json": "47c2354f77d4bf3144dce6b095fd522f61ad0f88ec17229d61ae78327a87e556",
+    "oracle/纪要.docx": "7f64550368cfd37982373d2635f3b749f6c9f1cc743f86084160ef6efa862284"
+  }
+}

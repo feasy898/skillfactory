@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/hot-03-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 57130,
+  "started_at_ms": 1791413227523,
+  "session_id": "sess_5b2df7d7-a1a1-4060-9f9a-be1f1671fc1b",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/hot-03-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 259595,
+      "ot": 5093,
+      "dur": 53211,
+      "n": 10
+    }
+  ],
+  "input_tokens": 259595,
+  "output_tokens": 5093,
+  "stdout_bytes": 2900,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "ys per element, and all three value points housed inside `thesis_how` rather than one per `论点N`), plus a sectioned markdown layout instead of the `【名】内容` line format the brief specifies. The brief states its criteria govern the judgment, so I followed the brief and treated the skill only as background context.\\n\\nOne input oddity worth flagging: the topic is `家常快手菜` but both selling points concern 中台 task prioritization and a 25-minute focus method — unrelated subject matter. Since the brief requires `论点1`/`论点2` to contain the points verbatim, I kept them verbatim and bridged them with topic-agnostic framing (priority ordering → what to cook first, time blocks → 25-minute prep/cook/cleanup slots). If the pairing is a fixture bug, swapping in the intended points only requires editing two strings.\\n\\n**Compliance**: neither file contains any of the twelve banned absolutes (`第一`, `最佳`, `独家`, etc. — note I avoided phrases like \\\"第一印象\\\" that would have tripped the substring check), and there is no `{{ }}` residue in either.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 10,\n    \"inputTokens\": 259595,\n    \"outputTokens\": 5093,\n    \"totalTokens\": 264688,\n    \"cacheReadTokens\": 225274,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 430,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 264688,\n    \"contextUsed\": 35055,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

@@ -1,0 +1,58 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/hot-02-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 72679,
+  "started_at_ms": 1791416509294,
+  "session_id": "sess_a0fb0e82-5775-40a5-aed6-f713cfcbddf1",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/hot-02-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 129051,
+      "ot": 5691,
+      "dur": 68423,
+      "n": 6
+    }
+  ],
+  "input_tokens": 129051,
+  "output_tokens": 5691,
+  "stdout_bytes": 2255,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "`platform_name=图文笔记`, `structure_name=数字标题 + 开头 + 要点×3 + 标签`, `topic=旧物改造`, `points_input_count=3`, all 3 input points in `points_used` (so used+unused equals the input set exactly), `element_count=6` with the element names `标题/开头/要点1/要点2/要点3/标签`, and `placeholder_stats={\\\"slots\\\":3,\\\"filled\\\":3,\\\"placeholders\\\":0}`.\\n- `out/骨架.md` — six lines in element order, each formatted `【要素名】内容` and matching structure.json verbatim.\\n\\n**How the judgment points were satisfied** (confirmed by a verification script, not just by eye):\\n\\n- 标题 `旧物改造别瞎忙🔥3个习惯稳住你的改造节奏` contains the digit 3 and the emoji 🔥.\\n- 标签 line has 6 space-separated hashtags (`#旧物改造 #手作日常 …`), within the 3–8 range.\\n- Each 要点N contains its input point character-for-character, including the fixture's specific strings like `用四象限法给云岭数据看板相关任务排优先级`.\\n- Neither file contains any of the 12 banned absolute-marketing terms (国家级/世界级/最高级/最佳/第一/顶级/独家/万能/百分百/绝对/永久有效/全网第一) — checked by scanning the raw file contents of both.\\n- No `{{ }}` template placeholders remain anywhere.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 6,\n    \"inputTokens\": 129051,\n    \"outputTokens\": 5691,\n    \"totalTokens\": 134742,\n    \"cacheReadTokens\": 119360,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 3999,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 134742,\n    \"contextUsed\": 25572,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "task": "hot-02",
+  "rep": 1,
+  "slot": 35
+}

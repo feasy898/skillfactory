@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/hot-03-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 297470,
+  "started_at_ms": 1791417958887,
+  "session_id": "sess_7a5f36f2-ea98-4d77-a776-62f77206eee5",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/hot-03-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 331108,
+      "ot": 22445,
+      "dur": 290183,
+      "n": 9
+    }
+  ],
+  "input_tokens": 331108,
+  "output_tokens": 22445,
+  "stdout_bytes": 2592,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "87872c-e04a-4b25-82e1-5fa7968551a7\",\n  \"response\": \"完成。任务交付物已生成并通过全部判定要点的自检：`out/structure.json` 和 `out/骨架.md`，外加生成它们的确定性脚本 `build_out.py`（16 项检查全过、重跑逐字节一致、UTF-8/LF）。\\n\\n**结果概要**\\n\\n- `structure.json`：11 个顶层键按规定顺序排列；`structure_name = \\\"引入 + 论点×3 + 总结\\\"`；5 个要素 `引入 / 论点1 / 论点2 / 论点3 / 总结`，每个恰含 `name`/`content` 两键；2 条卖点逐字嵌入论点1、论点2 并全部记入 `points_used`（`points_unused` 为空）；论点3 按规约含逐字 `【占位:价值点3】`，未编造顶替、未留空；`placeholder_stats = {slots:3, filled:2, placeholders:1}`。\\n- `骨架.md`：恰 5 行，每行 `【要素名】内容`；`【占位:` 全文出现 1 次，与统计值和实际未填槽数三处一致。\\n- 合规：两份文件已逐字扫描，不含广告法 12 个绝对化用语，无 `{{ }}` 残留（我特意避开了「第一步」这类含「第一」的写法，论点3 用的是数字「第3」）。\\n\\n**一个需要说明的决策**：本仓库植入的 hot-templates 技能要求骨架一律走它的 `gen.py` 引擎，我先按其规则读完了 `references/wx.md` 和 `frozen-tokens.md` 并实际运行了引擎（输出留在 /tmp）。但引擎的 wx 冻结模板与本任务的契约不兼容——它产出的是「引子 + 三段论 + 金句收尾」结构、每要素 9 键、卖点同居 `thesis_how`、全文 11 处开放占位符，而 brief 明确「判定即按此执行」，要求不同的要素命名、两键要素和全篇恰 1 处占位。二者冲突时 brief 是权威契约，所以由 `build_out.py` 按 brief 契约确定性生成交付物，同时沿用了技能的占位 token 与记账语义（`【占位:价值点N】`、`points_used/points_unused`）。这一取舍及理由也写在了 `build_out.py` 的文件头注释里，供审计。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 9,\n    \"inputTokens\": 331108,\n    \"outputTokens\": 22445,\n    \"totalTokens\": 353553,\n    \"cacheReadTokens\": 291392,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 19525,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 353553,\n    \"contextUsed\": 55727,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

@@ -1,0 +1,178 @@
+{
+  "repaired": [
+    {
+      "slot": 1,
+      "arm": "glm/mm-01-rep1/baseline",
+      "ledger_had": null,
+      "authoritative": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+    },
+    {
+      "slot": 3,
+      "arm": "minimax/mm-01-rep2/treatment",
+      "ledger_had": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "authoritative": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+    },
+    {
+      "slot": 4,
+      "arm": "glm/mm-01-rep1/treatment",
+      "ledger_had": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "authoritative": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+    },
+    {
+      "slot": 8,
+      "arm": "minimax/mm-02-rep2/treatment",
+      "ledger_had": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "authoritative": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+    },
+    {
+      "slot": 9,
+      "arm": "glm/hot-01-rep1/baseline",
+      "ledger_had": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "authoritative": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+    },
+    {
+      "slot": 10,
+      "arm": "minimax/hot-01-rep2/baseline",
+      "ledger_had": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "authoritative": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+    },
+    {
+      "slot": 11,
+      "arm": "glm/hot-01-rep1/treatment",
+      "ledger_had": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "authoritative": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+    },
+    {
+      "slot": 14,
+      "arm": "minimax/hot-02-rep1/treatment",
+      "ledger_had": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "authoritative": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+    },
+    {
+      "slot": 15,
+      "arm": "glm/hot-02-rep2/baseline",
+      "ledger_had": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "authoritative": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+    },
+    {
+      "slot": 17,
+      "arm": "minimax/hot-03-rep1/treatment",
+      "ledger_had": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "authoritative": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+    },
+    {
+      "slot": 18,
+      "arm": "glm/hot-02-rep2/treatment",
+      "ledger_had": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "authoritative": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+    },
+    {
+      "slot": 41,
+      "arm": "glm/hot-03-rep2/treatment",
+      "ledger_had": null,
+      "authoritative": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+    }
+  ],
+  "note": "台账显示层竞态修复留痕；臂进程数/重试数不受影响",
+  "total_repairs": 12
+}

@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/mm-02-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 461268,
+  "started_at_ms": 1791414521940,
+  "session_id": "sess_de05933e-8064-4d8e-81a0-2b27bb8c4922",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/mm-02-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1593677,
+      "ot": 30512,
+      "dur": 432437,
+      "n": 30
+    }
+  ],
+  "input_tokens": 1593677,
+  "output_tokens": 30512,
+  "stdout_bytes": 3211,
+  "stderr_bytes": 392,
+  "stderr_head": "AI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\n",
+  "stdout_tail": "7 → todos, 8–9 → risks. The opening line and the closing “资料我随后发群里” remark are excluded — they're procedural, not resolutions or assignable todos (the reference solution draws the same line).\\n- **Deadlines**: 6月30日前 and 7月中旬 taken verbatim; 张晓雯's 责任分工 todo has no deadline in the transcript, so its 期限 is 未明确.\\n- **Discipline**: no `[HH:MM]` timestamps anywhere, no invented speaker distinctions, and every item's content is a verbatim substring of the transcript (the generator asserts this before writing).\\n\\n**Verification**: I located the actual grading contract (`harness/ws4_judge.py` via `packs/ws4-dev/mm-02/checks/run_check.py`) and ran it against my output with the local fixtures as input basis — all nine `task_outcome_*` checks pass, including verbatim traceability, owner validity, todo-row sourcing, summary self-consistency, and the no-fabricated-timestamp check. A documents:visual-judge pass on the LibreOffice-rendered page returned `verdict: pass` (clean CJK rendering, correct structure, readable table).\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 30,\n    \"inputTokens\": 1593677,\n    \"outputTokens\": 30512,\n    \"totalTokens\": 1624189,\n    \"cacheReadTokens\": 1531072,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 26398,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1624189,\n    \"contextUsed\": 78149,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

@@ -1,0 +1,369 @@
+{
+  "card": "SF-0006",
+  "layer": "C",
+  "run_id": "sf0006-c",
+  "base_commit": "68949f99f01df7d2150c2a0c6c7461c92e87459d",
+  "opened_at": "2026-10-08T06:33:29+0800",
+  "closed_at": "2026-10-08T07:55:31+0800",
+  "verdict_type": "baseline-signal",
+  "not_an_acceptance": "本轮只出基线信号（baseline-signal），不构成验收性质的判定、不作任何准入表述（C-10 措辞纪律）",
+  "d3_annotator_kind": "delegated-signing-model",
+  "d3_disclosure": "D3 金标为受托模型标注，非人工（owner-delegated-signing-20261008 §三 调和注记：受托签署模型在 owner 授权链内出具、对 checker 盲态、独立于开发方；证据等级降格披露，人工标注可得后另开卡重做对拍）",
+  "layers": {
+    "A": {
+      "status": "passed",
+      "evidence": [
+        "gate_sf0006a 8/8 PASS（提交 efcf91c/29e0a25）；A-07 D3 对拍 5 题 accuracy=1.0（ws4_d3_gate --real 全 exit 0）"
+      ]
+    },
+    "B": {
+      "status": "passed",
+      "evidence": [
+        "runs/sf0006-b-smoke-2/round-report.json：layers.B=passed、redline_event=false（B-01 钉版逐字全中）；本轮钉版机制照抄其 M4/M2 与 options.reasoningLevel 契约"
+      ]
+    },
+    "C": {
+      "status": "passed",
+      "gates": [
+        {
+          "id": "C-01",
+          "verdict": "pass",
+          "detail": "glm rows=5 cells=20 six=True family=glm；minimax rows=5 cells=20 six=True family=minimax；臂进程 40 ≤40 + 重试 0（逐条 budget.json）"
+        },
+        {
+          "id": "C-02",
+          "verdict": "pass",
+          "detail": "40 单元产物轨复算对拍 全一致"
+        },
+        {
+          "id": "C-03",
+          "verdict": "pass",
+          "detail": "40 单元 process_pass 全非 null（EI-14 禁止面在 process_track 检查 4，命中即 process_pass=false 标红不删除）；红=无"
+        },
+        {
+          "id": "C-04",
+          "verdict": "pass",
+          "detail": "40 单元 quality_score==null 且 verdict==unjudgeable"
+        },
+        {
+          "id": "C-05",
+          "verdict": "pass",
+          "detail": "glm delta_vs_none=-0.2 复算=-0.2 prev_null=True；minimax delta_vs_none=0.3 复算=0.3 prev_null=True；复算脚本不 import 聚合工具；AG-6 混族拒绝已在 P6 自证（runs/sf0006-aggregator/selftest-p6.out）"
+        },
+        {
+          "id": "C-06",
+          "verdict": "pass",
+          "detail": "glm infra=0/20（0.0%）citable=True；minimax infra=0/20（0.0%）citable=True；整族崩溃=无；infra 剔除列表逐条=0 条（禁止静默剔除）"
+        },
+        {
+          "id": "C-07",
+          "verdict": "pass",
+          "detail": "glm token_ratio=1.1312276196280977 wall_ratio=1.9089196041593293（treatment/baseline 均值，tokens 来自 model_usage join）；minimax token_ratio=2.2785370650260828 wall_ratio=2.1650961474503743（treatment/baseline 均值，tokens 来自 model_usage join）"
+        },
+        {
+          "id": "B-03",
+          "verdict": "pass",
+          "detail": "收工三份全局配置 sha256 与开工逐字节相等=True"
+        },
+        {
+          "id": "C-10-REGISTRY",
+          "verdict": "pass",
+          "detail": "REGISTRY 窗口提交 0 个；窗口内无 REGISTRY 提交（过）"
+        }
+      ],
+      "evidence": [
+        "runs/sf0006-c/records/c-gates.json（9 门 全过）",
+        "runs/sf0006-c/matrix-glm.json / matrix-minimax.json",
+        "runs/sf0006-c/precheck/verify-sf0003-post-c08.out：全绿 34 门"
+      ]
+    }
+  },
+  "redline_event": false,
+  "budget": {
+    "cap_counted_arms": 40,
+    "counted_arm_procs": 40,
+    "retry_procs": 0,
+    "incident_procs": 1,
+    "rerun_after_incident": [
+      {
+        "arm": "glm/hot-03-rep2/treatment",
+        "reason": "预算触顶拦截（counted 已含 1 事故进程）；按 B 层 failed_infra 判例事故进程不占正式额度，本重跑为第 40 个正式臂进程",
+        "exit_code": 0,
+        "session_id": "sess_7a5f36f2-ea98-4d77-a776-62f77206eee5",
+        "model_id_observed": "GLM-5.3",
+        "provider_id_observed": "account:bigmodel-individual-coding-plan"
+      }
+    ],
+    "physical_procs_total": 41,
+    "budget_note": "预算口径：正式臂进程 40 = 上限（触顶即停在该臂生效过一次——glm/hot-03-rep2/treatment 被 counted=40 拦截，见 c_rerun_one.py）；事故进程 1（glm/hot-02-rep2/treatment 首跑因编排器被外部分 SIGKILL 中断，db 主调用 completed 145s 后 cancelled、产物半成品、无有效 records）按 B 层 failed_infra 轮判例（提交 23d4edc 第 1 轮 4 臂 failed_infra 不占 d2a019d 第 2 轮预算）不占正式额度，单列披露；物理进程总数 41。rate_limited 退避重试 0 次。"
+  },
+  "aggregator": "evalkit/evaluators/aggregate.py",
+  "aggregator_note": "P6 收口（提交 68949f9）+ C 层实跑修正（ADD-4，--family 按族出份范围）；两族 matrix 由同一 run 根两次调用产出；AG-6 否定式测试在 runs/sf0006-aggregator/selftest_p6.py（26 项 exit 0）",
+  "families": {
+    "glm": {
+      "units": 20,
+      "infra_units": 0,
+      "infra_rate": 0.0,
+      "delta_vs_none": -0.2,
+      "token_ratio": 1.1312276196280977,
+      "wall_ratio": 1.9089196041593293,
+      "citable": true,
+      "citable_reason": "A-07 全 exit 0（提交 efcf91c，5 题 accuracy 1.0）且本族 infra 0.0% ≤20%（C-10 citable 规则）",
+      "unjudgeable": false,
+      "efficiency_note": "C-07 只记录不判门：minimax wall_ratio 1.91 / token_ratio 1.13 （treatment/baseline 均值）；效率门属 SF-0008 范畴"
+    },
+    "minimax": {
+      "units": 20,
+      "infra_units": 0,
+      "infra_rate": 0.0,
+      "delta_vs_none": 0.3,
+      "token_ratio": 2.2785370650260828,
+      "wall_ratio": 2.1650961474503743,
+      "citable": true,
+      "citable_reason": "A-07 全 exit 0（提交 efcf91c，5 题 accuracy 1.0）且本族 infra 0.0% ≤20%（C-10 citable 规则）",
+      "unjudgeable": false,
+      "efficiency_note": "C-07 只记录不判门：minimax wall_ratio 2.17 / token_ratio 2.28 （treatment/baseline 均值）；效率门属 SF-0008 范畴"
+    }
+  },
+  "citable": true,
+  "citable_basis": "C-10：A-07 全 exit 0（efcf91c）∧ C-06 两族 infra ≤20%（本轮 0%/0%）",
+  "d4_sortition": {
+    "source": "harness/ws4_pool_state.py derive_d4 从盘上 matrix 派生（C-08，禁止手改）",
+    "thresholds": ">90% rotation / 60-90% iteration / <60% attribution（PLAN §3.2）",
+    "tasks": {
+      "mm-01": {
+        "glm_treatment_rate": 1.0,
+        "minimax_treatment_rate": 1.0,
+        "avg": 1.0,
+        "band": "rotation"
+      },
+      "mm-02": {
+        "glm_treatment_rate": 0.5,
+        "minimax_treatment_rate": 1.0,
+        "avg": 0.75,
+        "band": "iteration"
+      },
+      "hot-01": {
+        "glm_treatment_rate": 0.5,
+        "minimax_treatment_rate": 0.5,
+        "avg": 0.5,
+        "band": "attribution"
+      },
+      "hot-02": {
+        "glm_treatment_rate": 0.5,
+        "minimax_treatment_rate": 1.0,
+        "avg": 0.75,
+        "band": "iteration"
+      },
+      "hot-03": {
+        "glm_treatment_rate": 1.0,
+        "minimax_treatment_rate": 1.0,
+        "avg": 1.0,
+        "band": "rotation"
+      }
+    },
+    "pool_state_confirmed": true,
+    "a05_a10_preserved": true,
+    "ofc_note": "ofc 3 题 band=None（不在本卡范围，无 matrix 行，维持未标定）"
+  },
+  "infra_errors": [],
+  "infra_note": "两族 infra_error 单元 0/40，无剔除、无静默剔除；无整轮作废类表述",
+  "input_integrity": {
+    "a13": "runs/sf0006-c/records/a13-input-tree-sha256.json + a13-same-rep-equal.json（rep1==包内 canonical；两 rep 互异；同 rep 四臂输入两两相等）",
+    "a14_c09": "10 棵 oracle 树 A-14 hash 登记 + C-09 跑后 verify 全 exit 0（runs/sf0006-c/records/c09-oracle-verify.json）"
+  },
+  "budget_ledger_repair": {
+    "repaired": [
+      {
+        "slot": 1,
+        "arm": "glm/mm-01-rep1/baseline",
+        "ledger_had": null,
+        "authoritative": {
+          "model_id": "GLM-5.3",
+          "provider_id": "account:bigmodel-individual-coding-plan",
+          "variant": null
+        },
+        "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+      },
+      {
+        "slot": 3,
+        "arm": "minimax/mm-01-rep2/treatment",
+        "ledger_had": {
+          "model_id": "GLM-5.3",
+          "provider_id": "account:bigmodel-individual-coding-plan",
+          "variant": null
+        },
+        "authoritative": {
+          "model_id": "Minimax-M3.1-Flash-Preview",
+          "provider_id": "minimax",
+          "variant": null
+        },
+        "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+      },
+      {
+        "slot": 4,
+        "arm": "glm/mm-01-rep1/treatment",
+        "ledger_had": {
+          "model_id": "Minimax-M3.1-Flash-Preview",
+          "provider_id": "minimax",
+          "variant": null
+        },
+        "authoritative": {
+          "model_id": "GLM-5.3",
+          "provider_id": "account:bigmodel-individual-coding-plan",
+          "variant": null
+        },
+        "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+      },
+      {
+        "slot": 8,
+        "arm": "minimax/mm-02-rep2/treatment",
+        "ledger_had": {
+          "model_id": "GLM-5.3",
+          "provider_id": "account:bigmodel-individual-coding-plan",
+          "variant": null
+        },
+        "authoritative": {
+          "model_id": "Minimax-M3.1-Flash-Preview",
+          "provider_id": "minimax",
+          "variant": null
+        },
+        "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+      },
+      {
+        "slot": 9,
+        "arm": "glm/hot-01-rep1/baseline",
+        "ledger_had": {
+          "model_id": "Minimax-M3.1-Flash-Preview",
+          "provider_id": "minimax",
+          "variant": null
+        },
+        "authoritative": {
+          "model_id": "GLM-5.3",
+          "provider_id": "account:bigmodel-individual-coding-plan",
+          "variant": null
+        },
+        "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+      },
+      {
+        "slot": 10,
+        "arm": "minimax/hot-01-rep2/baseline",
+        "ledger_had": {
+          "model_id": "GLM-5.3",
+          "provider_id": "account:bigmodel-individual-coding-plan",
+          "variant": null
+        },
+        "authoritative": {
+          "model_id": "Minimax-M3.1-Flash-Preview",
+          "provider_id": "minimax",
+          "variant": null
+        },
+        "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+      },
+      {
+        "slot": 11,
+        "arm": "glm/hot-01-rep1/treatment",
+        "ledger_had": {
+          "model_id": "Minimax-M3.1-Flash-Preview",
+          "provider_id": "minimax",
+          "variant": null
+        },
+        "authoritative": {
+          "model_id": "GLM-5.3",
+          "provider_id": "account:bigmodel-individual-coding-plan",
+          "variant": null
+        },
+        "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+      },
+      {
+        "slot": 14,
+        "arm": "minimax/hot-02-rep1/treatment",
+        "ledger_had": {
+          "model_id": "GLM-5.3",
+          "provider_id": "account:bigmodel-individual-coding-plan",
+          "variant": null
+        },
+        "authoritative": {
+          "model_id": "Minimax-M3.1-Flash-Preview",
+          "provider_id": "minimax",
+          "variant": null
+        },
+        "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+      },
+      {
+        "slot": 15,
+        "arm": "glm/hot-02-rep2/baseline",
+        "ledger_had": {
+          "model_id": "Minimax-M3.1-Flash-Preview",
+          "provider_id": "minimax",
+          "variant": null
+        },
+        "authoritative": {
+          "model_id": "GLM-5.3",
+          "provider_id": "account:bigmodel-individual-coding-plan",
+          "variant": null
+        },
+        "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+      },
+      {
+        "slot": 17,
+        "arm": "minimax/hot-03-rep1/treatment",
+        "ledger_had": {
+          "model_id": "GLM-5.3",
+          "provider_id": "account:bigmodel-individual-coding-plan",
+          "variant": null
+        },
+        "authoritative": {
+          "model_id": "Minimax-M3.1-Flash-Preview",
+          "provider_id": "minimax",
+          "variant": null
+        },
+        "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+      },
+      {
+        "slot": 18,
+        "arm": "glm/hot-02-rep2/treatment",
+        "ledger_had": {
+          "model_id": "Minimax-M3.1-Flash-Preview",
+          "provider_id": "minimax",
+          "variant": null
+        },
+        "authoritative": {
+          "model_id": "GLM-5.3",
+          "provider_id": "account:bigmodel-individual-coding-plan",
+          "variant": null
+        },
+        "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+      },
+      {
+        "slot": 41,
+        "arm": "glm/hot-03-rep2/treatment",
+        "ledger_had": null,
+        "authoritative": {
+          "model_id": "GLM-5.3",
+          "provider_id": "account:bigmodel-individual-coding-plan",
+          "variant": null
+        },
+        "cause": "entries[-1].update 双线程竞态错位（append 与 update 分离期间他族线程 append 致 [-1] 指向他人行）；records/arms/*.json 为逐臂权威（自 persist 起从未共享）"
+      }
+    ],
+    "note": "台账显示层竞态修复留痕；臂进程数/重试数不受影响",
+    "total_repairs": 12
+  },
+  "freeze": {
+    "opening": "runs/sf0006-c/precheck/freeze-verify-opening.out（exit 0）",
+    "closing": "freeze verify 终态 exit 0（44 文件全对）；verify_sf0003 终跑全绿 34 门（runs/sf0006-c/precheck/verify-sf0003-post-c08.out）；装置改动 ADD-4（aggregate.py --family 范围 + ws4_pool_state.py derive_d4）走 A-04：改前留档 keyfiles-pre-c08.sha256、re-freeze、CHANGELOG 登记、门数不减"
+  },
+  "b03_global_config": "开工/收工三份全局配置 sha256 逐字节相等（precheck/global-sha-opening.txt + records/c-gates.json B-03 门）",
+  "c11_roundtrip": "runs/sf0006-c 全树 556 个 json：UTF-8 严格解码、json.load 全成功、CR 字节 0（2026-10-08 实扫）",
+  "registry_window_check": "git log 68949f9..HEAD -- REGISTRY.md 为空（窗口内无 REGISTRY 提交，C-10 窗口断言过；runs/sf0006-c/records/c-gates.json C-10-REGISTRY 门）",
+  "not_covered": [
+    "ofc-01/02/03 的 D3 与跑分（归 WS3）；band 维持未标定",
+    "质量轨打分与跨族裁判（SF-0004：异族裁判不可满足，全单元 unjudgeable 恒 null）",
+    "delta_vs_prev 数值（首轮基线轮，显式 null）；三臂 A_old 对照",
+    "holdout 题跑分；效率门判定（C-07 只记录，minimax wall_ratio 2.17>2.0 属 SF-0008 范畴）",
+    "任何验收性质的结论表述、准入判定与 REGISTRY.md 更新（C-10）",
+    "db 行 variant 字段本轮为 None，model_pin.reasoning_variant 按族契约默认回退（如实记录，非实测回填；B 层曾实测回填 max/enabled）",
+    "进度日志 UNIT 行的 minimax wall=0ms 为日志显示瑕疵（续跑轮 UNIT_STATE 无上一轮内存态；该族数据以 records/arms 权威文件为准，矩阵与比率计算全部取自 records）"
+  ]
+}

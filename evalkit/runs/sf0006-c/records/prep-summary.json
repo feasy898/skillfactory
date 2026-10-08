@@ -1,0 +1,14 @@
+{
+  "ready5": [
+    "mm-01",
+    "mm-02",
+    "hot-01",
+    "hot-02",
+    "hot-03"
+  ],
+  "units": 40,
+  "oracle_trees": 10,
+  "a13": "rep1==canonical / rep2!=rep1 / 同 rep 四臂两两相等",
+  "a12_isolation": "20 baseline 臂全 exit 0",
+  "opened_at": "2026-10-08T06:33:29+0800"
+}

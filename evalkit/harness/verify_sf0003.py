@@ -76,7 +76,7 @@ CUR_VERSION = "v6-mvp-" + "0.3"  # 动态构造同 OLD_VER：防 B1 残留扫描
 DECLARED_CHANGED = {"evaluators/aggregate.py", "evaluators/process_track.py",
                     "harness/freeze_device.py",
                     "harness/make_arms.py", "harness/pack_checks.py", "harness/run_all.py",
-                    "nc/run_nc.py", "packs/sm-mapping-01/checks/run_check.py"}  # +拆仓路径解耦(2026-10-05)；+freeze_device(2026-10-06 遗留小项②)
+                    "nc/run_nc.py", "packs/sm-mapping-01/checks/run_check.py"}  # +拆仓路径解耦(2026-10-05)；+freeze_device(2026-10-06 遗留小项②)。注：harness/ws4_pool_state.py（2026-10-08 SF-0006 C-08 derive_d4，改前留档 runs/sf0006-c/precheck/keyfiles-pre-c08.sha256=提交 68949f9 版）与 evaluators/aggregate.py C 层按族出份修正同属本轮改动——ws4_pool_state 是 S0 基线后新增装置（DECLARED_NEW 成员，不在 BASE_KEYFILES），其变更不入 changed 集（F5 集合口径既有行为）；aggregate 在 BASE 内，变更照常入 changed。
 DECLARED_NEW = {"harness/doc_consistency.py", "harness/verify_sf0003.py",
                 "harness/ws4_d3_gate.py", "harness/ws4_gen.py",
                 "harness/ws4_judge.py", "harness/ws4_pool_state.py"}  # ws4 四件=S0 后 WS4 批次装置(拆仓前既有, 2026-10-05 补声明)

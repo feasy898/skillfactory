@@ -1,0 +1,58 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/hot-02-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 92371,
+  "started_at_ms": 1791413185283,
+  "session_id": "sess_1c476056-0ef4-41dc-a497-c3cda0c55501",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/glm/hot-02-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 136824,
+      "ot": 7379,
+      "dur": 87719,
+      "n": 6
+    }
+  ],
+  "input_tokens": 136824,
+  "output_tokens": 7379,
+  "stdout_bytes": 2634,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "led\\\": 3, \\\"placeholders\\\": 0}`.\\n- **`out/骨架.md`** — exactly 6 lines in element order, each `【要素名】内容`, contents identical to `structure.json`.\\n\\n**Self-check results (all pass):**\\n\\n- 标题 contains an Arabic numeral (`3`) and an emoji (`✅`): “通勤读书✅3个亲测好用的节奏，每天地铁时间也能稳稳出进度”\\n- 标签 has 5 space-separated hashtags (`#通勤读书 #读书方法 #时间管理 #碎片时间利用 #地铁通勤`), within the 3–8 range\\n- Each 要点N literally contains the Nth input selling point verbatim\\n- None of the 12 prohibited absolute-marketing terms (国家级/世界级/最高级/最佳/第一/顶级/独家/万能/百分百/绝对/永久有效/全网第一) appear in either file — the input points themselves were also scanned and are clean\\n- No `{{ }}` template placeholders in either file's raw text\\n\\nOne note from the checking process: an initial self-check reported a placeholder FAIL, but that was a bug in my own test (it scanned a compactly re-serialized copy of the JSON, where nested object closings legitimately produce `}}` as JSON syntax); re-checking against the raw file text confirmed both files are clean and the JSON parses correctly.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 6,\n    \"inputTokens\": 136824,\n    \"outputTokens\": 7379,\n    \"totalTokens\": 144203,\n    \"cacheReadTokens\": 125312,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 5475,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 144203,\n    \"contextUsed\": 27650,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "task": "hot-02",
+  "rep": 2,
+  "slot": 15
+}

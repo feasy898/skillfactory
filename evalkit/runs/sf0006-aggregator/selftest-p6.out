@@ -1,9 +1,9 @@
 AG-6 混族(无 --family)非零退出      PASS exit=1
 AG-6 混族(无 --family)零落盘       PASS err头=AG-6 跨族拒绝：输入含 2 族单元 {glm, minimax}——跨族 Δ 不可比（被测模型本身是变量，PLAN 
 AG-6 混族(无 --family)报AG-6     PASS 
-AG-6 混族(--family glm)非零退出    PASS exit=1
-AG-6 混族(--family glm)零落盘     PASS err头=AG-6 跨族拒绝：输入含 2 族单元 {glm, minimax}——跨族 Δ 不可比（被测模型本身是变量，PLAN 
-AG-6 混族(--family glm)报AG-6   PASS 
+C-01 --family 按族出份 exit 0    PASS 
+C-01 单份 matrix 只有一个族         PASS {'glm'}
+AG-6 族内混族非零退出                PASS exit=1 err头=族不一致：glm/mm-02-rep1/mm-02-rep1/baseline 目录族='glm' arm_run 族=
 AG-6 旧布局混族非零退出               PASS exit=1
 AG-6 旧布局混族零落盘                PASS 
 AG-6 旧布局拒绝报AG-6非崩溃           PASS err头=AG-6 跨族拒绝：单次聚合输入含 2 族单元 {glm, minimax}（cols=glm|baseline|r1,

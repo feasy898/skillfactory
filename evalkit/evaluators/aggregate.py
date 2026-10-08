@@ -99,40 +99,50 @@ def scan_family_units(run_dir, want_family, expect_tasks, expect_reps):
 
     以 arms_manifest.json 为单元锚（make_arms 产物，天然避开 oracle/、records/ 等非臂目录）；
     全部校验 fail-closed，任何不合规返回错误消息，不产生输出。
+
+    扫描范围（SF-0006 C-01/C-05 实跑修正 2026-10-08）：--family 显式时范围限定为
+    <run-dir>/<family>/ 子树——按族各出一份 matrix 是对同一物理 run 根的两次调用
+    （matrix-glm.json / matrix-minimax.json），族子树内混入他族单元仍由「族一致性」
+    检查拒绝（AG-6 否定式测试见 runs/sf0006-aggregator/selftest_p6.py 场景 1/1b）；
+    不给 --family 时扫全根，发现 ≥2 族即 AG-6 拒绝出数。
     """
     units = {}       # (task, rep) -> {arm: arm_dir}
     families = set()
     problems = []
-    for dirpath, dirnames, filenames in os.walk(run_dir):
-        dirnames[:] = sorted(d for d in dirnames if d not in (".zcode", "__pycache__"))
-        if "arms_manifest.json" not in filenames:
-            continue
-        rel = os.path.relpath(dirpath, run_dir).replace(os.sep, "/")
-        fam_dir = rel.split("/")[0]
-        m = UNIT_NAME_RE.match(os.path.basename(dirpath))
-        if not m:
-            problems.append("布局错：%s 单元目录名不形如 <task>-rep<k>" % rel)
-            continue
-        task, rep = m.group("task"), int(m.group("rep"))
-        man = read_json(os.path.join(dirpath, "arms_manifest.json"), {}) or {}
-        pack = man.get("pack")
-        if not pack or os.path.basename(os.path.normpath(str(pack))) != task:
-            problems.append("布局错：%s arms_manifest.pack(%r) 与目录名 task(%r) 不一致"
-                            % (rel, pack, task))
-            continue
-        for arm in ("baseline", "treatment"):
-            arm_dir = os.path.join(dirpath, arm)
-            arm_rec = read_json(os.path.join(arm_dir, "records", "arm_run.json"), {}) or {}
-            if not arm_rec:
-                problems.append("缺件：%s/%s/records/arm_run.json 不存在或为空" % (rel, arm))
+    roots = [os.path.join(run_dir, want_family)] if want_family else [run_dir]
+    for root in roots:
+        if not os.path.isdir(root):
+            return None, ("布局错：聚合范围不存在：%s" % root), None
+        for dirpath, dirnames, filenames in os.walk(root):
+            dirnames[:] = sorted(d for d in dirnames if d not in (".zcode", "__pycache__"))
+            if "arms_manifest.json" not in filenames:
                 continue
-            fam_rec = arm_rec.get("family") or arm_rec.get("family_requested")
-            if fam_rec != fam_dir:
-                problems.append("族不一致：%s/%s 目录族=%r arm_run 族=%r（AG-6 前置一致性）"
-                                % (rel, arm, fam_dir, fam_rec))
+            rel = os.path.relpath(dirpath, run_dir).replace(os.sep, "/")
+            fam_dir = rel.split("/")[0]
+            m = UNIT_NAME_RE.match(os.path.basename(dirpath))
+            if not m:
+                problems.append("布局错：%s 单元目录名不形如 <task>-rep<k>" % rel)
                 continue
-            families.add(fam_dir)
-            units.setdefault((task, rep), {})[arm] = arm_dir
+            task, rep = m.group("task"), int(m.group("rep"))
+            man = read_json(os.path.join(dirpath, "arms_manifest.json"), {}) or {}
+            pack = man.get("pack")
+            if not pack or os.path.basename(os.path.normpath(str(pack))) != task:
+                problems.append("布局错：%s arms_manifest.pack(%r) 与目录名 task(%r) 不一致"
+                                % (rel, pack, task))
+                continue
+            for arm in ("baseline", "treatment"):
+                arm_dir = os.path.join(dirpath, arm)
+                arm_rec = read_json(os.path.join(arm_dir, "records", "arm_run.json"), {}) or {}
+                if not arm_rec:
+                    problems.append("缺件：%s/%s/records/arm_run.json 不存在或为空" % (rel, arm))
+                    continue
+                fam_rec = arm_rec.get("family") or arm_rec.get("family_requested")
+                if fam_rec != fam_dir:
+                    problems.append("族不一致：%s/%s 目录族=%r arm_run 族=%r（AG-6 前置一致性）"
+                                    % (rel, arm, fam_dir, fam_rec))
+                    continue
+                families.add(fam_dir)
+                units.setdefault((task, rep), {})[arm] = arm_dir
     if problems:
         return None, "；".join(problems[:10]), None
 

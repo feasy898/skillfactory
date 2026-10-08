@@ -1,0 +1,59 @@
+{
+  "track": "artifact",
+  "verdict": "pass",
+  "run_check_exit": 0,
+  "checks_pass": true,
+  "input_basis": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/oracle/mm-01-rep2/fixtures",
+  "checks": [
+    {
+      "name": "task_outcome_docx_present_opens",
+      "pass": true,
+      "detail": "opens ok"
+    },
+    {
+      "name": "task_outcome_three_sections",
+      "pass": true,
+      "detail": "三节标题齐"
+    },
+    {
+      "name": "task_outcome_entries_parseable",
+      "pass": true,
+      "detail": "决议 3 条 / 风险 2 条"
+    },
+    {
+      "name": "task_outcome_todo_table_header",
+      "pass": true,
+      "detail": "表头=事项/负责人/期限"
+    },
+    {
+      "name": "task_outcome_entries_traceable_to_input",
+      "pass": true,
+      "detail": "全部逐字可溯源"
+    },
+    {
+      "name": "task_outcome_entry_owner_from_input",
+      "pass": true,
+      "detail": "相关人均为转写稿说话人"
+    },
+    {
+      "name": "task_outcome_todo_rows_traceable",
+      "pass": true,
+      "detail": "2 行待办全部可溯源"
+    },
+    {
+      "name": "task_outcome_summary_selfconsistent",
+      "pass": true,
+      "detail": "summary={'决议事项': 3, '待办事项': 2, '风险与关注': 2, '合计': 7} expected={'决议事项': 3, '待办事项': 2, '风险与关注': 2, '合计': 7}"
+    }
+  ],
+  "l1_registered_not_judged": {
+    "dist_pkg": "meeting-minutes-skill",
+    "runner_path": "/home/pan-ding/workspace/skill工厂/skillfactory/dist/meeting-minutes-skill/eval/runner.py",
+    "argv_shape": "run_check.py <被测产物根> [--input-basis <输入基准目录>] [--record <path>]；L1 子轨=原版 runner <产物根> <参照根>（显式传参，禁 0 参默认）",
+    "ref_root_verbatim": "/home/pan-ding/workspace/skill工厂/skillfactory/dist/meeting-minutes-skill/reference/out",
+    "selfcheck_exit": 0,
+    "redpath_exit": 1,
+    "controlled": true
+  },
+  "source": "packs/ws4-dev/mm-01/checks/run_check.py 直调 --input-basis（C-02 口径；evaluators/artifact_track.py 不支持 --input-basis，rep2 会误判，故直调+包装 verdict，如实留痕）"
+}

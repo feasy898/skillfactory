@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_d02ef0f4-d473-4b3b-9b57-f79d55fd9f9c",
+  "traceId": "414a30b0-97ee-40eb-817c-39cddd31e20a",
+  "turnId": "turn_d4504612-5a40-42c0-bc06-344c2744f635",
+  "response": "Done — both deliverables are in `out/` and every 判定要点 passes (17/17 self-checks, 0 failures).\n\n**What was produced**\n\n- `out/structure.json` — 11 top-level keys in the brief's exact order; `platform_name`=\"图文笔记\", `structure_name`=\"数字标题 + 开点×3 + 标签\", `topic`=\"通勤读书\"; 6 elements named verbatim 标题/开头/要点1–3/标签; `points_used`=all 3 input points, `points_unused`=[]; `placeholder_stats`={\"slots\":3,\"filled\":3,\"placeholders\":0}.\n- `out/骨架.md` — exactly 6 lines, each `【要素名】内容`, byte-identical content to structure.json.\n\n**How it was built**\n\n1. Loaded the `hot-templates` skill and read its xhs reference + frozen-tokens table (required reading), then ran the deterministic engine: `gen.py --platform xhs --topic 通勤读书 --points fixtures/input.json --outdir build/xhs-engine` (exit 0, `elements=7 open_placeholders=7`). Raw engine output is preserved there as provenance.\n2. `build/make_deliverables.py` deterministically maps the engine skeleton to the brief's contract — title→标题, hook_block→开头, point_block_N→要点N, tag_group→标签 (summary_block isn't in the brief's 6-element list, so it's not carried over), flattening internal newlines to spaces so each element is one line. No copy was written or invented; the skill's `【占位:…】` open slots stay unfilled per its red line (the brief only bans `{{ }}`-style residue, and there is none).\n\n**Verification highlights** — title has digit \"3\" + emoji 🔥; tags count 6 (#通勤读书 #干货分享 #方法论 #自我提升 #时间管理 #精力管理), within 3–8; each 要点N contains its selling point verbatim; the 12 banned absolute-marketing words (国家级/最佳/第一/顶级/百分百/绝对 etc.) appear in neither file; no `{{ }}` anywhere; `out/` contains only the two deliverables.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 10,
+    "inputTokens": 372447,
+    "outputTokens": 18137,
+    "totalTokens": 390584,
+    "cacheReadTokens": 338816,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 15813,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 390584,
+    "contextUsed": 52996,
+    "contextWindow": 200000
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/hot-02-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 28557,
+  "started_at_ms": 1791413164831,
+  "session_id": "sess_50f75eb5-d61e-431b-8ca8-5449c5f14a50",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/hot-02-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 263746,
+      "ot": 4470,
+      "dur": 24462,
+      "n": 11
+    }
+  ],
+  "input_tokens": 263746,
+  "output_tokens": 4470,
+  "stdout_bytes": 2831,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "e `标题（带数字）`/`正文·干货块1`, and platform_name `小红书图文`. I ran it first into a temp directory as the skill's hard rule requires, then mapped its frozen markers onto the brief's schema rather than shipping its output verbatim, since the brief says judgment follows the brief.\\n\\nThe skill also designs `【占位:…】` open slots that its own red line forbids me from filling, but the brief requires `placeholders: 0` and a clean tag line. I resolved this by dropping the slot tokens rather than inventing content for them: the title, hook block and tag line use only text the template already fixes, and the tag line stops at the four literal tags (still within 3–8), so nothing was fabricated. The 总结块 was dropped entirely since it is not one of the brief's six elements.\\n\\nOne incidental note on the input, not a defect in the output: the topic is 旧物改造 but the three points are all Pomodoro/四象限/复盘 time-management habits, one of them referencing 云岭数据看板. I preserved them verbatim as the brief requires rather than reconciling them with the topic.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 11,\n    \"inputTokens\": 263746,\n    \"outputTokens\": 4470,\n    \"totalTokens\": 268216,\n    \"cacheReadTokens\": 234190,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 970,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 268216,\n    \"contextUsed\": 30265,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "task": "hot-02",
+  "rep": 1,
+  "slot": 14
+}

@@ -1,0 +1,58 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/hot-01-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 112982,
+  "started_at_ms": 1791413019511,
+  "session_id": "sess_9faa749a-55d0-4dce-8642-39e3c23c2f91",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/hot-01-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 887520,
+      "ot": 12658,
+      "dur": 106055,
+      "n": 28
+    }
+  ],
+  "input_tokens": 887520,
+  "output_tokens": 12658,
+  "stdout_bytes": 2927,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " names, and a three-key stats object. The adapter maps key and name to the brief's schema.\\n\\n2. **Compliance redline collision.** The engine's frozen marker `第一招：` literally contains `第一`, which is on the brief's 广告法 banned-word list. This is a genuine contradiction between \\\"the marker is frozen\\\" and \\\"no 绝对化用语.\\\" I followed the brief's compliance rule, rendering the three value points as `招式一/二/三：` so the selling points stay verbatim while avoiding the banned term. Worth flagging in case you'd rather resolve it the other way.\\n\\nOne note on process: my first verification script reported a false `{{ }}` placeholder hit, which turned out to be an artifact of compact `json.dumps` of nested objects producing an adjacent `}}` — the raw files were clean. I rewrote the check to read the files as written. That same confusion initially caused a wrong \\\"fix\\\" attempt in the adapter, which I backed out. The generator also surfaced a genuine doubled punctuation bug in the CTA assembly, which is now fixed and guarded against.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 28,\n    \"inputTokens\": 887520,\n    \"outputTokens\": 12658,\n    \"totalTokens\": 900178,\n    \"cacheReadTokens\": 857856,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 2070,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 900178,\n    \"contextUsed\": 40677,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "task": "hot-01",
+  "rep": 2,
+  "slot": 12
+}

@@ -1,0 +1,58 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/hot-02-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 79420,
+  "started_at_ms": 1791414298918,
+  "session_id": "sess_f50ccde5-7597-4795-95ef-6ab623469a68",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/minimax/hot-02-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 389413,
+      "ot": 7177,
+      "dur": 74909,
+      "n": 14
+    }
+  ],
+  "input_tokens": 389413,
+  "output_tokens": 7177,
+  "stdout_bytes": 3099,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "ec:\\n\\n| | skill's frozen `xhs` template | brief |\\n|---|---|---|\\n| elements | 7 (adds `summary_block`) | 6 |\\n| names | `标题（带数字）`, `正文·开头钩子块`, `正文·干货块N`, `标签组（5个）` | `标题`, `开头`, `要点N`, `标签` |\\n| field | `text` | `content` |\\n| `platform_name` | 小红书图文 | 图文笔记 |\\n| `placeholder_stats` | 5 keys | 3 keys |\\n\\nRather than hand-writing the JSON (which the skill's red line forbids), I kept the engine as the source of truth: `build_out.py` in the working directory shells out to the skill's `scripts/gen.py` for the deterministic render, then projects the result into the brief's shape and fills the engine's `【占位:…】` open slots with real copy — which is also why `placeholders` is 0, since the brief demands a filled skeleton. Frozen markers (`🔥`/`✅`/`💡`, the `干货N｜<卖点>` prefix, the topic-derived first tag) are preserved through the projection. Re-running produces byte-identical output, and the builder fails closed with exit 2 on any red-line word, `{{ }}`, residual slot, wrong tag count, or a selling point not reproduced verbatim.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 14,\n    \"inputTokens\": 389413,\n    \"outputTokens\": 7177,\n    \"totalTokens\": 396590,\n    \"cacheReadTokens\": 352684,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 607,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 396590,\n    \"contextUsed\": 37592,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "task": "hot-02",
+  "rep": 2,
+  "slot": 28
+}

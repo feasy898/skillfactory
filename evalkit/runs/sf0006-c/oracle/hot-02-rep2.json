@@ -1,0 +1,18 @@
+{
+  "root": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/sf0006-c/oracle/hot-02-rep2/oracle",
+  "file_count": 2,
+  "tree_sha256": "3ab5165544ea3b0f6ba5eb0efd68509f765a9a8578853e6d7863eca31f226917",
+  "basis": "text LF-normalized (CRLF->LF) + sha256; binary raw bytes + sha256",
+  "files": [
+    {
+      "path": "structure.json",
+      "bytes": 1247,
+      "sha256": "adac320e499dd5473b0ff7fcd88fe8229ed62c4035a2d5d1a43fd4e34238aafd"
+    },
+    {
+      "path": "骨架.md",
+      "bytes": 451,
+      "sha256": "c498a1e8f9e8fcadace500a3469de688daea418006f68031ab73d0fc557e6759"
+    }
+  ]
+}
