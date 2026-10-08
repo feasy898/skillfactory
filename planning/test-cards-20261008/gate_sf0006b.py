@@ -50,22 +50,19 @@ def tree(p):
     return og.hash_tree(Path(p))["tree_sha256"]
 
 
-# A-07 D3 真实对拍门
+# A-07 D3 真实对拍门（2026-10-08 门槛同步：ofc 作用域迁移裁决后，8 题一律期望 exit 0）
 accs = {}
-for t in FIVE:
+for t in FIVE + OFC:
     r = run([VPY, ROOT / "evalkit/harness/ws4_d3_gate.py", "--task", t, "--real"], cwd=ROOT, timeout=1200)
     m = re.search(r'"accuracy"\s*:\s*([\d.]+)', (r.stdout or "") + (r.stderr or ""))
     acc = float(m.group(1)) if m else None
     accs[t] = (r.returncode == 0) and (acc is None or acc >= 0.95)
     check("A-07[%s]" % t, accs[t], "exit=%s accuracy=%s" % (r.returncode, acc))
-for t in OFC:
-    r = run([VPY, ROOT / "evalkit/harness/ws4_d3_gate.py", "--task", t, "--real"], cwd=ROOT, timeout=1200)
-    check("A-07[%s]" % t, r.returncode == 3, "exit=%s（期望 3=WAITING_WS3 fail-closed）" % r.returncode)
 
-# A-08 金标样本构成
+# A-08 金标样本构成（2026-10-08 门槛同步：扩至全部 8 题）
 bad = []
 oracle_trees = {}
-for t in FIVE:
+for t in FIVE + OFC:
     gdir = ROOT / "bench/devpool-r1/goldens" / t
     samples = sorted([d for d in gdir.iterdir() if d.is_dir()]) if gdir.is_dir() else []
     if len(samples) < 10:
@@ -140,21 +137,19 @@ for t in after["tasks"]:
     d1s = (t["d1_record"]["signoff"] or {}).get("签署人")
     d3s = t["d3_record"]["signoff"] or {}
     d3_ok = all(d3s.get(k) for k in ("签署人", "日期", "被签对象sha256"))
-    expect = bool(d1s) and accs.get(t["id"], False) and d3_ok and t["line"] in ("mm", "hot")
+    # 2026-10-08 门槛同步：ofc 作用域迁移后派生公式不再限制 line∈{mm,hot}
+    expect = bool(d1s) and accs.get(t["id"], False) and d3_ok
     if bool(t.get("ready")) != expect:
         bad.append("%s:ready=%s 期望%s" % (t["id"], t.get("ready"), expect))
     if expect:
         ready_true += 1
-    if t["line"] in ("mm", "hot"):
-        if t["d3_record"].get("annotator_kind") != "delegated-signing-model":
-            bad.append("%s:annotator_kind" % t["id"])
-        if d3s.get("签署人") != "owner 委托 alpha 代行":
-            bad.append("%s:d3签署人" % t["id"])
-        gt = ROOT / "bench/devpool-r1/goldens" / t["id"]
-        if d3s.get("被签对象sha256") and tree(gt) != d3s.get("被签对象sha256"):
-            bad.append("%s:d3签署对象≠金标树哈希" % t["id"])
-    elif t.get("ready"):
-        bad.append("%s:ofc 不应 ready" % t["id"])
+    if t["d3_record"].get("annotator_kind") != "delegated-signing-model":
+        bad.append("%s:annotator_kind" % t["id"])
+    if d3s.get("签署人") != "owner 委托 alpha 代行":
+        bad.append("%s:d3签署人" % t["id"])
+    gt = ROOT / "bench/devpool-r1/goldens" / t["id"]
+    if d3s.get("被签对象sha256") and tree(gt) != d3s.get("被签对象sha256"):
+        bad.append("%s:d3签署对象≠金标树哈希" % t["id"])
 if after["counts"]["ready"] != ready_true or ready_true < 5:
     bad.append("counts.ready=%s 实际满足=%d（须相等且≥5）" % (after["counts"]["ready"], ready_true))
 check("A-10", r.returncode == 0 and not bad,
