@@ -1,0 +1,35 @@
+{
+  "cap": 6,
+  "model_calls": 2,
+  "note": "SF-0006 step 族钉版探针预算账本：真实模型调用 ≤6（任务卡刚性）。spawn 前记账 pending，spawn 后按 db model_usage 实测回填；无模型调用的失败探针不消耗预算。",
+  "entries": [
+    {
+      "slot": 1,
+      "probe_id": "S1-m2-step-router",
+      "ts_intent": "11:00:44",
+      "status": "done",
+      "model_call": true,
+      "hit": true,
+      "observed": {
+        "model_id": "step-router-v1",
+        "provider_id": "new-provider",
+        "variant": "enabled",
+        "model_usage_rows": 1
+      }
+    },
+    {
+      "slot": 2,
+      "probe_id": "S2-m2-step-router-repro",
+      "ts_intent": "11:01:03",
+      "status": "done",
+      "model_call": true,
+      "hit": true,
+      "observed": {
+        "model_id": "step-router-v1",
+        "provider_id": "new-provider",
+        "variant": "enabled",
+        "model_usage_rows": 1
+      }
+    }
+  ]
+}
