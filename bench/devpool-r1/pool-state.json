@@ -6,7 +6,7 @@
   "counts": {
     "tasks": 8,
     "built": 8,
-    "ready": 5,
+    "ready": 8,
     "case_type": {
       "positive": 4,
       "near-negative": 2,
@@ -592,7 +592,7 @@
       "origin": "self-built",
       "source_ref": null,
       "status": "built",
-      "ready": false,
+      "ready": true,
       "canonical_seed": 4206,
       "pack_files_sha256": {
         "brief.md": "39abc11962e2ba3ad6511496071ac5fc1c05d22f9ac71f402435d4c0ceb69cb3",
@@ -665,7 +665,7 @@
           "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 状态由盘上记录派生（ws4_pool_state：verdict 在 ∧ 对拍达标 ∧ signoff 非空 → D3_DONE）"
         },
         "real_gate_exit": 0,
-        "state": "ADJUDICATING",
+        "state": "D3_DONE",
         "message": "",
         "real_result": {
           "task": "ofc-01",
@@ -681,9 +681,9 @@
           }
         },
         "signoff": {
-          "签署人": null,
-          "日期": null,
-          "被签对象sha256": null
+          "签署人": "owner 委托 alpha 代行",
+          "日期": "2026-10-08",
+          "被签对象sha256": "31205a46c17a698717217602ee9de39f6e2c53907736c6ebe2a25fb123272fde"
         },
         "annotator_kind": "delegated-signing-model"
       },
@@ -703,7 +703,7 @@
       "origin": "public-variant",
       "source_ref": "公开国标：GB/T 9704-2012《党政机关公文格式》（国家标准全文公开系统 openstd.samr.gov.cn，条目号 GB/T 9704-2012）——标题居中/称谓顶格/正文缩进/落款右对齐版式判据源自公开国标与公文通行版式；题面内容自写+nonce 化",
       "status": "built",
-      "ready": false,
+      "ready": true,
       "canonical_seed": 4207,
       "pack_files_sha256": {
         "brief.md": "4f99385ce80951d027e17d9b0b11988a178b6f82adc1b3ddf1fe5c8e8588512f",
@@ -776,7 +776,7 @@
           "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 状态由盘上记录派生（ws4_pool_state：verdict 在 ∧ 对拍达标 ∧ signoff 非空 → D3_DONE）"
         },
         "real_gate_exit": 0,
-        "state": "ADJUDICATING",
+        "state": "D3_DONE",
         "message": "",
         "real_result": {
           "task": "ofc-02",
@@ -792,9 +792,9 @@
           }
         },
         "signoff": {
-          "签署人": null,
-          "日期": null,
-          "被签对象sha256": null
+          "签署人": "owner 委托 alpha 代行",
+          "日期": "2026-10-08",
+          "被签对象sha256": "c42e08a168091c47e22c7ab7d845b9a8a7bc075b5bc130ee27e4fa6352b205d0"
         },
         "annotator_kind": "delegated-signing-model"
       },
@@ -814,7 +814,7 @@
       "origin": "self-built",
       "source_ref": null,
       "status": "built",
-      "ready": false,
+      "ready": true,
       "canonical_seed": 4208,
       "pack_files_sha256": {
         "brief.md": "28fbfe16f1002455febd5326450326de4aca3dad9c06c1578d0e2b1ce499c919",
@@ -887,7 +887,7 @@
           "note": "机器自环对拍不替代人工金标（卡面禁止条款）；d3 状态由盘上记录派生（ws4_pool_state：verdict 在 ∧ 对拍达标 ∧ signoff 非空 → D3_DONE）"
         },
         "real_gate_exit": 0,
-        "state": "ADJUDICATING",
+        "state": "D3_DONE",
         "message": "",
         "real_result": {
           "task": "ofc-03",
@@ -903,9 +903,9 @@
           }
         },
         "signoff": {
-          "签署人": null,
-          "日期": null,
-          "被签对象sha256": null
+          "签署人": "owner 委托 alpha 代行",
+          "日期": "2026-10-08",
+          "被签对象sha256": "34bc3acdd47f62839337ae70afdd835c3f09247c27a2a89dd84abdfc4faaf966"
         },
         "annotator_kind": "delegated-signing-model"
       },

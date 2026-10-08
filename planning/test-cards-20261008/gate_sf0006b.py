@@ -106,7 +106,7 @@ for t in FIVE + OFC:
         bad.append("%s:过且异于oracle的%d<2" % (t, pd_))
     if fn_ < 2:
         bad.append("%s:挂且非corruption的%d<2" % (t, fn_))
-check("A-08", not bad, ";".join(bad[:6]) or "5 题样本构成全部达标")
+check("A-08", not bad, ";".join(bad[:6]) or "8 题样本构成全部达标")
 
 # A-09 标注不可静默翻改（轻量：verdict.json 历史唯一，或入 RELABEL.md）
 bad = []
