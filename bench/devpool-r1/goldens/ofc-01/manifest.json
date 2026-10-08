@@ -1,0 +1,63 @@
+{
+  "task": "ofc-01",
+  "round": "SF-0006-P2ofc-r1",
+  "prepared_by": "开发方（SF-0006-P2ofc 第 1 轮；expected_pass 判定由受托签署模型盲态另行出具，本文件不含任何判定）",
+  "canonical_seed": 4206,
+  "oracle_tree_sha256": "3594bd25667778fec022a55180c08c811bea27fb9e00bd9b50cdb37bdd707dd3",
+  "sample_count": 11,
+  "samples": {
+    "s01": {
+      "source": "oracle:gen_oracle.py(seed=4206,nonce=A)",
+      "note": "同种子 canonical 复现树（生成树 oracle/ 子树原样，不含生成器 manifest）"
+    },
+    "s03": {
+      "source": "corruption:title_left_aligned",
+      "note": "标题段对齐由居中改左对齐（evalkit/harness/ws4_gen.py CORRUPTIONS 损坏库）"
+    },
+    "s04": {
+      "source": "corruption:fields_list_inconsistent",
+      "note": "fields.json 的 filled_fields 掐尾少登记一个已填字段（evalkit/harness/ws4_gen.py CORRUPTIONS 损坏库）"
+    },
+    "s05": {
+      "source": "corruption:value_altered",
+      "note": "库内变形：值「运营部」被改写为「运营」，替换波及 docx 标题（运营部工作周报→运营工作周报）与正文部门段及 fields.json（产物内部自洽偏离输入）"
+    },
+    "s06": {
+      "source": "handmade:single-line-fields-json",
+      "note": "fields.json 改为单行紧凑 JSON（键值内容与 canonical 序列化等义）"
+    },
+    "s07": {
+      "source": "handmade:blankpara-after-title-indent4",
+      "note": "标题段后加一个空段；fields.json 改 4 空格缩进"
+    },
+    "s08": {
+      "source": "handmade:fields-json-keysort",
+      "note": "fields.json 顶层键按码位重排（sort_keys）；数组序与条目内容不变"
+    },
+    "s09": {
+      "source": "handmade:body-halfwidth-colon",
+      "note": "正文段冒号由全角：改为半角:（其余版式不动）"
+    },
+    "s10": {
+      "source": "handmade:body-value-only-no-prefix",
+      "note": "正文段文本只保留值，去掉「字段名：」前缀（缩进保持）"
+    },
+    "s11": {
+      "source": "handmade:body-all-right-noindent",
+      "note": "正文各段改右对齐且去掉首行缩进（标题保持居中、落款不动）；该形态下 checker 的正文缩进检查项不发出、按检查名契约不符 exit 2 退出"
+    },
+    "s12": {
+      "source": "oracle:gen_oracle.py(seed=4206,nonce=B)",
+      "note": "同种子 nonce-B 交叉实例的 oracle 树（产物对应另一套实例输入；对拍以包内 fixtures 为基准）"
+    }
+  },
+  "checker_review_note": [
+    "本节为 checker 实现面对照题面条款的事实备注（供 WS3/D3 裁决参考；mm/hot D3FIX d330b75 修的键序断言与槽位基准自证属同类）。标注人出具 expected_pass 时请仅依题面与产物本身判定，本节不构成对任何样本的预期结论。",
+    "G1 值逐字检查是「输入值为 docx 全文（docx_all_text 含标题/称谓/落款，ws4_judge.py:86-92）的子串」（ws4_judge.py:400-402），不定位该字段正文段；「正文段文本为 字段名:值、冒号全角」无对应检查——正文段丢前缀只写值、冒号改半角均不红（本池 ofc-01 s09/s10、ofc-02 s10 会话内实测 exit 0）。",
+    "G2 fields.json 记账只比名字集合与 title（ws4_judge.py:381-396）：fields[].value/required/kind 不与输入回对（缺失条目 value 填字符串不红，ofc-02 s11 实测 exit 0）；filled_fields/missing_fields/fields 三个数组按 sorted 集合比较，数组倒序不红（ofc-03 s11 实测 exit 0）。",
+    "G3 缺失呈现判定的第三支是全文任意处含 ____ 即兜底通过（ws4_judge.py:407-408）：一处合规 ____ 呈现可掩护另一缺失字段的编造值（ofc-02 s08、ofc-03 s08 实测 exit 0）。",
+    "G4 正文缩进检查在 body 空表时整个检查项不发出（ws4_judge.py:356 右对齐段被剔除 + :358 if body:）→ 检查名契约不符 exit 2（ofc-01 s11 实测），既非判红也非按声明清单短路发满；「正文每段首行缩进两字符」在该形态下无判定即退出。",
+    "G5 称谓只验「段文本形如 名称：且顶格」（ws4_judge.py:349-353），不验称谓文本等于主送单位值、不验「主送单位不重复进正文」；落款只验末非空段右对齐（:368-371），落款两段的内容与先后顺序无检查。",
+    "G6 标题只验首非空段居中（ws4_judge.py:343-346），不验标题文本等于输入 title。"
+  ]
+}

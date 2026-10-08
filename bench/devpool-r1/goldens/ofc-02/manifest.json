@@ -1,0 +1,67 @@
+{
+  "task": "ofc-02",
+  "round": "SF-0006-P2ofc-r1",
+  "prepared_by": "开发方（SF-0006-P2ofc 第 1 轮；expected_pass 判定由受托签署模型盲态另行出具，本文件不含任何判定）",
+  "canonical_seed": 4207,
+  "oracle_tree_sha256": "cafc16169ebb1fea47e3e46e9e3b17105fbfe4b4fec8fea6029aaf65382e051e",
+  "sample_count": 12,
+  "samples": {
+    "s01": {
+      "source": "oracle:gen_oracle.py(seed=4207,nonce=A)",
+      "note": "同种子 canonical 复现树（生成树 oracle/ 子树原样，不含生成器 manifest）"
+    },
+    "s02": {
+      "source": "corruption:invented_missing_value",
+      "note": "缺失段 ____ 被编造值顶替（evalkit/harness/ws4_gen.py CORRUPTIONS 损坏库）"
+    },
+    "s03": {
+      "source": "corruption:title_left_aligned",
+      "note": "标题段对齐由居中改左对齐（evalkit/harness/ws4_gen.py CORRUPTIONS 损坏库）"
+    },
+    "s04": {
+      "source": "corruption:fields_list_inconsistent",
+      "note": "fields.json 的 filled_fields 掐尾少登记一个已填字段（evalkit/harness/ws4_gen.py CORRUPTIONS 损坏库）"
+    },
+    "s05": {
+      "source": "corruption:value_altered",
+      "note": "库内变形：fields.json 与 docx 同步改写一个已填字段值（产物内部自洽偏离输入）（evalkit/harness/ws4_gen.py CORRUPTIONS 损坏库）"
+    },
+    "s06": {
+      "source": "handmade:blankpara-before-sign-single-line-json",
+      "note": "落款前加一个空段；fields.json 改为单行紧凑 JSON"
+    },
+    "s07": {
+      "source": "handmade:fields-json-keysort-indent4",
+      "note": "fields.json 顶层键按码位重排（sort_keys）且改 4 空格缩进；数组序与条目内容不变"
+    },
+    "s08": {
+      "source": "handmade:one-missing-invented-other-kept",
+      "note": "联系电话段以编造值 13800000000 顶替；资金来源段仍按 ____ 呈现；fields.json 不变"
+    },
+    "s09": {
+      "source": "handmade:missing-field-paragraph-dropped",
+      "note": "删除联系电话正文段（fields.json 仍登记该字段为缺失）"
+    },
+    "s10": {
+      "source": "handmade:body-halfwidth-colon",
+      "note": "正文段冒号由全角：改为半角:（称谓段与落款不动）"
+    },
+    "s11": {
+      "source": "handmade:missing-entry-value-not-null",
+      "note": "fields.json 中联系电话条目 status 保持 missing 但 value 填入字符串（docx 呈现不动）"
+    },
+    "s12": {
+      "source": "oracle:gen_oracle.py(seed=4207,nonce=B)",
+      "note": "同种子 nonce-B 交叉实例的 oracle 树（产物对应另一套实例输入；对拍以包内 fixtures 为基准）"
+    }
+  },
+  "checker_review_note": [
+    "本节为 checker 实现面对照题面条款的事实备注（供 WS3/D3 裁决参考；mm/hot D3FIX d330b75 修的键序断言与槽位基准自证属同类）。标注人出具 expected_pass 时请仅依题面与产物本身判定，本节不构成对任何样本的预期结论。",
+    "G1 值逐字检查是「输入值为 docx 全文（docx_all_text 含标题/称谓/落款，ws4_judge.py:86-92）的子串」（ws4_judge.py:400-402），不定位该字段正文段；「正文段文本为 字段名:值、冒号全角」无对应检查——正文段丢前缀只写值、冒号改半角均不红（本池 ofc-01 s09/s10、ofc-02 s10 会话内实测 exit 0）。",
+    "G2 fields.json 记账只比名字集合与 title（ws4_judge.py:381-396）：fields[].value/required/kind 不与输入回对（缺失条目 value 填字符串不红，ofc-02 s11 实测 exit 0）；filled_fields/missing_fields/fields 三个数组按 sorted 集合比较，数组倒序不红（ofc-03 s11 实测 exit 0）。",
+    "G3 缺失呈现判定的第三支是全文任意处含 ____ 即兜底通过（ws4_judge.py:407-408）：一处合规 ____ 呈现可掩护另一缺失字段的编造值（ofc-02 s08、ofc-03 s08 实测 exit 0）。",
+    "G4 正文缩进检查在 body 空表时整个检查项不发出（ws4_judge.py:356 右对齐段被剔除 + :358 if body:）→ 检查名契约不符 exit 2（ofc-01 s11 实测），既非判红也非按声明清单短路发满；「正文每段首行缩进两字符」在该形态下无判定即退出。",
+    "G5 称谓只验「段文本形如 名称：且顶格」（ws4_judge.py:349-353），不验称谓文本等于主送单位值、不验「主送单位不重复进正文」；落款只验末非空段右对齐（:368-371），落款两段的内容与先后顺序无检查。",
+    "G6 标题只验首非空段居中（ws4_judge.py:343-346），不验标题文本等于输入 title。"
+  ]
+}

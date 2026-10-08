@@ -1,0 +1,82 @@
+{
+  "template": "请示函",
+  "title": "关于海川履约平台建设经费的请示",
+  "filled_fields": [
+    "主送单位",
+    "事由",
+    "申请事项",
+    "资金额度",
+    "联系人",
+    "落款单位",
+    "落款日期"
+  ],
+  "missing_fields": [
+    "资金来源",
+    "联系电话"
+  ],
+  "fields": [
+    {
+      "name": "主送单位",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "公司领导班子"
+    },
+    {
+      "name": "事由",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "关于海川履约平台建设经费的请示"
+    },
+    {
+      "name": "申请事项",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "采购《海川履约平台运维服务》（含二期扩容）"
+    },
+    {
+      "name": "资金额度",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "28万元"
+    },
+    {
+      "name": "资金来源",
+      "required": true,
+      "kind": "text",
+      "status": "missing",
+      "value": null
+    },
+    {
+      "name": "联系人",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "吴文博"
+    },
+    {
+      "name": "联系电话",
+      "required": true,
+      "kind": "text",
+      "status": "missing",
+      "value": null
+    },
+    {
+      "name": "落款单位",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "青澜科技市场部"
+    },
+    {
+      "name": "落款日期",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "2026年7月8日"
+    }
+  ]
+}

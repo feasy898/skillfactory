@@ -1,0 +1,66 @@
+{
+    "fields": [
+        {
+            "kind": "text",
+            "name": "会议名称",
+            "required": true,
+            "status": "filled",
+            "value": "青澜会员中台二期方案评审会"
+        },
+        {
+            "kind": "text",
+            "name": "会议时间",
+            "required": true,
+            "status": "filled",
+            "value": "２０２６年１０月１５日 9:30"
+        },
+        {
+            "kind": "text",
+            "name": "会议地点",
+            "required": true,
+            "status": "filled",
+            "value": "星帆互联三号会议室"
+        },
+        {
+            "kind": "text",
+            "name": "参会人员",
+            "required": true,
+            "status": "missing",
+            "value": null
+        },
+        {
+            "kind": "text",
+            "name": "议题",
+            "required": true,
+            "status": "filled",
+            "value": "审议《青澜会员中台二期方案》等３项议题"
+        },
+        {
+            "kind": "text",
+            "name": "落款单位",
+            "required": true,
+            "status": "filled",
+            "value": "星帆互联客户成功部"
+        },
+        {
+            "kind": "text",
+            "name": "落款日期",
+            "required": true,
+            "status": "filled",
+            "value": "2026年7月13日"
+        }
+    ],
+    "filled_fields": [
+        "会议名称",
+        "会议时间",
+        "会议地点",
+        "议题",
+        "落款单位",
+        "落款日期"
+    ],
+    "missing_fields": [
+        "参会人员"
+    ],
+    "template": "会议通知",
+    "title": "青澜会员中台二期方案评审会"
+}
