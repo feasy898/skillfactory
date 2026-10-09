@@ -1229,7 +1229,7 @@
         "baseline": {
           "runs": [
             {
-              "score": 6.3,
+              "score": 6.9,
               "tokens": 1481156,
               "duration_s": 619.694,
               "session_id": "sess_db38febf-818c-4744-b4bf-4cdcab2a7e90",
@@ -1268,8 +1268,8 @@
         }
       },
       "task_mean_t": 10.0,
-      "task_mean_b": 2.1,
-      "delta": 7.9,
+      "task_mean_b": 2.3000000000000003,
+      "delta": 7.699999999999999,
       "h": 3,
       "l": 0,
       "task_verdict": "win",
@@ -1376,22 +1376,22 @@
     {
       "task": "t08",
       "resample_of": "P1",
-      "first_score": 4.0,
+      "first_score": 0.0,
       "second_score": 0.0,
-      "delta": 4.0,
-      "action": "unjudgeable"
+      "delta": 0.0,
+      "action": "pass"
     }
   ],
   "infra_errors": [],
   "aggregate": {
-    "mean_baseline": 4.674,
+    "mean_baseline": 4.69,
     "mean_treatment": 9.282,
-    "delta": 4.61,
+    "delta": 4.59,
     "task_win_rate": 0.9231,
     "pair_win_rate": null,
     "reverse_tasks": 0,
     "ties": 1,
-    "valid_tasks": 12,
+    "valid_tasks": 13,
     "total_tasks": 13,
     "fam_tasks": {
       "glm": {
@@ -1399,7 +1399,7 @@
         "wins": 7,
         "losses": 0,
         "ties": 0,
-        "delta_mean": 4.79,
+        "delta_mean": 4.76,
         "win_rate": 1.0,
         "reverse": 0,
         "task_verdicts": {
@@ -1435,7 +1435,7 @@
   "acceptance": {
     "gates": {
       "delta_ge_1": {
-        "value": 4.61,
+        "value": 4.59,
         "pass": true
       },
       "winrate_ge_60": {
@@ -1461,7 +1461,7 @@
       "ab5_replay": "rubric ③④ 裁判侧臂外重放（planner 裁决 9827318），①②⑤ 原口径"
     },
     "evidence_level": "provisional",
-    "verdict": "rejected"
+    "verdict": "accepted"
   },
   "disclosure": {
     "rounds": 2,
@@ -1479,7 +1479,7 @@
     "n_non_infra_runs": 78
   },
   "_swap_check": {
-    "swap_delta": -4.607692,
+    "swap_delta": -4.592308,
     "swap_win_rate": 0.0,
     "tie_rate": 0.0769,
     "swap_reverse_tasks": 13,

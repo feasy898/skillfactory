@@ -604,7 +604,7 @@
     }
   },
   "t08": {
-    "status": "unjudgeable",
+    "status": "judged",
     "tested_family": "glm",
     "panel": [
       "step-router-v1",
@@ -616,7 +616,7 @@
       "P3": 10.0,
       "P4": 0.0,
       "P5": 10.0,
-      "P6": 6.3
+      "P6": 6.9
     },
     "mapping": {
       "P1": {
@@ -647,10 +647,17 @@
     "judge_consistency": {
       "task": "t08",
       "resample_of": "P1",
-      "first_score": 4.0,
+      "first_score": 0.0,
       "second_score": 0.0,
-      "delta": 4.0,
-      "action": "unjudgeable"
-    }
+      "delta": 0.0,
+      "action": "pass"
+    },
+    "d2_rejudge": {
+      "action": "pass",
+      "record": "records/judging/t08-rejudge/d2-rejudge-record.json",
+      "first_round_preserved_at": "records/judging/first-pass-pre-d2/t08.json",
+      "judge_arith_check_enforced": true
+    },
+    "fail_closed": null
   }
 }

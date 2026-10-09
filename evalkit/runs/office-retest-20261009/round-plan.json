@@ -9,7 +9,7 @@
   "owner_directive": "本轮=office 重测：dist/office-templates-skill 以补强后 v3/assets/office-templates（e82b3cb）按原打包口径重打包（1.0.1，包内绿自检 68/68 exit 0 双跑留证）；重测装置=新题集 8 题（merged office 子树）+ 原始 5 ab 任务（golden.json 冻结），两臂照 sf0008-k5b 机制（treatment 挂重打包后 dist 包可交付面、baseline 裸臂、隔离探针、oracle/判分器不进臂）",
   "run_id": "office-retest-20261009",
   "kind": "round_plan_registration",
-  "status": "completed_round2_verdict_rejected_failclosed",
+  "status": "completed_round2_verdict_accepted_provisional_d2_rejudge",
   "base_commit": "9827318",
   "base_commit_note": "本卡登记开工时 git rev-parse HEAD 实读值（9827318=planner ab5 裁决提交；本轮装置与重打包随本卡提交落盘，P4 口径以实际开工值为准）",
   "opened_at": "2026-10-09T03:31+0800",
@@ -164,17 +164,162 @@
   },
   "closed_at": "2026-10-09T12:20+0800",
   "result_summary": {
-    "delta": 4.61,
+    "delta": 4.59,
     "win_rate": 0.9231,
-    "w/l/t": "12/1/0",
+    "w/l/t": "12/0/1",
     "reverse": 0,
-    "unjudgeable": [
-      "t08"
-    ],
-    "verdict": "rejected（fail-closed）",
+    "unjudgeable": [],
+    "verdict": "accepted（provisional、single_round_signal=true 按 K5B-07）",
     "efficiency": {
       "token_ratio": 0.473,
       "duration_ratio": 0.375
-    }
+    },
+    "d2_rejudge": "t08 复判一次后 13/13 全部可判且三门过 → office 转 accepted（OFFICE-RETEST-RULING §D2）",
+    "d3_correction": "首轮 w/l/t 原误记 12/1/0，实算 12 胜/0 负/1 平（ab4 平）=12/0/1（alpha 裁决 D3 更正）",
+    "delta_range_calibration": {
+      "note": "内部 Δ 范围口径更正（alpha 裁决 D3）：t01-t07 Δ 范围 +2.00~+7.25，+7.90 是首轮 t08（复判后 t08=+7.70）；首轮 t08 baseline 2.10 是 §3.4 换裁后 Minimax 单裁口径（step 首评口径 baseline=4.77）；复判后 t08 baseline=2.30 为双裁一致均值（step 0.0/Minimax 0.0 等）",
+      "per_task_delta_final": {
+        "ab1": 2.2,
+        "ab2": 3.25,
+        "ab3": 1.0,
+        "ab4": 0.42,
+        "ab5": 2.58,
+        "t01": 7.0,
+        "t02": 5.9,
+        "t03": 6.98,
+        "t04": 6.67,
+        "t05": 6.75,
+        "t06": 7.25,
+        "t07": 2.0,
+        "t08": 7.7
+      }
+    },
+    "closed_at_d2": "2026-10-09T13:23:11+0800"
+  },
+  "d2_rejudge_registration": {
+    "authority": [
+      "planning/taskset-redesign/merged/OFFICE-RETEST-RULING-20261009.md §D2（alpha 裁决）",
+      "planning/taskset-redesign/merged/D1-DIFF-TABLE.md（alpha 已签收）"
+    ],
+    "registered_at": "2026-10-09T12:59:13+0800（先于任何复判调用落盘）",
+    "anchors_preregistered": {
+      "source": "alpha 裁决 D2 预登记（rubric D1 版：红线封顶=上限 min(公式分,4)；⟦0,0,0⟧ 锚点增补；total=维度分机算公式分）",
+      "weights": {
+        "正确性": 0.5,
+        "完整性": 0.3,
+        "可验证性": 0.2
+      },
+      "formula": "total = round(10 × Σ(维度分×权重) ÷ Σ权重, 1)；触发红线时再取 min(·, 4)",
+      "anchor_table": [
+        {
+          "dims": "⟦正确性=0,完整性=0,可验证性=0⟧",
+          "expected_total": 0.0,
+          "note": "公式分 0.0 本已 ≤4，按公式分计，封顶不上调（D1 增补锚点）"
+        },
+        {
+          "dims": "⟦正确性=0,完整性=1,可验证性=1⟧",
+          "expected_total": 4.0,
+          "note": "公式分 5.0，触发红线封顶 → min(5.0,4)=4.0"
+        },
+        {
+          "dims": "⟦正确性=0.25,完整性=1,可验证性=1⟧",
+          "expected_total": 6.3,
+          "note": "公式分 6.25→6.3（P6 型：无越界产物不触红线，封顶不上调）"
+        }
+      ],
+      "pass_line": 8.5,
+      "pass_line_note": "权重/档位/通过线/task.json/brief.md 一律不动（D1 已自证）"
+    },
+    "staging": {
+      "source": "原 staging，P1-P6 映射与 seed 不变",
+      "mapping_file": "records/judge-staging/t08.mapping.json",
+      "seed": 1944379,
+      "mapping": {
+        "P1": {
+          "rep": 2,
+          "arm": "baseline"
+        },
+        "P2": {
+          "rep": 1,
+          "arm": "treatment"
+        },
+        "P3": {
+          "rep": 2,
+          "arm": "treatment"
+        },
+        "P4": {
+          "rep": 3,
+          "arm": "baseline"
+        },
+        "P5": {
+          "rep": 3,
+          "arm": "treatment"
+        },
+        "P6": {
+          "rep": 1,
+          "arm": "baseline"
+        }
+      },
+      "staged_files_sha256": {
+        "P5/fields.json": "746629791dd2736b0414e8ae5e1fa2cb7a0d87c7dec3cebd216d16080095acd9",
+        "P5/run_log.json": "b9b245fd1a46b1820cf386c0594bb0af42be47c15f5e95bbe9a327c78c5fc114",
+        "P5/文书.docx.extract.txt": "11c41519c07eb0013654e739074c307df509d08c52c2895cf1e90359480c76e6",
+        "P6/fields.json": "746629791dd2736b0414e8ae5e1fa2cb7a0d87c7dec3cebd216d16080095acd9",
+        "P6/文书.docx.extract.txt": "9b7da685e6d17bcaeb8897f4e26ed3af7eaa292298b8deef67fd0393bb48e479",
+        "P2/fields.json": "746629791dd2736b0414e8ae5e1fa2cb7a0d87c7dec3cebd216d16080095acd9",
+        "P2/run_log.json": "dd2ca236227b87acd872a126bcb355f7873a7a77434d0f1c3a8d1f679ef933a3",
+        "P2/文书.docx.extract.txt": "11c41519c07eb0013654e739074c307df509d08c52c2895cf1e90359480c76e6",
+        "P1/fields.json": "580ff65fff7974c8531441acd526c8e02dbf04b7edfc1497dbc4e7811535b7e4",
+        "P1/文书.docx.extract.txt": "0abbb259cbaed64cfedd6d057cb42a48e061ad40fdb68b3cfaf83f518c7214c8",
+        "P1/文书.pdf": "a21fad42c004894ebf590f55b5964f88e6486f5c401fc2106c6dc7551c6c17b1",
+        "P4/fields.json": "4aac06ec879c6d4407990916cfffe39088e8a03858acd1da35e31abeeefd83b3",
+        "P4/文书.docx.extract.txt": "4397c3c06ada2c10e0f8f59c1dd982257f4221cb557367f70e6d9fbc36fc8f42",
+        "P4/文书.pdf": "32c9f74d5949f5c40e4b273baed6dfdff442214321fcf62a0a7f9cdcde57f465",
+        "P3/fields.json": "746629791dd2736b0414e8ae5e1fa2cb7a0d87c7dec3cebd216d16080095acd9",
+        "P3/run_log.json": "fd664192b6ae237d0347bbce784c007bb027b4b9767f48e2a5af4843ab2c1fda",
+        "P3/文书.docx.extract.txt": "11c41519c07eb0013654e739074c307df509d08c52c2895cf1e90359480c76e6"
+      },
+      "rule": "复判零重新暂存、零重洗牌；判官看到的匿名化产物与首轮逐字节相同"
+    },
+    "panel": {
+      "composition": [
+        "step-router-v1",
+        "Minimax-M3.1-Flash-Preview"
+      ],
+      "panel_rotation": "task_idx=13 parity=1（槽序不互换，与首轮一致）",
+      "sessions": "两裁判均新会话（新 workdir judge-work/t08-rejudge/、新 session_id），首轮会话不复用",
+      "blind": "盲态不变：P1..P6 匿名 + docx 事实预抽取 + 路径漂白；映射仅存 records/judge-staging/",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1（不变）；判据面=D1 修订后 rubric.md+judge-notes.md（sha256 3280f0cd…/3bceaabc…）"
+    },
+    "judge_arith_check": {
+      "rule": "每份判词逐产物落盘对比：判官 total vs 维度分机算公式分 round(10×Σ(d×w)/Σw,1)（触发红线时再取 min(·,4)）；红线触发按盘上端态客观事实判定（<outdir> 越界产物在盘），不作主观裁量",
+      "on_mismatch": "不一致=无效判词：同裁判新会话重发 1 次；仍不一致 fail-closed 记 unjudgeable（blind=false）",
+      "scope": "主判 2 份判词 × 6 产物 + §3.4 复评判词逐条"
+    },
+    "consistency_spot_check": "§3.4 抽检样本仍是 P1（抽检裁判=panel[0]=step-router-v1，匿名 Q1 复评）；|Δ|>2 → 换面板内另一异族裁判重评全任务；仍>2 → unjudgeable（fail-closed）",
+    "scope_guard": "只复判 t08 一次；其余 12 题判分记录与 78 个臂数据一律不动、不重跑；首轮记录照 first-pass-no-notes 先例另存 records/judging/first-pass-pre-d2/，与复判记录并存不覆盖",
+    "verdict_rule": "13/13 全部可判且三门过 → office 转 accepted（provisional、single_round_signal=true 按 K5B-07）并单包进 K-5 重提序列（D6）；复判再出 unjudgeable → rejected 定案（本轮禁止再复判）",
+    "budget_note": "复判调用为 alpha 裁决 D2 授权（判官 ≤2 主判 + ≤2 重发 + 1 抽检复评 + 重发余量），逐条入 budget.json ledger（kind=judge, task=t08-rejudge-d2*）"
+  },
+  "d2_rejudge_execution": {
+    "record": "records/judging/t08-rejudge/d2-rejudge-record.json",
+    "judged_at": "2026-10-09T13:23:11+0800",
+    "panel_new_sessions": {
+      "step-router-v1": "main=7a95fdaf777a…（attempt1 即过 arith）、resample=a63277b76d09…",
+      "Minimax-M3.1-Flash-Preview": "main=sess_b5987779-8884…（attempt1 即过 arith）"
+    },
+    "judge_arith_check": "两判官 × 6 产物 = 12/12 行 judge_total≡公式机算（含 ⟦0,0,0⟧→0.0、⟦0,1,1⟧→min(5.0,4)=4.0 客观封顶、⟦0.25,1,1⟧→6.3 预登记锚点全部命中）；无重发",
+    "judge_consistency": "§3.4 抽检 P1（匿名 Q1，step-router-v1）：first=0.0、second=0.0、Δ=0.0 → pass",
+    "final_scores": {
+      "P1": 0.0,
+      "P2": 10.0,
+      "P3": 10.0,
+      "P4": 0.0,
+      "P5": 10.0,
+      "P6": 6.9
+    },
+    "P6_note": "双裁 P6 判档差：step ⟦0.5,1,1⟧=7.5 vs Minimax ⟦0.25,1,1⟧=6.3（预登记锚点），|Δ|=1.2 ≤2 容差内，均值 6.9",
+    "incident": "复判装置两处脚本 bug（复评判词匿名键 Q1 未纳入 arith 遍历；重发调用 STAGING_ROOTS 键漏设）致前两次执行在抽检重发/复评步崩溃，判词未落盘；故障期调用 budget slot 149-155 留痕不计，崩溃期判官原始产物归档 judge-work/t08-rejudge/_attempt1-crash-archive/；修复后第三次执行为落盘复判（仍属『仅复判一次』的单次复判执行，与首轮 step prefill 缺陷修复先例同构）",
+    "verdict_transition": "rejected（fail-closed）→ accepted（provisional、single_round_signal=true）；13/13 可判、三门过"
   }
 }

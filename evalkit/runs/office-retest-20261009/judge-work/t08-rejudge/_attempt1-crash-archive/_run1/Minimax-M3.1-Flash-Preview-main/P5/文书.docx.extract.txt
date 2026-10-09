@@ -1,0 +1,12 @@
+EXTRACT OF 文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=None runs=[平台工程部2026 年 9 /黑体/22.0] text=平台工程部2026 年 9 月工作总结
+P001 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[一、工作回顾/黑体/16.0] text=一、工作回顾
+P002 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[1．完成网关灰度切换/仿宋/16.0] text=1．完成网关灰度切换
+P003 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[二、主要成绩/黑体/16.0] text=二、主要成绩
+P004 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[1．切换期间零回滚/仿宋/16.0] text=1．切换期间零回滚
+P005 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[三、存在问题/黑体/16.0] text=三、存在问题
+P006 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[1．老旧实例尚未下线/仿宋/16.0] text=1．老旧实例尚未下线
+P007 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[四、下一步工作打算/黑体/16.0] text=四、下一步工作打算
+P008 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[1．把灰度流程沉淀为标准作业/仿宋/16.0] text=1．把灰度流程沉淀为标准作业
+P009 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[平台工程部/仿宋/16.0] text=平台工程部
+P010 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[2026年9月30日/仿宋/16.0] text=2026年9月30日

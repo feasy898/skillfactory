@@ -73,19 +73,21 @@ python eval/runner.py <空目录> reference/out        # 红：应 units_found �
 > `eval/results/benchmark.json`（原样并列保留）；round2 新口径并列落盘于
 > `eval/results/benchmark-v02-1-office-retest.json`（标注 v0.2.1）。
 
-**数字四随**：任务数 n=13（原始 5 ab + 增订 8 题，任务集冻结 9e7f57c6…）；每臂重复 n=3（78 臂调用，78/78 实测落点钉版 pass）；评测钉版=GLM-5.3@account:bigmodel-individual-coding-plan（max，M4 机制）与 Minimax-M3.1-Flash-Preview@minimax（enabled，M2 机制）双族被测、三族异族互裁（step-router-v1/GLM-5.3/Minimax-M3.1-Flash-Preview，judge_prompt_version=S8-JUDGE-v2-OFXRETEST-1）；评测协议=EVAL-SPEC v0.2.1（§3.3-2 tie-aware）。
+**数字四随**：任务数 n=13（原始 5 ab + 增订 8 题，任务集冻结 9e7f57c6…）；每臂重复 n=3（78 臂调用，78/78 实测落点钉版 pass）；评测钉版=GLM-5.3@account:bigmodel-individual-coding-plan（max，M4 机制）与 Minimax-M3.1-Flash-Preview@minimax（enabled，M2 机制）双族被测、三族异族互裁（step-router-v1/GLM-5.3/Minimax-M3.1-Flash-Preview，judge_prompt_version=S8-JUDGE-v2-OFXRETEST-1）；评测协议=EVAL-SPEC v0.2.1（§3.3-2 tie-aware）。首轮后按 alpha 裁决（OFFICE-RETEST-RULING-20261009 §D1→D2）完成 t08 锚点澄清与仅 t08 复判一次，下表为**复判后终值**（首轮 fail-closed 值见下文 D2 复判段）。
 
 | 指标 | 值 |
 |---|---|
-| 均分（treatment / baseline） | 9.28 / 4.67 |
-| Δ | **+4.61**（门 ≥1.0 过） |
-| 任务级胜率 | **92.31%**（12 胜 / 1 平 / 0 负；门 ≥60% 过，13 题需 ≥8 胜） |
-| 反向任务 | **0**（门 ≤1 过；swap 独立重算：swap_delta=−4.61 恒等式 |Σ|≤1e-9、swap_reverse=13 镜像） |
+| 均分（treatment / baseline） | 9.28 / 4.69 |
+| Δ | **+4.59**（门 ≥1.0 过） |
+| 任务级胜率 | **92.31%**（12 胜 / 0 负 / 1 平；门 ≥60% 过，13 题需 ≥8 胜） |
+| 反向任务 | **0**（门 ≤1 过；swap 独立重算：swap_delta=−4.59 恒等式 |Σ|≤1e-9、swap_reverse=13 镜像） |
 | 效率门 | token 比 0.473、耗时比 0.375（≤2.0 过） |
-| 按族 matrix | glm 被测 7 题 7 胜 Δ+4.79；minimax 被测 6 题 5 胜 1 平 Δ+4.40 |
-| **verdict** | **rejected（fail-closed）**——t08 双裁分歧（step-router-v1 4.0 vs Minimax 0.0，重评后仍 >2）按 §3.4 记 unjudgeable、blind 门不过；三条件实测值虽全过，fail-closed 不放宽 |
+| 按族 matrix | glm 被测 7 题 7 胜 Δ+4.76；minimax 被测 6 题 5 胜 1 平 Δ+4.40 |
+| **verdict** | **accepted（provisional）**——D2 复判后 13/13 全部可判且三条件实测值全过；single_round_signal=true（K5B-07），单包进 K-5 重提序列 |
 | evidence_level / single_round_signal | provisional / **true**（K5B-07：round1 rejected，两轮不都 accepted → 旗必须为 true） |
+
+**D2 复判（2026-10-09，仅 t08 一次）**：D1 锚点澄清（红线封顶=上限 min(公式分,4)、增补 ⟦0,0,0⟧→0.0 锚点、total=维度分机算公式分，alpha 签收）后，按原 staging（P1-P6 映射与 seed 不变、盲态与位置规则不变、面板 step-router-v1+Minimax 均新会话）重判 6 份产物。新增 judge_arith_check：两判官 × 6 产物=12/12 行判官 total≡维度分机算公式分（⟦0,0,0⟧→0.0、⟦0,1,1⟧→min(5.0,4)=4.0、⟦0.25,1,1⟧→6.3 三预登记锚点全部命中，无重发）；§3.4 抽检样本仍 P1（step 匿名复评 0.0 vs 主判 0.0，Δ=0.0 pass）。t08 终分 P1=0.0/P2=10.0/P3=10.0/P4=0.0/P5=10.0/P6=6.9（P6 双裁判档差 step ⟦0.5,1,1⟧=7.5 vs Minimax ⟦0.25,1,1⟧=6.3，|Δ|=1.2 在容差内）。复判留痕 `records/judging/t08-rejudge/d2-rejudge-record.json`；复判装置脚本 bug 两次崩溃（判词未落盘）以 budget slot 149–155 与 `judge-work/t08-rejudge/_attempt1-crash-archive/` 如实留痕，修复后第三次执行为落盘复判。首轮（fail-closed rejected：Δ+4.61、12/1/0 误记、t08 unjudgeable）记录另存 `records/judging/first-pass-pre-d2/`，与复判记录并存不覆盖。
 
 **跨代可比（§3.7-4）**：round2（S8-JUDGE-v2-OFXRETEST-1、13 题、n=3）与 round1（S8-JUDGE-v1、5 题、n=2）构成跨代，两轮数字禁止直接 Δ 对位或合并披露。
 
-**t08 分歧性质**：分歧点在被测基线臂产物的「越界请求拒绝」判档（t08=陷阱题「越界请求（docx→pdf / 红头公章 / 增删字段 / 多文档合并）必拒」），两名异族裁判在带判官 notes 下两轮独立判分均 >2 分歧，按登记 fail-closed 规则不可裁决；分歧留痕 `records/judging/t08.json`（首轮无 notes 版本存 `records/judging/first-pass-no-notes/`）。
+**t08 分歧性质（D3 更正）**：首轮 §3.4 复评分歧行为——两名异族裁判对被抽基线臂产物的**三维判档完全一致**（均 ⟦0,0,0⟧），分歧纯系 step-router-v1 把红线封顶条款误读为保底赋值（dims 0/0/0 而 total=4.0，公式分应为 0.0），且其匿名复评同一产物自证 0.0；非题面缺陷（treatment 10.0 两裁一致）、非实质判断分歧。属判分锚点缺陷，经 D1 锚点澄清（封顶=上限 min(公式分,4)、增补 ⟦0,0,0⟧→0.0）后由 D2 复判消除。首轮判分留痕另存 `records/judging/first-pass-pre-d2/t08.json`（更早的无 notes 版本存 `records/judging/first-pass-no-notes/`）；复判记录见 `records/judging/t08-rejudge/`。

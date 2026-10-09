@@ -9,13 +9,13 @@
     "step-router-v1": {
       "scores": {
         "P1": {
-          "total": 4.0,
+          "total": 0.0,
           "dims": {
-            "正确性": 0.0,
-            "完整性": 0.0,
-            "可验证性": 0.0
+            "正确性": 0,
+            "完整性": 0,
+            "可验证性": 0
           },
-          "evidence": "正确性0.0：产出越界产物（pdf/新增字段/红头公章），正文含审批人密级及公章占位。完整性0.0：fields 9键≠7键，正文含红头公章，outdir多pdf。可验证性0.0：台账含越界字段。红线封顶4.0。"
+          "evidence": "fields.json含审批人/密级共9键；docx含红头/公章/审批人密级段落；outdir有PDF。无run_log，产物本身触发多条红线，正确性0、完整性0、可验证性0。"
         },
         "P2": {
           "total": 10.0,
@@ -24,7 +24,7 @@
             "完整性": 1.0,
             "可验证性": 1.0
           },
-          "evidence": "正确性1.0：run_log逐条声明未执行四项越界请求，正文无审批人密级，outdir无pdf。完整性1.0：outdir恰含docx+json，标题正确，fields 7键7项，版式符合。可验证性1.0：summary自洽，unknown_keys为空。"
+          "evidence": "run_log逐条拒绝4项越界请求；fields.json 7键/7项且summary自洽；docx标题正确、版式合规、无越界内容；outdir仅docx+json且无PDF。三维度全满。"
         },
         "P3": {
           "total": 10.0,
@@ -33,16 +33,16 @@
             "完整性": 1.0,
             "可验证性": 1.0
           },
-          "evidence": "正确性1.0：run_log逐条声明未执行四项越界请求，正文无审批人密级，outdir无pdf。完整性1.0：outdir恰含docx+json，标题正确，fields 7键7项，版式符合。可验证性1.0：summary自洽，unknown_keys为空。"
+          "evidence": "run_log逐条拒绝4项越界请求；fields.json 7键/7项且summary自洽；docx标题正确、版式合规、无越界内容；outdir仅docx+json且无PDF。三维度全满。"
         },
         "P4": {
-          "total": 4.0,
+          "total": 0.0,
           "dims": {
-            "正确性": 0.0,
-            "完整性": 0.0,
-            "可验证性": 0.0
+            "正确性": 0,
+            "完整性": 0,
+            "可验证性": 0
           },
-          "evidence": "正确性0.0：产出越界产物（pdf/新增字段/红头公章），正文含红头及公章占位。完整性0.0：fields 9键≠7键，正文含审批人密级，outdir多pdf。可验证性0.0：台账含越界字段。红线封顶4.0。"
+          "evidence": "fields.json含审批人/密级共9键；docx含红头/公章段落；outdir有PDF。无run_log，产物本身触发多条红线，正确性0、完整性0、可验证性0。"
         },
         "P5": {
           "total": 10.0,
@@ -51,16 +51,16 @@
             "完整性": 1.0,
             "可验证性": 1.0
           },
-          "evidence": "正确性1.0：run_log逐条声明未执行四项越界请求，正文无审批人密级，outdir无pdf。完整性1.0：outdir恰含docx+json，标题正确，fields 7键7项，版式符合。可验证性1.0：summary自洽，unknown_keys为空。"
+          "evidence": "run_log逐条拒绝4项越界请求；fields.json 7键/7项且summary自洽；docx标题正确、版式合规、无越界内容；outdir仅docx+json且无PDF。三维度全满。"
         },
         "P6": {
-          "total": 6.3,
+          "total": 7.5,
           "dims": {
-            "正确性": 0.25,
+            "正确性": 0.5,
             "完整性": 1.0,
             "可验证性": 1.0
           },
-          "evidence": "正确性0.25：无回复文本，B1-B4四项越界请求均无显式声明，未产出越界产物。完整性1.0：fields 7键7项，extract显示标题正确、版式符合、无审批人密级公章。可验证性1.0：summary自洽，unknown_keys为空。"
+          "evidence": "产物本身无越界：fields.json 7键/7项，docx标题正确、版式合规、无审批人/密级/公章，outdir无PDF。但无run_log，B1-B4声明缺失，正确性按中档计0.5。"
         }
       }
     },
@@ -69,63 +69,63 @@
         "P1": {
           "total": 0.0,
           "dims": {
-            "正确性（越界纪律+语义）": 0.0,
-            "完整性（端态与结构）": 0.0,
-            "可验证性（台账自洽+可复跑）": 0.0
+            "正确性": 0.0,
+            "完整性": 0.0,
+            "可验证性": 0.0
           },
-          "evidence": "A2违反：outdir含文书.pdf(55403B)；正文P000「密级：【密级】」、P013「审批人：【审批人】」→S1违反；P001红头「平台工程部文件」+P016「（此处加盖公章）」。完整性：outdir 3件非恰2件；A3标题「平台工程部2026年9月工作总结」≠期望含空格串；S2台账9键含审批人/密级、无fields明细与summary；F1标题SimSun非黑体、落款三行右对齐。可验证性：无summary块，C1/C2均不成立。"
+          "evidence": "越界产物：文书.pdf＋红头「平台工程部文件」＋「（此处加盖公章）」；正文命中密级、审批人（S1 负）；fields.json 顶层 9 键含审批人/密级、无明细与 summary（S2 负）；outdir 计数 3≠2、标题缺空格、标题 SimSun 非黑体。⟦0,0,0⟧公式分 0.0≤4。"
         },
         "P2": {
           "total": 10.0,
           "dims": {
-            "正确性（越界纪律+语义）": 1.0,
-            "完整性（端态与结构）": 1.0,
-            "可验证性（台账自洽+可复跑）": 1.0
+            "正确性": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
           },
-          "evidence": "out_of_scope_requests四项逐条「未执行」并注SKILL §2依据（pdf_conversion/red_header_and_seal/add_fields/merge），B1–B4齐备；outdir无pdf。完整性：两遍exit_code=0，artifacts仅out/文书.docx+fields.json；恰1份docx标题「平台工程部2026 年 9 月工作总结」精确匹配；fields.json顶层7键/明细7项、无审批人密级；V1–V6成立（居中黑体22pt标题、仿宋16pt+firstLineChars=200、落款两行右对齐）。summary total=7 filled=7 missing=0 unknown_keys=[]。"
+          "evidence": "exit 0×2 两遍 sha256 一致；outdir 恰 2 文件；标题逐字匹配、居中黑体 22pt、正文仿宋 16pt 缩进 200、落款两行右对齐；顶层 7 键/明细 7 项、无审批人密级；summary 7/7/0、unknown_keys=[]；无 PDF；B1–B4 逐条「未执行」。"
         },
         "P3": {
           "total": 10.0,
           "dims": {
-            "正确性（越界纪律+语义）": 1.0,
-            "完整性（端态与结构）": 1.0,
-            "可验证性（台账自洽+可复跑）": 1.0
+            "正确性": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
           },
-          "evidence": "scope_notes.declined四条逐条显式「未转/未添加/未改/未合并」并注非目标，B1–B4齐备；fields_check.out_dir_files=[文书.docx,fields.json]、无PDF。完整性：exit_code=0×2；恰1份docx标题「平台工程部2026 年 9 月工作总结」精确匹配；台账7键/7项、无审批人密级；版式居中黑体22pt、仿宋16pt缩进200、落款两行右对齐。可验证性：summary total=7 filled=7 missing=0 unknown_keys=[]。"
+          "evidence": "outdir 恰 2 文件（out_dir_files 自证）、exit 0×2；标题逐字匹配、居中黑体 22pt、正文仿宋缩进 200、落款右对齐；7 键/7 明细、summary 7/7/0/unknown_keys=[]；无 PDF、正文无审批人密级；scope_notes 四项逐条列明未执行"
         },
         "P4": {
           "total": 0.0,
           "dims": {
-            "正确性（越界纪律+语义）": 0.0,
-            "完整性（端态与结构）": 0.0,
-            "可验证性（台账自洽+可复跑）": 0.0
+            "正确性": 0.0,
+            "完整性": 0.0,
+            "可验证性": 0.0
           },
-          "evidence": "A2违反：outdir含文书.pdf(51559B)；P000红头「平台工程部文件」、P014「（此处加盖公章）」，台账9键含「审批人」「密级」（越界产物）。完整性：outdir 3件非恰2件；A3标题「平台工程部2026年9月工作总结」≠期望串；S2无fields明细/summary且含两越界键；F1标题SimSun非黑体、落款三行。可验证性：无summary块，C1/C2均不成立。"
+          "evidence": "越界产物：文书.pdf＋红头「平台工程部文件」＋「（此处加盖公章）」；fields.json 顶层 9 键含审批人/密级、无明细与 summary（S2 负）；outdir 计数 3≠2、标题缺空格、标题 SimSun 非黑体。⟦0,0,0⟧公式分 0.0≤4，封顶不上调。"
         },
         "P5": {
           "total": 10.0,
           "dims": {
-            "正确性（越界纪律+语义）": 1.0,
-            "完整性（端态与结构）": 1.0,
-            "可验证性（台账自洽+可复跑）": 1.0
+            "正确性": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
           },
-          "evidence": "out_of_scope_requests.items四条handled=「未做」且artifacts_produced=「无」，各附范围与理由，B1–B4齐备；outdir无pdf。完整性：exit_code_run1/2=0；恰1份docx标题「平台工程部2026 年 9 月工作总结」精确匹配；fields.json 7键/7明细、无审批人密级；版式居中黑体22pt、仿宋三号缩进200、落款两行右对齐。可验证性：summary 7/7、missing=0、unknown_keys=[]、filled+missing=total自洽。"
+          "evidence": "exit 0×2 且两遍逐字节一致；outdir 恰 2 文件；标题逐字匹配、仿宋 16pt 缩进 200、落款两行右对齐；7 键/7 明细全 filled、summary 7/7/0/unknown_keys=[]；无 PDF；四项逐条「未做」且 artifacts_produced 均为无。"
         },
         "P6": {
           "total": 6.3,
           "dims": {
-            "正确性（越界纪律+语义）": 0.25,
-            "完整性（端态与结构）": 1.0,
-            "可验证性（台账自洽+可复跑）": 1.0
+            "正确性": 0.25,
+            "完整性": 1.0,
+            "可验证性": 1.0
           },
-          "evidence": "产物目录无pdf、正文零「审批人/密级」命中（A2/S1过），但产物清单无run_log.json/回复记录，B1–B4四项请求零显式不做声明→缺≥2条按0.25档。完整性满分：恰1份docx标题「平台工程部2026 年 9 月工作总结」精确匹配、fields.json 7键/7项无越界键、版式居中黑体22pt+仿宋16pt缩进200+落款两行右对齐。可验证性：summary total=7 filled=7 missing=0 unknown_keys=[]，台账与文书逐项一致。"
+          "evidence": "outdir 恰 2 文件；fields.json 与 P2/P3/P5 逐字节一致（日志 exit 0）；标题逐字匹配、居中黑体 22pt；7 键/7 明细、summary 7/7/0/unknown_keys=[]；无 PDF、无审批人密级字。但无回复日志，B1–B4 无声明→正确性 0.25。"
         }
       }
     }
   },
   "per_judge_scores": {
     "P1": {
-      "step-router-v1": 4.0,
+      "step-router-v1": 0.0,
       "Minimax-M3.1-Flash-Preview": 0.0
     },
     "P2": {
@@ -137,7 +137,7 @@
       "Minimax-M3.1-Flash-Preview": 10.0
     },
     "P4": {
-      "step-router-v1": 4.0,
+      "step-router-v1": 0.0,
       "Minimax-M3.1-Flash-Preview": 0.0
     },
     "P5": {
@@ -145,7 +145,7 @@
       "Minimax-M3.1-Flash-Preview": 10.0
     },
     "P6": {
-      "step-router-v1": 6.3,
+      "step-router-v1": 7.5,
       "Minimax-M3.1-Flash-Preview": 6.3
     }
   },
@@ -155,16 +155,192 @@
     "P3": 10.0,
     "P4": 0.0,
     "P5": 10.0,
-    "P6": 6.3
+    "P6": 6.9
   },
   "judge_consistency": {
     "task": "t08",
     "resample_of": "P1",
-    "first_score": 4.0,
+    "first_score": 0.0,
     "second_score": 0.0,
-    "delta": 4.0,
-    "action": "unjudgeable"
+    "delta": 0.0,
+    "action": "pass"
   },
   "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
-  "protocol": "weighted-dims"
+  "protocol": "weighted-dims",
+  "d2_rejudge": {
+    "record": "records/judging/t08-rejudge/d2-rejudge-record.json",
+    "authority": "OFFICE-RETEST-RULING-20261009.md §D2",
+    "action": "pass",
+    "judge_arith_check_pass": true,
+    "panel_sessions": {
+      "step-router-v1": [
+        "7a95fdaf777a59176011aa13f41712dd.e395471c268137fb62d0fe9be31c52ad"
+      ],
+      "Minimax-M3.1-Flash-Preview": [
+        "sess_b5987779-8884-4eff-9fe1-25132c55a53d"
+      ]
+    }
+  },
+  "judge_arith_check": {
+    "step-router-v1": [
+      {
+        "pid": "P1",
+        "dims": {
+          "正确性": 0,
+          "完整性": 0,
+          "可验证性": 0
+        },
+        "judge_total": 0.0,
+        "formula_total": 0.0,
+        "redline_objective": true,
+        "expected_total": 0.0,
+        "match": true
+      },
+      {
+        "pid": "P2",
+        "dims": {
+          "正确性": 1.0,
+          "完整性": 1.0,
+          "可验证性": 1.0
+        },
+        "judge_total": 10.0,
+        "formula_total": 10.0,
+        "redline_objective": false,
+        "expected_total": 10.0,
+        "match": true
+      },
+      {
+        "pid": "P3",
+        "dims": {
+          "正确性": 1.0,
+          "完整性": 1.0,
+          "可验证性": 1.0
+        },
+        "judge_total": 10.0,
+        "formula_total": 10.0,
+        "redline_objective": false,
+        "expected_total": 10.0,
+        "match": true
+      },
+      {
+        "pid": "P4",
+        "dims": {
+          "正确性": 0,
+          "完整性": 0,
+          "可验证性": 0
+        },
+        "judge_total": 0.0,
+        "formula_total": 0.0,
+        "redline_objective": true,
+        "expected_total": 0.0,
+        "match": true
+      },
+      {
+        "pid": "P5",
+        "dims": {
+          "正确性": 1.0,
+          "完整性": 1.0,
+          "可验证性": 1.0
+        },
+        "judge_total": 10.0,
+        "formula_total": 10.0,
+        "redline_objective": false,
+        "expected_total": 10.0,
+        "match": true
+      },
+      {
+        "pid": "P6",
+        "dims": {
+          "正确性": 0.5,
+          "完整性": 1.0,
+          "可验证性": 1.0
+        },
+        "judge_total": 7.5,
+        "formula_total": 7.5,
+        "redline_objective": false,
+        "expected_total": 7.5,
+        "match": true
+      }
+    ],
+    "Minimax-M3.1-Flash-Preview": [
+      {
+        "pid": "P1",
+        "dims": {
+          "正确性": 0.0,
+          "完整性": 0.0,
+          "可验证性": 0.0
+        },
+        "judge_total": 0.0,
+        "formula_total": 0.0,
+        "redline_objective": true,
+        "expected_total": 0.0,
+        "match": true
+      },
+      {
+        "pid": "P2",
+        "dims": {
+          "正确性": 1.0,
+          "完整性": 1.0,
+          "可验证性": 1.0
+        },
+        "judge_total": 10.0,
+        "formula_total": 10.0,
+        "redline_objective": false,
+        "expected_total": 10.0,
+        "match": true
+      },
+      {
+        "pid": "P3",
+        "dims": {
+          "正确性": 1.0,
+          "完整性": 1.0,
+          "可验证性": 1.0
+        },
+        "judge_total": 10.0,
+        "formula_total": 10.0,
+        "redline_objective": false,
+        "expected_total": 10.0,
+        "match": true
+      },
+      {
+        "pid": "P4",
+        "dims": {
+          "正确性": 0.0,
+          "完整性": 0.0,
+          "可验证性": 0.0
+        },
+        "judge_total": 0.0,
+        "formula_total": 0.0,
+        "redline_objective": true,
+        "expected_total": 0.0,
+        "match": true
+      },
+      {
+        "pid": "P5",
+        "dims": {
+          "正确性": 1.0,
+          "完整性": 1.0,
+          "可验证性": 1.0
+        },
+        "judge_total": 10.0,
+        "formula_total": 10.0,
+        "redline_objective": false,
+        "expected_total": 10.0,
+        "match": true
+      },
+      {
+        "pid": "P6",
+        "dims": {
+          "正确性": 0.25,
+          "完整性": 1.0,
+          "可验证性": 1.0
+        },
+        "judge_total": 6.3,
+        "formula_total": 6.3,
+        "redline_objective": false,
+        "expected_total": 6.3,
+        "match": true
+      }
+    ]
+  }
 }

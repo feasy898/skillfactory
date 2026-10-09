@@ -43,8 +43,9 @@
     "rejudge_extra_policy": "分差>2 换面板内另一异族裁判重评全任务，按实发记账",
     "step_channel_retry_margin": 26,
     "step_channel_retry_basis": "step=模型 API 直调通道，每裁判调用失败/超时重试 ≤1；通道故障如实降级留痕，致异族 <2 族的任务 fail-closed 记 unjudgeable",
-    "used_so_far": 70,
-    "closing_note": "实发 70 条（floor 26 + 抽检 13 + step prefill 缺陷期 no-verdict 6 条留痕 + 判官 notes 修正后 t01-t08 全量重判 + ab1/ab3 通道修复重发）；逐条 task/judge/status 可溯"
+    "used_so_far": 80,
+    "closing_note": "实发 80 条（Phase2 70 条 + D2 复判 10 条：落盘复判 3 条（slot 156-158=主判 2+抽检复评 1），装置 bug 崩溃期 7 条（slot 149-155，判词未落盘）如实留痕不计；逐条 task/judge/status 可溯）",
+    "d2_rejudge_authority": "alpha 裁决 OFFICE-RETEST-RULING-20261009 §D2 授权复判调用；崩溃期 slot 149-152/154-155 系复判装置脚本 bug（复评判词匿名键 Q1 未纳入 arith 遍历、重发调用 STAGING_ROOTS 键漏设），判词未落盘，修复后 slot 156+ 为落盘复判"
   },
   "retry_policy": {
     "retry_cap_per_arm": 1,
@@ -2792,6 +2793,180 @@
       "tokens": {
         "input": 18317,
         "output": 19859
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t08-rejudge-d2",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "13:05:32",
+      "status": "done",
+      "slot": 149,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 55099,
+      "session_id": "7fed2f0e0eaa2ad4fcc059c1641d02de.9f837b750716e2715b8cfc3b264be859",
+      "tokens": {
+        "input": 51827,
+        "output": 8919
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "t08-rejudge-d2",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "13:06:27",
+      "status": "done",
+      "slot": 150,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 95885,
+      "session_id": "sess_56acc7b7-34a2-4873-9582-e18472c22f05",
+      "tokens": {
+        "input": 480800,
+        "output": 8744
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t08-rejudge-d2-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "13:08:05",
+      "status": "done",
+      "slot": 151,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 42422,
+      "session_id": "ce786a4bc364623f445e2b01f31e7eef.fb55314f4e588db7f4bddebed2f74a4b",
+      "tokens": {
+        "input": 23800,
+        "output": 5909
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t08-rejudge-d2-resample-resend",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "13:08:47",
+      "status": "failed",
+      "slot": 152,
+      "kind": "judge",
+      "exit_code": 1,
+      "error": "KeyError:'t08-rejudge-d2-resample-resend'"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t08-rejudge-d2",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "13:10:32",
+      "status": "done",
+      "slot": 153,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 23623,
+      "session_id": "ce12b23a34e8738edcf4ba0b57497ce2.e33066e023f0e0d49b194bf3aff85d67",
+      "tokens": {
+        "input": 51827,
+        "output": 3762
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "t08-rejudge-d2",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "13:10:56",
+      "status": "done",
+      "slot": 154,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 159549,
+      "session_id": "sess_7ac785de-fe69-405d-b67f-eb4c61505e53",
+      "tokens": {
+        "input": 1558950,
+        "output": 19436
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t08-rejudge-d2-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "13:13:38",
+      "status": "done",
+      "slot": 155,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 51298,
+      "session_id": "f7b1f23f02e711135cc555d7066c7c22.d8cf744fa2abea01b2835eb7e2378252",
+      "tokens": {
+        "input": 23664,
+        "output": 128
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t08-rejudge-d2",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "13:17:10",
+      "status": "done",
+      "slot": 156,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 40763,
+      "session_id": "7a95fdaf777a59176011aa13f41712dd.e395471c268137fb62d0fe9be31c52ad",
+      "tokens": {
+        "input": 51827,
+        "output": 6384
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "t08-rejudge-d2",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "13:17:51",
+      "status": "done",
+      "slot": 157,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 119821,
+      "session_id": "sess_b5987779-8884-4eff-9fe1-25132c55a53d",
+      "tokens": {
+        "input": 456188,
+        "output": 10938
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t08-rejudge-d2-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "13:19:52",
+      "status": "done",
+      "slot": 158,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 52165,
+      "session_id": "a63277b76d09c4e758b68679265a03ca.530629e6bd7cb58a606781d4b50959f2",
+      "tokens": {
+        "input": 23800,
+        "output": 8863
       },
       "model_observed": "step-router-v1"
     }

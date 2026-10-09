@@ -1,0 +1,15 @@
+EXTRACT OF 文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=406400 runs=[平台工程部文件/SimSun/26.0] text=平台工程部文件
+P002 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=457200 runs=[平台工程部2026年9月工作/SimSun/22.0] text=平台工程部2026年9月工作总结
+P003 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[2026年9月，平台工程部围/FangSong/16.0] text=2026年9月，平台工程部围绕网关灰度切换推进各项工作，现将本月工作情况总结如下：
+P004 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[一、工作回顾/SimHei/16.0] text=一、工作回顾
+P005 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[完成网关灰度切换。/FangSong/16.0] text=完成网关灰度切换。
+P006 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[二、主要成绩/SimHei/16.0] text=二、主要成绩
+P007 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[切换期间零回滚。/FangSong/16.0] text=切换期间零回滚。
+P008 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[三、存在问题/SimHei/16.0] text=三、存在问题
+P009 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[老旧实例尚未下线。/FangSong/16.0] text=老旧实例尚未下线。
+P010 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[四、下一步工作打算/SimHei/16.0] text=四、下一步工作打算
+P011 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[把灰度流程沉淀为标准作业。/FangSong/16.0] text=把灰度流程沉淀为标准作业。
+P012 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[平台工程部/FangSong/16.0] text=平台工程部
+P013 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[2026年9月30日/FangSong/16.0] text=2026年9月30日
+P014 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[（此处加盖公章）/FangSong/16.0] text=（此处加盖公章）

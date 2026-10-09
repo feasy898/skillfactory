@@ -488,15 +488,15 @@
     {
       "task": "t08",
       "tested_family": "glm",
-      "status": "unjudgeable",
+      "status": "judged",
       "t_mean": 10.0,
-      "b_mean": 2.1,
-      "delta": 7.9,
+      "b_mean": 2.3000000000000003,
+      "delta": 7.699999999999999,
       "pairs": [
         {
           "rep": 1,
           "t": 10.0,
-          "b": 6.3,
+          "b": 6.9,
           "task_verdict": "win"
         },
         {
@@ -519,10 +519,10 @@
       "judge_consistency": {
         "task": "t08",
         "resample_of": "P1",
-        "first_score": 4.0,
+        "first_score": 0.0,
         "second_score": 0.0,
-        "delta": 4.0,
-        "action": "unjudgeable"
+        "delta": 0.0,
+        "action": "pass"
       }
     }
   ],
@@ -530,14 +530,14 @@
   "losses": 0,
   "ties": 1,
   "win_rate": 0.9231,
-  "delta_mean": 4.61,
+  "delta_mean": 4.59,
   "fam_tasks": {
     "glm": {
       "n_tasks": 7,
       "wins": 7,
       "losses": 0,
       "ties": 0,
-      "delta_mean": 4.79,
+      "delta_mean": 4.76,
       "win_rate": 1.0,
       "reverse": 0,
       "task_verdicts": {
@@ -570,7 +570,7 @@
   },
   "composite_gate": {
     "1_delta_ge_1": {
-      "value": 4.61,
+      "value": 4.59,
       "pass": true
     },
     "2_winrate_ge_60": {
@@ -584,9 +584,7 @@
       "value": 0,
       "pass": true
     },
-    "unjudgeable_tasks": [
-      "t08"
-    ],
+    "unjudgeable_tasks": [],
     "note": "EVAL-SPEC v0.2.1 §3.6 三条件同时满足才 accepted；三条以最严格者裁决；平局不进反向计数；反向任务=任务级 treatment 均分<baseline 或 treatment 任务均分=0"
   },
   "efficiency": {
@@ -597,14 +595,14 @@
     "gate_le_2": true
   },
   "_swap_check": {
-    "swap_delta": -4.607692,
+    "swap_delta": -4.592308,
     "swap_win_rate": 0.0,
     "tie_rate": 0.0769,
     "swap_reverse_tasks": 13,
     "identity_abs_swap_delta_plus_delta": 0.0,
     "note": "从原始 per-pair 分数独立重算（EVAL-SPEC v0.2.1 §3.3-2/3 tie-aware）；恒等式 swap_delta + delta ≈ 0；swap_reverse_tasks=swap 侧资产方向真实反向数"
   },
-  "verdict": "rejected",
+  "verdict": "accepted",
   "evidence_level": "provisional",
   "single_round_signal": true,
   "cross_generation_note": "§3.7-4：本轮 judge_prompt_version=S8-JUDGE-v2-OFXRETEST-1、任务集 13（5ab+8new）、n=3，与 K5B round1（S8-JUDGE-v1、5 题、n=2）构成跨代——禁止与 K5B Δ 直接对位或合并披露；同代可比须两轮同 judge_model_id 与 judge_prompt_version"

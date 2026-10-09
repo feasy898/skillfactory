@@ -1,6 +1,17 @@
 {
   "k5b07_check": {
     "rounds": 2,
+    "round2_verdict": "accepted",
+    "round1_verdict": "rejected",
+    "delta_round2": 4.59,
+    "delta_round1": 0.725,
+    "both_accepted_and_same_sign": false,
+    "single_round_signal": true,
+    "assertion_ok": true,
+    "d2_note": "D2 复判后重算（2026-10-09）：round2 转 accepted（provisional）；round1 仍 rejected → 两轮不都 accepted → single_round_signal 必须为 true（K5B-07），断言过"
+  },
+  "pre_d2_value": {
+    "rounds": 2,
     "round2_verdict": "rejected",
     "round1_verdict": "rejected",
     "delta_round2": 4.61,
