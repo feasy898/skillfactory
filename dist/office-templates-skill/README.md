@@ -32,7 +32,7 @@ python eval/runner.py out reference/out
 
 ## 评测报告（本技能自带体检报告）
 
-见 [EVALUATION.md](EVALUATION.md)：v0.2 双臂双重复盲评 5 任务，基线 **7.7 → 治疗 8.9（Δ +1.20）**，任务级胜率 **100%（5/5）**、反向任务 **0**，判定**达标**（原始数据见开发方评测存档，未随包分发）；确定性评测第 1 轮通过，评测脚本随包附带，任何人可按上文命令复跑验证（发包时实跑：68/68 checks 全过、字段一致率 100.0% 66/66）。
+见 [EVALUATION.md](EVALUATION.md) 结论先行：现行判定 **accepted（provisional，single_round_signal=true）**（K-5 回炉重测 round2 盲评三门全过，2026-10-09）。round2 为单轮信号，按 EVAL-SPEC v0.2.1 §3.7-1，同代第二轮确认前禁止对外引用单点 Δ 值，对外口径六项：verdict=accepted（provisional，single_round_signal=true）、任务数 n=13、每臂重复 rep=3、同代轮次=1、模型钉版（被测 GLM-5.3@account:bigmodel-individual-coding-plan（max）与 Minimax-M3.1-Flash-Preview@minimax（enabled）双族、三族异族互裁）、evalbench 版本 v0.2.1（任务集冻结 9e7f57c6…）。历代评测数字一律不在本页呈现，按代分节见 [EVALUATION.md](EVALUATION.md)「二、结果」；确定性评测第 1 轮通过，评测脚本随包附带，任何人可按上文命令复跑验证（发包时实跑：68/68 checks 全过、字段一致率 100.0% 66/66）。
 
 ## 目录结构
 

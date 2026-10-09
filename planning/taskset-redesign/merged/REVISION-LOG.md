@@ -373,7 +373,7 @@
 |---|---|---|
 | 99 文件净荷（D1 轮口径，不含本日志/index） | `c783e2cd66c0170fa6d12323f8ab465c3170ed1af625d0c64a14f811e4191ca8` | **不变**（本轮零触碰净荷文件，实测复算相符） |
 | 72 文件可比（task.json/brief.md/rubric.md） | `0c40c7711c4fa51092d41a9b68c008ec1a566b83e9f1505336cbce3bd26fef8a` | **不变**（实测复算相符） |
-| 全树（含本日志/index.json/selection/BLIND-REVIEW*/裁决/D1-DIFF-TABLE/D5-ANCHOR-AUDIT） | 值记于 `index.json.frozen_sha256_fulltree`（本文件在全树口径内，故本日志不复写该值；验证=把字段值替换回哨兵 `SELFREF-SENTINEL-`+47 个 0 重跑命令即应复得；本节与本轮 dist/evalkit 更正文件计入新值） | 重算登记 |
+| 全树（含本日志/index.json/selection/BLIND-REVIEW*/裁决/D1-DIFF-TABLE/D5-ANCHOR-AUDIT） | 值记于 `index.json.frozen_sha256_fulltree`（本文件在全树口径内，故本日志不复写该值；验证=把字段值替换回哨兵 `SELFREF-SENTINEL-`+47 个 0 重跑命令即应复得；本节计入新值） | 重算登记 |
 
 ### ⚠️ 延续性声明（C1-C6 更正轮）
 

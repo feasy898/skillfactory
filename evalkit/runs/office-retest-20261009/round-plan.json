@@ -288,6 +288,7 @@
       ],
       "panel_rotation": "task_idx=13 parity=1（槽序不互换，与首轮一致）",
       "sessions": "两裁判均新会话（新 workdir judge-work/t08-rejudge/、新 session_id），首轮会话不复用",
+      "deviation_note": "实际执行偏离本条——Minimax 工作目录两轮间未清空，终轮沿用第 2 轮 verdict（详见 records/judging/t08-rejudge/d2-rejudge-record.json correction_note），经 alpha 终裁定性装置偏差不改判。",
       "blind": "盲态不变：P1..P6 匿名 + docx 事实预抽取 + 路径漂白；映射仅存 records/judge-staging/",
       "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1（不变）；判据面=D1 修订后 rubric.md+judge-notes.md（sha256 3280f0cd…/3bceaabc…）"
     },

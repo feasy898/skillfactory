@@ -484,7 +484,7 @@
       "step_side_consistent": "step-router-v1 侧登记与实际一致：终轮主判 slot 156（7a95fdaf…，attempt1 即过 arith、判词落盘）、resample slot 158（a63277b7…）",
       "registry_correction": "本记录与 records/judging/t08.json 的 d2_rejudge.panel_sessions 按『attempt1 即过 arith』口径登记终轮会话，未反映 Minimax verdict 字节实际出处，均以本注记为准；EVALUATION.md 原「面板 step-router-v1+Minimax 均新会话」表述已删除（见 EVALUATION.md §五 D2 执行偏差更正注记）"
     },
-    "result_invariance_evidence_chain": "七条（alpha 终裁定性：留痕与披露缺陷，不推翻结论）：①盲态未破（verdict 只有 P 标签，臂映射仅在 judge-staging）；②污染仅同裁同 brief（BRIEF_SAME 实测）；③Minimax 首轮干净会话 6 总分（0/10/10/0/10/6.3，records/judging/first-pass-pre-d2/t08.json）与 D2 verdict 字节完全相同（独立复现）；④step 第 2/3 轮总分逐值一致，§3.4 抽检走 step 通道；⑤t08 treatment 每轮每裁均 10.0、baseline 最高 6.9，恒为 win；⑥重跑由脚本崩溃触发（slot 152 KeyError），非看结果挑选；⑦方向保守（P6 6.3→6.9，t08 Δ+7.90→+7.70）",
+    "result_invariance_evidence_chain": "七条（alpha 终裁定性：留痕与披露缺陷，不推翻结论）：①盲态未破（verdict 只有 P 标签，臂映射仅在 judge-staging）；②污染仅同裁同 brief（BRIEF_SAME 实测）；③Minimax 首轮干净会话 6 总分（0/10/10/0/10/6.3，records/judging/first-pass-pre-d2/t08.json）与 D2 落盘 verdict 的 6 总分逐值相同（独立复现；文件 md5 不同：首轮 fe0528b5… vs D2 dc5f9ce7…）；④step 第 2/3 轮总分逐值一致，§3.4 抽检走 step 通道；⑤t08 treatment 每轮每裁均 10.0、baseline 最高 6.9，恒为 win；⑥重跑由脚本崩溃触发（slot 152 KeyError），非看结果挑选；⑦方向保守（P6 6.3→6.9，t08 Δ+7.90→+7.70）",
     "ruling": "装置偏差不改判：t08 复判终分（P1=0.0/P2=10.0/P3=10.0/P4=0.0/P5=10.0/P6=6.9）与 verdict 转移（fail-closed rejected → accepted provisional）维持不变",
     "recorded_at": "2026-10-09（零模型调用更正卡，依据 alpha 终裁 C1-C6）"
   }

@@ -111,7 +111,7 @@ python eval/runner.py <空目录> reference/out        # 红：应 units_found �
 > 3. **Minimax 判官工作目录两轮间未清空，verdict 字节归属更正**：`d2-rejudge-record.json` 与 `records/judging/t08.json` 登记的 Minimax session（sess_b5987779…，slot 157）为终轮会话，但落盘 verdict.json 三份（终轮目录 + _run1 + _run2）md5 均为 dc5f9ce7…，字节实际出自**第 2 轮 sess_7ac785de（slot 154）**；终轮 transcript 自述「`verdict.json` is already written in the working directory and validates clean — and my independent re-judging landed on exactly the same six totals, so I left it in place rather than overwriting.」——终轮系复核后**沿用**第 2 轮判词文件，非新写。step-router-v1 侧登记与实际一致（终轮 slot 156、resample slot 158，attempt1 即过 arith）。
 > 4. 前文原「面板 step-router-v1+Minimax」后所附会话口径已删除：Minimax 终轮未以新判词落盘（见第 3 条），两裁判会话状况以第 1、3 条如实登记为准，不作「全新会话」概括。
 >
-> **结果不变性证据链（七条，alpha 终裁定性：留痕与披露缺陷，不推翻结论）**：①盲态未破（verdict 只有 P 标签，臂映射仅在 judge-staging）；②污染仅同裁同 brief（BRIEF_SAME 实测）；③Minimax 首轮干净会话 6 总分（0/10/10/0/10/6.3，`records/judging/first-pass-pre-d2/t08.json`）与 D2 verdict 字节完全相同（独立复现）；④step 第 2/3 轮总分逐值一致，§3.4 抽检走 step 通道；⑤t08 treatment 每轮每裁均 10.0、baseline 最高 6.9，恒为 win；⑥重跑由脚本崩溃触发（slot 152 KeyError），非看结果挑选；⑦方向保守（P6 6.3→6.9，t08 Δ+7.90→+7.70）。
+> **结果不变性证据链（七条，alpha 终裁定性：留痕与披露缺陷，不推翻结论）**：①盲态未破（verdict 只有 P 标签，臂映射仅在 judge-staging）；②污染仅同裁同 brief（BRIEF_SAME 实测）；③Minimax 首轮干净会话 6 总分（0/10/10/0/10/6.3，`records/judging/first-pass-pre-d2/t08.json`）与 D2 落盘 verdict 的 6 总分逐值相同（独立复现；文件 md5 不同：首轮 fe0528b5… vs D2 dc5f9ce7…）；④step 第 2/3 轮总分逐值一致，§3.4 抽检走 step 通道；⑤t08 treatment 每轮每裁均 10.0、baseline 最高 6.9，恒为 win；⑥重跑由脚本崩溃触发（slot 152 KeyError），非看结果挑选；⑦方向保守（P6 6.3→6.9，t08 Δ+7.90→+7.70）。
 
 **跨代可比（§3.7-4）**：round2（S8-JUDGE-v2-OFXRETEST-1、13 题、n=3）与 round1（S8-JUDGE-v1、5 题、n=2）构成跨代，两轮数字禁止直接 Δ 对位或合并披露。
 
