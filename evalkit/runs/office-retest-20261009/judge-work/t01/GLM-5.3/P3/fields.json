@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.0",
+  "source": "shibei_week42.json",
+  "document_title": "拾贝书店 2026年10月第2周 工作周报",
+  "fields": [
+    {
+      "name": "部门",
+      "label": "部门",
+      "required": true,
+      "type": "string",
+      "present": true,
+      "raw": " 拾贝书店 ",
+      "value": "拾贝书店",
+      "cleaning": [
+        "trim"
+      ],
+      "item_count": null,
+      "missing": false
+    },
+    {
+      "name": "填报人",
+      "label": "填报人",
+      "required": true,
+      "type": "string",
+      "present": true,
+      "raw": "关菡",
+      "value": "关菡",
+      "cleaning": [],
+      "item_count": null,
+      "missing": false
+    },
+    {
+      "name": "周期",
+      "label": "报送周期",
+      "required": true,
+      "type": "string",
+      "present": true,
+      "raw": "2026年10月第2周（10月5日-10月9日）",
+      "value": "2026年10月第2周（10月5日-10月9日）",
+      "cleaning": [],
+      "item_count": null,
+      "missing": false
+    },
+    {
+      "name": "本周工作内容",
+      "label": "本周工作内容",
+      "required": true,
+      "type": "list",
+      "present": true,
+      "raw": [
+        "完成店庆档期主题陈列改造",
+        "   ",
+        "复盘会员日核销数据并输出简报"
+      ],
+      "value": [
+        "完成店庆档期主题陈列改造",
+        "复盘会员日核销数据并输出简报"
+      ],
+      "cleaning": [
+        "trim",
+        "drop_blank_items"
+      ],
+      "item_count": 2,
+      "missing": false,
+      "dropped_blank_items": [
+        1
+      ]
+    },
+    {
+      "name": "下周工作计划",
+      "label": "下周工作计划",
+      "required": true,
+      "type": "string",
+      "present": true,
+      "raw": "启动冬季书单选品",
+      "value": "启动冬季书单选品",
+      "cleaning": [],
+      "item_count": null,
+      "missing": false
+    },
+    {
+      "name": "问题与需协调事项",
+      "label": "问题与需协调事项",
+      "required": false,
+      "type": "list",
+      "present": true,
+      "raw": [
+        "收银终端老化，需要报修",
+        ""
+      ],
+      "value": [
+        "收银终端老化，需要报修"
+      ],
+      "cleaning": [
+        "drop_blank_items"
+      ],
+      "item_count": 1,
+      "missing": false,
+      "dropped_blank_items": [
+        1
+      ]
+    },
+    {
+      "name": "报送日期",
+      "label": "报送日期",
+      "required": true,
+      "type": "string",
+      "present": true,
+      "raw": "2026-10-12",
+      "value": "2026-10-12",
+      "cleaning": [],
+      "item_count": null,
+      "missing": false
+    },
+    {
+      "name": "温馨提示",
+      "label": "温馨提示",
+      "required": false,
+      "type": "string",
+      "present": true,
+      "raw": "本周五店休半天",
+      "value": "本周五店休半天",
+      "cleaning": [],
+      "item_count": null,
+      "missing": false
+    }
+  ],
+  "summary": {
+    "total_fields": 8,
+    "required_fields": 6,
+    "optional_fields": 2,
+    "present_fields": 8,
+    "missing_required_names": [],
+    "missing_optional": [],
+    "unknown_keys": [],
+    "cleaned_field_names": [
+      "部门",
+      "本周工作内容",
+      "问题与需协调事项"
+    ]
+  }
+}

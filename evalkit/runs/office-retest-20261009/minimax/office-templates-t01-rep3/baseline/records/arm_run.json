@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 91103,
+  "started_at_ms": 1791491619025,
+  "session_id": "sess_64aaead3-fc18-48a9-9ff4-1210da33651d",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 982944,
+      "ot": 11203,
+      "dur": 67957,
+      "n": 31
+    }
+  ],
+  "input_tokens": 982944,
+  "output_tokens": 11203,
+  "stdout_bytes": 4090,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": ".json` 逐项比对，12 条断言全部 PASS，退出码 0。\\n\\n两点说明：一是 `documents:visual-judge` 子代理在本机报 Provider 不存在，所以视觉验收是我直接看渲染图完成的；二是本机 `python-docx` 未预装且默认 venv 不可写，改用 `pip --target /tmp/pylibs` 安装后经 PYTHONPATH 引入，生成脚本留在 `gen_report.py`，可重跑复现。这两点连同工具链细节已写入记忆，后续不必重查。\\n\\n::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep3/baseline/out/文书.docx\\\" purpose=\\\"output\\\"}\\n\\n::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep3/baseline/out/fields.json\\\" purpose=\\\"output\\\"}\\n\\n::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep3/baseline/out/delivery-report.json\\\" purpose=\\\"output\\\"}\\n\\n::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep3/baseline/shibei_week42.json\\\" purpose=\\\"output\\\"}\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 31,\n    \"inputTokens\": 982944,\n    \"outputTokens\": 11203,\n    \"totalTokens\": 994147,\n    \"cacheReadTokens\": 941495,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1841,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 994147,\n    \"contextUsed\": 42536,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

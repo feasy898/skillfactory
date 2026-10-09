@@ -1,0 +1,8 @@
+{
+  "scores": {
+    "Q1": {
+      "total": 8.0,
+      "evidence": "R1:请函「____：」顶格、____×2、fields自记exit0；会通标题「关于____的通知」缺「召开」。R2:missing_required/选填missing/unknown=[备注]与期望表全符。R3:选填均omit不入必填；但无「联系电话：」空标签，联系人行居落款后。R4:会通P008/P009两行RIGHT、称谓顶格；请函落款仅P005一行，右空两字无据。R5:无run_log/_replay_facts，自复核fields↔docx逐项一致率100%。"
+    }
+  }
+}

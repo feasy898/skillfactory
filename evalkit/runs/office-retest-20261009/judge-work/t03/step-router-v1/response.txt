@@ -1,0 +1,58 @@
+{
+  "scores": {
+    "P1": {
+      "total": 1.5,
+      "dims": {
+        "正确性": 0.0,
+        "完整性": 0.5,
+        "可验证性": 0.0
+      },
+      "evidence": "A: 标题为`关于【发文机关名称】关于【请示事项名称】的请示`，全文无`____`占位，rendered_as为`【...】`格式，missing=5/8且missing_required仅4项；B: 标题为`【总结主体名称】关于【总结时段】的工作总结`，存在问题节未省略，rendered_as为`【...】`，missing=0/7。两产物rendered_as措辞完全不符spec。"
+    },
+    "P2": {
+      "total": 4.6,
+      "dims": {
+        "正确性": 0.4,
+        "完整性": 0.5,
+        "可验证性": 0.5
+      },
+      "evidence": "A: 仅5字段（缺请示缘由/单位/联系人/电话），missing_required仅4项且顺序错，rendered_as为`____`而非「以____占位」，成文日期渲染`____年__月__日`；B: 标题为`____（____年__月）工作总结`，节序号为`三、下一步工作打算`而非`四、`，rendered_as措辞多处不符。"
+    },
+    "P3": {
+      "total": 10.0,
+      "dims": {
+        "正确性": 1.0,
+        "完整性": 1.0,
+        "可验证性": 1.0
+      },
+      "evidence": "A: 标题/称谓/正文/落款共5处`____`渲染正确，fields.json missing=8/8、missing_required顺序正确、rendered_as逐字符合spec。B: 标题8下划线、三处`1．____`、存在问题节省略、落款`____`；fields.json missing=7/7、missing_required顺序正确、rendered_as逐字符合spec。"
+    },
+    "P4": {
+      "total": 10.0,
+      "dims": {
+        "正确性": 1.0,
+        "完整性": 1.0,
+        "可验证性": 1.0
+      },
+      "evidence": "同P3，文书渲染与fields.json台账均逐字符合judge-notes期望，无任何占位或节结构错误。"
+    },
+    "P5": {
+      "total": 10.0,
+      "dims": {
+        "正确性": 1.0,
+        "完整性": 1.0,
+        "可验证性": 1.0
+      },
+      "evidence": "同P3，文书渲染与fields.json台账均逐字符合judge-notes期望，无任何占位或节结构错误。"
+    },
+    "P6": {
+      "total": 1.5,
+      "dims": {
+        "正确性": 0.0,
+        "完整性": 0.5,
+        "可验证性": 0.0
+      },
+      "evidence": "A: 标题`［未填写］`、无`____`占位，fields.json仅6字段且rendered_as为`［未填写］`；B: 标题`［未填写］`、存在问题节未省略（`三、存在问题`）、rendered_as为`［未填写］`，fields.json字段9个且missing计数错。rendered_as措辞完全不符spec。"
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0",
+  "template": "请示函",
+  "template_required_fields": [
+    "主送机关",
+    "请示事由",
+    "请示缘由",
+    "请示事项",
+    "请示单位"
+  ],
+  "template_optional_fields": [
+    "联系人",
+    "联系电话",
+    "成文日期"
+  ],
+  "case": "case2",
+  "data_file": "fixtures/请示函/case2.json",
+  "outdir": "out/请示函/case2",
+  "placeholder": "____",
+  "policy": {
+    "missing_required": "以 ____ 占位渲染，不推断、不编造，程序正常结束（退出码 0）",
+    "missing_optional": "留空或整行省略，不渲染内容，不记入 missing_required",
+    "unknown_keys": "数据中不属于本模板的键，记入 unknown_keys，不渲染进正文",
+    "invented_values": "无——所有渲染值均来自输入数据或占位符"
+  },
+  "fields": {
+    "主送机关": {
+      "required": true,
+      "present_in_input": false,
+      "filled": false,
+      "value": "",
+      "render_as": "____",
+      "rendered_value": "____"
+    },
+    "请示事由": {
+      "required": true,
+      "present_in_input": true,
+      "filled": true,
+      "value": "延期举办季度评审会",
+      "render_as": "line",
+      "rendered_value": "延期举办季度评审会"
+    },
+    "请示缘由": {
+      "required": true,
+      "present_in_input": true,
+      "filled": true,
+      "value": "因关键评审人出差，原定会议时间无法保证评审质量。",
+      "render_as": "line",
+      "rendered_value": "因关键评审人出差，原定会议时间无法保证评审质量。"
+    },
+    "请示事项": {
+      "required": true,
+      "present_in_input": true,
+      "filled": false,
+      "value": "",
+      "render_as": "____",
+      "rendered_value": "____"
+    },
+    "请示单位": {
+      "required": true,
+      "present_in_input": true,
+      "filled": true,
+      "value": "评测技术部",
+      "render_as": "line",
+      "rendered_value": "评测技术部"
+    },
+    "成文日期": {
+      "required": false,
+      "present_in_input": false,
+      "filled": false,
+      "value": "",
+      "render_as": "omit",
+      "rendered_value": ""
+    },
+    "联系人": {
+      "required": false,
+      "present_in_input": true,
+      "filled": true,
+      "value": "李工",
+      "render_as": "line",
+      "rendered_value": "李工"
+    },
+    "联系电话": {
+      "required": false,
+      "present_in_input": false,
+      "filled": false,
+      "value": "",
+      "render_as": "omit",
+      "rendered_value": ""
+    }
+  },
+  "missing_required": [
+    "主送机关",
+    "请示事项"
+  ],
+  "missing_optional": [
+    "成文日期",
+    "联系电话"
+  ],
+  "required_missing": [
+    "主送机关",
+    "请示事项"
+  ],
+  "optional_missing": [
+    "成文日期",
+    "联系电话"
+  ],
+  "unknown_keys": [],
+  "unknown_key_values": {},
+  "counts": {
+    "required_total": 5,
+    "required_filled": 3,
+    "required_missing": 2,
+    "optional_total": 3,
+    "optional_filled": 1,
+    "optional_missing": 2,
+    "unknown_keys": 0
+  },
+  "artifacts": [
+    "文书.docx",
+    "fields.json"
+  ],
+  "exit_code": 0,
+  "status": "ok"
+}

@@ -1,0 +1,180 @@
+{
+  "template": "工作总结",
+  "data_source": "fixtures/工作总结/case2.json",
+  "artifacts": {
+    "document": "文书.docx",
+    "fields": "fields.json"
+  },
+  "title": "____2026年9月工作总结",
+  "numbering": {
+    "sections": "一、二、三、…",
+    "entries": "1．2．3．…"
+  },
+  "fields": {
+    "总结主体": {
+      "required": true,
+      "expected_type": "string",
+      "usage": [
+        "title",
+        "signature"
+      ],
+      "raw_value": null,
+      "value": null,
+      "status": "missing_placeholder",
+      "missing_kind": "absent",
+      "placeholder": "____",
+      "note": "必填缺失，以____占位",
+      "rendered": {
+        "title_part": "____",
+        "title": "____2026年9月工作总结",
+        "signature_line": "____"
+      }
+    },
+    "总结时段": {
+      "required": true,
+      "expected_type": "string",
+      "usage": [
+        "title"
+      ],
+      "raw_value": "2026年9月",
+      "value": "2026年9月",
+      "status": "filled",
+      "rendered": {
+        "title_part": "2026年9月",
+        "title": "____2026年9月工作总结"
+      }
+    },
+    "工作回顾": {
+      "required": true,
+      "expected_type": "list",
+      "usage": [
+        "section"
+      ],
+      "raw_value": "完成评测平台月度巡检",
+      "value": [
+        "完成评测平台月度巡检"
+      ],
+      "status": "filled",
+      "normalized_from": "string",
+      "normalization": "字符串型列表单项化：渲染为单项条目，字段值为单元素数组",
+      "rendered": {
+        "heading": "一、工作回顾",
+        "entries": [
+          "1．完成评测平台月度巡检"
+        ]
+      }
+    },
+    "主要成绩": {
+      "required": true,
+      "expected_type": "list",
+      "usage": [
+        "section"
+      ],
+      "raw_value": [],
+      "value": [],
+      "status": "missing_placeholder",
+      "missing_kind": "empty_list",
+      "placeholder_entry": "1．____",
+      "note": "空列表按必填缺失处理：渲染占位条目 1．____，记占位语义",
+      "rendered": {
+        "heading": "二、主要成绩",
+        "entries": [
+          "1．____"
+        ]
+      }
+    },
+    "存在问题": {
+      "required": false,
+      "expected_type": "list",
+      "usage": [
+        "section"
+      ],
+      "raw_value": null,
+      "value": null,
+      "status": "missing_omitted",
+      "missing_kind": "absent",
+      "note": "选填缺失：整节/整行省略，正文不出现，fields.json 记 missing（required=false）",
+      "rendered": {
+        "section_omitted": true
+      }
+    },
+    "下一步工作打算": {
+      "required": true,
+      "expected_type": "list",
+      "usage": [
+        "section"
+      ],
+      "raw_value": [
+        "制定四季度评测排期"
+      ],
+      "value": [
+        "制定四季度评测排期"
+      ],
+      "status": "filled",
+      "rendered": {
+        "heading": "三、下一步工作打算",
+        "entries": [
+          "1．制定四季度评测排期"
+        ]
+      }
+    },
+    "成文日期": {
+      "required": false,
+      "expected_type": "string",
+      "usage": [
+        "signature"
+      ],
+      "raw_value": null,
+      "value": null,
+      "status": "missing_omitted",
+      "missing_kind": "absent",
+      "note": "选填缺失：整节/整行省略，正文不出现，fields.json 记 missing（required=false）",
+      "rendered": {
+        "signature_line_omitted": true
+      }
+    }
+  },
+  "extra_input_fields": [],
+  "rendered_sections": [
+    {
+      "order": 1,
+      "heading": "一、工作回顾",
+      "field": "工作回顾",
+      "entries": [
+        "1．完成评测平台月度巡检"
+      ],
+      "placeholder_entry": false
+    },
+    {
+      "order": 2,
+      "heading": "二、主要成绩",
+      "field": "主要成绩",
+      "entries": [
+        "1．____"
+      ],
+      "placeholder_entry": true
+    },
+    {
+      "order": 3,
+      "heading": "三、下一步工作打算",
+      "field": "下一步工作打算",
+      "entries": [
+        "1．制定四季度评测排期"
+      ],
+      "placeholder_entry": false
+    }
+  ],
+  "signature": {
+    "alignment": "right",
+    "lines": [
+      "____"
+    ],
+    "omitted_fields": [
+      {
+        "field": "成文日期",
+        "required": false,
+        "reason": "选填缺失，落款行省略（不影响其余落款行右对齐）"
+      }
+    ]
+  }
+}

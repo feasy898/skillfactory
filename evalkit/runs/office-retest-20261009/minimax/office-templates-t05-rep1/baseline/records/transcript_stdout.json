@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_7cc29cec-c7af-41f1-8b68-dae1e14d7950",
+  "traceId": "0c4bff23-9f76-4ddf-8a87-5a133d6a837b",
+  "turnId": "turn_04bd5da3-fe0c-4610-94a0-3feb885daaa7",
+  "response": "Done — the 请示函 is drafted and both deliverables are in `out/`.\n\n**What's in place (all under `baseline/`):**\n\n- `lanshan_miji.json` — the source data saved verbatim as the brief asked.\n- `out/文书.docx` — the drafted 请示函.\n- `out/fields.json` — the field-mapping manifest.\n- `gen_doc.py` / `verify.py` — the generator and the self-check, so the doc is reproducible rather than a one-off binary.\n\n**The document** is a single-page 请示 laid out per GB/T 9704-2012《党政机关公文格式》: A4 with 天头 37mm / 地脚 35mm / 订口 28mm / 切口 26mm margins, a red 发文机关标志, a 发文字号 over the red separator rule, a 二号方正小标宋 title, 顶格 主送机关, 三号仿宋 body at a fixed 29pt line height, 黑体 for the 一级标题, then 署名 (右空二字), 成文日期 (右空四字), seal placeholder, contact line, and a 版记 block at the page foot, with a `— 1 —` page number in the footer.\n\n**Field handling.** All eight source values land verbatim in the document — `verify.py` asserts this rather than my just claiming it, and it currently reports `ALL PASS`. The two long fields (`请示缘由`, `请示事项`) are reproduced as complete sentences including their terminal 。, with any added wording (the closing \"现就有关事项请示如下\", the post-purchase handling sentence) starting fresh rather than being spliced into the original sentence, so traceability stays exact.\n\n**Two things I filled in that weren't in your data**, both flagged under `非源数据补足项` in `fields.json` so they aren't mistaken for source facts: a 发文字号 (澜山物业综函〔2026〕12号), since a 请示 without one looks unfinished, and 抄送机关 (综合管理部档案室), taken as the handling unit for the request. Both need confirmation before the document actually goes out — the 发文字号 especially, since the flow number is arbitrary.\n\nOne note on fonts: the docx declares 仿宋_GB2312 / 方正小标宋简体 / 黑体, the standard Chinese official-document faces. Those aren't installed on this machine, so my preview render substituted Noto CJK. The layout, spacing, and text are faithful; on a Chinese Windows/Office install it will pick up the real faces, which are slightly narrower and may reflow by a character or two per line.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 46,
+    "inputTokens": 1683264,
+    "outputTokens": 17656,
+    "totalTokens": 1700920,
+    "cacheReadTokens": 1500800,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 1875,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1700920,
+    "contextUsed": 53775,
+    "contextWindow": 200000
+  }
+}

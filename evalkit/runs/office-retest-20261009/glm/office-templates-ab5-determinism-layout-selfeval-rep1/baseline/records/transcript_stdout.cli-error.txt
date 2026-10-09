@@ -1,0 +1,27 @@
+AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.
+{
+  "sessionId": "sess_c5cbbb20-8b1c-4738-a0cd-98c7528ce409",
+  "traceId": "812685a6-8c87-49be-acc4-0a4cde5ee4ba",
+  "turnId": "turn_6b771a7e-145f-44de-bd58-56b7f27a7d43",
+  "response": "任务完成，确定性自评结论为**一致（PASS）**。所有交付物已就位。\n\n## 结果摘要\n\n**协议执行**：用同一命令 `/usr/bin/python3 gen_doc.py --template 会议通知 --data fixtures/会议通知/case1.json --outdir out/会议通知/case1` 连跑两遍（第二遍覆盖复写第一遍），两遍产物**逐字节一致**：\n\n| 产物 | sha256（两遍相同） | 大小 |\n|---|---|---|\n| 文书.docx | `5a7c606fe641efd7…afbbe4` | 38163 B |\n| fields.json | `7d34f714790c903b…32cea5` | 2862 B |\n\ndocx 解析级对比（16 段落＋页脚页码段，共 24 个 run）的段落文本/对齐/缩进/字体/行距版面签名逐项一致；输出目录恰含两产物；fields.json 经机械扫描不含任何 outputs 类路径键，全文件逐字节对比口径成立（路径键豁免条款不适用）。\n\n**关键工程点**：python-docx 落盘时 zip 条目头携带「保存时刻」。run_log.json 里的对照实验坐实了这一不可复现源——裸保存两遍（跨 2 秒边界）zip 时间戳分别为 `2026-10-09 05:09:24` 与 `05:09:26`，字节不同；这也说明「同秒连跑两次」会假通过，两遍协议不能靠运气。生成器 `gen_doc.py` 保存后对 zip 容器归一化（条目时间戳固定 1980-01-01、权限 0644、ZIP_DEFLATED、顺序沿用源包），对照实验证明归一化后同样两份裸产物变为逐字节一致，在位产物的时间戳全为 `1980-01-01 00:00:00`。源码扫描 `\\btime\\(|\\bnow\\(|\\bdatetime\\b|\\brandom\\b|\\buuid\\b` 等 0 命中。\n\n**文档版面**（GB/T 9704-2012 风格 A4 会议通知）：居中 2 号小标宋标题「评测技术部关于召开三季度质量评审会的通知」、顶格主送、正文 3 号仿宋首行缩进二字、一至七条目（黑体标签＋仿宋值，会议要求两条子项）、特此通知、右侧落款署名/日期、页脚页码。LibreOffice 渲染后经 visual-judge 视觉验收**通过**（无重叠/溢出/乱码；方正小标宋/仿宋_GB2312 未装机导致的字体替换不构成缺陷）。\n\n**交付物**（baseline 臂根目录）：`gen_doc.py`（生成器，实现方式不限的自实现）、`determinism_check.py`（可重复执行的自评驱动）、`run_log.json`（两遍 sha256 记账＋逐字节/解析级对比结论＋对照实验，日志本身不含时钟字段故亦可再生）、`out/会议通知/case1/{文书.docx, fields.json}`（协议终态产物）、`.determinism/run1/`（第二遍覆盖前留存的第一遍产物副本，供复核）、`.determinism/preview/`（渲染预览，在输出目录之外）。另做过跨进程第三遍验证（临时目录）：sha256 与协议产物完全相同。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 40,
+    "inputTokens": 2230779,
+    "outputTokens": 40669,
+    "totalTokens": 2271448,
+    "cacheReadTokens": 2167360,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 26214,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 2271448,
+    "contextUsed": 78177,
+    "contextWindow": 200000
+  }
+}

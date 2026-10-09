@@ -1,0 +1,14 @@
+EXTRACT OF 工作总结-blank__文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P001 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=381000 runs=[【总结主体名称】关于/宋体/22.0 | 
+【总结时段】的工作总结/宋体/22.0] text=【总结主体名称】关于
+【总结时段】的工作总结
+P002 align=JUSTIFY (3) firstLineChars=0 firstLineIndent=406400 spacing=355600 runs=[一、工作回顾/黑体/16.0] text=一、工作回顾
+P003 align=JUSTIFY (3) firstLineChars=0 firstLineIndent=406400 spacing=355600 runs=[【工作回顾内容】/仿宋/16.0] text=【工作回顾内容】
+P004 align=JUSTIFY (3) firstLineChars=0 firstLineIndent=406400 spacing=355600 runs=[二、主要成绩/黑体/16.0] text=二、主要成绩
+P005 align=JUSTIFY (3) firstLineChars=0 firstLineIndent=406400 spacing=355600 runs=[【主要成绩内容】/仿宋/16.0] text=【主要成绩内容】
+P006 align=JUSTIFY (3) firstLineChars=0 firstLineIndent=406400 spacing=355600 runs=[三、存在问题/黑体/16.0] text=三、存在问题
+P007 align=JUSTIFY (3) firstLineChars=0 firstLineIndent=406400 spacing=355600 runs=[【存在问题内容】/仿宋/16.0] text=【存在问题内容】
+P008 align=JUSTIFY (3) firstLineChars=0 firstLineIndent=406400 spacing=355600 runs=[四、下一步工作打算/黑体/16.0] text=四、下一步工作打算
+P009 align=JUSTIFY (3) firstLineChars=0 firstLineIndent=406400 spacing=355600 runs=[【下一步工作打算内容】/仿宋/16.0] text=【下一步工作打算内容】
+P011 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[【总结主体名称】/仿宋/16.0] text=【总结主体名称】
+P012 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[【成文日期】/仿宋/16.0] text=【成文日期】

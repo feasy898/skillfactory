@@ -1,0 +1,141 @@
+{
+  "template": "周报",
+  "data_source": "fixtures/周报/case2.json",
+  "artifacts": {
+    "document": "文书.docx",
+    "fields": "fields.json"
+  },
+  "title": "____工作周报",
+  "numbering": {
+    "sections": "一、二、三、…",
+    "entries": "1．2．3．…"
+  },
+  "fields": {
+    "周期": {
+      "required": true,
+      "expected_type": "string",
+      "usage": [
+        "title"
+      ],
+      "raw_value": "",
+      "value": "",
+      "status": "missing_placeholder",
+      "missing_kind": "empty_string",
+      "placeholder": "____",
+      "note": "必填字符串为空，以____占位",
+      "rendered": {
+        "title_part": "____",
+        "title": "____工作周报"
+      }
+    },
+    "本周工作内容": {
+      "required": true,
+      "expected_type": "list",
+      "usage": [
+        "section"
+      ],
+      "raw_value": [],
+      "value": [],
+      "status": "missing_placeholder",
+      "missing_kind": "empty_list",
+      "placeholder_entry": "1．____",
+      "note": "空列表按必填缺失处理：渲染占位条目 1．____，记占位语义",
+      "rendered": {
+        "heading": "一、本周工作内容",
+        "entries": [
+          "1．____"
+        ]
+      }
+    },
+    "下周工作计划": {
+      "required": true,
+      "expected_type": "list",
+      "usage": [
+        "section"
+      ],
+      "raw_value": [
+        "整理缺陷清单并分派责任人"
+      ],
+      "value": [
+        "整理缺陷清单并分派责任人"
+      ],
+      "status": "filled",
+      "rendered": {
+        "heading": "二、下周工作计划",
+        "entries": [
+          "1．整理缺陷清单并分派责任人"
+        ]
+      }
+    },
+    "问题与需协调事项": {
+      "required": false,
+      "expected_type": "list",
+      "usage": [
+        "section"
+      ],
+      "raw_value": null,
+      "value": null,
+      "status": "missing_omitted",
+      "missing_kind": "absent",
+      "note": "选填缺失：整节/整行省略，正文不出现，fields.json 记 missing（required=false）",
+      "rendered": {
+        "section_omitted": true
+      }
+    },
+    "填报人": {
+      "required": true,
+      "expected_type": "string",
+      "usage": [
+        "signature"
+      ],
+      "raw_value": "赵倩",
+      "value": "赵倩",
+      "status": "filled",
+      "rendered": {
+        "signature_line": "填报人：赵倩"
+      }
+    },
+    "报送日期": {
+      "required": true,
+      "expected_type": "string",
+      "usage": [
+        "signature"
+      ],
+      "raw_value": "2026-09-28",
+      "value": "2026-09-28",
+      "status": "filled",
+      "rendered": {
+        "signature_line": "报送日期：2026-09-28"
+      }
+    }
+  },
+  "extra_input_fields": [],
+  "rendered_sections": [
+    {
+      "order": 1,
+      "heading": "一、本周工作内容",
+      "field": "本周工作内容",
+      "entries": [
+        "1．____"
+      ],
+      "placeholder_entry": true
+    },
+    {
+      "order": 2,
+      "heading": "二、下周工作计划",
+      "field": "下周工作计划",
+      "entries": [
+        "1．整理缺陷清单并分派责任人"
+      ],
+      "placeholder_entry": false
+    }
+  ],
+  "signature": {
+    "alignment": "right",
+    "lines": [
+      "填报人：赵倩",
+      "报送日期：2026-09-28"
+    ],
+    "omitted_fields": []
+  }
+}

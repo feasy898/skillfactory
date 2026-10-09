@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_eca7d870-74a9-4e92-a7f7-3273300bf8d6",
+  "traceId": "01a8c494-0411-4511-8305-b74a6cccb252",
+  "turnId": "turn_3b221932-9f12-471b-ac35-16359950642d",
+  "response": "非法输入拒绝行为测试全部通过，六组用例的核心行为要求无一例外满足。\n\n**四组非法输入全部以退出码 2 拒绝，中文 stderr，零产物残留：**\n\n| 组 | 非法输入 | 退出码 | stderr 摘要 | 输出目录残留 |\n|---|---|---|---|---|\n| G1 | `--template 证书` | 2 | argparse `invalid choice: '证书'`（附四个合法模板名） | 未创建 |\n| G2 | `--data` 指向不存在的文件 | 2 | `错误：数据文件不存在：fixtures/周报/不存在的数据.json` | 未创建 |\n| G3 | `--data` 内容为「不是JSON」 | 2 | `错误：数据文件不是合法 JSON：…（Expecting value: line 1 column 1）` | 未创建 |\n| G4 | `--data` 内容为 `[\"数组\",\"非对象\"]` | 2 | `错误：数据 JSON 顶层必须是对象（键值对），实际为 list` | 未创建 |\n\n残留检查用的是整个工作目录的递归前后快照比对，不只是看输出目录：四组非法输入期间**工作目录内没有新增任何路径**——没建输出目录、没写半成品文书.docx 或 fields.json。全程退出码只出现 0 和 2，没有崩溃或意外码。\n\n**合法对照组**（`fixtures/周报/case1.json`）退出码 0，在 `out/周报/case1/` 恰生成两产物、无多余文件：`文书.docx`（37164 字节，sha256 `b9752143…`）与 `fields.json`（1812 字节，sha256 `51a0a598…`）。台账 `summary` 为 7 字段全填（filled 7 / missing 0），标题 `研发部工作周报`，与文档正文首段标题段一致。\n\n**额外验证了「必填缺失不算非法」这一条**：另造一份缺必填列表「下周工作计划」的输入，引擎退出码 0 并正常产出，台账如实记 `missing_required_names: [\"下周工作计划\"]`，没有被当作错误拒绝。该组产物放在 `probe/` 下与交付路径隔离，只作取证。\n\n交付物落盘：`run_log.json`（逐组记录完整命令、退出码、stderr 全文、残留检查与逐组 PASS/FAIL，以及汇总节）、`out/周报/case1/` 两产物。取证辅助文件一并留在盘上：`run_cases.py`（测试装置）、`invalid_inputs/`（三份构造的非法/边界输入）。\n\n两点执行说明：环境里默认的 `python3` 所在 venv 缺 `python-docx`，实际用的是 `/home/pan-ding/venvs/shenbao/bin/python3`（python-docx 1.2.0），已记入 `run_log.json` 的 `environment` 节；G1 的中文来自 argparse 的错误行（含「证书」及四个汉字模板名），而非引擎自撰的「错误：」前缀——这与技能文档 §7 对该组的预设（\"argparse choice 报错，exit 2\"）一致。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 23,
+    "inputTokens": 676163,
+    "outputTokens": 10107,
+    "totalTokens": 686270,
+    "cacheReadTokens": 637198,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 1507,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 686270,
+    "contextUsed": 39824,
+    "contextWindow": 200000
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "task": "ab2-boundary-missing-required（arm=treatment, rep3）",
+  "date": "2026-10-09",
+  "engine": "<redacted>",
+  "interpreter": ".venv/bin/python（Python 3.12.3，venv 因系统 pip 走 PEP 668 externally-managed 而建）",
+  "commands": [
+    {
+      "pass": 1,
+      "argv": "python <SKILL_MOUNT>/scripts/gen_doc.py --template 请示函 --data fixtures/请示函/case2.json --outdir out/请示函/case2",
+      "exit_code": 0,
+      "stdout": "已生成：out/请示函/case2/文书.docx（模板=请示函，标题=关于延期举办季度评审会的请示，字段 filled/total=4/8，必填缺失=['主送机关', '请示事项']，模板外键=无）"
+    },
+    {
+      "pass": 1,
+      "argv": "python <SKILL_MOUNT>/scripts/gen_doc.py --template 会议通知 --data fixtures/会议通知/case2.json --outdir out/会议通知/case2",
+      "exit_code": 0,
+      "stdout": "已生成：out/会议通知/case2/文书.docx（模板=会议通知，标题=关于召开____的通知，字段 filled/total=5/11，必填缺失=['会议名称', '会议地点']，模板外键=['备注']）"
+    },
+    {
+      "pass": 2,
+      "argv": "python <SKILL_MOUNT>/scripts/gen_doc.py --template 请示函 --data fixtures/请示函/case2.json --outdir out/请示函/case2",
+      "exit_code": 0,
+      "stdout": "已生成：out/请示函/case2/文书.docx（模板=请示函，标题=关于延期举办季度评审会的请示，字段 filled/total=4/8，必填缺失=['主送机关', '请示事项']，模板外键=无）"
+    },
+    {
+      "pass": 2,
+      "argv": "python <SKILL_MOUNT>/scripts/gen_doc.py --template 会议通知 --data fixtures/会议通知/case2.json --outdir out/会议通知/case2",
+      "exit_code": 0,
+      "stdout": "已生成：out/会议通知/case2/文书.docx（模板=会议通知，标题=关于召开____的通知，字段 filled/total=5/11，必填缺失=['会议名称', '会议地点']，模板外键=['备注']）"
+    }
+  ],
+  "artifacts": {
+    "请示函/case2/文书.docx": {
+      "sha256": "d1870b36bf29aaa53c9423fc2b24ac09791566a9e063581c440987dd9bb8725c",
+      "bytes": 36981
+    },
+    "请示函/case2/fields.json": {
+      "sha256": "5a35e3f936c1d0d6c9ec654967485ec90efc2535ce64f32856b31992d420ec5a",
+      "bytes": 2024
+    },
+    "会议通知/case2/文书.docx": {
+      "sha256": "07304525d97c48853c95f4e71e2fea73fd779eddc50a272b0422ee8bc1b46278",
+      "bytes": 37008
+    },
+    "会议通知/case2/fields.json": {
+      "sha256": "22ae712dd380f29fc6a1cf385b889871bae8fb9418760876f7742dc50e2af900",
+      "bytes": 2584
+    }
+  },
+  "determinism": {
+    "method": "同一命令行连跑两遍到同一 --outdir（第二遍覆盖），每遍跑完立即快照两产物到 outdir 之外的 .verify/pass1 与 .verify/pass2",
+    "sha256_pass1": "两遍四件产物 sha256 完全相同，见 artifacts（取值即两遍共同值）",
+    "byte_compare": "diff -r .verify/pass1 .verify/pass2 → 无差异，4 件产物逐字节一致",
+    "conclusion": "一致"
+  },
+  "inventory": {
+    "SKILL.md": true,
+    "scripts/gen_doc.py": true,
+    "requirements.txt": true,
+    "references/": ["周报.md", "请示函.md", "会议通知.md", "工作总结.md"]
+  },
+  "py_compile": {
+    "argv": "python -m py_compile <SKILL_MOUNT>/scripts/gen_doc.py",
+    "exit_code": 0,
+    "errors": 0
+  },
+  "nondeterminism_scan": {
+    "argv": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" <SKILL_MOUNT>/scripts/gen_doc.py",
+    "hits": 0
+  },
+  "verification": {
+    "script": "verify.py（.venv/bin/python verify.py，EXIT=0）",
+    "assertions": 50,
+    "failed": 0,
+    "covers": [
+      "两单元目录各恰含两产物",
+      "missing_required_names / 选填 missing / unknown_keys 三类名单与输入缺失事实逐项复算相符",
+      "选填缺失 required=false，未误记为必填；必填缺失 rendered_as=以____占位",
+      "summary 计数自洽、title 与公式一致",
+      "文中占位符个数 == 必填缺失数（请示函 2，会议通知 2）",
+      "版式：标题居中、称谓顶格无缩进且全角冒号收尾、落款右对齐且右缩进 32pt、页边距 3.7/3.5/2.8/2.6cm",
+      "会议通知选填小节「会议要求」整节省略（文中无节头、无「一、」）"
+    ]
+  },
+  "notes": [
+    "两例均为必填缺失边界，按 F7/C3 正常退出码 0 并如实记账，未按非法输入处理。",
+    "run_log.json 与 verify.py 写在工作目录，未写入 out/，两个单元目录仍恰含两产物。"
+  ]
+}

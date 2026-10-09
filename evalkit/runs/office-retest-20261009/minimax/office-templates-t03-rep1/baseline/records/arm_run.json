@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t03-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 127359,
+  "started_at_ms": 1791491795341,
+  "session_id": "sess_7bc19dfa-aa67-42f5-a4e2-ecdbde792044",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t03-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1167937,
+      "ot": 16868,
+      "dur": 103032,
+      "n": 35
+    }
+  ],
+  "input_tokens": 1167937,
+  "output_tokens": 16868,
+  "stdout_bytes": 3859,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "ading does not appear — but is still recorded in `missing_optional` with `required: false` and listed in `omitted_sections`, so the ledger and the rendered text agree about what happened. Section numbering renumbers over rendered sections only, which is why 下一步工作打算 lands at 「三、」. The signature block stays right-aligned despite the empty date and missing主体, so layout is not broken.\\n\\n## Verification\\n\\n`verify.py` passes with exit 0: both unit directories contain exactly the two artifacts, both docx files open, required/missing/optional/unknown lists match expectations, no field is marked missing while holding a value, and title-centered plus two right-aligned signature paragraphs are present. I also rendered both documents to PNG via LibreOffice and inspected them — layout is clean 公文 style with no overflow or broken spacing. A separate stress sweep over 8 degenerate input/template combinations produced zero crashes. Render artifacts are left in `.render/` as evidence; the deliverables are in place under `out/`.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 35,\n    \"inputTokens\": 1167937,\n    \"outputTokens\": 16868,\n    \"totalTokens\": 1184805,\n    \"cacheReadTokens\": 1108992,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1973,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1184805,\n    \"contextUsed\": 47175,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

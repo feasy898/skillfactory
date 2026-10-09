@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t07-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 257602,
+  "started_at_ms": 1791493344885,
+  "session_id": "sess_97e485f2-b998-4a25-a488-67ab90325535",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t07-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 2096019,
+      "ot": 23944,
+      "dur": 228729,
+      "n": 43
+    }
+  ],
+  "input_tokens": 2096019,
+  "output_tokens": 23944,
+  "stdout_bytes": 4127,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "周存在问题、下周工作计划 |\\n| 推算待确认（1） | 报告周期 2026-10-05—10-11 |\\n| 源数据确无（2） | 填报人、需要协调支持事项 |\\n\\n**报告周期是我唯一的推算值**：成文日期 2026-10-09 是星期五，落在 ISO 第 41 周，所以取 10-05 至 10-11。但周报到底指\\\"本周至今\\\"还是\\\"上一个完整周\\\"（09-28 至 10-04）有歧义，源数据给不出答案，已列为第一条待确认项。\\n\\n**两个「待补充」格不是偷懒留空**，而是有意为之：源数据只给了\\\"屿光咖啡品控组\\\"这个部门，没有个人填报人，也完全没提需协调支持的事项——编个名字和编个协调事项都是凭空造事实。所以这格用浅黄底标出，写明缺什么、该由谁填。文末第 2 页是一份 6 条的待补充清单（附签字栏），把每条要补什么、当前表里是什么值都写清楚了，照着填完删掉标注即可提交。\\n\\n文档收尾我加了一句建议：如果周度数据一时拿不到，**不如直接交第三季度工作总结，而不是拿季度口径的材料冒充周报**——后者一旦被上级按周读数理解，风险比迟交更大。\\n\\n::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t07-rep2/baseline/out/fields.json\\\" purpose=\\\"output\\\"} 同步记录了逐字段的 `status`、来源键、推导依据和 `ask` 提示语，方便程序化消费。\\n\\n另：源数据已按要求存为 `yuguang_q3.json`；生成脚本留在 `build/gen_doc.js`（`npm install docx && node gen_doc.js` 可复现）。\\n\\n质量核验：postcheck.py 退出码 0，0 错误；两页均已渲染成图逐页目检，无溢出、无缺字、无空白页。中途发现并修掉了一处渲染瑕疵——签字栏 20 个下划线超出单元格宽度折行，在页面上显示成一根莫名的短横线，已缩短至 16 个。字体用本机实装的 Noto Sans/Serif CJK SC（postcheck 提示其在 Windows 上可能缺失，若要发给同事可换成黑体/宋体）。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 43,\n    \"inputTokens\": 2096019,\n    \"outputTokens\": 23944,\n    \"totalTokens\": 2119963,\n    \"cacheReadTokens\": 1805440,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 2304,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 2119963,\n    \"contextUsed\": 73076,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

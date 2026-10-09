@@ -61,26 +61,94 @@ def find_out_units(arm_dir):
     return sorted(units)
 
 
+def _normalize_cmd(tokens, arm_dir, notes):
+    """把任意形态的命令 token 归一化为 [VPY, <script.py>, --template V, --data V, --outdir V]。
+    返回 None=不可重放（不假绿）。归一化动作全部写入 notes（如实留痕）。"""
+    import re
+    tokens = [t for t in tokens if t]
+    if not tokens:
+        return None
+    # 去掉 shell 环境前缀（PYTHONPATH=... 等）与纯环境赋值 token
+    kept = []
+    for t in tokens:
+        if re.match(r"^[A-Za-z_][A-Za-z0-9_]*=", t):
+            if t not in notes:
+                notes.append("drop-env:%s" % t[:60])
+            continue
+        kept.append(t)
+    tokens = kept
+    script_idx = next((i for i, t in enumerate(tokens) if t.endswith(".py") and "/" in t
+                       or t.endswith(".py")), None)
+    if script_idx is None:
+        # 片段式（以 --template 开头）：按臂形态补默认脚本（treatment=挂载技能引擎；baseline=臂根唯一 .py）
+        if tokens[0].startswith("--"):
+            cand = os.path.join(arm_dir, ".zcode", "skills", "office-templates",
+                                "scripts", "gen_doc.py")
+            if not os.path.isfile(cand):
+                pys = sorted(p for p in os.listdir(arm_dir) if p.endswith(".py")) \
+                    if os.path.isdir(arm_dir) else []
+                cand = os.path.join(arm_dir, pys[0]) if pys else None
+            if cand:
+                notes.append("default-script:%s" % os.path.relpath(cand, arm_dir))
+                script_idx = 0
+                tokens = [cand] + tokens
+            else:
+                return None
+        else:
+            return None
+    script = tokens[script_idx]
+    args = tokens[script_idx + 1:]
+    # 参数规范化：取 --template/--data/--outdir 各自的值，重建规范参数（多余 token 视为注记剔除）
+    flags = {}
+    order = []
+    i = 0
+    while i < len(args):
+        if args[i] in ("--template", "--data", "--outdir") and i + 1 < len(args):
+            flags[args[i]] = args[i + 1]
+            order.append(args[i])
+            i += 2
+        else:
+            i += 1
+    if not ("--template" in flags and "--data" in flags and "--outdir" in flags):
+        return None
+    if len(args) != len(order) * 2:
+        notes.append("args-trimmed:%d→%d" % (len(args), len(order) * 2))
+    canon = [VPY, script]
+    for f in order:
+        canon += [f, flags[f]]
+    return canon
+
+
 def extract_commands(run_log_path, arm_dir):
     """从 run_log.json 递归提取生成命令。两种形态：字符串数组（engine_invocation）或
-    单条命令字符串（如「<python> generate.py --template … --outdir …」，shlex 切分）。
-    硬性要求：命令须同时含 --template 与 --outdir（防把自评/对拍脚本误当生成命令）。"""
+    单条命令字符串（shlex 切分；剔除「（…）」注记尾）。统一经 _normalize_cmd 归一化；
+    不可归一化的候选（纯片段/散文）记 skipped_candidates 留痕。"""
+    import shlex
     try:
-        import shlex
         data = json.load(open(run_log_path, encoding="utf-8"))
     except Exception:
-        return []
+        return [], ["run_log_unreadable"]
     cmds = []
+    notes = []
+    skipped = []
     seen = set()
 
     def consider(argv):
-        if not (isinstance(argv, list) and len(argv) >= 3
+        if not (isinstance(argv, list) and len(argv) >= 2
                 and all(isinstance(s, str) for s in argv)):
             return
         joined = " ".join(argv)
-        if "--template" in joined and "--outdir" in joined and joined not in seen:
-            seen.add(joined)
-            cmds.append(list(argv))
+        if not ("--template" in joined and "--outdir" in joined):
+            return
+        if joined in seen:
+            return
+        seen.add(joined)
+        norm = _normalize_cmd(list(argv), arm_dir, notes)
+        if norm is None:
+            skipped.append(joined[:120])
+            return
+        if norm not in cmds:
+            cmds.append(norm)
 
     def walk(x):
         if isinstance(x, list):
@@ -93,12 +161,18 @@ def extract_commands(run_log_path, arm_dir):
                 walk(v)
         elif isinstance(x, str):
             if "--template" in x and "--outdir" in x:
+                s = re.sub(r"（[^（）]*）\s*$", "", x.strip()).strip()
+                if not ("--template" in s and "--outdir" in s):
+                    skipped.append(x[:120])
+                    return
                 try:
-                    consider(shlex.split(x))
+                    consider(shlex.split(s))
                 except ValueError:
-                    consider(x.split())
+                    consider(s.split())
     walk(data)
-    return cmds
+    extract_commands.last_notes = list(notes)
+    extract_commands.last_skipped = skipped
+    return cmds, notes + (["skip:%s" % s for s in skipped])
 
 
 def docx_layout_facts(path):
@@ -207,10 +281,14 @@ def main(argv=None):
     out_units = find_out_units(arm_dir)
     facts["delivered_units"] = out_units
     run_log = os.path.join(arm_dir, "run_log.json")
-    cmds = extract_commands(run_log, arm_dir) if os.path.isfile(run_log) else []
-    det = {"run_log_present": os.path.isfile(run_log), "commands_extracted": len(cmds)}
+    if os.path.isfile(run_log):
+        cmds, extract_notes = extract_commands(run_log, arm_dir)
+    else:
+        cmds, extract_notes = [], ["run_log_absent"]
+    det = {"run_log_present": os.path.isfile(run_log), "commands_extracted": len(cmds),
+           "extraction_notes": extract_notes}
     if cmds:
-        cmd = cmds[-1]  # 生成命令取 run_log 中最后一条带模板/outdir 的命令
+        cmd = cmds[-1]  # 生成命令取归一化后的最后一条（统一 [VPY, script, --template…--outdir] 形态）
         m = re.search(r"(?:--outdir(?:=|\s+))([^\s]+)", " ".join(cmd))
         outdir_rel = m.group(1) if m else (out_units[0] if out_units else "out")
         sandbox = a.sandbox or tempfile.mkdtemp(prefix="ab5replay-")

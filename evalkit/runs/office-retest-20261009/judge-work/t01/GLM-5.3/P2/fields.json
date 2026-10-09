@@ -1,0 +1,97 @@
+{
+  "title": "拾贝书店周报",
+  "template": "周报",
+  "source_file": "shibei_week42.json",
+  "document": "out/文书.docx",
+  "required_fields": [
+    "部门",
+    "填报人",
+    "周期",
+    "本周工作内容",
+    "下周工作计划",
+    "报送日期"
+  ],
+  "optional_fields": [
+    "问题与需协调事项",
+    "温馨提示"
+  ],
+  "fields": {
+    "部门": {
+      "requirement": "required",
+      "status": "filled",
+      "type": "scalar",
+      "value": "拾贝书店",
+      "normalization": "已去除首尾空白"
+    },
+    "填报人": {
+      "requirement": "required",
+      "status": "filled",
+      "type": "scalar",
+      "value": "关菡"
+    },
+    "周期": {
+      "requirement": "required",
+      "status": "filled",
+      "type": "scalar",
+      "value": "2026年10月第2周（10月5日-10月9日）"
+    },
+    "本周工作内容": {
+      "requirement": "required",
+      "status": "filled",
+      "type": "list",
+      "value": [
+        "完成店庆档期主题陈列改造",
+        "复盘会员日核销数据并输出简报"
+      ]
+    },
+    "下周工作计划": {
+      "requirement": "required",
+      "status": "filled",
+      "type": "scalar",
+      "value": "启动冬季书单选品"
+    },
+    "报送日期": {
+      "requirement": "required",
+      "status": "filled",
+      "type": "scalar",
+      "value": "2026-10-12"
+    },
+    "问题与需协调事项": {
+      "requirement": "optional",
+      "status": "filled",
+      "type": "list",
+      "value": [
+        "收银终端老化，需要报修"
+      ]
+    },
+    "温馨提示": {
+      "requirement": "optional",
+      "status": "filled",
+      "type": "scalar",
+      "value": "本周五店休半天"
+    }
+  },
+  "normalization": {
+    "scalar": "字符串去除首尾空白",
+    "list": "逐项去除首尾空白，并剔除归一化后为空的元素",
+    "dropped_empty_items": [
+      {
+        "field": "本周工作内容",
+        "index": 1,
+        "raw_value": "   "
+      },
+      {
+        "field": "问题与需协调事项",
+        "index": 1,
+        "raw_value": ""
+      }
+    ],
+    "trimmed_values": [
+      {
+        "field": "部门",
+        "raw_value": " 拾贝书店 ",
+        "normalized_value": "拾贝书店"
+      }
+    ]
+  }
+}

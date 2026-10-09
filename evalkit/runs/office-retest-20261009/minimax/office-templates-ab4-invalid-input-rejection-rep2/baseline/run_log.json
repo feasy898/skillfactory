@@ -1,0 +1,284 @@
+{
+  "task": "office-templates-ab4-invalid-input-rejection",
+  "arm": "baseline",
+  "entrypoint": "gen.py",
+  "interpreter": "/home/pan-ding/venvs/ml/bin/python3",
+  "invocation_contract": {
+    "usage": "gen.py --template <模板名> --data <JSON 文件> [--outdir <输出根目录>]",
+    "invalid_input_exit_code": 2,
+    "valid_exit_code": 0,
+    "artifacts": "out/<模板名>/<数据文件名>/文书.docx 与 out/<模板名>/<数据文件名>/fields.json",
+    "missing_field_policy": "缺失字段按「（未填写）」占位，不拒绝、不计入非法输入"
+  },
+  "artifact_residue_method": "每次调用前后对臂目录做递归快照差集；fixtures/、invalid_inputs/、extra_inputs/ 与脚本自身视为执行前既有，不计入残留。",
+  "cases": [
+    {
+      "id": "invalid-template",
+      "group": "①",
+      "label": "模板名非法：--template 证书",
+      "kind": "invalid",
+      "rationale": "「证书」不在模板登记表内，属非法模板名。",
+      "command": "/home/pan-ding/venvs/ml/bin/python3 /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep2/baseline/gen.py --template 证书 --data fixtures/周报/case1.json",
+      "command_argv": [
+        "/home/pan-ding/venvs/ml/bin/python3",
+        "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep2/baseline/gen.py",
+        "--template",
+        "证书",
+        "--data",
+        "fixtures/周报/case1.json"
+      ],
+      "exit_code": 2,
+      "stdout": "",
+      "stderr_excerpt": "错误：未知模板「证书」。可用模板：会议纪要、周报、月报。",
+      "stderr_has_chinese": true,
+      "artifact_residue": {
+        "checked_scope": "臂目录下全部非输入文件/目录（执行前后快照比对）",
+        "created_paths": [],
+        "created_count": 0,
+        "no_residue": true
+      },
+      "checks": {
+        "exit_code_is_2": true,
+        "stderr_has_chinese_message": true,
+        "zero_artifact_residue": true,
+        "verdict": "pass"
+      }
+    },
+    {
+      "id": "missing-data-file",
+      "group": "②",
+      "label": "数据文件不存在：--data invalid_inputs/does-not-exist.json",
+      "kind": "invalid",
+      "rationale": "--data 指向不存在的路径。",
+      "command": "/home/pan-ding/venvs/ml/bin/python3 /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep2/baseline/gen.py --template 周报 --data invalid_inputs/does-not-exist.json",
+      "command_argv": [
+        "/home/pan-ding/venvs/ml/bin/python3",
+        "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep2/baseline/gen.py",
+        "--template",
+        "周报",
+        "--data",
+        "invalid_inputs/does-not-exist.json"
+      ],
+      "exit_code": 2,
+      "stdout": "",
+      "stderr_excerpt": "错误：数据文件不存在：invalid_inputs/does-not-exist.json",
+      "stderr_has_chinese": true,
+      "artifact_residue": {
+        "checked_scope": "臂目录下全部非输入文件/目录（执行前后快照比对）",
+        "created_paths": [],
+        "created_count": 0,
+        "no_residue": true
+      },
+      "checks": {
+        "exit_code_is_2": true,
+        "stderr_has_chinese_message": true,
+        "zero_artifact_residue": true,
+        "verdict": "pass"
+      }
+    },
+    {
+      "id": "not-json",
+      "group": "③",
+      "label": "JSON 解析失败：--data invalid_inputs/not-json.txt（内容「不是JSON」）",
+      "kind": "invalid",
+      "rationale": "文件存在且可读，但内容不是合法 JSON。",
+      "command": "/home/pan-ding/venvs/ml/bin/python3 /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep2/baseline/gen.py --template 周报 --data invalid_inputs/not-json.txt",
+      "command_argv": [
+        "/home/pan-ding/venvs/ml/bin/python3",
+        "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep2/baseline/gen.py",
+        "--template",
+        "周报",
+        "--data",
+        "invalid_inputs/not-json.txt"
+      ],
+      "exit_code": 2,
+      "stdout": "",
+      "stderr_excerpt": "错误：数据文件不是合法 JSON：invalid_inputs/not-json.txt（第 1 行第 1 列：Expecting value）",
+      "stderr_has_chinese": true,
+      "artifact_residue": {
+        "checked_scope": "臂目录下全部非输入文件/目录（执行前后快照比对）",
+        "created_paths": [],
+        "created_count": 0,
+        "no_residue": true
+      },
+      "checks": {
+        "exit_code_is_2": true,
+        "stderr_has_chinese_message": true,
+        "zero_artifact_residue": true,
+        "verdict": "pass"
+      }
+    },
+    {
+      "id": "top-level-not-object",
+      "group": "④",
+      "label": "顶层非对象：--data invalid_inputs/top-level-array.json（内容 [\"数组\",\"非对象\"]）",
+      "kind": "invalid",
+      "rationale": "JSON 合法但顶层是数组，不是对象。",
+      "command": "/home/pan-ding/venvs/ml/bin/python3 /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep2/baseline/gen.py --template 周报 --data invalid_inputs/top-level-array.json",
+      "command_argv": [
+        "/home/pan-ding/venvs/ml/bin/python3",
+        "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep2/baseline/gen.py",
+        "--template",
+        "周报",
+        "--data",
+        "invalid_inputs/top-level-array.json"
+      ],
+      "exit_code": 2,
+      "stdout": "",
+      "stderr_excerpt": "错误：数据文件顶层必须是 JSON 对象，实际为 数组：invalid_inputs/top-level-array.json",
+      "stderr_has_chinese": true,
+      "artifact_residue": {
+        "checked_scope": "臂目录下全部非输入文件/目录（执行前后快照比对）",
+        "created_paths": [],
+        "created_count": 0,
+        "no_residue": true
+      },
+      "checks": {
+        "exit_code_is_2": true,
+        "stderr_has_chinese_message": true,
+        "zero_artifact_residue": true,
+        "verdict": "pass"
+      }
+    },
+    {
+      "id": "valid-control",
+      "group": "对照",
+      "label": "合法对照组：--template 周报 --data fixtures/周报/case1.json",
+      "kind": "valid",
+      "rationale": "唯一合法输入，应成功出两份产物。",
+      "command": "/home/pan-ding/venvs/ml/bin/python3 /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep2/baseline/gen.py --template 周报 --data fixtures/周报/case1.json",
+      "command_argv": [
+        "/home/pan-ding/venvs/ml/bin/python3",
+        "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep2/baseline/gen.py",
+        "--template",
+        "周报",
+        "--data",
+        "fixtures/周报/case1.json"
+      ],
+      "exit_code": 0,
+      "stdout": "已生成：out/周报/case1/文书.docx、out/周报/case1/fields.json（缺失字段 0 个：无）",
+      "stderr_excerpt": "",
+      "stderr_has_chinese": false,
+      "artifact_residue": {
+        "checked_scope": "臂目录下全部非输入文件/目录（执行前后快照比对）",
+        "created_paths": [
+          "out",
+          "out/周报",
+          "out/周报/case1",
+          "out/周报/case1/fields.json",
+          "out/周报/case1/文书.docx"
+        ],
+        "created_count": 5,
+        "no_residue": false
+      },
+      "checks": {
+        "exit_code_is_0": true,
+        "docx_exists": true,
+        "fields_json_exists": true,
+        "docx_is_valid_zip": true,
+        "docx_size_bytes": 37024,
+        "docx_nonempty": true,
+        "fields_json_parses": true,
+        "fields_json_missing_empty": true,
+        "artifacts_created_as_expected": true,
+        "verdict": "pass"
+      },
+      "fields_json_preview": {
+        "template": "周报",
+        "missing_fields": [],
+        "fields": [
+          {
+            "key": "部门",
+            "present": true,
+            "value": "研发部"
+          },
+          {
+            "key": "填报人",
+            "present": true,
+            "value": "王小明"
+          },
+          {
+            "key": "周期",
+            "present": true,
+            "value": "2026-09-21 至 2026-09-27"
+          },
+          {
+            "key": "本周工作内容",
+            "present": true,
+            "value": "完成打分器 v0.9 与评测台联调；修复评测集 3 处标注不一致问题"
+          },
+          {
+            "key": "下周工作计划",
+            "present": true,
+            "value": "启动回归测试全量跑批；输出周度质量报告初稿"
+          },
+          {
+            "key": "问题与需协调事项",
+            "present": true,
+            "value": "测试机资源紧张，需协调一台 GPU 机器"
+          },
+          {
+            "key": "报送日期",
+            "present": true,
+            "value": "2026-09-28"
+          }
+        ]
+      }
+    },
+    {
+      "id": "missing-required-not-rejected",
+      "group": "补测",
+      "label": "必填缺失不算非法：--data extra_inputs/missing-required.json（输出到 .scratch/）",
+      "kind": "boundary",
+      "rationale": "缺 周期/下周工作计划/问题与需协调事项 三个字段；任务书明确要求不得把缺失当错误拒绝，应退出码 0 且字段占位。为不污染约定的 out/ 产物布局，该组输出改写到 .scratch/ 并在记录后清理。",
+      "command": "/home/pan-ding/venvs/ml/bin/python3 /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep2/baseline/gen.py --template 周报 --data extra_inputs/missing-required.json --outdir .scratch/missing-required",
+      "command_argv": [
+        "/home/pan-ding/venvs/ml/bin/python3",
+        "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep2/baseline/gen.py",
+        "--template",
+        "周报",
+        "--data",
+        "extra_inputs/missing-required.json",
+        "--outdir",
+        ".scratch/missing-required"
+      ],
+      "exit_code": 0,
+      "stdout": "已生成：.scratch/missing-required/周报/missing-required/文书.docx、.scratch/missing-required/周报/missing-required/fields.json（缺失字段 3 个：周期、下周工作计划、问题与需协调事项）",
+      "stderr_excerpt": "",
+      "stderr_has_chinese": false,
+      "artifact_residue": {
+        "checked_scope": "臂目录下全部非输入文件/目录（执行前后快照比对）",
+        "created_paths": [
+          ".scratch",
+          ".scratch/missing-required",
+          ".scratch/missing-required/周报",
+          ".scratch/missing-required/周报/missing-required",
+          ".scratch/missing-required/周报/missing-required/fields.json",
+          ".scratch/missing-required/周报/missing-required/文书.docx"
+        ],
+        "created_count": 6,
+        "no_residue": false
+      },
+      "checks": {
+        "exit_code_is_0": true,
+        "not_rejected_as_invalid": true,
+        "docx_exists": true,
+        "fields_json_exists": true,
+        "missing_fields_detected": true,
+        "missing_fields_placeholder_filled": true,
+        "verdict": "pass"
+      }
+    }
+  ],
+  "summary": {
+    "invalid_groups_total": 4,
+    "invalid_groups_rejected_with_code_2": 4,
+    "invalid_groups_with_chinese_stderr": 4,
+    "invalid_groups_with_zero_residue": 4,
+    "valid_control_exit_0": true,
+    "valid_control_artifacts_ok": true,
+    "missing_required_not_rejected": true,
+    "scratch_cleaned": true,
+    "all_cases_pass": true
+  }
+}

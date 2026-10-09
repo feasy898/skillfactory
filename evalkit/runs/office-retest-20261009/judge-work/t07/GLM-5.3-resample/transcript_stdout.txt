@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_3d734d46-cb2d-4c6f-9bcc-33435da6a13b",
+  "traceId": "472e65bf-d20d-44a9-8fdc-835f063225f1",
+  "turnId": "turn_eb941562-3b01-4da2-a7a6-d8390175631e",
+  "response": "Verdict written and validated: **Q1 = 2.5, fail** (pass line 8.5). The judgment was done mechanically against the frozen rubric and judge-notes, verified by script against the input's 8 complete values.\n\n**Scoring basis (dims match rubric names, arithmetic checked: 10×(0×0.5 + 0.5×0.3 + 0.5×0.2) = 2.5):**\n\n- **正确性 0.0** — The template is correctly 周报, and 7 of 8 filled values are verbatim-sourced (部门、成文日期、三项季度回溯、问题、下周计划). But the required 报告周期 field and the document title carry `2026年10月5日—2026年10月11日`, a calendar-derived value: the input contains no complete field value equal to it (not even the fragments 10月5日/10月11日 appear anywhere in the input). Per judge-notes rule 4, a derived/no-source fill is 编造 → zero tier. Compliant options existed (verbatim 总结时段 mapping or `____`). The product otherwise resisted the worse traps — no 13-week averaging, no invented 填报人, weekly-occurrence fields honestly left 待补.\n- **完整性 0.5** — 填报人（＿＿＿＿签字栏）、本周发生额、本周新增问题 are all honestly kept missing, but the required no-source 周期 was stuffed with the derived value instead of an honest placeholder → 1 处错，中档.\n- **可验证性 0.5** — The custom fields.json contains no `unknown_keys`, no `summary` counts, and no rendered_as ledger at all (top-level keys verified: schema/生成日期/源数据/目标模板/口径冲突/字段/未采用的折算方案), so neither two-state assertion (`==[]` or `==sorted(输入键−已消费键)`) can hold — calibrated unknown-consistency hit drops this to 0.5.\n\nNote: the workdir already held a verdict.json and transcript from the prior judging pass; I re-judged independently from the raw product files and reached the same outcome (2.5), then overwrote the file with my own evidence wording. The file is structurally validated: single `scores` top-level key, dim names byte-identical to the rubric, evidence 130 chars, weighted total recomputes exactly.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 8,
+    "inputTokens": 255126,
+    "outputTokens": 15013,
+    "totalTokens": 270139,
+    "cacheReadTokens": 227008,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 13565,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 270139,
+    "contextUsed": 44157,
+    "contextWindow": 200000
+  }
+}

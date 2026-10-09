@@ -1,0 +1,28 @@
+EXTRACT OF 文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=1.4166666666666667 runs=[周　报/Noto Sans CJK SC/26.0] text=周　报
+P001 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=1.3 runs=[屿光咖啡品控组　·　2026/Noto Sans CJK SC/10.5] text=屿光咖啡品控组　·　2026 年第 41 周（2026-10-05 至 2026-10-11）
+P002 align=None firstLineChars=None firstLineIndent=None spacing=1.3 runs=[/Noto Sans CJK SC/1.0 | /None/None | 待补充事项清单（请填报人补齐/Noto Sans CJK SC/12.0] text=待补充事项清单（请填报人补齐）
+P003 align=LEFT (0) firstLineChars=None firstLineIndent=304800 spacing=1.3 runs=[以下 6 项源数据中确无对应/Noto Serif CJK SC/10.5] text=以下 6 项源数据中确无对应内容，未作推测填充，请填报人补齐后提交：
+P004 align=LEFT (0) firstLineChars=None firstLineIndent=-304800 spacing=1.3 runs=[1．/Noto Sans CJK SC/10.5 | 本期周报实际覆盖的起止日期（/Noto Serif CJK SC/10.5] text=1．本期周报实际覆盖的起止日期（当前为按成文日期 2026-10-09 推算的 2026-10-05 至 2026-10-11；若指上一完整周则为 2026-09-28 至 2026-10-04）。
+P005 align=LEFT (0) firstLineChars=None firstLineIndent=-304800 spacing=1.3 runs=[2．/Noto Sans CJK SC/10.5 | 本周杯测场次、本周新增客诉工/Noto Serif CJK SC/10.5] text=2．本周杯测场次、本周新增客诉工单量（当前表中为第三季度累计数 36 场 / 58 单）。
+P006 align=LEFT (0) firstLineChars=None firstLineIndent=-304800 spacing=1.3 runs=[3．/Noto Sans CJK SC/10.5 | 本周客诉 48 小时闭环率的/Noto Serif CJK SC/10.5] text=3．本周客诉 48 小时闭环率的周度读数（当前表中为第三季度末的 92%）。
+P007 align=LEFT (0) firstLineChars=None firstLineIndent=-304800 spacing=1.3 runs=[4．/Noto Sans CJK SC/10.5 | 本周是否沿用「偏远门店物流损/Noto Serif CJK SC/10.5] text=4．本周是否沿用「偏远门店物流损耗偏高」，或另有本周新增问题。
+P008 align=LEFT (0) firstLineChars=None firstLineIndent=-304800 spacing=1.3 runs=[5．/Noto Sans CJK SC/10.5 | 本周填报人姓名。/Noto Serif CJK SC/10.5] text=5．本周填报人姓名。
+P009 align=LEFT (0) firstLineChars=None firstLineIndent=-304800 spacing=1.3 runs=[6．/Noto Sans CJK SC/10.5 | 本周需要上级或其他部门协调支/Noto Serif CJK SC/10.5] text=6．本周需要上级或其他部门协调支持的具体事项。
+P011 align=JUSTIFY (3) firstLineChars=None firstLineIndent=304800 spacing=1.3 runs=[补齐上述事项后，请同步删除正/Noto Serif CJK SC/10.5] text=补齐上述事项后，请同步删除正文表格中的【季度累计口径】与「待补充」标注，本表即可作为正式周报提交；若周度数据尚未取得，建议改为提交第三季度工作总结，而非以季度口径材料充当周报。
+TABLE1 1行×1列:
+  填报口径说明⏎本表依据《屿光咖啡品控组 2026 年第三季度工作总结》改写为周报。源数据为季度累计口径，与周报的单周口径不一致，且未包含个人填报人、需协调支持事项等信息。凡表内标注【季度累计口径】的数值，均为 7/1—9/30 的累计数或季度末水平，不可当作本周数据阅读；标注「待补充」的字段，源数据确无对应内容，未作任何推测填充。请业务方按下方清单补齐后再行提交。
+TABLE2 10行×3列:
+  项目 ┃ 内容 ┃ 数据口径与来源
+  报告主体 ┃ 屿光咖啡品控组 ┃ 源数据 · 总结主体
+  填报人 ┃ 待补充⏎源数据仅给出部门，未给出个人填报人 ┃ 需业务方填写
+  报告周期 ┃ 2026-10-05（周一）至 2026-10-11（周日）⏎按成文日期 2026-10-09 所在自然周推算，源数据未给出周次，需核对 ┃ 推算值 · 待确认
+  本周工作完成情况 ┃ 【季度累计口径】⏎完成季度杯测 36 场；处理客诉工单 58 单。⏎※ 上述为 2026 年第三季度（7/1—9/30）累计数，非本周数。源数据未提供本周逐项数据，故未拆分、未按周折算。 ┃ 源数据 · 工作回顾（季度口径）
+  本周主要成绩 ┃ 【季度累计口径】⏎客诉 48 小时闭环率提升至 92%。⏎※ 该指标为第三季度末水平，非本周新增改善。 ┃ 源数据 · 主要成绩（季度口径）
+  本周存在问题 ┃ 偏远门店物流损耗偏高。⏎※ 源数据未提供本周新发现的问题，此处沿用第三季度已记录项。 ┃ 源数据 · 存在问题
+  下周工作计划 ┃ 引入损耗周报机制。⏎※ 源数据列为第三季度既定计划；若本周已启动或已完成，请据实更新。 ┃ 源数据 · 下一步工作打算
+  需要协调支持事项 ┃ 待补充⏎源数据未涉及此项 ┃ 需业务方填写
+  填报日期 ┃ 2026年10月9日 ┃ 源数据 · 成文日期
+TABLE3 2行×2列:
+  填报人（签字）：________________ ┃ 日期：______ 年 ____ 月 ____ 日
+  部门负责人（签字）：________________ ┃ 日期：______ 年 ____ 月 ____ 日

@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_f966a4f8-5aaa-435f-adb5-8cba1e7a409a",
+  "traceId": "b7fd03b6-be95-49fc-b3f2-f221aa6d6d72",
+  "turnId": "turn_7f9e3145-94e2-4954-acbf-b80379c54860",
+  "response": "Judging complete — `verdict.json` written to the working directory, valid JSON with a single `Q1` key and nothing else created.\n\n**Verdict: Q1 total 8.5 / 10** (item scores R1=1.5, R2=2, R3=2, R4=1, R5=2; total = round(10 × 8.5 ÷ 10, 1))\n\nHow I judged: the working directory held only `brief.md`, but its product list (Q1: run_log.json + two case1 artifacts) matches the staged resample product at `judge-work/_staging/ab4-invalid-input-rejection/P4_resample/`, and the sibling resample judge dirs confirm the convention of reading from staging and keying the verdict by the listed name — so I judged that product blind to its arm/model.\n\nScoring rationale, all from the staged files:\n- **R1 = 1.5**: all four invalid-input cases record exit 2 and cases ②③④ have Chinese `错误：…` stderr; deducted because case ①'s stderr is argparse's English usage text (Chinese only in the template literals), and no `_replay_facts.json` was staged so the \"exit codes match the oracle per group\" clause rests solely on the run_log's own `{0,2}` record.\n- **R2 = 2**: every residue_check shows the outdir was never created, `file_count_after=0`, no docx/fields.json.\n- **R3 = 2**: legal control exited 0 with exactly the two products; the staged fields.json shows 7/7 fields filled and the docx extract is complete.\n- **R4 = 1**: SKILL.md is not staged (true for all ab4 products), so the four-entry error-handling/exit-code table required by contract §4.7 can't be verified; only an indirect run_log note quotes §7 for the argparse case, which does match measured behavior.\n- **R5 = 2**: the missing-required probe (case6) exits 0 with both products produced, `____` placeholders in the document and `missing_required_names` ledgered — a clean contrast with the exit-2 negative paths.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 14,
+    "inputTokens": 401255,
+    "outputTokens": 11388,
+    "totalTokens": 412643,
+    "cacheReadTokens": 374592,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 10240,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 412643,
+    "contextUsed": 42473,
+    "contextWindow": 200000
+  }
+}

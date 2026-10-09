@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_b796d5c0-5e01-4b05-8d73-f01f45ad7566",
+  "traceId": "6eba3f14-e904-43ce-bd4c-d15cf3b208fb",
+  "turnId": "turn_528a77a9-1f0a-4bae-8e89-1d0f52961c90",
+  "response": "`verdict.json` is written and validated. Four of six products pass at 10.0; two fail outright at 0.0.\n\n**Scores (pass line 8.0):** P1 = 10.0, P2 = 0.0, P3 = 10.0, P4 = 0.0, P5 = 10.0, P6 = 10.0.\n\nI judged all six mechanically rather than by eye — a script asserted the `unknown_keys` sequence against the expected code-point order, scanned each `文书.docx` extraction for contamination by any of the seven stray keys or their values, checked the three optional-field rendering forms, and reconciled the summary counts against the per-field detail.\n\n**Why P1/P3/P5/P6 score 10.0:** each `fields.json` records `unknown_keys` in exact `sorted()` code-point order — `[\"1号议程\",\"Zebra\",\"_private\",\"abc\",\"备用3\",\"附件编号\",\"📋备注\"]`, with the astral-plane 📋备注 key correctly last. The document text has zero hits for any stray key name or value. All three optional forms render correctly: 会议议题 keeps its label with an empty value, the 会议要求 section is omitted entirely, 联系人 keeps an empty label, and 联系电话 is filled with `137-5566-0099`. Counts (`total=11/filled=8/missing=3/missing_required=0/missing_required_names=[]`) reconcile with the 8 filled + 3 missing field entries. P3, P5 and P6 differ only in layout style and run logs; P5 and P6 document the engine's own stdout listing the seven out-of-template keys.\n\n**Why P2 and P4 score 0.0:** both drop the ledger entirely — their `fields.json` is a near-verbatim copy of the input data with no `summary`, no counts, and no `unknown_keys`, so correctness falls to the rubric's zero band for missing sequence content and verifiability to zero for ledger/document contradiction. Both also leak stray keys into the body: `附件编号：QN-2026-118` appears as its own paragraph, and the orphan value 暖炉采购比价 from the unknown key `1号议程` is rendered into the body — as 会议议程 in P2, as 会议议题 in P4. P4 additionally rewrites the input's empty 会议议题 string into a filled list. Each fails two of the four rendering assertions (会议议题 not left empty, 联系人 label absent), putting completeness in the zero band.\n\nTwo things worth flagging. First, a `verdict.json` from a prior run of this same task was already present when I started; I re-derived every score from the artifacts independently and reached identical totals, and I verified its run_log claims (two passes at exit 0, matching sha256 `2ddbebc1…`/`946aca70…`) before writing my own version over it. Second, the `judge-notes.md` the brief references is not in this directory — its content is embedded in `brief.md` itself, which is what I judged against.\n\nThe output is a single top-level `scores` key, dimension names matching the rubric verbatim, and every total recomputed from the weighted formula and confirmed to match.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 12,
+    "inputTokens": 342285,
+    "outputTokens": 6681,
+    "totalTokens": 348966,
+    "cacheReadTokens": 311127,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 413,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 348966,
+    "contextUsed": 38005,
+    "contextWindow": 200000
+  }
+}

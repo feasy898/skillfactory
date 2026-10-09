@@ -6,10 +6,13 @@
   h≥2 → 任务胜；l≥2 → 任务负；其余（h≤1 且 l≤1，含全平）→ 任务平。
 §3.3-3：任务级胜率 = 任务胜数 ÷ 任务总数（平局计入分母、不计胜）。
 §3.6 盲评门三条件【必须】同时满足：①均分差 Δ≥1.0；②任务级胜率 ≥60%（13 任务需 ≥8 胜）；
-  ③反向任务 ≤1（平局不进反向计数；三条以最严格者裁决），逐条给实算值。
-§3.7-4 跨代可比：本轮 judge_prompt_version=S8-JUDGE-v2-OFXRETEST-1 且任务集 5→13、n=2→3，
-  与 K5B round1（v0.2/S8-JUDGE-v1/n=2/5 题）构成跨代——【禁止】与 K5B Δ 直接对位或合并披露。
-效率门：token 比率与耗时比率 ≤2.0（db join 实测，测量项）。
+  ③反向任务 ≤1（反向=任务级 treatment 均分 < baseline 或 treatment 任务均分=0；
+  平局不进反向计数；三条以最严格者裁决），逐条给实算值。
+按族 matrix：glm 被测 7 任务 / minimax 被测 6 任务分列（fam_tasks）。
+swap 独立重算（K5B-05 勘误口径）：从原始 per-pair 分数独立重算 swap 侧聚合——
+  swap_delta + delta ≈ 0（恒等式）、swap_reverse_tasks（资产方向真实反向的镜像）
+  从分数直算而非 verdict 标签互换。
+效率门：token 比率与耗时比率 ≤2.0（records/arms/* 实测回填，测量项）。
 退出码：0=聚合落盘；2=判分记录不全（fail-closed，不出数）。
 """
 
@@ -26,12 +29,22 @@ TASK_ORDER = ["ab1-standard-four-templates", "ab2-boundary-missing-required",
 REPS = [1, 2, 3]
 
 
+def jload(p):
+    return json.load(open(p, encoding="utf-8"))
+
+
+def arm_rec(fam, task, rep, arm):
+    p = os.path.join(RUN, "records", "arms",
+                     "%s-office-templates-%s-rep%d-%s.json" % (fam, task, rep, arm))
+    return jload(p) if os.path.isfile(p) else None
+
+
 def main():
     jp = os.path.join(RUN, "records", "judging", "office-templates.json")
     if not os.path.isfile(jp):
         print("判分记录不存在（先跑 x_judges.py）: %s" % jp, file=sys.stderr)
         return 2
-    results = json.load(open(jp, encoding="utf-8"))
+    results = jload(jp)
     missing = [t for t in TASK_ORDER
                if not (isinstance(results.get(t), dict)
                        and results[t].get("status") in ("judged", "unjudgeable"))]
@@ -42,7 +55,6 @@ def main():
     for t in TASK_ORDER:
         r = results[t]
         fs = r.get("final_scores") or {}
-        # mapping: pid -> {rep, arm}；scores 按 rep 配对（同 rep 的 treatment/baseline 比较）
         mapping = r.get("mapping") or {}
         by_rep = {}
         for pid, s in fs.items():
@@ -71,40 +83,117 @@ def main():
             verdict = "loss"
         else:
             verdict = "tie"     # §3.3-2 v0.2.1 tie 出口
-        t_mean = sum(p["t"] for p in pairs if p["t"] is not None) / max(1, sum(1 for p in pairs if p["t"] is not None))
-        b_mean = sum(p["b"] for p in pairs if p["b"] is not None) / max(1, sum(1 for p in pairs if p["b"] is not None))
-        reverse = bool(verdict == "loss" or (t_mean == 0 and b_mean >= 0))
+        t_vals = [p["t"] for p in pairs if p["t"] is not None]
+        b_vals = [p["b"] for p in pairs if p["b"] is not None]
+        t_mean = sum(t_vals) / len(t_vals) if t_vals else None
+        b_mean = sum(b_vals) / len(b_vals) if b_vals else None
+        delta = (t_mean - b_mean) if (t_mean is not None and b_mean is not None) else None
+        # 反向（K5B-05 口径，从分数直算）：任务级 treatment 均分 < baseline，或 treatment 任务均分=0
+        reverse = bool(delta is not None and (delta < 0 or t_mean == 0))
         tasks.append({"task": t, "tested_family": r.get("tested_family"),
-                      "status": r.get("status"), "t_mean": round(t_mean, 2),
-                      "b_mean": round(b_mean, 2), "delta": round(t_mean - b_mean, 2),
-                      "pairs": pairs, "h": h, "l": l, "task_verdict": verdict,
-                      "reverse_flag": reverse,
+                      "status": r.get("status"), "t_mean": t_mean, "b_mean": b_mean,
+                      "delta": delta, "pairs": pairs, "h": h, "l": l,
+                      "task_verdict": verdict, "reverse_flag": reverse,
                       "judge_consistency": r.get("judge_consistency")})
-    n_judged = [t for t in tasks if t["status"] == "judged"]
+    n_tasks = len(tasks)
     wins = sum(1 for t in tasks if t["task_verdict"] == "win")
     losses = sum(1 for t in tasks if t["task_verdict"] == "loss")
     ties = sum(1 for t in tasks if t["task_verdict"] == "tie")
-    denominator = len(tasks)
-    delta_all = sum(t["delta"] for t in tasks) / len(tasks)
+    deltas = [t["delta"] for t in tasks if t["delta"] is not None]
+    delta_all = sum(deltas) / len(deltas) if deltas else None
     reverse_n = sum(1 for t in tasks if t["reverse_flag"])
-    gate = {"1_delta_ge_1": {"value": round(delta_all, 2), "pass": bool(delta_all >= 1.0)},
-            "2_winrate_ge_60": {"value": round(wins / denominator, 4),
-                                "wins": wins, "denominator": denominator,
+    gate = {"1_delta_ge_1": {"value": round(delta_all, 2) if delta_all is not None else None,
+                             "pass": bool(delta_all is not None and delta_all >= 1.0)},
+            "2_winrate_ge_60": {"value": round(wins / n_tasks, 4),
+                                "wins": wins, "denominator": n_tasks,
                                 "need_wins_13tasks": 8,
-                                "pass": bool(wins / denominator >= 0.60)},
+                                "pass": bool(wins / n_tasks >= 0.60)},
             "3_reverse_le_1": {"value": reverse_n, "pass": bool(reverse_n <= 1)},
             "unjudgeable_tasks": [t["task"] for t in tasks if t["status"] != "judged"],
             "note": "EVAL-SPEC v0.2.1 §3.6 三条件同时满足才 accepted；三条以最严格者裁决；"
-                    "平局不进反向计数；反向任务=treatment 均分<baseline 或 treatment 任务均分=0"}
+                    "平局不进反向计数；反向任务=任务级 treatment 均分<baseline 或 treatment 任务均分=0"}
+    # 按族 matrix
+    fam_tasks = {}
+    for fam in ("glm", "minimax"):
+        sub = [t for t in tasks if t["tested_family"] == fam]
+        fd = [t["delta"] for t in sub if t["delta"] is not None]
+        fw = sum(1 for t in sub if t["task_verdict"] == "win")
+        fam_tasks[fam] = {"n_tasks": len(sub), "wins": fw, "losses": sum(1 for t in sub if t["task_verdict"] == "loss"),
+                          "ties": sum(1 for t in sub if t["task_verdict"] == "tie"),
+                          "delta_mean": round(sum(fd) / len(fd), 2) if fd else None,
+                          "win_rate": round(fw / len(sub), 4) if sub else None,
+                          "reverse": sum(1 for t in sub if t["reverse_flag"]),
+                          "task_verdicts": {t["task"]: t["task_verdict"] for t in sub}}
+    # swap 独立重算（K5B-05 口径）：从 per-pair 分数直算，不互换 verdict 标签
+    swap_pairs = [{"rep": p["rep"], "t": p["b"], "b": p["t"],
+                   "task_verdict": ("win" if (p["b"] is not None and p["t"] is not None and p["b"] > p["t"])
+                                    else "loss" if (p["b"] is not None and p["t"] is not None and p["b"] < p["t"])
+                                    else "tie" if (p["b"] is not None and p["t"] is not None)
+                                    else "unjudgeable_pair")}
+                  for t in tasks for p in t["pairs"]]
+    sh_vals = sum(1 for p in swap_pairs if p["task_verdict"] == "win")
+    sl_vals = sum(1 for p in swap_pairs if p["task_verdict"] == "loss")
+    swap_wins = 0
+    swap_reverse = 0
+    for t in tasks:
+        sp = [{"t": p["b"], "b": p["t"]} for p in t["pairs"]]
+        sh = sum(1 for p in sp if p["t"] is not None and p["b"] is not None and p["t"] > p["b"])
+        sl = sum(1 for p in sp if p["t"] is not None and p["b"] is not None and p["t"] < p["b"])
+        if sh >= 2:
+            swap_wins += 1
+        st = [p["t"] for p in sp if p["t"] is not None]
+        sb = [p["b"] for p in sp if p["b"] is not None]
+        sm_t = sum(st) / len(st) if st else None
+        sm_b = sum(sb) / len(sb) if sb else None
+        if sm_t is not None and sm_b is not None and (sm_t < sm_b or sm_t == 0):
+            swap_reverse += 1
+    swap_deltas = []
+    for t in tasks:
+        st = [p["b"] for p in t["pairs"] if p["b"] is not None]
+        sb = [p["t"] for p in t["pairs"] if p["t"] is not None]
+        if st and sb:
+            swap_deltas.append(sum(st) / len(st) - sum(sb) / len(sb))
+    swap_delta = sum(swap_deltas) / len(swap_deltas) if swap_deltas else None
+    swap_check = {"swap_delta": round(swap_delta, 6) if swap_delta is not None else None,
+                  "swap_win_rate": round(swap_wins / n_tasks, 4),
+                  "tie_rate": round(ties / n_tasks, 4),
+                  "swap_reverse_tasks": swap_reverse,
+                  "identity_abs_swap_delta_plus_delta": (round(abs(swap_delta + delta_all), 9)
+                                                         if (swap_delta is not None and delta_all is not None) else None),
+                  "note": "从原始 per-pair 分数独立重算（EVAL-SPEC v0.2.1 §3.3-2/3 tie-aware）；"
+                          "恒等式 swap_delta + delta ≈ 0；swap_reverse_tasks=swap 侧资产方向真实反向数"}
+    # 效率（records/arms 回填）
+    t_tok = b_tok = t_dur = b_dur = 0
+    n_runs = 0
+    for t in tasks:
+        for rep in REPS:
+            for arm, acc_t, acc_b in (("treatment", True, False), ("baseline", False, True)):
+                rec = arm_rec(t["tested_family"], t["task"], rep, arm)
+                if rec and rec.get("model_usage_rows", 0) > 0 and not rec.get("timed_out"):
+                    n_runs += 1
+                    if acc_t:
+                        t_tok += rec.get("input_tokens", 0) + rec.get("output_tokens", 0)
+                        t_dur += rec.get("wall_ms", 0) / 1000.0
+                    else:
+                        b_tok += rec.get("input_tokens", 0) + rec.get("output_tokens", 0)
+                        b_dur += rec.get("wall_ms", 0) / 1000.0
+    eff = {"token_ratio": round(t_tok / b_tok, 3) if b_tok else None,
+           "duration_ratio": round(t_dur / b_dur, 3) if b_dur else None,
+           "tokens_traceability": "records/arms/* db model_usage join 实测回填（input+output）",
+           "n_non_infra_runs": n_runs,
+           "gate_le_2": None}
+    if eff["token_ratio"] is not None:
+        eff["gate_le_2"] = bool(eff["token_ratio"] <= 2.0 and eff["duration_ratio"] <= 2.0)
+    accepted = (gate["1_delta_ge_1"]["pass"] and gate["2_winrate_ge_60"]["pass"]
+                and gate["3_reverse_le_1"]["pass"] and not gate["unjudgeable_tasks"])
     agg = {"run": "office-retest-20261009", "spec": "EVAL-SPEC v0.2.1",
            "tie_aware": "§3.3-2：n=3 h≥2 胜 / l≥2 负 / 其余平（v0.2.1 勘误口径）",
            "tasks": tasks, "wins": wins, "losses": losses, "ties": ties,
-           "win_rate": round(wins / denominator, 4),
-           "delta_mean": round(delta_all, 2),
-           "composite_gate": gate,
-           "verdict": ("accepted" if (gate["1_delta_ge_1"]["pass"] and gate["2_winrate_ge_60"]["pass"]
-                                      and gate["3_reverse_le_1"]["pass"]
-                                      and not gate["unjudgeable_tasks"]) else "rejected"),
+           "win_rate": round(wins / n_tasks, 4),
+           "delta_mean": round(delta_all, 2) if delta_all is not None else None,
+           "fam_tasks": fam_tasks,
+           "composite_gate": gate, "efficiency": eff, "_swap_check": swap_check,
+           "verdict": ("accepted" if accepted else "rejected"),
            "evidence_level": "provisional", "single_round_signal": True,
            "cross_generation_note": ("§3.7-4：本轮 judge_prompt_version=S8-JUDGE-v2-OFXRETEST-1、"
                                      "任务集 13（5ab+8new）、n=3，与 K5B round1（S8-JUDGE-v1、5 题、n=2）"
@@ -116,7 +205,12 @@ def main():
         f.write("\n")
     print(json.dumps({"exit": 0, "verdict": agg["verdict"],
                       "delta": agg["delta_mean"], "win_rate": agg["win_rate"],
-                      "w/l/t": "%d/%d/%d" % (wins, losses, ties)}, ensure_ascii=False))
+                      "w/l/t": "%d/%d/%d" % (wins, losses, ties),
+                      "fam": {k: {"d": v["delta_mean"], "wr": v["win_rate"]}
+                              for k, v in fam_tasks.items()},
+                      "swap_identity": swap_check["identity_abs_swap_delta_plus_delta"],
+                      "eff": {"token_ratio": eff["token_ratio"],
+                              "duration_ratio": eff["duration_ratio"]}}, ensure_ascii=False))
     return 0
 
 

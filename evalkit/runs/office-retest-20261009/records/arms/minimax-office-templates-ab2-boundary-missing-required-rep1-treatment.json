@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab2-boundary-missing-required-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 97870,
+  "started_at_ms": 1791490265437,
+  "session_id": "sess_27b1ad49-f3f0-4b07-902c-4c0b48ca621b",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab2-boundary-missing-required-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 509047,
+      "ot": 6769,
+      "dur": 87492,
+      "n": 17
+    }
+  ],
+  "input_tokens": 509047,
+  "output_tokens": 6769,
+  "stdout_bytes": 3111,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "性对拍两遍）**退出码全为 0**。\\n\\n## 记账结果与输入缺失事实一致\\n\\n**请示函/case2**（filled 4/8）：`主送机关` 键不存在、`请示事项` 为空字符串，两者均按必填缺失以 `____` 占位并记入 `missing_required_names`；选填的 `联系电话`、`成文日期` 缺失记为 `rendered_as=\\\"留空（渲染为空字符串）\\\"`，未被误记为必填。渲染核对：称谓段为 `____：` 且无首行缩进（顶格），落款一 `评测技术部` 右对齐，右缩进 32pt；因成文日期缺失产生的空段仍保持右对齐，落款行序不破坏。\\n\\n**会议通知/case2**（filled 5/11）：`会议名称` 缺失进标题成为 `关于召开____的通知`，`会议地点` 空字符串在正文渲染为 `会议地点：____`，二者记入必填缺失；选填的 `会议议题` 留空但标签保留，选填列表 `会议要求` 缺失按 F4 **整节省略**（文中确实不出现 `一、会议要求` 节头），`联系人`/`联系电话` 标签保留值为空；模板外键 `备注` 按字典序记入 `summary.unknown_keys`，未进入文书与台账明细。称谓 `各部门：` 顶格，落款两行均右对齐。\\n\\n## 交付自评留痕\\n\\n同一条命令行连跑两遍、两遍产物快照到旁路目录后逐字节对拍：**四组 sha256 全部相等**（`文书.docx` 整文件一致，`fields.json` 连 `outputs` 路径键在内也完全一致）。`python -m py_compile` 退出 0 无错误；入口脚本不可复现源扫描（`time(|random|uuid|datetime|now(`）**0 命中**；技能三件套 `SKILL.md`/`scripts/gen_doc.py`/`requirements.txt` 齐全。留痕写在工作目录的 `run_log.json`（未写入 `--outdir`，以保持产物目录恰含两产物）。\\n\\n一处环境说明：系统 `python3` 受 PEP 668 保护无法直接安装依赖，我另建了 `/tmp/otenv` 虚拟环境并按 `requirements.txt` 装入 python-docx 1.2.0 来运行引擎，引擎代码本身未做任何改动，此事已如实记入 `run_log.json` 的 interpreter 字段。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 17,\n    \"inputTokens\": 509047,\n    \"outputTokens\": 6769,\n    \"totalTokens\": 515816,\n    \"cacheReadTokens\": 468420,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 572,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 515816,\n    \"contextUsed\": 41426,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "ab2-boundary-missing-required",
+  "rep": 1,
+  "slot": 5
+}

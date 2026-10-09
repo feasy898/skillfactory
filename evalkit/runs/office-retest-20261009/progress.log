@@ -1,3 +1,87 @@
 03:31:59 packs: 13（build_packs.py 预构建，本步校验在位）
 03:32:16 packs: 13（build_packs.py 预构建，本步校验在位）
 03:32:16 PREP 完成：39 单元（78 臂目录），隔离断言全过
+04:07:14 ARM done glm/office-templates-ab1-standard-four-templates-rep1/baseline exit=0 tokens=2247553+50742 pin=pass
+04:08:43 ARM done glm/office-templates-ab1-standard-four-templates-rep1/treatment exit=0 tokens=338934+5119 pin=pass
+04:08:43 RUN 阶段结束：counted=2 redline=False thread_error=[]
+04:09:09 SKIP 已完成臂 glm/office-templates-ab1-standard-four-templates-rep1/baseline
+04:09:09 SKIP 已完成臂 glm/office-templates-ab1-standard-four-templates-rep1/treatment
+04:11:05 ARM done minimax/office-templates-ab2-boundary-missing-required-rep1/baseline exit=0 tokens=1101857+17098 pin=pass
+04:12:45 ARM done minimax/office-templates-ab2-boundary-missing-required-rep1/treatment exit=0 tokens=509047+6769 pin=pass
+04:15:34 ARM done glm/office-templates-ab1-standard-four-templates-rep2/baseline exit=0 tokens=1101089+27509 pin=pass
+04:16:56 ARM done minimax/office-templates-ab2-boundary-missing-required-rep2/baseline exit=0 tokens=2295253+31229 pin=pass
+04:17:55 ARM done minimax/office-templates-ab2-boundary-missing-required-rep2/treatment exit=0 tokens=542287+7156 pin=pass
+04:18:14 ARM done glm/office-templates-ab1-standard-four-templates-rep2/treatment exit=0 tokens=756089+10849 pin=pass
+04:19:35 ARM done minimax/office-templates-ab2-boundary-missing-required-rep3/baseline exit=0 tokens=925460+18546 pin=pass
+04:20:40 ARM done minimax/office-templates-ab2-boundary-missing-required-rep3/treatment exit=0 tokens=570458+7432 pin=pass
+04:22:07 ARM done minimax/office-templates-ab4-invalid-input-rejection-rep1/baseline exit=0 tokens=670068+10560 pin=pass
+04:23:07 ARM done minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment exit=0 tokens=741215+8923 pin=pass
+04:23:14 ARM done glm/office-templates-ab1-standard-four-templates-rep3/baseline exit=0 tokens=784499+24474 pin=pass
+04:24:42 ARM done minimax/office-templates-ab4-invalid-input-rejection-rep2/baseline exit=0 tokens=1036743+17267 pin=pass
+04:25:50 ARM done glm/office-templates-ab1-standard-four-templates-rep3/treatment exit=0 tokens=675057+10439 pin=pass
+04:25:57 ARM done minimax/office-templates-ab4-invalid-input-rejection-rep2/treatment exit=0 tokens=676163+10107 pin=pass
+04:27:01 ARM done minimax/office-templates-ab4-invalid-input-rejection-rep3/baseline exit=0 tokens=467690+9311 pin=pass
+04:28:32 ARM done minimax/office-templates-ab4-invalid-input-rejection-rep3/treatment exit=0 tokens=1088922+12606 pin=pass
+04:30:23 ARM done minimax/office-templates-t01-rep1/baseline exit=0 tokens=1471224+16490 pin=pass
+04:31:18 ARM done minimax/office-templates-t01-rep1/treatment exit=0 tokens=464144+4872 pin=pass
+04:32:48 ARM done minimax/office-templates-t01-rep2/baseline exit=0 tokens=1014875+12195 pin=pass
+04:33:39 ARM done minimax/office-templates-t01-rep2/treatment exit=0 tokens=436162+5003 pin=pass
+04:35:12 ARM done minimax/office-templates-t01-rep3/baseline exit=0 tokens=982944+11203 pin=pass
+04:35:40 ARM done glm/office-templates-ab3-empty-and-string-lists-rep1/baseline exit=0 tokens=2141234+45204 pin=pass
+04:36:35 ARM done minimax/office-templates-t01-rep3/treatment exit=0 tokens=437640+4771 pin=pass
+04:38:00 ARM done glm/office-templates-ab3-empty-and-string-lists-rep1/treatment exit=0 tokens=768100+9586 pin=pass
+04:38:44 ARM done minimax/office-templates-t03-rep1/baseline exit=0 tokens=1167937+16868 pin=pass
+04:40:15 ARM done minimax/office-templates-t03-rep1/treatment exit=0 tokens=664980+8489 pin=pass
+04:42:56 ARM done minimax/office-templates-t03-rep2/baseline exit=0 tokens=2071469+21813 pin=pass
+04:44:14 ARM done minimax/office-templates-t03-rep2/treatment exit=0 tokens=722679+6818 pin=pass
+04:46:14 ARM done minimax/office-templates-t03-rep3/baseline exit=0 tokens=705365+12280 pin=pass
+04:47:16 ARM done minimax/office-templates-t03-rep3/treatment exit=0 tokens=627159+6007 pin=pass
+04:47:37 ARM done glm/office-templates-ab3-empty-and-string-lists-rep2/baseline exit=0 tokens=1505975+34866 pin=pass
+04:50:22 ARM done minimax/office-templates-t05-rep1/baseline exit=0 tokens=1683264+17656 pin=pass
+04:50:47 ARM done glm/office-templates-ab3-empty-and-string-lists-rep2/treatment exit=0 tokens=874429+12297 pin=pass
+04:51:23 ARM done minimax/office-templates-t05-rep1/treatment exit=0 tokens=597355+6461 pin=pass
+04:55:09 ARM done minimax/office-templates-t05-rep2/baseline exit=0 tokens=2611062+31356 pin=pass
+04:56:03 ARM done minimax/office-templates-t05-rep2/treatment exit=0 tokens=529315+5596 pin=pass
+04:57:17 ARM done minimax/office-templates-t05-rep3/baseline exit=0 tokens=510422+8696 pin=pass
+04:58:05 ARM done minimax/office-templates-t05-rep3/treatment exit=0 tokens=501217+5281 pin=pass
+04:58:59 ARM done glm/office-templates-ab3-empty-and-string-lists-rep3/baseline exit=0 tokens=638500+28694 pin=pass
+05:00:31 ARM done minimax/office-templates-t07-rep1/baseline exit=0 tokens=1365507+16381 pin=pass
+05:01:14 ARM done glm/office-templates-ab3-empty-and-string-lists-rep3/treatment exit=0 tokens=577910+7794 pin=pass
+05:02:24 ARM done minimax/office-templates-t07-rep1/treatment exit=0 tokens=656945+8189 pin=pass
+05:06:44 ARM done minimax/office-templates-t07-rep2/baseline exit=0 tokens=2096019+23944 pin=pass
+05:07:50 ARM done minimax/office-templates-t07-rep2/treatment exit=0 tokens=705920+9166 pin=pass
+05:09:14 ARM done minimax/office-templates-t07-rep3/baseline exit=0 tokens=767617+11210 pin=pass
+05:11:18 ARM done minimax/office-templates-t07-rep3/treatment exit=0 tokens=998876+21000 pin=pass
+05:14:14 ARM done glm/office-templates-ab5-determinism-layout-selfeval-rep1/baseline exit=0 tokens=2230779+40669 pin=pass
+05:20:37 ARM done glm/office-templates-ab5-determinism-layout-selfeval-rep1/treatment exit=0 tokens=755682+11766 pin=pass
+05:27:14 ARM done glm/office-templates-ab5-determinism-layout-selfeval-rep2/baseline exit=0 tokens=882408+27950 pin=pass
+05:30:26 ARM done glm/office-templates-ab5-determinism-layout-selfeval-rep2/treatment exit=0 tokens=721905+13374 pin=pass
+05:39:15 ARM done glm/office-templates-ab5-determinism-layout-selfeval-rep3/baseline exit=0 tokens=1786616+38055 pin=pass
+05:42:44 ARM done glm/office-templates-ab5-determinism-layout-selfeval-rep3/treatment exit=0 tokens=731453+12956 pin=pass
+05:49:54 ARM done glm/office-templates-t02-rep1/baseline exit=0 tokens=1747319+31298 pin=pass
+05:51:26 ARM done glm/office-templates-t02-rep1/treatment exit=0 tokens=442172+6087 pin=pass
+05:56:31 ARM done glm/office-templates-t02-rep2/baseline exit=0 tokens=1423733+21329 pin=pass
+05:58:58 ARM done glm/office-templates-t02-rep2/treatment exit=0 tokens=427014+8037 pin=pass
+06:04:47 ARM done glm/office-templates-t02-rep3/baseline exit=0 tokens=1142435+25515 pin=pass
+06:06:52 ARM done glm/office-templates-t02-rep3/treatment exit=0 tokens=484585+8009 pin=pass
+06:12:49 ARM done glm/office-templates-t04-rep1/baseline exit=0 tokens=979926+27755 pin=pass
+06:14:36 ARM done glm/office-templates-t04-rep1/treatment exit=0 tokens=460356+8178 pin=pass
+06:20:05 ARM done glm/office-templates-t04-rep2/baseline exit=0 tokens=1319404+27566 pin=pass
+06:22:09 ARM done glm/office-templates-t04-rep2/treatment exit=0 tokens=632640+10753 pin=pass
+06:26:56 ARM done glm/office-templates-t04-rep3/baseline exit=0 tokens=792560+22125 pin=pass
+06:29:11 ARM done glm/office-templates-t04-rep3/treatment exit=0 tokens=706962+10320 pin=pass
+06:38:00 ARM done glm/office-templates-t06-rep1/baseline exit=0 tokens=991795+18311 pin=pass
+06:39:38 ARM done glm/office-templates-t06-rep1/treatment exit=0 tokens=429736+7386 pin=pass
+06:44:16 ARM done glm/office-templates-t06-rep2/baseline exit=0 tokens=757984+18106 pin=pass
+06:46:20 ARM done glm/office-templates-t06-rep2/treatment exit=0 tokens=548220+9863 pin=pass
+06:50:53 ARM done glm/office-templates-t06-rep3/baseline exit=0 tokens=1091770+20783 pin=pass
+06:53:02 ARM done glm/office-templates-t06-rep3/treatment exit=0 tokens=745584+9832 pin=pass
+07:03:24 ARM done glm/office-templates-t08-rep1/baseline exit=0 tokens=1455976+25180 pin=pass
+07:06:42 ARM done glm/office-templates-t08-rep1/treatment exit=0 tokens=738603+14842 pin=pass
+07:15:58 ARM done glm/office-templates-t08-rep2/baseline exit=0 tokens=2300561+32355 pin=pass
+07:18:15 ARM done glm/office-templates-t08-rep2/treatment exit=0 tokens=403083+8550 pin=pass
+07:23:34 ARM done glm/office-templates-t08-rep3/baseline exit=0 tokens=730411+23383 pin=pass
+07:26:19 ARM done glm/office-templates-t08-rep3/treatment exit=0 tokens=532203+12634 pin=pass
+07:26:19 RUN 阶段结束：counted=78 redline=False thread_error=[]
+08:15:40 freeze verify closing exit=0
+08:15:40 全局配置 sha 开工/收工逐字节一致=True

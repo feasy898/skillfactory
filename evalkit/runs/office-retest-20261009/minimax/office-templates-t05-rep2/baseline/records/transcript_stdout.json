@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_206d3cfc-9970-4a46-bfc9-0eb6844627b5",
+  "traceId": "1ca6e5ad-d542-4712-8ba8-c4def4fb08f2",
+  "turnId": "turn_bb9e5cd5-53c9-47a6-ae1b-b2e08ccdd031",
+  "response": "Done. The 请示函 is drafted and both deliverables are in `out/`.\n\n**Deliverables** (in `baseline/out/`):\n- `文书.docx` — the 请示函, formatted to the GB/T 9704-2012 公文 spec\n- `fields.json` — field registry mapping all 8 source fields to their exact landing point in the document\n\nSupporting files: `lanshan_miji.json` (source data, verbatim from the brief), `gen_doc.py` (generator), `verify.py` (85-assertion self-check, `EXIT=0`), and `.render/` (PDF + PNG proof it opens and lays out correctly).\n\n**Document structure** — title \"澜山物业综合管理部关于购置档案密集架的请示\", 主送机关 顶格 with a full-width colon, the缘由 and 事项 verbatim as separate body paragraphs, the 请示-specific closing \"妥否，请批示。\", 署名 and 成文日期 右空四字, and a 附注 line combining 联系人/联系电话.\n\nAll 8 fields appear verbatim in the body. The only transformation is the title: the source 请示事由 \"购置档案密集架的请示\" was restructured into the standard \"关于……的请示\" form prefixed with the 发文机关 — `fields.json` flags this as `transformed: true` with the rule spelled out, so it's auditable rather than silent.\n\n**Four real defects the render caught and I fixed** (none were visible from the XML alone):\n\n1. **Title broke mid-word.** At 2号 the 20-character title wrapped and split \"请示\" across lines, violating the \"回行时词意完整\" rule. Dropped to 小2号 (18pt) so it sets on one line.\n2. **Page number rendered `1— —`.** I'd emitted the em-dashes after the PAGE field; the 公文 form is `— 1 —`. Also, `w:fldChar` was appended directly under `w:p` instead of inside a `w:r` — schema-invalid, and Word would have flagged the file as corrupt.\n3. **`w:evenAndOddHeaders` landed in `sectPr`.** It belongs in `settings.xml`; misplaced, the odd/even page-number mirroring was silently dead.\n4. **Indents were 20× too small.** `w:firstLine`/`w:left`/`w:right` take twips (1/20 pt), but I wrote points — so \"右空四字\" was rendering as roughly one character. Now verified at the exact twip values (1280 and 640).\n\nI also removed the duplicate `w:docGrid` that python-docx's default template ships with, added a schema-ordered `w:pPr` insert helper (OOXML child order is enforced, and append-at-end would break it), and disabled `autoSpaceDE`/`autoSpaceDN` so digits sit tight against han characters in Word.\n\nOne judgment call worth flagging: the render still shows a small gap around numbers (\"2025 年\"). I checked this rather than assuming — a controlled A/B render proved LibreOffice produces pixel-identical output with the flag on or off, and glyph-position extraction from the PDF shows a consistent ~3.2pt gap, which is ordinary font side bearing. It's a font-substitution artifact of仿宋_GB2312 not being installed here; in Word with the real font it will be tighter.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 60,
+    "inputTokens": 2611062,
+    "outputTokens": 31356,
+    "totalTokens": 2642418,
+    "cacheReadTokens": 2544369,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 4625,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 2642418,
+    "contextUsed": 67606,
+    "contextWindow": 200000
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "available": true,
+  "session_id": "sess_952dd390-ff5e-4bf7-ade2-e3c3d61872f6",
+  "session": {
+    "directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab5-determinism-layout-selfeval-rep3/baseline"
+  },
+  "directory_matches_arm": true,
+  "db_source": "global",
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1786616,
+      "ot": 38055,
+      "dur": 457424,
+      "n": 36
+    }
+  ]
+}

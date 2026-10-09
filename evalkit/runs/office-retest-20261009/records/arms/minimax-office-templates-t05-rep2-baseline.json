@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t05-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 223995,
+  "started_at_ms": 1791492683840,
+  "session_id": "sess_206d3cfc-9970-4a46-bfc9-0eb6844627b5",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t05-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 2611062,
+      "ot": 31356,
+      "dur": 190345,
+      "n": 60
+    }
+  ],
+  "input_tokens": 2611062,
+  "output_tokens": 31356,
+  "stdout_bytes": 3602,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "ven page-number mirroring was silently dead.\\n4. **Indents were 20× too small.** `w:firstLine`/`w:left`/`w:right` take twips (1/20 pt), but I wrote points — so \\\"右空四字\\\" was rendering as roughly one character. Now verified at the exact twip values (1280 and 640).\\n\\nI also removed the duplicate `w:docGrid` that python-docx's default template ships with, added a schema-ordered `w:pPr` insert helper (OOXML child order is enforced, and append-at-end would break it), and disabled `autoSpaceDE`/`autoSpaceDN` so digits sit tight against han characters in Word.\\n\\nOne judgment call worth flagging: the render still shows a small gap around numbers (\\\"2025 年\\\"). I checked this rather than assuming — a controlled A/B render proved LibreOffice produces pixel-identical output with the flag on or off, and glyph-position extraction from the PDF shows a consistent ~3.2pt gap, which is ordinary font side bearing. It's a font-substitution artifact of仿宋_GB2312 not being installed here; in Word with the real font it will be tighter.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 60,\n    \"inputTokens\": 2611062,\n    \"outputTokens\": 31356,\n    \"totalTokens\": 2642418,\n    \"cacheReadTokens\": 2544369,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 4625,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 2642418,\n    \"contextUsed\": 67606,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "t05",
+  "rep": 2,
+  "slot": 38
+}

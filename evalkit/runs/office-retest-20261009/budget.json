@@ -2,7 +2,7 @@
   "card": "office-retest（K-5 回炉·office-templates 单包重测）",
   "run_id": "office-retest-20261009",
   "kind": "budget_registration",
-  "status": "registered_not_started",
+  "status": "closed",
   "base_commit": "9827318",
   "registered_at": "2026-10-09T03:31+0800",
   "authority": "本轮 ask 预算公式（13 任务 × 2 臂 × n=3 = 78 臂调用上限 + 裁判调用每任务 ≥2 异族 + step 通道重试余量，全部记账本文件）；超出本登记须先经 planner 批准，超额进程不计入结果",
@@ -31,7 +31,9 @@
       }
     ],
     "counted_rule": "正式臂进程数以台账为准（spawn 前 pending、事后按 db model_usage 实测回填，照 sf0006-b/c 与 sf0008-k5b 先例）；装置 bug/无效尝试条目（skipped_harness_bug 等）不占额度",
-    "counted_so_far": 0
+    "counted_so_far": 78,
+    "counted_final": 78,
+    "physical_entries": 78
   },
   "judge_calls": {
     "floor": 26,
@@ -41,7 +43,8 @@
     "rejudge_extra_policy": "分差>2 换面板内另一异族裁判重评全任务，按实发记账",
     "step_channel_retry_margin": 26,
     "step_channel_retry_basis": "step=模型 API 直调通道，每裁判调用失败/超时重试 ≤1；通道故障如实降级留痕，致异族 <2 族的任务 fail-closed 记 unjudgeable",
-    "used_so_far": 0
+    "used_so_far": 70,
+    "closing_note": "实发 70 条（floor 26 + 抽检 13 + step prefill 缺陷期 no-verdict 6 条留痕 + 判官 notes 修正后 t01-t08 全量重判 + ab1/ab3 通道修复重发）；逐条 task/judge/status 可溯"
   },
   "retry_policy": {
     "retry_cap_per_arm": 1,
@@ -55,7 +58,2744 @@
     "step_judge": "step-router-v1 @ new-provider，模型 API 直调（裁判专用）",
     "drift_policy": "glm 臂落点漂移 → 红线停全批（B-01/SF-0004 DT-v1 同款）"
   },
-  "ledger_entries": [],
+  "ledger_entries": [
+    {
+      "arm": "glm/office-templates-ab1-standard-four-templates-rep1/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab1-standard-four-templates",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "03:51:01",
+      "status": "done",
+      "slot": 1,
+      "exit_code": 0,
+      "session_id": "sess_150f768b-244b-4438-bbcc-816ecbae60d6",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-ab1-standard-four-templates-rep1/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab1-standard-four-templates",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "04:07:14",
+      "status": "done",
+      "slot": 2,
+      "exit_code": 0,
+      "session_id": "sess_0083568d-71f7-4a4a-8515-f777317e9f7d",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-ab2-boundary-missing-required-rep1/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab2-boundary-missing-required",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "04:09:09",
+      "status": "done",
+      "slot": 3,
+      "exit_code": 0,
+      "session_id": "sess_d1f039f8-100c-49c6-a905-30e8da0496a3",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-ab1-standard-four-templates-rep2/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab1-standard-four-templates",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "04:09:09",
+      "status": "done",
+      "slot": 4,
+      "exit_code": 0,
+      "session_id": "sess_e8a61caf-240c-47a2-b900-e8b2a9f8d683",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-ab2-boundary-missing-required-rep1/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab2-boundary-missing-required",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "04:11:05",
+      "status": "done",
+      "slot": 5,
+      "exit_code": 0,
+      "session_id": "sess_27b1ad49-f3f0-4b07-902c-4c0b48ca621b",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-ab2-boundary-missing-required-rep2/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab2-boundary-missing-required",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "04:12:45",
+      "status": "done",
+      "slot": 6,
+      "exit_code": 0,
+      "session_id": "sess_4e40a252-ea99-4a46-b09e-6804b5c3dd8c",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-ab1-standard-four-templates-rep2/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab1-standard-four-templates",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "04:15:34",
+      "status": "done",
+      "slot": 7,
+      "exit_code": 0,
+      "session_id": "sess_a127b43f-584a-4c94-b754-0f3e7202f1e3",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-ab2-boundary-missing-required-rep2/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab2-boundary-missing-required",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "04:16:56",
+      "status": "done",
+      "slot": 8,
+      "exit_code": 0,
+      "session_id": "sess_acb8ac1b-48c5-403d-8de3-7df6fcc8eb2f",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-ab2-boundary-missing-required-rep3/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab2-boundary-missing-required",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "04:17:55",
+      "status": "done",
+      "slot": 9,
+      "exit_code": 0,
+      "session_id": "sess_0b2aa8a4-aa29-4650-82a2-a1b7f70050de",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-ab1-standard-four-templates-rep3/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab1-standard-four-templates",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "04:18:14",
+      "status": "done",
+      "slot": 10,
+      "exit_code": 0,
+      "session_id": "sess_7cbcb6f0-72b0-4f4c-8bb4-bb5c463e15d1",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-ab2-boundary-missing-required-rep3/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab2-boundary-missing-required",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "04:19:35",
+      "status": "done",
+      "slot": 11,
+      "exit_code": 0,
+      "session_id": "sess_8f6d77a7-cdc5-4c63-b6b6-e135ac71fbc0",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-ab4-invalid-input-rejection-rep1/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab4-invalid-input-rejection",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "04:20:40",
+      "status": "done",
+      "slot": 12,
+      "exit_code": 0,
+      "session_id": "sess_3abf20c8-130d-430f-8869-c4ed7e66866d",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab4-invalid-input-rejection",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "04:22:07",
+      "status": "done",
+      "slot": 13,
+      "exit_code": 0,
+      "session_id": "sess_7da5ce8b-9ba0-4c13-94d1-07ea7673df31",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-ab4-invalid-input-rejection-rep2/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab4-invalid-input-rejection",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "04:23:07",
+      "status": "done",
+      "slot": 14,
+      "exit_code": 0,
+      "session_id": "sess_e12aea3b-4c1a-495d-92bd-1db2c7341620",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-ab1-standard-four-templates-rep3/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab1-standard-four-templates",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "04:23:14",
+      "status": "done",
+      "slot": 15,
+      "exit_code": 0,
+      "session_id": "sess_03d3034b-2cd7-4528-a3d4-a7386ef00623",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-ab4-invalid-input-rejection-rep2/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab4-invalid-input-rejection",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "04:24:42",
+      "status": "done",
+      "slot": 16,
+      "exit_code": 0,
+      "session_id": "sess_eca7d870-74a9-4e92-a7f7-3273300bf8d6",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-ab3-empty-and-string-lists-rep1/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab3-empty-and-string-lists",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "04:25:50",
+      "status": "done",
+      "slot": 17,
+      "exit_code": 0,
+      "session_id": "sess_b7a183ff-c501-437c-bd6e-e4d63597f426",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-ab4-invalid-input-rejection-rep3/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab4-invalid-input-rejection",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "04:25:57",
+      "status": "done",
+      "slot": 18,
+      "exit_code": 0,
+      "session_id": "sess_e48ef6f7-3117-4692-9712-4adcf1385c37",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-ab4-invalid-input-rejection-rep3/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab4-invalid-input-rejection",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "04:27:01",
+      "status": "done",
+      "slot": 19,
+      "exit_code": 0,
+      "session_id": "sess_cad19673-11aa-46ea-9473-cf37a40c99ef",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t01-rep1/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t01",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "04:28:32",
+      "status": "done",
+      "slot": 20,
+      "exit_code": 0,
+      "session_id": "sess_789e1d4c-4899-4eb8-9283-38ed7dd82393",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t01-rep1/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t01",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "04:30:23",
+      "status": "done",
+      "slot": 21,
+      "exit_code": 0,
+      "session_id": "sess_ce19cce9-fe5a-41d0-b7d3-0b5339a9fc34",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t01-rep2/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t01",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "04:31:18",
+      "status": "done",
+      "slot": 22,
+      "exit_code": 0,
+      "session_id": "sess_d5bd7a01-ff29-4088-8735-64f6b250077a",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t01-rep2/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t01",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "04:32:48",
+      "status": "done",
+      "slot": 23,
+      "exit_code": 0,
+      "session_id": "sess_be1fa6a3-88ce-4c4b-a314-8c2dd2df6352",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t01-rep3/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t01",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "04:33:39",
+      "status": "done",
+      "slot": 24,
+      "exit_code": 0,
+      "session_id": "sess_64aaead3-fc18-48a9-9ff4-1210da33651d",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t01-rep3/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t01",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "04:35:12",
+      "status": "done",
+      "slot": 25,
+      "exit_code": 0,
+      "session_id": "sess_5005e445-b8e7-4754-a97b-b46419895a4b",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-ab3-empty-and-string-lists-rep1/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab3-empty-and-string-lists",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "04:35:40",
+      "status": "done",
+      "slot": 26,
+      "exit_code": 0,
+      "session_id": "sess_d5735b75-aed9-4a73-acf8-9af338716248",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t03-rep1/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t03",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "04:36:35",
+      "status": "done",
+      "slot": 27,
+      "exit_code": 0,
+      "session_id": "sess_7bc19dfa-aa67-42f5-a4e2-ecdbde792044",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-ab3-empty-and-string-lists-rep2/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab3-empty-and-string-lists",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "04:38:00",
+      "status": "done",
+      "slot": 28,
+      "exit_code": 0,
+      "session_id": "sess_9297540d-8ab2-4aa5-baf5-dfc7af400b79",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t03-rep1/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t03",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "04:38:44",
+      "status": "done",
+      "slot": 29,
+      "exit_code": 0,
+      "session_id": "sess_984b7b8f-dd31-46b5-9b7d-b40b617721db",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t03-rep2/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t03",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "04:40:15",
+      "status": "done",
+      "slot": 30,
+      "exit_code": 0,
+      "session_id": "sess_fbd75897-5b68-40b4-8280-1c0981538ac5",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t03-rep2/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t03",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "04:42:56",
+      "status": "done",
+      "slot": 31,
+      "exit_code": 0,
+      "session_id": "sess_806952d6-fb6f-4322-8a63-8e29725e6cd9",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t03-rep3/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t03",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "04:44:14",
+      "status": "done",
+      "slot": 32,
+      "exit_code": 0,
+      "session_id": "sess_f4d0be8c-7c1d-41be-abe8-167770aaa3be",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t03-rep3/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t03",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "04:46:14",
+      "status": "done",
+      "slot": 33,
+      "exit_code": 0,
+      "session_id": "sess_1ea749f4-289e-4b45-aed1-344243def880",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t05-rep1/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t05",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "04:47:16",
+      "status": "done",
+      "slot": 34,
+      "exit_code": 0,
+      "session_id": "sess_7cc29cec-c7af-41f1-8b68-dae1e14d7950",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-ab3-empty-and-string-lists-rep2/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab3-empty-and-string-lists",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "04:47:37",
+      "status": "done",
+      "slot": 35,
+      "exit_code": 0,
+      "session_id": "sess_efd57437-eb30-4fb0-85f4-914f8d635382",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t05-rep1/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t05",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "04:50:22",
+      "status": "done",
+      "slot": 36,
+      "exit_code": 0,
+      "session_id": "sess_6e181caa-4509-49f9-86d9-d929083c3068",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-ab3-empty-and-string-lists-rep3/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab3-empty-and-string-lists",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "04:50:47",
+      "status": "done",
+      "slot": 37,
+      "exit_code": 0,
+      "session_id": "sess_672001bb-aa09-4bfe-948c-7b23bef9ba91",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t05-rep2/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t05",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "04:51:23",
+      "status": "done",
+      "slot": 38,
+      "exit_code": 0,
+      "session_id": "sess_206d3cfc-9970-4a46-bfc9-0eb6844627b5",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t05-rep2/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t05",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "04:55:09",
+      "status": "done",
+      "slot": 39,
+      "exit_code": 0,
+      "session_id": "sess_395e90a1-e85d-48f3-8de4-684f9e611997",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t05-rep3/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t05",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "04:56:03",
+      "status": "done",
+      "slot": 40,
+      "exit_code": 0,
+      "session_id": "sess_93173268-ae98-454b-bb84-c2d54460254b",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t05-rep3/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t05",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "04:57:17",
+      "status": "done",
+      "slot": 41,
+      "exit_code": 0,
+      "session_id": "sess_577f9f36-0766-4fb2-9f8b-f6edc2f14679",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t07-rep1/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t07",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "04:58:05",
+      "status": "done",
+      "slot": 42,
+      "exit_code": 0,
+      "session_id": "sess_104bfdb6-597d-48e9-9d72-8741d522eca0",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-ab3-empty-and-string-lists-rep3/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab3-empty-and-string-lists",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "04:58:59",
+      "status": "done",
+      "slot": 43,
+      "exit_code": 0,
+      "session_id": "sess_eeca2186-0744-49ad-99a1-476504926270",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t07-rep1/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t07",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "05:00:31",
+      "status": "done",
+      "slot": 44,
+      "exit_code": 0,
+      "session_id": "sess_af67e197-f921-44f5-8e50-baa48e2bf7d0",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-ab5-determinism-layout-selfeval-rep1/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab5-determinism-layout-selfeval",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "05:01:14",
+      "status": "done",
+      "slot": 45,
+      "exit_code": 0,
+      "session_id": "sess_c5cbbb20-8b1c-4738-a0cd-98c7528ce409",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t07-rep2/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t07",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "05:02:24",
+      "status": "done",
+      "slot": 46,
+      "exit_code": 0,
+      "session_id": "sess_97e485f2-b998-4a25-a488-67ab90325535",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t07-rep2/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t07",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "05:06:44",
+      "status": "done",
+      "slot": 47,
+      "exit_code": 0,
+      "session_id": "sess_5ec8afb9-0517-4408-a781-dbc94a4bdcfd",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t07-rep3/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t07",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "05:07:50",
+      "status": "done",
+      "slot": 48,
+      "exit_code": 0,
+      "session_id": "sess_aeb5c148-86af-4793-8e2d-43507a780d0d",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/office-templates-t07-rep3/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t07",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "05:09:14",
+      "status": "done",
+      "slot": 49,
+      "exit_code": 0,
+      "session_id": "sess_7df7ef24-de64-4081-8af6-280315f3c7bf",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-ab5-determinism-layout-selfeval-rep1/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab5-determinism-layout-selfeval",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "05:14:14",
+      "status": "done",
+      "slot": 50,
+      "exit_code": 0,
+      "session_id": "sess_8b1f2af3-8614-4461-a48b-60a3d869ee68",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-ab5-determinism-layout-selfeval-rep2/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab5-determinism-layout-selfeval",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "05:20:37",
+      "status": "done",
+      "slot": 51,
+      "exit_code": 0,
+      "session_id": "sess_a0fe0ad7-5cd4-4eba-b8f8-754334ad42db",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-ab5-determinism-layout-selfeval-rep2/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab5-determinism-layout-selfeval",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "05:27:14",
+      "status": "done",
+      "slot": 52,
+      "exit_code": 0,
+      "session_id": "sess_a2e60b5f-345c-41e3-ac61-905035f33266",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-ab5-determinism-layout-selfeval-rep3/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab5-determinism-layout-selfeval",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "05:30:26",
+      "status": "done",
+      "slot": 53,
+      "exit_code": 0,
+      "session_id": "sess_952dd390-ff5e-4bf7-ade2-e3c3d61872f6",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-ab5-determinism-layout-selfeval-rep3/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "ab5-determinism-layout-selfeval",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "05:39:15",
+      "status": "done",
+      "slot": 54,
+      "exit_code": 0,
+      "session_id": "sess_6e5d2d27-aac4-4153-b47d-606c9d1bb236",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t02-rep1/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t02",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "05:42:44",
+      "status": "done",
+      "slot": 55,
+      "exit_code": 0,
+      "session_id": "sess_d3bd20aa-5869-4b15-86a2-a2ea0bda80c4",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t02-rep1/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t02",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "05:49:54",
+      "status": "done",
+      "slot": 56,
+      "exit_code": 0,
+      "session_id": "sess_920db0fd-3b06-48cd-b8f0-c13ac1e54361",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t02-rep2/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t02",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "05:51:26",
+      "status": "done",
+      "slot": 57,
+      "exit_code": 0,
+      "session_id": "sess_900998c8-585b-4e58-b712-394d0e2067d7",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t02-rep2/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t02",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "05:56:31",
+      "status": "done",
+      "slot": 58,
+      "exit_code": 0,
+      "session_id": "sess_2e6726f5-d064-4b15-b0f0-87eb8b15942c",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t02-rep3/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t02",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "05:58:58",
+      "status": "done",
+      "slot": 59,
+      "exit_code": 0,
+      "session_id": "sess_1ccdc367-c97a-4535-8fc3-33a260f5b3f0",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t02-rep3/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t02",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "06:04:47",
+      "status": "done",
+      "slot": 60,
+      "exit_code": 0,
+      "session_id": "sess_7c7eaeeb-33a1-4d81-9380-83a4705d3d8c",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t04-rep1/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t04",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "06:06:52",
+      "status": "done",
+      "slot": 61,
+      "exit_code": 0,
+      "session_id": "sess_c5492e5c-e3df-49e8-8824-92d56e017b4c",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t04-rep1/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t04",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "06:12:49",
+      "status": "done",
+      "slot": 62,
+      "exit_code": 0,
+      "session_id": "sess_5a4cac46-40a5-429b-83fe-b65525ff80f9",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t04-rep2/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t04",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "06:14:36",
+      "status": "done",
+      "slot": 63,
+      "exit_code": 0,
+      "session_id": "sess_90625bba-0574-4598-8163-8b859e9f4543",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t04-rep2/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t04",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "06:20:05",
+      "status": "done",
+      "slot": 64,
+      "exit_code": 0,
+      "session_id": "sess_2f0227ea-538e-434a-855f-c68a107fc449",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t04-rep3/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t04",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "06:22:09",
+      "status": "done",
+      "slot": 65,
+      "exit_code": 0,
+      "session_id": "sess_3ddc0054-76b2-455d-a49c-151bac30e880",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t04-rep3/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t04",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "06:26:56",
+      "status": "done",
+      "slot": 66,
+      "exit_code": 0,
+      "session_id": "sess_f0415de8-5a8e-4885-8a3f-047976c05794",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t06-rep1/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t06",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "06:29:11",
+      "status": "done",
+      "slot": 67,
+      "exit_code": 0,
+      "session_id": "sess_62422f10-551c-4071-99fa-35380b5c2b2f",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t06-rep1/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t06",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "06:38:00",
+      "status": "done",
+      "slot": 68,
+      "exit_code": 0,
+      "session_id": "sess_674ee422-75ef-47bb-b9ee-867a82acc7bb",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t06-rep2/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t06",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "06:39:38",
+      "status": "done",
+      "slot": 69,
+      "exit_code": 0,
+      "session_id": "sess_8a46e8e9-da1e-4f9a-ba0b-40c3fc0ef5c9",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t06-rep2/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t06",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "06:44:16",
+      "status": "done",
+      "slot": 70,
+      "exit_code": 0,
+      "session_id": "sess_b8f3fafa-f3d2-4926-80d2-eb2129c12c3e",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t06-rep3/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t06",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "06:46:20",
+      "status": "done",
+      "slot": 71,
+      "exit_code": 0,
+      "session_id": "sess_15c36430-07a5-4fd8-8db3-561aff0906c3",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t06-rep3/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t06",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "06:50:53",
+      "status": "done",
+      "slot": 72,
+      "exit_code": 0,
+      "session_id": "sess_37ab712c-89ce-41cb-8179-47ca724b69bd",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t08-rep1/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t08",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "06:53:02",
+      "status": "done",
+      "slot": 73,
+      "exit_code": 0,
+      "session_id": "sess_db38febf-818c-4744-b4bf-4cdcab2a7e90",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t08-rep1/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t08",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "07:03:24",
+      "status": "done",
+      "slot": 74,
+      "exit_code": 0,
+      "session_id": "sess_e568d77b-ec38-42e0-8c8a-17307c92eb50",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t08-rep2/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t08",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "07:06:42",
+      "status": "done",
+      "slot": 75,
+      "exit_code": 0,
+      "session_id": "sess_2c98d26e-26a7-4a3d-8b57-21c1716525f1",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t08-rep2/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t08",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "07:15:58",
+      "status": "done",
+      "slot": 76,
+      "exit_code": 0,
+      "session_id": "sess_dd3b383e-ad19-401a-9d8e-67899ff6e207",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t08-rep3/baseline",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t08",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "07:18:15",
+      "status": "done",
+      "slot": 77,
+      "exit_code": 0,
+      "session_id": "sess_e91851ee-a1f9-459b-8dd9-4415911ebc6a",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/office-templates-t08-rep3/treatment",
+      "kind": "arm",
+      "pkg": "office-templates",
+      "task": "t08",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "07:23:34",
+      "status": "done",
+      "slot": 78,
+      "exit_code": 0,
+      "session_id": "sess_d044ce3b-b9f9-47fa-a82c-2d17aebbded7",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "ab1-standard-four-templates",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "08:15:44",
+      "status": "done",
+      "slot": 79,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 100792,
+      "session_id": "d3ed854ef630452be35f81321a038e78.a1ec9ae8c114b82b48b6131d516d7042",
+      "tokens": {
+        "input": 37575,
+        "output": 17429
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "ab1-standard-four-templates",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "08:17:25",
+      "status": "done",
+      "slot": 80,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 102111,
+      "session_id": "sess_b9156d20-3f8c-45fd-822f-1d55e64a00af",
+      "tokens": {
+        "input": 1136680,
+        "output": 19356
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "ab1-standard-four-templates-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "08:19:09",
+      "status": "no-verdict",
+      "slot": 81,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 78410,
+      "session_id": "1a56a121396961d2b7dcd40b1f01577d.7a96e73348693f5f2367439004f4c0b2",
+      "tokens": {
+        "input": 8743,
+        "output": 13285
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "ab2-boundary-missing-required",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "08:20:27",
+      "status": "done",
+      "slot": 82,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 367968,
+      "session_id": "sess_703410c7-d78c-4e00-9557-7a2a3ab7148f",
+      "tokens": {
+        "input": 1049613,
+        "output": 29684
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "ab2-boundary-missing-required",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "08:26:37",
+      "status": "done",
+      "slot": 83,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 193639,
+      "session_id": "d0913088ea642ea8595d85bd1f96d8c4.16e3ecc9e4744208ea9f1397db36a7ff",
+      "tokens": {
+        "input": 21451,
+        "output": 16678
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "ab2-boundary-missing-required-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "08:29:51",
+      "status": "done",
+      "slot": 84,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 244484,
+      "session_id": "sess_139ddec6-267d-4201-b98e-175a9c2f7414",
+      "tokens": {
+        "input": 466816,
+        "output": 14962
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "ab3-empty-and-string-lists",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "08:33:58",
+      "status": "no-verdict",
+      "slot": 85,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 70348,
+      "session_id": "e766074991d38c0a1901a12a2fec519e.5eb71ab5a643b621e952fa84b4f1b2be",
+      "tokens": {
+        "input": 18695,
+        "output": 12574
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "ab3-empty-and-string-lists",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "08:35:08",
+      "status": "done",
+      "slot": 86,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 70570,
+      "session_id": "sess_e0f9d904-dc26-4878-a443-c02f3499d1b3",
+      "tokens": {
+        "input": 462726,
+        "output": 9378
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "ab3-empty-and-string-lists",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "08:36:21",
+      "status": "no-verdict",
+      "slot": 87,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 122627,
+      "session_id": "1c688471e6fb1b9cf37e5c8ce99dc09c.7d8bbd8be6c0221bffba7c3b88afd7e3",
+      "tokens": {
+        "input": 18695,
+        "output": 22102
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "ab3-empty-and-string-lists-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "08:38:23",
+      "status": "done",
+      "slot": 88,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 20844,
+      "session_id": "d20f0e74dd7c58cbcff9c3b07471c873.17974e45a7d3b2fa8b35fea36621e014",
+      "tokens": {
+        "input": 4177,
+        "output": 3603
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "ab4-invalid-input-rejection",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "08:38:44",
+      "status": "done",
+      "slot": 89,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 204283,
+      "session_id": "sess_f62e14fe-2fb5-40ee-9d19-b64439a0d91f",
+      "tokens": {
+        "input": 691173,
+        "output": 15341
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "ab4-invalid-input-rejection",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "08:42:11",
+      "status": "done",
+      "slot": 90,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 77612,
+      "session_id": "87701c9025d3768b88385f7a3b21bc4f.67052f7b14a95b42389de7a413e6b29b",
+      "tokens": {
+        "input": 23474,
+        "output": 1493
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "ab4-invalid-input-rejection-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "08:43:28",
+      "status": "done",
+      "slot": 91,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 178700,
+      "session_id": "sess_f966a4f8-5aaa-435f-adb5-8cba1e7a409a",
+      "tokens": {
+        "input": 401255,
+        "output": 11388
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "ab5-determinism-layout-selfeval",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "08:54:01",
+      "status": "done",
+      "slot": 92,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 48590,
+      "session_id": "cab4e39182628f2c2728ab885f1eb784.a9f27bb419bb85a4f7406d568c2e95cd",
+      "tokens": {
+        "input": 30250,
+        "output": 8621
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "ab5-determinism-layout-selfeval",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "08:54:50",
+      "status": "done",
+      "slot": 93,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 53248,
+      "session_id": "sess_133e4d10-7d7e-4b07-b5d2-c0a8ae170408",
+      "tokens": {
+        "input": 381860,
+        "output": 8158
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "ab5-determinism-layout-selfeval-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "08:55:45",
+      "status": "done",
+      "slot": 94,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 72136,
+      "session_id": "c0583cd8dbfebaea3eb997951d0a6689.9027811440aea6461f71a2597e41f203",
+      "tokens": {
+        "input": 4960,
+        "output": 12940
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "t01",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "08:56:57",
+      "status": "done",
+      "slot": 95,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 325691,
+      "session_id": "sess_7a5ac399-b0f4-481d-81e4-270f275541ed",
+      "tokens": {
+        "input": 617859,
+        "output": 24734
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t01",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "09:02:25",
+      "status": "done",
+      "slot": 96,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 78616,
+      "session_id": "acacb89514373407efcf355800a50145.bf099e999c3aba08054ac0550cc14888",
+      "tokens": {
+        "input": 13204,
+        "output": 13597
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "t01-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "09:03:44",
+      "status": "done",
+      "slot": 97,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 243497,
+      "session_id": "sess_04e3656a-bc90-4c70-bfa3-d444f3c79e2c",
+      "tokens": {
+        "input": 805201,
+        "output": 13798
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t02",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "09:07:49",
+      "status": "done",
+      "slot": 98,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 150757,
+      "session_id": "62e15a5fa750a99b6610b7961b109b3f.aef95999fa696e779c91887a2f3efa54",
+      "tokens": {
+        "input": 16788,
+        "output": 5902
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "t02",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "09:10:20",
+      "status": "done",
+      "slot": 99,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 168710,
+      "session_id": "sess_7d55a79a-7d74-4ca7-b582-6697a2775580",
+      "tokens": {
+        "input": 1116066,
+        "output": 21111
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t02-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "09:13:11",
+      "status": "done",
+      "slot": 100,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 18087,
+      "session_id": "f08888abcc05503f6b8ff76f91c77e1e.4829b508911d71822c7fcff4ad512428",
+      "tokens": {
+        "input": 4734,
+        "output": 3164
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "t03",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "09:13:29",
+      "status": "done",
+      "slot": 101,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 558654,
+      "session_id": "sess_bb74f536-ee12-4b1b-950f-915a432523ed",
+      "tokens": {
+        "input": 1069148,
+        "output": 39775
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t03",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "09:22:50",
+      "status": "no-verdict",
+      "slot": 102,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 181657,
+      "session_id": "610e1923f2dab81a82c02747f8696625.30b02e7e307a4695adaf55f737bda559",
+      "tokens": {
+        "input": 22445,
+        "output": 32000
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t03",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "09:25:51",
+      "status": "done",
+      "slot": 103,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 143250,
+      "session_id": "81c16fd4f09cae920c712275fe75c11b.e52fb2fff3e40e8ec0a8745bb543767e",
+      "tokens": {
+        "input": 22445,
+        "output": 22864
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "t03-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "09:28:15",
+      "status": "done",
+      "slot": 104,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 491193,
+      "session_id": "sess_75627c28-bc07-4c14-b3d8-9d8bd7187190",
+      "tokens": {
+        "input": 1434835,
+        "output": 31525
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t04",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "09:36:28",
+      "status": "done",
+      "slot": 105,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 106029,
+      "session_id": "d235adb3795d7c64ca3ea6bdffea8bc3.3d59f22ac34b7babd8f93f4a6c646d27",
+      "tokens": {
+        "input": 12963,
+        "output": 18632
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "t04",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "09:38:14",
+      "status": "done",
+      "slot": 106,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 88813,
+      "session_id": "sess_76537a55-9524-4c07-8b9d-4121c0555622",
+      "tokens": {
+        "input": 684624,
+        "output": 6091
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t04-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "09:39:45",
+      "status": "done",
+      "slot": 107,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 35728,
+      "session_id": "ab26760d5e13ba9b019b61166f0bcbf6.1a55235c05d6db3655e1baf001e0836d",
+      "tokens": {
+        "input": 4537,
+        "output": 6368
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "t05",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "09:40:21",
+      "status": "done",
+      "slot": 108,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 315368,
+      "session_id": "sess_c042d0f2-172a-4260-b589-27e5ff2b5e5f",
+      "tokens": {
+        "input": 615093,
+        "output": 16344
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t05",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "09:45:38",
+      "status": "done",
+      "slot": 109,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 137982,
+      "session_id": "f8ba4cd702774f3d378ae9e08637a402.a060763b5d247a714f4e3875d3fb360c",
+      "tokens": {
+        "input": 13552,
+        "output": 2574
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "t05-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "09:47:56",
+      "status": "done",
+      "slot": 110,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 267928,
+      "session_id": "sess_6e536170-f504-4e06-8ceb-a2ecf6dbe7b1",
+      "tokens": {
+        "input": 567983,
+        "output": 13602
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t06",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "09:52:27",
+      "status": "done",
+      "slot": 111,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 74690,
+      "session_id": "b2b86d5dfb1ef1717adf88d5f52fea70.65d049fbba6214649668a2076ff0afb8",
+      "tokens": {
+        "input": 12678,
+        "output": 12920
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "t06",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "09:53:41",
+      "status": "done",
+      "slot": 112,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 88195,
+      "session_id": "sess_38a82d39-4058-4407-b8d9-fff94291b39d",
+      "tokens": {
+        "input": 394376,
+        "output": 8135
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t06-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "09:55:12",
+      "status": "done",
+      "slot": 113,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 14585,
+      "session_id": "5c101a13eaf7a8c292e6952e4a7a9f0d.d53b2b3103806bc3df8591365caadbbb",
+      "tokens": {
+        "input": 2795,
+        "output": 2463
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "t07",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "09:55:26",
+      "status": "done",
+      "slot": 114,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 664646,
+      "session_id": "sess_1b0a56e7-d172-48a0-8d8b-ac369bd37cb9",
+      "tokens": {
+        "input": 782088,
+        "output": 43062
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t07",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "10:06:33",
+      "status": "done",
+      "slot": 115,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 198031,
+      "session_id": "61e19ccb02f1cf863ace4aeafc9085ce.f9d3337f39c60247175e4bdad8463a91",
+      "tokens": {
+        "input": 19816,
+        "output": 18311
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "t07-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "10:09:51",
+      "status": "done",
+      "slot": 116,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 460117,
+      "session_id": "sess_0a6bdbe7-381a-469f-ba03-a9d638f8a29e",
+      "tokens": {
+        "input": 1040878,
+        "output": 26478
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t08",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "10:17:33",
+      "status": "done",
+      "slot": 117,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 126111,
+      "session_id": "ba8e0f3480c09fecabe5ac32a00c6091.dc782444fb24a3665f9600465e7dbf50",
+      "tokens": {
+        "input": 49866,
+        "output": 1513
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "t08",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "10:19:39",
+      "status": "done",
+      "slot": 118,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 102101,
+      "session_id": "sess_84271b73-fb49-4ebd-b201-fd8bb2fe77f7",
+      "tokens": {
+        "input": 895134,
+        "output": 8595
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t08-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "10:21:23",
+      "status": "done",
+      "slot": 119,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 73311,
+      "session_id": "8afe676d30085726f577ecdbe825075f.a96a3cc82d0a4e89c911f3507357d9c2",
+      "tokens": {
+        "input": 21976,
+        "output": 12391
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "t01",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "10:24:10",
+      "status": "done",
+      "slot": 120,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 446417,
+      "session_id": "sess_44429ad3-a1a3-4349-a060-1b0dd360b7cb",
+      "tokens": {
+        "input": 733970,
+        "output": 27738
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t01",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "10:31:38",
+      "status": "no-verdict",
+      "slot": 121,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 163150,
+      "session_id": "873a3c2e867303d505ed2613910d9c0d.6030281e5b1205570365731e5a08a691",
+      "tokens": {
+        "input": 14220,
+        "output": 32000
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t01",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "10:34:22",
+      "status": "done",
+      "slot": 122,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 90427,
+      "session_id": "8f531b3b37acdba76c02acbc75c803d4.5496bf9351270417bcaa35757337cbe8",
+      "tokens": {
+        "input": 14551,
+        "output": 1381
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "t01-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "10:35:52",
+      "status": "done",
+      "slot": 123,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 156007,
+      "session_id": "sess_effcfbd2-77aa-462e-b899-97c92350989c",
+      "tokens": {
+        "input": 285774,
+        "output": 8046
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t02",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "10:38:30",
+      "status": "no-verdict",
+      "slot": 124,
+      "kind": "judge",
+      "exit_code": 1,
+      "wall_ms": 178896,
+      "session_id": "96c912cf7fc49754b6fd987124dd26be.fa91148ffe7cb3fc2ae9b1ee84e9c908",
+      "tokens": {
+        "input": 17449,
+        "output": 32000
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "t02",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "10:41:29",
+      "status": "done",
+      "slot": 125,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 701888,
+      "session_id": "sess_3e741a75-8d09-4756-b3cf-2565dc5fc2ff",
+      "tokens": {
+        "input": 573319,
+        "output": 8971
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t02",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "10:53:13",
+      "status": "done",
+      "slot": 126,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 150905,
+      "session_id": "d0d70b60542772bfbeab2f8104c5b46e.593291a5ec51b2d1bb92b5b39e52436f",
+      "tokens": {
+        "input": 17365,
+        "output": 7884
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t02-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "10:55:44",
+      "status": "done",
+      "slot": 127,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 20574,
+      "session_id": "956f1d88d54cf2551f5e0442aa3a6011.f272b2a58ac5ff2931dd19699729aa9f",
+      "tokens": {
+        "input": 5733,
+        "output": 3519
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "t03",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "10:56:05",
+      "status": "done",
+      "slot": 128,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 594842,
+      "session_id": "sess_2d9d5549-7914-4188-aa85-648989902043",
+      "tokens": {
+        "input": 840695,
+        "output": 36439
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t03",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "11:06:01",
+      "status": "done",
+      "slot": 129,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 176232,
+      "session_id": "f42163e2b6a531e166739c79eec34e65.85dd4dde28f7c85347a2656604957f03",
+      "tokens": {
+        "input": 23838,
+        "output": 29560
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "t03-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "11:08:58",
+      "status": "done",
+      "slot": 130,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 495410,
+      "session_id": "sess_41f6fa51-b655-459f-9a86-b4aea41e2b18",
+      "tokens": {
+        "input": 351720,
+        "output": 17442
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t04",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "11:17:15",
+      "status": "done",
+      "slot": 131,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 151368,
+      "session_id": "1d8d7af60ce90cc5afc76043913ab348.250e048d41d6a47fd6c7ac8e0ebcba7f",
+      "tokens": {
+        "input": 14134,
+        "output": 7537
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "t04",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "11:19:46",
+      "status": "done",
+      "slot": 132,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 65771,
+      "session_id": "sess_b796d5c0-5e01-4b05-8d73-f01f45ad7566",
+      "tokens": {
+        "input": 342285,
+        "output": 6681
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t04-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "11:20:54",
+      "status": "done",
+      "slot": 133,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 36420,
+      "session_id": "0010919228c745819257cf5cad4b5ba3.88f86bbce6e7d0d1d1f354a96bbc5bdf",
+      "tokens": {
+        "input": 5254,
+        "output": 1425
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "t05",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "11:21:31",
+      "status": "done",
+      "slot": 134,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 369660,
+      "session_id": "sess_ffae5e26-ae38-4f7a-b58b-2ca9a04d1579",
+      "tokens": {
+        "input": 652206,
+        "output": 17315
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t05",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "11:27:42",
+      "status": "done",
+      "slot": 135,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 59869,
+      "session_id": "14bf44382c1cf953a27537c2ed3d75ca.d2126ca8aae40aada6d54376b38a1a36",
+      "tokens": {
+        "input": 13858,
+        "output": 9458
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "t05-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "11:28:42",
+      "status": "done",
+      "slot": 136,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 273538,
+      "session_id": "sess_5653989b-abf4-46c9-b89a-39ee2af9538e",
+      "tokens": {
+        "input": 383024,
+        "output": 11345
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t06",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "11:33:18",
+      "status": "done",
+      "slot": 137,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 65684,
+      "session_id": "276bf7512f543f1f6060f957ee9399ca.4139531591d281c5e9be71816b2ce256",
+      "tokens": {
+        "input": 13490,
+        "output": 11978
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "t06",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "11:34:24",
+      "status": "done",
+      "slot": 138,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 62109,
+      "session_id": "sess_26dba202-11f5-41b8-a0e8-e1f36506562a",
+      "tokens": {
+        "input": 381562,
+        "output": 6586
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t06-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "11:35:28",
+      "status": "done",
+      "slot": 139,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 17544,
+      "session_id": "16eb11301de94e29bdab1eaa68963fde.a98d8fdce87340c9dd8be61207386718",
+      "tokens": {
+        "input": 3607,
+        "output": 3082
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "t07",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "11:35:46",
+      "status": "done",
+      "slot": 140,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 742097,
+      "session_id": "sess_d64bfb0a-fc1b-4755-9765-895991d7731d",
+      "tokens": {
+        "input": 1085299,
+        "output": 46488
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t07",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "11:48:10",
+      "status": "done",
+      "slot": 141,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 99968,
+      "session_id": "484c015005535772a79d486f49f10dfb.817028ef27aaeb82aee512745ae40330",
+      "tokens": {
+        "input": 21904,
+        "output": 18298
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "GLM-5.3",
+      "channel": "glm",
+      "task": "t07-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "11:49:50",
+      "status": "done",
+      "slot": 142,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 260038,
+      "session_id": "sess_3d734d46-cb2d-4c6f-9bcc-33435da6a13b",
+      "tokens": {
+        "input": 255126,
+        "output": 15013
+      },
+      "model_observed": "GLM-5.3"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t08",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "11:54:12",
+      "status": "done",
+      "slot": 143,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 73016,
+      "session_id": "0c527f18db5a2258e2b6c8234af61269.419d4e7f2bce837b14e2d32d31705456",
+      "tokens": {
+        "input": 51617,
+        "output": 11502
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "Minimax-M3.1-Flash-Preview",
+      "channel": "minimax",
+      "task": "t08",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "11:55:25",
+      "status": "done",
+      "slot": 144,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 146826,
+      "session_id": "sess_43976ccc-8e02-402a-9041-ecd41870d1d8",
+      "tokens": {
+        "input": 878806,
+        "output": 9964
+      },
+      "model_observed": "Minimax-M3.1-Flash-Preview"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "t08-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "11:57:54",
+      "status": "done",
+      "slot": 145,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 72217,
+      "session_id": "15cfe120508336c91554aa77fbc9013a.e1c6e50f523d3585aa77bad81477a995",
+      "tokens": {
+        "input": 23590,
+        "output": 11701
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "ab1-standard-four-templates-repair-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "12:05:17",
+      "status": "failed",
+      "slot": 146,
+      "kind": "judge",
+      "exit_code": 1,
+      "error": "KeyError:'ab1-standard-four-templates-repair-resample'"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "ab1-standard-four-templates-repair-resample",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "12:05:43",
+      "status": "done",
+      "slot": 147,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 68533,
+      "session_id": "afa747a92333ed039114e853700d7a52.a0c863442d83dfb009f6c195ae239af9",
+      "tokens": {
+        "input": 8748,
+        "output": 11474
+      },
+      "model_observed": "step-router-v1"
+    },
+    {
+      "judge": "step-router-v1",
+      "channel": "step",
+      "task": "ab3-empty-and-string-lists-repair-main",
+      "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+      "ts_intent": "12:06:52",
+      "status": "done",
+      "slot": 148,
+      "kind": "judge",
+      "exit_code": 0,
+      "wall_ms": 165572,
+      "session_id": "d4934c3dd3cc7f714d87a1edd7429364.35cfc94e7640ba9b5ba33a57a4845dac",
+      "tokens": {
+        "input": 18317,
+        "output": 19859
+      },
+      "model_observed": "step-router-v1"
+    }
+  ],
   "discipline": [
     "记账刚性：spawn 前 pending 占位即计数（防并发超预算），事后回填 status/exit/session/tokens；只增不改历史行",
     "超出 78 臂/裁判下限+余量的调用须先经 planner 批准，超额进程不计入结果",

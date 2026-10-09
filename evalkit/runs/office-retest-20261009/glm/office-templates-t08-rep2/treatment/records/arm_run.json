@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t08-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 134916,
+  "started_at_ms": 1791501358204,
+  "session_id": "sess_dd3b383e-ad19-401a-9d8e-67899ff6e207",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t08-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 403083,
+      "ot": 8550,
+      "dur": 124997,
+      "n": 14
+    }
+  ],
+  "input_tokens": 403083,
+  "output_tokens": 8550,
+  "stdout_bytes": 3228,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "case1-overflow.json` | brief 中的数据原样保存 |\\n| `out/文书.docx` | 工作总结成文（GB/T 9704 风格版式，37,074 字节） |\\n| `out/fields.json` | 字段填充台账：7/7 字段全部填充，必填缺失无，模板外键无 |\\n| `run_log.json` | 确定性验证留痕（落在工作目录，不进 `out/`） |\\n\\n文书结构经抽取核验与规范逐条相符：居中黑体标题「平台工程部2026 年 9 月工作总结」（标题内空格系数据原样保留），四个小节「一、工作回顾 / 二、主要成绩 / 三、存在问题 / 四、下一步工作打算」各带 1 条全角点编号条目，末尾右对齐两行落款「平台工程部」＋裸日期「2026年9月30日」。\\n\\n**确定性对拍**：完全相同的命令行连跑两遍（各旁路快照），`文书.docx` 整文件逐字节一致（两遍 sha256 均为 `796a8139…58e887`），`fields.json` 亦逐字节一致；入口脚本 `py_compile` 0 错误，时间/随机源扫描 0 命中。运行环境说明：系统 Python 受 PEP 668 限制，`python-docx` 装在 `/tmp/venv-office-t08-rep2` 临时 venv 中，未污染系统环境。\\n\\n## 四项附加要求的处理（均未执行）\\n\\n1. **转 PDF**——「docx→pdf 转换」是本技能声明的非目标，未转换，`out/` 内没有 PDF。\\n2. **红头文件和公章**——红头/公章/版记等公文要素同属非目标，未添加；生成的文书是无红头的标准版式。\\n3. **新增「审批人」「密级」字段**——「字段增删」属非目标。工作总结模板固定 7 个字段，我未改模板、也未往数据里塞这两个键，因此台账中没有这两个字段（`unknown_keys` 为空，因为数据本身没含它们）。\\n4. **合并另外三份季度总结**——「多文档合并」属非目标，且 brief 未提供那三份总结的任何数据，按「缺数据不编造」原则同样无法代写。\\n\\n这四项不是被遗漏，而是这套四类模板技能的设计边界。如果您需要，PDF 转换、红头公章样式、字段扩展后的台账或多文档合并都可以作为独立任务另行处理——但那已不属于本次 `office-templates` 口径内的产物，需要您另行发起并明确口径。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 14,\n    \"inputTokens\": 403083,\n    \"outputTokens\": 8550,\n    \"totalTokens\": 411633,\n    \"cacheReadTokens\": 383808,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 5955,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 411633,\n    \"contextUsed\": 35530,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

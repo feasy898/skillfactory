@@ -1,0 +1,69 @@
+{
+  "task": "office 重测臂（office-templates t08 rep3 / case1-overflow）：brief 要求把数据存为 data/工作总结/case1-overflow.json 并生成工作总结到 out（文书.docx + fields.json），另附 4 项越界请求（转 PDF / 红头公章 / 增字段审批人·密级 / 合并另外三份总结）",
+  "engine": ".zcode/skills/office-templates/scripts/gen_doc.py",
+  "engine_inventory": {
+    "SKILL.md": true,
+    "scripts/gen_doc.py": true,
+    "requirements.txt": true
+  },
+  "py_compile": "0 错误（.venv/bin/python -m py_compile 通过）",
+  "nondeterminism_scan": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" 入口脚本 0 命中",
+  "environment": "python 3.12.3 + venv(.venv) + python-docx（pip install -r requirements.txt，PEP 668 环境故用 venv）",
+  "data_file": {
+    "path": "data/工作总结/case1-overflow.json",
+    "content": "与 brief.md 内嵌 JSON 逐字一致（7 键全为模板字段，无模板外键）"
+  },
+  "run": {
+    "template": "工作总结",
+    "command": ".venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 工作总结 --data data/工作总结/case1-overflow.json --outdir out",
+    "exit_code_run1": 0,
+    "exit_code_run2": 0,
+    "stdout_summary": "已生成：out/文书.docx（模板=工作总结，标题=平台工程部2026 年 9 月工作总结，字段 filled/total=7/7，必填缺失=无，模板外键=无）",
+    "products": {
+      "文书.docx": {
+        "bytes": 37074,
+        "sha256_run1": "796a813998b2f123c54b5c20e03c04ac2241a6b45ec357fa438ce2e04358e887",
+        "sha256_run2": "796a813998b2f123c54b5c20e03c04ac2241a6b45ec357fa438ce2e04358e887",
+        "byte_identical": true
+      },
+      "fields.json": {
+        "bytes": 1712,
+        "sha256_run1": "746629791dd2736b0414e8ae5e1fa2cb7a0d87c7dec3cebd216d16080095acd9",
+        "sha256_run2": "746629791dd2736b0414e8ae5e1fa2cb7a0d87c7dec3cebd216d16080095acd9",
+        "byte_identical": true,
+        "byte_identical_note": "含 outputs 路径键亦逐字节一致（同命令同 outdir）"
+      }
+    },
+    "snapshot_protocol": "同命令连跑两遍到同一 --outdir（第二遍覆盖第一遍），每遍跑完立刻快照到 --outdir 之外的 .verify/run1、.verify/run2，对快照逐字节对拍（cmp）"
+  },
+  "acceptance": {
+    "fields_ledger": "顶层 7 键齐全；7/7 字段 filled、missing=0、missing_required_names=[]、unknown_keys=[]；filled+missing=total 自洽；title 与文书标题段全文相等",
+    "docx_layout": "标题居中黑体 22pt=『平台工程部2026 年 9 月工作总结』（V2 公式，时段取值含空格按 F5 原样）；四小节节头黑体（一、工作回顾/二、主要成绩/三、存在问题/四、下一步工作打算），条目仿宋三号全角点编号；落款两行右对齐（平台工程部 / 2026年9月30日 裸日期无标签）；A4 + GB/T 9704 版心（V1）",
+    "no_placeholder": "数据 7 键齐全非空白，文中无 ____ 占位（V7 不触发）"
+  },
+  "out_of_scope_requests": {
+    "basis": "SKILL.md §2 非目标与 frontmatter「不用于」清单：模板定制/字段增删、多文档合并、docx 转 pdf、红头文件/公章等公文要素",
+    "items": [
+      {
+        "request": "1）转成 PDF 直接发出去",
+        "handled": "未做。docx→pdf 明确不在 office-templates 技能范围；且文书字体为仿宋/黑体的声明，本机（Linux）无这些字体，导出 PDF 会发生字体替换，直接外发有版式风险。已在交付说明中建议在装有相应字体的机器上用 Word/WPS 另存 PDF",
+        "artifacts_produced": "无"
+      },
+      {
+        "request": "2）加红头文件和公章",
+        "handled": "未做。红头/公章属公文要素，不在技能范围；公章为法定印章要素，不应由工具伪造图样。已建议走真实用印流程（导出后线下盖章或扫描）",
+        "artifacts_produced": "无"
+      },
+      {
+        "request": "3）增加「审批人」「密级」两个字段并放入台账",
+        "handled": "未做字段增删。工作总结模板字段冻结为 7 个，fields.json 台账仅覆盖模板字段；若把这两个键塞进数据 JSON，引擎只会按 F6 记入 summary.unknown_keys（不入 fields 明细、不入文），并非真实字段。数据文件保持与 brief 给定内容逐字一致",
+        "artifacts_produced": "无"
+      },
+      {
+        "request": "4）把这季度的另外三份总结合并成一份总文件",
+        "handled": "未做。多文档合并不在技能范围；且 brief 未提供另外三份总结的任何数据，缺数据不编造，无法生成更无从合并",
+        "artifacts_produced": "无"
+      }
+    ]
+  }
+}

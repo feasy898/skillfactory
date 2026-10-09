@@ -1,0 +1,110 @@
+{
+  "tested_family": "minimax",
+  "panel": [
+    "GLM-5.3",
+    "step-router-v1"
+  ],
+  "panel_rotation": "task_idx=2 parity=0",
+  "verdicts": {
+    "GLM-5.3": {
+      "scores": {
+        "P1": {
+          "total": 10.0,
+          "evidence": "R1:「____：」顶格、____×2、标题「关于召开____的通知」、run_log两遍exit0；R2:四组名单全符；R3:行内留空「联系人：李工　　联系电话：」、要求省略；R4:落款RIGHT右缩进32pt、称谓顶格；R5:ledger_check pass、sha256相符、复核19/19"
+        },
+        "P2": {
+          "total": 8.0,
+          "evidence": "R1:请示函____×2顶格、fields自记exit0，但会议通知标题「关于____的通知」缺「召开」；R2:四组名单全符；R3:选填omit不误记，但无「联系电话：」空标签；R4:落款RIGHT称谓顶格，右空两字无据、联系人行在落款后；R5:无run_log，fields↔docx复核一致"
+        },
+        "P3": {
+          "total": 6.5,
+          "evidence": "R1:请示函____×2顶格，但会议通知标题「关于____的通知」缺「召开」、exit0无留痕（无run_log无exit_code）；R2:全符；R3:选填整行省略不误记；R4:称谓顶格落款RIGHT，但通知落款日期排在单位上、右空两字无据；R5:无run_log无自检，台账与docx一致"
+        },
+        "P4": {
+          "total": 10.0,
+          "evidence": "R1:「____：」顶格、____×2、标题「关于召开____的通知」、run_log四命令exit0；R2:四组名单全符；R3:行内留空「联系人：李工　　联系电话：」、要求省略；R4:落款RIGHT右缩进32pt、称谓顶格；R5:verify 50断言EXIT0、sha256相符、复核19/19"
+        },
+        "P5": {
+          "total": 10.0,
+          "evidence": "R1:「____：」顶格、____×2、标题「关于召开____的通知」、两单元两遍exit0；R2:四组名单全符；R3:行内留空、要求省略；R4:落款RIGHT ind right=640、称谓顶格；R5:behavior_checks全通过、sha256相符、复核19/19"
+        },
+        "P6": {
+          "total": 6.5,
+          "evidence": "R1:请示函____×2、fields自记exit0，但会议通知标题仅「____」，完全不符「关于召开____的通知」；R2:四组名单全符；R3:选填空串不误记、联系人入落款无空标签；R4:请示函整篇无标题段、落款RIGHT含「联系人：李工」、右空两字无据；R5:无run_log、复核19/19"
+        }
+      }
+    },
+    "step-router-v1": {
+      "scores": {
+        "P1": {
+          "total": 10.0,
+          "evidence": "会通标题'关于召开____的通知'、'会议地点：____';请函'____：'、'____';missing_required/optional/unknown_keys均符合;选填rendered_as留空/省略;落款RIGHT right_indent=406400;run_log ledger/layout/determinism pass."
+        },
+        "P2": {
+          "total": 7.0,
+          "evidence": "会通标题'关于____的通知'缺'召开';请函'____：'、'____';missing_required符合;会通P008/P009 RIGHT;请函P005 RIGHT但P006'联系人：李工'LEFT;无run_log,会通标题与fields.json不符,fields_match_docx部分通过."
+        },
+        "P3": {
+          "total": 7.0,
+          "evidence": "会通标题'关于____的通知'缺'召开';请函'____：'、'____';missing_required符合;会通P004/P005 RIGHT;请函P005 RIGHT但P004'联系人：李工'LEFT;无run_log,会通标题与fields.json不符,fields_match_docx部分通过."
+        },
+        "P4": {
+          "total": 10.0,
+          "evidence": "会通标题'关于召开____的通知'、'会议地点：____';请函'____：'、'____';missing_required/optional/unknown_keys均符合;选填rendered_as留空/省略;落款RIGHT right_indent=406400;run_log verification 50 failed 0 pass."
+        },
+        "P5": {
+          "total": 10.0,
+          "evidence": "会通标题'关于召开____的通知'、'会议地点：____';请函'____：'、'____';missing_required/optional/unknown_keys均符合;选填rendered_as留空/省略;落款RIGHT right_indent=406400;run_log determinism/layout/behavior pass."
+        },
+        "P6": {
+          "total": 5.5,
+          "evidence": "会通标题'____'缺'关于召开'和'的通知';请函缺标题段,P000为'____：';missing_required符合;会通P003/P004 RIGHT但标题LEFT;请函P004/P005 RIGHT但缺标题;无run_log,会通标题与fields.json不符."
+        }
+      }
+    }
+  },
+  "per_judge_scores": {
+    "P1": {
+      "GLM-5.3": 10.0,
+      "step-router-v1": 10.0
+    },
+    "P2": {
+      "GLM-5.3": 8.0,
+      "step-router-v1": 7.0
+    },
+    "P3": {
+      "GLM-5.3": 6.5,
+      "step-router-v1": 7.0
+    },
+    "P4": {
+      "GLM-5.3": 10.0,
+      "step-router-v1": 10.0
+    },
+    "P5": {
+      "GLM-5.3": 10.0,
+      "step-router-v1": 10.0
+    },
+    "P6": {
+      "GLM-5.3": 6.5,
+      "step-router-v1": 5.5
+    }
+  },
+  "final_scores": {
+    "P1": 10.0,
+    "P2": 7.5,
+    "P3": 6.75,
+    "P4": 10.0,
+    "P5": 10.0,
+    "P6": 6.0
+  },
+  "judge_consistency": {
+    "task": "ab2-boundary-missing-required",
+    "resample_of": "P2",
+    "first_score": 8.0,
+    "second_score": 8.0,
+    "delta": 0.0,
+    "action": "pass"
+  },
+  "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+  "protocol": "ab-item"
+}

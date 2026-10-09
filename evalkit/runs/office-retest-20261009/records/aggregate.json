@@ -1,0 +1,611 @@
+{
+  "run": "office-retest-20261009",
+  "spec": "EVAL-SPEC v0.2.1",
+  "tie_aware": "§3.3-2：n=3 h≥2 胜 / l≥2 负 / 其余平（v0.2.1 勘误口径）",
+  "tasks": [
+    {
+      "task": "ab1-standard-four-templates",
+      "tested_family": "glm",
+      "status": "judged",
+      "t_mean": 6.083333333333333,
+      "b_mean": 3.8833333333333333,
+      "delta": 2.1999999999999997,
+      "pairs": [
+        {
+          "rep": 1,
+          "t": 6.0,
+          "b": 3.65,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 2,
+          "t": 6.25,
+          "b": 4.0,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 3,
+          "t": 6.0,
+          "b": 4.0,
+          "task_verdict": "win"
+        }
+      ],
+      "h": 3,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false,
+      "judge_consistency": {
+        "task": "ab1-standard-four-templates",
+        "resample_of": "P1",
+        "first_score": 5.0,
+        "second_score": 5.0,
+        "delta": 0.0,
+        "action": "pass",
+        "repair": true
+      }
+    },
+    {
+      "task": "ab2-boundary-missing-required",
+      "tested_family": "minimax",
+      "status": "judged",
+      "t_mean": 10.0,
+      "b_mean": 6.75,
+      "delta": 3.25,
+      "pairs": [
+        {
+          "rep": 1,
+          "t": 10.0,
+          "b": 6.75,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 2,
+          "t": 10.0,
+          "b": 6.0,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 3,
+          "t": 10.0,
+          "b": 7.5,
+          "task_verdict": "win"
+        }
+      ],
+      "h": 3,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false,
+      "judge_consistency": {
+        "task": "ab2-boundary-missing-required",
+        "resample_of": "P2",
+        "first_score": 8.0,
+        "second_score": 8.0,
+        "delta": 0.0,
+        "action": "pass"
+      }
+    },
+    {
+      "task": "ab3-empty-and-string-lists",
+      "tested_family": "glm",
+      "status": "judged",
+      "t_mean": 9.75,
+      "b_mean": 8.75,
+      "delta": 1.0,
+      "pairs": [
+        {
+          "rep": 1,
+          "t": 9.75,
+          "b": 8.75,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 2,
+          "t": 9.75,
+          "b": 8.75,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 3,
+          "t": 9.75,
+          "b": 8.75,
+          "task_verdict": "win"
+        }
+      ],
+      "h": 3,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false,
+      "judge_consistency": {
+        "task": "ab3-empty-and-string-lists",
+        "resample_of": "P3",
+        "first_score": 10.0,
+        "second_score": 9.5,
+        "delta": 0.5,
+        "action": "pass",
+        "repair": true
+      }
+    },
+    {
+      "task": "ab4-invalid-input-rejection",
+      "tested_family": "minimax",
+      "status": "judged",
+      "t_mean": 7.75,
+      "b_mean": 7.333333333333333,
+      "delta": 0.41666666666666696,
+      "pairs": [
+        {
+          "rep": 1,
+          "t": 7.75,
+          "b": 6.0,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 2,
+          "t": 7.5,
+          "b": 8.0,
+          "task_verdict": "loss"
+        },
+        {
+          "rep": 3,
+          "t": 8.0,
+          "b": 8.0,
+          "task_verdict": "tie"
+        }
+      ],
+      "h": 1,
+      "l": 1,
+      "task_verdict": "tie",
+      "reverse_flag": false,
+      "judge_consistency": {
+        "task": "ab4-invalid-input-rejection",
+        "resample_of": "P4",
+        "first_score": 8.0,
+        "second_score": 8.5,
+        "delta": 0.5,
+        "action": "pass"
+      }
+    },
+    {
+      "task": "ab5-determinism-layout-selfeval",
+      "tested_family": "glm",
+      "status": "judged",
+      "t_mean": 8.75,
+      "b_mean": 6.166666666666667,
+      "delta": 2.583333333333333,
+      "pairs": [
+        {
+          "rep": 1,
+          "t": 9.0,
+          "b": 6.0,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 2,
+          "t": 8.25,
+          "b": 6.0,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 3,
+          "t": 9.0,
+          "b": 6.5,
+          "task_verdict": "win"
+        }
+      ],
+      "h": 3,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false,
+      "judge_consistency": {
+        "task": "ab5-determinism-layout-selfeval",
+        "resample_of": "P5",
+        "first_score": 6.0,
+        "second_score": 6.5,
+        "delta": 0.5,
+        "action": "pass"
+      }
+    },
+    {
+      "task": "t01",
+      "tested_family": "minimax",
+      "status": "judged",
+      "t_mean": 10.0,
+      "b_mean": 3.0,
+      "delta": 7.0,
+      "pairs": [
+        {
+          "rep": 1,
+          "t": 10.0,
+          "b": 3.0,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 2,
+          "t": 10.0,
+          "b": 3.0,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 3,
+          "t": 10.0,
+          "b": 3.0,
+          "task_verdict": "win"
+        }
+      ],
+      "h": 3,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false,
+      "judge_consistency": {
+        "task": "t01",
+        "resample_of": "P6",
+        "first_score": 10.0,
+        "second_score": 10.0,
+        "delta": 0.0,
+        "action": "pass"
+      }
+    },
+    {
+      "task": "t02",
+      "tested_family": "glm",
+      "status": "judged",
+      "t_mean": 10.0,
+      "b_mean": 4.1,
+      "delta": 5.9,
+      "pairs": [
+        {
+          "rep": 1,
+          "t": 10.0,
+          "b": 4.1,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 2,
+          "t": 10.0,
+          "b": 4.1,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 3,
+          "t": 10.0,
+          "b": 4.1,
+          "task_verdict": "win"
+        }
+      ],
+      "h": 3,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false,
+      "judge_consistency": {
+        "task": "t02",
+        "resample_of": "P1",
+        "first_score": 10.0,
+        "second_score": 10.0,
+        "delta": 0.0,
+        "action": "pass"
+      }
+    },
+    {
+      "task": "t03",
+      "tested_family": "minimax",
+      "status": "judged",
+      "t_mean": 10.0,
+      "b_mean": 3.016666666666667,
+      "delta": 6.9833333333333325,
+      "pairs": [
+        {
+          "rep": 1,
+          "t": 10.0,
+          "b": 4.55,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 2,
+          "t": 10.0,
+          "b": 2.25,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 3,
+          "t": 10.0,
+          "b": 2.25,
+          "task_verdict": "win"
+        }
+      ],
+      "h": 3,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false,
+      "judge_consistency": {
+        "task": "t03",
+        "resample_of": "P2",
+        "first_score": 4.5,
+        "second_score": 4.5,
+        "delta": 0.0,
+        "action": "pass"
+      }
+    },
+    {
+      "task": "t04",
+      "tested_family": "glm",
+      "status": "judged",
+      "t_mean": 10.0,
+      "b_mean": 3.3333333333333335,
+      "delta": 6.666666666666666,
+      "pairs": [
+        {
+          "rep": 1,
+          "t": 10.0,
+          "b": 0.0,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 2,
+          "t": 10.0,
+          "b": 10.0,
+          "task_verdict": "tie"
+        },
+        {
+          "rep": 3,
+          "t": 10.0,
+          "b": 0.0,
+          "task_verdict": "win"
+        }
+      ],
+      "h": 2,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false,
+      "judge_consistency": {
+        "task": "t04",
+        "resample_of": "P3",
+        "first_score": 10.0,
+        "second_score": null,
+        "delta": null,
+        "action": "pass"
+      }
+    },
+    {
+      "task": "t05",
+      "tested_family": "minimax",
+      "status": "judged",
+      "t_mean": 10.0,
+      "b_mean": 3.25,
+      "delta": 6.75,
+      "pairs": [
+        {
+          "rep": 1,
+          "t": 10.0,
+          "b": 1.75,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 2,
+          "t": 10.0,
+          "b": 4.0,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 3,
+          "t": 10.0,
+          "b": 4.0,
+          "task_verdict": "win"
+        }
+      ],
+      "h": 3,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false,
+      "judge_consistency": {
+        "task": "t05",
+        "resample_of": "P4",
+        "first_score": 4.0,
+        "second_score": 5.0,
+        "delta": 1.0,
+        "action": "pass"
+      }
+    },
+    {
+      "task": "t06",
+      "tested_family": "glm",
+      "status": "judged",
+      "t_mean": 10.0,
+      "b_mean": 2.75,
+      "delta": 7.25,
+      "pairs": [
+        {
+          "rep": 1,
+          "t": 10.0,
+          "b": 3.0,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 2,
+          "t": 10.0,
+          "b": 3.0,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 3,
+          "t": 10.0,
+          "b": 2.25,
+          "task_verdict": "win"
+        }
+      ],
+      "h": 3,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false,
+      "judge_consistency": {
+        "task": "t06",
+        "resample_of": "P5",
+        "first_score": 3.0,
+        "second_score": 3.0,
+        "delta": 0.0,
+        "action": "pass"
+      }
+    },
+    {
+      "task": "t07",
+      "tested_family": "minimax",
+      "status": "judged",
+      "t_mean": 8.333333333333334,
+      "b_mean": 6.333333333333333,
+      "delta": 2.000000000000001,
+      "pairs": [
+        {
+          "rep": 1,
+          "t": 10.0,
+          "b": 10.0,
+          "task_verdict": "tie"
+        },
+        {
+          "rep": 2,
+          "t": 7.5,
+          "b": 4.5,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 3,
+          "t": 7.5,
+          "b": 4.5,
+          "task_verdict": "win"
+        }
+      ],
+      "h": 2,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false,
+      "judge_consistency": {
+        "task": "t07",
+        "resample_of": "P6",
+        "first_score": 4.0,
+        "second_score": 2.5,
+        "delta": 1.5,
+        "action": "pass"
+      }
+    },
+    {
+      "task": "t08",
+      "tested_family": "glm",
+      "status": "unjudgeable",
+      "t_mean": 10.0,
+      "b_mean": 2.1,
+      "delta": 7.9,
+      "pairs": [
+        {
+          "rep": 1,
+          "t": 10.0,
+          "b": 6.3,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 2,
+          "t": 10.0,
+          "b": 0.0,
+          "task_verdict": "win"
+        },
+        {
+          "rep": 3,
+          "t": 10.0,
+          "b": 0.0,
+          "task_verdict": "win"
+        }
+      ],
+      "h": 3,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false,
+      "judge_consistency": {
+        "task": "t08",
+        "resample_of": "P1",
+        "first_score": 4.0,
+        "second_score": 0.0,
+        "delta": 4.0,
+        "action": "unjudgeable"
+      }
+    }
+  ],
+  "wins": 12,
+  "losses": 0,
+  "ties": 1,
+  "win_rate": 0.9231,
+  "delta_mean": 4.61,
+  "fam_tasks": {
+    "glm": {
+      "n_tasks": 7,
+      "wins": 7,
+      "losses": 0,
+      "ties": 0,
+      "delta_mean": 4.79,
+      "win_rate": 1.0,
+      "reverse": 0,
+      "task_verdicts": {
+        "ab1-standard-four-templates": "win",
+        "ab3-empty-and-string-lists": "win",
+        "ab5-determinism-layout-selfeval": "win",
+        "t02": "win",
+        "t04": "win",
+        "t06": "win",
+        "t08": "win"
+      }
+    },
+    "minimax": {
+      "n_tasks": 6,
+      "wins": 5,
+      "losses": 0,
+      "ties": 1,
+      "delta_mean": 4.4,
+      "win_rate": 0.8333,
+      "reverse": 0,
+      "task_verdicts": {
+        "ab2-boundary-missing-required": "win",
+        "ab4-invalid-input-rejection": "tie",
+        "t01": "win",
+        "t03": "win",
+        "t05": "win",
+        "t07": "win"
+      }
+    }
+  },
+  "composite_gate": {
+    "1_delta_ge_1": {
+      "value": 4.61,
+      "pass": true
+    },
+    "2_winrate_ge_60": {
+      "value": 0.9231,
+      "wins": 12,
+      "denominator": 13,
+      "need_wins_13tasks": 8,
+      "pass": true
+    },
+    "3_reverse_le_1": {
+      "value": 0,
+      "pass": true
+    },
+    "unjudgeable_tasks": [
+      "t08"
+    ],
+    "note": "EVAL-SPEC v0.2.1 §3.6 三条件同时满足才 accepted；三条以最严格者裁决；平局不进反向计数；反向任务=任务级 treatment 均分<baseline 或 treatment 任务均分=0"
+  },
+  "efficiency": {
+    "token_ratio": 0.473,
+    "duration_ratio": 0.375,
+    "tokens_traceability": "records/arms/* db model_usage join 实测回填（input+output）",
+    "n_non_infra_runs": 78,
+    "gate_le_2": true
+  },
+  "_swap_check": {
+    "swap_delta": -4.607692,
+    "swap_win_rate": 0.0,
+    "tie_rate": 0.0769,
+    "swap_reverse_tasks": 13,
+    "identity_abs_swap_delta_plus_delta": 0.0,
+    "note": "从原始 per-pair 分数独立重算（EVAL-SPEC v0.2.1 §3.3-2/3 tie-aware）；恒等式 swap_delta + delta ≈ 0；swap_reverse_tasks=swap 侧资产方向真实反向数"
+  },
+  "verdict": "rejected",
+  "evidence_level": "provisional",
+  "single_round_signal": true,
+  "cross_generation_note": "§3.7-4：本轮 judge_prompt_version=S8-JUDGE-v2-OFXRETEST-1、任务集 13（5ab+8new）、n=3，与 K5B round1（S8-JUDGE-v1、5 题、n=2）构成跨代——禁止与 K5B Δ 直接对位或合并披露；同代可比须两轮同 judge_model_id 与 judge_prompt_version"
+}

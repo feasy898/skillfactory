@@ -1,0 +1,9 @@
+EXTRACT OF 周报__case1__文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=None runs=[周报/None/None] text=周报
+P001 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[部门：/None/None | 研发部/None/None] text=部门：研发部
+P002 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[填报人：/None/None | 王小明/None/None] text=填报人：王小明
+P003 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[周期：/None/None | 2026-09-21 至 2/None/None] text=周期：2026-09-21 至 2026-09-27
+P004 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[本周工作内容：/None/None | 完成打分器 v0.9 与评测/None/None] text=本周工作内容：完成打分器 v0.9 与评测台联调；修复评测集 3 处标注不一致问题
+P005 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[下周工作计划：/None/None | 启动回归测试全量跑批；输出周/None/None] text=下周工作计划：启动回归测试全量跑批；输出周度质量报告初稿
+P006 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[问题与需协调事项：/None/None | 测试机资源紧张，需协调一台 /None/None] text=问题与需协调事项：测试机资源紧张，需协调一台 GPU 机器
+P007 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[报送日期：/None/None | 2026-09-28/None/None] text=报送日期：2026-09-28

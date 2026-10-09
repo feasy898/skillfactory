@@ -1,0 +1,79 @@
+{
+  "task": "拾贝书店 2026年10月第2周周报成文",
+  "template": "周报",
+  "engine": ".zcode/skills/office-templates/scripts/gen_doc.py",
+  "interpreter": "/tmp/otvenv/bin/python (Python 3.12.3, python-docx 1.2.0)",
+  "note": "系统 Python 受 PEP 668 externally-managed 保护，故在 /tmp/otvenv 建 venv 装 python-docx==1.2.0（requirements.txt: python-docx>=1.1），仅本任务本地使用，不改系统环境。",
+  "runs": [
+    {
+      "round": 1,
+      "command": "/tmp/otvenv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data shibei_week42.json --outdir out",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=周报，标题=拾贝书店工作周报，字段 filled/total=7/7，必填缺失=无，模板外键=['温馨提示']）",
+      "snapshot": ".snap/run1",
+      "artifacts": {
+        "文书.docx": {
+          "sha256": "384e9b2408e70a64f3cfd66c8d5600b730f1fafb49813f9f5e2101881929e92b",
+          "bytes": 37144
+        },
+        "fields.json": {
+          "sha256": "1e3a734baf0776b6069aade949a3a8430c9a3fcc1154dfbb5fb51467ec681117",
+          "bytes": 1766
+        }
+      }
+    },
+    {
+      "round": 2,
+      "command": "/tmp/otvenv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data shibei_week42.json --outdir out",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=周报，标题=拾贝书店工作周报，字段 filled/total=7/7，必填缺失=无，模板外键=['温馨提示']）",
+      "snapshot": ".snap/run2",
+      "artifacts": {
+        "文书.docx": {
+          "sha256": "384e9b2408e70a64f3cfd66c8d5600b730f1fafb49813f9f5e2101881929e92b",
+          "bytes": 37144
+        },
+        "fields.json": {
+          "sha256": "1e3a734baf0776b6069aade949a3a8430c9a3fcc1154dfbb5fb51467ec681117",
+          "bytes": 1766
+        }
+      }
+    }
+  ],
+  "byte_compare": {
+    "method": "cmp 逐字节对拍两遍旁路快照",
+    "文书.docx": "一致（cmp 无差异输出；两遍 sha256 相等且字节数同为 37144）",
+    "fields.json": "一致（cmp 无差异输出；两遍 sha256 相等且字节数同为 1766）",
+    "verdict": "PASS — 同输入同命令行两遍产物整文件逐字节一致，引擎确无墙钟/随机源"
+  },
+  "skill_inventory": {
+    "SKILL.md": "OK",
+    "scripts/gen_doc.py": "OK",
+    "requirements.txt": "OK",
+    "references/周报.md": "OK"
+  },
+  "entry_script_checks": {
+    "py_compile": "EXIT=0（0 错误）",
+    "non_reproducible_source_scan": {
+      "cmd": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" .zcode/skills/office-templates/scripts/gen_doc.py",
+      "exit_code": 1,
+      "hits": 0,
+      "verdict": "PASS — 零命中"
+    }
+  },
+  "docx_content_audit": {
+    "paragraphs_nonempty": 10,
+    "title": "拾贝书店工作周报（居中、22pt 二号）",
+    "placeholder______count": 0,
+    "page_cm": "21.0 × 29.7（A4）",
+    "margins_cm": "上 3.70 / 下 3.50 / 左 2.80 / 右 2.60",
+    "verdict": "PASS — 版式与 references/周报.md §1 段落顺序逐段相符"
+  },
+  "field_edge_cases": {
+    "F5 部门 strip": "入参 ' 拾贝书店 ' → 台账与标题均为 '拾贝书店'",
+    "F3 本周工作内容": "'   ' 全空白项被去空丢弃，剩 2 项",
+    "F3 问题与需协调事项": "'' 空项被去空丢弃，剩 1 项",
+    "F3 下周工作计划": "入参为字符串 → 宽容取为单项列表",
+    "F6 温馨提示": "模板外键，记入 summary.unknown_keys，不影响文书与台账"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab5-determinism-layout-selfeval-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 778284,
+  "started_at_ms": 1791493274177,
+  "session_id": "sess_c5cbbb20-8b1c-4738-a0cd-98c7528ce409",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab5-determinism-layout-selfeval-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 2230779,
+      "ot": 40669,
+      "dur": 699994,
+      "n": 40
+    }
+  ],
+  "input_tokens": 2230779,
+  "output_tokens": 40669,
+  "stdout_bytes": 3476,
+  "stderr_bytes": 588,
+  "stderr_head": "AI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\n",
+  "stdout_tail": " 24 个 run）的段落文本/对齐/缩进/字体/行距版面签名逐项一致；输出目录恰含两产物；fields.json 经机械扫描不含任何 outputs 类路径键，全文件逐字节对比口径成立（路径键豁免条款不适用）。\\n\\n**关键工程点**：python-docx 落盘时 zip 条目头携带「保存时刻」。run_log.json 里的对照实验坐实了这一不可复现源——裸保存两遍（跨 2 秒边界）zip 时间戳分别为 `2026-10-09 05:09:24` 与 `05:09:26`，字节不同；这也说明「同秒连跑两次」会假通过，两遍协议不能靠运气。生成器 `gen_doc.py` 保存后对 zip 容器归一化（条目时间戳固定 1980-01-01、权限 0644、ZIP_DEFLATED、顺序沿用源包），对照实验证明归一化后同样两份裸产物变为逐字节一致，在位产物的时间戳全为 `1980-01-01 00:00:00`。源码扫描 `\\\\btime\\\\(|\\\\bnow\\\\(|\\\\bdatetime\\\\b|\\\\brandom\\\\b|\\\\buuid\\\\b` 等 0 命中。\\n\\n**文档版面**（GB/T 9704-2012 风格 A4 会议通知）：居中 2 号小标宋标题「评测技术部关于召开三季度质量评审会的通知」、顶格主送、正文 3 号仿宋首行缩进二字、一至七条目（黑体标签＋仿宋值，会议要求两条子项）、特此通知、右侧落款署名/日期、页脚页码。LibreOffice 渲染后经 visual-judge 视觉验收**通过**（无重叠/溢出/乱码；方正小标宋/仿宋_GB2312 未装机导致的字体替换不构成缺陷）。\\n\\n**交付物**（baseline 臂根目录）：`gen_doc.py`（生成器，实现方式不限的自实现）、`determinism_check.py`（可重复执行的自评驱动）、`run_log.json`（两遍 sha256 记账＋逐字节/解析级对比结论＋对照实验，日志本身不含时钟字段故亦可再生）、`out/会议通知/case1/{文书.docx, fields.json}`（协议终态产物）、`.determinism/run1/`（第二遍覆盖前留存的第一遍产物副本，供复核）、`.determinism/preview/`（渲染预览，在输出目录之外）。另做过跨进程第三遍验证（临时目录）：sha256 与协议产物完全相同。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 40,\n    \"inputTokens\": 2230779,\n    \"outputTokens\": 40669,\n    \"totalTokens\": 2271448,\n    \"cacheReadTokens\": 2167360,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 26214,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 2271448,\n    \"contextUsed\": 78177,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "ab5-determinism-layout-selfeval",
+  "rep": 1,
+  "slot": 45
+}

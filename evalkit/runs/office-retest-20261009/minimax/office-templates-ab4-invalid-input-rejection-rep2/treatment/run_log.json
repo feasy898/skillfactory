@@ -1,0 +1,169 @@
+{
+  "task": "office-templates / ab4-invalid-input-rejection",
+  "brief": "对生成入口施加四组非法输入 + 一组合法对照组，验证「非零退出码拒绝 + 中文 stderr + 零产物残留」，并确认必填缺失不被当作非法输入。",
+  "entry_point": ".zcode/skills/office-templates/scripts/gen_doc.py",
+  "environment": {
+    "python": "/home/pan-ding/venvs/shenbao/bin/python3",
+    "python_version": "Python 3.12.3",
+    "entry": ".zcode/skills/office-templates/scripts/gen_doc.py",
+    "entry_sha256": "6b31deb5766e5f2379dcaaa1dd3af465b0c9a8013c2019c234d63792e880ce3d",
+    "python_docx": "1.2.0"
+  },
+  "invalid_groups": [
+    {
+      "case": "G1",
+      "case_name": "非法模板名",
+      "invalid_input": "--template 证书",
+      "command": "/home/pan-ding/venvs/shenbao/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 证书 --data fixtures/周报/case1.json --outdir out/invalid/g1_证书",
+      "exit_code": 2,
+      "exit_code_expected": 2,
+      "stdout": "",
+      "stderr_summary": "usage: gen_doc.py [-h] --template {周报,请示函,会议通知,工作总结} --data DATA --outdir\n                  OUTDIR\ngen_doc.py: error: argument --template: invalid choice: '证书' (choose from '周报', '请示函', '会议通知', '工作总结')",
+      "stderr_has_chinese": true,
+      "residue_check": {
+        "outdir": "out/invalid/g1_证书",
+        "outdir_created_by_this_call": false,
+        "files_under_outdir": [],
+        "any_file_created_in_workdir": [],
+        "residue_free": true
+      },
+      "verdict": "PASS"
+    },
+    {
+      "case": "G2",
+      "case_name": "数据文件不存在",
+      "invalid_input": "--data 指向不存在的文件",
+      "command": "/home/pan-ding/venvs/shenbao/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data fixtures/周报/不存在的数据.json --outdir out/invalid/g2_missing",
+      "exit_code": 2,
+      "exit_code_expected": 2,
+      "stdout": "",
+      "stderr_summary": "错误：数据文件不存在：fixtures/周报/不存在的数据.json",
+      "stderr_has_chinese": true,
+      "residue_check": {
+        "outdir": "out/invalid/g2_missing",
+        "outdir_created_by_this_call": false,
+        "files_under_outdir": [],
+        "any_file_created_in_workdir": [],
+        "residue_free": true
+      },
+      "verdict": "PASS"
+    },
+    {
+      "case": "G3",
+      "case_name": "JSON解析失败",
+      "invalid_input": "--data 内容为「不是JSON」",
+      "command": "/home/pan-ding/venvs/shenbao/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data invalid_inputs/not_json.json --outdir out/invalid/g3_not_json",
+      "exit_code": 2,
+      "exit_code_expected": 2,
+      "stdout": "",
+      "stderr_summary": "错误：数据文件不是合法 JSON：invalid_inputs/not_json.json（Expecting value: line 1 column 1 (char 0)）",
+      "stderr_has_chinese": true,
+      "residue_check": {
+        "outdir": "out/invalid/g3_not_json",
+        "outdir_created_by_this_call": false,
+        "files_under_outdir": [],
+        "any_file_created_in_workdir": [],
+        "residue_free": true
+      },
+      "verdict": "PASS"
+    },
+    {
+      "case": "G4",
+      "case_name": "顶层非对象",
+      "invalid_input": "--data 内容为 [\"数组\",\"非对象\"]",
+      "command": "/home/pan-ding/venvs/shenbao/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data invalid_inputs/top_level_array.json --outdir out/invalid/g4_array",
+      "exit_code": 2,
+      "exit_code_expected": 2,
+      "stdout": "",
+      "stderr_summary": "错误：数据 JSON 顶层必须是对象（键值对），实际为 list",
+      "stderr_has_chinese": true,
+      "residue_check": {
+        "outdir": "out/invalid/g4_array",
+        "outdir_created_by_this_call": false,
+        "files_under_outdir": [],
+        "any_file_created_in_workdir": [],
+        "residue_free": true
+      },
+      "verdict": "PASS"
+    }
+  ],
+  "valid_control_group": {
+    "case": "G5",
+    "case_name": "合法对照组",
+    "input": "fixtures/周报/case1.json（周报 7 字段齐备）",
+    "command": "/home/pan-ding/venvs/shenbao/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data fixtures/周报/case1.json --outdir out/周报/case1",
+    "exit_code": 0,
+    "exit_code_expected": 0,
+    "stdout": "已生成：out/周报/case1/文书.docx（模板=周报，标题=研发部工作周报，字段 filled/total=7/7，必填缺失=无，模板外键=无）",
+    "stderr": "",
+    "artifacts": [
+      {
+        "file": "out/周报/case1/文书.docx",
+        "bytes": 37164,
+        "sha256": "b97521438f9f3d07049892aaf84993f10a47bd3a9275c83d1bc5a0654e6a407c"
+      },
+      {
+        "file": "out/周报/case1/fields.json",
+        "bytes": 1812,
+        "sha256": "51a0a5989d6a25075e427d243a7e00b665d9f92d652ff78ff9e35d1e5766f656"
+      }
+    ],
+    "outdir_contents": [
+      "fields.json",
+      "文书.docx"
+    ],
+    "outdir_has_exactly_two_artifacts": true,
+    "unexpected_files_under_outdir": [],
+    "fields_json_top_keys": [
+      "fields",
+      "filled_fields",
+      "missing_fields",
+      "outputs",
+      "summary",
+      "template",
+      "title"
+    ],
+    "fields_summary": {
+      "total": 7,
+      "filled": 7,
+      "missing": 0,
+      "missing_required": 0,
+      "missing_required_names": [],
+      "unknown_keys": []
+    },
+    "fields_title": "研发部工作周报",
+    "verdict": "PASS"
+  },
+  "missing_required_not_rejected": {
+    "case": "G6",
+    "case_name": "必填缺失（不得判为非法）",
+    "input": "invalid_inputs/missing_required.json（缺必填列表「下周工作计划」）",
+    "command": "/home/pan-ding/venvs/shenbao/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data invalid_inputs/missing_required.json --outdir probe/g6_missing_required",
+    "exit_code": 0,
+    "exit_code_expected": 0,
+    "stdout": "已生成：probe/g6_missing_required/文书.docx（模板=周报，标题=研发部工作周报，字段 filled/total=4/7，必填缺失=['下周工作计划']，模板外键=无）",
+    "fields_summary": {
+      "total": 7,
+      "filled": 4,
+      "missing": 3,
+      "missing_required": 1,
+      "missing_required_names": [
+        "下周工作计划"
+      ],
+      "unknown_keys": []
+    },
+    "verdict": "PASS",
+    "note": "产物落在 probe/g6_missing_required/（与 out/ 周报对照组的交付路径隔离），仅作取证，不属交付物。"
+  },
+  "summary": {
+    "invalid_groups_total": 4,
+    "invalid_groups_rejected_with_exit_2": 4,
+    "invalid_groups_with_chinese_stderr": 4,
+    "invalid_groups_with_zero_residue": 4,
+    "valid_control_exit_0": true,
+    "valid_control_two_artifacts": true,
+    "missing_required_not_rejected": true,
+    "unexpected_exit_codes": [],
+    "all_checks_pass": true
+  }
+}

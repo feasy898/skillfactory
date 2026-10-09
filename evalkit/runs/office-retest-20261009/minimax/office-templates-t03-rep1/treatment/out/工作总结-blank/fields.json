@@ -1,0 +1,90 @@
+{
+  "template": "工作总结",
+  "title": "________工作总结",
+  "filled_fields": [],
+  "missing_fields": [
+    "总结主体",
+    "总结时段",
+    "工作回顾",
+    "主要成绩",
+    "存在问题",
+    "下一步工作打算",
+    "成文日期"
+  ],
+  "fields": [
+    {
+      "name": "总结主体",
+      "required": true,
+      "kind": "text",
+      "status": "missing",
+      "value": null,
+      "rendered_as": "以____占位"
+    },
+    {
+      "name": "总结时段",
+      "required": true,
+      "kind": "text",
+      "status": "missing",
+      "value": null,
+      "rendered_as": "以____占位"
+    },
+    {
+      "name": "工作回顾",
+      "required": true,
+      "kind": "list",
+      "status": "missing",
+      "value": null,
+      "rendered_as": "以____占位条目"
+    },
+    {
+      "name": "主要成绩",
+      "required": true,
+      "kind": "list",
+      "status": "missing",
+      "value": null,
+      "rendered_as": "以____占位条目"
+    },
+    {
+      "name": "存在问题",
+      "required": false,
+      "kind": "list",
+      "status": "missing",
+      "value": null,
+      "rendered_as": "省略该条目/小节"
+    },
+    {
+      "name": "下一步工作打算",
+      "required": true,
+      "kind": "list",
+      "status": "missing",
+      "value": null,
+      "rendered_as": "以____占位条目"
+    },
+    {
+      "name": "成文日期",
+      "required": false,
+      "kind": "text",
+      "status": "missing",
+      "value": null,
+      "rendered_as": "留空（渲染为空字符串）"
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "filled": 0,
+    "missing": 7,
+    "missing_required": 5,
+    "missing_required_names": [
+      "总结主体",
+      "总结时段",
+      "工作回顾",
+      "主要成绩",
+      "下一步工作打算"
+    ],
+    "unknown_keys": []
+  },
+  "outputs": {
+    "docx": "out/工作总结-blank/文书.docx",
+    "fields_json": "out/工作总结-blank/fields.json"
+  }
+}

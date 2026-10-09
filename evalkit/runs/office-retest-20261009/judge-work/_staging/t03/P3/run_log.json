@@ -1,0 +1,159 @@
+{
+  "task": "office-templates 空/全空白数据边界：两份文书成文并如实记账（F7/C3：必填缺失不是运行错误）",
+  "run_at_local_date": "2026-10-09",
+  "python": {
+    "executable": "/tmp/otvenv/bin/python",
+    "version": "3.12.3",
+    "python_docx": "1.2.0"
+  },
+  "entry_script": "<SKILL_MOUNT>/scripts/gen_doc.py",
+  "asset_inventory": {
+    "SKILL.md": "present",
+    "scripts/gen_doc.py": "present",
+    "requirements.txt": "present",
+    "references/请示函.md": "present",
+    "references/工作总结.md": "present"
+  },
+  "py_compile": {
+    "command": "python -m py_compile <SKILL_MOUNT>/scripts/gen_doc.py",
+    "exit_code": 0,
+    "errors": 0
+  },
+  "nonreproducible_source_scan": {
+    "command": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" <SKILL_MOUNT>/scripts/gen_doc.py",
+    "hits": 0,
+    "note": "0 命中（grep exit=1）；docx zip 容器时间戳由 canonicalize_docx_zip 归一化为 1980-01-01"
+  },
+  "cases": {
+    "A_请示函": {
+      "command_both_passes": "python <SKILL_MOUNT>/scripts/gen_doc.py --template 请示函 --data fixtures/qingshi_empty.json --outdir out/请示函-empty",
+      "exit_codes": {
+        "pass1": 0,
+        "pass2": 0
+      },
+      "stderr_bytes": {
+        "pass1": 0,
+        "pass2": 0
+      },
+      "artifacts": {
+        "文书.docx": {
+          "pass1": {
+            "sha256": "ca2b46fd74e90ab98426fb1c1c4db5579e755eb946dbb54d84a83ed01c8dd8c7",
+            "bytes": 36858
+          },
+          "pass2": {
+            "sha256": "ca2b46fd74e90ab98426fb1c1c4db5579e755eb946dbb54d84a83ed01c8dd8c7",
+            "bytes": 36858
+          },
+          "byte_identical": true
+        },
+        "fields.json": {
+          "pass1": {
+            "sha256": "807111a314b3605c3d02166b8a34462ba972ff8f1bd8dd3df1050e50580d3d84",
+            "bytes": 2129
+          },
+          "pass2": {
+            "sha256": "807111a314b3605c3d02166b8a34462ba972ff8f1bd8dd3df1050e50580d3d84",
+            "bytes": 2129
+          },
+          "byte_identical": true
+        }
+      },
+      "determinism_verdict": "逐字节一致",
+      "docx_zip_timestamps": [
+        "1980-01-01 00:00:00"
+      ],
+      "outdir_file_count": 2,
+      "title": "关于____的请示",
+      "summary": {
+        "total": 8,
+        "filled": 0,
+        "missing": 8,
+        "missing_required": 5,
+        "missing_required_names": [
+          "请示事由",
+          "主送机关",
+          "请示缘由",
+          "请示事项",
+          "请示单位"
+        ],
+        "unknown_keys": []
+      },
+      "rendered_placeholders": [
+        "请示事由",
+        "主送机关",
+        "请示缘由",
+        "请示事项",
+        "请示单位",
+        "联系人",
+        "联系电话",
+        "成文日期"
+      ]
+    },
+    "B_工作总结": {
+      "command_both_passes": "python <SKILL_MOUNT>/scripts/gen_doc.py --template 工作总结 --data fixtures/zongjie_blank.json --outdir out/工作总结-blank",
+      "exit_codes": {
+        "pass1": 0,
+        "pass2": 0
+      },
+      "stderr_bytes": {
+        "pass1": 0,
+        "pass2": 0
+      },
+      "artifacts": {
+        "文书.docx": {
+          "pass1": {
+            "sha256": "f635b5f50f5dc2129d36f1a18f9185b367610879b8837812e2071ea7790aa85c",
+            "bytes": 36893
+          },
+          "pass2": {
+            "sha256": "f635b5f50f5dc2129d36f1a18f9185b367610879b8837812e2071ea7790aa85c",
+            "bytes": 36893
+          },
+          "byte_identical": true
+        },
+        "fields.json": {
+          "pass1": {
+            "sha256": "96136b3dbaa444d3e4e51d798cc4200de3243efe237be19564fe4edb1a063e42",
+            "bytes": 1964
+          },
+          "pass2": {
+            "sha256": "96136b3dbaa444d3e4e51d798cc4200de3243efe237be19564fe4edb1a063e42",
+            "bytes": 1964
+          },
+          "byte_identical": true
+        }
+      },
+      "determinism_verdict": "逐字节一致",
+      "docx_zip_timestamps": [
+        "1980-01-01 00:00:00"
+      ],
+      "outdir_file_count": 2,
+      "title": "________工作总结",
+      "summary": {
+        "total": 7,
+        "filled": 0,
+        "missing": 7,
+        "missing_required": 5,
+        "missing_required_names": [
+          "总结主体",
+          "总结时段",
+          "工作回顾",
+          "主要成绩",
+          "下一步工作打算"
+        ],
+        "unknown_keys": []
+      },
+      "rendered_placeholders": [
+        "总结主体",
+        "总结时段",
+        "工作回顾",
+        "主要成绩",
+        "存在问题",
+        "下一步工作打算",
+        "成文日期"
+      ]
+    }
+  },
+  "conclusion": "两份文书均以退出码 0 正常产出 `文书.docx` + `fields.json`，无中断、无报错；必填字段缺失处文中以 `____` 占位、选填缺失按 F2 留空 / F4 省略，并全部如实记账于 fields.json。同输入连跑两遍四个产物 sha256 全部逐字节一致。"
+}

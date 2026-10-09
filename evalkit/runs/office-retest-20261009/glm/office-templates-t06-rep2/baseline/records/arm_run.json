@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t06-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 275914,
+  "started_at_ms": 1791499178489,
+  "session_id": "sess_8a46e8e9-da1e-4f9a-ba0b-40c3fc0ef5c9",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t06-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 757984,
+      "ot": 18106,
+      "dur": 202942,
+      "n": 18
+    }
+  ],
+  "input_tokens": 757984,
+  "output_tokens": 18106,
+  "stdout_bytes": 2644,
+  "stderr_bytes": 980,
+  "stderr_head": "AI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\n",
+  "stdout_tail": "取 **10月11日**，结合周期年份补全为 **2026年10月11日**，写入落款。\\n\\n**交付物**：\\n\\n- `out/文书.docx` —— 一页式正式周报：居中黑体标题「屿光咖啡营运部工作周报」，灰底标签的信息表（部门／填报人／周期），三个编号章节（一、本周工作内容 3 项；二、下周工作计划 2 项；三、问题与需协调事项 1 项，全部条目与数据逐字一致），右对齐落款「填报人：计雨时」「报送日期：2026年10月11日」。postcheck 9/9 通过，渲染后经视觉验收 pass。\\n- `out/fields.json` —— 原始 7 个字段 + 新增 `报送日期: \\\"2026年10月11日\\\"`，供报表系统识别报送日。\\n- `yuguang_week.json` —— brief 中的原始数据逐字保存。\\n\\n生成脚本 `gen_doc.js` 留在目录中可复现（内容校验：三份文件与 brief 数据完全一致，docx 内 17 个必需字符串全部在位，无 undefined/占位残留）。\\n\\n::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t06-rep2/baseline/out/文书.docx\\\" purpose=\\\"output\\\"}\\n::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t06-rep2/baseline/out/fields.json\\\" purpose=\\\"output\\\"}\\n::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t06-rep2/baseline/yuguang_week.json\\\" purpose=\\\"output\\\"}\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 18,\n    \"inputTokens\": 757984,\n    \"outputTokens\": 18106,\n    \"totalTokens\": 776090,\n    \"cacheReadTokens\": 714240,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 13926,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 776090,\n    \"contextUsed\": 59481,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

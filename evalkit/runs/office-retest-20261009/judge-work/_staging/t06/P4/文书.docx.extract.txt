@@ -1,0 +1,13 @@
+EXTRACT OF 文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=None runs=[屿光咖啡营运部工作周报/黑体/22.0] text=屿光咖啡营运部工作周报
+P001 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[填报人：计雨时　　周期：20/仿宋/16.0] text=填报人：计雨时　　周期：2026年10月第2周
+P002 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[一、本周工作内容/黑体/16.0] text=一、本周工作内容
+P003 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[1．10月9日完成季节限定豆/仿宋/16.0] text=1．10月9日完成季节限定豆单上新
+P004 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[2．大学城二店10月10日起/仿宋/16.0] text=2．大学城二店10月10日起延时营业至23时
+P005 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[3．10月11日完成月度盘点/仿宋/16.0] text=3．10月11日完成月度盘点差异复核
+P006 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[二、下周工作计划/黑体/16.0] text=二、下周工作计划
+P007 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[1．启动圣诞杯具供应商比价/仿宋/16.0] text=1．启动圣诞杯具供应商比价
+P008 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[2．10月20日前输出四季度/仿宋/16.0] text=2．10月20日前输出四季度排班初稿
+P009 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[三、问题与需协调事项/黑体/16.0] text=三、问题与需协调事项
+P010 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[1．望人事组于10月18日前/仿宋/16.0] text=1．望人事组于10月18日前批复两名兼职编制
+P011 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[报送日期：2026年10月1/仿宋/16.0] text=报送日期：2026年10月11日

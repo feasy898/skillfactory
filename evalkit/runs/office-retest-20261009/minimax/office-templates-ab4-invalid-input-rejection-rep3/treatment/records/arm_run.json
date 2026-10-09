@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 89008,
+  "started_at_ms": 1791491221605,
+  "session_id": "sess_cad19673-11aa-46ea-9473-cf37a40c99ef",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1088922,
+      "ot": 12606,
+      "dur": 70947,
+      "n": 32
+    }
+  ],
+  "input_tokens": 1088922,
+  "output_tokens": 12606,
+  "stdout_bytes": 3636,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " this satisfying the requirement (the error is readable and names the offending value) and recorded the nuance in `run_log.json` rather than papering over it.\\n\\n**Interpreter choice.** The default `python3` on PATH points at a venv without `python-docx`. I used `/usr/bin/python3` (python-docx 1.2.0, satisfying `requirements.txt`) for all five invocations, so the groups remain comparable. This is recorded in the log's environment block.\\n\\nI also added two checks beyond the brief: a **determinism double-run** (same command twice — both artifacts byte-identical, same sha256) and a **missing-required-field check** confirming the engine exits 0 and accounts for `____` placeholders rather than rejecting missing data as illegal. The missing-field run wrote to `/tmp`, deliberately, so the delivered `out/` contains only the legal control's artifacts.\\n\\nDeliverables: `run_log.json` (valid JSON, no encoding artifacts) and `out/周报/case1/{文书.docx, fields.json}`. I cleaned up the `__pycache__` that `py_compile` left behind.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 32,\n    \"inputTokens\": 1088922,\n    \"outputTokens\": 12606,\n    \"totalTokens\": 1101528,\n    \"cacheReadTokens\": 1043140,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1591,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1101528,\n    \"contextUsed\": 46921,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t03-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 88840,
+  "started_at_ms": 1791491924718,
+  "session_id": "sess_984b7b8f-dd31-46b5-9b7d-b40b617721db",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t03-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 664980,
+      "ot": 8489,
+      "dur": 72933,
+      "n": 23
+    }
+  ],
+  "input_tokens": 664980,
+  "output_tokens": 8489,
+  "stdout_bytes": 3133,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "`：`文书.docx`（36858 字节）+ `fields.json`（2129 字节）\\n- `out/工作总结-blank/`：`文书.docx`（36893 字节）+ `fields.json`（1964 字节）\\n\\n**缺数据的实际处理（全部为正常业务边界，不是错误）**\\n\\nA 请示函 8 个字段全缺失：5 个必填以 `____` 占位（标题渲染成\\\"关于____的请示\\\"，称谓渲染成\\\"____：\\\"），3 个选填留空（\\\"联系人：\\\"、\\\"联系电话：\\\"标签保留、值为空）。正文与落款各留一段 `____`，成文日期行留空。\\n\\nB 工作总结 7 个字段全缺失：`主要成绩` 传的是 `[\\\" \\\"]`，属全空白数组，按 F4 同样判缺失。三个必填列表各生成占位条目 `1．____`；`存在问题` 是选填缺失，整节省略、节头不出现。注意由此文中节序号呈\\\"一、二、四\\\"，跳过了\\\"三\\\"——这是选填小节省略后的既有渲染结果，不是故障，但如实记在台账里供你知悉。标题因主体与时段两个必填都缺，渲染成 8 个连续下划线加\\\"工作总结\\\"。\\n\\n两份台账都自洽（`filled + missing = total`，缺失项 `value` 为 null 且带 `rendered_as`），`unknown_keys` 均为空。\\n\\n**确定性已按技能要求留证**：同一命令行连跑两遍到同一 `--outdir`，每遍跑完立刻快照到产物目录之外的 `.verify/pass1/` 与 `.verify/pass2/`，`diff -r` 无输出，4 个产物 sha256 两遍完全相等。`py_compile` 0 错误，入口脚本不可复现源扫描（`time(`/`random`/`uuid`/`datetime`/`now(`）0 命中，三件套齐备。留痕写在工作目录的 `run_log.json`（未写进 `--outdir`，以保证产物目录恰含两文件）。\\n\\n最后一个环境坑记一下：PATH 默认的 `python3` 指向 `/home/pan-ding/venvs/ml/bin/python3`，该 venv 没有 python-docx；实际用的是 `/usr/bin/python3`（Python 3.12.3 + python-docx 1.2.0），这一条也写进了 run_log 的 environment 段。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 23,\n    \"inputTokens\": 664980,\n    \"outputTokens\": 8489,\n    \"totalTokens\": 673469,\n    \"cacheReadTokens\": 600192,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 832,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 673469,\n    \"contextUsed\": 37309,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

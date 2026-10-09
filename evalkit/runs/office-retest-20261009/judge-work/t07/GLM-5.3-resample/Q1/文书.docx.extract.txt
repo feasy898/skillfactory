@@ -1,0 +1,38 @@
+EXTRACT OF 文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=431800 runs=[屿光咖啡品控组周报/黑体/22.0] text=屿光咖啡品控组周报
+P001 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=330200 runs=[（2026年10月5日—20/黑体/16.0] text=（2026年10月5日—2026年10月11日）
+P003 align=None firstLineChars=None firstLineIndent=None spacing=330200 runs=[【数据口径提示】/黑体/14.0] text=【数据口径提示】
+P004 align=None firstLineChars=None firstLineIndent=304800 spacing=304800 runs=[本期源数据为2026年第三季/仿宋_GB2312/12.0] text=本期源数据为2026年第三季度汇总口径，统计区间为 2026年7月1日至9月30日；而周报目标周期为2026年10月5日（周一）至2026年10月11日（周日），成文日期2026年10月9日距季度结束已逾 9 天，两区间无任何重叠。因此源数据中的杯测场次、客诉单量、闭环率等指标均属季度累计值，无法折算或拆分成本周发生额。本报告据此处理：可确证的内容一律保留原始季度口径并显式标注；本周发生额一栏不作推测填写。
+P005 align=None firstLineChars=None firstLineIndent=None spacing=365760 runs=[一、本周工作完成情况/黑体/16.0] text=一、本周工作完成情况
+P006 align=None firstLineChars=None firstLineIndent=406400 spacing=365760 runs=[本周（2026年10月5日—/仿宋_GB2312/16.0] text=本周（2026年10月5日—2026年10月11日）实际发生的杯测场次、客诉工单受理量、闭环率变动等发生额数据，源数据中无对应记录，留待品控组据实补报后填入。
+P007 align=None firstLineChars=None firstLineIndent=406400 spacing=365760 runs=[待补字段：① 本周完成杯测场/仿宋_GB2312/16.0] text=待补字段：① 本周完成杯测场次；② 本周处理客诉工单数；③ 本周客诉 48 小时闭环率；④ 本周新增问题（如无，请填“无”）。
+P008 align=None firstLineChars=None firstLineIndent=None spacing=365760 runs=[二、季度数据回溯（2026年/黑体/16.0] text=二、季度数据回溯（2026年第三季度口径，非本周发生额）
+P009 align=None firstLineChars=None firstLineIndent=406400 spacing=365760 runs=[1. 完成季度杯测 36 场/仿宋_GB2312/16.0] text=1. 完成季度杯测 36 场。
+P010 align=None firstLineChars=None firstLineIndent=406400 spacing=365760 runs=[2. 处理客诉工单 58 单/仿宋_GB2312/16.0] text=2. 处理客诉工单 58 单。
+P011 align=None firstLineChars=None firstLineIndent=406400 spacing=365760 runs=[3. 客诉 48 小时闭环率/仿宋_GB2312/16.0] text=3. 客诉 48 小时闭环率提升至 92%。
+P012 align=None firstLineChars=None firstLineIndent=304800 spacing=365760 runs=[注：上述各项为第三季度累计值/仿宋_GB2312/12.0] text=注：上述各项为第三季度累计值，仅作口径回溯参考，不得作为本周工作量的填报依据。
+P013 align=None firstLineChars=None firstLineIndent=None spacing=365760 runs=[三、本周关注事项/黑体/16.0] text=三、本周关注事项
+P014 align=None firstLineChars=None firstLineIndent=406400 spacing=365760 runs=[1. 偏远门店物流损耗偏高（/仿宋_GB2312/16.0] text=1. 偏远门店物流损耗偏高（第三季度已识别的持续性问题，本周延续跟进）。
+P015 align=None firstLineChars=None firstLineIndent=406400 spacing=365760 runs=[本周是否新增问题，源数据未记/仿宋_GB2312/16.0] text=本周是否新增问题，源数据未记录，待补充。
+P016 align=None firstLineChars=None firstLineIndent=None spacing=365760 runs=[四、下周工作计划/黑体/16.0] text=四、下周工作计划
+P017 align=None firstLineChars=None firstLineIndent=406400 spacing=365760 runs=[1. 引入损耗周报机制——该/仿宋_GB2312/16.0] text=1. 引入损耗周报机制——该项为第三季度既定计划，其在本周的实际推进进度源数据未记录，待补充。
+P018 align=None firstLineChars=None firstLineIndent=None spacing=365760 runs=[五、字段对照与待补清单/黑体/16.0] text=五、字段对照与待补清单
+P020 align=None firstLineChars=None firstLineIndent=None spacing=365760 runs=[填报人签字：＿＿＿＿＿＿　　/宋体/12.0] text=填报人签字：＿＿＿＿＿＿　　复核：＿＿＿＿＿＿　　日期：＿＿＿＿＿＿
+TABLE1 4行×2列:
+  填报部门 ┃ 屿光咖啡品控组
+  报告周期 ┃ 2026年10月5日—2026年10月11日（推导值，待确认）
+  成文日期 ┃ 2026年10月9日
+  数据来源 ┃ yuguang_q3.json（季度工作总结口径）
+TABLE2 12行×4列:
+  周报字段 ┃ 取值 ┃ 状态 ┃ 来源 / 说明
+  报告标题 ┃ 屿光咖啡品控组周报（2026年10月5日—2026年10月11日） ┃ 推导-待确认 ┃ 主体为直接对应；周区间为推导值，须经填报人确认后定稿。
+  填报部门 ┃ 屿光咖啡品控组 ┃ 直接对应 ┃ 原样映射，无歧义。
+  报告周期 ┃ 2026年10月5日—2026年10月11日，推导值待确认 ┃ 推导-待确认 ┃ 源数据仅有季度区间，无周区间。若实际周报周期非此区间，须整体替换。
+  成文日期 ┃ 2026年10月9日 ┃ 直接对应 ┃ 原样映射。
+  本周工作完成情况（本周发生额） ┃ （待补） ┃ 无数据源-待补 ┃ 源数据“完成季度杯测 36 场”“处理客诉工单 58 单”为季度累计，不等于本周发生额。按 92 天均摊会得出无统计依据的数值，故留空待业务据实填报。
+  季度数据回溯（可确证） ┃ 完成季度杯测 36 场；处理客诉工单 58 单；客诉 48 小时闭环率提升至 92% ┃ 直接对应-口径降级回溯 ┃ 内容真实可核，但作用域为季度。在周报中作为“季度数据回溯”小节呈现，已在正文中显式标注季度口径。
+  主要成绩 ┃  ┃ 直接对应-口径降级回溯 ┃ “客诉 48 小时闭环率提升至 92%”为季度末状态值，非本周改善幅度，作为季度成果回溯列示。
+  存在问题 / 本周关注事项 ┃ 偏远门店物流损耗偏高 ┃ 直接对应-口径降级回溯 ┃ “偏远门店物流损耗偏高”为跨季度持续状态问题，在周报“本周关注事项”中延续列示，不表述为本周新增问题。
+  下一步工作打算 ┃ 引入损耗周报机制 ┃ 直接对应-口径降级回溯 ┃ 季度计划项，语义上可承接为后续跟进事项，但“引入”的时间点与本周推进状态未知，已标注。
+  填报人 / 联系人 ┃ （待补） ┃ 无数据源-待补 ┃ 源数据未提供，须由业务补充。
+  本周新增问题 ┃  ┃ 无数据源-待补 ┃ 源数据仅含季度层面的问题清单，无本周新增问题记录。

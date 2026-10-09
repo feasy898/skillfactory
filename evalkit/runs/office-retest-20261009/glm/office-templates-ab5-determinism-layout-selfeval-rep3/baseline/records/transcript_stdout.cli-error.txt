@@ -1,0 +1,27 @@
+AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.
+{
+  "sessionId": "sess_952dd390-ff5e-4bf7-ade2-e3c3d61872f6",
+  "traceId": "063f10bd-202d-4c0b-8625-0fb718419f62",
+  "turnId": "turn_c92598c2-2168-4e5e-a9b6-4ac9b4e6103d",
+  "response": "任务完成，确定性自评结论为**一致**：同输入连跑两遍，`文书.docx` 与 `fields.json` 逐字节完全相同，独立复核 10/10 通过（exit 0）。\n\n## 交付物（均在 baseline 目录下）\n\n| 文件 | 作用 |\n|---|---|\n| `gen_doc.py` | 生成器 CLI，严格满足契约 `--template 会议通知 --data <json> --outdir <dir>`，每次调用产出恰两个文件 |\n| `run_selfeval.py` | 驱动脚本：同输入连跑两遍（第二遍覆盖第一遍），每遍后即写 run_log.json，含快照与全部对比 |\n| `verify.py` | 独立复核门（不信任日志、全部重算 + 第三遍临时目录重放），exit 0 |\n| `docx_inspect.py` | docx 解析指纹提取（文本/对齐/缩进/字体/行距逐段对比） |\n| `run_log.json` | 两遍 sha256（标注第一遍/第二遍）、逐字节对比、解析对比、目录检查、总判「一致」 |\n| `out/会议通知/case1/` | 恰含 `文书.docx` 与 `fields.json` 两产物 |\n| `records/run1_snapshot/` | 第一遍产物的字节快照（第二遍覆盖前的取证副本） |\n| `records/render_check/page-1.png` | LibreOffice 渲染页，供版式核查 |\n\n## 关键结果\n\n- 两遍 sha256 完全相同：`文书.docx` = `b7e3c40f…412846`，`fields.json` = `2c511bed…a6a9f`（快照与最终产物逐一比对核实）。\n- 确定性实现要点：不读时钟、无随机源；docx 保存后对 ZIP 容器做规范化重写（全部条目时间戳固定 1980-01-01、固定压缩级别与属性），消除了 `zipfile` 默认写入当前时间的漂移；`fields.json` 固定键序、无绝对路径、无时间类键——因此连任务书豁免的 outputs 路径键也逐字节一致。\n- 文档本身是规范公文版式（A4、公文页边距、居中黑体二号标题、三号仿宋正文、两字符首行缩进、固定 28 磅行距、右对齐落款），共 15 段。期间发现并修复了一个版式缺陷：初版落款日期被拆到第二页成孤行，改为显式零段间距 + 落款 `keep_with_next` 后收为一页，视觉验收 pass（无裁切、无孤行、对齐缩进正确）。\n- 复核覆盖：日志结构、两遍哈希相等、盘上实物与日志一致、快照逐字节重比、第三遍换目录重放仍逐字节一致、docx 解析指纹 15 段全同、ZIP 时间戳固定、fields.json 静态性、核心元数据无当前时间源。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 36,
+    "inputTokens": 1786616,
+    "outputTokens": 38055,
+    "totalTokens": 1824671,
+    "cacheReadTokens": 1729600,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 26091,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1824671,
+    "contextUsed": 72281,
+    "contextWindow": 200000
+  }
+}

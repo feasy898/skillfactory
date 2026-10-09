@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_a0fe0ad7-5cd4-4eba-b8f8-754334ad42db",
+  "traceId": "92d4fd8b-f5a3-4aca-9644-e5f07398745e",
+  "turnId": "turn_cb4f0dff-d4a4-451d-b321-249d22922b36",
+  "response": "The task is complete: **both passes produced byte-identical artifacts, and `run_log.json` records the verdict 一致 (identical)** with full evidence.\n\n## What was built\n\n**`gen_doc.py`** — the generator implementing the CLI contract `--template 会议通知 --data <json> --outdir <dir>`, producing exactly `文书.docx` and `fields.json`. The document is a proper Chinese official-style meeting notice (centered 二号小标宋 title, 三号仿宋 body with 28pt fixed line spacing, 2-character first-line indent, right-aligned signature block), with all 10 input fields used and nothing invented. Determinism is enforced by construction: no wall clock or random sources anywhere, `docProps/core.xml` created/modified pinned to `2000-01-01T00:00:00Z`, and a post-save zip-normalization pass that rewrites every entry with fixed timestamp/attributes/compression.\n\n**`determinism_check.py`** — the driver: runs the generator twice with identical argv into the same `out/会议通知/case1` (second pass overwrites), writes `run_log.json` after *each* pass with that pass's sha256s labeled, snapshots pass-1 bytes to `.determinism/pass1/`, then performs the comparisons.\n\n## Results (in `run_log.json`)\n\n- **Pass 1 / Pass 2 sha256** — `文书.docx`: `586e4d54…879c99` both passes (37,404 bytes); `fields.json`: `9fcba2f2…a11c` both passes (906 bytes). Byte-by-byte comparison of both files: fully identical.\n- **Parsed-level docx comparison** — 10 paragraphs each: text, alignment, indentation, fonts (western + eastAsia), and line spacing all equal; all 17 zip parts match part-by-part sha256; both passes' stdout/stderr identical.\n- **Output directory** — contains exactly the two required products.\n- **Conclusion field** records 一致 with the reasoning, including that no non-reproducible sources exist (all timestamps pinned to 2000-01-01).\n\n## Independent verification (system tools, not the driver's code)\n\n`sha256sum` and `cmp` confirmed snapshot-vs-current identity; `unzip -l` shows every zip entry stamped 2000-01-01; a scan of all docx parts found no leaked wall-clock time (the 2026 dates in the text are input data); and an extra adversarial run into a *different* directory after a 3-second gap still produced a byte-identical `文书.docx`, with `fields.json` differing only in the outputs path keys — exactly the single variance class the brief permits. A wrong-template invocation correctly exits with code 2.\n\nAll deliverables are left in place under `baseline/`: `gen_doc.py`, `determinism_check.py`, `out/会议通知/case1/{文书.docx, fields.json}`, `run_log.json`, and the pass-1 snapshot evidence in `.determinism/pass1/`.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 23,
+    "inputTokens": 882408,
+    "outputTokens": 27950,
+    "totalTokens": 910358,
+    "cacheReadTokens": 843328,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 20299,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 910358,
+    "contextUsed": 54792,
+    "contextWindow": 200000
+  }
+}

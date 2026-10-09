@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_41f6fa51-b655-459f-9a86-b4aea41e2b18",
+  "traceId": "38a9fd29-7917-4366-b3f8-af1a9a857b47",
+  "turnId": "turn_7319d6a4-1dd1-4a55-a851-3539408ac4a0",
+  "response": "评分完成，`verdict.json` 已写入当前工作目录：**Q1 加权分 4.5，低于 8.0 通过线，判不通过**。\n\n**判定依据（逐维、全部经机判核实）：**\n\n- **正确性（占位渲染）= 0.0（零分档：错 ≥3 处）**：① A、B 两份的成文日期行都渲染成占位 `____年__月__日`，而判据要求选填缺失留空段；② A 全文 `____` 实测 6 次 ≠ 期望恰 5 次，且 `联系人：　　联系电话：` 行整行缺失；③ B 标题为 `____（____年__月）工作总结`（3 段共 10 个下划线、带括号），期望 `________工作总结` 8 个下划线连排。B 的三个 `1．____` 占位条目和存在问题节整节省略做对了，但错误处数已达零分档。\n- **完整性（结构与节保留）= 1.0**：两目录各恰 2 文件；A 称谓 `____：` 顶格、落款右对齐形态未被占位破坏；B 无存在问题节、末个非空段右对齐。\n- **可验证性（记账与语义）= 0.5（中档）**：A 台账只入账 5 字段、missing 5/5 ≠ 期望 8/8（请示缘由/请示单位/联系人/联系电话未入账）；两份 rendered_as 均非 spec §3.2 逐字措辞（判挂点命中 → 0.5 档）；B 份 missing=7/7、missing_required 顺序完全正确、计数自洽，且两份台账与文书无硬矛盾，不落零分档。\n\n加权分 = 10 × (0×0.4 + 1.0×0.3 + 0.5×0.3) = **4.5 < 8.0**。文件已通过回读校验：单一 `scores` 顶层键、dims 键名与 rubric 维度名逐字一致、evidence 144 字（≤150）、算术复算相符。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 11,
+    "inputTokens": 351720,
+    "outputTokens": 17442,
+    "totalTokens": 369162,
+    "cacheReadTokens": 321984,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 14614,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 369162,
+    "contextUsed": 45654,
+    "contextWindow": 200000
+  }
+}

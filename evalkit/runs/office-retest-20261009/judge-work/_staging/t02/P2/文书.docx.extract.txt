@@ -1,0 +1,20 @@
+EXTRACT OF 文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=393700 runs=[青蘅茶社关于召开秋季会员茶话/STXiaoBiaoSong/22.0] text=青蘅茶社关于召开秋季会员茶话会的通知
+P001 align=JUSTIFY (3) firstLineChars=None firstLineIndent=None spacing=355600 runs=[全体会员：/FangSong/16.0] text=全体会员：
+P002 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[为通报秋季茶会流程安排、预告/FangSong/16.0] text=为通报秋季茶会流程安排、预告冬至茶会有关事宜，青蘅茶社定于2026年10月18日（周日）14:00在青蘅茶社二层听雨厅召开秋季会员茶话会。现将有关事项通知如下：
+P003 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[一、会议时间：/SimHei/16.0 | 2026年10月18日（周日/FangSong/16.0] text=一、会议时间：2026年10月18日（周日）14:00
+P004 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[二、会议地点：/SimHei/16.0 | 青蘅茶社二层听雨厅/FangSong/16.0] text=二、会议地点：青蘅茶社二层听雨厅
+P005 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[三、参会人员：/SimHei/16.0 | 社长、各堂主、志愿组代表/FangSong/16.0] text=三、参会人员：社长、各堂主、志愿组代表
+P006 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[四、会议议题：/SimHei/16.0 | 秋季茶会流程与冬至茶会预告/FangSong/16.0] text=四、会议议题：秋季茶会流程与冬至茶会预告
+P007 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[五、会议要求：/SimHei/16.0] text=五、会议要求：
+P008 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[（一）自备茶盏者请提前登记；/FangSong/16.0] text=（一）自备茶盏者请提前登记；
+P009 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[（二）会后提交品鉴短评；/FangSong/16.0] text=（二）会后提交品鉴短评；
+P010 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[（三）迟到十分钟以上改候补席/FangSong/16.0] text=（三）迟到十分钟以上改候补席；
+P011 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[（四）着装以素色为宜；/FangSong/16.0] text=（四）着装以素色为宜；
+P012 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[（五）带一名新会员优先入场；/FangSong/16.0] text=（五）带一名新会员优先入场；
+P013 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[（六）散会后协助收拾茶器。/FangSong/16.0] text=（六）散会后协助收拾茶器。
+P014 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[六、联系人：/SimHei/16.0 | 储听兰/FangSong/16.0] text=六、联系人：储听兰
+P015 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[七、联系电话：/SimHei/16.0 | 137-5566-0099/FangSong/16.0] text=七、联系电话：137-5566-0099
+P016 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[特此通知。/FangSong/16.0] text=特此通知。
+P017 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[青蘅茶社/FangSong/16.0] text=青蘅茶社
+P018 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[2026年10月9日/FangSong/16.0] text=2026年10月9日

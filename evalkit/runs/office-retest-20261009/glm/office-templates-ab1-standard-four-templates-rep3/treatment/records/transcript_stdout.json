@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_03d3034b-2cd7-4528-a3d4-a7386ef00623",
+  "traceId": "11d088d7-0e5f-4c00-91b1-bf051af51b77",
+  "turnId": "turn_1be02ccd-03b0-4348-9284-077fc23eb71c",
+  "response": "任务完成，四个单元目录与产物齐全，终检 PASS。\n\n**做了什么**：按 brief 调用本项目的 `office-templates` 技能引擎（`.zcode/skills/office-templates/scripts/gen_doc.py`，依赖 python-docx 装在工作目录 `.venv/` 内），对 fixtures 下四类模板的 case1 数据各跑一次，全部退出码 0：\n\n| 模板 | 产物目录 | 标题 | 字段台账 |\n|---|---|---|---|\n| 周报 | `out/周报/case1/` | 研发部工作周报 | filled 7/7，无缺失 |\n| 请示函 | `out/请示函/case1/` | 关于采购评测用 GPU 服务器的请示 | filled 8/8，无缺失 |\n| 会议通知 | `out/会议通知/case1/` | 关于召开三季度质量评审会的通知 | filled 11/11，无缺失 |\n| 工作总结 | `out/工作总结/case1/` | 评测技术部2026年第三季度工作总结 | filled 7/7，无缺失 |\n\n每个目录恰含 `文书.docx` 与 `fields.json` 两个文件。输入字段全部齐全，因此不涉及占位/留空/编造；fields.json 顶层含 `title`、逐字段明细（名称/是否必填/状态/值）与 `summary` 计数，经程序核对计数自洽、`filled+missing=total`、标题与各模板标题公式一致。\n\n**版式核验**（程序断言，非目测）：A4 页面、GB/T 9704 版心边距 3.7/3.5/2.8/2.6 cm；标题黑体 22pt 居中；请示函/会议通知称谓顶格全角冒号；正文 eastAsia=仿宋、16pt、首行缩进 `firstLineChars=200`、28 磅固定行距；落款右对齐右缩进，日期行为裸日期。\n\n**确定性与留痕**：每模板以完全相同命令行连跑两遍并旁路快照对拍，八个产物两遍 sha256 逐字节全部一致；`py_compile` 0 错误；入口脚本 `time(/random/uuid/datetime/now(` 扫描 0 命中。全部记录在工作目录 `run_log.json`（未放进任何产物目录），快照留在 `.verify/run1、run2/`。\n\n留置交付物：`out/`（8 个产物文件）、`run_log.json`、`.verify/`（对拍快照）、`.venv/`（可复跑环境）。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 20,
+    "inputTokens": 675057,
+    "outputTokens": 10439,
+    "totalTokens": 685496,
+    "cacheReadTokens": 645184,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 4974,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 685496,
+    "contextUsed": 45536,
+    "contextWindow": 200000
+  }
+}

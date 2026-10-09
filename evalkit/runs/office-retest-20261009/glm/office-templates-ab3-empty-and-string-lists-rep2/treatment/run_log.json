@@ -1,0 +1,93 @@
+{
+  "task": "office 重测臂任务（ab3-empty-and-string-lists，rep2/treatment）",
+  "brief": "处理 fixtures/周报/case2.json 与 fixtures/工作总结/case2.json 两份列表字段边界数据，产物写入 out/<模板>/case2/",
+  "entry_script": ".zcode/skills/office-templates/scripts/gen_doc.py",
+  "python": "3.12.3（本地 venv：.venv，按 requirements.txt 安装 python-docx）",
+  "units": {
+    "周报": {
+      "data": "fixtures/周报/case2.json",
+      "outdir": "out/周报/case2",
+      "command": ".venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data fixtures/周报/case2.json --outdir out/周报/case2",
+      "exit_code_run1": 0,
+      "exit_code_run2": 0,
+      "stdout_digest": "已生成：out/周报/case2/文书.docx（模板=周报，标题=____工作周报，字段 filled/total=3/7，必填缺失=['部门', '周期', '本周工作内容']，模板外键=无）",
+      "artifacts": {
+        "文书.docx": {
+          "sha256_run1": "c28537f4df72bfc1ff4a756830dbe9e8478d19de60c789e87ba982b656587c2b",
+          "sha256_run2": "c28537f4df72bfc1ff4a756830dbe9e8478d19de60c789e87ba982b656587c2b",
+          "bytes": 36961,
+          "byte_identical": true
+        },
+        "fields.json": {
+          "sha256_run1": "b1062eadfa83ce7c8d6e669ea28923efa5f522d241f79f9a57865dc1d159a173",
+          "sha256_run2": "b1062eadfa83ce7c8d6e669ea28923efa5f522d241f79f9a57865dc1d159a173",
+          "bytes": 1800,
+          "byte_identical": true
+        }
+      }
+    },
+    "工作总结": {
+      "data": "fixtures/工作总结/case2.json",
+      "outdir": "out/工作总结/case2",
+      "command": ".venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 工作总结 --data fixtures/工作总结/case2.json --outdir out/工作总结/case2",
+      "exit_code_run1": 0,
+      "exit_code_run2": 0,
+      "stdout_digest": "已生成：out/工作总结/case2/文书.docx（模板=工作总结，标题=____2026年9月工作总结，字段 filled/total=3/7，必填缺失=['总结主体', '主要成绩']，模板外键=无）",
+      "artifacts": {
+        "文书.docx": {
+          "sha256_run1": "638393a01b20a238d090619bd2863437a3b35cdfec8a53ac27baee1f18e87940",
+          "sha256_run2": "638393a01b20a238d090619bd2863437a3b35cdfec8a53ac27baee1f18e87940",
+          "bytes": 36963,
+          "byte_identical": true
+        },
+        "fields.json": {
+          "sha256_run1": "428c066bb49d15d45b0d87b2f6c2d036ff7d2b9e365c8aa63dee79c68f367ec6",
+          "sha256_run2": "428c066bb49d15d45b0d87b2f6c2d036ff7d2b9e365c8aa63dee79c68f367ec6",
+          "bytes": 1867,
+          "byte_identical": true
+        }
+      }
+    }
+  },
+  "determinism": {
+    "method": "同命令行连跑两遍到同一 --outdir（第二遍覆盖复写），每遍产物快照到 .snapshots/<模板>/run{1,2}/ 后逐字节 cmp 对拍并核对 sha256 相等",
+    "verdict": "两单元 × 两产物共 8 次对拍全部逐字节一致（含 fields.json 的 outputs 路径键，因两遍 outdir 相同亦逐字节一致）",
+    "snapshots_kept": ".snapshots/周报/run{1,2}/、.snapshots/工作总结/run{1,2}/（--outdir 之外旁路目录，不污染产物目录）"
+  },
+  "skill_inventory": {
+    "SKILL.md": true,
+    "scripts/gen_doc.py": true,
+    "requirements.txt": true
+  },
+  "py_compile": {"command": ".venv/bin/python -m py_compile .zcode/skills/office-templates/scripts/gen_doc.py", "result": "0 错误"},
+  "nondeterminism_scan": {"command": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" .zcode/skills/office-templates/scripts/gen_doc.py", "result": "0 命中（exit 1）"},
+  "behavior_verification": {
+    "周报": {
+      "标题____占位（部门缺失）": "PASS：段0 居中黑体22pt『____工作周报』",
+      "必填文本缺失占位（周期空串）": "PASS：段1『填报人：赵倩　　周期：____』",
+      "空列表按必填缺失→占位条目": "PASS：段2『一、本周工作内容』节头保留 + 段3『1．____』；fields.json rendered_as=以____占位条目",
+      "选填小节缺失整节省略": "PASS：正文无『三、问题与需协调事项』节头；fields.json required=false, rendered_as=省略该条目/小节",
+      "小节/条目编号规范": "PASS：一、二、节头 + 1．全角点条目",
+      "落款右对齐": "PASS：段6『报送日期：2026-09-28』align=RIGHT right_indent=32pt",
+      "summary 自洽": "PASS：filled 3 + missing 4 = total 7；missing_required_names=[部门, 周期, 本周工作内容]"
+    },
+    "工作总结": {
+      "标题____占位（总结主体缺失）": "PASS：段0 居中黑体22pt『____2026年9月工作总结』",
+      "字符串型列表单项化": "PASS：段2『1．完成评测平台月度巡检』；fields.json 工作回顾 value=[\"完成评测平台月度巡检\"] 单元素数组",
+      "空列表按必填缺失→占位条目": "PASS：段3『二、主要成绩』节头保留 + 段4『1．____』；fields.json rendered_as=以____占位条目",
+      "选填小节缺失整节省略": "PASS：正文无『三、存在问题』节头；fields.json required=false, rendered_as=省略该条目/小节",
+      "选填文本缺失（成文日期）": "PASS：落款二渲染为空段；fields.json required=false, rendered_as=留空（渲染为空字符串）",
+      "小节/条目编号规范": "PASS：一、二、四、节头（三缺失跳号正确）+ 1．全角点条目",
+      "落款右对齐不因空日期/缺主体破坏": "PASS：段7『____』与段8 空段均 align=RIGHT right_indent=32pt",
+      "summary 自洽": "PASS：filled 3 + missing 4 = total 7；missing_required_names=[总结主体, 主要成绩]"
+    }
+  },
+  "outdir_contents_check": {
+    "out/周报/case2": "恰含 2 文件：文书.docx、fields.json",
+    "out/工作总结/case2": "恰含 2 文件：文书.docx、fields.json"
+  },
+  "notes": [
+    "输入数据原样来自冻结任务集 fixtures/，未改动（缺数据不编造原则）。",
+    "run_log.json 落在工作目录，不写入 --outdir——产物目录内恰含两产物。"
+  ]
+}

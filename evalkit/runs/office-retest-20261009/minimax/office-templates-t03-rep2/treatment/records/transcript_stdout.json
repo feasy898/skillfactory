@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_806952d6-fb6f-4322-8a63-8e29725e6cd9",
+  "traceId": "4167e785-3e63-4ce4-a0f5-d02049764d51",
+  "turnId": "turn_02997fd3-8ca3-4b89-925f-71238c8ff1d8",
+  "response": "两份文书都出好了，**没有报错、没有中断，退出码都是 0**。\n\n## 交付物\n\n| 位置 | 内容 |\n|---|---|\n| `out/请示函-empty/` | `文书.docx`（36858 字节）+ `fields.json` |\n| `out/工作总结-blank/` | `文书.docx`（36893 字节）+ `fields.json` |\n| `fixtures/` | 两份输入数据（原本是空目录，按 brief 建好） |\n| `run_log.json` | 确定性对拍与运行留痕 |\n\n## 缺数据是怎么\"照实处理\"的\n\n**A（请示函，`{}` 完全空）**——8 个字段全缺失。标题成 `关于____的请示`，称谓顶格成 `____：`，请示缘由/事项两段各为 `____`，落款一 `____` 右对齐。选填的联系人/联系电话保留了标签、值留空（渲染为 `联系人：　　联系电话：`），成文日期是空段。台账记 0 filled / 8 missing，其中 5 项必填缺失。\n\n**B（工作总结，全空白）**——7 个字段全缺失。注意你给的几处\"非空壳\"值都被正确判为缺失了：`主要成绩: [\" \"]` 的单空格数组项 strip 后为空、`存在问题: \"  \"` 的两空格串 strip 后为空、`成文日期` 是全角空格 U+3000。文档里三个必填小节各留占位条目 `1．____`；**选填的\"存在问题\"整节省略了**，所以节头编号从 `二、` 直接跳到 `四、`——文中不出现 `三、存在问题`，这正是 F4 规定的省略行为。标题是 `________工作总结`（总结主体与总结时段两个占位连写，共 8 个下划线）。\n\n## 确定性对拍\n\n同一条命令连跑两遍，快照到 `--outdir` 之外逐字节比对，**四个产物 sha256 全部一致**：`文书.docx` 是整文件一致（引擎把 docx 容器时间戳归一化到 1980-01-01，我另外验证了 zip 内 17 个条目的时间戳确实全是这一个值），`fields.json` 连 `outputs` 路径键都逐字节相同。`py_compile` 0 错误，不可复现源扫描（`time(`/`random`/`uuid`/`datetime`/`now(`）0 命中，资产三件套齐全。\n\n想补数据的话，把字段填进 `fixtures/` 那两份 JSON 重跑即可覆盖产物——退出码 0、目录内仍恰含两个文件。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 23,
+    "inputTokens": 722679,
+    "outputTokens": 6818,
+    "totalTokens": 729497,
+    "cacheReadTokens": 684544,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 1001,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 729497,
+    "contextUsed": 43618,
+    "contextWindow": 200000
+  }
+}

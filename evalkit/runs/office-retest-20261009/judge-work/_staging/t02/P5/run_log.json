@@ -1,0 +1,49 @@
+{
+  "task": "青蘅茶社《秋季会员茶话会》会议通知成文（brief.md）",
+  "template": "会议通知",
+  "data_file": "qingheng_teahui.json",
+  "outdir": "out",
+  "interpreter": ".venv/bin/python（Python 3.12.3，python-docx 1.2.0，按 skill requirements.txt 安装于本地 venv）",
+  "runs": [
+    {
+      "cmd": ".venv/bin/python <SKILL_MOUNT>/scripts/gen_doc.py --template 会议通知 --data qingheng_teahui.json --outdir out",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=会议通知，标题=关于召开秋季会员茶话会的通知，字段 filled/total=11/11，必填缺失=无，模板外键=无）",
+      "snapshot": ".snap1",
+      "docx_sha256": "31ffca885af7f44cc25148e193ae8d25ca6612e14e04f2f3b17f4c7fae750d7e",
+      "docx_bytes": 37304,
+      "fields_json_sha256": "fb860340137924fa11e244222913d24207bfb7ad3892716957314d35bab136ab",
+      "fields_json_bytes": 2546
+    },
+    {
+      "cmd": ".venv/bin/python <SKILL_MOUNT>/scripts/gen_doc.py --template 会议通知 --data qingheng_teahui.json --outdir out",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=会议通知，标题=关于召开秋季会员茶话会的通知，字段 filled/total=11/11，必填缺失=无，模板外键=无）",
+      "snapshot": ".snap2",
+      "docx_sha256": "31ffca885af7f44cc25148e193ae8d25ca6612e14e04f2f3b17f4c7fae750d7e",
+      "docx_bytes": 37304,
+      "fields_json_sha256": "fb860340137924fa11e244222913d24207bfb7ad3892716957314d35bab136ab",
+      "fields_json_bytes": 2546
+    }
+  ],
+  "byte_comparison": {
+    "method": "cmp 逐字节对拍两遍旁路快照（.snap1 vs .snap2，均在 --outdir 之外）",
+    "docx": "整文件逐字节一致（cmp 无差异，两遍 sha256 相同）",
+    "fields_json": "逐字节一致（两遍 --outdir 相同，outputs 路径键亦相同，sha256 相同）",
+    "verdict": "确定性对拍通过"
+  },
+  "skill_inventory": {
+    "base_dir": "<SKILL_MOUNT>",
+    "SKILL.md": "存在（12517 字节）",
+    "scripts/gen_doc.py": "存在（19354 字节）",
+    "requirements.txt": "存在（python-docx>=1.1）",
+    "complete": true
+  },
+  "py_compile": "0 错误（.venv/bin/python -m py_compile <SKILL_MOUNT>/scripts/gen_doc.py 通过）",
+  "nonreproducible_scan": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" 于 gen_doc.py：0 命中",
+  "content_check": {
+    "title": "关于召开秋季会员茶话会的通知（符合 V2 公式 关于召开{会议名称}的通知）",
+    "fields_summary": {"total": 11, "filled": 11, "missing": 0, "missing_required_names": [], "unknown_keys": []},
+    "notes": "会议议题原文含首尾空白，按 F5 strip 后入文（台账 value 为 strip 后值）；会议要求 6 条以 1．2．3．全角点编号；称谓顶格、落款两行右对齐，均符合会议通知版式规范"
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "task": "ab5-determinism-layout-selfeval（office 重测臂 rep1）：确定性自评",
+  "date": "2026-10-09",
+  "purpose": "用完全相同的输入 fixtures/会议通知/case1.json 连续运行生成两遍到同一输出目录 out/会议通知/case1（第二遍覆盖复写第一遍），每遍后记录两产物 sha256，并对两遍产物逐字节对拍，结论记入本文件。",
+  "environment": {
+    "platform": "linux",
+    "python": "/usr/bin/python3（Python 3.12.3）",
+    "python_docx": "1.2.0",
+    "note": "PATH 上的 python3 指向 /home/pan-ding/venvs/ml/bin/python3（未装 python-docx），故显式使用系统 /usr/bin/python3（已装 python-docx 1.2.0）；未安装、未改动任何环境。"
+  },
+  "skill_inventory": {
+    "skill_root": "<SKILL_MOUNT>",
+    "entry_script": "<SKILL_MOUNT>/scripts/gen_doc.py",
+    "three_pieces_present": {
+      "SKILL.md": true,
+      "scripts/gen_doc.py": true,
+      "requirements.txt": true
+    },
+    "references_present": ["周报.md", "请示函.md", "会议通知.md", "工作总结.md"],
+    "py_compile": {
+      "command": "/usr/bin/python3 -m py_compile <SKILL_MOUNT>/scripts/gen_doc.py",
+      "exit_code": 0,
+      "errors": 0
+    },
+    "nonreproducible_source_scan": {
+      "command": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" <SKILL_MOUNT>/scripts/gen_doc.py",
+      "exit_code": 1,
+      "hits": 0,
+      "conclusion": "入口脚本 0 命中：无 time()/random/uuid/datetime/now() 等不可复现源调用。"
+    }
+  },
+  "input": {
+    "data": "fixtures/会议通知/case1.json",
+    "template": "会议通知",
+    "sha256": "89c0568932be989aff227912f06f67806ce95634034c054ac3841ac3e5a9f6b8"
+  },
+  "runs": [
+    {
+      "pass": 1,
+      "command": "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 会议通知 --data fixtures/会议通知/case1.json --outdir out/会议通知/case1",
+      "exit_code": 0,
+      "stdout": "已生成：out/会议通知/case1/文书.docx（模板=会议通知，标题=关于召开三季度质量评审会的通知，字段 filled/total=11/11，必填缺失=无，模板外键=无）",
+      "snapshot": "records/run1（旁路目录，--outdir 之外）",
+      "artifacts": {
+        "文书.docx": {
+          "sha256": "0de99668671165bbf2b33d2482e84a5f1f416a6bf063eb21e81b1f041a7d6284",
+          "bytes": 37200
+        },
+        "fields.json": {
+          "sha256": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+          "bytes": 2458
+        }
+      }
+    },
+    {
+      "pass": 2,
+      "command": "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 会议通知 --data fixtures/会议通知/case1.json --outdir out/会议通知/case1",
+      "exit_code": 0,
+      "stdout": "已生成：out/会议通知/case1/文书.docx（模板=会议通知，标题=关于召开三季度质量评审会的通知，字段 filled/total=11/11，必填缺失=无，模板外键=无）",
+      "overwrites": "同命令行、同 --outdir，第二遍覆盖复写第一遍产物",
+      "snapshot": "records/run2（旁路目录，--outdir 之外）",
+      "artifacts": {
+        "文书.docx": {
+          "sha256": "0de99668671165bbf2b33d2482e84a5f1f416a6bf063eb21e81b1f041a7d6284",
+          "bytes": 37200
+        },
+        "fields.json": {
+          "sha256": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+          "bytes": 2458
+        }
+      }
+    }
+  ],
+  "byte_comparison": {
+    "method": "每遍跑完立刻把两产物快照到 --outdir 之外的旁路目录（records/run1、records/run2），对两遍快照 cmp 逐字节对拍。",
+    "文书.docx": {
+      "cmp_command": "cmp records/run1/文书.docx records/run2/文书.docx",
+      "cmp_exit_code": 0,
+      "sha256_equal": true,
+      "size_equal": true,
+      "verdict": "一致：整文件逐字节一致，两遍 sha256 相同（0de99668…a7d6284），无任何差异字节。"
+    },
+    "fields.json": {
+      "cmp_command": "cmp records/run1/fields.json records/run2/fields.json",
+      "cmp_exit_code": 0,
+      "sha256_equal": true,
+      "size_equal": true,
+      "except_outputs_check": {
+        "method": "解析两遍 fields.json，剔除顶层 outputs 键后深度比较其余全部内容",
+        "equal": true,
+        "note": "本次两遍 --outdir 相同，outputs 路径键（out/会议通知/case1/文书.docx、out/会议通知/case1/fields.json）本就相同，故整文件即逐字节一致；剔除 outputs 后其余内容亦完全一致。"
+      },
+      "verdict": "一致：整文件逐字节一致；且满足更强口径「除 outputs 类路径键外逐字节一致」。"
+    }
+  },
+  "docx_container_check": {
+    "zip_entry_count": 17,
+    "entries_identical_between_passes": true,
+    "all_entry_timestamps": "1980-01-01 00:00:00（引擎把 docx zip 容器条目时间戳归一化为固定值，容器层无墙钟时间源）"
+  },
+  "docx_parsed_comparison": {
+    "method": "用 python-docx 解析两遍快照，逐段比对段落文本/对齐/首行缩进(firstLineChars)/右缩进/行距/段前段后/每个 run 的文本、字号、ascii 字体、eastAsia 字体，并比对页面尺寸与页边距。",
+    "parsed_identical": true,
+    "paragraph_count": 12,
+    "page": {
+      "size": "A4（21.0×29.7 cm）",
+      "margins_cm": { "top": 3.7, "bottom": 3.5, "left": 2.8, "right": 2.6 }
+    },
+    "layout_summary": [
+      "段1 标题：居中、黑体 22pt（二号）：关于召开三季度质量评审会的通知",
+      "段2 称谓：顶格（无首行缩进）：各部门、各项目组：",
+      "段3-6 正文：首行缩进两字符（firstLineChars=200）、仿宋 16pt（三号）、固定行距 28 磅：会议时间/会议地点/参会人员/会议议题",
+      "段7 节头：黑体 16pt、首行缩进两字符：一、会议要求",
+      "段8-9 条目：1．/2．全角点编号正文段",
+      "段10 联系行：联系人：李工　　联系电话：010-88886666",
+      "段11-12 落款：右对齐、右缩进 32pt：评测技术部 / 2026年9月28日"
+    ],
+    "no_wallclock_content": "两遍解析文本一致且不含生成时刻/时区等墙钟字样（文中 2026-10-09 为输入数据里的会议时间，非运行时时间）"
+  },
+  "fields_json_content_check": {
+    "template": "会议通知",
+    "title": "关于召开三季度质量评审会的通知",
+    "filled": "11/11（全部字段已填，含列表字段 会议要求 2 条）",
+    "missing_fields": [],
+    "missing_required_names": [],
+    "unknown_keys": [],
+    "note": "输入为完整数据，无缺失、无模板外键；title 与 V2 标题公式「关于召开{会议名称}的通知」一致。"
+  },
+  "outdir_check": {
+    "path": "out/会议通知/case1",
+    "entries": ["文书.docx", "fields.json"],
+    "exactly_two_artifacts": true
+  },
+  "conclusion": {
+    "byte_identical": true,
+    "verdict": "一致：同输入（fixtures/会议通知/case1.json）连跑两遍——文书.docx 整文件逐字节一致（两遍 sha256 相同）；fields.json 整文件逐字节一致，且满足「除 outputs 类路径键外逐字节一致」口径；docx 解析后的段落文本/对齐/缩进/字体/行距完全一致；输出目录恰含 文书.docx 与 fields.json 两产物；正文与容器层均无当前时间、随机内容等不可复现源（入口脚本 grep 扫描 0 命中，zip 条目时间戳归一化为 1980-01-01）。确定性自评通过。",
+    "difference_note": "无差异。"
+  },
+  "artifacts_left_in_place": {
+    "outdir": "out/会议通知/case1/（文书.docx、fields.json）",
+    "run_log": "run_log.json（本文件，落在工作目录，未写入 --outdir）",
+    "snapshots": "records/run1/、records/run2/（两遍快照）、records/verify_determinism.json（解析级对拍明细）"
+  }
+}

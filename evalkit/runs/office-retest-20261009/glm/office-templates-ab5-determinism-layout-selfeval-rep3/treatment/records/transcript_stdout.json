@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_6e5d2d27-aac4-4153-b47d-606c9d1bb236",
+  "traceId": "426be8a7-a0a6-4558-a7b6-b4cc5c6744e4",
+  "turnId": "turn_1c67bc55-c588-4927-bed6-7b58372a18ba",
+  "response": "任务完成，确定性自评结论为**一致**：同一输入连跑两遍，两个产物均整文件逐字节相同。\n\n**执行过程**（引擎采用臂内 office-templates 技能 1.0.1 的 `scripts/gen_doc.py`，Python 3.12.3 + python-docx 1.2.0）：\n\n- 用完全相同的命令行 `--template 会议通知 --data fixtures/会议通知/case1.json --outdir out/会议通知/case1` 连跑两遍（第二遍覆盖复写第一遍），两遍均 exit 0，快照分别存至 `records/run1/`、`records/run2/`（在 outdir 之外）。\n- 两遍产物 sha256 完全相等：`文书.docx` 均为 `0de99668…a7d6284`（37200 字节），`fields.json` 均为 `6c67eef5…009589f`（2458 字节）；`cmp` 逐字节对拍均 exit 0。\n\n**对拍证据**（均已写入 `run_log.json`）：\n\n- `fields.json`：整文件逐字节一致；按协议剔除 `outputs` 路径键后比对亦一致（本例两遍 outdir 相同，路径键本就相同）。\n- `文书.docx`：整文件逐字节一致；python-docx 解析后 12 段逐段深度比对——段落文本、对齐（标题居中、落款右对齐）、首行缩进（正文 `firstLineChars=200`）、字体（黑体 22pt 标题/仿宋 16pt 正文 + Times New Roman）、固定行距 28 磅、页面设置（A4、GB/T 9704 版心）——两遍完全一致；zip 容器全部条目时间戳均归一化为 1980-01-01，无墙钟/随机源。\n- 附加自评：入口脚本 `py_compile` 0 错误；`grep -E \"time\\(|random|uuid|datetime|now\\(\"` 0 命中；SKILL.md / gen_doc.py / requirements.txt 三件套齐全；输出目录恰含两产物。\n\n**留存的交付物**：`out/会议通知/case1/`（`文书.docx` + `fields.json`，11/11 字段全填、无缺失无模板外键）、两遍快照 `records/run1/`、`records/run2/`、以及工作目录下的 `run_log.json`（含两遍命令行原文、退出码、逐产物 sha256/字节数与对拍结论，环境说明一并在案）。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 20,
+    "inputTokens": 731453,
+    "outputTokens": 12956,
+    "totalTokens": 744409,
+    "cacheReadTokens": 697984,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 7371,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 744409,
+    "contextUsed": 49209,
+    "contextWindow": 200000
+  }
+}

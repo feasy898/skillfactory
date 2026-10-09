@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_b9156d20-3f8c-45fd-822f-1d55e64a00af",
+  "traceId": "2b058e59-7e44-419e-a7dd-a132b03a83ff",
+  "turnId": "turn_b6c6b239-d756-49d5-a9cc-a2ded0279f70",
+  "response": "`verdict.json` is written and validated: six keys, each with only `total` and `evidence`, every evidence string within the 150-character cap.\n\n**Scores: P1 7.0, P2 7.5, P3 7.0, P4 5.0, P5 4.5, P6 5.0.**\n\nWhat drove them:\n\n**P1/P2/P3 (7.0 / 7.5 / 7.0)** — byte-identical products, so their rubric-2 and rubric-4 scores match by construction. All four titles are centered 黑体 22pt (二号) and equal `fields.json.title`; 请示函 and 会议通知 称谓 are 顶格 (no first-line indent); body paragraphs carry `firstLineChars=200` + 仿宋 16pt (三号) + `spacing=355600` EMU, which is exactly 28pt fixed; 落款 paragraphs are `align=RIGHT`. Their `fields.json` has the full seven top-level keys and a six-key `summary`, with `filled=total` at 7/7, 8/8, 11/11, 7/7 and empty `unknown_keys`/`missing_required_names`. Each carries a `run_log.json` recording eight exit-0 invocations, two-run sha256 equality per template, and that each `out/<模板>/case1` holds exactly two products.\n\nP2 edges out the other two by 0.5 on rubric 3: its run_log contains a `layout_check` line attesting A4 21×29.7cm with 3.7/3.5/2.8/2.6cm margins. P1 and P3 have no page-geometry evidence at all, and no product has a `_replay_facts.json` in the staged directory despite the ab5 protocol note pointing at one, so rubric 3 and 4 rest on artifact content and run_log text alone.\n\n**P4 (5.0)** — title font is 宋体 rather than 黑体, and body indent is `firstLineIndent=406400` with `firstLineChars=None`, so the mandated `firstLineChars=200` attribute is absent (visually equivalent two-char indent, but the rubric names the specific attribute). Its own ledger text says 落款 右空四字, contradicting the rubric's 右空两字. Its `fields.json` top level is only `title/template/fields/summary` and `summary` lacks `missing_required`, `missing_required_names`, `unknown_keys`, so rubric 4's \"键集合恰为\" fails even though the counts are correct and self-consistent. No run_log.\n\n**P6 (5.0)** — same schema shortfall as P4 plus the `firstLineChars` gap, offset by correct 355600/28pt spacing; title font 方正小标宋简体 rather than 黑体.\n\n**P5 (4.5)** — the weakest. It has correct `firstLineChars=200` and 仿宋_GB2312 16pt, but `spacing=367665` EMU ≈ 28.95pt, not the required 28pt, and its 请示函 title run contains a hard line break, so the extracted title text differs from `fields.json.title` (which has no break). Its titles also prepend the issuing unit beyond the rubric's example formula. Same `fields.json` key-set shortfall, no run_log.\n\nTwo caveats worth flagging. First, the rubric asks for 黑体 for titles, while GB/T 9704 itself specifies 小标宋 for 公文 titles — P5 and P6 used 方正小标宋简体, which I scored as a deviation because the frozen rubric text says 黑体, not because it is wrong per the standard. Second, `右空两字` is invisible in every extract format supplied, since the extracts capture alignment but not right-side indent, so no product earned full credit on that sub-element; P4 was additionally penalized because its own ledger contradicts the rubric on it.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 21,
+    "inputTokens": 1136680,
+    "outputTokens": 19356,
+    "totalTokens": 1156036,
+    "cacheReadTokens": 1060201,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 2625,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1156036,
+    "contextUsed": 77770,
+    "contextWindow": 200000
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab2-boundary-missing-required-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 62365,
+  "started_at_ms": 1791490775694,
+  "session_id": "sess_8f6d77a7-cdc5-4c63-b6b6-e135ac71fbc0",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab2-boundary-missing-required-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 570458,
+      "ot": 7432,
+      "dur": 44929,
+      "n": 20
+    }
+  ],
+  "input_tokens": 570458,
+  "output_tokens": 7432,
+  "stdout_bytes": 3356,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "成 `____：`（仍顶格、全角冒号收尾），正文段为 `____`，联系行为 `联系人：李工　　联系电话：`（标签保留、值留空），落款 `评测技术部` 右对齐，第二行因成文日期缺失成空段。文中 `____` 恰出现 2 处，与必填缺失数一致。\\n\\n会议通知（`fixtures/会议通知/case2.json`）输入 8 键，`会议地点` 为空字符串判缺失，`会议名称`/`会议议题`/`会议要求`/`联系人`/`联系电话` 键不存在，`备注` 为模板外键。台账记为：必填缺失 `会议名称`、`会议地点`；选填缺失 `会议议题`、`会议要求`、`联系人`、`联系电话`；`unknown_keys=[\\\"备注\\\"]`；filled 5/11。文中标题为 `关于召开____的通知`，`会议地点：____` 占位，选填列表小节「会议要求」整节省略（正文无节头、无「一、」编号），联系行两标签均留空。`会议要求` 未被误记为必填。\\n\\n**版式未被缺数据破坏**：两例标题居中、称谓顶格无首行缩进、末个非空段落款右对齐且右缩进 32pt、页边距 3.7/3.5/2.8/2.6 cm，逐条实测通过。\\n\\n**确定性**：以完全相同的命令行连跑两遍到同一 `--outdir`，每遍跑完立即把两产物快照到 `.verify/pass1`、`.verify/pass2`。四件产物两遍 sha256 完全相同，`diff -r` 无差异，逐字节一致。`py_compile` 退出 0，入口脚本 `time(|random|uuid|datetime|now(` 扫描 0 命中。\\n\\n**留痕文件**（均写在工作目录，未污染产物目录）：`run_log.json` 记录两遍命令行原文与退出码、四件产物 sha256 与字节数、逐字节对拍结论、三件套盘点、py_compile 结果与不可复现源扫描；`verify.py` 是可复跑的核对脚本（`.venv/bin/python verify.py`，EXIT=0）。\\n\\n两点如实说明：系统 pip 走 PEP 668 externally-managed，无法直接装 python-docx，故在臂目录内建了 `.venv` 并用它安装 `requirements.txt`；`.verify/` 是对拍旁路快照目录，若需保持臂目录极简可删，但 `run_log.json` 中的 sha256 数据不依赖它。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 20,\n    \"inputTokens\": 570458,\n    \"outputTokens\": 7432,\n    \"totalTokens\": 577890,\n    \"cacheReadTokens\": 533988,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 947,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 577890,\n    \"contextUsed\": 37354,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "ab2-boundary-missing-required",
+  "rep": 3,
+  "slot": 11
+}

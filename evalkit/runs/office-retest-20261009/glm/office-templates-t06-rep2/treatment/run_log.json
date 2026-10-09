@@ -1,0 +1,51 @@
+{
+  "task": "t06-rep2 周报成文（屿光咖啡营运部 计雨时 2026年10月第2周）",
+  "template": "周报",
+  "data_file": "yuguang_week.json",
+  "interpreter": "/usr/bin/python3 (3.12.3, python-docx 1.2.0)",
+  "runs": [
+    {
+      "cmd": "/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data yuguang_week.json --outdir out/",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=周报，标题=屿光咖啡营运部工作周报，字段 filled/total=6/7，必填缺失=无，模板外键=无）",
+      "snapshot": ".verify/run1/"
+    },
+    {
+      "cmd": "/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data yuguang_week.json --outdir out/",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=周报，标题=屿光咖啡营运部工作周报，字段 filled/total=6/7，必填缺失=无，模板外键=无）",
+      "snapshot": ".verify/run2/"
+    }
+  ],
+  "artifacts": {
+    "文书.docx": {
+      "sha256_run1": "f3b0481d63eb72cf37517fd8626481a371a489af82833be6b650d1a3beb52845",
+      "sha256_run2": "f3b0481d63eb72cf37517fd8626481a371a489af82833be6b650d1a3beb52845",
+      "bytes": 37229
+    },
+    "fields.json": {
+      "sha256_run1": "10fef22eafd07efbb480a2e59dc5023613682dcf398b7d330ebd2c8eea7d3700",
+      "sha256_run2": "10fef22eafd07efbb480a2e59dc5023613682dcf398b7d330ebd2c8eea7d3700",
+      "bytes": 1930
+    }
+  },
+  "byte_compare": {
+    "文书.docx": "两遍整文件逐字节一致（cmp 通过，sha256 相等）",
+    "fields.json": "两遍整文件逐字节一致（cmp 通过，sha256 相等）",
+    "conclusion": "确定性对拍 PASS"
+  },
+  "package_inventory": {
+    "SKILL.md": "present",
+    "scripts/gen_doc.py": "present",
+    "requirements.txt": "present",
+    "py_compile": "0 errors (exit 0)",
+    "nonrepro_source_scan": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" 入口脚本 0 命中",
+    "docx_container_timestamps": "全部 zip 条目 1980-01-01（归一化，无时间源）"
+  },
+  "layout_check": {
+    "title": "居中 黑体 22pt「屿光咖啡营运部工作周报」",
+    "body": "仿宋 16pt，firstLineChars=200 共 10 段",
+    "落款": "右对齐、右缩进 32pt（两字）「报送日期：」"
+  },
+  "missing_data_note": "报送日期缺失：按 F2 选填缺失处理，落款保留标签、值留空，fields.json 记 status=missing/rendered_as=留空（渲染为空字符串）。用户要求从正文挑日期补落款，正文日期（10月9/10/11/18/20日）均为事项日期而非实际报送日，属编造字段值，违反技能「缺数据不编造」原则，未执行；待用户提供真实报送日期后重跑即可填充。"
+}

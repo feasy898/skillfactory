@@ -1,0 +1,111 @@
+{
+  "tool": "x_ab5_replay.py",
+  "adjudication": "planning/test-cards-20261008/ab5-protocol-adjudication.md（9827318）",
+  "started_at": "2026-10-09T08:52:33+0800",
+  "interpreter": "<REPOROOT>/.venv-dev/bin/python",
+  "dist_package": "dist/office-templates-skill",
+  "runner_redgreen": {
+    "green": {
+      "exit_code": 0,
+      "ok": true,
+      "checks_total": 68,
+      "checks_passed": 68
+    },
+    "red": {
+      "exit_code": 1,
+      "units_found_pass": false,
+      "units_found_detail": "被测根 /tmp/ab5red-gaqv5vn2：缺单元 ['周报/case1', '周报/case2', '请示函/case1', '请示函/case2', '会议通知/case1', '会议通知/case2', '工作总结/case1', '工作总结/case2']；多余产物单元 无（期望恰 8 个）"
+    }
+  },
+  "delivered_units": [
+    ".snapshots/run1",
+    ".snapshots/run2",
+    "out/会议通知/case1"
+  ],
+  "determinism_replay": {
+    "run_log_present": true,
+    "commands_extracted": 2,
+    "extraction_notes": [
+      "drop-env:PYTHONPATH=$PWD/.deps",
+      "default-script:<SKILL_MOUNT>/scripts/gen_doc.py"
+    ],
+    "replayed_command": [
+      "<REPOROOT>/.venv-dev/bin/python",
+      "<ARMROOT>/<SKILL_MOUNT>/scripts/gen_doc.py",
+      "--template",
+      "会议通知",
+      "--data",
+      "fixtures/会议通知/case1.json",
+      "--outdir",
+      "out/会议通知/case1"
+    ],
+    "outdir": "out/会议通知/case1",
+    "run1_exit": 0,
+    "run2_exit": 0,
+    "run1_files": {
+      "fields.json": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+      "文书.docx": "0de99668671165bbf2b33d2482e84a5f1f416a6bf063eb21e81b1f041a7d6284"
+    },
+    "run2_files": {
+      "fields.json": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+      "文书.docx": "0de99668671165bbf2b33d2482e84a5f1f416a6bf063eb21e81b1f041a7d6284"
+    },
+    "compare_run1_vs_run2": {
+      "fields.json": {
+        "sha_run1": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+        "sha_run2": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+        "byte_identical": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+        "equal_modulo_outputs": true
+      },
+      "文书.docx": {
+        "sha_run1": "0de99668671165bbf2b33d2482e84a5f1f416a6bf063eb21e81b1f041a7d6284",
+        "sha_run2": "0de99668671165bbf2b33d2482e84a5f1f416a6bf063eb21e81b1f041a7d6284",
+        "byte_identical": "0de99668671165bbf2b33d2482e84a5f1f416a6bf063eb21e81b1f041a7d6284",
+        "parsed_layout_identical": true
+      }
+    },
+    "delivered_sha256": {
+      ".snapshots/run1": {
+        "fields.json": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+        "文书.docx": "0de99668671165bbf2b33d2482e84a5f1f416a6bf063eb21e81b1f041a7d6284"
+      },
+      ".snapshots/run2": {
+        "fields.json": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+        "文书.docx": "0de99668671165bbf2b33d2482e84a5f1f416a6bf063eb21e81b1f041a7d6284"
+      },
+      "out/会议通知/case1": {
+        "fields.json": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+        "文书.docx": "0de99668671165bbf2b33d2482e84a5f1f416a6bf063eb21e81b1f041a7d6284"
+      }
+    }
+  },
+  "runner_delivered": {
+    "exit_code": 1,
+    "ok": false,
+    "delivered_unit_ids": [
+      ".snapshots/run1",
+      ".snapshots/run2",
+      "会议通知/case1"
+    ],
+    "unit_scoped_checks": {},
+    "unit_scoped_all_pass": true,
+    "units_found_note": "单任务臂交付恰含本任务单元；runner 的 units_found/products_exact 按 8 单元全集口径在臂上下文记 N/A（裁决端态口径：以交付单元实质检查+单元限定一致率为准，不放宽、不错判）",
+    "agreement_detail": "字段填充一致率 0.0%（0/66，阈值 90%）；不一致: 周报/case1/部门; 周报/case1/填报人; 周报/case1/周期; 周报/case1/本周工作内容; 周报/case1/下周工作计划; 周报/case1/问题与需协调事项; 周报/case1/报送日期; 周报/case2/部门; 周报/case2/填报人; 周报/case2/周期…",
+    "unit_scoped_agreement": {
+      ".snapshots/run1": {
+        "error": "[Errno 2] No such file or directory: '<REPOROOT>/dist/office-templates-skill/reference/out/.snapshots/run1/fields.json'"
+      },
+      ".snapshots/run2": {
+        "error": "[Errno 2] No such file or directory: '<REPOROOT>/dist/office-templates-skill/reference/out/.snapshots/run2/fields.json'"
+      },
+      "会议通知/case1": {
+        "matched": 11,
+        "total": 11,
+        "rate": 1.0,
+        "ge_90pct": true,
+        "mismatched_fields": []
+      }
+    }
+  },
+  "finished_at": "2026-10-09T08:52:38+0800"
+}

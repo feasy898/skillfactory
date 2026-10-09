@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t07-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 64076,
+  "started_at_ms": 1791493604503,
+  "session_id": "sess_5ec8afb9-0517-4408-a781-dbc94a4bdcfd",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t07-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 705920,
+      "ot": 9166,
+      "dur": 52353,
+      "n": 22
+    }
+  ],
+  "input_tokens": 705920,
+  "output_tokens": 9166,
+  "stdout_bytes": 4053,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " |\\n| 下周工作计划 | ❌ `____` | `下一步工作打算`「引入损耗周报机制」是季度规划，不是下周计划 |\\n| 问题与需协调事项（选填） | ❌ 整节省略 | `存在问题` 是季度复盘口径，且不是\\\"需协调事项\\\"定性；如果你确认\\\"偏远门店物流损耗偏高\\\"本周仍成立，可以自己补进去 |\\n\\n## 为什么没给你凑齐\\n\\n你担心的\\\"到处是空占位没法看\\\"，代价是这份周报会变成一份不真实的公文：季度36 场杯测写成某一周干了 36 场、季度92% 闭环率写成某一周的周指标。这类数字对内对外都是要被追的，而 `____` 至少是诚实的——它明确在说\\\"这里缺数据，请补\\\"。技能的硬约束也是\\\"缺数据不编造\\\"，所以我把 4 个必填缺失如实记进了台账（`summary.missing_required_names`），而不是拿季度口径硬凑。\\n\\n## 补齐只需改一处\\n\\n把下面 4 个键加进 `周报数据.json`，重跑同一条命令覆盖 `out/` 即可：\\n\\n```bash\\npython3 .zcode/skills/office-templates/scripts/gen_doc.py \\\\\\n  --template 周报 --data 周报数据.json --outdir out\\n```\\n\\n要补的：`填报人`、`周期`（本周日期区间，如「2026年10月6日—10月9日」）、`本周工作内容`（本周实际做的事）、`下周工作计划`（下周实际安排）。补完给我数据，我跑一遍就好。\\n\\n## 留痕\\n\\n`run_log.json` 记了完整过程：字段映射逐条理由、两遍确定性对拍（两遍 `文书.docx` 与 `fields.json` sha256 完全相同、逐字节一致，docx 整文件 36940 字节、fields.json 2003 字节）、`py_compile` 0 错误、不可复现源扫描 0 命中。另注意一个环境事项：本机默认 `python3` 是 `venvs/ml` 下的解释器，sys.path 里没有 python-docx，我是用 `PYTHONPATH=/home/pan-ding/.local/lib/python3.12/site-packages` 解析到 python-docx 1.2.0 跑的（直接 `pip install` 被 PEP 668 拒绝，未改动任何环境）。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 22,\n    \"inputTokens\": 705920,\n    \"outputTokens\": 9166,\n    \"totalTokens\": 715086,\n    \"cacheReadTokens\": 663949,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1769,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 715086,\n    \"contextUsed\": 43056,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "t07",
+  "rep": 2,
+  "slot": 47
+}

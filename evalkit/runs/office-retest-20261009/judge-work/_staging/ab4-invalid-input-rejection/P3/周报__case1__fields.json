@@ -1,0 +1,55 @@
+{
+  "template": "周报",
+  "title": "周报",
+  "source": "fixtures/周报/case1.json",
+  "case": "case1",
+  "artifacts": [
+    "文书.docx",
+    "fields.json"
+  ],
+  "fields": [
+    {
+      "key": "部门",
+      "label": "部门",
+      "present": true,
+      "value": "研发部"
+    },
+    {
+      "key": "填报人",
+      "label": "填报人",
+      "present": true,
+      "value": "王小明"
+    },
+    {
+      "key": "周期",
+      "label": "周期",
+      "present": true,
+      "value": "2026-09-21 至 2026-09-27"
+    },
+    {
+      "key": "本周工作内容",
+      "label": "本周工作内容",
+      "present": true,
+      "value": "完成打分器 v0.9 与评测台联调；修复评测集 3 处标注不一致问题"
+    },
+    {
+      "key": "下周工作计划",
+      "label": "下周工作计划",
+      "present": true,
+      "value": "启动回归测试全量跑批；输出周度质量报告初稿"
+    },
+    {
+      "key": "问题与需协调事项",
+      "label": "问题与需协调事项",
+      "present": true,
+      "value": "测试机资源紧张，需协调一台 GPU 机器"
+    },
+    {
+      "key": "报送日期",
+      "label": "报送日期",
+      "present": true,
+      "value": "2026-09-28"
+    }
+  ],
+  "missing_fields": []
+}

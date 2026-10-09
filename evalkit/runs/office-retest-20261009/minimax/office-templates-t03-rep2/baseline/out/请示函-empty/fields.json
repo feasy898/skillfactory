@@ -1,0 +1,106 @@
+{
+  "schema": "office-doc-fields/1",
+  "template_id": "qingshi",
+  "template_name": "请示函",
+  "source_input": "fixtures/qingshi_empty.json",
+  "output_dir": "out/请示函-empty",
+  "artifacts": {
+    "docx": "文书.docx"
+  },
+  "input_shape": {
+    "top_level_keys": [],
+    "key_count": 0
+  },
+  "blank_policy": {
+    "whitespace_treated_as_blank": true,
+    "whitespace_chars": [
+      "U+0020",
+      "U+3000",
+      "U+00A0",
+      "U+0009-000D",
+      "U+2000-200A",
+      "U+FEFF"
+    ],
+    "placeholder_format": "【字段名】",
+    "on_missing_key": "render 【字段名】 placeholder; never abort",
+    "on_blank_string": "render 【字段名】 placeholder",
+    "on_empty_or_all_blank_list": "render a single 【字段名】 placeholder paragraph",
+    "on_unusable_type": "render 【字段名】 placeholder; record status=invalid",
+    "no_fabrication": "no issuing body, date, subject or figure was invented"
+  },
+  "field_count": 5,
+  "status_counts": {
+    "filled": 0,
+    "blank": 0,
+    "missing": 5,
+    "invalid": 0
+  },
+  "fields": [
+    {
+      "key": "发文机关",
+      "placeholder": "【发文机关名称】",
+      "status": "missing",
+      "present_in_input": false,
+      "input_type": null,
+      "raw": null,
+      "raw_repr": "None",
+      "raw_codepoints": [],
+      "rendered": "【发文机关名称】",
+      "template_slot": "标题（发文机关）"
+    },
+    {
+      "key": "请示事项",
+      "placeholder": "【请示事项名称】",
+      "status": "missing",
+      "present_in_input": false,
+      "input_type": null,
+      "raw": null,
+      "raw_repr": "None",
+      "raw_codepoints": [],
+      "rendered": "【请示事项名称】",
+      "template_slot": "标题（事由）"
+    },
+    {
+      "key": "主送机关",
+      "placeholder": "【主送机关名称】",
+      "status": "missing",
+      "present_in_input": false,
+      "input_type": null,
+      "raw": null,
+      "raw_repr": "None",
+      "raw_codepoints": [],
+      "rendered": "【主送机关名称】",
+      "template_slot": "主送机关"
+    },
+    {
+      "key": "请示事由",
+      "placeholder": "【请示事由与事项说明】",
+      "status": "missing",
+      "present_in_input": false,
+      "input_type": null,
+      "raw": null,
+      "raw_repr": "None",
+      "raw_codepoints": [],
+      "rendered": "【请示事由与事项说明】",
+      "template_slot": "正文"
+    },
+    {
+      "key": "成文日期",
+      "placeholder": "【成文日期】",
+      "status": "missing",
+      "present_in_input": false,
+      "input_type": null,
+      "raw": null,
+      "raw_repr": "None",
+      "raw_codepoints": [],
+      "rendered": "【成文日期】",
+      "template_slot": "成文日期"
+    }
+  ],
+  "notes": [
+    "输入为字面空对象 {}，模板全部槽位均无对应键，status 全为 missing。",
+    "按公文文种固有要素保留「妥否，请批示。」结语；该句属文种格式，未虚构任何事实。",
+    "未添加红头、发文字号、版记（brief 未要求红头格式）。",
+    "正文页边距按 GB/T 9704 公文版式（上 3.7/下 3.5/左 2.8/右 2.6 cm），字体 小标宋(宋体加粗)标题 / 黑体一级标题 / 仿宋正文 三号，固定行距 28 磅。"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t03-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 60425,
+  "started_at_ms": 1791492374428,
+  "session_id": "sess_1ea749f4-289e-4b45-aed1-344243def880",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t03-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 627159,
+      "ot": 6007,
+      "dur": 45504,
+      "n": 23
+    }
+  ],
+  "input_tokens": 627159,
+  "output_tokens": 6007,
+  "stdout_bytes": 3796,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "ory, with each pass snapshotted to a side directory outside the product folder and then compared byte for byte. All four artifacts matched exactly — `文书.docx` for A hashes to `ca2b46fd…` in both passes, B to `f635b5f5…`, and both `fields.json` files are identical too. `py_compile` on the entry script returned 0 errors, and the scan for non-reproducible sources (`time(`, `random`, `uuid`, `datetime`, `now(`) returned zero hits.\\n\\nTwo environment notes recorded in `run_log.json`: the `venvs/ml` interpreter does not have user site-packages mounted, so `import docx` fails there — I used the system `/usr/bin/python3`, which has python-docx 1.2.0. This affects the interpreter choice only, not the engine or the outputs. The log also records each product directory containing exactly the two expected files.\\n\\nFull evidence, including per-field ledger summaries and the exact reasoning for the skipped section, is written to `run_log.json` in the working directory (kept outside the product directories, per the skill's contract).\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 23,\n    \"inputTokens\": 627159,\n    \"outputTokens\": 6007,\n    \"totalTokens\": 633166,\n    \"cacheReadTokens\": 597504,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 961,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 633166,\n    \"contextUsed\": 35089,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

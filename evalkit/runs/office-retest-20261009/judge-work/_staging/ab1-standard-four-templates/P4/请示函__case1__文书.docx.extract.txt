@@ -1,0 +1,9 @@
+EXTRACT OF 请示函__case1__文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=431800 runs=[关于采购评测用 GPU 服务/宋体/22.0] text=关于采购评测用 GPU 服务器的请示
+P001 align=None firstLineChars=None firstLineIndent=None spacing=355600 runs=[公司总经理办公会：/仿宋/16.0] text=公司总经理办公会：
+P002 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[因评测规模扩大，现有设备无法/仿宋/16.0] text=因评测规模扩大，现有设备无法满足批量推理需求，评测周期被迫拉长。
+P003 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[申请采购 V100S 服务器/仿宋/16.0] text=申请采购 V100S 服务器 2 台，预算 12 万元，本月内完成到货验收。
+P004 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[妥否，请批示。/仿宋/16.0] text=妥否，请批示。
+P005 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[评测技术部/仿宋/16.0] text=评测技术部
+P006 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[2026年9月28日/仿宋/16.0] text=2026年9月28日
+P007 align=None firstLineChars=None firstLineIndent=None spacing=355600 runs=[（联系人：李工，联系电话：0/仿宋/16.0] text=（联系人：李工，联系电话：010-88886666）

@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab1-standard-four-templates-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 298222,
+  "started_at_ms": 1791490694457,
+  "session_id": "sess_7cbcb6f0-72b0-4f4c-8bb4-bb5c463e15d1",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab1-standard-four-templates-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 784499,
+      "ot": 24474,
+      "dur": 282004,
+      "n": 21
+    }
+  ],
+  "input_tokens": 784499,
+  "output_tokens": 24474,
+  "stdout_bytes": 3025,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "ger**: top-level `title`/`template`/`fields`/`summary`; every field records 名称、是否必填、状态、值（verbatim from the fixture — cross-checked against the source JSONs）、渲染方式 (where/how it renders). Case 1 data is fully complete, so all ledgers show `missing: 0` (周报 7/7, 请示函 8/8, 会议通知 11/11, 工作总结 7/7 filled).\\n- **No-fabrication policy**: verified via a /tmp drill stripping required fields (部门、报送日期) and an optional one (下周工作计划) from a copy — required-missing rendered as `____` placeholders, the optional section was omitted entirely with downstream section numbering shifted honestly, and the ledger reported `filled=4 missing=3 total=7`. The drill ran outside the deliverable tree, which remains clean.\\n- **Verification** confirms per unit: exactly two artifacts, ledger structure and count consistency, verbatim value fidelity to fixtures, A4 + GB/T margins (within twip-rounding tolerance, max deviation 0.009mm), title paragraph matching the ledger, and every fixture value (list items included) present in the rendered document text.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 21,\n    \"inputTokens\": 784499,\n    \"outputTokens\": 24474,\n    \"totalTokens\": 808973,\n    \"cacheReadTokens\": 748800,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 16239,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 808973,\n    \"contextUsed\": 51610,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "ab1-standard-four-templates",
+  "rep": 3,
+  "slot": 10
+}

@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_7bc19dfa-aa67-42f5-a4e2-ecdbde792044",
+  "traceId": "e4cc7941-a2fc-4178-b04b-8240ae102088",
+  "turnId": "turn_ac8c790f-64fe-4c03-9d5e-8903111fb242",
+  "response": "Both documents are generated and verified. Nothing errored out, and every unfilled field is rendered honestly as a placeholder rather than being invented or dropped.\n\n## What I built\n\nThis arm is `baseline` in an A/B run (`baseline_has_skill: false` — no `office-templates` skill is mounted), and `fixtures/` shipped empty, so I wrote the generation pipeline myself as `gen_doc.py`. It follows the CLI contract `--template <请示函|工作总结> --data <json> --outdir <dir>`, emits exactly `文书.docx` + `fields.json`, and never raises on degenerate input — bad JSON, an empty file, a top-level array, and type mismatches all degrade to placeholders with the reason recorded in `fields.json`'s `data_errors` / `coerced_from`. I deliberately did **not** read the treatment skill or any other arm's outputs, so this arm stays uncontaminated for the A/B comparison.\n\nData files were written per the brief: `fixtures/qingshi_empty.json` is literally `{}`, and `fixtures/zongjie_blank.json` carries the seven keys with their whitespace-only values (including the full-width space U+3000 in 成文日期), which the normalizer strips.\n\n## Deliverables\n\n`out/请示函-empty/` — title 「关于____的请示」, body 「____：」 → 「现就____有关事项请示如下：」 → 「一、____」 → 「妥否，请批示。」, with a right-aligned signature block 「____」 / 「____年__月__日」. Ledger: 4 required missing, 1 optional missing, 0 unknown keys.\n\n`out/工作总结-blank/` — title 「____（____年__月）工作总结」, sections 「一、工作回顾」「二、主要成绩」「三、下一步工作打算」, each with a single placeholder item 「1．____」, and the same right-aligned signature block. Ledger: 5 required missing, 2 optional missing, 0 unknown keys.\n\n## Key handling decisions\n\n空列表与纯空白项一律按缺失处理：`主要成绩` was `[\" \"]`, so it renders as one 「1．____」 placeholder rather than an empty numbered line, and the dropped item is counted in the ledger. The optional section 存在问题 is omitted from the body entirely — its heading does not appear — but is still recorded in `missing_optional` with `required: false` and listed in `omitted_sections`, so the ledger and the rendered text agree about what happened. Section numbering renumbers over rendered sections only, which is why 下一步工作打算 lands at 「三、」. The signature block stays right-aligned despite the empty date and missing主体, so layout is not broken.\n\n## Verification\n\n`verify.py` passes with exit 0: both unit directories contain exactly the two artifacts, both docx files open, required/missing/optional/unknown lists match expectations, no field is marked missing while holding a value, and title-centered plus two right-aligned signature paragraphs are present. I also rendered both documents to PNG via LibreOffice and inspected them — layout is clean 公文 style with no overflow or broken spacing. A separate stress sweep over 8 degenerate input/template combinations produced zero crashes. Render artifacts are left in `.render/` as evidence; the deliverables are in place under `out/`.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 35,
+    "inputTokens": 1167937,
+    "outputTokens": 16868,
+    "totalTokens": 1184805,
+    "cacheReadTokens": 1108992,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 1973,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1184805,
+    "contextUsed": 47175,
+    "contextWindow": 200000
+  }
+}

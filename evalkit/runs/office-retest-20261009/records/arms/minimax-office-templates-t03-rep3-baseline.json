@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t03-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 118025,
+  "started_at_ms": 1791492254382,
+  "session_id": "sess_f4d0be8c-7c1d-41be-abe8-167770aaa3be",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t03-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 705365,
+      "ot": 12280,
+      "dur": 89298,
+      "n": 24
+    }
+  ],
+  "input_tokens": 705365,
+  "output_tokens": 12280,
+  "stdout_bytes": 4437,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "st-line indent, aligned numbered items, right-aligned signature block, even margins, no clipping and no missing-glyph boxes. I made one layout fix on that pass, adding the conventional blank line between the closing body line and the 落款 block, then regenerated and re-verified.\\n\\nFinal layout in `baseline/`:\\n\\n```\\nfixtures/qingshi_empty.json, fixtures/zongjie_blank.json\\ngen_doc.py              generation flow\\nverify.py               self-check (118/118, exit 0)\\nrun_log.json            per-task generation record\\nout/请示函-empty/        文书.docx + fields.json\\nout/工作总结-blank/      文书.docx + fields.json\\n.render/                per-document PDF + page PNGs\\n```\\n\\nOne note for whoever consumes this: `gen_doc.py` and `verify.py` need `python-docx`, which I installed into a throwaway venv at `/tmp/docxenv` because the system Python is PEP 668 externally-managed. If these scripts are re-run later in a fresh environment, they need `python3 -m venv` + `pip install python-docx` first, or an interpreter that already has it.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 24,\n    \"inputTokens\": 705365,\n    \"outputTokens\": 12280,\n    \"totalTokens\": 717645,\n    \"cacheReadTokens\": 647680,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1168,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 717645,\n    \"contextUsed\": 40348,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "t03",
+  "rep": 3,
+  "slot": 32
+}

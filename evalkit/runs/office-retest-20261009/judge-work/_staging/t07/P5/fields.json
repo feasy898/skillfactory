@@ -1,0 +1,144 @@
+{
+  "run": "minimax/office-templates-t07-rep2/baseline",
+  "template": "周报",
+  "source_file": "yuguang_q3.json",
+  "source_period": "2026年第三季度（2026-07-01 至 2026-09-30，季度累计口径）",
+  "source_subject": "屿光咖啡品控组",
+  "source_doc_date": "2026年10月9日",
+  "mismatch": {
+    "detected": true,
+    "type": "period_and_unit_mismatch",
+    "detail": "输入材料为季度工作总结（7 个字段，时长约 3 个月，全部数值为季度累计口径）；要求的模板是周报（单周口径）。两者在统计周期与统计单位上均不一致，无法逐字段直接搬用。",
+    "resolution": "按可核对的方式落表：凡源数据有的字段照录原文，凡属季度口径的字段在同格内显式标注【季度累计口径】并注明不可当作本周数；源数据确实没有的字段（个人填报人、需协调支持事项）不编造，改为可执行的待补充条目。"
+  },
+  "fabrication_policy": {
+    "invented_business_facts": 0,
+    "invented_people": 0,
+    "invented_dates": 0,
+    "note": "唯一非源数据取值是由成文日期 2026-10-09 推算的自然周（2026-10-05 至 2026-10-11，ISO 第 41 周），已标注为推算值并列入待核对清单；未对任何季度数值做按周折算（如未将 36 场折为约 8 场/周）。"
+  },
+  "status_legend": {
+    "from_source": "源数据有对应字段，原文照录",
+    "from_source_caliber_labeled": "源数据有对应字段，但为季度口径，已在文内显式标注口径",
+    "derived_pending_confirm": "由源数据推算得出，需业务方确认",
+    "needs_user_input": "源数据无此项，未编造，需业务方填写"
+  },
+  "fields": [
+    {
+      "name": "报告主体",
+      "value": "屿光咖啡品控组",
+      "status": "from_source",
+      "source_key": "总结主体"
+    },
+    {
+      "name": "填报人",
+      "value": null,
+      "display": "待补充（源数据仅给出部门，未给出个人填报人）",
+      "status": "needs_user_input",
+      "source_key": null,
+      "ask": "请填写本周填报人姓名。"
+    },
+    {
+      "name": "报告周期",
+      "value": "2026-10-05 至 2026-10-11",
+      "display": "2026-10-05（周一）至 2026-10-11（周日），暂按成文日期所在自然周推算",
+      "status": "derived_pending_confirm",
+      "source_key": "成文日期",
+      "derivation": "成文日期 2026-10-09 为星期五（ISO 8601 第 41 周第 5 天），所在自然周为 2026-10-05 至 2026-10-11。",
+      "ask": "源数据只给出第三季度范围，未给出周次，请确认本期周报实际覆盖的起止日期。"
+    },
+    {
+      "name": "本周工作完成情况",
+      "value": null,
+      "display": "【季度累计口径】完成季度杯测 36 场；处理客诉工单 58 单。上述为 2026 年第三季度累计数，非本周数，源数据未提供本周逐项数据，故未拆分。",
+      "status": "from_source_caliber_labeled",
+      "source_key": "工作回顾",
+      "source_values": ["完成季度杯测 36 场", "处理客诉工单 58 单"],
+      "ask": "若需按周口径填报，请提供本周杯测场次与本周新增客诉工单量。"
+    },
+    {
+      "name": "本周主要成绩",
+      "value": null,
+      "display": "【季度累计口径】客诉 48 小时闭环率提升至 92%。该指标为第三季度末水平，非本周新增改善。",
+      "status": "from_source_caliber_labeled",
+      "source_key": "主要成绩",
+      "source_values": ["客诉 48 小时闭环率提升至 92%"],
+      "ask": "若需按周口径填报，请提供本周 48 小时闭环率的周度读数。"
+    },
+    {
+      "name": "本周存在问题",
+      "value": "偏远门店物流损耗偏高",
+      "display": "偏远门店物流损耗偏高。（源数据未提供本周新发现的问题，此处沿用第三季度已记录项。）",
+      "status": "from_source_caliber_labeled",
+      "source_key": "存在问题",
+      "source_values": ["偏远门店物流损耗偏高"],
+      "ask": "请确认本周是否沿用该问题，或有本周新增问题需要补充。"
+    },
+    {
+      "name": "下周工作计划",
+      "value": "引入损耗周报机制",
+      "display": "引入损耗周报机制。（源数据列为第三季度既定计划；若本周已启动或已完成，请据实更新。）",
+      "status": "from_source_caliber_labeled",
+      "source_key": "下一步工作打算",
+      "source_values": ["引入损耗周报机制"]
+    },
+    {
+      "name": "需要协调支持事项",
+      "value": null,
+      "display": "待补充（源数据未涉及此项）",
+      "status": "needs_user_input",
+      "source_key": null,
+      "ask": "本周是否需要上级或其他部门协调支持？如有请具体写明事项与需求方。"
+    },
+    {
+      "name": "填报日期",
+      "value": "2026年10月9日",
+      "status": "from_source",
+      "source_key": "成文日期"
+    }
+  ],
+  "coverage": {
+    "total_fields": 9,
+    "from_source": 2,
+    "from_source_caliber_labeled": 4,
+    "derived_pending_confirm": 1,
+    "needs_user_input": 2
+  },
+  "needs_input": [
+    {
+      "field": "填报人",
+      "ask": "本周填报人姓名",
+      "blocking": false
+    },
+    {
+      "field": "报告周期",
+      "ask": "本期周报实际覆盖的起止日期（当前为按成文日期推算值）",
+      "blocking": true
+    },
+    {
+      "field": "本周工作完成情况",
+      "ask": "本周杯测场次、本周新增客诉工单量（当前仅有第三季度累计数）",
+      "blocking": true
+    },
+    {
+      "field": "本周主要成绩",
+      "ask": "本周客诉 48 小时闭环率的周度读数（当前仅有第三季度末 92%）",
+      "blocking": false
+    },
+    {
+      "field": "本周存在问题",
+      "ask": "本周是否有新增问题（当前沿用第三季度记录项）",
+      "blocking": false
+    },
+    {
+      "field": "需要协调支持事项",
+      "ask": "本周需协调支持的具体事项（源数据未涉及）",
+      "blocking": false
+    }
+  ],
+  "unused_source_keys": [],
+  "warnings": [
+    "季度数值（36 场、58 单、92%）为 3 个月累计或季度末水平，直接填入周报会被读成本周数据。文档内已逐格标注【季度累计口径】，请勿在未取得周度原始数据前删除该标注。",
+    "报告周期为推算值：成文日期 2026-10-09 落在 2026-10-05 至 2026-10-11。若本期周报实际指上一个完整周（2026-09-28 至 2026-10-04），需整体替换该字段。"
+  ]
+}

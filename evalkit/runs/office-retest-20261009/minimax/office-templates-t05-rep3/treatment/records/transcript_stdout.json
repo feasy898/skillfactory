@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_577f9f36-0766-4fb2-9f8b-f6edc2f14679",
+  "traceId": "1e85c71c-c00d-4501-b561-3aa9258acdb0",
+  "turnId": "turn_74a6f845-8b1a-45a2-a543-f906a25dd0b5",
+  "response": "请示函已生成完毕，8 个字段全部填入，无缺失、无占位符、无模板外键，产物可逐字节复现。\n\n## 交付物（均在工作目录下）\n\n- `out/文书.docx` — 37,143 字节，sha256 `fd1bb9e3…`\n- `out/fields.json` — 字段填充台账，1,972 字节，sha256 `233f18b2…`\n- `lanshan_miji.json` — 简报中的数据 JSON，已按原文保存\n- `run_log.json` — 确定性对拍与自检留痕\n\n## 文书正文（7 段，与技能版式规范逐条核对通过）\n\n```\n关于购置档案密集架的请示的请示          ← 居中，黑体 22pt\n澜山物业管理有限公司：                 ← 顶格，无首行缩进\n综合管理部档案室现用木制档案柜已达使用年限，且2025年新增业委会档案214卷，存储空间严重不足。\n申请购置手摇式档案密集架4组，预算3.6万元，列入本年度固定资产。\n联系人：皮之常　　联系电话：0571-8812-3456\n                                    澜山物业综合管理部   ← 右对齐\n                                    2026年10月12日\n```\n\n页面为 A4，页边距上 3.7 / 下 3.5 / 左 2.8 / 右 2.6 cm；正文段首行缩进两字符、仿宋 16pt、固定行距 28 磅；落款右对齐右缩进两字。\n\n## 一处需要你定夺的文案问题\n\n标题渲染成了「关于**购置档案密集架的请示**的请示」——「的请示」出现了两次。原因是模板的标题公式固定为 `关于{请示事由}的请示`，而你给的「请示事由」取值本身已经带了「的请示」三个字。我按技能的\"缺数据不编造、也不擅自改写用户数据\"原则保留了原文，没有自行把字段改成「购置档案密集架」。如果想要常规标题，把该字段改为「购置档案密集架」后重跑一次即可；如果你更倾向保留完整事由，那现在的产物就是引擎的忠实输出。\n\n## 复现性与自检结果\n\n以完全相同的命令行连跑两遍到同一 `out`（第二遍覆盖第一遍），每遍跑完立即快照到 `out` 之外的旁路目录再对拍：`文书.docx` 整文件逐字节一致（`cmp` 无差异，sha256 相同），`fields.json` 除 `outputs` 路径键外一致。另外 `py_compile` 入口脚本 0 错误，不可复现源扫描（`time(`/`random`/`uuid`/`datetime`/`now(`）0 命中，docx 容器内所有 zip 条目时间戳均为固定值 1980-01-01 00:00。\n\n需要说明的是，环境默认的 `python3` 指向 `/home/pan-ding/venvs/ml` 这个虚拟环境，其中没有 python-docx；我改用了已装好 python-docx 1.2.0 的 `/usr/bin/python3.12` 运行，这一选择已如实记入 `run_log.json`。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 19,
+    "inputTokens": 501217,
+    "outputTokens": 5281,
+    "totalTokens": 506498,
+    "cacheReadTokens": 469275,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 819,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 506498,
+    "contextUsed": 32831,
+    "contextWindow": 200000
+  }
+}

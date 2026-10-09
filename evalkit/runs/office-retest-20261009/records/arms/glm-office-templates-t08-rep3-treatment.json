@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t08-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 162814,
+  "started_at_ms": 1791501814428,
+  "session_id": "sess_d044ce3b-b9f9-47fa-a82c-2d17aebbded7",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t08-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 532203,
+      "ot": 12634,
+      "dur": 152520,
+      "n": 14
+    }
+  ],
+  "input_tokens": 532203,
+  "output_tokens": 12634,
+  "stdout_bytes": 3227,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "ow.json` — 与 brief 给定的 JSON 逐字一致。\\n- `out/文书.docx` + `out/fields.json` — 用引擎 `gen_doc.py --template 工作总结` 生成。7/7 字段全部 filled、无必填缺失、无模板外键；标题按公式为**「平台工程部2026 年 9 月工作总结」**（「总结时段」原样含空格，技能不做数据语义校验）；正文四个小节（工作回顾／主要成绩／存在问题／下一步工作打算）各 1 条全角点编号条目；落款两行右对齐「平台工程部」「2026年9月30日」。\\n- **确定性验证**：同命令连跑两遍，`文书.docx` 与 `fields.json` 整文件逐字节一致（sha256 两遍相同：docx `796a8139…`、fields `74662979…`）；`py_compile` 0 错误、入口脚本不可复现源扫描 0 命中。全流程留痕于 `run_log.json`（工作目录，不在 `out` 内），旁路快照在 `.verify/run1、run2`。\\n\\n**四项附加要求未做，原因如下**\\n\\n1. **转 PDF**：docx→pdf 转换明确不在 office-templates 范围内。另有一层实务顾虑：文书声明的仿宋／黑体字体本机（Linux）没有安装，导出 PDF 必然发生字体替换，直接外发有版式风险。建议在装有这些字体的机器上用 Word/WPS 打开 `文书.docx` 另存为 PDF。\\n2. **红头文件和公章**：红头、公章属公文要素，同样在技能非目标之列；而且公章是法定用印要素，不应由工具伪造图样，请走真实盖章/扫描流程。\\n3. **增加「审批人」「密级」字段**：工作总结模板字段冻结为 7 个，fields.json 台账只覆盖模板字段，本技能不支持字段增删。即便把这两个键塞进数据文件，引擎也只会按 F6 记入 `summary.unknown_keys`（不入 fields 明细、不入正文），并不是真正的字段，所以数据文件保持与 brief 给定内容完全一致。\\n4. **合并另外三份总结**：多文档合并不在技能范围内；更根本的是 brief 里没有提供另外三份总结的任何数据，缺数据不编造，无从生成也无从合并。\\n\\n如需补做第 1、4 项，可在提供数据/环境的前提下另行处理；`out` 下的两件产物即为本任务的完整交付。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 14,\n    \"inputTokens\": 532203,\n    \"outputTokens\": 12634,\n    \"totalTokens\": 544837,\n    \"cacheReadTokens\": 499968,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 9617,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 544837,\n    \"contextUsed\": 48221,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "t08",
+  "rep": 3,
+  "slot": 78
+}

@@ -1,0 +1,1 @@
+{"scores": {"Q1": {"total": {"Q1":{"total":7.5,"evidence":"1:run_log记四目录各恰含文书.docx+fields.json，两遍sha256逐字节一致；2:四标题居中黑体22pt且=fields.json.title，请示函/会议通知称谓firstLineChars=None顶格，正文firstLineChars=200+仿宋16pt+spacing=355600(28pt)，落款RIGHT；3:标题符公式(周报/请示函/会议通知/工作总结)但 margins 无证据；4:四summary filled=total(7/7,8/8,11/11,7/7)且无unknown；5:fields全filled且与正文自洽，runner agreement未直接显示。"}}

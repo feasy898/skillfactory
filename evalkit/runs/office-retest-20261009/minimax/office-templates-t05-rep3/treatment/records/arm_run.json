@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t05-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 46413,
+  "started_at_ms": 1791493037128,
+  "session_id": "sess_577f9f36-0766-4fb2-9f8b-f6edc2f14679",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t05-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 501217,
+      "ot": 5281,
+      "dur": 36418,
+      "n": 19
+    }
+  ],
+  "input_tokens": 501217,
+  "output_tokens": 5281,
+  "stdout_bytes": 3346,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "    ← 居中，黑体 22pt\\n澜山物业管理有限公司：                 ← 顶格，无首行缩进\\n综合管理部档案室现用木制档案柜已达使用年限，且2025年新增业委会档案214卷，存储空间严重不足。\\n申请购置手摇式档案密集架4组，预算3.6万元，列入本年度固定资产。\\n联系人：皮之常　　联系电话：0571-8812-3456\\n                                    澜山物业综合管理部   ← 右对齐\\n                                    2026年10月12日\\n```\\n\\n页面为 A4，页边距上 3.7 / 下 3.5 / 左 2.8 / 右 2.6 cm；正文段首行缩进两字符、仿宋 16pt、固定行距 28 磅；落款右对齐右缩进两字。\\n\\n## 一处需要你定夺的文案问题\\n\\n标题渲染成了「关于**购置档案密集架的请示**的请示」——「的请示」出现了两次。原因是模板的标题公式固定为 `关于{请示事由}的请示`，而你给的「请示事由」取值本身已经带了「的请示」三个字。我按技能的\\\"缺数据不编造、也不擅自改写用户数据\\\"原则保留了原文，没有自行把字段改成「购置档案密集架」。如果想要常规标题，把该字段改为「购置档案密集架」后重跑一次即可；如果你更倾向保留完整事由，那现在的产物就是引擎的忠实输出。\\n\\n## 复现性与自检结果\\n\\n以完全相同的命令行连跑两遍到同一 `out`（第二遍覆盖第一遍），每遍跑完立即快照到 `out` 之外的旁路目录再对拍：`文书.docx` 整文件逐字节一致（`cmp` 无差异，sha256 相同），`fields.json` 除 `outputs` 路径键外一致。另外 `py_compile` 入口脚本 0 错误，不可复现源扫描（`time(`/`random`/`uuid`/`datetime`/`now(`）0 命中，docx 容器内所有 zip 条目时间戳均为固定值 1980-01-01 00:00。\\n\\n需要说明的是，环境默认的 `python3` 指向 `/home/pan-ding/venvs/ml` 这个虚拟环境，其中没有 python-docx；我改用了已装好 python-docx 1.2.0 的 `/usr/bin/python3.12` 运行，这一选择已如实记入 `run_log.json`。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 19,\n    \"inputTokens\": 501217,\n    \"outputTokens\": 5281,\n    \"totalTokens\": 506498,\n    \"cacheReadTokens\": 469275,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 819,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 506498,\n    \"contextUsed\": 32831,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

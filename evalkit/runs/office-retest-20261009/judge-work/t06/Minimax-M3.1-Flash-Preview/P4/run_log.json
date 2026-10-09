@@ -1,0 +1,42 @@
+{
+  "task": "office-templates-t06-rep1/baseline — 屿光咖啡营运部周报成文（brief.md）",
+  "date": "2026-10-09",
+  "template": "周报",
+  "data_file": "yuguang_week.json",
+  "data_note": "brief 数据 6 字段原样 + 报送日期=2026年10月11日（brief 指示从正文挑日期补落款：正文最近完成工作日为 10月11日月度盘点差异复核，即 2026年10月第2周（10月5日周一—10月11日周日）末日；10月18/20日为下周截止日不宜作报送日）",
+  "commands": [
+    {
+      "run": 1,
+      "cmd": ".venv/bin/python gen_doc.py --template 周报 --data yuguang_week.json --outdir out",
+      "exit": 0,
+      "stdout": "已生成：out/文书.docx（模板=周报，标题=屿光咖啡营运部工作周报，字段 filled/total=7/7，必填缺失=无，模板外键=无）"
+    },
+    {
+      "run": 2,
+      "cmd": ".venv/bin/python gen_doc.py --template 周报 --data yuguang_week.json --outdir out",
+      "exit": 0,
+      "stdout": "已生成：out/文书.docx（模板=周报，标题=屿光咖啡营运部工作周报，字段 filled/total=7/7，必填缺失=无，模板外键=无）"
+    }
+  ],
+  "snapshots": {
+    "run1": {"文书.docx": {"sha256": "d4e5b37708af09da5a44946ba9198974b10fb2fb0077c17909209c0df2f27d80", "bytes": 37232}, "fields.json": {"sha256": "f477cad51e7b5e6207069c664b2b808e77c7343e0aae26fb86f948e0238ad8f1", "bytes": 1884}},
+    "run2": {"文书.docx": {"sha256": "d4e5b37708af09da5a44946ba9198974b10fb2fb0077c17909209c0df2f27d80", "bytes": 37232}, "fields.json": {"sha256": "f477cad51e7b5e6207069c664b2b808e77c7343e0aae26fb86f948e0238ad8f1", "bytes": 1884}}
+  },
+  "byte_compare": {"文书.docx": "一致（cmp 退出码 0，两遍 sha256 相同）", "fields.json": "一致（cmp 退出码 0，两遍 sha256 相同）"},
+  "engine": {
+    "entry": "gen_doc.py",
+    "source": "assets/office-templates-skill/scripts/gen_doc.py（技能 v1.0.1 打包口径，逐字节拷贝至本目录运行）",
+    "skill_files": {"SKILL.md": "在 assets/office-templates-skill/SKILL.md", "scripts/gen_doc.py": "已拷贝", "requirements.txt": "已拷贝"},
+    "py_compile": "0 错误",
+    "nondeterminism_scan": "grep -nE 'time\\(|random|uuid|datetime|now\\(' gen_doc.py → 0 命中"
+  },
+  "environment": {"python": "3.12（.venv）", "python-docx": ">=1.1（pip 安装于 .venv）"},
+  "outputs": {"docx": "out/文书.docx", "fields_json": "out/fields.json"},
+  "fields_summary": {"total": 7, "filled": 7, "missing": 0, "missing_required": 0, "unknown_keys": []},
+  "visual_gate": {
+    "render": "soffice --headless docx→pdf→pdftoppm PNG（110dpi），单页 .render/page-1.png",
+    "verdict": {"page": 1, "result": "fail", "pass_points": ["标题居中黑体、三小节 3+2+1 条目全角编号、28 磅固定行距（实测 43px@110dpi）、落款右对齐右缩进两字（右缘 x≈742 vs 正文 x≈797）、全部内容与数据一致"], "issue": "LibreOffice 渲染页未见首行缩进"},
+    "diagnosis": "docx 按冻结口径 V4 声明 w:firstLineChars=\"200\"（Word/WPS 字符单位缩进标准机制，随字号缩放）；LibreOffice 导入不读该字符单位属性（已知互操作缺口，与仿宋/黑体被替换为 Noto Sans 同类环境性差异）。像素实测复核：仅 firstLineChars 时正文行首 x≈122（顶格）；补数值回退 w:firstLine=640（=32pt=三号两字符）后行首 x≈171（+49px≈32pt@110dpi），机制坐实。",
+    "resolution": "维持官方冻结引擎产物不改（Word/WPS 及报表系统解析口径下缩进在位；技能文档明示『写入 XML 即达标』）。诊断证据留存 .render/diag/patched-1.png，产物 out/ 未触碰。"
+  }
+}

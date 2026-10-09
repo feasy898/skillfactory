@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_a127b43f-584a-4c94-b754-0f3e7202f1e3",
+  "traceId": "679b36a5-7104-4218-aaf2-6126d801aeba",
+  "turnId": "turn_646d97c9-a9c7-4bfa-9ee6-051c1f3815fd",
+  "response": "任务完成。四类模板的公文产物已全部生成并通过终检。\n\n## 交付结果\n\n**产物树**（`out/<模板>/case1/` 四个单元目录，各恰含 `文书.docx` 与 `fields.json` 两产物，终检 PASS）：\n\n| 模板 | 标题 | 字段台账 |\n|---|---|---|\n| 周报 | 研发部工作周报 | filled 7/7 |\n| 请示函 | 关于采购评测用 GPU 服务器的请示 | filled 8/8 |\n| 会议通知 | 关于召开三季度质量评审会的通知 | filled 11/11 |\n| 工作总结 | 评测技术部2026年第三季度工作总结 | filled 7/7 |\n\n四份 fixtures 字段齐全，因此全部 filled、无必填缺失占位、无模板外键；每份 `fields.json` 顶层含 title、fields 明细（名称/必填/kind/状态/值）与 summary（filled/missing/total 等计数，`filled+missing=total` 自洽断言通过）。\n\n## 实现与验证\n\n- **实现方式**：调用工作目录内的 `office-templates` 技能引擎（`.zcode/skills/office-templates/scripts/gen_doc.py`），按 brief 的命令行契约 `--template/--data/--outdir` 逐类生成，四条命令均退出码 0。环境上有一个坑：PATH 的 `python3` 是 venv 解释器且无 docx，改用系统 `/usr/bin/python3`（3.12.3 + python-docx 1.2.0，满足 requirements）。\n- **版式核验**：四份 docx 均为 A4、GB/T 9704 版心边距（上3.7/下3.5/左2.8/右2.6 cm），标题居中黑体二号、正文仿宋三号、首行缩进两字符（`w:firstLineChars=200`）、28 磅固定行距、称谓顶格（请示函/会议通知）、落款右对齐、小节「一、」+ 条目「1．」——段落结构与各 references 规范逐段一致。\n- **确定性对拍**：同命令连跑两遍覆盖复写，旁路快照（`.verify/snap1`、`.verify/snap2`，在产物目录之外）逐字节对拍——8 个产物 sha256 两遍全部相同，整文件逐字节一致（docx 容器时间戳已归一化为 1980-01-01）；入口脚本 `py_compile` 0 错误，时间/随机源扫描 0 命中。\n- **留痕**：`run_log.json`（落在工作目录、不进产物目录）完整记录两遍命令行与退出码、各产物 sha256/字节数、对拍结论、三件套盘点与上述自检结果。\n\n所有交付物已就位：`out/`（8 个产物）、`run_log.json`、`.verify/`（对拍证据快照）。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 22,
+    "inputTokens": 756089,
+    "outputTokens": 10849,
+    "totalTokens": 766938,
+    "cacheReadTokens": 724224,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 5621,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 766938,
+    "contextUsed": 47602,
+    "contextWindow": 200000
+  }
+}

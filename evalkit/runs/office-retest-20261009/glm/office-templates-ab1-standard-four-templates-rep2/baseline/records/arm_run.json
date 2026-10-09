@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab1-standard-four-templates-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 382432,
+  "started_at_ms": 1791490149735,
+  "session_id": "sess_e8a61caf-240c-47a2-b900-e8b2a9f8d683",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab1-standard-four-templates-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1101089,
+      "ot": 27509,
+      "dur": 320852,
+      "n": 29
+    }
+  ],
+  "input_tokens": 1101089,
+  "output_tokens": 27509,
+  "stdout_bytes": 3221,
+  "stderr_bytes": 980,
+  "stderr_head": "AI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\n",
+  "stdout_tail": "    --data fixtures/周报/case1.json     --outdir out/周报/case1\\npython3 gen_doc.py --template 请示函   --data fixtures/请示函/case1.json   --outdir out/请示函/case1\\npython3 gen_doc.py --template 会议通知 --data fixtures/会议通知/case1.json --outdir out/会议通知/case1\\npython3 gen_doc.py --template 工作总结 --data fixtures/工作总结/case1.json --outdir out/工作总结/case1\\n```\\n\\n**fields.json 记账**：顶层含 title / fields（每字段：名称、必填、状态、值、渲染方式）/ summary。四份 fixture 字段齐全，summary 分别为 周报 7/0/7、请示函 8/0/8、会议通知 11/0/11、工作总结 7/0/7（filled/missing/total），所有 filled 值与 fixture 逐字段原样一致，无编造。\\n\\n**GB/T 9704 风格**：A4 版面，页边距上 37/下 35/左 28/右 26 mm；大标题 2 号宋体居中（如《关于采购评测用 GPU 服务器的请示》），正文 3 号仿宋、固定行距 28pt、首行缩进 2 字，一级小节 3 号黑体，落款右空 4 字，附注（联系人/电话）左空 2 字加圆括号，页脚「— 1 —」页码。周报含编号小节与填报落款；请示函含主送机关顶格与「妥否，请批示。」格式套语；会议通知含一~五条黑体标签事项；工作总结含四节编号条目。\\n\\n**验证情况**：① 四个单元目录文件集合恰为两产物；② fields.json 结构、计数、逐字段值与 fixture 一致性、docx 页面/边距参数全部断言通过；③ 额外在 /tmp 做了缺数据边界用例（必填缺失以 `____` 占位、选填缺失整节省略、missing 如实记 null，summary 3/4/7），用后已清理；④ LibreOffice 渲染四页 PNG 交 documents:visual-judge 验收，4/4 pass（版式、字体层次、落款、页码、无裁切乱码）。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 29,\n    \"inputTokens\": 1101089,\n    \"outputTokens\": 27509,\n    \"totalTokens\": 1128598,\n    \"cacheReadTokens\": 1058880,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 18887,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1128598,\n    \"contextUsed\": 57638,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

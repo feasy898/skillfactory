@@ -1,0 +1,19 @@
+[Advisor consultation #1]
+[Advisor review]
+
+你已完成分析，结论准确。Q1 产物在所有维度上均满足满分档要求，未触发任何判挂点。可直接输出满分 verdict JSON。请确保证据摘要 ≤150 字，维度名与 rubric 逐字一致。
+[End of advisor consultation #1]
+
+{
+  "scores": {
+    "P1": {
+      "total": 10.0,
+      "dims": {
+        "正确性（unknown 序列+正文无污染）": 1.0,
+        "完整性（选填三形态渲染）": 1.0,
+        "可验证性（计数自洽）": 1.0
+      },
+      "evidence": "unknown_keys逐项等于期望序列；extract.txt正文无unknown污染。P005会议议题标签后为空（F2）；无会议要求小节（F4）；P006联系人标签后为空且电话有值。summary.total=11/filled=8/missing=3/missing_required_names=[]，与filled/missing fields明细一致。"
+    }
+  }
+}

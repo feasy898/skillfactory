@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_7cbcb6f0-72b0-4f4c-8bb4-bb5c463e15d1",
+  "traceId": "210c9acb-750b-463b-b335-097b925dca86",
+  "turnId": "turn_5380abd9-0168-4dd2-9fb5-f24b1b05c44d",
+  "response": "Task complete — all four GB/T 9704-style documents generated and verified. **VERIFY PASS: 52/52 checks green** across the four unit directories.\n\n**Deliverables** (all in the baseline directory):\n- `out/周报/case1/`、`out/请示函/case1/`、`out/会议通知/case1/`、`out/工作总结/case1/` — each containing exactly `文书.docx` + `fields.json`\n- `gen_doc.py` — the generator, honoring the CLI contract `--template <周报|请示函|会议通知|工作总结> --data <json> --outdir <dir>`\n- `verify.py` — the delivery self-check\n- `.venv/` — local venv with python-docx (system Python is PEP-668 managed, so no system packages were touched)\n\n**How the requirements were met:**\n- **GB/T 9704 layout**: A4 with 37/35/28/26mm margins, 二号小标宋 centered title, 三号仿宋_GB2312 body with 2-character first-line indent, exact 28pt line pitch (22 lines/page), 三号黑体 section headings, right-aligned signature block indented 2 characters from the right. Genre structure per template: 请示函 has 顶格主送机关 + 「妥否，请批示。」; 会议通知 uses 黑体-labeled numbered items + 「特此通知。」; 周报/工作总结 use numbered sections with signature lines.\n- **fields.json ledger**: top-level `title`/`template`/`fields`/`summary`; every field records 名称、是否必填、状态、值（verbatim from the fixture — cross-checked against the source JSONs）、渲染方式 (where/how it renders). Case 1 data is fully complete, so all ledgers show `missing: 0` (周报 7/7, 请示函 8/8, 会议通知 11/11, 工作总结 7/7 filled).\n- **No-fabrication policy**: verified via a /tmp drill stripping required fields (部门、报送日期) and an optional one (下周工作计划) from a copy — required-missing rendered as `____` placeholders, the optional section was omitted entirely with downstream section numbering shifted honestly, and the ledger reported `filled=4 missing=3 total=7`. The drill ran outside the deliverable tree, which remains clean.\n- **Verification** confirms per unit: exactly two artifacts, ledger structure and count consistency, verbatim value fidelity to fixtures, A4 + GB/T margins (within twip-rounding tolerance, max deviation 0.009mm), title paragraph matching the ledger, and every fixture value (list items included) present in the rendered document text.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 21,
+    "inputTokens": 784499,
+    "outputTokens": 24474,
+    "totalTokens": 808973,
+    "cacheReadTokens": 748800,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 16239,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 808973,
+    "contextUsed": 51610,
+    "contextWindow": 200000
+  }
+}

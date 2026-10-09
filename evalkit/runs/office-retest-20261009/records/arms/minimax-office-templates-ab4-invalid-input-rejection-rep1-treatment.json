@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 57593,
+  "started_at_ms": 1791490927697,
+  "session_id": "sess_7da5ce8b-9ba0-4c13-94d1-07ea7673df31",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 741215,
+      "ot": 8923,
+      "dur": 47613,
+      "n": 23
+    }
+  ],
+  "input_tokens": 741215,
+  "output_tokens": 8923,
+  "stdout_bytes": 3896,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " does contain Chinese and the skill's own §7 specifies argparse for this case specifically, so I recorded it as a pass with that caveat noted explicitly in `run_log.json` rather than silently.\\n\\nI ran the full six-call sequence twice with identical commands and diffed the results: byte-identical, so the rejection behavior and products reproduce across runs. Only exit codes 0 and 2 appeared, with no tracebacks.\\n\\nOne environment note: this shell's default `python3` is from `venvs/ml`, which has no `python-docx`. The already-installed 1.2.0 lives in the user site-packages, so probes ran with `PYTHONPATH` pointing there. Full commands including that context are recorded verbatim in each case's `command_full`.\\n\\nDeliverables left in place: `run_log.json` (six groups with full command, exit code, stdout, stderr, Chinese-error check, residue check, plus product hashes for the control case, repeat-run diff, and verdict), the control products at `out/周报/case1/`, and the probe harness with its raw snapshots under `.probe/`.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 23,\n    \"inputTokens\": 741215,\n    \"outputTokens\": 8923,\n    \"totalTokens\": 750138,\n    \"cacheReadTokens\": 698251,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1406,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 750138,\n    \"contextUsed\": 43900,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "ab4-invalid-input-rejection",
+  "rep": 1,
+  "slot": 13
+}

@@ -1,0 +1,92 @@
+{
+  "task": "office 重测臂 ab3-empty-and-string-lists（rep1）：周报/case2 + 工作总结/case2 列表字段边界",
+  "engine": ".zcode/skills/office-templates/scripts/gen_doc.py",
+  "interpreter": "/usr/bin/python3 3.12.3（python-docx 1.2.0，用户 site-packages）",
+  "runs": [
+    {
+      "run": 1,
+      "commands": [
+        {
+          "cmd": "/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data fixtures/周报/case2.json --outdir out/周报/case2",
+          "exit_code": 0
+        },
+        {
+          "cmd": "/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 工作总结 --data fixtures/工作总结/case2.json --outdir out/工作总结/case2",
+          "exit_code": 0
+        }
+      ],
+      "snapshot": ".verify/run1/",
+      "artifacts": {
+        "周报/文书.docx": {"sha256": "c28537f4df72bfc1ff4a756830dbe9e8478d19de60c789e87ba982b656587c2b", "bytes": 36961},
+        "周报/fields.json": {"sha256": "b1062eadfa83ce7c8d6e669ea28923efa5f522d241f79f9a57865dc1d159a173", "bytes": 1800},
+        "工作总结/文书.docx": {"sha256": "638393a01b20a238d090619bd2863437a3b35cdfec8a53ac27baee1f18e87940", "bytes": 36963},
+        "工作总结/fields.json": {"sha256": "428c066bb49d15d45b0d87b2f6c2d036ff7d2b9e365c8aa63dee79c68f367ec6", "bytes": 1867}
+      }
+    },
+    {
+      "run": 2,
+      "commands": [
+        {
+          "cmd": "/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data fixtures/周报/case2.json --outdir out/周报/case2",
+          "exit_code": 0
+        },
+        {
+          "cmd": "/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 工作总结 --data fixtures/工作总结/case2.json --outdir out/工作总结/case2",
+          "exit_code": 0
+        }
+      ],
+      "snapshot": ".verify/run2/",
+      "artifacts": {
+        "周报/文书.docx": {"sha256": "c28537f4df72bfc1ff4a756830dbe9e8478d19de60c789e87ba982b656587c2b", "bytes": 36961},
+        "周报/fields.json": {"sha256": "b1062eadfa83ce7c8d6e669ea28923efa5f522d241f79f9a57865dc1d159a173", "bytes": 1800},
+        "工作总结/文书.docx": {"sha256": "638393a01b20a238d090619bd2863437a3b35cdfec8a53ac27baee1f18e87940", "bytes": 36963},
+        "工作总结/fields.json": {"sha256": "428c066bb49d15d45b0d87b2f6c2d036ff7d2b9e365c8aa63dee79c68f367ec6", "bytes": 1867}
+      }
+    }
+  ],
+  "byte_compare": {
+    "method": "cmp 逐字节对拍 .verify/run1/ 与 .verify/run2/ 同名产物",
+    "result": "一致",
+    "details": {
+      "周报/文书.docx": "IDENTICAL",
+      "周报/fields.json": "IDENTICAL",
+      "工作总结/文书.docx": "IDENTICAL",
+      "工作总结/fields.json": "IDENTICAL"
+    },
+    "note": "命令行完全相同（含相同 --outdir），fields.json 的 outputs 路径键亦一致，故两产物均整文件逐字节一致（含 docx 容器时间戳归一化为 1980-01-01）"
+  },
+  "inventory": {
+    "SKILL.md": "存在",
+    "scripts/gen_doc.py": "存在",
+    "requirements.txt": "存在"
+  },
+  "py_compile": {"cmd": "/usr/bin/python3 -m py_compile .zcode/skills/office-templates/scripts/gen_doc.py", "result": "0 错误"},
+  "non_reproducible_source_scan": {
+    "cmd": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" .zcode/skills/office-templates/scripts/gen_doc.py",
+    "result": "0 命中"
+  },
+  "semantic_verification": {
+    "周报/case2": {
+      "title": "____工作周报（居中黑体 22pt，部门缺失以____占位）",
+      "基本信息行": "填报人：赵倩　　周期：____（周期空字符串按必填缺失占位）",
+      "小节一": "一、本周工作内容 + 1．____（空数组按必填缺失渲染占位条目，节头保留）",
+      "小节二": "二、下周工作计划 + 1．整理缺陷清单并分派责任人",
+      "小节三": "问题与需协调事项选填缺失→整节省略，正文无「三、」节头",
+      "落款": "报送日期：2026-09-28（右对齐）",
+      "fields.json": "filled 3/7，missing 4（部门/周期/本周工作内容/问题与需协调事项），missing_required_names=[部门, 周期, 本周工作内容]，本周工作内容 rendered_as=以____占位条目，问题与需协调事项 rendered_as=省略该条目/小节（required=false）"
+    },
+    "工作总结/case2": {
+      "title": "____2026年9月工作总结（居中黑体 22pt，总结主体缺失以____占位）",
+      "小节一": "一、工作回顾 + 1．完成评测平台月度巡检（字符串型列表单项化，fields.json 值为单元素数组 [\"完成评测平台月度巡检\"]）",
+      "小节二": "二、主要成绩 + 1．____（空数组按必填缺失渲染占位条目，节头保留）",
+      "小节三": "存在问题选填缺失→整节省略，正文无「三、」节头",
+      "小节四": "四、下一步工作打算 + 1．制定四季度评测排期",
+      "落款": "落款一 ____（右对齐，主体缺失占位）；落款二空段（成文日期选填缺失，末个非空段仍右对齐）",
+      "fields.json": "filled 3/7，missing 4（总结主体/主要成绩/存在问题/成文日期），missing_required_names=[总结主体, 主要成绩]，工作回顾 value=[\"完成评测平台月度巡检\"]，成文日期 rendered_as=留空（渲染为空字符串）（required=false）"
+    }
+  },
+  "unit_dirs_final_state": {
+    "out/周报/case2": ["文书.docx", "fields.json"],
+    "out/工作总结/case2": ["文书.docx", "fields.json"]
+  }
+}

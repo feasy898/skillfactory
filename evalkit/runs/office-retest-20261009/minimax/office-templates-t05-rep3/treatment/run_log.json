@@ -1,0 +1,85 @@
+{
+  "task": "office-templates 请示函成文（澜山物业综合管理部 档案密集架请示）",
+  "date": "2026-10-09",
+  "interpreter": "/usr/bin/python3.12（环境默认 python3=/home/pan-ding/venvs/ml/bin/python3 无 python-docx；/usr/bin/python3.12 已装 python-docx 1.2.0，依赖已满足 requirements.txt）",
+  "data_file": "lanshan_miji.json",
+  "runs": [
+    {
+      "seq": 1,
+      "command": "/usr/bin/python3.12 .zcode/skills/office-templates/scripts/gen_doc.py --template 请示函 --data lanshan_miji.json --outdir out",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=请示函，标题=关于购置档案密集架的请示的请示，字段 filled/total=8/8，必填缺失=无，模板外键=无）",
+      "snapshot_dir": ".snap1",
+      "artifacts": {
+        "文书.docx": {
+          "sha256": "fd1bb9e3eb7574dddaa6bbfa62f3b41e926a75df4f8bc1bd1230e1637ac0d249",
+          "bytes": 37143
+        },
+        "fields.json": {
+          "sha256": "233f18b27c3ebb363e159d7817f445172afbf1d51a557c2b0e5f2adbca2081a2",
+          "bytes": 1972
+        }
+      }
+    },
+    {
+      "seq": 2,
+      "command": "/usr/bin/python3.12 .zcode/skills/office-templates/scripts/gen_doc.py --template 请示函 --data lanshan_miji.json --outdir out",
+      "exit_code": 0,
+      "snapshot_dir": ".snap2",
+      "artifacts": {
+        "文书.docx": {
+          "sha256": "fd1bb9e3eb7574dddaa6bbfa62f3b41e926a75df4f8bc1bd1230e1637ac0d249",
+          "bytes": 37143
+        },
+        "fields.json": {
+          "sha256": "233f18b27c3ebb363e159d7817f445172afbf1d51a557c2b0e5f2adbca2081a2",
+          "bytes": 1972
+        }
+      }
+    }
+  ],
+  "determinism": {
+    "method": "完全相同命令行连跑两遍到同一 --outdir（第二遍覆盖第一遍），每遍跑完立即快照到 outdir 之外的旁路目录 .snap1/.snap2，再逐字节对拍",
+    "fields_json": "除 outputs 路径键外逐字节一致（sha256 相等 233f18b2…，字节数同为 1972）",
+    "docx": "整文件逐字节一致（cmp 无差异，sha256 相等 fd1bb9e3…，字节数同为 37143）",
+    "verdict": "一致——两遍产物可复现"
+  },
+  "non_reproducible_source_scan": {
+    "command": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" .zcode/skills/office-templates/scripts/gen_doc.py",
+    "hits": 0,
+    "note": "入口脚本 0 命中；另核 docx 容器层——unzip -l 显示全部 zip 条目时间戳为固定值 1980-01-01 00:00，容器层亦无时间源"
+  },
+  "inventory": {
+    "SKILL.md": "齐全",
+    "scripts/gen_doc.py": "齐全",
+    "requirements.txt": "齐全（python-docx>=1.1，实测 1.2.0）",
+    "references/请示函.md": "齐全（成文结构 7 段、8 字段规范已核对）"
+  },
+  "compile_check": {
+    "command": "/usr/bin/python3.12 -m py_compile .zcode/skills/office-templates/scripts/gen_doc.py",
+    "exit_code": 0,
+    "errors": 0
+  },
+  "field_ledger_check": {
+    "total": 8,
+    "filled": 8,
+    "missing": 0,
+    "missing_required": 0,
+    "missing_required_names": [],
+    "unknown_keys": [],
+    "title": "关于购置档案密集架的请示的请示",
+    "title_formula_check": "与 §6 V2 公式 `关于{请示事由}的请示` 代入后一致（请示事由=购置档案密集架的请示）",
+    "note": "无 `____` 占位、无选填留空、无模板外键"
+  },
+  "layout_verification": {
+    "V1_page": "A4 21.0×29.7 cm；页边距 上3.7/下3.5/左2.8/右2.6 cm",
+    "V2_title": "段0 居中，eastAsia=黑体，22pt",
+    "V3_appellation": "段1 `澜山物业管理有限公司：` 无 firstLineChars（顶格），全角冒号收尾",
+    "V4_body": "段2-4 firstLineChars=200（首行缩进两字符），eastAsia=仿宋，16pt，ascii/hAnsi=Times New Roman，行距固定 28 磅",
+    "V5_signature": "段5 `澜山物业综合管理部`、段6 `2026年10月12日` 均右对齐、右缩进 406400 EMU(32pt)，日期为裸日期无标签",
+    "V6_sections": "请示函无列表字段，无小节/条目编号",
+    "V7_placeholder": "文中无 `____`（8 字段全填）",
+    "V8_no_time_source": "见上"
+  },
+  "deliverables": ["out/文书.docx", "out/fields.json", "run_log.json"]
+}

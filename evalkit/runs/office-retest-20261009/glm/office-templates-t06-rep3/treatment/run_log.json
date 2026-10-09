@@ -1,0 +1,50 @@
+{
+  "task": "office-templates-t06-rep3 treatment：屿光咖啡营运部周报成文（brief.md，数据文件 yuguang_week.json）",
+  "template": "周报",
+  "data_file": "yuguang_week.json",
+  "data_sha256": "305facff5e3e9584d43df9658b024ca6a662055aa08c0982c2d475eaef1d2af4",
+  "interpreter": "/usr/bin/python3 (Python 3.12.3, python-docx 可用；默认 python3 指向 venv 无 python-docx，故用系统解释器)",
+  "runs": [
+    {
+      "run": 1,
+      "command": "/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data yuguang_week.json --outdir out/",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=周报，标题=屿光咖啡营运部工作周报，字段 filled/total=6/7，必填缺失=无，模板外键=无）",
+      "snapshot": ".snap1/（旁路目录，已跑完即刻快照）"
+    },
+    {
+      "run": 2,
+      "command": "/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data yuguang_week.json --outdir out/",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=周报，标题=屿光咖啡营运部工作周报，字段 filled/total=6/7，必填缺失=无，模板外键=无）",
+      "snapshot": ".snap2/（第二遍覆盖复写后快照）"
+    }
+  ],
+  "artifacts": {
+    "docx": {
+      "path": "out/文书.docx",
+      "sha256_run1": "f3b0481d63eb72cf37517fd8626481a371a489af82833be6b650d1a3beb52845",
+      "sha256_run2": "f3b0481d63eb72cf37517fd8626481a371a489af82833be6b650d1a3beb52845",
+      "bytes": 37229,
+      "byte_identical": true
+    },
+    "fields_json": {
+      "path": "out/fields.json",
+      "sha256_run1": "10fef22eafd07efbb480a2e59dc5023613682dcf398b7d330ebd2c8eea7d3700",
+      "sha256_run2": "10fef22eafd07efbb480a2e59dc5023613682dcf398b7d330ebd2c8eea7d3700",
+      "bytes": 1930,
+      "byte_identical": true,
+      "note": "两次 outputs 路径键相同（同 --outdir），故整文件逐字节一致"
+    }
+  },
+  "byte_compare_verdict": "两遍快照 cmp 逐字节一致：文书.docx 与 fields.json 均 BYTE-IDENTICAL，sha256 相等",
+  "skill_bundle_inventory": {
+    "SKILL.md": "存在（.zcode/skills/office-templates/SKILL.md）",
+    "scripts/gen_doc.py": "存在（.zcode/skills/office-templates/scripts/gen_doc.py）",
+    "requirements.txt": "存在（.zcode/skills/office-templates/requirements.txt）"
+  },
+  "py_compile": "/usr/bin/python3 -m py_compile .zcode/skills/office-templates/scripts/gen_doc.py → 0 错误",
+  "nonreproducible_source_scan": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" scripts/gen_doc.py → 0 命中（exit 1）",
+  "field_ledger_note": "报送日期为选填且数据未提供：按 F2 留空（落款渲染为「报送日期：」标签保留、值为空），fields.json 记 status=missing、rendered_as=留空（渲染为空字符串）。用户口头要求「从正文挑日期补落款」，正文日期均为工作事项日期而非报送日期，属编造数据，按「缺数据不编造」原则未采纳；如补真实报送日期可在数据中加「报送日期」键重跑覆盖。",
+  "out_dir_contents": ["文书.docx", "fields.json"]
+}

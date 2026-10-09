@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t07-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 111099,
+  "started_at_ms": 1791493231778,
+  "session_id": "sess_af67e197-f921-44f5-8e50-baa48e2bf7d0",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t07-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 656945,
+      "ot": 8189,
+      "dur": 99407,
+      "n": 21
+    }
+  ],
+  "input_tokens": 656945,
+  "output_tokens": 8189,
+  "stdout_bytes": 3800,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "度累计**，填进\\\"本周\\\"就是把累计数当本周发生数报上去 |\\n| 下周工作计划 | 下一步工作打算 | ❌ 留 `1．____` | \\\"引入损耗周报机制\\\"是季度级规划，不是下周动作 |\\n| 问题与需协调事项 | 存在问题 | ❌ 整节省略 | 季度复盘结论，且不是本周需要上级协调的事 |\\n\\nskill 的硬规矩是\\\"缺数据不编造\\\"——必填缺失用 `____` 占位、如实记账。你说的\\\"交一张到处是空占位的表没法看\\\"，这里的取舍不是排版问题：**周报是要呈报的数据，把季度累计数写成本周发生数，比几个空占位危险得多。** 所以我按规矩走了，并把冲突记在了 `run_log.json` 里。\\n\\n## 产物状态\\n\\n标题是 `屿光咖啡品控组工作周报`，字段 filled 2/7，必填缺失 4 项（填报人、周期、本周工作内容、下周工作计划），选填缺失 1 项（问题与需协调事项，小节按规范整节省略）。文档共 7 段，版式已回读校验：标题居中黑体 22pt，正文仿宋三号 28 磅固定行距，两个必填小节各留 `1．____`，落款右对齐。同一命令连跑两遍，两个产物 sha256 完全一致、逐字节无差异。`out/` 里恰好只有那两个文件。\\n\\n留痕文件：`yuguang_q3.json`（原材料逐字保存）、`fixtures/周报数据.json`（投喂引擎的周报口径数据）、`run_log.json`（含完整字段映射决策表）、`.verify/p1`、`.verify/p2`（对拍快照）。\\n\\n## 你补 5 样就能填满\\n\\n1. **填报人**——署名的人是谁\\n2. **周期**——这期周报覆盖哪一周（如 2026年10月5日—10月11日）\\n3. **本周工作内容**——本周实际做的杯测场次、工单量（36 场/58 单是季度累计，请给本周的数字）\\n4. **下周工作计划**——下周具体动作\\n5. **问题与需协调事项**——本周确需上级协调的事项（没有就继续省略）\\n\\n这 5 项给我，我重跑同一条命令直接覆盖 `out/`，模板和引擎都不用动：\\n\\n```\\n/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data fixtures/周报数据.json --outdir out\\n```\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 21,\n    \"inputTokens\": 656945,\n    \"outputTokens\": 8189,\n    \"totalTokens\": 665134,\n    \"cacheReadTokens\": 616574,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 737,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 665134,\n    \"contextUsed\": 42272,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "t07",
+  "rep": 1,
+  "slot": 44
+}

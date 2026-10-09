@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 73262,
+  "started_at_ms": 1791491082159,
+  "session_id": "sess_eca7d870-74a9-4e92-a7f7-3273300bf8d6",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 676163,
+      "ot": 10107,
+      "dur": 61358,
+      "n": 23
+    }
+  ],
+  "input_tokens": 676163,
+  "output_tokens": 10107,
+  "stdout_bytes": 3273,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": ": line 1 column 1）` | 未创建 |\\n| G4 | `--data` 内容为 `[\\\"数组\\\",\\\"非对象\\\"]` | 2 | `错误：数据 JSON 顶层必须是对象（键值对），实际为 list` | 未创建 |\\n\\n残留检查用的是整个工作目录的递归前后快照比对，不只是看输出目录：四组非法输入期间**工作目录内没有新增任何路径**——没建输出目录、没写半成品文书.docx 或 fields.json。全程退出码只出现 0 和 2，没有崩溃或意外码。\\n\\n**合法对照组**（`fixtures/周报/case1.json`）退出码 0，在 `out/周报/case1/` 恰生成两产物、无多余文件：`文书.docx`（37164 字节，sha256 `b9752143…`）与 `fields.json`（1812 字节，sha256 `51a0a598…`）。台账 `summary` 为 7 字段全填（filled 7 / missing 0），标题 `研发部工作周报`，与文档正文首段标题段一致。\\n\\n**额外验证了「必填缺失不算非法」这一条**：另造一份缺必填列表「下周工作计划」的输入，引擎退出码 0 并正常产出，台账如实记 `missing_required_names: [\\\"下周工作计划\\\"]`，没有被当作错误拒绝。该组产物放在 `probe/` 下与交付路径隔离，只作取证。\\n\\n交付物落盘：`run_log.json`（逐组记录完整命令、退出码、stderr 全文、残留检查与逐组 PASS/FAIL，以及汇总节）、`out/周报/case1/` 两产物。取证辅助文件一并留在盘上：`run_cases.py`（测试装置）、`invalid_inputs/`（三份构造的非法/边界输入）。\\n\\n两点执行说明：环境里默认的 `python3` 所在 venv 缺 `python-docx`，实际用的是 `/home/pan-ding/venvs/shenbao/bin/python3`（python-docx 1.2.0），已记入 `run_log.json` 的 `environment` 节；G1 的中文来自 argparse 的错误行（含「证书」及四个汉字模板名），而非引擎自撰的「错误：」前缀——这与技能文档 §7 对该组的预设（\\\"argparse choice 报错，exit 2\\\"）一致。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 23,\n    \"inputTokens\": 676163,\n    \"outputTokens\": 10107,\n    \"totalTokens\": 686270,\n    \"cacheReadTokens\": 637198,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1507,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 686270,\n    \"contextUsed\": 39824,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

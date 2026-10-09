@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t05-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 51595,
+  "started_at_ms": 1791492909842,
+  "session_id": "sess_395e90a1-e85d-48f3-8de4-684f9e611997",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t05-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 529315,
+      "ot": 5596,
+      "dur": 41880,
+      "n": 20
+    }
+  ],
+  "input_tokens": 529315,
+  "output_tokens": 5596,
+  "stdout_bytes": 2870,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "keys. `py_compile` on the entry script exits 0, and the scan for `time(`/`random`/`uuid`/`datetime`/`now(` in it returns zero hits.\\n\\n**Two things worth flagging:**\\n\\nFirst, an environment detail: the `python3` on PATH is a `ml` venv that lacks `python-docx`, so the first run failed with `ModuleNotFoundError`. The dependency was already installed for the system interpreter, so I ran everything as `/usr/bin/python3` rather than modifying the venv. That's recorded in `run_log.json`.\\n\\nSecond, the title reads **关于购置档案密集架的请示的请示** — \\\"的请示\\\" appears twice. This is not an engine bug: the title formula is `关于{请示事由}的请示`, and your input value for `请示事由` already ends in \\\"的请示\\\", so the suffix gets duplicated. I left your data untouched rather than silently rewriting a field you supplied, but if you want the natural title 关于购置档案密集架的请示, change `请示事由` in `lanshan_miji.json` to `购置档案密集架` and re-run:\\n\\n```\\n/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 请示函 --data lanshan_miji.json --outdir out\\n```\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 20,\n    \"inputTokens\": 529315,\n    \"outputTokens\": 5596,\n    \"totalTokens\": 534911,\n    \"cacheReadTokens\": 497346,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1040,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 534911,\n    \"contextUsed\": 32699,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "t05",
+  "rep": 2,
+  "slot": 39
+}

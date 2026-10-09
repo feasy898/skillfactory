@@ -1,0 +1,21 @@
+{
+  "available": true,
+  "session_id": "sess_acb8ac1b-48c5-403d-8de3-7df6fcc8eb2f",
+  "session": {
+    "directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab2-boundary-missing-required-rep2/treatment"
+  },
+  "directory_matches_arm": true,
+  "db_source": "global",
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 542287,
+      "ot": 7156,
+      "dur": 48928,
+      "n": 20
+    }
+  ]
+}

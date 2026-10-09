@@ -1,0 +1,60 @@
+{
+  "task": "office 重测臂任务（ab1-standard-four-templates，rep2/treatment）",
+  "date": "2026-10-09",
+  "engine": {
+    "entry": "<SKILL_MOUNT>/scripts/gen_doc.py",
+    "invoked_as": "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py",
+    "python": "3.12.3 (/usr/bin/python3)",
+    "python_docx": "1.2.0",
+    "note": "PATH 上的 python3 为 venv 解释器（不加载用户 site-packages，无 docx）；改用系统 /usr/bin/python3，其用户 site 含 python-docx 1.2.0，满足 requirements.txt (>=1.1)"
+  },
+  "commands": [
+    "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 周报 --data fixtures/周报/case1.json --outdir out/周报/case1",
+    "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 请示函 --data fixtures/请示函/case1.json --outdir out/请示函/case1",
+    "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 会议通知 --data fixtures/会议通知/case1.json --outdir out/会议通知/case1",
+    "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 工作总结 --data fixtures/工作总结/case1.json --outdir out/工作总结/case1"
+  ],
+  "exit_codes": { "run1": "全部 0", "run2": "全部 0" },
+  "determinism": {
+    "protocol": "同命令行连跑两遍到同一 --outdir（第二遍覆盖复写第一遍），每遍产物快照到 out/ 之外 .verify/snap{1,2}/，逐字节对拍",
+    "snapshots": ".verify/snap1、.verify/snap2",
+    "per_template": {
+      "周报": {
+        "fields_json_sha256": "51a0a5989d6a25075e427d243a7e00b665d9f92d652ff78ff9e35d1e5766f656",
+        "docx_sha256": "b97521438f9f3d07049892aaf84993f10a47bd3a9275c83d1bc5a0654e6a407c",
+        "docx_bytes": 37164, "fields_json_bytes": 1812, "byte_identical": true
+      },
+      "请示函": {
+        "fields_json_sha256": "b957c307242c310dcaddc66c2538391bde4d15b9fadd21b09db37fffa9c7fd5a",
+        "docx_sha256": "19d6377a84d4a41f6a6fc3a12d4d027da49753f0c64b7a2889daef3f4e138ea5",
+        "docx_bytes": 37116, "fields_json_bytes": 1936, "byte_identical": true
+      },
+      "会议通知": {
+        "fields_json_sha256": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+        "docx_sha256": "0de99668671165bbf2b33d2482e84a5f1f416a6bf063eb21e81b1f041a7d6284",
+        "docx_bytes": 37200, "fields_json_bytes": 2458, "byte_identical": true
+      },
+      "工作总结": {
+        "fields_json_sha256": "749f0d3889b19d9b04f8d9a1ec049b51fb2dcbe6729a86125fe3bd4ed3502143",
+        "docx_sha256": "3d0014f5b77d059e729f51d4813068b4f89c5dee03fe57f3a75d2da9696c7dd8",
+        "docx_bytes": 37187, "fields_json_bytes": 1917, "byte_identical": true
+      }
+    },
+    "verdict": "8/8 产物（4×文书.docx + 4×fields.json）两遍 sha256 相同、整文件逐字节一致；docx zip 容器条目时间戳已归一化为 1980-01-01"
+  },
+  "inventory": {
+    "SKILL.md": "齐全",
+    "scripts/gen_doc.py": "齐全",
+    "requirements.txt": "齐全"
+  },
+  "py_compile": "0 错误（exit 0）",
+  "nonreproducible_source_scan": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" 入口脚本 0 命中",
+  "fields_ledger_check": {
+    "周报": "7/7 filled，missing_required=[]，unknown_keys=[]，title=研发部工作周报（V2 公式相符）",
+    "请示函": "8/8 filled，missing_required=[]，unknown_keys=[]，title=关于采购评测用 GPU 服务器的请示（V2 公式相符）",
+    "会议通知": "11/11 filled，missing_required=[]，unknown_keys=[]，title=关于召开三季度质量评审会的通知（V2 公式相符）",
+    "工作总结": "7/7 filled，missing_required=[]，unknown_keys=[]，title=评测技术部2026年第三季度工作总结（V2 公式相符）",
+    "summary自洽": "四份台账 filled+missing=total 均成立；fields 明细 required/kind 与 skill §3.1 字段表一致"
+  },
+  "layout_check": "四份 docx 均为 A4 21.0×29.7cm、边距 3.7/3.5/2.8/2.6cm（GB/T 9704 版心 V1）；标题居中黑体 22pt；正文仿宋 16pt、w:firstLineChars=200、固定行距 28 磅（V4）；称谓顶格（请示函/会议通知，V3）；落款右对齐两字缩进（V5）；小节 一、二、… + 条目 1．2．…（V6）；段落结构与 references/<模板>.md 成文结构表逐段一致"
+}

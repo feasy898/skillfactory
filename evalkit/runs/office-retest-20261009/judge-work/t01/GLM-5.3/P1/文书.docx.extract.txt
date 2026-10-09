@@ -1,0 +1,15 @@
+EXTRACT OF 文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=1.3 runs=[拾贝书店周报（2026年10/黑体/18.0] text=拾贝书店周报（2026年10月第2周）
+P002 align=None firstLineChars=None firstLineIndent=None spacing=1.3 runs=[一、本周工作内容/黑体/14.0] text=一、本周工作内容
+P003 align=None firstLineChars=None firstLineIndent=None spacing=1.3 runs=[1. 完成店庆档期主题陈列改/宋体/12.0] text=1. 完成店庆档期主题陈列改造
+P004 align=None firstLineChars=None firstLineIndent=None spacing=1.3 runs=[2. 复盘会员日核销数据并输/宋体/12.0] text=2. 复盘会员日核销数据并输出简报
+P005 align=None firstLineChars=None firstLineIndent=None spacing=1.3 runs=[二、下周工作计划/黑体/14.0] text=二、下周工作计划
+P006 align=None firstLineChars=None firstLineIndent=304800 spacing=1.3 runs=[启动冬季书单选品/宋体/12.0] text=启动冬季书单选品
+P007 align=None firstLineChars=None firstLineIndent=None spacing=1.3 runs=[三、问题与需协调事项/黑体/14.0] text=三、问题与需协调事项
+P008 align=None firstLineChars=None firstLineIndent=None spacing=1.3 runs=[1. 收银终端老化，需要报修/宋体/12.0] text=1. 收银终端老化，需要报修
+P009 align=None firstLineChars=None firstLineIndent=None spacing=1.3 runs=[四、温馨提示/黑体/14.0] text=四、温馨提示
+P010 align=None firstLineChars=None firstLineIndent=304800 spacing=1.3 runs=[本周五店休半天/宋体/12.0] text=本周五店休半天
+TABLE1 3行×2列:
+  周期 ┃ 2026年10月第2周（10月5日-10月9日）
+  填报人 ┃ 关菡
+  报送日期 ┃ 2026-10-12

@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 92855,
+  "started_at_ms": 1791490987301,
+  "session_id": "sess_e12aea3b-4c1a-495d-92bd-1db2c7341620",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1036743,
+      "ot": 17267,
+      "dur": 80285,
+      "n": 32
+    }
+  ],
+  "input_tokens": 1036743,
+  "output_tokens": 17267,
+  "stdout_bytes": 4142,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "段按「（未填写）」占位，正常出文书、退出码 0，`fields.json` 的 `missing_fields` 如实记录是哪几个。为不污染任务书约定的 `out/周报/case1/` 布局，这组用 `--outdir .scratch/missing-required` 改写出图位置，记录进日志后由执行器删除（`summary.scratch_cleaned` 为证）。\\n\\n## 落盘物\\n\\n```\\ngen.py                      生成入口（校验/渲染/原子落盘）\\nrun_cases.py                用例执行器（六组子进程调用 + 快照残留检查）\\nrun_log.json                逐组留证：完整命令、argv、退出码、stderr 摘要、残留路径、判定\\nREADME.md                   复现方式与口径说明\\ninvalid_inputs/             not-json.txt、top-level-array.json\\nextra_inputs/               missing-required.json\\nout/周报/case1/文书.docx      37,024 字节，正文七个字段齐全，CJK 字体已设\\nout/周报/case1/fields.json   模板元信息 + 逐字段 present/value + missing_fields\\n```\\n\\n一处环境说明：本机 `python3` 指向的 venv 禁用了 user site，直接 `import docx` 会失败。`gen.py` 里加了 fallback，在导入失败时把 `~/.local/lib/python3.*/site-packages` 追加进 `sys.path` 再重试，因此在 `/home/pan-ding/venvs/ml/bin/python3` 和 `/usr/bin/python3` 两个解释器下都能跑。实际使用的解释器路径记在 `run_log.json` 的 `interpreter` 字段。\\n\\n首轮跑出的合法对照组曾是 fail，原因是我自己的断言漏算了 `out`、`out/周报`、`out/周报/case1` 这三个中间目录，属于检查器写错而非行为不符，已修正并清仓重跑确认幂等。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 32,\n    \"inputTokens\": 1036743,\n    \"outputTokens\": 17267,\n    \"totalTokens\": 1054010,\n    \"cacheReadTokens\": 989724,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 2621,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1054010,\n    \"contextUsed\": 48092,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

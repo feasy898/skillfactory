@@ -1,0 +1,10 @@
+EXTRACT OF 请示函-empty__文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P001 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=381000 runs=[【发文机关名称】关于/宋体/22.0 | 
+【请示事项名称】的请示/宋体/22.0] text=【发文机关名称】关于
+【请示事项名称】的请示
+P002 align=LEFT (0) firstLineChars=None firstLineIndent=None spacing=355600 runs=[【主送机关名称】：/仿宋/16.0] text=【主送机关名称】：
+P003 align=JUSTIFY (3) firstLineChars=0 firstLineIndent=406400 spacing=355600 runs=[现将【请示事项名称】有关情况/仿宋/16.0] text=现将【请示事项名称】有关情况请示如下：
+P004 align=JUSTIFY (3) firstLineChars=0 firstLineIndent=406400 spacing=355600 runs=[【请示事由与事项说明】/仿宋/16.0] text=【请示事由与事项说明】
+P005 align=JUSTIFY (3) firstLineChars=0 firstLineIndent=406400 spacing=355600 runs=[妥否，请批示。/仿宋/16.0] text=妥否，请批示。
+P006 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[【发文机关名称】/仿宋/16.0] text=【发文机关名称】
+P007 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[【成文日期】/仿宋/16.0] text=【成文日期】

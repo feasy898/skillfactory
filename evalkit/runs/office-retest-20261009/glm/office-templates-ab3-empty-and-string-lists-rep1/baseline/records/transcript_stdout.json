@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_b7a183ff-c501-437c-bd6e-e4d63597f426",
+  "traceId": "ed508967-95b1-452d-b3f5-e5d659860d0c",
+  "turnId": "turn_47bf6a5f-849e-4353-96c1-bbfcdf92b156",
+  "response": "任务完成，两个单元目录与产物齐全且全量核验通过。\n\n## 交付物（均已留在原位）\n\n| 路径 | 内容 |\n|---|---|\n| `out/周报/case2/` | `文书.docx` + `fields.json`（恰两产物） |\n| `out/工作总结/case2/` | `文书.docx` + `fields.json`（恰两产物） |\n| `gen_doc.py` | 生成器 CLI，严格按契约 `--template <周报\\|工作总结> --data <json> --outdir <dir>` 调用，零依赖（纯标准库手工 OOXML，输出确定性） |\n| `verify.py` / `.render/` | 37 项断言核验脚本 / LibreOffice 渲染取证 |\n\n## 两份文书的边界处理结果\n\n**周报**（周期空串、本周工作内容空数组、问题与需协调事项选填缺失）：标题居中「**____工作周报**」；「一、本周工作内容」下渲染占位条目「**1．____**」；「二、下周工作计划」正常单项；选填节「问题与需协调事项」整节省略（正文无该节头、无「三、」），fields.json 记 `required=false` + `missing`；落款「填报人：赵倩 ／ 报送日期：2026-09-28」两行右对齐。\n\n**工作总结**（总结主体缺失、主要成绩空数组、工作回顾为字符串、存在问题与成文日期选填缺失）：标题「**____2026年9月工作总结**」（主体必填缺失以 ____ 占位）；工作回顾按单项化渲染「1．完成评测平台月度巡检」，fields.json 中该字段值为单元素数组 `[\"完成评测平台月度巡检\"]` 并记 `normalized_from: \"string\"`；主要成绩渲染「1．____」记占位语义；存在问题省略后小节重编号为「一、二、三、」（下一步工作打算升为三、）；落款仅剩右对齐的「____」行（缺主体占位、成文日期选填缺失行省略），右对齐未破坏。\n\n## 核验证据（三层，全部通过）\n\n1. **verify.py**：37/37 断言 PASS（目录恰含两产物、docx 段落序列逐项一致、节头/条目编号字符、省略节不出现、落款 `jc=right`、fields.json 各字段状态与占位语义），exit 0。\n2. **docx 技能 postcheck.py**：两份文档均 9/9 通过，0 错误 0 警告（行距统一 560、无空白页、字体常见、标题层级连续）。\n3. **渲染取证**：soffice 转 PDF（各 1 页 A4）+ pdftotext 版面核对 + 视觉检查，标题居中、编号规范、落款右对齐、页码「— 1 —」均确认；另做了重跑字节级比对，四份产物与首次生成完全一致（确定性成立）。\n\n一点实现说明：本机共享 venv 的 site-packages 不可写导致 python-docx 装不上，生成器因此改为纯标准库直写 OOXML（宋体二号加粗居中标题、黑体三号节头、仿宋三号条目、固定 28 磅行距的公文体例），反倒保证了零依赖与可复现。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 31,
+    "inputTokens": 2141234,
+    "outputTokens": 45204,
+    "totalTokens": 2186438,
+    "cacheReadTokens": 2069632,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 33121,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 2186438,
+    "contextUsed": 86022,
+    "contextWindow": 200000
+  }
+}

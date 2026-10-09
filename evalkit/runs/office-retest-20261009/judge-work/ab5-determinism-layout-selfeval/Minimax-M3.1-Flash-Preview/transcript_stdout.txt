@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_133e4d10-7d7e-4b07-b5d2-c0a8ae170408",
+  "traceId": "0af712e9-4ad2-400c-8dfe-a2b883c34189",
+  "turnId": "turn_f1f474e8-9fd8-4254-a729-0897914a2b64",
+  "response": "`verdict.json` is written and validates as the required compact structure (one `scores` key, one entry per product with `total` + `evidence`).\n\n## Scoring\n\n| | Item 1 determinism | Item 2 layout | Item 3 runner 对拍 | Item 4 red/green | Item 5 三件套 | Total |\n|---|---|---|---|---|---|---|\n| P1 | 2 | 2 | 2 | 2 | 2 | **10.0** |\n| P2 | 2 | 2 | 2 | 2 | 2 | **10.0** |\n| P3 | 2 | 1 | 0 | 2 | 1 | **6.0** |\n| P4 | 2 | 2 | 0 | 2 | 1 | **7.0** |\n| P5 | 2 | 1 | 0 | 2 | 1 | **6.0** |\n| P6 | 2 | 1 | 1.5 | 2 | 2 | **8.5** |\n\n## What actually separated them\n\n**All six pass determinism (item 1) and red/green self-check (item 4).** Every product's `_replay_facts.json` shows two mechanical replays at exit 0 with byte-identical `fields.json` and `文书.docx` sha256, `equal_modulo_outputs: true`, and `parsed_layout_identical: true`. I also recomputed sha256 of the six staged `fields.json` files and every one matches the `delivered_sha256` recorded in its own replay facts, so the evidence chain is intact end to end. Item 4 is non-discriminating by construction — the red/green replay runs against the arm-external dist package and is identical (green 68/68 exit 0, red exit 1 listing the 8 missing units) in all six.\n\n**Item 3 is the real discriminator.** P1, P2, P6 hit `field_fill_agreement` 11/11 = 100% on 会议通知/case1. P3, P4, P5 all scored 0/11 with every one of the 11 fields listed as mismatched — their `fields.json` uses a different schema than the oracle's (P3 uses Chinese keys `名称`/`值` and omits `outputs` entirely; P4 and P5 collapse `fields` into a flat name→value map). The values are semantically right in all three; what fails is the structured field contract the runner compares against.\n\n**Item 2 penalizes stray snapshot directories shipped inside the deliverable root.** P3 (`.determinism/run1`), P5 (`.determinism/pass1`), and P6 (`.snapshots/run1` + `.snapshots/run2`) all leaked determinism-witness directories into `package/out`, which the runner then picked up as bogus units. P6 took 1.5 rather than 2 on item 3 for the same reason: its actual task unit is perfect, but the two extra units error out under the runner and the end state stays `ok: false`.\n\n**Item 5 separates on self-attestation quality.** P1, P2, P6 record an explicit three-piece inventory plus a `py_compile` result in `run_log.json`. P3, P4, P5 record no inventory and no `py_compile` check — their entry-script runnability is only evidenced indirectly by the replay exiting 0, so I scored partial rather than inferring the missing claims.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 10,
+    "inputTokens": 381860,
+    "outputTokens": 8158,
+    "totalTokens": 390018,
+    "cacheReadTokens": 326274,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 1882,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 390018,
+    "contextUsed": 56676,
+    "contextWindow": 200000
+  }
+}

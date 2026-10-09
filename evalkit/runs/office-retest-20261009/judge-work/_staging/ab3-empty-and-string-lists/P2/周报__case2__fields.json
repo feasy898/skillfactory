@@ -1,0 +1,79 @@
+{
+  "template": "周报",
+  "data": "fixtures/周报/case2.json",
+  "title": "____工作周报",
+  "sections_rendered": [
+    "一、本周工作内容",
+    "二、下周工作计划"
+  ],
+  "sections_omitted": [
+    "问题与需协调事项"
+  ],
+  "fields": {
+    "周期": {
+      "required": true,
+      "status": "placeholder",
+      "input_type": "string",
+      "value": "",
+      "rendered": "____",
+      "note": "必填字段空字符串，以____占位",
+      "render_in": "title"
+    },
+    "本周工作内容": {
+      "required": true,
+      "status": "placeholder",
+      "input_type": "list",
+      "value": [],
+      "rendered": [
+        "1．____"
+      ],
+      "note": "必填列表空列表，按必填缺失处理：渲染占位条目「1．____」"
+    },
+    "下周工作计划": {
+      "required": true,
+      "status": "present",
+      "input_type": "list",
+      "value": [
+        "整理缺陷清单并分派责任人"
+      ],
+      "rendered": [
+        "1．整理缺陷清单并分派责任人"
+      ]
+    },
+    "问题与需协调事项": {
+      "required": false,
+      "status": "missing",
+      "input_type": null,
+      "value": null,
+      "rendered": null,
+      "note": "选填小节缺失/为空：正文整节省略（不出现该节头）"
+    },
+    "填报人": {
+      "required": true,
+      "status": "present",
+      "input_type": "string",
+      "value": "赵倩",
+      "rendered": "赵倩",
+      "render_in": "signature"
+    },
+    "报送日期": {
+      "required": true,
+      "status": "present",
+      "input_type": "string",
+      "value": "2026-09-28",
+      "rendered": "2026年9月28日",
+      "render_in": "signature"
+    }
+  },
+  "signature": {
+    "alignment": "right",
+    "lines": [
+      "填报人：赵倩",
+      "报送日期：2026年9月28日"
+    ]
+  },
+  "artifacts": [
+    "文书.docx",
+    "fields.json"
+  ]
+}

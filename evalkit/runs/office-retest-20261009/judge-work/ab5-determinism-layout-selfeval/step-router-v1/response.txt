@@ -1,0 +1,10 @@
+{
+  "scores": {
+    "P1": {"total": 8.0, "evidence": "R1两遍sha256相同cmp exit 0，docx 12段解析完全一致；R2 out/会议通知/case1恰含两文件；R3 runner_delivered exit 1 ok false；R4 绿exit 0 ok true，红exit 1 units_found fail；R5 三件套齐全py_compile exit 0 grep 0命中。"},
+    "P2": {"total": 8.0, "evidence": "R1两遍sha256相同cmp exit 0，docx解析12段一致zip时间戳归一化；R2 outdir恰含两产物；R3 runner_delivered exit 1 ok false；R4 红绿双向成立；R5 三件套齐全py_compile exit 0 grep 0命中。"},
+    "P3": {"total": 6.0, "evidence": "R1两遍sha256相同docx 16段签名一致；R2 outdir恰含两产物；R3 runner_delivered exit 1 ok false且agreement rate 0.0；R4 红绿双向成立；R5 run_log未记录三件套及py_compile。"},
+    "P4": {"total": 6.0, "evidence": "R1两遍sha256相同docx 15段解析一致zip时间戳固定；R2 outdir恰含两产物；R3 runner_delivered exit 1 ok false且agreement rate 0.0；R4 红绿双向成立；R5 run_log未记录三件套及py_compile。"},
+    "P5": {"total": 6.0, "evidence": "R1两遍sha256相同docx 10段profile一致zip parts全等；R2 outdir恰含两产物；R3 runner_delivered exit 1 ok false且agreement rate 0.0；R4 红绿双向成立；R5 run_log未记录三件套及py_compile。"},
+    "P6": {"total": 8.0, "evidence": "R1两遍sha256相同docx 12段identical true；R2 outdir恰含两产物；R3 runner_delivered exit 1 ok false；R4 红绿双向成立；R5 三件套齐全py_compile exit 0。"}
+  }
+}

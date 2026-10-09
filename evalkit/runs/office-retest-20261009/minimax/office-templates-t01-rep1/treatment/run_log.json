@@ -1,0 +1,91 @@
+{
+  "task": "拾贝书店 2026年10月第2周周报（office-templates/周报）",
+  "data_file": "shibei_week42.json",
+  "outdir": "out",
+  "python": "3.12.3 (venv .venv, python-docx 1.2.0)",
+  "runs": [
+    {
+      "run": 1,
+      "command": ".venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data shibei_week42.json --outdir out",
+      "exit_code": 0,
+      "docx": {
+        "sha256": "384e9b2408e70a64f3cfd66c8d5600b730f1fafb49813f9f5e2101881929e92b",
+        "bytes": 37144
+      },
+      "fields_json": {
+        "sha256": "1e3a734baf0776b6069aade949a3a8430c9a3fcc1154dfbb5fb51467ec681117",
+        "bytes": 1766
+      }
+    },
+    {
+      "run": 2,
+      "command": ".venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data shibei_week42.json --outdir out",
+      "exit_code": 0,
+      "docx": {
+        "sha256": "384e9b2408e70a64f3cfd66c8d5600b730f1fafb49813f9f5e2101881929e92b",
+        "bytes": 37144
+      },
+      "fields_json": {
+        "sha256": "1e3a734baf0776b6069aade949a3a8430c9a3fcc1154dfbb5fb51467ec681117",
+        "bytes": 1766
+      }
+    }
+  ],
+  "byte_comparison": {
+    "文书.docx": {
+      "identical": true,
+      "cmp_exit_code": 0,
+      "note": "整文件逐字节一致（含 docx 容器条目）"
+    },
+    "fields.json": {
+      "identical": true,
+      "cmp_exit_code": 0,
+      "note": "整文件逐字节一致"
+    },
+    "verdict": "两遍产物逐字节一致，确定性复现通过"
+  },
+  "entry_script_inventory": {
+    "SKILL.md": true,
+    "requirements.txt": true,
+    "scripts/gen_doc.py": true,
+    "references/周报.md": true
+  },
+  "py_compile": {
+    "command": "python -m py_compile .zcode/skills/office-templates/scripts/gen_doc.py",
+    "exit_code": 0,
+    "errors": 0
+  },
+  "non_reproducible_source_scan": {
+    "command": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" <入口脚本>",
+    "matches": 0,
+    "result": "零命中：无时间源/随机源"
+  },
+  "data_edge_cases": [
+    "部门=' 拾贝书店 ' 前后空格 → F5 strip 入文，标题为「拾贝书店工作周报」",
+    "本周工作内容 含空白项 '   ' → F3 去空，仅渲染 2 条",
+    "问题与需协调事项 含空串 '' → F3 去空，仅渲染 1 条",
+    "下周工作计划 为字符串 → F3 宽容取值，渲染为单项 1．启动冬季书单选品",
+    "温馨提示 不在周报模板字段表 → F6 记入 summary.unknown_keys，不入文"
+  ],
+  "ledger_summary": {
+    "total": 7,
+    "filled": 7,
+    "missing": 0,
+    "missing_required": 0
+  },
+  "deliverables": {
+    "out/文书.docx": {
+      "sha256": "384e9b2408e70a64f3cfd66c8d5600b730f1fafb49813f9f5e2101881929e92b",
+      "bytes": 37144
+    },
+    "out/fields.json": {
+      "sha256": "1e3a734baf0776b6069aade949a3a8430c9a3fcc1154dfbb5fb51467ec681117",
+      "bytes": 1766
+    },
+    "out/delivery-report.json": {
+      "sha256": "2590bbb50a7b1fa526ada28054a519c404ff83b38e44e5c8812460b68c677a02",
+      "bytes": 144
+    }
+  },
+  "note": "run_log.json 落在工作目录，未写入 out/；out/delivery-report.json 为任务书额外要求的核对报告（非引擎产物）"
+}

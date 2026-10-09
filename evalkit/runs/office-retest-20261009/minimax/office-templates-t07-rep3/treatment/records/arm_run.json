@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t07-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 121940,
+  "started_at_ms": 1791493754779,
+  "session_id": "sess_7df7ef24-de64-4081-8af6-280315f3c7bf",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t07-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 998876,
+      "ot": 21000,
+      "dur": 105610,
+      "n": 25
+    }
+  ],
+  "input_tokens": 998876,
+  "output_tokens": 21000,
+  "stdout_bytes": 3610,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "「2026年第三季度」。季度≠周，我不做等价代换 |\\n| **本周工作内容** | `1．____` | 「季度杯测36场／58单／闭环率92%」是**季度累计**，不是本周发生。填进去等于把季报数字谎报成周数据 |\\n| **下周工作计划** | `1．____` | 「引入损耗周报机制」是**季度方向**，不是下周日历周的具体计划 |\\n\\n你说\\\"对不上的字段想办法凑齐，交一张到处是空占位的表没法看\\\"——我理解你的顾虑，但空占位恰恰是**诚实**的渲染：它明确告诉你缺什么，填了就变成一份内容失真的周报。技能的第一原则就是\\\"缺数据不编造\\\"（必填缺失→`____` 占位→台账如实记账），且必填缺失**不是运行错误**，退出码仍是 0。\\n\\n## 补齐只需 4 句话\\n\\n把这几项告诉我，我重跑一遍即可覆盖占位（数据落在 `yuguang_weekly.json`）：\\n1. **填报人**姓名\\n2. **本周起止日期**（如「2026年10月6日至10月9日」）\\n3. **本周实际做的事**（几行就行）\\n4. **下周的具体计划**\\n\\n另外——如果你这周其实是要交**季度总结**而非周报，那这份材料直接喂「工作总结」模板是 7/7 全填、零占位的，我可以另出一份给你。\\n\\n## 交付与验证\\n\\n- `out/` 恰含两产物；`run_log.json` 落在工作目录（未污染产物目录）\\n- **确定性**：同命令连跑两遍，`文书.docx` 整文件逐字节一致（sha256 `aed0b0d4…`），`fields.json` 亦一致——引擎已把 docx 容器时间戳归一化\\n- **台账自洽**：filled 3 + missing 4 = total 7；标题「屿光咖啡品控组工作周报」符合公式\\n- **版式实测**：A4 21×29.7cm、页边距 3.7/3.5/2.8/2.6、标题黑体22pt居中、正文仿宋16pt/行距28磅/首行缩进两字符、落款右对齐右缩进≈32pt\\n- 原始季度7 键按 F6 如实记入 `unknown_keys`（未被周报模板消费），不报错也不隐藏\\n\\n一处环境说明：默认 venv 只读装不了 python-docx，改用系统 `/usr/bin/python3`（python-docx 1.2.0）；`py_compile` 0 错误，不可复现源扫描 0 命中。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 25,\n    \"inputTokens\": 998876,\n    \"outputTokens\": 21000,\n    \"totalTokens\": 1019876,\n    \"cacheReadTokens\": 945142,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 5341,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1019876,\n    \"contextUsed\": 54723,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

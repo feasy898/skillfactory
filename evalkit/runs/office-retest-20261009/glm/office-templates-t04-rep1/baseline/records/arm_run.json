@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t04-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 354891,
+  "started_at_ms": 1791497212479,
+  "session_id": "sess_c5492e5c-e3df-49e8-8824-92d56e017b4c",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t04-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 979926,
+      "ot": 27755,
+      "dur": 327466,
+      "n": 22
+    }
+  ],
+  "input_tokens": 979926,
+  "output_tokens": 27755,
+  "stdout_bytes": 3008,
+  "stderr_bytes": 392,
+  "stderr_head": "AI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\n",
+  "stdout_tail": "on script, left in place; `.render/` holds the PDF/PNG render used for QA.\\n\\n**Judgment calls worth knowing:**\\n- Junk vs. real: I treated `1号议程`（暖炉采购比价 — on-theme agenda content) and `附件编号`（QN-2026-118) as real fields; the five keys whose values self-identify as leftovers (\\\"draft\\\", \\\"内部备注勿删\\\", \\\"测试遗留键\\\", \\\"待定\\\", \\\"emoji 键排序锚点”) were excluded from both outputs.\\n- Empty fields handled gracefully: `会议议题`（\\\"\\\"） and `会议要求`（[]) are preserved as empty values in `fields.json` but produce no fabricated sections in the notice; the agenda item comes from `1号议程`. All source values appear in the document verbatim (e.g., the exact string \\\"2026年11月3日 10:00\\\").\\n\\n**Verification results:** programmatic checks 27/27 pass (all 10 non-empty field values present in the docx text; all junk key names and values absent; fields.json exactly matches the real key set with source-identical values); the docx skill's postcheck reports 0 errors; and the independent visual acceptance pass on the rendered page returned pass with no issues.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 22,\n    \"inputTokens\": 979926,\n    \"outputTokens\": 27755,\n    \"totalTokens\": 1007681,\n    \"cacheReadTokens\": 933376,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 23377,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1007681,\n    \"contextUsed\": 62218,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

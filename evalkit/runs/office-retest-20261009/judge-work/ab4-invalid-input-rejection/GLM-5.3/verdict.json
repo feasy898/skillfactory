@@ -1,0 +1,28 @@
+{
+  "scores": {
+    "P1": {
+      "total": 8.0,
+      "evidence": "①四组均exit2、stderr全中文，期望码逐组2一致；②out/快照差集新增0、未建outdir零残留；③对照exit0双产物齐docx37139B；⑤缺5必填exit0「待定」占位双产出；④无SKILL.md错误节证据0分。"
+    },
+    "P2": {
+      "total": 7.5,
+      "evidence": "①四组均exit2，G2-G4全中文，G1 argparse英文框架仅模板名中文扣0.5；②outdir未建files=0零残留；③对照exit0恰两产物7/7字段sha留痕；⑤G6缺必填exit0产出；④无SKILL.md表证据0分。"
+    },
+    "P3": {
+      "total": 8.0,
+      "evidence": "①四组（证书/不存在/not-json/顶层数组）均exit2、全中文报错；②臂目录快照差集created=0零残留；③对照exit0两产物齐docx37024B；⑤缺3必填exit0占位产出后清理；④无SKILL.md错误节证据0分。"
+    },
+    "P4": {
+      "total": 8.0,
+      "evidence": "①四组均exit2无崩溃，唯①组argparse英文框架中文值扣0.5；②独立outdir均未建file_count=0；③对照exit0两产物7/7字段；⑥缺4必填exit0双产出____占位；④仅引SKILL.md§7一行全表未证0.5。"
+    },
+    "P5": {
+      "total": 6.0,
+      "evidence": "①四组均exit2、stderr全中文；②前后差为空created_out_dir=false零残留；③对照exit0两产物齐（staged fields.json与docx抽文佐证）；④无SKILL.md错误节证据0分；⑤未做必填缺失边界测试0分。"
+    },
+    "P6": {
+      "total": 8.5,
+      "evidence": "①四组均exit2无traceback，唯①组argparse英文框架扣0.5；②逐组+整树审计out/invalid不存在零残留；③对照exit0两产物sha齐双跑一致；⑤缺2必填exit0____占位；④引SKILL.md§7表格第1行两处、全表未证1分。"
+    }
+  }
+}

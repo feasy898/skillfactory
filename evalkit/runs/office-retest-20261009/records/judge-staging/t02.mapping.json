@@ -1,0 +1,76 @@
+{
+  "mapping": {
+    "P1": {
+      "rep": 2,
+      "arm": "treatment"
+    },
+    "P2": {
+      "rep": 3,
+      "arm": "baseline"
+    },
+    "P3": {
+      "rep": 2,
+      "arm": "baseline"
+    },
+    "P4": {
+      "rep": 3,
+      "arm": "treatment"
+    },
+    "P5": {
+      "rep": 1,
+      "arm": "treatment"
+    },
+    "P6": {
+      "rep": 1,
+      "arm": "baseline"
+    }
+  },
+  "staged": [
+    {
+      "pid": "P1",
+      "files": [
+        "fields.json",
+        "run_log.json",
+        "文书.docx.extract.txt"
+      ]
+    },
+    {
+      "pid": "P2",
+      "files": [
+        "fields.json",
+        "文书.docx.extract.txt"
+      ]
+    },
+    {
+      "pid": "P3",
+      "files": [
+        "fields.json",
+        "文书.docx.extract.txt"
+      ]
+    },
+    {
+      "pid": "P4",
+      "files": [
+        "fields.json",
+        "run_log.json",
+        "文书.docx.extract.txt"
+      ]
+    },
+    {
+      "pid": "P5",
+      "files": [
+        "fields.json",
+        "run_log.json",
+        "文书.docx.extract.txt"
+      ]
+    },
+    {
+      "pid": "P6",
+      "files": [
+        "fields.json",
+        "文书.docx.extract.txt"
+      ]
+    }
+  ],
+  "seed": 13124133
+}

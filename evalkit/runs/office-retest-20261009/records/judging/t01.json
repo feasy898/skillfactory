@@ -1,0 +1,171 @@
+{
+  "tested_family": "minimax",
+  "panel": [
+    "GLM-5.3",
+    "step-router-v1"
+  ],
+  "panel_rotation": "task_idx=6 parity=0",
+  "verdicts": {
+    "GLM-5.3": {
+      "scores": {
+        "P1": {
+          "total": 4.5,
+          "dims": {
+            "正确性（标题/条目数/unknown）": 0.0,
+            "完整性（三产物结构）": 0.5,
+            "可验证性（三方互洽）": 1.0
+          },
+          "evidence": "正确性0：标题「拾贝书店周报（2026年10月第2周）」≠工作周报；unknown空应=[温馨提示]；P009/P010正文载温馨提示。完整性0.5：fields列8字段含温馨提示、无summary/filled。可验证性1.0：三方title/数组/2·1·1条目互洽，部门已strip。"
+        },
+        "P2": {
+          "total": 4.5,
+          "dims": {
+            "正确性（标题/条目数/unknown）": 0.0,
+            "完整性（三产物结构）": 0.5,
+            "可验证性（三方互洽）": 1.0
+          },
+          "evidence": "正确性0：标题「拾贝书店周报」缺「工作」；unknown空；P010/P011正文载温馨提示。完整性0.5：fields8字段映射含温馨提示、无summary计数。可验证性1.0：三方title/数组/2·1·1条目互洽，部门已strip。"
+        },
+        "P3": {
+          "total": 4.5,
+          "dims": {
+            "正确性（标题/条目数/unknown）": 0.0,
+            "完整性（三产物结构）": 0.5,
+            "可验证性（三方互洽）": 1.0
+          },
+          "evidence": "正确性0：标题「拾贝书店 2026年10月第2周 工作周报」≠期望；unknown空；P009+TABLE2正文载温馨提示。完整性0.5：summary8键计8字段、无filled=7、列表无编号。可验证性1.0：三方title/数组/条目数一致，value均strip。"
+        },
+        "P4": {
+          "total": 10.0,
+          "dims": {
+            "正确性（标题/条目数/unknown）": 1.0,
+            "完整性（三产物结构）": 1.0,
+            "可验证性（三方互洽）": 1.0
+          },
+          "evidence": "正确性1.0：标题=拾贝书店工作周报、2/1/1条目、unknown=[温馨提示]、正文零命中。完整性1.0：fields7键/summary6键/filled=7、1．2．连续、报告4键、run_log自证在outdir外。可验证性1.0：三方title/数组/条目数互洽，strip到位。"
+        },
+        "P5": {
+          "total": 10.0,
+          "dims": {
+            "正确性（标题/条目数/unknown）": 1.0,
+            "完整性（三产物结构）": 1.0,
+            "可验证性（三方互洽）": 1.0
+          },
+          "evidence": "与P4三产物逐字节相同。正确性1.0：标题/2·1·1条目/unknown=[温馨提示]/正文零命中。完整性1.0：fields7/summary6键/filled=7、1．2．连续、报告4键。可验证性1.0：三方一致，部门已strip。"
+        },
+        "P6": {
+          "total": 10.0,
+          "dims": {
+            "正确性（标题/条目数/unknown）": 1.0,
+            "完整性（三产物结构）": 1.0,
+            "可验证性（三方互洽）": 1.0
+          },
+          "evidence": "与P4三产物逐字节相同。正确性1.0：标题=拾贝书店工作周报、2/1/1条目、unknown=[温馨提示]、正文零命中。完整性1.0：fields7键/summary6键/filled=7、1．2．连续、报告4键。可验证性1.0：三方互洽，strip到位。"
+        }
+      }
+    },
+    "step-router-v1": null,
+    "step-router-v1#retry": {
+      "scores": {
+        "P1": {
+          "total": 1.5,
+          "dims": {
+            "正确性": 0.0,
+            "完整性": 0.5,
+            "可验证性": 0.0
+          },
+          "evidence": "正确性：标题错（拾贝书店周报...）、unknown_keys=[]、文书含温馨提示节、fields.json 8字段，错≥2处，0.0。完整性：fields.json 8键/summary 8字段/filled=8，台账计数错，0.5。可验证性：台账unknown_keys=[]但文书有温馨提示节，互相矛盾，0.0。"
+        },
+        "P2": {
+          "total": 1.5,
+          "dims": {
+            "正确性": 0.0,
+            "完整性": 0.5,
+            "可验证性": 0.0
+          },
+          "evidence": "正确性：标题错（拾贝书店周报）、unknown_keys=[]、文书含温馨提示节、下周工作计划为字符串，错≥2处，0.0。完整性：fields.json无summary且非7键台账，0.5。可验证性：台账unknown_keys=[]但文书有温馨提示节，互相矛盾，0.0。"
+        },
+        "P3": {
+          "total": 1.5,
+          "dims": {
+            "正确性": 0.0,
+            "完整性": 0.5,
+            "可验证性": 0.0
+          },
+          "evidence": "正确性：标题错（拾贝书店...工作周报）、unknown_keys=[]、文书含温馨提示节、下周工作计划为字符串、fields.json 8字段，错≥2处，0.0。完整性：fields.json 8键/summary 8字段，台账计数错，0.5。可验证性：台账unknown_keys=[]但文书有温馨提示节，互相矛盾，0.0。"
+        },
+        "P4": {
+          "total": 10.0,
+          "dims": {
+            "正确性": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "正确性：title/unknown_keys/条目数/编号/F6均符合，1.0。完整性：3文件/7键fields/6键summary/filled=7/编号连续/4键delivery-report，1.0。可验证性：delivery-report与fields.json title相等、unknown_keys均为['温馨提示']，文书条目数与台账一致、value已strip，1.0。"
+        },
+        "P5": {
+          "total": 10.0,
+          "dims": {
+            "正确性": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "正确性：与P4一致，title/unknown_keys/条目数/编号/F6均符合，1.0。完整性：与P4一致，3文件/7键fields/6键summary/filled=7/编号连续/4键delivery-report，1.0。可验证性：与P4一致，三方互洽，1.0。"
+        },
+        "P6": {
+          "total": 10.0,
+          "dims": {
+            "正确性": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "正确性：与P4一致，title/unknown_keys/条目数/编号/F6均符合，1.0。完整性：与P4一致，3文件/7键fields/6键summary/filled=7/编号连续/4键delivery-report，1.0。可验证性：与P4一致，三方互洽，1.0。"
+        }
+      }
+    }
+  },
+  "per_judge_scores": {
+    "P1": {
+      "GLM-5.3": 4.5,
+      "step-router-v1": 1.5
+    },
+    "P2": {
+      "GLM-5.3": 4.5,
+      "step-router-v1": 1.5
+    },
+    "P3": {
+      "GLM-5.3": 4.5,
+      "step-router-v1": 1.5
+    },
+    "P4": {
+      "GLM-5.3": 10.0,
+      "step-router-v1": 10.0
+    },
+    "P5": {
+      "GLM-5.3": 10.0,
+      "step-router-v1": 10.0
+    },
+    "P6": {
+      "GLM-5.3": 10.0,
+      "step-router-v1": 10.0
+    }
+  },
+  "final_scores": {
+    "P1": 3.0,
+    "P2": 3.0,
+    "P3": 3.0,
+    "P4": 10.0,
+    "P5": 10.0,
+    "P6": 10.0
+  },
+  "judge_consistency": {
+    "task": "t01",
+    "resample_of": "P6",
+    "first_score": 10.0,
+    "second_score": 10.0,
+    "delta": 0.0,
+    "action": "pass"
+  },
+  "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+  "protocol": "weighted-dims"
+}

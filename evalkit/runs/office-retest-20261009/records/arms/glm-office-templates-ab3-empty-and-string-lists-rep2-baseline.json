@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab3-empty-and-string-lists-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 574968,
+  "started_at_ms": 1791491880415,
+  "session_id": "sess_9297540d-8ab2-4aa5-baf5-dfc7af400b79",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab3-empty-and-string-lists-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1505975,
+      "ot": 34866,
+      "dur": 449732,
+      "n": 27
+    }
+  ],
+  "input_tokens": 1505975,
+  "output_tokens": 34866,
+  "stdout_bytes": 3374,
+  "stderr_bytes": 588,
+  "stderr_head": "AI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\n",
+  "stdout_tail": "r` |\\n| 总结·工作回顾 = 字符串 | 单项化渲染「1．完成评测平台月度巡检」 | value 为单元素数组 + normalization 记录 |\\n| 总结·存在问题/成文日期缺失 | 整节省略（编号连续 一/二/三 不跳号）、落款日期行省略 | 均 `status: missing`, `required: false` |\\n\\n**Verification:** skill postcheck.py passed 9/9 on both docx (0 errors, 0 warnings); LibreOffice render + visual-judge accepted both pages (titles centered, 编号规范, signature right-aligned, no garbled text); 23 programmatic assertions on docx content, paragraph alignment, fields.json semantics, and artifact inventory all pass.\\n\\nDeliverables: `::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab3-empty-and-string-lists-rep2/baseline/out/周报/case2/文书.docx\\\" purpose=\\\"output\\\"}`（____工作周报）, `::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab3-empty-and-string-lists-rep2/baseline/out/工作总结/case2/文书.docx\\\" purpose=\\\"output\\\"}`（____2026年9月工作总结），以及同目录的 `fields.json` ×2 与生成器 `gen_doc.py`。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 27,\n    \"inputTokens\": 1505975,\n    \"outputTokens\": 34866,\n    \"totalTokens\": 1540841,\n    \"cacheReadTokens\": 1440960,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 26520,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1540841,\n    \"contextUsed\": 80910,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "ab3-empty-and-string-lists",
+  "rep": 2,
+  "slot": 28
+}

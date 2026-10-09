@@ -1,0 +1,76 @@
+{
+  "task": "office 重测臂 ab3-empty-and-string-lists rep3（列表字段边界：空列表/字符串型列表/选填小节缺失）",
+  "engine": "<redacted>",
+  "interpreter": ".venv/bin/python（python-docx 按 requirements.txt 安装）",
+  "units": {
+    "周报": {
+      "runs": [
+        {
+          "cmd": ".venv/bin/python <SKILL_MOUNT>/scripts/gen_doc.py --template 周报 --data fixtures/周报/case2.json --outdir out/周报/case2 (第1遍)",
+          "exit_code": 0,
+          "docx_sha256": "c28537f4df72bfc1ff4a756830dbe9e8478d19de60c789e87ba982b656587c2b",
+          "docx_bytes": 36961,
+          "fields_sha256": "b1062eadfa83ce7c8d6e669ea28923efa5f522d241f79f9a57865dc1d159a173",
+          "fields_bytes": 1800
+        },
+        {
+          "cmd": ".venv/bin/python <SKILL_MOUNT>/scripts/gen_doc.py --template 周报 --data fixtures/周报/case2.json --outdir out/周报/case2 (第2遍)",
+          "exit_code": 0,
+          "docx_sha256": "c28537f4df72bfc1ff4a756830dbe9e8478d19de60c789e87ba982b656587c2b",
+          "docx_bytes": 36961,
+          "fields_sha256": "b1062eadfa83ce7c8d6e669ea28923efa5f522d241f79f9a57865dc1d159a173",
+          "fields_bytes": 1800
+        }
+      ],
+      "byte_compare": "两遍快照 cmp 逐字节一致：文书.docx 一致、fields.json 一致（sha256 相等）",
+      "docx_zip_timestamps": [
+        [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "工作总结": {
+      "runs": [
+        {
+          "cmd": ".venv/bin/python <SKILL_MOUNT>/scripts/gen_doc.py --template 工作总结 --data fixtures/工作总结/case2.json --outdir out/工作总结/case2 (第1遍)",
+          "exit_code": 0,
+          "docx_sha256": "638393a01b20a238d090619bd2863437a3b35cdfec8a53ac27baee1f18e87940",
+          "docx_bytes": 36963,
+          "fields_sha256": "428c066bb49d15d45b0d87b2f6c2d036ff7d2b9e365c8aa63dee79c68f367ec6",
+          "fields_bytes": 1867
+        },
+        {
+          "cmd": ".venv/bin/python <SKILL_MOUNT>/scripts/gen_doc.py --template 工作总结 --data fixtures/工作总结/case2.json --outdir out/工作总结/case2 (第2遍)",
+          "exit_code": 0,
+          "docx_sha256": "638393a01b20a238d090619bd2863437a3b35cdfec8a53ac27baee1f18e87940",
+          "docx_bytes": 36963,
+          "fields_sha256": "428c066bb49d15d45b0d87b2f6c2d036ff7d2b9e365c8aa63dee79c68f367ec6",
+          "fields_bytes": 1867
+        }
+      ],
+      "byte_compare": "两遍快照 cmp 逐字节一致：文书.docx 一致、fields.json 一致（sha256 相等）",
+      "docx_zip_timestamps": [
+        [
+          1980,
+          1,
+          1,
+          0,
+          0,
+          0
+        ]
+      ]
+    }
+  },
+  "inventory": {
+    "SKILL.md": true,
+    "scripts/gen_doc.py": true,
+    "requirements.txt": true
+  },
+  "py_compile": ".venv/bin/python -m py_compile 入口脚本：0 错误",
+  "nonrepro_scan": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" 入口脚本：0 命中"
+}

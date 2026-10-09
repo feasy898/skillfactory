@@ -1,0 +1,97 @@
+{
+  "template": "请示函",
+  "template_id": "qingshi",
+  "source_file": "qingshi_empty.json",
+  "output_file": "文书.docx",
+  "title": "关于____的请示",
+  "fields": [
+    {
+      "name": "发文机关",
+      "required": true,
+      "kind": "str",
+      "present": false,
+      "value": null,
+      "state": "missing_required",
+      "rendered_as": "____",
+      "dropped_items": 0,
+      "coerced_from": null,
+      "note": "落款署名（发文单位）"
+    },
+    {
+      "name": "主送机关",
+      "required": true,
+      "kind": "str",
+      "present": false,
+      "value": null,
+      "state": "missing_required",
+      "rendered_as": "____",
+      "dropped_items": 0,
+      "coerced_from": null,
+      "note": "正文首行受文单位，顶格"
+    },
+    {
+      "name": "请示事由",
+      "required": true,
+      "kind": "str",
+      "present": false,
+      "value": null,
+      "state": "missing_required",
+      "rendered_as": "____",
+      "dropped_items": 0,
+      "coerced_from": null,
+      "note": "用于标题「关于……的请示」与起首语"
+    },
+    {
+      "name": "请示事项",
+      "required": true,
+      "kind": "list",
+      "present": false,
+      "value": [],
+      "state": "missing_required",
+      "rendered_as": "1．____",
+      "dropped_items": 0,
+      "coerced_from": null,
+      "note": "请示正文条目，一、二、三、"
+    },
+    {
+      "name": "成文日期",
+      "required": false,
+      "kind": "str",
+      "present": false,
+      "value": null,
+      "state": "missing_optional",
+      "rendered_as": "____年__月__日",
+      "dropped_items": 0,
+      "coerced_from": null,
+      "note": "落款日期，右对齐；选填"
+    }
+  ],
+  "rendered_names": [],
+  "missing_required_names": [
+    "发文机关",
+    "主送机关",
+    "请示事由",
+    "请示事项"
+  ],
+  "missing_optional": [
+    "成文日期"
+  ],
+  "unknown_keys": [],
+  "unknown_names": [],
+  "omitted_sections": [],
+  "data_errors": [],
+  "placeholder_policy": {
+    "scalar": "____",
+    "list_item": "1．____",
+    "note": "必填缺失以 ____ 占位；列表型必填缺失渲染一条「1．____」占位条目；选填小节缺失整节省略，台账仍记 missing（required=false）。"
+  },
+  "summary": {
+    "required_total": 4,
+    "required_missing": 4,
+    "optional_total": 1,
+    "optional_missing": 1,
+    "unknown_keys": 0,
+    "fields_rendered": 0
+  },
+  "input_keys": []
+}

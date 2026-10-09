@@ -1,0 +1,111 @@
+{
+  "tool": "x_ab5_replay.py",
+  "adjudication": "planning/test-cards-20261008/ab5-protocol-adjudication.md（9827318）",
+  "started_at": "2026-10-09T08:52:27+0800",
+  "interpreter": "/home/pan-ding/workspace/skill工厂/skillfactory/.venv-dev/bin/python",
+  "dist_package": "dist/office-templates-skill",
+  "runner_redgreen": {
+    "green": {
+      "exit_code": 0,
+      "ok": true,
+      "checks_total": 68,
+      "checks_passed": 68
+    },
+    "red": {
+      "exit_code": 1,
+      "units_found_pass": false,
+      "units_found_detail": "被测根 /tmp/ab5red-doq130_c：缺单元 ['周报/case1', '周报/case2', '请示函/case1', '请示函/case2', '会议通知/case1', '会议通知/case2', '工作总结/case1', '工作总结/case2']；多余产物单元 无（期望恰 8 个）"
+    }
+  },
+  "delivered_units": [
+    ".determinism/pass1",
+    "out/会议通知/case1"
+  ],
+  "determinism_replay": {
+    "run_log_present": true,
+    "commands_extracted": 1,
+    "extraction_notes": [],
+    "replayed_command": [
+      "/home/pan-ding/workspace/skill工厂/skillfactory/.venv-dev/bin/python",
+      "gen_doc.py",
+      "--template",
+      "会议通知",
+      "--data",
+      "fixtures/会议通知/case1.json",
+      "--outdir",
+      "out/会议通知/case1"
+    ],
+    "outdir": "out/会议通知/case1",
+    "run1_exit": 0,
+    "run2_exit": 0,
+    "run1_files": {
+      "fields.json": "9fcba2f2b7e9d41160bf2dea67e190b52d2d2f3576794dcd29e12d423699a11c",
+      "文书.docx": "586e4d54bf067c4693bff40991175abbcd0bbb7849d8af6597460d6092879c99"
+    },
+    "run2_files": {
+      "fields.json": "9fcba2f2b7e9d41160bf2dea67e190b52d2d2f3576794dcd29e12d423699a11c",
+      "文书.docx": "586e4d54bf067c4693bff40991175abbcd0bbb7849d8af6597460d6092879c99"
+    },
+    "compare_run1_vs_run2": {
+      "fields.json": {
+        "sha_run1": "9fcba2f2b7e9d41160bf2dea67e190b52d2d2f3576794dcd29e12d423699a11c",
+        "sha_run2": "9fcba2f2b7e9d41160bf2dea67e190b52d2d2f3576794dcd29e12d423699a11c",
+        "byte_identical": "9fcba2f2b7e9d41160bf2dea67e190b52d2d2f3576794dcd29e12d423699a11c",
+        "equal_modulo_outputs": true
+      },
+      "文书.docx": {
+        "sha_run1": "586e4d54bf067c4693bff40991175abbcd0bbb7849d8af6597460d6092879c99",
+        "sha_run2": "586e4d54bf067c4693bff40991175abbcd0bbb7849d8af6597460d6092879c99",
+        "byte_identical": "586e4d54bf067c4693bff40991175abbcd0bbb7849d8af6597460d6092879c99",
+        "parsed_layout_identical": true
+      }
+    },
+    "delivered_sha256": {
+      ".determinism/pass1": {
+        "fields.json": "9fcba2f2b7e9d41160bf2dea67e190b52d2d2f3576794dcd29e12d423699a11c",
+        "文书.docx": "586e4d54bf067c4693bff40991175abbcd0bbb7849d8af6597460d6092879c99"
+      },
+      "out/会议通知/case1": {
+        "fields.json": "9fcba2f2b7e9d41160bf2dea67e190b52d2d2f3576794dcd29e12d423699a11c",
+        "文书.docx": "586e4d54bf067c4693bff40991175abbcd0bbb7849d8af6597460d6092879c99"
+      }
+    }
+  },
+  "runner_delivered": {
+    "exit_code": 1,
+    "ok": false,
+    "delivered_unit_ids": [
+      ".determinism/pass1",
+      "会议通知/case1"
+    ],
+    "unit_scoped_checks": {},
+    "unit_scoped_all_pass": true,
+    "units_found_note": "单任务臂交付恰含本任务单元；runner 的 units_found/products_exact 按 8 单元全集口径在臂上下文记 N/A（裁决端态口径：以交付单元实质检查+单元限定一致率为准，不放宽、不错判）",
+    "agreement_detail": "字段填充一致率 0.0%（0/66，阈值 90%）；不一致: 周报/case1/部门; 周报/case1/填报人; 周报/case1/周期; 周报/case1/本周工作内容; 周报/case1/下周工作计划; 周报/case1/问题与需协调事项; 周报/case1/报送日期; 周报/case2/部门; 周报/case2/填报人; 周报/case2/周期…",
+    "unit_scoped_agreement": {
+      ".determinism/pass1": {
+        "error": "[Errno 2] No such file or directory: '/home/pan-ding/workspace/skill工厂/skillfactory/dist/office-templates-skill/reference/out/.determinism/pass1/fields.json'"
+      },
+      "会议通知/case1": {
+        "matched": 0,
+        "total": 11,
+        "rate": 0.0,
+        "ge_90pct": false,
+        "mismatched_fields": [
+          "主送对象",
+          "会议名称",
+          "会议地点",
+          "会议时间",
+          "会议要求",
+          "会议议题",
+          "参会人员",
+          "发文日期",
+          "召开单位",
+          "联系人",
+          "联系电话"
+        ]
+      }
+    }
+  },
+  "finished_at": "2026-10-09T08:52:32+0800"
+}

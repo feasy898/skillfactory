@@ -1,0 +1,27 @@
+AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.
+{
+  "sessionId": "sess_900998c8-585b-4e58-b712-394d0e2067d7",
+  "traceId": "005a4f55-9604-4f88-bdad-f5842e0a8b00",
+  "turnId": "turn_dfa0880d-180d-4dab-8f08-7b548fd758b8",
+  "response": "Task complete. All three deliverables are in place and verified:\n\n- **`qingheng_teahui.json`** — the source data saved byte-identical to the brief's JSON block (including the half-width spaces around 会议议题).\n- **`out/文书.docx`** — a one-page A4 formal meeting notice in GB/T 9704 公文 style (non-red-header, since none was requested): centered 二号 title 「青蘅茶社关于召开秋季会员茶话会的通知」 in 小标宋， flush-left addressee 「全体会员：」, lead-in with 2-char indent, items 一–七 with 黑体 labels and 仿宋三号 values (28pt fixed line spacing), the six requirements as （一）–（六） sub-items with ；/。 punctuation added per 公文 convention, 「特此通知。」 closing, and a right-aligned signature block (署名右空二字， date 右空四字， Arabic-numeral date per GB/T 9704—2012 and the source data).\n- **`out/fields.json`** — an 11-field manifest (template/title/fields/summary) with each field's required-ness, filled status, value, and rendering note; 11/11 values verified against the source. The 议题 value records the space-trimmed text, and the trimming is documented in its 渲染方式.\n\nVerification trail: `postcheck.py` passed with 0 errors; the rendered PDF was one page after I fixed an initial pagination defect (the date originally fell alone onto page 2, so I tightened the title/signature spacing to keep 成文日期 with the body per 公文 rules); the independent visual-judge agent passed the rendered page (structure, alignment, signature block, page number, no overflow); and a final programmatic check confirmed all 11 field values in the docx/fields.json match the source exactly. Supporting artifacts kept alongside: `gen_doc.js` (re-runnable generator), `.render/` (PDF + PNG evidence), and `node_modules`/`package.json` for the `docx` toolchain.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 32,
+    "inputTokens": 1423733,
+    "outputTokens": 21329,
+    "totalTokens": 1445062,
+    "cacheReadTokens": 1376896,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 14198,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1445062,
+    "contextUsed": 61875,
+    "contextWindow": 200000
+  }
+}

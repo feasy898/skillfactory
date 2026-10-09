@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_2f0227ea-538e-434a-855f-c68a107fc449",
+  "traceId": "d275b1de-d792-4dd4-a4cd-97a45f5d04d8",
+  "turnId": "turn_edb8a2ab-f3e2-41ab-97d4-0a8f0d4c8144",
+  "response": "任务完成。已按 brief 要求用 office-templates 技能生成会议通知，全部交付物落盘就位。\n\n**交付物**（均在当前目录）：\n- `qingheng_dongji.json` — brief 中的数据原文保存\n- `out/文书.docx` — 会议通知成文（GB/T 9704 风格版式，9 个非空段）\n- `out/fields.json` — 字段填充台账\n- `run_log.json` — 确定性验证与交付留痕（含 `.verify/run1`、`.verify/run2` 两遍快照）\n\n**成文要点**：标题《关于召开冬季送暖协调会的通知》居中黑体二号；称谓「各分社负责人：」顶格；正文含会议时间（2026年11月3日 10:00）、地点、参会人员，仿宋三号、首行缩进两字符、28 磅固定行距；联系行「联系人：　　联系电话：137-5566-0099」；落款两行右对齐（青蘅茶社志愿组 / 2026年10月28日）。\n\n**缺数据如实记账，未编造**：11 个模板字段填了 8 个，必填 6 个全部齐备（文中无 `____` 占位）。3 个选填缺失的渲染方式——`会议议题` 为空字符串，按 F2 标签保留值留空（段内呈现「会议议题：」）；`会议要求` 为空数组，按 F4 整节省略（文中不出现「一、会议要求」节头）；`联系人` 键不存在，按 F2 在联系行中标签保留。7 个历次活动遗留的杂项键（`1号议程`、`Zebra`、`_private`、`abc`、`备用3`、`附件编号`、`📋备注`）按字典序记入 `summary.unknown_keys`，未进文书。\n\n**确定性验证 PASS**：同命令连跑两遍，`文书.docx` 与 `fields.json` 均整文件逐字节一致（sha256 分别为 `2ddbebc1…` 与 `946aca70…`）；docx 容器 17 个 zip 条目时间戳已归一化为 1980-01-01；引擎源码 grep 不可复现源（time/random/uuid/datetime/now）0 命中，py_compile 0 错误。两产物哈希还与同任务重测臂 t04-rep1 逐字节相同，跨次复现一致。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 18,
+    "inputTokens": 632640,
+    "outputTokens": 10753,
+    "totalTokens": 643393,
+    "cacheReadTokens": 601088,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 6417,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 643393,
+    "contextUsed": 47479,
+    "contextWindow": 200000
+  }
+}

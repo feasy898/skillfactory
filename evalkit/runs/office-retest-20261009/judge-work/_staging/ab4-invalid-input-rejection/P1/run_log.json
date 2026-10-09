@@ -1,0 +1,215 @@
+{
+  "任务": "ab4-invalid-input-rejection（非法输入拒绝行为测试）",
+  "被测入口": "gen_doc.py",
+  "解释器": "/usr/bin/python3",
+  "python版本": "Python 3.12.3",
+  "工作目录": "<ARMROOT>",
+  "退出码约定": "非法输入 = 2；合法输入 = 0",
+  "关键约定": [
+    "四组非法输入均须以非零退出码 2 拒绝",
+    "stderr 须含中文错误信息",
+    "非法输入须零产物残留：不创建输出目录、不写半成品",
+    "合法对照组退出码 0，并在 out/周报/case1/ 生成 文书.docx 与 fields.json"
+  ],
+  "用例总数": 5,
+  "逐组记录": [
+    {
+      "序号": 1,
+      "用例名": "非法①模板名非法(--template 证书)",
+      "类别": "非法输入",
+      "完整命令": "python3 gen_doc.py --template 证书 --data fixtures/周报/case1.json",
+      "实际执行": "/usr/bin/python3 <ARMROOT>/gen_doc.py --template 证书 --data fixtures/周报/case1.json",
+      "工作目录": "<ARMROOT>",
+      "退出码": 2,
+      "期望退出码": 2,
+      "退出码符合约定": true,
+      "stdout": "",
+      "stderr完整": "错误：模板名非法：证书（可用模板：周报、请示函、工作总结、会议通知）。已拒绝本次生成，未产生任何输出文件。",
+      "stderr摘要": "错误：模板名非法：证书（可用模板：周报、请示函、工作总结、会议通知）。已拒绝本次生成，未产生任何输出文件。",
+      "stderr含中文": true,
+      "产物残留检查": {
+        "检查方式": "以 out/ 目录树文件清单+sha256 在调用前后做差集",
+        "调用前产物": [],
+        "调用后产物": [],
+        "新增文件": [],
+        "被删除文件": [],
+        "被改写文件": [],
+        "是否创建了输出目录": false,
+        "零产物残留": true
+      },
+      "非法点": "模板名 证书 不在受支持模板集合内",
+      "数据文件本身合法": true
+    },
+    {
+      "序号": 2,
+      "用例名": "非法②--data 指向不存在的文件",
+      "类别": "非法输入",
+      "完整命令": "python3 gen_doc.py --template 周报 --data fixtures/周报/不存在的文件.json",
+      "实际执行": "/usr/bin/python3 <ARMROOT>/gen_doc.py --template 周报 --data fixtures/周报/不存在的文件.json",
+      "工作目录": "<ARMROOT>",
+      "退出码": 2,
+      "期望退出码": 2,
+      "退出码符合约定": true,
+      "stdout": "",
+      "stderr完整": "错误：数据文件不存在：fixtures/周报/不存在的文件.json。已拒绝本次生成，未产生任何输出文件。",
+      "stderr摘要": "错误：数据文件不存在：fixtures/周报/不存在的文件.json。已拒绝本次生成，未产生任何输出文件。",
+      "stderr含中文": true,
+      "产物残留检查": {
+        "检查方式": "以 out/ 目录树文件清单+sha256 在调用前后做差集",
+        "调用前产物": [],
+        "调用后产物": [],
+        "新增文件": [],
+        "被删除文件": [],
+        "被改写文件": [],
+        "是否创建了输出目录": false,
+        "零产物残留": true
+      },
+      "非法点": "--data 目标路径不存在",
+      "数据文件本身合法": false
+    },
+    {
+      "序号": 3,
+      "用例名": "非法③--data 指向内容不是 JSON 的文件",
+      "类别": "非法输入",
+      "完整命令": "python3 gen_doc.py --template 周报 --data .tmp_invalid/not_json.json",
+      "实际执行": "/usr/bin/python3 <ARMROOT>/gen_doc.py --template 周报 --data .tmp_invalid/not_json.json",
+      "工作目录": "<ARMROOT>",
+      "退出码": 2,
+      "期望退出码": 2,
+      "退出码符合约定": true,
+      "stdout": "",
+      "stderr完整": "错误：数据文件不是合法 JSON：.tmp_invalid/not_json.json（第 1 行第 1 列：Expecting value）。已拒绝本次生成，未产生任何输出文件。",
+      "stderr摘要": "错误：数据文件不是合法 JSON：.tmp_invalid/not_json.json（第 1 行第 1 列：Expecting value）。已拒绝本次生成，未产生任何输出文件。",
+      "stderr含中文": true,
+      "产物残留检查": {
+        "检查方式": "以 out/ 目录树文件清单+sha256 在调用前后做差集",
+        "调用前产物": [],
+        "调用后产物": [],
+        "新增文件": [],
+        "被删除文件": [],
+        "被改写文件": [],
+        "是否创建了输出目录": false,
+        "零产物残留": true
+      },
+      "非法点": "JSON 解析失败（文件内容为纯文本「这不是JSON，只是一段纯文本，不是合法的 JSON 文档。」）",
+      "数据文件本身合法": false,
+      "样本文件": ".tmp_invalid/not_json.json",
+      "样本内容": "这不是JSON，只是一段纯文本，不是合法的 JSON 文档。"
+    },
+    {
+      "序号": 4,
+      "用例名": "非法④--data 指向顶层为数组的 JSON 文件",
+      "类别": "非法输入",
+      "完整命令": "python3 gen_doc.py --template 周报 --data .tmp_invalid/not_object.json",
+      "实际执行": "/usr/bin/python3 <ARMROOT>/gen_doc.py --template 周报 --data .tmp_invalid/not_object.json",
+      "工作目录": "<ARMROOT>",
+      "退出码": 2,
+      "期望退出码": 2,
+      "退出码符合约定": true,
+      "stdout": "",
+      "stderr完整": "错误：数据文件 JSON 顶层必须是对象，实际为数组：.tmp_invalid/not_object.json。已拒绝本次生成，未产生任何输出文件。",
+      "stderr摘要": "错误：数据文件 JSON 顶层必须是对象，实际为数组：.tmp_invalid/not_object.json。已拒绝本次生成，未产生任何输出文件。",
+      "stderr含中文": true,
+      "产物残留检查": {
+        "检查方式": "以 out/ 目录树文件清单+sha256 在调用前后做差集",
+        "调用前产物": [],
+        "调用后产物": [],
+        "新增文件": [],
+        "被删除文件": [],
+        "被改写文件": [],
+        "是否创建了输出目录": false,
+        "零产物残留": true
+      },
+      "非法点": "JSON 可解析但顶层不是对象（是长度为 2 的数组）",
+      "数据文件本身合法": false,
+      "样本文件": ".tmp_invalid/not_object.json",
+      "样本内容": "[\"数组\", \"非对象\"]"
+    },
+    {
+      "序号": 5,
+      "用例名": "合法对照组(fixtures/周报/case1.json)",
+      "类别": "合法对照",
+      "完整命令": "python3 gen_doc.py --template 周报 --data fixtures/周报/case1.json",
+      "实际执行": "/usr/bin/python3 <ARMROOT>/gen_doc.py --template 周报 --data fixtures/周报/case1.json",
+      "工作目录": "<ARMROOT>",
+      "退出码": 0,
+      "期望退出码": 0,
+      "退出码符合约定": true,
+      "stdout": "已生成：out/周报/case1/文书.docx",
+      "stderr完整": "",
+      "stderr摘要": "",
+      "stderr含中文": false,
+      "产物残留检查": {
+        "检查方式": "以 out/ 目录树文件清单+sha256 在调用前后做差集",
+        "调用前产物": [],
+        "调用后产物": [
+          "周报/case1/fields.json",
+          "周报/case1/文书.docx"
+        ],
+        "新增文件": [
+          "周报/case1/fields.json",
+          "周报/case1/文书.docx"
+        ],
+        "被删除文件": [],
+        "被改写文件": [],
+        "是否创建了输出目录": true,
+        "零产物残留": false,
+        "整棵out目录为本次新建": true
+      },
+      "产物检查": {
+        "预期目录": "out/周报/case1",
+        "目录存在": true,
+        "文书.docx存在": true,
+        "fields.json存在": true,
+        "目录内文件": [
+          "fields.json",
+          "文书.docx"
+        ],
+        "文书.docx字节数": 37139
+      },
+      "用途": "对照：合法输入必须成功并生成两产物",
+      "数据文件本身合法": true
+    }
+  ],
+  "补充边界记录": {
+    "序号": "边界1",
+    "用例名": "边界：JSON 合法但必填字段缺失（不算非法输入）",
+    "类别": "补充边界",
+    "完整命令": "python3 gen_doc.py --template 周报 --data <临时>/partial.json",
+    "实际执行": "/usr/bin/python3 <ARMROOT>/gen_doc.py --template 周报 --data <ARMROOT>/.tmp_invalid/iso/partial.json",
+    "工作目录": "<ARMROOT>/.tmp_invalid/iso（临时隔离目录，执行后已删除）",
+    "数据内容": {
+      "部门": "研发部",
+      "报送日期": "2026-09-28"
+    },
+    "退出码": 0,
+    "期望退出码": 0,
+    "退出码符合约定": true,
+    "stderr": "",
+    "stdout": "已生成：out/周报/partial/文书.docx\n提示：5 个必填字段缺失，已以「待定」占位。",
+    "被判为非法输入而拒绝": false,
+    "缺失字段清单": [
+      "填报人",
+      "周期",
+      "本周工作内容",
+      "下周工作计划",
+      "问题与需协调事项"
+    ],
+    "缺失字段以待定占位": true,
+    "产物": [
+      "fields.json",
+      "文书.docx"
+    ],
+    "说明": "缺失的必填字段以「待定」占位而非报错，符合任务书第 5 条约定"
+  },
+  "汇总": {
+    "非法输入组数": 4,
+    "非法输入全部以2拒绝": true,
+    "非法输入stderr均含中文": true,
+    "非法输入零产物残留": true,
+    "合法对照组退出码0": true,
+    "合法对照组两产物齐全": true,
+    "必填缺失未被当作非法输入拒绝": true,
+    "全部用例符合约定": true
+  }
+}

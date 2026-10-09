@@ -1,0 +1,58 @@
+{
+  "task": "会议通知：qingheng_dongji.json → out/文书.docx + out/fields.json（office-templates 技能）",
+  "engine_entry": ".zcode/skills/office-templates/scripts/gen_doc.py",
+  "environment": {
+    "interpreter": "/usr/bin/python3（Python 3.12.3；默认 venv ~/venvs/ml 无 python-docx 且只读，改用系统 python3）",
+    "python_docx": "1.2.0",
+    "platform": "linux"
+  },
+  "runs": [
+    {
+      "command": "/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 会议通知 --data qingheng_dongji.json --outdir out",
+      "exit_code": 0,
+      "stdout_summary": "已生成：out/文书.docx（模板=会议通知，标题=关于召开冬季送暖协调会的通知，字段 filled/total=8/11，必填缺失=无，模板外键=['1号议程', 'Zebra', '_private', 'abc', '备用3', '附件编号', '📋备注']）",
+      "snapshot": ".verify/run1/",
+      "artifacts": {
+        "文书.docx": {"sha256": "2ddbebc1f764653f722fd05217f7a383ad953e3d1c7e2eac6d352a2d84cc24e6", "bytes": 37058},
+        "fields.json": {"sha256": "946aca709f88f08074359b243963379ad68b4ce6099f82cf32b78a9a77c07baa", "bytes": 2561}
+      }
+    },
+    {
+      "command": "/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 会议通知 --data qingheng_dongji.json --outdir out",
+      "exit_code": 0,
+      "stdout_summary": "已生成：out/文书.docx（模板=会议通知，标题=关于召开冬季送暖协调会的通知，字段 filled/total=8/11，必填缺失=无，模板外键=['1号议程', 'Zebra', '_private', 'abc', '备用3', '附件编号', '📋备注']）",
+      "snapshot": ".verify/run2/",
+      "artifacts": {
+        "文书.docx": {"sha256": "2ddbebc1f764653f722fd05217f7a383ad953e3d1c7e2eac6d352a2d84cc24e6", "bytes": 37058},
+        "fields.json": {"sha256": "946aca709f88f08074359b243963379ad68b4ce6099f82cf32b78a9a77c07baa", "bytes": 2561}
+      }
+    }
+  ],
+  "byte_compare": {
+    "method": "两遍跑完各即快照至 outdir 旁路目录 .verify/run1、.verify/run2，cmp 逐字节对拍",
+    "文书.docx": "一致（两遍 sha256 相同：2ddbebc1f764653f722fd05217f7a383ad953e3d1c7e2eac6d352a2d84cc24e6）",
+    "fields.json": "一致（两遍 sha256 相同：946aca709f88f08074359b243963379ad68b4ce6099f82cf32b78a9a77c07baa；同 outdir 故 outputs 路径键亦相同，整文件一致）",
+    "conclusion": "确定性对拍通过"
+  },
+  "skill_inventory": {
+    "SKILL.md": "在",
+    "scripts/gen_doc.py": "在",
+    "requirements.txt": "在（python-docx>=1.1；实际用系统已装 1.2.0，未改动环境）",
+    "references/会议通知.md": "在（生成前已按工作流第 1 步核对版式与字段规范）"
+  },
+  "py_compile": {"command": "/usr/bin/python3 -m py_compile .zcode/skills/office-templates/scripts/gen_doc.py", "exit_code": 0, "errors": 0},
+  "irreproducible_source_scan": {"command": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" .zcode/skills/office-templates/scripts/gen_doc.py", "hits": 0},
+  "ledger_check": {
+    "title": "关于召开冬季送暖协调会的通知（与 V2 公式一致）",
+    "filled": 8,
+    "total": 11,
+    "missing_required_names": [],
+    "missing_optional": [
+      "会议议题（空串，F2：行内标签保留、值留空）",
+      "会议要求（空数组，F4：整节省略，文中无『一、会议要求』节头）",
+      "联系人（键不存在，F2：联系行标签保留、值留空）"
+    ],
+    "unknown_keys": ["1号议程", "Zebra", "_private", "abc", "备用3", "附件编号", "📋备注"],
+    "unknown_keys_note": "F6 字典序记账，7 个模板外键不影响文书"
+  }
+}

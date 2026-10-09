@@ -1,0 +1,136 @@
+{
+  "task": "ab5-determinism-layout-selfeval（office 重测臂·确定性自评）",
+  "date": "2026-10-09",
+  "requirement": "同一输入 fixtures/会议通知/case1.json 连续两遍运行生成到同一输出目录 out/会议通知/case1（第二遍覆盖复写第一遍），每遍记录 文书.docx 与 fields.json 的 sha256，两遍产物逐字节对拍并落盘结论；输出目录恰含两产物。",
+  "environment": {
+    "platform": "linux",
+    "python": "3.12.3",
+    "python_docx": "1.2.0（pip install --target .deps，requirements.txt 口径 python-docx>=1.1）",
+    "entry_script": "<SKILL_MOUNT>/scripts/gen_doc.py",
+    "env_prefix": "PYTHONPATH=\"$PWD/.deps\"（依赖安装于工作目录 .deps，命令行三参数契约不受影响）"
+  },
+  "command_line": "PYTHONPATH=\"$PWD/.deps\" python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 会议通知 --data fixtures/会议通知/case1.json --outdir out/会议通知/case1",
+  "cli_contract": "--template 会议通知 --data fixtures/会议通知/case1.json --outdir out/会议通知/case1（两遍命令行逐字相同）",
+  "runs": [
+    {
+      "run": 1,
+      "command": "PYTHONPATH=\"$PWD/.deps\" python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 会议通知 --data fixtures/会议通知/case1.json --outdir out/会议通知/case1",
+      "exit_code": 0,
+      "stdout": "已生成：out/会议通知/case1/文书.docx（模板=会议通知，标题=关于召开三季度质量评审会的通知，字段 filled/total=11/11，必填缺失=无，模板外键=无）",
+      "artifacts": {
+        "文书.docx": {
+          "sha256": "0de99668671165bbf2b33d2482e84a5f1f416a6bf063eb21e81b1f041a7d6284",
+          "bytes": 37200
+        },
+        "fields.json": {
+          "sha256": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+          "bytes": 2458
+        }
+      },
+      "snapshot_dir": ".snapshots/run1（旁路快照，位于 --outdir 之外；cp 字节复制，sha256 与当遍目录内产物一致）"
+    },
+    {
+      "run": 2,
+      "command": "PYTHONPATH=\"$PWD/.deps\" python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 会议通知 --data fixtures/会议通知/case1.json --outdir out/会议通知/case1",
+      "exit_code": 0,
+      "stdout": "已生成：out/会议通知/case1/文书.docx（模板=会议通知，标题=关于召开三季度质量评审会的通知，字段 filled/total=11/11，必填缺失=无，模板外键=无）",
+      "artifacts": {
+        "文书.docx": {
+          "sha256": "0de99668671165bbf2b33d2482e84a5f1f416a6bf063eb21e81b1f041a7d6284",
+          "bytes": 37200
+        },
+        "fields.json": {
+          "sha256": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+          "bytes": 2458
+        }
+      },
+      "snapshot_dir": ".snapshots/run2（旁路快照；run2 快照即最终目录态，live 目录 sha256 复核与快照一致）",
+      "note": "第二遍覆盖复写第一遍（同 --outdir），两遍 stdout 亦逐字相同"
+    }
+  ],
+  "comparisons": {
+    "byte_level": {
+      "文书.docx": {
+        "method": "cmp 逐字节对比两遍旁路快照 + sha256sum 核对",
+        "cmp_exit_code": 0,
+        "identical": true,
+        "sha256_run1": "0de99668671165bbf2b33d2482e84a5f1f416a6bf063eb21e81b1f041a7d6284",
+        "sha256_run2": "0de99668671165bbf2b33d2482e84a5f1f416a6bf063eb21e81b1f041a7d6284",
+        "conclusion": "整文件逐字节一致（37200 字节，两遍 sha256 相同，cmp 零差异）"
+      },
+      "fields.json": {
+        "method": "cmp 逐字节对比两遍旁路快照 + sha256sum 核对；另做剥离 outputs 键后的结构对拍",
+        "cmp_exit_code": 0,
+        "identical": true,
+        "sha256_run1": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+        "sha256_run2": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+        "outputs_excluded_identical": true,
+        "outputs_note": "两遍命令行与输出路径全同，outputs 类路径键两遍取值亦相同，故本例在『除 outputs 外』口径与整文件口径下均逐字节一致（2458 字节）",
+        "conclusion": "整文件逐字节一致；除 outputs 类路径键外亦逐键一致"
+      }
+    },
+    "docx_parsed_level": {
+      "items_compared": [
+        "段落文本（12 段）",
+        "对齐（alignment：段1 居中/段11-12 右对齐/其余默认）",
+        "缩进（firstLineChars=200 首行缩进两字符；落款右缩进 32pt）",
+        "字体（标题黑体 22pt；正文/落款 eastAsia=仿宋、ascii/hAnsi=Times New Roman 16pt；节头黑体 16pt）",
+        "行距（固定 28 磅、段前段后 0）",
+        "页面设置（A4 21.0×29.7cm，边距 上3.7/下3.5/左2.8/右2.6cm）"
+      ],
+      "paragraph_count": 12,
+      "identical": true,
+      "conclusion": "两遍 docx 解析后的段落文本/对齐/缩进/字体/字号/行距完全一致（含段前段后、右缩进与页面版心，逐属性结构化对拍相等）"
+    },
+    "fields_json_content": {
+      "top_level_keys": ["template", "title", "filled_fields", "missing_fields", "fields", "summary", "outputs"],
+      "template": "会议通知",
+      "title": "关于召开三季度质量评审会的通知",
+      "summary": {
+        "total": 11,
+        "filled": 11,
+        "missing": 0,
+        "missing_required": 0,
+        "missing_required_names": [],
+        "unknown_keys": []
+      },
+      "note": "11/11 字段全部填充，无必填缺失、无模板外键"
+    }
+  },
+  "outdir_check": {
+    "path": "out/会议通知/case1",
+    "file_count": 2,
+    "files": ["文书.docx", "fields.json"],
+    "exactly_two_artifacts": true,
+    "conclusion": "输出目录恰含两产物（无多余文件/子目录）"
+  },
+  "self_checks": {
+    "skill_inventory": {
+      "SKILL.md": true,
+      "scripts/gen_doc.py": true,
+      "requirements.txt": true,
+      "references/会议通知.md": true,
+      "references/周报.md": true,
+      "references/请示函.md": true,
+      "references/工作总结.md": true,
+      "conclusion": "入口脚本与技能三件套（SKILL.md、scripts/gen_doc.py、requirements.txt）齐全，references 四模板规范齐备"
+    },
+    "py_compile": {
+      "command": "python3 -m py_compile <SKILL_MOUNT>/scripts/gen_doc.py",
+      "exit_code": 0,
+      "errors": 0
+    },
+    "non_reproducible_scan": {
+      "command": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" <SKILL_MOUNT>/scripts/gen_doc.py",
+      "hits": 0,
+      "conclusion": "0 命中——入口脚本无 time/random/uuid/datetime/now 调用"
+    },
+    "docx_container_timestamp_check": {
+      "run1_entry_datetimes": ["1980-01-01T00:00:00"],
+      "run2_entry_datetimes": ["1980-01-01T00:00:00"],
+      "core_xml_note": "docProps/core.xml 仅含 python-docx 默认模板的固定常量日期（2013-12-23T23:15:00Z，随库分发、非墙钟），无生成时刻写入",
+      "conclusion": "zip 条目时间戳全部归一化为 1980-01-01，容器层无墙钟/随机源"
+    }
+  },
+  "conclusion": "同输入（fixtures/会议通知/case1.json）连跑两遍到同一输出目录 out/会议通知/case1（第二遍覆盖复写第一遍）：文书.docx 两遍 sha256 相同、整文件逐字节一致；fields.json 两遍 sha256 相同、整文件逐字节一致（『除 outputs 类路径键外』口径亦一致，且本例 outputs 键两遍同值）；docx 解析后的段落文本/对齐/缩进/字体/字号/行距完全一致；输出目录恰含 文书.docx 与 fields.json 两产物。产物中无当前时间、随机内容等不可复现源（入口脚本 grep 扫描 0 命中，docx zip 容器时间戳归一化为 1980-01-01）。确定性自评：通过。"
+}

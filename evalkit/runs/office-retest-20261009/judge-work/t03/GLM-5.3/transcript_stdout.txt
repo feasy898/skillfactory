@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_2d9d5549-7914-4188-aa85-648989902043",
+  "traceId": "98009bff-1a0c-4a66-87c3-5884d2fa02ba",
+  "turnId": "turn_4d810edb-ce08-4a41-8e06-494f03d82619",
+  "response": "The verdict.json is in place and fully verified. All checks pass: byte-identity claim confirmed, evidence strings ≤150 chars, dimension keys match the rubric verbatim, and only `scores` as top-level key.\n\n## 刖决完成 — t03 盲评结果（通过线 8.0）\n\n| 产物 | 加权分 | 正确性 0.4 | 完整性 0.3 | 可验证性 0.3 | 结论 |\n|---|---|---|---|---|---|\n| P1 | **3.0** | 0 | 0.5 | 0.5 | 不通过 |\n| P2 | **4.5** | 0 | 1.0 | 0.5 | 不通过 |\n| P3 | **10.0** | 1.0 | 1.0 | 1.0 | 通过 |\n| P4 | **10.0** | 1.0 | 1.0 | 1.0 | 通过 |\n| P5 | **10.0** | 1.0 | 1.0 | 1.0 | 通过 |\n| P6 | **3.0** | 0 | 0.5 | 0.5 | 不通过 |\n\n判定要点（均经机判复核）：\n\n- **P3/P4/P5**（产物逐字节相同）：全部命中引擎实测期望——A 标题`关于____的请示`、称谓`____：`逐字，全文 `____` 恰 5 处，末三非空段=`____`/`联系人：　　联系电话：`/`____`；B 标题恰 8 连排下划线、3 个 `1．____`、存在问题节整节省略、末段右对齐；两份台账 A missing=8/8、B 7/7，missing_required 顺序与 rendered_as 四种语义措辞逐字一致，run_log 证实 exit 0、各目录恰 2 文件。满分。\n- **P2**：最接近的失败者——A 的 5 处占位、B 的 3 个 `1．____` 与省节都对，但踩中 3 个判挂点：A 成文日期行渲染 `____年__月__日` 而非空行（`____` 共 6 处≠恰 5）、B 标题 `____（____年__月）`（10 个分散下划线）≠ 8 连排、B 日期行同样渲染占位而非空段→正确性按「错 ≥3 处」归零；且 rendered_as 全用字面值（`____`/`(整节省略)`）而非 spec 语义措辞、A 台账仅 5 字段≠8/8→可验证性 0.5。\n- **P1**：自建生成器整套换用 `【字段名】` 占位体系（全文 0 处 `____`），B 存在问题节未省略、无 `1．____`；台账 A 记 missing=5/5、B 记 blank=7/missing=0，均无 rendered_as——但台账与自身文书自洽，未触「台账矛盾」零分档。\n- **P6**：占位一律 `［未填写］`，A 标题兜底成裸占位（正中判挂点「标题兜底」模式）、缘由段无任何占位；B 存在问题节出现且末个非空段是居中的生成注脚（非右对齐），两份文书还各加了一段模板外脚注。\n\nverdict.json 已写入当前目录（仅含 `scores` 一个顶层键，六条 evidence 均 ≤150 字且逐维附实测证据）。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 17,
+    "inputTokens": 840695,
+    "outputTokens": 36439,
+    "totalTokens": 877134,
+    "cacheReadTokens": 757824,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 33426,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 877134,
+    "contextUsed": 83876,
+    "contextWindow": 200000
+  }
+}

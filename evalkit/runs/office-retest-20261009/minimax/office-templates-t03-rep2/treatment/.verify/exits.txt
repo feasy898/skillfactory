@@ -1,0 +1,4 @@
+A pass1 exit=0
+B pass1 exit=0
+A pass2 exit=0
+B pass2 exit=0

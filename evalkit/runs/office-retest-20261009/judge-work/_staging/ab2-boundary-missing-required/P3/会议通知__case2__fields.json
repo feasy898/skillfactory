@@ -1,0 +1,87 @@
+{
+  "artifacts": {
+    "document": "<ARMROOT>/out/会议通知/case2/文书.docx",
+    "fields": "<ARMROOT>/out/会议通知/case2/fields.json"
+  },
+  "case": "case2",
+  "data_file": "<ARMROOT>/fixtures/会议通知/case2.json",
+  "detail": {
+    "missing_optional": [
+      {
+        "field": "会议议题",
+        "reason": "key_absent"
+      },
+      {
+        "field": "会议要求",
+        "reason": "key_absent"
+      },
+      {
+        "field": "联系人",
+        "reason": "key_absent"
+      },
+      {
+        "field": "联系电话",
+        "reason": "key_absent"
+      }
+    ],
+    "missing_required": [
+      {
+        "field": "会议名称",
+        "reason": "key_absent"
+      },
+      {
+        "field": "会议地点",
+        "reason": "empty_value"
+      }
+    ],
+    "unknown_keys": [
+      {
+        "key": "备注",
+        "reason": "not_in_template_schema"
+      }
+    ]
+  },
+  "missing_optional": [
+    "会议议题",
+    "会议要求",
+    "联系人",
+    "联系电话"
+  ],
+  "missing_required": [
+    "会议名称",
+    "会议地点"
+  ],
+  "optional_fields": [
+    "会议议题",
+    "会议要求",
+    "联系人",
+    "联系电话",
+    "发文日期"
+  ],
+  "placeholder": "____",
+  "policy": {
+    "missing_optional": "对应行整行省略，不冒充必填",
+    "missing_required": "以 ____ 占位渲染，程序正常结束（退出码 0）",
+    "no_fabrication": "缺失内容不推测、不编造",
+    "unknown_keys": "仅记账，不写入文书正文"
+  },
+  "present_fields": [
+    "召开单位",
+    "主送对象",
+    "会议时间",
+    "参会人员",
+    "发文日期"
+  ],
+  "required_fields": [
+    "召开单位",
+    "主送对象",
+    "会议名称",
+    "会议时间",
+    "会议地点",
+    "参会人员"
+  ],
+  "template": "会议通知",
+  "unknown_keys": [
+    "备注"
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "task": "office 重测臂（ab1-standard-four-templates）：四类模板 case1 各生成 文书.docx + fields.json",
+  "engine": "<redacted>",
+  "engine_inventory": {
+    "SKILL.md": true,
+    "scripts/gen_doc.py": true,
+    "requirements.txt": true
+  },
+  "py_compile": "0 错误（.venv/bin/python -m py_compile 通过）",
+  "nondeterminism_scan": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" 入口脚本 0 命中",
+  "environment": "python 3.12.3 + venv(.venv) + python-docx（pip install -r requirements.txt，PEP 668 环境故用 venv）",
+  "runs": [
+    {
+      "template": "周报",
+      "command": ".venv/bin/python <SKILL_MOUNT>/scripts/gen_doc.py --template 周报 --data fixtures/周报/case1.json --outdir out/周报/case1",
+      "exit_code_run1": 0,
+      "exit_code_run2": 0,
+      "products": {
+        "文书.docx": {
+          "bytes": 37164,
+          "sha256_run1": "b97521438f9f3d07049892aaf84993f10a47bd3a9275c83d1bc5a0654e6a407c",
+          "sha256_run2": "b97521438f9f3d07049892aaf84993f10a47bd3a9275c83d1bc5a0654e6a407c",
+          "byte_identical": true
+        },
+        "fields.json": {
+          "bytes": 1812,
+          "sha256_run1": "51a0a5989d6a25075e427d243a7e00b665d9f92d652ff78ff9e35d1e5766f656",
+          "sha256_run2": "51a0a5989d6a25075e427d243a7e00b665d9f92d652ff78ff9e35d1e5766f656",
+          "byte_identical": true,
+          "byte_identical_note": "含 outputs 路径键亦逐字节一致（同命令同 outdir）"
+        }
+      }
+    },
+    {
+      "template": "请示函",
+      "command": ".venv/bin/python <SKILL_MOUNT>/scripts/gen_doc.py --template 请示函 --data fixtures/请示函/case1.json --outdir out/请示函/case1",
+      "exit_code_run1": 0,
+      "exit_code_run2": 0,
+      "products": {
+        "文书.docx": {
+          "bytes": 37116,
+          "sha256_run1": "19d6377a84d4a41f6a6fc3a12d4d027da49753f0c64b7a2889daef3f4e138ea5",
+          "sha256_run2": "19d6377a84d4a41f6a6fc3a12d4d027da49753f0c64b7a2889daef3f4e138ea5",
+          "byte_identical": true
+        },
+        "fields.json": {
+          "bytes": 1936,
+          "sha256_run1": "b957c307242c310dcaddc66c2538391bde4d15b9fadd21b09db37fffa9c7fd5a",
+          "sha256_run2": "b957c307242c310dcaddc66c2538391bde4d15b9fadd21b09db37fffa9c7fd5a",
+          "byte_identical": true,
+          "byte_identical_note": "含 outputs 路径键亦逐字节一致（同命令同 outdir）"
+        }
+      }
+    },
+    {
+      "template": "会议通知",
+      "command": ".venv/bin/python <SKILL_MOUNT>/scripts/gen_doc.py --template 会议通知 --data fixtures/会议通知/case1.json --outdir out/会议通知/case1",
+      "exit_code_run1": 0,
+      "exit_code_run2": 0,
+      "products": {
+        "文书.docx": {
+          "bytes": 37200,
+          "sha256_run1": "0de99668671165bbf2b33d2482e84a5f1f416a6bf063eb21e81b1f041a7d6284",
+          "sha256_run2": "0de99668671165bbf2b33d2482e84a5f1f416a6bf063eb21e81b1f041a7d6284",
+          "byte_identical": true
+        },
+        "fields.json": {
+          "bytes": 2458,
+          "sha256_run1": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+          "sha256_run2": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+          "byte_identical": true,
+          "byte_identical_note": "含 outputs 路径键亦逐字节一致（同命令同 outdir）"
+        }
+      }
+    },
+    {
+      "template": "工作总结",
+      "command": ".venv/bin/python <SKILL_MOUNT>/scripts/gen_doc.py --template 工作总结 --data fixtures/工作总结/case1.json --outdir out/工作总结/case1",
+      "exit_code_run1": 0,
+      "exit_code_run2": 0,
+      "products": {
+        "文书.docx": {
+          "bytes": 37187,
+          "sha256_run1": "3d0014f5b77d059e729f51d4813068b4f89c5dee03fe57f3a75d2da9696c7dd8",
+          "sha256_run2": "3d0014f5b77d059e729f51d4813068b4f89c5dee03fe57f3a75d2da9696c7dd8",
+          "byte_identical": true
+        },
+        "fields.json": {
+          "bytes": 1917,
+          "sha256_run1": "749f0d3889b19d9b04f8d9a1ec049b51fb2dcbe6729a86125fe3bd4ed3502143",
+          "sha256_run2": "749f0d3889b19d9b04f8d9a1ec049b51fb2dcbe6729a86125fe3bd4ed3502143",
+          "byte_identical": true,
+          "byte_identical_note": "含 outputs 路径键亦逐字节一致（同命令同 outdir）"
+        }
+      }
+    }
+  ],
+  "byte_compare_conclusion": "两遍同命令连跑，8 对产物（4 模板 × 文书.docx/fields.json）sha256 两两相等、diff -r 全等：逐字节一致",
+  "output_tree": {
+    "out/周报/case1": [
+      "fields.json",
+      "文书.docx"
+    ],
+    "out/请示函/case1": [
+      "fields.json",
+      "文书.docx"
+    ],
+    "out/会议通知/case1": [
+      "fields.json",
+      "文书.docx"
+    ],
+    "out/工作总结/case1": [
+      "fields.json",
+      "文书.docx"
+    ]
+  },
+  "ledger_check": "四份 fields.json：顶层 7 键齐全，summary 计数与明细自洽，filled=total（7/7、8/8、11/11、7/7），missing_required_names=[]，unknown_keys=[]，title 与 §6 V2 标题公式一致；四个 docx zipfile.testzip 通过"
+}

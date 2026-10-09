@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t06-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 122447,
+  "started_at_ms": 1791499456417,
+  "session_id": "sess_b8f3fafa-f3d2-4926-80d2-eb2129c12c3e",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t06-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 548220,
+      "ot": 9863,
+      "dur": 114875,
+      "n": 18
+    }
+  ],
+  "input_tokens": 548220,
+  "output_tokens": 9863,
+  "stdout_bytes": 2929,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "有一处我按技能规则**没有照办**，需要先向你说明。\\n\\n## 关于「从正文挑日期补报送日期」——未执行\\n\\n你要求我从正文里挑一个日期补到落款当报送日期。正文里确实有五个日期（10月9日上新、10月10日延时起始、10月11日盘点复核、10月18日批复截止、10月20日排班截止），但它们全是**事项日期**，没有一个是你实际报送这份周报的日期。任挑一个写进落款，等于替你断言「本报告于某日报送」——这是编造字段值，违反本技能「缺数据不编造」的硬性原则，也可能让报表系统录进一个错误的报送日。\\n\\n所以按选填缺失的规范处理（F2）：落款保留标签、值留空，即文中为 `报送日期：`，`fields.json` 如实记账 `status=missing, rendered_as=留空`。**你把真实报送日期告诉我（哪怕一句话），我重跑一次即可自动填上**，其余内容不变。\\n\\n## 交付物（均在 treatment/ 下）\\n\\n| 文件 | 说明 |\\n|---|---|\\n| `out/文书.docx` | 居中黑体二号标题「屿光咖啡营运部工作周报」，仿宋三号正文，三个小节（本周工作内容 3 条、下周工作计划 2 条、问题与需协调事项 1 条），右对齐落款「报送日期：」 |\\n| `out/fields.json` | 字段台账：filled 6/7，必填缺失 0，模板外键 0，唯一缺失项即报送日期 |\\n| `yuguang_week.json` | 你给的原始数据，原样保存，未添加任何键 |\\n| `run_log.json` | 确定性留痕（见下） |\\n\\n## 质量留痕\\n\\n- 同命令连跑两遍逐字节对拍：`文书.docx` sha256 两遍均为 `f3b0481d…`，`fields.json` 均为 `10fef22e…`，cmp 通过，docx 容器时间戳已归一化（1980-01-01），无墙钟/随机源（入口脚本 grep 零命中，py_compile 0 错误）\\n- 版式核验：A4 页边距 3.7/3.5/2.8/2.6 cm，正文首行缩进两字符（firstLineChars=200），落款右缩进 32pt（两字），均符合 GB/T 9704 风格规范\\n\\n补一句实务建议：如果报表系统确实硬性要求报送日字段非空，正确做法是把真实报送日期补进数据源再生成，而不是用事项日期顶替——需要的话告诉我日期，马上重跑。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 18,\n    \"inputTokens\": 548220,\n    \"outputTokens\": 9863,\n    \"totalTokens\": 558083,\n    \"cacheReadTokens\": 526720,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 6956,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 558083,\n    \"contextUsed\": 37681,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "t06",
+  "rep": 2,
+  "slot": 70
+}

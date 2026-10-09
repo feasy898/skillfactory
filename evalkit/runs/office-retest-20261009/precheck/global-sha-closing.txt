@@ -1,0 +1,4 @@
+# office-retest-20261009 全局配置 sha256（closing，2026-10-09T08:15:40+0800）
+23ee2edb2034606a6d2a3663faa821577d94c9a4ff03d9a03d1ef59de369402d  /home/pan-ding/.zcode/cli/config.json
+f11c8ebcb0bf9749d6d1a6b5686ad8ceb87b879a8a936d9f6f3d5f17f5f4de92  /home/pan-ding/.zcode/v2/provider_config.json
+d10d11231c6ce2986a940f2b55baea0ea9a68552db0fe95f084e821776740821  /home/pan-ding/.zcode/v2/credentials.json

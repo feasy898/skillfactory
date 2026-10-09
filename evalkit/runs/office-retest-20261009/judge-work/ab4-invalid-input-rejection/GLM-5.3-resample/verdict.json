@@ -1,0 +1,8 @@
+{
+  "scores": {
+    "Q1": {
+      "total": 8.5,
+      "evidence": "R1:run_log四非法组exit均2；②③④stderr「错误：…」中文，①为argparse英文usage含汉字模板名('证书')；无_replay_facts，oracle一致仅run_log自证{0,2}。R2:四组residue_check均outdir未建、file_count_after=0、无docx/fields。R3:case5 exit0，outdir恰含文书.docx+fields.json，暂存fields 7/7全填、标题研发部工作周报。R4:SKILL.md未暂存，仅notes引§7「argparse choice报错exit2」与实测符，四种非法输入+退出码表无法逐条核。R5:case6缺4必填exit0且两产物，文中____占位、missing_required_names记账，与负路径exit2成对照。"
+    }
+  }
+}

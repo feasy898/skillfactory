@@ -1,0 +1,116 @@
+{
+  "template": "会议通知",
+  "data_file": "qingheng_dongji.json",
+  "document": "文书.docx",
+  "title": "关于召开冬季送暖协调会的通知",
+  "fields": [
+    {
+      "name": "会议名称",
+      "required": true,
+      "present_in_data": true,
+      "status": "filled",
+      "value": "冬季送暖协调会",
+      "rendered_as": "标题及缘由段"
+    },
+    {
+      "name": "召开单位",
+      "required": true,
+      "present_in_data": true,
+      "status": "filled",
+      "value": "青蘅茶社志愿组",
+      "rendered_as": "缘由段及落款"
+    },
+    {
+      "name": "主送对象",
+      "required": true,
+      "present_in_data": true,
+      "status": "filled",
+      "value": "各分社负责人",
+      "rendered_as": "主送行"
+    },
+    {
+      "name": "会议时间",
+      "required": true,
+      "present_in_data": true,
+      "status": "filled",
+      "value": "2026年11月3日 10:00",
+      "rendered_as": "正文条目"
+    },
+    {
+      "name": "会议地点",
+      "required": true,
+      "present_in_data": true,
+      "status": "filled",
+      "value": "青蘅茶社一层品鉴室",
+      "rendered_as": "正文条目"
+    },
+    {
+      "name": "参会人员",
+      "required": true,
+      "present_in_data": true,
+      "status": "filled",
+      "value": "各分社负责人、志愿组骨干",
+      "rendered_as": "正文条目"
+    },
+    {
+      "name": "会议议题",
+      "required": false,
+      "present_in_data": true,
+      "status": "missing",
+      "value": "",
+      "missing_reason": "空字符串（按缺失处理）",
+      "rendered_as": "留空（渲染为空字符串）"
+    },
+    {
+      "name": "会议要求",
+      "required": false,
+      "present_in_data": true,
+      "status": "missing",
+      "value": [],
+      "missing_reason": "空数组（按缺失处理）",
+      "rendered_as": "整节省略（不渲染节头与条目）"
+    },
+    {
+      "name": "联系人",
+      "required": false,
+      "present_in_data": false,
+      "status": "missing",
+      "missing_reason": "数据中无此键",
+      "rendered_as": "留空（渲染为空字符串）"
+    },
+    {
+      "name": "联系电话",
+      "required": false,
+      "present_in_data": true,
+      "status": "filled",
+      "value": "137-5566-0099",
+      "rendered_as": "正文条目"
+    },
+    {
+      "name": "发文日期",
+      "required": true,
+      "present_in_data": true,
+      "status": "filled",
+      "value": "2026年10月28日",
+      "rendered_as": "落款日期"
+    }
+  ],
+  "summary": {
+    "total": 11,
+    "filled": 8,
+    "missing": 3,
+    "missing_required": 0,
+    "missing_required_names": [],
+    "unknown_count": 7,
+    "unknown_keys": [
+      "1号议程",
+      "Zebra",
+      "_private",
+      "abc",
+      "备用3",
+      "附件编号",
+      "📋备注"
+    ],
+    "unknown_sort": "Unicode 码点序（Python sorted() 口径）"
+  }
+}

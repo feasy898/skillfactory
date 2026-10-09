@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t04-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 133064,
+  "started_at_ms": 1791498416876,
+  "session_id": "sess_f0415de8-5a8e-4885-8a3f-047976c05794",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t04-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 706962,
+      "ot": 10320,
+      "dur": 123695,
+      "n": 20
+    }
+  ],
+  "input_tokens": 706962,
+  "output_tokens": 10320,
+  "stdout_bytes": 2637,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "nse\": \"任务完成。会议通知已生成，全部产物就位，确定性对拍通过。\\n\\n**产物**（均在 `treatment/` 工作目录）：\\n- `qingheng_dongji.json` — 按 brief 原文逐字保存的输入数据（含 7 个遗留杂项键，未做增删）\\n- `out/文书.docx` — GB/T 9704 风格会议通知（37058 字节，sha256 `2ddbebc1…cc24e6`）\\n- `out/fields.json` — 字段填充台账（2561 字节，sha256 `946aca70…c07baa`）\\n- `run_log.json` — 留痕日志（两遍命令行/退出码/sha256/对拍结论/盘点/py_compile/源扫描）\\n- `.verify/run1、run2` — 两遍运行的旁路快照（对拍用，在 `out/` 之外，产物目录内恰含两产物）\\n\\n**成文情况**：标题《关于召开冬季送暖协调会的通知》居中黑体二号；称谓“各分社负责人：\\\"顶格；会议时间/地点/参会人员正文缩进两字符；落款两行右对齐（青蘅茶社志愿组 / 2026年10月28日）。字段 filled 8/11，**必填全部齐备，文中无 `____` 占位**。三个选填缺失如实记账：会议议题为空串→行内标签保留值留空；会议要求为空数组→整节省略（文中不出现“一、会议要求”节头）；联系行渲染为“联系人：　　联系电话：137-5566-0099”（联系人键缺失，标签保留）。\\n\\n**杂项键处理**：`1号议程、Zebra、_private、abc、备用3、附件编号、📋备注` 这 7 个模板外键按字典序记入 `summary.unknown_keys`，不影响文书内容。\\n\\n**确定性验证**：同命令连跑两遍到同一 `--outdir`，`文书.docx` 与 `fields.json` 均逐字节一致（cmp + sha256 双重核对相等）；`py_compile` 0 错误；引擎源码扫描 `time(/random/uuid/datetime/now(` 0 命中。\\n\\n一个环境说明：默认 venv（~/venvs/ml）缺 python-docx 且目录只读装不进去，改用系统 `/usr/bin/python3`（Python 3.12.3 + python-docx 1.2.0，即技能实测版本），未对任何环境做改动。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 20,\n    \"inputTokens\": 706962,\n    \"outputTokens\": 10320,\n    \"totalTokens\": 717282,\n    \"cacheReadTokens\": 677184,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 6637,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 717282,\n    \"contextUsed\": 45546,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "t04",
+  "rep": 3,
+  "slot": 66
+}

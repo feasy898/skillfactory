@@ -1,0 +1,11 @@
+EXTRACT OF 周报__case1__文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=None runs=[屿光咖啡品控组工作周报/黑体/22.0] text=屿光咖啡品控组工作周报
+P001 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[填报人：____　　周期：2/仿宋/16.0] text=填报人：____　　周期：2026年第三季度
+P002 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[一、本周工作内容/黑体/16.0] text=一、本周工作内容
+P003 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[1．完成季度杯测 36 场/仿宋/16.0] text=1．完成季度杯测 36 场
+P004 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[2．处理客诉工单 58 单/仿宋/16.0] text=2．处理客诉工单 58 单
+P005 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[二、下周工作计划/黑体/16.0] text=二、下周工作计划
+P006 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[1．引入损耗周报机制/仿宋/16.0] text=1．引入损耗周报机制
+P007 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[三、问题与需协调事项/黑体/16.0] text=三、问题与需协调事项
+P008 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[1．偏远门店物流损耗偏高/仿宋/16.0] text=1．偏远门店物流损耗偏高
+P009 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[报送日期：2026年10月9/仿宋/16.0] text=报送日期：2026年10月9日

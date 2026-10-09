@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t07-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 144206,
+  "started_at_ms": 1791493085557,
+  "session_id": "sess_104bfdb6-597d-48e9-9d72-8741d522eca0",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t07-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1365507,
+      "ot": 16381,
+      "dur": 123084,
+      "n": 36
+    }
+  ],
+  "input_tokens": 1365507,
+  "output_tokens": 16381,
+  "stdout_bytes": 3455,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "but the result reads oddly — \\\"本周工作内容\\\" listing 36 cupping sessions is a quarter's worth of work. If this is genuinely going out as a weekly report, the underlying data is the wrong grain, and the cleanest fix is getting the actual week's data rather than re-cutting the quarter's.\\n\\n**Verification:** every filled value was mechanically traced back to the input's string pool — zero values without a verbatim source. Ran the generator twice to the same output directory and diffed: `文书.docx` and `fields.json` are byte-identical across runs (docx zip timestamps normalized to 1980-01-01, no time or random source in the script). All three illegal-input cases exit 2 with no artifacts written.\\n\\nDeliverables in the baseline arm directory: `out/周报/case1/文书.docx` and `out/周报/case1/fields.json`, plus `gen_doc.py`, `yuguang_q3.json`, and `run_log.json` as provenance. Note I built the generator myself rather than using the skill package, since `arms_manifest.json` marks this the baseline arm with `baseline_has_skill: false`.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 36,\n    \"inputTokens\": 1365507,\n    \"outputTokens\": 16381,\n    \"totalTokens\": 1381888,\n    \"cacheReadTokens\": 1227392,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1707,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1381888,\n    \"contextUsed\": 52695,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "t07",
+  "rep": 1,
+  "slot": 42
+}

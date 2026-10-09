@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t02-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 122767,
+  "started_at_ms": 1791497087699,
+  "session_id": "sess_7c7eaeeb-33a1-4d81-9380-83a4705d3d8c",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t02-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 484585,
+      "ot": 8009,
+      "dur": 112335,
+      "n": 17
+    }
+  ],
+  "input_tokens": 484585,
+  "output_tokens": 8009,
+  "stdout_bytes": 2474,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "\"traceId\": \"e6d80052-00b1-4244-a05f-373c245171c6\",\n  \"turnId\": \"turn_b7702829-3cc6-4c0b-b0bb-63edb2b36afc\",\n  \"response\": \"任务完成。青蘅茶社的会议通知已按 office-templates 技能全流程生成并验收，所有产物已就位。\\n\\n**交付物**（均在 `treatment/` 下）：\\n- `out/文书.docx` — 正式会议通知《关于召开秋季会员茶话会的通知》，GB/T 9704 风格版式\\n- `out/fields.json` — 字段填充台账\\n- `run_log.json` — 留痕日志（双跑命令行、sha256、逐字节对拍结论、引擎盘点）\\n- `qingheng_teahui.json` — 按 brief 原文保存的输入数据；`.verify/run1|run2/` 为确定性快照\\n\\n**数据填充情况**：11/11 字段全部填入，无必填缺失（文中无 `____` 占位）、无模板外键。一处细节：`会议议题` 原值带首尾空格，引擎按 F5 规则 strip 后入文（台账记 strip 后值「秋季茶会流程与冬至茶会预告」）。成文结构为：居中标题 → 顶格称谓「全体会员：」→ 时间/地点/参会人员/议题四段（首行缩进两字符）→「一、会议要求」节 + 6 条全角点编号条目 → 联系行（两人全角空格分隔）→ 右对齐两行落款（青蘅茶社 / 2026年10月9日，裸日期）。版式探针核对了字体字号（标题黑体 22pt、正文仿宋 16pt）、A4 页边距（3.7/3.5/2.8/2.6 cm）与落款右缩进 32pt，均与规范一致。\\n\\n**确定性验证**：同命令连跑两遍至同一 `out`，旁路快照逐字节对拍——`文书.docx` 与 `fields.json` 两遍 sha256 完全相等（docx `31ffca88…`，fields `fb860340…`），逐字节一致 PASS；`py_compile` 0 错误，入口脚本扫描 `time(/random/uuid/datetime/now(` 零命中。环境方面系统 Python 受 PEP 668 管控，依赖装入工作目录下 `.venv/`（python-docx ≥1.1）。`out/` 内恰含两个产物文件，快照与日志均在产物目录之外。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 17,\n    \"inputTokens\": 484585,\n    \"outputTokens\": 8009,\n    \"totalTokens\": 492594,\n    \"cacheReadTokens\": 464320,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 4626,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 492594,\n    \"contextUsed\": 36241,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

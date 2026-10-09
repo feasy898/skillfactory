@@ -1,0 +1,54 @@
+{
+  "task": "会议通知：qingheng_teahui.json → out/文书.docx + out/fields.json",
+  "engine": ".zcode/skills/office-templates/scripts/gen_doc.py",
+  "environment": {
+    "python": "3.12.3（venv .venv/，pip install -r requirements.txt 安装 python-docx>=1.1）",
+    "platform": "linux"
+  },
+  "runs": [
+    {
+      "run": 1,
+      "command": ".venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 会议通知 --data qingheng_teahui.json --outdir out",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=会议通知，标题=关于召开秋季会员茶话会的通知，字段 filled/total=11/11，必填缺失=无，模板外键=无）",
+      "snapshot": ".verify/run1/",
+      "artifacts": {
+        "文书.docx": {"sha256": "31ffca885af7f44cc25148e193ae8d25ca6612e14e04f2f3b17f4c7fae750d7e", "bytes": 37304},
+        "fields.json": {"sha256": "fb860340137924fa11e244222913d24207bfb7ad3892716957314d35bab136ab", "bytes": 2546}
+      }
+    },
+    {
+      "run": 2,
+      "command": ".venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 会议通知 --data qingheng_teahui.json --outdir out",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=会议通知，标题=关于召开秋季会员茶话会的通知，字段 filled/total=11/11，必填缺失=无，模板外键=无）",
+      "snapshot": ".verify/run2/",
+      "artifacts": {
+        "文书.docx": {"sha256": "31ffca885af7f44cc25148e193ae8d25ca6612e14e04f2f3b17f4c7fae750d7e", "bytes": 37304},
+        "fields.json": {"sha256": "fb860340137924fa11e244222913d24207bfb7ad3892716957314d35bab136ab", "bytes": 2546}
+      }
+    }
+  ],
+  "determinism": {
+    "byte_compare": "两遍同命令行连跑、旁路快照逐字节对拍（cmp）：文书.docx 一致、fields.json 一致；两遍 sha256 相等",
+    "fields_json_note": "两遍 outputs 路径键相同（同为 out/…），故本例整文件逐字节一致，无需剔除任何键",
+    "conclusion": "确定性复现 PASS（同输入两遍，两产物整文件逐字节一致）"
+  },
+  "inventory": {
+    "SKILL.md": "存在（.zcode/skills/office-templates/SKILL.md）",
+    "scripts/gen_doc.py": "存在（19354 字节；SKILL.md 文中写作 package/scripts/，实际安装布局为技能根下 scripts/，按实际路径调用）",
+    "requirements.txt": "存在（python-docx>=1.1，已装入 venv）",
+    "references/会议通知.md": "存在，成文前已核对版式与字段规范"
+  },
+  "checks": {
+    "py_compile": "python -m py_compile scripts/gen_doc.py → 0 错误（exit 0）",
+    "nonrepro_scan": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" scripts/gen_doc.py → 0 命中（exit 1）"
+  },
+  "content_audit": {
+    "fields_ledger": "filled 11/11、missing 0、missing_required_names []、unknown_keys []，summary 计数与明细自洽",
+    "title_formula": "关于召开{会议名称}的通知 → 关于召开秋季会员茶话会的通知（与 fields.json.title 及文书标题段一致）",
+    "F5_strip": "会议议题原值含首尾空格（\" 秋季茶会流程与冬至茶会预告 \"），入文与台账均为 strip 后值",
+    "layout_probe": "标题居中黑体22pt；称谓「全体会员：」顶格；正文段 firstLineChars=200、仿宋16pt；「一、会议要求」节头黑体16pt、条目 1．–6．全角点；联系行两人全角空格分隔；落款两行右对齐、右缩进 640 twips（≈32pt）；页面 A4、边距上3.7/下3.5/左2.8/右2.6 cm"
+  },
+  "outdir_contents": "out/ 恰含 2 个产物文件：文书.docx、fields.json（快照目录 .verify/ 与本 run_log.json 均在 out/ 之外）"
+}

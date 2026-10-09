@@ -1,0 +1,236 @@
+{
+  "task": "office 重测臂 ab1-standard-four-templates rep3（treatment）",
+  "date": "2026-10-09",
+  "engine": {
+    "entry_script": ".zcode/skills/office-templates/scripts/gen_doc.py",
+    "python": ".venv/bin/python (Python 3.12.3, venv 内安装 python-docx>=1.1)",
+    "package_inventory": {
+      "SKILL.md": "存在",
+      "scripts/gen_doc.py": "存在",
+      "requirements.txt": "存在"
+    },
+    "py_compile": {
+      "cmd": ".venv/bin/python -m py_compile <入口脚本>",
+      "exit_code": 0,
+      "errors": 0
+    },
+    "non_reproducible_source_scan": {
+      "cmd": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" <入口脚本>",
+      "hits": 0
+    }
+  },
+  "determinism_check": {
+    "method": "每模板以完全相同命令行连跑两遍到同一 --outdir（第二遍覆盖第一遍），每遍跑完立即把两产物快照到 out/ 之外 .verify/run1、.verify/run2，逐字节对拍并记 sha256。",
+    "runs": {
+      "周报": {
+        "run1": {
+          "docx": {
+            "sha256": "b97521438f9f3d07049892aaf84993f10a47bd3a9275c83d1bc5a0654e6a407c",
+            "bytes": 37164
+          },
+          "fields_json": {
+            "sha256": "51a0a5989d6a25075e427d243a7e00b665d9f92d652ff78ff9e35d1e5766f656",
+            "bytes": 1812
+          },
+          "byte_identical": null
+        },
+        "run2": {
+          "docx": {
+            "sha256": "b97521438f9f3d07049892aaf84993f10a47bd3a9275c83d1bc5a0654e6a407c",
+            "bytes": 37164
+          },
+          "fields_json": {
+            "sha256": "51a0a5989d6a25075e427d243a7e00b665d9f92d652ff78ff9e35d1e5766f656",
+            "bytes": 1812
+          },
+          "byte_identical": null
+        },
+        "byte_identical_docx": true,
+        "byte_identical_fields_json": true,
+        "verdict": "两遍逐字节一致（docx 整文件与 fields.json 均一致）"
+      },
+      "请示函": {
+        "run1": {
+          "docx": {
+            "sha256": "19d6377a84d4a41f6a6fc3a12d4d027da49753f0c64b7a2889daef3f4e138ea5",
+            "bytes": 37116
+          },
+          "fields_json": {
+            "sha256": "b957c307242c310dcaddc66c2538391bde4d15b9fadd21b09db37fffa9c7fd5a",
+            "bytes": 1936
+          },
+          "byte_identical": null
+        },
+        "run2": {
+          "docx": {
+            "sha256": "19d6377a84d4a41f6a6fc3a12d4d027da49753f0c64b7a2889daef3f4e138ea5",
+            "bytes": 37116
+          },
+          "fields_json": {
+            "sha256": "b957c307242c310dcaddc66c2538391bde4d15b9fadd21b09db37fffa9c7fd5a",
+            "bytes": 1936
+          },
+          "byte_identical": null
+        },
+        "byte_identical_docx": true,
+        "byte_identical_fields_json": true,
+        "verdict": "两遍逐字节一致（docx 整文件与 fields.json 均一致）"
+      },
+      "会议通知": {
+        "run1": {
+          "docx": {
+            "sha256": "0de99668671165bbf2b33d2482e84a5f1f416a6bf063eb21e81b1f041a7d6284",
+            "bytes": 37200
+          },
+          "fields_json": {
+            "sha256": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+            "bytes": 2458
+          },
+          "byte_identical": null
+        },
+        "run2": {
+          "docx": {
+            "sha256": "0de99668671165bbf2b33d2482e84a5f1f416a6bf063eb21e81b1f041a7d6284",
+            "bytes": 37200
+          },
+          "fields_json": {
+            "sha256": "6c67eef5993864b193b507ffcff2884ce98095716c832387476e47007009589f",
+            "bytes": 2458
+          },
+          "byte_identical": null
+        },
+        "byte_identical_docx": true,
+        "byte_identical_fields_json": true,
+        "verdict": "两遍逐字节一致（docx 整文件与 fields.json 均一致）"
+      },
+      "工作总结": {
+        "run1": {
+          "docx": {
+            "sha256": "3d0014f5b77d059e729f51d4813068b4f89c5dee03fe57f3a75d2da9696c7dd8",
+            "bytes": 37187
+          },
+          "fields_json": {
+            "sha256": "749f0d3889b19d9b04f8d9a1ec049b51fb2dcbe6729a86125fe3bd4ed3502143",
+            "bytes": 1917
+          },
+          "byte_identical": null
+        },
+        "run2": {
+          "docx": {
+            "sha256": "3d0014f5b77d059e729f51d4813068b4f89c5dee03fe57f3a75d2da9696c7dd8",
+            "bytes": 37187
+          },
+          "fields_json": {
+            "sha256": "749f0d3889b19d9b04f8d9a1ec049b51fb2dcbe6729a86125fe3bd4ed3502143",
+            "bytes": 1917
+          },
+          "byte_identical": null
+        },
+        "byte_identical_docx": true,
+        "byte_identical_fields_json": true,
+        "verdict": "两遍逐字节一致（docx 整文件与 fields.json 均一致）"
+      }
+    }
+  },
+  "commands": [
+    {
+      "run": 1,
+      "template": "周报",
+      "argv": ".venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data fixtures/周报/case1.json --outdir out/周报/case1",
+      "exit_code": 0
+    },
+    {
+      "run": 1,
+      "template": "请示函",
+      "argv": ".venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 请示函 --data fixtures/请示函/case1.json --outdir out/请示函/case1",
+      "exit_code": 0
+    },
+    {
+      "run": 1,
+      "template": "会议通知",
+      "argv": ".venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 会议通知 --data fixtures/会议通知/case1.json --outdir out/会议通知/case1",
+      "exit_code": 0
+    },
+    {
+      "run": 1,
+      "template": "工作总结",
+      "argv": ".venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 工作总结 --data fixtures/工作总结/case1.json --outdir out/工作总结/case1",
+      "exit_code": 0
+    },
+    {
+      "run": 2,
+      "template": "周报",
+      "argv": ".venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data fixtures/周报/case1.json --outdir out/周报/case1",
+      "exit_code": 0
+    },
+    {
+      "run": 2,
+      "template": "请示函",
+      "argv": ".venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 请示函 --data fixtures/请示函/case1.json --outdir out/请示函/case1",
+      "exit_code": 0
+    },
+    {
+      "run": 2,
+      "template": "会议通知",
+      "argv": ".venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 会议通知 --data fixtures/会议通知/case1.json --outdir out/会议通知/case1",
+      "exit_code": 0
+    },
+    {
+      "run": 2,
+      "template": "工作总结",
+      "argv": ".venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 工作总结 --data fixtures/工作总结/case1.json --outdir out/工作总结/case1",
+      "exit_code": 0
+    }
+  ],
+  "results": {
+    "周报": {
+      "outdir": "out/周报/case1",
+      "title": "研发部工作周报",
+      "summary": {
+        "total": 7,
+        "filled": 7,
+        "missing": 0,
+        "missing_required": 0,
+        "missing_required_names": [],
+        "unknown_keys": []
+      }
+    },
+    "请示函": {
+      "outdir": "out/请示函/case1",
+      "title": "关于采购评测用 GPU 服务器的请示",
+      "summary": {
+        "total": 8,
+        "filled": 8,
+        "missing": 0,
+        "missing_required": 0,
+        "missing_required_names": [],
+        "unknown_keys": []
+      }
+    },
+    "会议通知": {
+      "outdir": "out/会议通知/case1",
+      "title": "关于召开三季度质量评审会的通知",
+      "summary": {
+        "total": 11,
+        "filled": 11,
+        "missing": 0,
+        "missing_required": 0,
+        "missing_required_names": [],
+        "unknown_keys": []
+      }
+    },
+    "工作总结": {
+      "outdir": "out/工作总结/case1",
+      "title": "评测技术部2026年第三季度工作总结",
+      "summary": {
+        "total": 7,
+        "filled": 7,
+        "missing": 0,
+        "missing_required": 0,
+        "missing_required_names": [],
+        "unknown_keys": []
+      }
+    }
+  },
+  "final_state": "四个单元目录 out/<模板>/case1 各恰含 文书.docx 与 fields.json 两产物；快照留痕在 .verify/（run_log.json 本身位于工作目录，不在任何产物目录内）。"
+}

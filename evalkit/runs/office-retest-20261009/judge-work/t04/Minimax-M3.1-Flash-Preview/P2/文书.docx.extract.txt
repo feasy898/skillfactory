@@ -1,0 +1,15 @@
+EXTRACT OF 文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=355600 runs=[青蘅茶社志愿组/STXiaoBiaoSong/22.0 | 
+关于召开冬季送暖协调会的通/STXiaoBiaoSong/22.0] text=青蘅茶社志愿组
+关于召开冬季送暖协调会的通知
+P001 align=JUSTIFY (3) firstLineChars=None firstLineIndent=None spacing=355600 runs=[各分社负责人：/FangSong/16.0] text=各分社负责人：
+P002 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[为切实做好冬季送暖各项工作，/FangSong/16.0] text=为切实做好冬季送暖各项工作，青蘅茶社志愿组经研究，决定召开冬季送暖协调会。现将有关事项通知如下：
+P003 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[一、会议时间：/SimHei/16.0 | 2026年11月3日 10:/FangSong/16.0] text=一、会议时间：2026年11月3日 10:00
+P004 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[二、会议地点：/SimHei/16.0 | 青蘅茶社一层品鉴室/FangSong/16.0] text=二、会议地点：青蘅茶社一层品鉴室
+P005 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[三、参会人员：/SimHei/16.0 | 各分社负责人、志愿组骨干/FangSong/16.0] text=三、参会人员：各分社负责人、志愿组骨干
+P006 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[四、会议议程：/SimHei/16.0 | 暖炉采购比价/FangSong/16.0] text=四、会议议程：暖炉采购比价
+P007 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[五、联系电话：/SimHei/16.0 | 137-5566-0099/FangSong/16.0] text=五、联系电话：137-5566-0099
+P008 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[特此通知。/FangSong/16.0] text=特此通知。
+P009 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[附件编号：QN-2026-1/FangSong/16.0] text=附件编号：QN-2026-118
+P010 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[青蘅茶社志愿组/FangSong/16.0] text=青蘅茶社志愿组
+P011 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[2026年10月28日/FangSong/16.0] text=2026年10月28日

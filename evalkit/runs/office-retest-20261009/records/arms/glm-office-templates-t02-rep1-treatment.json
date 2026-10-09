@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t02-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 89853,
+  "started_at_ms": 1791496194887,
+  "session_id": "sess_920db0fd-3b06-48cd-b8f0-c13ac1e54361",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t02-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 442172,
+      "ot": 6087,
+      "dur": 75737,
+      "n": 14
+    }
+  ],
+  "input_tokens": 442172,
+  "output_tokens": 6087,
+  "stdout_bytes": 2302,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "  \"traceId\": \"929bca64-7d71-4ff5-a768-df6a0c84fb75\",\n  \"turnId\": \"turn_e9b8a854-842e-4486-b80e-c804987744f7\",\n  \"response\": \"任务完成。青蘅茶社的会议通知已按 office-templates 技能生成，全部交付物就位。\\n\\n**交付物**\\n- `out/文书.docx` — 正式会议通知《关于召开秋季会员茶话会的通知》，GB/T 9704 风格版式：居中黑体二号标题、称谓「全体会员：」顶格、正文仿宋三号首行缩进两字符、「一、会议要求」节头下 6 条要求以全角点编号、联系行（储听兰 / 137-5566-0099）、落款「青蘅茶社 / 2026年10月9日」两行右对齐。\\n- `out/fields.json` — 字段填充台账：11/11 全部填写，无必填缺失、无模板外键，不需要任何占位或留空说明。原始数据里「会议议题」首尾带空格，已按 F5 规则 strip 后入文（台账记的是 strip 后的值）。\\n- `qingheng_teahui.json` — 按 brief 要求保存的数据文件。\\n- `run_log.json` — 确定性验证留痕（落在工作目录，`out/` 内恰含两产物）。\\n\\n**验证结果**\\n- 生成命令连跑两遍（退出码均 0），旁路快照逐字节对拍：`文书.docx` 整文件一致（两遍 sha256 均为 `31ffca88…d7e`），`fields.json` 亦逐字节一致（`fb860340…6ab`）。\\n- 入口脚本 `py_compile` 0 错误；`time(/random/uuid/datetime/now(` 扫描 0 命中；技能三件套（SKILL.md、gen_doc.py、requirements.txt）齐全。\\n- 环境说明：系统 Python 受 PEP 668 管控，依赖装在了本地 `.venv`（Python 3.12.3 + python-docx 1.2.0），复跑时用 `.venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 会议通知 --data qingheng_teahui.json --outdir out` 即可复现相同产物。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 14,\n    \"inputTokens\": 442172,\n    \"outputTokens\": 6087,\n    \"totalTokens\": 448259,\n    \"cacheReadTokens\": 418624,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 3672,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 448259,\n    \"contextUsed\": 39512,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "t02",
+  "rep": 1,
+  "slot": 56
+}

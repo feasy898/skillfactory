@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_a2e60b5f-345c-41e3-ac61-905035f33266",
+  "traceId": "15695c4b-e288-4a81-9406-a5a693239a80",
+  "turnId": "turn_525463bd-94b8-4e11-86d0-6f5b8ed7d670",
+  "response": "任务完成，确定性自评**通过**。同输入连跑两遍产物逐字节完全一致，所有留证已落盘。\n\n## 执行结果\n\n**两遍运行**（命令行逐字相同，均 exit 0）：\n```\npython3 .zcode/skills/office-templates/scripts/gen_doc.py --template 会议通知 \\\n  --data fixtures/会议通知/case1.json --outdir out/会议通知/case1\n```\n两遍 stdout 也逐字相同：标题「关于召开三季度质量评审会的通知」，字段 filled/total=11/11，必填缺失=无，模板外键=无。第二遍覆盖复写第一遍。\n\n**对拍结论（全部一致）**：\n\n| 检查项 | 结果 |\n|---|---|\n| 文书.docx 整文件 | 两遍 sha256 相同（`0de99668…6284`，37200 字节），cmp 零差异 |\n| fields.json | 两遍 sha256 相同（`6c67eef5…589f`，2458 字节），整文件逐字节一致；「除 outputs 路径键外」口径亦一致（本例两遍路径全同，outputs 键也同值） |\n| docx 解析级 | 12 个段落的文本/对齐/首行缩进(firstLineChars=200)/字体（黑体22pt 标题、仿宋16pt+Times New Roman 正文、28 磅固定行距、落款右对齐+右缩进32pt）及 A4 版心逐属性完全一致 |\n| 输出目录 | `out/会议通知/case1` 恰含 文书.docx 与 fields.json 两产物 |\n\n**不可复现源排查**：入口脚本 `grep -E \"time\\(|random|uuid|datetime|now\\(\"` 0 命中；docx zip 容器 17 个条目时间戳全部归一化为 1980-01-01；core.xml 仅含 python-docx 库模板的固定常量日期，无墙钟写入。\n\n**交付物**（均已留位）：\n- `out/会议通知/case1/文书.docx` + `fields.json`（最终态即第二遍产物）\n- `run_log.json`（工作目录，含两遍命令行/退出码/stdout、两产物逐遍 sha256 与字节数、逐字节与解析级对拍结论、三件套盘点、py_compile 0 错误、不可复现源扫描）\n- `.snapshots/run1/`、`.snapshots/run2/`（旁路快照，对拍证据）\n\n环境说明：python-docx 1.2.0 因共享 venv 无写权限，安装到了工作目录 `.deps` 并经 `PYTHONPATH` 引用，不影响 CLI 三参数契约。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 20,
+    "inputTokens": 721905,
+    "outputTokens": 13374,
+    "totalTokens": 735279,
+    "cacheReadTokens": 652928,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 7492,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 735279,
+    "contextUsed": 49399,
+    "contextWindow": 200000
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab3-empty-and-string-lists-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 587934,
+  "started_at_ms": 1791491150512,
+  "session_id": "sess_b7a183ff-c501-437c-bd6e-e4d63597f426",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab3-empty-and-string-lists-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 2141234,
+      "ot": 45204,
+      "dur": 554764,
+      "n": 31
+    }
+  ],
+  "input_tokens": 2141234,
+  "output_tokens": 45204,
+  "stdout_bytes": 3457,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "37 项断言核验脚本 / LibreOffice 渲染取证 |\\n\\n## 两份文书的边界处理结果\\n\\n**周报**（周期空串、本周工作内容空数组、问题与需协调事项选填缺失）：标题居中「**____工作周报**」；「一、本周工作内容」下渲染占位条目「**1．____**」；「二、下周工作计划」正常单项；选填节「问题与需协调事项」整节省略（正文无该节头、无「三、」），fields.json 记 `required=false` + `missing`；落款「填报人：赵倩 ／ 报送日期：2026-09-28」两行右对齐。\\n\\n**工作总结**（总结主体缺失、主要成绩空数组、工作回顾为字符串、存在问题与成文日期选填缺失）：标题「**____2026年9月工作总结**」（主体必填缺失以 ____ 占位）；工作回顾按单项化渲染「1．完成评测平台月度巡检」，fields.json 中该字段值为单元素数组 `[\\\"完成评测平台月度巡检\\\"]` 并记 `normalized_from: \\\"string\\\"`；主要成绩渲染「1．____」记占位语义；存在问题省略后小节重编号为「一、二、三、」（下一步工作打算升为三、）；落款仅剩右对齐的「____」行（缺主体占位、成文日期选填缺失行省略），右对齐未破坏。\\n\\n## 核验证据（三层，全部通过）\\n\\n1. **verify.py**：37/37 断言 PASS（目录恰含两产物、docx 段落序列逐项一致、节头/条目编号字符、省略节不出现、落款 `jc=right`、fields.json 各字段状态与占位语义），exit 0。\\n2. **docx 技能 postcheck.py**：两份文档均 9/9 通过，0 错误 0 警告（行距统一 560、无空白页、字体常见、标题层级连续）。\\n3. **渲染取证**：soffice 转 PDF（各 1 页 A4）+ pdftotext 版面核对 + 视觉检查，标题居中、编号规范、落款右对齐、页码「— 1 —」均确认；另做了重跑字节级比对，四份产物与首次生成完全一致（确定性成立）。\\n\\n一点实现说明：本机共享 venv 的 site-packages 不可写导致 python-docx 装不上，生成器因此改为纯标准库直写 OOXML（宋体二号加粗居中标题、黑体三号节头、仿宋三号条目、固定 28 磅行距的公文体例），反倒保证了零依赖与可复现。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 31,\n    \"inputTokens\": 2141234,\n    \"outputTokens\": 45204,\n    \"totalTokens\": 2186438,\n    \"cacheReadTokens\": 2069632,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 33121,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 2186438,\n    \"contextUsed\": 86022,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

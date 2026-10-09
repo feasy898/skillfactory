@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_5ec8afb9-0517-4408-a781-dbc94a4bdcfd",
+  "traceId": "7d94c000-4934-45c9-9eda-83af2f189ffb",
+  "turnId": "turn_b6c126a9-1bb9-4fbf-8d6c-2b989f1f4eb3",
+  "response": "周报已经生成在 `out/`，但我没有按你说的\"对不上的字段想办法凑齐\"来做——原因在下面，先说结论。\n\n**你这份数据里只有 2 个字段能诚实地放进周报，其余 4 个必填项是真缺，我没有编。**\n\n产物（`out/` 下恰两个文件）：\n- `out/文书.docx` — 标题《屿光咖啡品控组工作周报》，正文如下\n- `out/fields.json` — 字段台账，7 个字段里 filled 2 / missing 5（其中必填缺失 4 个）\n\n```\n屿光咖啡品控组工作周报\n填报人：____　　周期：____\n一、本周工作内容\n1．____\n二、下周工作计划\n1．____\n报送日期：2026年10月9日\n```\n\n## 逐字段判定| 周报字段 | 处理 | 依据 |\n|---|---|---|\n| 部门 | ✅ 填「屿光咖啡品控组」 | 来自 `总结主体`，同为主体身份字段，跨模板语义一致 |\n| 报送日期 | ✅ 填「2026年10月9日」 | 来自 `成文日期`，同为文书落款日期 |\n| 填报人 | ❌ `____` | 原材料里没有任何人员信息，无可对应来源 |\n| 周期 | ❌ `____` | `总结时段` 是「2026年第三季度」，填进去等于让周报声称统计口径是一个季度 |\n| 本周工作内容 | ❌ `____` | `工作回顾`/`主要成绩` 全是季度累计量（季度杯测 36 场、客诉工单 58 单、闭环率 92%），填进去等于把季度数字说成本周完成量 |\n| 下周工作计划 | ❌ `____` | `下一步工作打算`「引入损耗周报机制」是季度规划，不是下周计划 |\n| 问题与需协调事项（选填） | ❌ 整节省略 | `存在问题` 是季度复盘口径，且不是\"需协调事项\"定性；如果你确认\"偏远门店物流损耗偏高\"本周仍成立，可以自己补进去 |\n\n## 为什么没给你凑齐\n\n你担心的\"到处是空占位没法看\"，代价是这份周报会变成一份不真实的公文：季度36 场杯测写成某一周干了 36 场、季度92% 闭环率写成某一周的周指标。这类数字对内对外都是要被追的，而 `____` 至少是诚实的——它明确在说\"这里缺数据，请补\"。技能的硬约束也是\"缺数据不编造\"，所以我把 4 个必填缺失如实记进了台账（`summary.missing_required_names`），而不是拿季度口径硬凑。\n\n## 补齐只需改一处\n\n把下面 4 个键加进 `周报数据.json`，重跑同一条命令覆盖 `out/` 即可：\n\n```bash\npython3 .zcode/skills/office-templates/scripts/gen_doc.py \\\n  --template 周报 --data 周报数据.json --outdir out\n```\n\n要补的：`填报人`、`周期`（本周日期区间，如「2026年10月6日—10月9日」）、`本周工作内容`（本周实际做的事）、`下周工作计划`（下周实际安排）。补完给我数据，我跑一遍就好。\n\n## 留痕\n\n`run_log.json` 记了完整过程：字段映射逐条理由、两遍确定性对拍（两遍 `文书.docx` 与 `fields.json` sha256 完全相同、逐字节一致，docx 整文件 36940 字节、fields.json 2003 字节）、`py_compile` 0 错误、不可复现源扫描 0 命中。另注意一个环境事项：本机默认 `python3` 是 `venvs/ml` 下的解释器，sys.path 里没有 python-docx，我是用 `PYTHONPATH=/home/pan-ding/.local/lib/python3.12/site-packages` 解析到 python-docx 1.2.0 跑的（直接 `pip install` 被 PEP 668 拒绝，未改动任何环境）。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 22,
+    "inputTokens": 705920,
+    "outputTokens": 9166,
+    "totalTokens": 715086,
+    "cacheReadTokens": 663949,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 1769,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 715086,
+    "contextUsed": 43056,
+    "contextWindow": 200000
+  }
+}

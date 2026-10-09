@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab5-determinism-layout-selfeval-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 381118,
+  "started_at_ms": 1791494054475,
+  "session_id": "sess_8b1f2af3-8614-4461-a48b-60a3d869ee68",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab5-determinism-layout-selfeval-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 755682,
+      "ot": 11766,
+      "dur": 367846,
+      "n": 21
+    }
+  ],
+  "input_tokens": 755682,
+  "output_tokens": 11766,
+  "stdout_bytes": 2864,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "没有 python-docx 的 venv，全程显式使用已装 python-docx 1.2.0 的 `/usr/bin/python3`，未改动任何环境。\\n\\n## 两遍对拍结果（均一致）\\n\\n| 产物 | 第 1 遍 sha256 | 第 2 遍 sha256 | 逐字节 cmp |\\n|---|---|---|---|\\n| 文书.docx | `0de99668…a7d6284`（37200 B） | 同左 | 逐字节一致（exit 0） |\\n| fields.json | `6c67eef5…009589f`（2458 B） | 同左 | 逐字节一致（exit 0） |\\n\\nfields.json 还额外验证了「除 `outputs` 路径键外一致」的口径——剔除 `outputs` 后深度比较相等（本次两遍 `--outdir` 相同，路径键本就一致，所以整文件直接逐字节一致）。docx 解析级对比（段落文本/对齐/首行缩进/右缩进/行距/run 字号与 eastAsia 字体/页面尺寸边距）12 段全部相同；docx 的 17 个 zip 条目时间戳均归一化为 1980-01-01，容器层无墙钟源。文书内容 11/11 字段全填（标题「关于召开三季度质量评审会的通知」，版式符合 GB/T 9704 口径），输出目录恰含两产物。\\n\\n## 佐证检查\\n\\n- 技能三件套齐全（SKILL.md、scripts/gen_doc.py、requirements.txt，另含 4 个 references）；`py_compile` 0 错误；不可复现源扫描 `grep -E \\\"time\\\\(|random|uuid|datetime|now\\\\(\\\"` 0 命中。\\n- 两遍命令行、退出码（均 0）、stdout、sha256、字节数、对拍结论与差异说明（无差异）全部记入 `run_log.json`。\\n\\n## 交付物（均已留在原处）\\n\\n- `out/会议通知/case1/文书.docx`、`out/会议通知/case1/fields.json` — 最终产物\\n- `run_log.json` — 工作目录留痕（按规未写入产物目录）\\n- `records/run1/`、`records/run2/` — 两遍快照；`records/verify_determinism.json` — 解析级对拍明细\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 21,\n    \"inputTokens\": 755682,\n    \"outputTokens\": 11766,\n    \"totalTokens\": 767448,\n    \"cacheReadTokens\": 724096,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 6449,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 767448,\n    \"contextUsed\": 47186,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

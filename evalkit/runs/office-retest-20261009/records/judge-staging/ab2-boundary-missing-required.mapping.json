@@ -1,0 +1,88 @@
+{
+  "mapping": {
+    "P1": {
+      "rep": 1,
+      "arm": "treatment"
+    },
+    "P2": {
+      "rep": 3,
+      "arm": "baseline"
+    },
+    "P3": {
+      "rep": 1,
+      "arm": "baseline"
+    },
+    "P4": {
+      "rep": 3,
+      "arm": "treatment"
+    },
+    "P5": {
+      "rep": 2,
+      "arm": "treatment"
+    },
+    "P6": {
+      "rep": 2,
+      "arm": "baseline"
+    }
+  },
+  "staged": [
+    {
+      "pid": "P1",
+      "files": [
+        "run_log.json",
+        "会议通知__case2__fields.json",
+        "会议通知__case2__文书.docx.extract.txt",
+        "请示函__case2__fields.json",
+        "请示函__case2__文书.docx.extract.txt"
+      ]
+    },
+    {
+      "pid": "P2",
+      "files": [
+        "会议通知__case2__fields.json",
+        "会议通知__case2__文书.docx.extract.txt",
+        "请示函__case2__fields.json",
+        "请示函__case2__文书.docx.extract.txt"
+      ]
+    },
+    {
+      "pid": "P3",
+      "files": [
+        "会议通知__case2__fields.json",
+        "会议通知__case2__文书.docx.extract.txt",
+        "请示函__case2__fields.json",
+        "请示函__case2__文书.docx.extract.txt"
+      ]
+    },
+    {
+      "pid": "P4",
+      "files": [
+        "run_log.json",
+        "会议通知__case2__fields.json",
+        "会议通知__case2__文书.docx.extract.txt",
+        "请示函__case2__fields.json",
+        "请示函__case2__文书.docx.extract.txt"
+      ]
+    },
+    {
+      "pid": "P5",
+      "files": [
+        "run_log.json",
+        "会议通知__case2__fields.json",
+        "会议通知__case2__文书.docx.extract.txt",
+        "请示函__case2__fields.json",
+        "请示函__case2__文书.docx.extract.txt"
+      ]
+    },
+    {
+      "pid": "P6",
+      "files": [
+        "会议通知__case2__fields.json",
+        "会议通知__case2__文书.docx.extract.txt",
+        "请示函__case2__fields.json",
+        "请示函__case2__文书.docx.extract.txt"
+      ]
+    }
+  ],
+  "seed": 9865582
+}

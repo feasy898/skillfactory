@@ -1,0 +1,151 @@
+{
+  "schema": "office-document-fields/1.0",
+  "source": "lanshan_miji.json",
+  "artifact": "out/文书.docx",
+  "document": {
+    "文种": "请示",
+    "标题": "澜山物业综合管理部关于购置档案密集架的请示",
+    "主送机关": "澜山物业管理有限公司",
+    "发文机关": "澜山物业综合管理部",
+    "成文日期": "2026年10月12日",
+    "联系人": "皮之常",
+    "联系电话": "0571-8812-3456"
+  },
+  "layout": {
+    "纸张": "A4（210mm × 297mm）",
+    "页边距": {
+      "上": "37mm",
+      "下": "35mm",
+      "左": "28mm",
+      "右": "26mm"
+    },
+    "版心": "每行 28 字，每面 22 行",
+    "行距": "固定值 28.8 磅",
+    "标题": "方正小标宋简体 小 2 号（18pt），居中，标题下空一行",
+    "标题字号说明": "GB/T 9704 规定标题一般用 2 号；本标题含发文机关全称共 20 字，2 号在 156mm 版心内会回行并把「请示」拆成两行，故按「字数偏多用小 2 号」的例外降一号处理",
+    "主送机关": "仿宋_GB2312 3 号，居左顶格，行末冒号",
+    "正文": "仿宋_GB2312 3 号，首行缩进 2 字",
+    "落款": "发文机关署名与成文日期均右空四字",
+    "附注": "楷体_GB2312 3 号，居左空二字，加圆括号，编排在成文日期下一行",
+    "页码": "4 号半角宋体阿拉伯数字，格式「— n —」，单页码居右、双页码居左",
+    "中西文间距": "已关闭 autoSpaceDE / autoSpaceDN，数字与汉字紧排"
+  },
+  "field_count": 8,
+  "fields": [
+    {
+      "key": "请示事由",
+      "label": "请示事由",
+      "value": "购置档案密集架的请示",
+      "docx_usage": "关于购置档案密集架的请示",
+      "transformed": true,
+      "transform_rule": "去掉末尾「的请示」，改写为「关于{事由}的请示」，并冠以发文机关全称",
+      "placement": {
+        "paragraph_index": 0,
+        "paragraph_text": "澜山物业综合管理部关于购置档案密集架的请示"
+      },
+      "section": "标题"
+    },
+    {
+      "key": "主送机关",
+      "label": "主送机关",
+      "value": "澜山物业管理有限公司",
+      "docx_usage": "澜山物业管理有限公司：",
+      "transformed": false,
+      "transform_rule": "仅补行末冒号",
+      "placement": {
+        "paragraph_index": 2,
+        "paragraph_text": "澜山物业管理有限公司："
+      },
+      "section": "主送机关"
+    },
+    {
+      "key": "请示缘由",
+      "label": "请示缘由",
+      "value": "综合管理部档案室现用木制档案柜已达使用年限，且2025年新增业委会档案214卷，存储空间严重不足。",
+      "docx_usage": "综合管理部档案室现用木制档案柜已达使用年限，且2025年新增业委会档案214卷，存储空间严重不足。",
+      "transformed": false,
+      "transform_rule": null,
+      "placement": {
+        "paragraph_index": 3,
+        "paragraph_text": "综合管理部档案室现用木制档案柜已达使用年限，且2025年新增业委会档案214卷，存储空间严重不足。"
+      },
+      "section": "正文·缘由"
+    },
+    {
+      "key": "请示事项",
+      "label": "请示事项",
+      "value": "申请购置手摇式档案密集架4组，预算3.6万元，列入本年度固定资产。",
+      "docx_usage": "申请购置手摇式档案密集架4组，预算3.6万元，列入本年度固定资产。",
+      "transformed": false,
+      "transform_rule": null,
+      "placement": {
+        "paragraph_index": 4,
+        "paragraph_text": "申请购置手摇式档案密集架4组，预算3.6万元，列入本年度固定资产。"
+      },
+      "section": "正文·事项"
+    },
+    {
+      "key": "请示单位",
+      "label": "请示单位（发文机关署名）",
+      "value": "澜山物业综合管理部",
+      "docx_usage": "澜山物业综合管理部",
+      "transformed": false,
+      "transform_rule": null,
+      "placement": {
+        "paragraph_index": 7,
+        "paragraph_text": "澜山物业综合管理部"
+      },
+      "section": "落款·发文机关署名",
+      "also_used_in": "标题（与请示事由拼装为完整标题）"
+    },
+    {
+      "key": "联系人",
+      "label": "联系人",
+      "value": "皮之常",
+      "docx_usage": "联系人：皮之常",
+      "transformed": false,
+      "transform_rule": null,
+      "placement": {
+        "paragraph_index": 9,
+        "paragraph_text": "（联系人：皮之常　联系电话：0571-8812-3456）"
+      },
+      "section": "附注"
+    },
+    {
+      "key": "联系电话",
+      "label": "联系电话",
+      "value": "0571-8812-3456",
+      "docx_usage": "联系电话：0571-8812-3456",
+      "transformed": false,
+      "transform_rule": null,
+      "placement": {
+        "paragraph_index": 9,
+        "paragraph_text": "（联系人：皮之常　联系电话：0571-8812-3456）"
+      },
+      "section": "附注"
+    },
+    {
+      "key": "成文日期",
+      "label": "成文日期",
+      "value": "2026年10月12日",
+      "docx_usage": "2026年10月12日",
+      "transformed": false,
+      "transform_rule": null,
+      "placement": {
+        "paragraph_index": 8,
+        "paragraph_text": "2026年10月12日"
+      },
+      "section": "落款·成文日期"
+    }
+  ],
+  "paragraph_map": {
+    "title": 0,
+    "addressee": 2,
+    "body_reason": 3,
+    "body_action": 4,
+    "closing": 5,
+    "signature": 7,
+    "date": 8,
+    "contact_note": 9
+  }
+}

@@ -1,0 +1,9 @@
+EXTRACT OF 文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=365760 runs=[澜山物业综合管理部关于购置档/方正小标宋简体/18.0] text=澜山物业综合管理部关于购置档案密集架的请示
+P002 align=LEFT (0) firstLineChars=None firstLineIndent=None spacing=365760 runs=[澜山物业管理有限公司：/仿宋_GB2312/16.0] text=澜山物业管理有限公司：
+P003 align=None firstLineChars=200 firstLineIndent=406400 spacing=365760 runs=[综合管理部档案室现用木制档案/仿宋_GB2312/16.0] text=综合管理部档案室现用木制档案柜已达使用年限，且2025年新增业委会档案214卷，存储空间严重不足。
+P004 align=None firstLineChars=200 firstLineIndent=406400 spacing=365760 runs=[申请购置手摇式档案密集架4组/仿宋_GB2312/16.0] text=申请购置手摇式档案密集架4组，预算3.6万元，列入本年度固定资产。
+P005 align=None firstLineChars=200 firstLineIndent=406400 spacing=365760 runs=[妥否，请批示。/仿宋_GB2312/16.0] text=妥否，请批示。
+P007 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=365760 runs=[澜山物业综合管理部/仿宋_GB2312/16.0] text=澜山物业综合管理部
+P008 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=365760 runs=[2026年10月12日/仿宋_GB2312/16.0] text=2026年10月12日
+P009 align=LEFT (0) firstLineChars=None firstLineIndent=None spacing=365760 runs=[（联系人：皮之常　联系电话：/楷体_GB2312/16.0] text=（联系人：皮之常　联系电话：0571-8812-3456）

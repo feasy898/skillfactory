@@ -1,0 +1,86 @@
+{
+  "task": "office-templates-t01-rep3/treatment",
+  "date": "2026-10-09",
+  "template": "周报",
+  "data_file": "shibei_week42.json",
+  "outdir": "out",
+  "environment": "python 3.12.3 + 本地 venv(.venv) + python-docx 1.2.0（系统 Python 受 PEP 668 限制，故建 .venv 后 pip install -r requirements.txt）",
+  "runs": [
+    {
+      "pass": 1,
+      "command": ".venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data shibei_week42.json --outdir out",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=周报，标题=拾贝书店工作周报，字段 filled/total=7/7，必填缺失=无，模板外键=['温馨提示']）",
+      "snapshot_dir": ".snap/r1",
+      "artifacts": {
+        "文书.docx": {
+          "sha256": "384e9b2408e70a64f3cfd66c8d5600b730f1fafb49813f9f5e2101881929e92b",
+          "bytes": 37144
+        },
+        "fields.json": {
+          "sha256": "1e3a734baf0776b6069aade949a3a8430c9a3fcc1154dfbb5fb51467ec681117",
+          "bytes": 1766
+        }
+      }
+    },
+    {
+      "pass": 2,
+      "command": ".venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data shibei_week42.json --outdir out",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=周报，标题=拾贝书店工作周报，字段 filled/total=7/7，必填缺失=无，模板外键=['温馨提示']）",
+      "snapshot_dir": ".snap/r2",
+      "artifacts": {
+        "文书.docx": {
+          "sha256": "384e9b2408e70a64f3cfd66c8d5600b730f1fafb49813f9f5e2101881929e92b",
+          "bytes": 37144
+        },
+        "fields.json": {
+          "sha256": "1e3a734baf0776b6069aade949a3a8430c9a3fcc1154dfbb5fb51467ec681117",
+          "bytes": 1766
+        }
+      }
+    }
+  ],
+  "byte_compare": {
+    "文书.docx": "两遍整文件逐字节一致（cmp 无差异，sha256 相同）",
+    "fields.json": "除 outputs 路径键外逐字节一致（sha256 亦相同，因 outdir 相同故 outputs 值一致）",
+    "conclusion": "一致，可复现"
+  },
+  "engine_inventory": {
+    "SKILL.md": {
+      "present": true,
+      "bytes": 12517
+    },
+    "scripts/gen_doc.py": {
+      "present": true,
+      "bytes": 19354
+    },
+    "requirements.txt": {
+      "present": true,
+      "bytes": 17
+    }
+  },
+  "py_compile": {
+    "command": ".venv/bin/python -m py_compile .zcode/skills/office-templates/scripts/gen_doc.py",
+    "exit_code": 0,
+    "result": "0 错误"
+  },
+  "nonreproducible_scan": {
+    "command": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" .zcode/skills/office-templates/scripts/gen_doc.py",
+    "hits": 0,
+    "result": "零命中"
+  },
+  "ledger_summary": {
+    "total": 7,
+    "filled": 7,
+    "missing": 0,
+    "missing_required_names": [],
+    "unknown_keys": [
+      "温馨提示"
+    ]
+  },
+  "notes": [
+    "out/ 下恰有引擎产物 2 件（文书.docx、fields.json）；out/delivery-report.json 系任务简报另行要求的核对报告，由本 Agent 依 fields.json 台账生成，非引擎产物，故不参与确定性对拍。",
+    "run_log.json 按 SKILL.md §9.5 落在工作目录（outdir 之外），以免污染产物目录。"
+  ]
+}

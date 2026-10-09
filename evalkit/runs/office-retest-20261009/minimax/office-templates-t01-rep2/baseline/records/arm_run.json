@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 88269,
+  "started_at_ms": 1791491478548,
+  "session_id": "sess_d5bd7a01-ff29-4088-8735-64f6b250077a",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1014875,
+      "ot": 12195,
+      "dur": 75047,
+      "n": 30
+    }
+  ],
+  "input_tokens": 1014875,
+  "output_tokens": 12195,
+  "stdout_bytes": 4246,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "ncy, trimming, and docx text content all passed. Note that the `documents:visual-judge` subagent could not launch — the provider registry rejected it — so I inspected the rendered page image myself as the documented fallback; it is clean.\\n\\nWorking files `gen_doc.js` and `gen_reports.py` are left alongside the deliverables so the run is reproducible; the scratch render directory was cleaned up.\\n\\n::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep2/baseline/out/文书.docx\\\" purpose=\\\"output\\\" artifact_kind=\\\"document\\\" page_number=1}\\n\\n::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep2/baseline/out/fields.json\\\" purpose=\\\"output\\\"}\\n\\n::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep2/baseline/out/delivery-report.json\\\" purpose=\\\"output\\\"}\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 30,\n    \"inputTokens\": 1014875,\n    \"outputTokens\": 12195,\n    \"totalTokens\": 1027070,\n    \"cacheReadTokens\": 956672,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1367,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1027070,\n    \"contextUsed\": 48327,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

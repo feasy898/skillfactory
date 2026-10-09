@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab2-boundary-missing-required-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 57089,
+  "started_at_ms": 1791490616540,
+  "session_id": "sess_acb8ac1b-48c5-403d-8de3-7df6fcc8eb2f",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab2-boundary-missing-required-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 542287,
+      "ot": 7156,
+      "dur": 48928,
+      "n": 20
+    }
+  ],
+  "input_tokens": 542287,
+  "output_tokens": 7156,
+  "stdout_bytes": 3297,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "h `right=640`. Optional-missing fields did not break any of this.\\n\\n**Determinism confirmed.** I ran each command twice to the same output directory, snapshotting after each pass into a side directory and comparing byte-for-byte. All four artifacts matched on sha256 across both passes — the docx containers included, so the normalized zip timestamps are doing their job. `py_compile` on the entry script reported zero errors, and the nondeterminism scan (`time(`/`random`/`uuid`/`datetime`/`now(`) returned zero hits. The snapshot scratch directory was removed afterward, leaving the working tree with only the deliverables.\\n\\nOne note for the record: `python3 -m pip install` was blocked by PEP 668 in this environment. Rather than force-installing into the system interpreter, I used the existing `/home/pan-ding/venvs/shenbao` virtualenv, which already provides python-docx 1.2.0 — the version the skill's `requirements.txt` pins. Both commands in `run_log.json` are recorded verbatim and run identically under that interpreter.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 20,\n    \"inputTokens\": 542287,\n    \"outputTokens\": 7156,\n    \"totalTokens\": 549443,\n    \"cacheReadTokens\": 507038,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 949,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 549443,\n    \"contextUsed\": 36060,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab1-standard-four-templates-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 87040,
+  "started_at_ms": 1791490034040,
+  "session_id": "sess_0083568d-71f7-4a4a-8515-f777317e9f7d",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab1-standard-four-templates-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 338934,
+      "ot": 5119,
+      "dur": 73962,
+      "n": 13
+    }
+  ],
+  "input_tokens": 338934,
+  "output_tokens": 5119,
+  "stdout_bytes": 2521,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "managed, I set up a local `.venv` and installed `python-docx` from the skill's requirements. Then, for each of the four templates, I ran the contracted command line (`--template … --data fixtures/<模板>/case1.json --outdir out/<模板>/case1`), all with exit code 0.\\n\\n**Deliverables** — `out/` contains exactly four unit directories, each with exactly `文书.docx` + `fields.json`:\\n\\n| 模板 | 文书标题 | 字段台账 |\\n|---|---|---|\\n| 周报 | 研发部工作周报 | filled 7/7 |\\n| 请示函 | 关于采购评测用 GPU 服务器的请示 | filled 8/8 |\\n| 会议通知 | 关于召开三季度质量评审会的通知 | filled 11/11 |\\n| 工作总结 | 评测技术部2026年第三季度工作总结 | filled 7/7 |\\n\\n**Verification performed:**\\n- case1 数据字段全部齐全，所以四份台账 `missing=0`、`missing_required_names=[]`、`unknown_keys=[]`，无 `____` 占位；各 `fields.json` 顶层 7 键齐全，summary 计数与明细自洽，标题与 GB/T 9704 版式公式一致。\\n- 四个 docx 均通过 zip 完整性校验，首段居中标题、末段右对齐落款结构正确。\\n- **确定性对拍**：同命令连跑两遍并旁路快照，8 对产物 sha256 两两相等、`diff -r` 全等（引擎已归一化 docx 容器时间戳）；入口脚本 `py_compile` 0 错误，`time(/random/uuid/datetime/now(` 扫描 0 命中。\\n- 上述证据（两遍命令行、sha256、对拍结论、盘点）已按技能交付协议落盘为工作目录下的 `run_log.json`（未放进产物目录，保持每目录恰含两产物）。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 13,\n    \"inputTokens\": 338934,\n    \"outputTokens\": 5119,\n    \"totalTokens\": 344053,\n    \"cacheReadTokens\": 322816,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 2756,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 344053,\n    \"contextUsed\": 32155,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

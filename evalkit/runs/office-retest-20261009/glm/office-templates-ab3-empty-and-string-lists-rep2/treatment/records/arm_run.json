@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab3-empty-and-string-lists-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 187881,
+  "started_at_ms": 1791492457395,
+  "session_id": "sess_efd57437-eb30-4fb0-85f4-914f8d635382",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab3-empty-and-string-lists-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 874429,
+      "ot": 12297,
+      "dur": 158458,
+      "n": 23
+    }
+  ],
+  "input_tokens": 874429,
+  "output_tokens": 12297,
+  "stdout_bytes": 3250,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "hots/`（双跑旁路快照证据）；产物目录内未混入任何多余文件。实现使用本臂自带的 office-templates 技能引擎（`gen_doc.py`，本地 `.venv` 按 `requirements.txt` 装好 python-docx），两次调用均退出码 0。\\n\\n## 核心行为核验结果\\n\\n**周报 case2**（部门缺失、周期空串、本周工作内容空数组、问题与需协调事项选填缺失）：\\n- 标题居中黑体二号 `____工作周报`；基本信息行 `填报人：赵倩　　周期：____`\\n- 空数组按必填缺失：节头 `一、本周工作内容` 保留 + 占位条目 `1．____`，台账记 `rendered_as=\\\"以____占位条目\\\"`\\n- 选填小节缺失：正文不出现 `三、问题与需协调事项` 节头，台账仍记 missing（`required=false`，`rendered_as=\\\"省略该条目/小节\\\"`）\\n- 落款 `报送日期：2026-09-28` 右对齐、右缩进 32pt；台账 summary 自洽（filled 3 + missing 4 = 7，必填缺失=[部门, 周期, 本周工作内容]）\\n\\n**工作总结 case2**（总结主体缺失、主要成绩空数组、工作回顾字符串型列表、存在问题与成文日期选填缺失）：\\n- 标题 `____2026年9月工作总结`；字符串列表单项化：`一、工作回顾` 下 `1．完成评测平台月度巡检`，台账 value 为单元素数组 `[\\\"完成评测平台月度巡检\\\"]`\\n- `二、主要成绩` + `1．____`（空数组→占位条目）；`三、存在问题` 整节省略（台账 required=false 记 missing）；节号跳到 `四、下一步工作打算`（编号规范不乱）\\n- 落款一 `____`、落款二空段（成文日期缺失渲染为空字符串），两段均右对齐、右缩进 32pt——空日期/缺主体未破坏落款版式\\n\\n## 确定性\\n\\n同一命令行各连跑两遍（第二遍覆盖复写），快照旁路逐字节对拍：两单元 × 两产物共 8 次对拍全部一致，sha256 两遍相等（如周报 docx 两遍均 `c28537f4…`，工作总结 docx 两遍均 `638393a0…`）。入口脚本 `py_compile` 0 错误，不可复现源扫描（time/random/uuid/datetime/now）0 命中。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 23,\n    \"inputTokens\": 874429,\n    \"outputTokens\": 12297,\n    \"totalTokens\": 886726,\n    \"cacheReadTokens\": 836544,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 7361,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 886726,\n    \"contextUsed\": 53921,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

@@ -1,0 +1,11 @@
+EXTRACT OF 会议通知__case2__文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=1.5 runs=[关于____的通知/方正小标宋简体/22.0] text=关于____的通知
+P001 align=None firstLineChars=None firstLineIndent=None spacing=1.5 runs=[各部门：/仿宋/16.0] text=各部门：
+P002 align=None firstLineChars=200 firstLineIndent=406400 spacing=1.5 runs=[兹定于2026年10月16日/仿宋/16.0] text=兹定于2026年10月16日（周五）10:00召开会议，现将有关事项通知如下：
+P003 align=None firstLineChars=200 firstLineIndent=406400 spacing=1.5 runs=[会议名称：____/仿宋/16.0] text=会议名称：____
+P004 align=None firstLineChars=200 firstLineIndent=406400 spacing=1.5 runs=[召开单位：评测技术部/仿宋/16.0] text=召开单位：评测技术部
+P005 align=None firstLineChars=200 firstLineIndent=406400 spacing=1.5 runs=[会议时间：2026年10月1/仿宋/16.0] text=会议时间：2026年10月16日（周五）10:00
+P006 align=None firstLineChars=200 firstLineIndent=406400 spacing=1.5 runs=[会议地点：____/仿宋/16.0] text=会议地点：____
+P007 align=None firstLineChars=200 firstLineIndent=406400 spacing=1.5 runs=[参会人员：全体评测组成员/仿宋/16.0] text=参会人员：全体评测组成员
+P008 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=1.5 runs=[评测技术部/仿宋/16.0] text=评测技术部
+P009 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=1.5 runs=[2026年9月30日/仿宋/16.0] text=2026年9月30日

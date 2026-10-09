@@ -1,0 +1,140 @@
+{
+  "tested_family": "glm",
+  "panel": [
+    "step-router-v1",
+    "Minimax-M3.1-Flash-Preview"
+  ],
+  "panel_rotation": "task_idx=3 parity=1",
+  "verdicts": {
+    "step-router-v1": {
+      "scores": {
+        "P1": {
+          "total": 10.0,
+          "evidence": "周报：本周工作内容1．____、问题与需协调事项省略、missing_required=[部门,周期,本周工作内容]、编号一/二/四且落款右对齐。工作总结：工作回顾单项化、主要成绩1．____、存在问题省略、missing_required=[总结主体,主要成绩]、编号一/二/四且落款右对齐。"
+        },
+        "P2": {
+          "total": 8.5,
+          "evidence": "周报：本周工作内容1．____、问题与需协调事项省略，但缺部门字段且周期未渲染；工作总结：工作回顾单项化、主要成绩1．____、存在问题省略、missing_required正确，但小节编号未跳号（一/二/三）。"
+        },
+        "P3": {
+          "total": 10.0,
+          "evidence": "周报：本周工作内容1．____、问题与需协调事项省略、missing_required=[部门,周期,本周工作内容]、编号一/二/四且落款右对齐。工作总结：工作回顾单项化、主要成绩1．____、存在问题省略、missing_required=[总结主体,主要成绩]、编号一/二/四且落款右对齐。"
+        },
+        "P4": {
+          "total": 10.0,
+          "evidence": "周报：本周工作内容1．____、问题与需协调事项省略、missing_required=[部门,周期,本周工作内容]、编号一/二/四且落款右对齐。工作总结：工作回顾单项化、主要成绩1．____、存在问题省略、missing_required=[总结主体,主要成绩]、编号一/二/四且落款右对齐。"
+        },
+        "P5": {
+          "total": 8.5,
+          "evidence": "周报：本周工作内容1．____、问题与需协调事项省略，但缺部门字段且周期未渲染；工作总结：工作回顾单项化、主要成绩1．____、存在问题省略、missing_required正确，但小节编号未跳号（一/二/三）。"
+        },
+        "P6": {
+          "total": 8.5,
+          "evidence": "周报：本周工作内容1．____、问题与需协调事项省略，但缺部门字段且周期未渲染；工作总结：工作回顾单项化、主要成绩1．____、存在问题省略、missing_required正确，但小节编号未跳号（一/二/三）。"
+        }
+      }
+    },
+    "Minimax-M3.1-Flash-Preview": {
+      "scores": {
+        "P1": {
+          "total": 9.5,
+          "evidence": "①周报P003/总结P004『1．____』+rendered_as占位条目；②工作回顾value=[完成评测平台月度巡检]单项；③选填节头省略、required=false；④missing_required=[部门,周期,本周工作内容]/[总结主体,主要成绩]；⑤一、二、四跳号，落款RIGHT无空段"
+        },
+        "P2": {
+          "total": 9.0,
+          "evidence": "①周报P002/总结P004『1．____』+status=placeholder；②工作回顾value=[完成评测平台月度巡检]单项化；③选填节头省略、required=false；④标题____对但无missing_required汇总、部门未入账；⑤一、二、三连续，落款RIGHT"
+        },
+        "P3": {
+          "total": 9.5,
+          "evidence": "①周报P003/总结P004『1．____』+rendered_as占位条目；②工作回顾value=[完成评测平台月度巡检]单项；③选填节头省略、required=false；④missing_required=[部门,周期,本周工作内容]/[总结主体,主要成绩]；⑤一、二、四跳号，落款RIGHT"
+        },
+        "P4": {
+          "total": 9.5,
+          "evidence": "①周报P003/总结P004『1．____』+rendered_as占位条目；②工作回顾value=[完成评测平台月度巡检]单项；③节头省略、required=false；④stdout_digest记必填缺失两表；⑤一、二、四跳号，落款RIGHT且有空段"
+        },
+        "P5": {
+          "total": 9.0,
+          "evidence": "①周报P002/总结P004『1．____』+placeholder_item；②工作回顾value=[完成评测平台月度巡检]单项化；③omitted_sections含两选填节；④无missing_required汇总、部门未入账、周报缺周期行；⑤一、二、三连续，落款RIGHT"
+        },
+        "P6": {
+          "total": 9.0,
+          "evidence": "①周报P002/总结P004『1．____』+placeholder_entry；②工作回顾value=[完成评测平台月度巡检]单项化；③选填节omitted、required=false；④无missing_required汇总、部门未入账；⑤一、二、三连续，落款RIGHT"
+        }
+      }
+    },
+    "step-router-v1#retry": null,
+    "step-router-v1#repair": {
+      "scores": {
+        "P1": {
+          "total": 10.0,
+          "evidence": "周报：本周工作内容1．____、问题与需协调事项省略、missing_required=[部门,周期,本周工作内容]、编号一/二/四且落款右对齐。工作总结：工作回顾单项化、主要成绩1．____、存在问题省略、missing_required=[总结主体,主要成绩]、编号一/二/四且落款右对齐。"
+        },
+        "P2": {
+          "total": 8.5,
+          "evidence": "周报：本周工作内容1．____、问题与需协调事项省略，但缺部门字段且周期未渲染；工作总结：工作回顾单项化、主要成绩1．____、存在问题省略、missing_required正确，但小节编号未跳号（一/二/三）。"
+        },
+        "P3": {
+          "total": 10.0,
+          "evidence": "周报：本周工作内容1．____、问题与需协调事项省略、missing_required=[部门,周期,本周工作内容]、编号一/二/四且落款右对齐。工作总结：工作回顾单项化、主要成绩1．____、存在问题省略、missing_required=[总结主体,主要成绩]、编号一/二/四且落款右对齐。"
+        },
+        "P4": {
+          "total": 10.0,
+          "evidence": "周报：本周工作内容1．____、问题与需协调事项省略、missing_required=[部门,周期,本周工作内容]、编号一/二/四且落款右对齐。工作总结：工作回顾单项化、主要成绩1．____、存在问题省略、missing_required=[总结主体,主要成绩]、编号一/二/四且落款右对齐。"
+        },
+        "P5": {
+          "total": 8.5,
+          "evidence": "周报：本周工作内容1．____、问题与需协调事项省略，但缺部门字段且周期未渲染；工作总结：工作回顾单项化、主要成绩1．____、存在问题省略、missing_required正确，但小节编号未跳号（一/二/三）。"
+        },
+        "P6": {
+          "total": 8.5,
+          "evidence": "周报：本周工作内容1．____、问题与需协调事项省略，但缺部门字段且周期未渲染；工作总结：工作回顾单项化、主要成绩1．____、存在问题省略、missing_required正确，但小节编号未跳号（一/二/三）。"
+        }
+      }
+    }
+  },
+  "per_judge_scores": {
+    "P1": {
+      "step-router-v1": 10.0,
+      "Minimax-M3.1-Flash-Preview": 9.5
+    },
+    "P2": {
+      "step-router-v1": 8.5,
+      "Minimax-M3.1-Flash-Preview": 9.0
+    },
+    "P3": {
+      "step-router-v1": 10.0,
+      "Minimax-M3.1-Flash-Preview": 9.5
+    },
+    "P4": {
+      "step-router-v1": 10.0,
+      "Minimax-M3.1-Flash-Preview": 9.5
+    },
+    "P5": {
+      "step-router-v1": 8.5,
+      "Minimax-M3.1-Flash-Preview": 9.0
+    },
+    "P6": {
+      "step-router-v1": 8.5,
+      "Minimax-M3.1-Flash-Preview": 9.0
+    }
+  },
+  "final_scores": {
+    "P1": 9.75,
+    "P2": 8.75,
+    "P3": 9.75,
+    "P4": 9.75,
+    "P5": 8.75,
+    "P6": 8.75
+  },
+  "judge_consistency": {
+    "task": "ab3-empty-and-string-lists",
+    "resample_of": "P3",
+    "first_score": 10.0,
+    "second_score": 9.5,
+    "delta": 0.5,
+    "action": "pass",
+    "repair": true
+  },
+  "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+  "protocol": "ab-item"
+}

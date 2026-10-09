@@ -1,0 +1,137 @@
+{
+  "template": "工作总结",
+  "template_id": "zongjie",
+  "source_file": "zongjie_blank.json",
+  "output_file": "文书.docx",
+  "title": "____（____年__月）工作总结",
+  "fields": [
+    {
+      "name": "总结主体",
+      "required": true,
+      "kind": "str",
+      "present": false,
+      "value": null,
+      "state": "missing_required",
+      "rendered_as": "____",
+      "dropped_items": 0,
+      "coerced_from": null,
+      "note": "标题中的单位/部门，并作落款署名"
+    },
+    {
+      "name": "总结时段",
+      "required": true,
+      "kind": "str",
+      "present": false,
+      "value": null,
+      "state": "missing_required",
+      "rendered_as": "____",
+      "dropped_items": 0,
+      "coerced_from": null,
+      "note": "标题中的时段，如 2026年9月"
+    },
+    {
+      "name": "工作回顾",
+      "required": true,
+      "kind": "list",
+      "present": false,
+      "value": [],
+      "state": "missing_required",
+      "rendered_as": "1．____",
+      "dropped_items": 0,
+      "coerced_from": null,
+      "note": "第一节，回顾条目"
+    },
+    {
+      "name": "主要成绩",
+      "required": true,
+      "kind": "list",
+      "present": false,
+      "value": [],
+      "state": "missing_required",
+      "rendered_as": "1．____",
+      "dropped_items": 1,
+      "coerced_from": null,
+      "note": "第二节，成绩条目"
+    },
+    {
+      "name": "存在问题",
+      "required": false,
+      "kind": "list",
+      "present": false,
+      "value": [],
+      "state": "missing_optional",
+      "rendered_as": "(整节省略)",
+      "dropped_items": 1,
+      "coerced_from": null,
+      "note": "第三节，选填；缺失整节省略"
+    },
+    {
+      "name": "下一步工作打算",
+      "required": true,
+      "kind": "list",
+      "present": false,
+      "value": [],
+      "state": "missing_required",
+      "rendered_as": "1．____",
+      "dropped_items": 0,
+      "coerced_from": null,
+      "note": "第四节，打算条目"
+    },
+    {
+      "name": "成文日期",
+      "required": false,
+      "kind": "str",
+      "present": false,
+      "value": null,
+      "state": "missing_optional",
+      "rendered_as": "____年__月__日",
+      "dropped_items": 0,
+      "coerced_from": null,
+      "note": "落款日期，右对齐；选填"
+    }
+  ],
+  "rendered_names": [],
+  "missing_required_names": [
+    "总结主体",
+    "总结时段",
+    "工作回顾",
+    "主要成绩",
+    "下一步工作打算"
+  ],
+  "missing_optional": [
+    "存在问题",
+    "成文日期"
+  ],
+  "unknown_keys": [],
+  "unknown_names": [],
+  "omitted_sections": [
+    {
+      "section": "存在问题",
+      "field": "存在问题",
+      "reason": "选填字段缺失，整节省略（正文不出现该节头）"
+    }
+  ],
+  "data_errors": [],
+  "placeholder_policy": {
+    "scalar": "____",
+    "list_item": "1．____",
+    "note": "必填缺失以 ____ 占位；列表型必填缺失渲染一条「1．____」占位条目；选填小节缺失整节省略，台账仍记 missing（required=false）。"
+  },
+  "summary": {
+    "required_total": 5,
+    "required_missing": 5,
+    "optional_total": 2,
+    "optional_missing": 2,
+    "unknown_keys": 0,
+    "fields_rendered": 0
+  },
+  "input_keys": [
+    "下一步工作打算",
+    "主要成绩",
+    "存在问题",
+    "工作回顾",
+    "总结主体",
+    "总结时段",
+    "成文日期"
+  ]
+}

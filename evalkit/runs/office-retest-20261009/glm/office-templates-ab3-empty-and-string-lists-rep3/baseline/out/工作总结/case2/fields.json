@@ -1,0 +1,107 @@
+{
+  "template": "工作总结",
+  "data": "fixtures/工作总结/case2.json",
+  "title": "____2026年9月工作总结",
+  "fields": [
+    {
+      "name": "总结主体",
+      "kind": "scalar",
+      "required": true,
+      "status": "placeholder",
+      "value": null,
+      "placeholder": "____",
+      "note": "必填缺失，以____占位"
+    },
+    {
+      "name": "总结时段",
+      "kind": "scalar",
+      "required": true,
+      "status": "filled",
+      "value": "2026年9月"
+    },
+    {
+      "name": "工作回顾",
+      "kind": "list",
+      "required": true,
+      "status": "normalized-single-item",
+      "value": [
+        "完成评测平台月度巡检"
+      ],
+      "raw": "完成评测平台月度巡检",
+      "note": "字符串型列表按单项化处理，字段值为单元素数组"
+    },
+    {
+      "name": "主要成绩",
+      "kind": "list",
+      "required": true,
+      "status": "empty-list-placeholder",
+      "value": [],
+      "placeholder_item": "1．____",
+      "note": "空列表按必填缺失处理，渲染占位条目"
+    },
+    {
+      "name": "存在问题",
+      "kind": "list",
+      "required": false,
+      "status": "missing-optional-omitted",
+      "value": null,
+      "note": "选填小节缺失，整节省略（正文不出现该节头），required=false"
+    },
+    {
+      "name": "下一步工作打算",
+      "kind": "list",
+      "required": true,
+      "status": "filled",
+      "value": [
+        "制定四季度评测排期"
+      ]
+    },
+    {
+      "name": "成文日期",
+      "kind": "scalar",
+      "required": false,
+      "status": "missing-optional-omitted",
+      "value": null,
+      "note": "选填缺失，整处省略不渲染（required=false）"
+    }
+  ],
+  "sections": [
+    {
+      "field": "工作回顾",
+      "number": "一",
+      "header": "一、工作回顾",
+      "items": [
+        "1．完成评测平台月度巡检"
+      ]
+    },
+    {
+      "field": "主要成绩",
+      "number": "二",
+      "header": "二、主要成绩",
+      "items": [
+        "1．____"
+      ]
+    },
+    {
+      "field": "下一步工作打算",
+      "number": "三",
+      "header": "三、下一步工作打算",
+      "items": [
+        "1．制定四季度评测排期"
+      ]
+    }
+  ],
+  "omitted_sections": [
+    {
+      "field": "存在问题",
+      "header": "存在问题",
+      "reason": "选填缺失，整节省略（正文不出现该节头）"
+    }
+  ],
+  "signature": {
+    "alignment": "right",
+    "lines": [
+      "____"
+    ]
+  }
+}

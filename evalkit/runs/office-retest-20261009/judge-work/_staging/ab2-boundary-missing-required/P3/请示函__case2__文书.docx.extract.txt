@@ -1,0 +1,7 @@
+EXTRACT OF 请示函__case2__文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=0 spacing=381000 runs=[关于延期举办季度评审会的请示/方正小标宋简体/22.0] text=关于延期举办季度评审会的请示
+P001 align=LEFT (0) firstLineChars=None firstLineIndent=0 spacing=381000 runs=[____：/仿宋_GB2312/16.0] text=____：
+P002 align=LEFT (0) firstLineChars=None firstLineIndent=406400 spacing=381000 runs=[我部就延期举办季度评审会，因/仿宋_GB2312/16.0] text=我部就延期举办季度评审会，因关键评审人出差，原定会议时间无法保证评审质量。
+P003 align=LEFT (0) firstLineChars=None firstLineIndent=406400 spacing=381000 runs=[我部拟____，妥否，请批示/仿宋_GB2312/16.0] text=我部拟____，妥否，请批示。
+P004 align=LEFT (0) firstLineChars=None firstLineIndent=406400 spacing=381000 runs=[联系人：李工/仿宋_GB2312/16.0] text=联系人：李工
+P005 align=RIGHT (2) firstLineChars=None firstLineIndent=0 spacing=381000 runs=[评测技术部/仿宋_GB2312/16.0] text=评测技术部

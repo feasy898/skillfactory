@@ -1,0 +1,17 @@
+{
+  "arm": "baseline",
+  "run_label": "rep3",
+  "run_id": "office-retest-20261009",
+  "model_id": "GLM-5.3",
+  "provider_base_url": "account:bigmodel-individual-coding-plan",
+  "cli_runtime": "zcode-app-cli 3.14.4 (embedded) / zcode-runtime 0.16.9",
+  "date": "2026-10-09",
+  "reasoning_variant": "max",
+  "asset_mount": null,
+  "family": "glm",
+  "mechanism": "m4",
+  "pkg": "office-templates",
+  "task": "t06",
+  "rep": 3,
+  "note": "office 重测实测钉版：model_id/provider_base_url 抄 db model_usage join 落点（逐字大小写敏感）；机制 glm=M4、minimax=M2（照 sf0006-b-smoke-2/sf0008-k5b）"
+}

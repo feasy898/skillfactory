@@ -1,0 +1,27 @@
+AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.
+{
+  "sessionId": "sess_d3bd20aa-5869-4b15-86a2-a2ea0bda80c4",
+  "traceId": "a17dbf5a-a03c-4b69-adda-7eeef97e3075",
+  "turnId": "turn_71743742-0b4e-4076-a735-01a059632761",
+  "response": "Done. The formal meeting notice is generated and verified: `out/文书.docx` ::zcode-file-citation{path=\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t02-rep1/baseline/out/文书.docx\" purpose=\"output\"} plus its field ledger `out/fields.json` ::zcode-file-citation{path=\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t02-rep1/baseline/out/fields.json\" purpose=\"output\"}, with the source data saved verbatim to `qingheng_teahui.json` and the generator kept as `gen_doc.py`.\n\n**What the document contains.** A single-page GB/T 9704-2012 style notice titled 「青蘅茶社关于召开秋季会员茶话会的通知」: centered 22pt 小标宋 title, 顶格 addressee 「全体会员：」, an opening line whose facts all come from the data, seven numbered items (一、会议时间 through 七、联系电话) with 黑体 labels and 仿宋 values, the six meeting requirements listed as （一）–（六）, the closing 「特此通知。」, and a right-aligned signature block with 青蘅茶社 centered over the date 2026年10月9日 (右空四字), plus a centered 「— 1 —」 page-number footer. A4 with the standard 37/35/28/26mm margins and fixed 28pt line spacing.\n\n**Data fidelity notes.** All 11 fields are present, so nothing was fabricated and no placeholders were needed (`summary: filled 11 / missing 0 / total 11`). The 会议议题 source value had stray leading/trailing half-width spaces; those were trimmed for rendering and this is explicitly recorded in the field's 渲染方式, with the ledger value showing the trimmed text. The requirement list items gained standard ；/。 punctuation per official-document list conventions — also disclosed in the ledger. 发文日期 stays in Arabic numerals as given, which matches the current GB/T 9704—2012 rule.\n\n**Verification.** Four independent gates all passed: a full text readback against 19 required strings (every source value appears exactly, no stray spaces or placeholder residue), the skill's mandatory `postcheck.py` (0 errors, 0 warnings), a LibreOffice PDF render confirming exactly one page with the signature block intact (an initial overflow that pushed the date to page 2 was fixed by tightening spacing and binding 署名/日期 with keep-with-next), and a visual-judge acceptance pass on the rendered page. Render evidence (PDF + PNG) is kept in `.render/`.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 34,
+    "inputTokens": 1747319,
+    "outputTokens": 31298,
+    "totalTokens": 1778617,
+    "cacheReadTokens": 1685184,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 22759,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1778617,
+    "contextUsed": 77232,
+    "contextWindow": 200000
+  }
+}

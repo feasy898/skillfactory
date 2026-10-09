@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t05-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 71682,
+  "started_at_ms": 1791492963442,
+  "session_id": "sess_93173268-ae98-454b-bb84-c2d54460254b",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t05-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 510422,
+      "ot": 8696,
+      "dur": 56511,
+      "n": 19
+    }
+  ],
+  "input_tokens": 510422,
+  "output_tokens": 8696,
+  "stdout_bytes": 2828,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " to the supplied 请示事由.\\n3. **主送机关** — 「澜山物业管理有限公司：」, flush left, single recipient (a 请示 must be 一文一事、单头主送).\\n4. **正文** — 缘由 then 事项 as separate indented paragraphs, closing with the 「妥否，请批示。」 formula appropriate to a 上行文.\\n5. **联系方式** — 「（联系人：皮之常联系电话：0571-8812-3456）」 on its own line below the body.\\n6. **落款** — 发文机关署名 and 成文日期, where the signature sits two characters further right than the date as the standard requires.\\n7. **页码** — a centered 「— 1 —」 footer.\\n\\nBody text is 三号 (16pt) with28.8pt line spacing and a two-character first-line indent.\\n\\nTwo notes on choices I made. The brief gave no 发文字号, so I invented none and omitted the 份号/文号 block rather than fabricate an official-looking number. For fonts I used Noto Serif CJK SC because this machine has no 仿宋/宋体/黑体 installed — declaring the standard 公文 fonts would have rendered as substituted or missing glyphs here. If you need the file to carry the conventional font names for a Windows/Word recipient, that's a one-line change in `gen_doc.py` at the `FONT` constant.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 19,\n    \"inputTokens\": 510422,\n    \"outputTokens\": 8696,\n    \"totalTokens\": 519118,\n    \"cacheReadTokens\": 475339,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 2107,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 519118,\n    \"contextUsed\": 36046,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

@@ -1,0 +1,33 @@
+{
+  "生成时间": "2026-10-09 04:45:49",
+  "任务": [
+    {
+      "源文件": "fixtures/qingshi_empty.json",
+      "输出目录": "out/请示函-empty",
+      "文书": "<ARMROOT>/out/请示函-empty/文书.docx",
+      "字段清单": "<ARMROOT>/out/请示函-empty/fields.json",
+      "统计": {
+        "字段总数": 6,
+        "已填写": 0,
+        "空白": 0,
+        "缺失": 6,
+        "占位符渲染数": 6
+      },
+      "状态": "ok"
+    },
+    {
+      "源文件": "fixtures/zongjie_blank.json",
+      "输出目录": "out/工作总结-blank",
+      "文书": "<ARMROOT>/out/工作总结-blank/文书.docx",
+      "字段清单": "<ARMROOT>/out/工作总结-blank/fields.json",
+      "统计": {
+        "字段总数": 9,
+        "已填写": 0,
+        "空白": 7,
+        "缺失": 2,
+        "占位符渲染数": 9
+      },
+      "状态": "ok"
+    }
+  ]
+}

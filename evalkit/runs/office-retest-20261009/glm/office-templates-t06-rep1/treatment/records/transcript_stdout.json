@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_674ee422-75ef-47bb-b9ee-867a82acc7bb",
+  "traceId": "b51eb07c-6fad-494d-9a83-9121ac6fd90f",
+  "turnId": "turn_e91df9fe-82b6-4ec5-831b-6d1e36297550",
+  "response": "全部完成。交付物已就位，但有一处我要明确说明：**报送日期我没有按「从正文挑一个」的方式去补**，原因和现状如下。\n\n## 交付物\n\n- `out/文书.docx` —— 屿光咖啡营运部工作周报（GB/T 9704 风格版式：居中黑体二号标题、仿宋三号正文、三个小节共 6 条条目、右对齐落款）\n- `out/fields.json` —— 字段填充台账：7 字段中 6 个已填，无必填缺失，无模板外键\n- `yuguang_week.json` —— 你给的原始数据，原样保存\n- `run_log.json` —— 确定性验证留痕（同命令连跑两遍，`文书.docx` 与 `fields.json` 均整文件逐字节一致，sha256 相等；`py_compile` 0 错误；入口脚本无 time/random/datetime 等不可复现源）\n\n## 关于报送日期：我为什么没从正文挑\n\n正文里出现的日期（10月9日上新、10月10日起延时营业、10月11日盘点复核）都是**事情发生的日期**，不是报送日期——从里面挑一个填进落款，等于替你编造了一个数据里不存在的值。这套成文流程的底线是缺数据不编造：台账的用途就是如实记录每个字段的来源，编一个日期进去，`fields.json` 的记账就失真了，报表系统读到的也会是一个看起来合法、实际是猜的日期，比空着更危险。\n\n所以按规范处理为：报送日期是周报的**选填**字段，落款渲染为 `报送日期：`（标签保留、值留空），`fields.json` 如实记 `status=missing, rendered_as=留空（渲染为空字符串）`。\n\n**如果你确认报表系统必须有报送日**：把实际的报送日期告诉我（应该是你提交这份周报那天，比如「2026年10月12日」），我把它加进 `yuguang_week.json` 重跑一遍即可——一条命令，落款就会带上真实日期，其余内容不变。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 15,
+    "inputTokens": 429736,
+    "outputTokens": 7386,
+    "totalTokens": 437122,
+    "cacheReadTokens": 411136,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 4993,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 437122,
+    "contextUsed": 34760,
+    "contextWindow": 200000
+  }
+}

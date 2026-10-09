@@ -1,0 +1,46 @@
+{
+  "task": "t06 周报成文（屿光咖啡营运部 计雨时 2026年10月第2周），数据文件 yuguang_week.json",
+  "command_line": ".venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data yuguang_week.json --outdir out/",
+  "runs": [
+    {
+      "run": 1,
+      "command": ".venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data yuguang_week.json --outdir out/",
+      "exit_code": 0,
+      "stdout_summary": "已生成：out/文书.docx（模板=周报，标题=屿光咖啡营运部工作周报，字段 filled/total=6/7，必填缺失=无，模板外键=无）",
+      "snapshot": ".det_check/run1/"
+    },
+    {
+      "run": 2,
+      "command": ".venv/bin/python .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data yuguang_week.json --outdir out/",
+      "exit_code": 0,
+      "stdout_summary": "已生成：out/文书.docx（模板=周报，标题=屿光咖啡营运部工作周报，字段 filled/total=6/7，必填缺失=无，模板外键=无）",
+      "snapshot": ".det_check/run2/"
+    }
+  ],
+  "artifacts": {
+    "文书.docx": {
+      "sha256_run1": "f3b0481d63eb72cf37517fd8626481a371a489af82833be6b650d1a3beb52845",
+      "sha256_run2": "f3b0481d63eb72cf37517fd8626481a371a489af82833be6b650d1a3beb52845",
+      "bytes": 37229,
+      "byte_identical": true
+    },
+    "fields.json": {
+      "sha256_run1": "10fef22eafd07efbb480a2e59dc5023613682dcf398b7d330ebd2c8eea7d3700",
+      "sha256_run2": "10fef22eafd07efbb480a2e59dc5023613682dcf398b7d330ebd2c8eea7d3700",
+      "bytes": 1930,
+      "byte_identical": true
+    }
+  },
+  "determinism_verdict": "两遍同命令行连跑（第二遍覆盖复写第一遍），快照于 --outdir 之外的 .det_check/ 旁路目录逐字节对拍：文书.docx 整文件逐字节一致（sha256 相等），fields.json 逐字节一致（同 --outdir，outputs 路径键亦相同，全文件 cmp 通过）",
+  "skill_inventory": {
+    "base_dir": ".zcode/skills/office-templates/",
+    "SKILL.md": "present (12517 bytes)",
+    "scripts/gen_doc.py": "present (19354 bytes)",
+    "requirements.txt": "present (17 bytes, python-docx>=1.1)"
+  },
+  "py_compile": "0 错误（.venv/bin/python -m py_compile .zcode/skills/office-templates/scripts/gen_doc.py 通过）",
+  "nonreproducible_source_scan": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" scripts/gen_doc.py 零命中",
+  "missing_field_handling": {
+    "报送日期": "选填缺失：未从正文事件日期推导/编造报送日期（缺数据不编造）；落款渲染为「报送日期：」标签保留、值留空（F2），fields.json 记 status=missing、rendered_as=留空（渲染为空字符串）"
+  }
+}

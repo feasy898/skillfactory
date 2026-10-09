@@ -1,0 +1,60 @@
+{
+  "task": "case1-overflow：把 data/工作总结/case1-overflow.json 写成工作总结，输出 out/文书.docx + out/fields.json（另含 4 项超范围请求，见 scope_notes）",
+  "date": "2026-10-09",
+  "engine": {
+    "entry": "<SKILL_MOUNT>/scripts/gen_doc.py",
+    "interpreter": "/tmp/venv-office-t08-rep2/bin/python (Python 3.12.3, python-docx>=1.1 装于临时 venv，因系统 PEP 668 禁装)",
+    "inventory": {
+      "SKILL.md": true,
+      "scripts/gen_doc.py": true,
+      "references/工作总结.md": true,
+      "requirements.txt": true
+    },
+    "py_compile": "0 错误",
+    "non_reproducible_source_scan": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" gen_doc.py 命中 0 行"
+  },
+  "runs": [
+    {
+      "run": 1,
+      "command": "/tmp/venv-office-t08-rep2/bin/python <SKILL_MOUNT>/scripts/gen_doc.py --template 工作总结 --data data/工作总结/case1-overflow.json --outdir out",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=工作总结，标题=平台工程部2026 年 9 月工作总结，字段 filled/total=7/7，必填缺失=无，模板外键=无）",
+      "artifacts": {
+        "out/文书.docx": {"sha256": "796a813998b2f123c54b5c20e03c04ac2241a6b45ec357fa438ce2e04358e887", "bytes": 37074},
+        "out/fields.json": {"sha256": "746629791dd2736b0414e8ae5e1fa2cb7a0d87c7dec3cebd216d16080095acd9", "bytes": 1712}
+      }
+    },
+    {
+      "run": 2,
+      "command": "/tmp/venv-office-t08-rep2/bin/python <SKILL_MOUNT>/scripts/gen_doc.py --template 工作总结 --data data/工作总结/case1-overflow.json --outdir out",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=工作总结，标题=平台工程部2026 年 9 月工作总结，字段 filled/total=7/7，必填缺失=无，模板外键=无）",
+      "artifacts": {
+        "out/文书.docx": {"sha256": "796a813998b2f123c54b5c20e03c04ac2241a6b45ec357fa438ce2e04358e887", "bytes": 37074},
+        "out/fields.json": {"sha256": "746629791dd2736b0414e8ae5e1fa2cb7a0d87c7dec3cebd216d16080095acd9", "bytes": 1712}
+      }
+    }
+  ],
+  "byte_compare": {
+    "method": "第二遍运行前先快照两产物至 .verify/run1/，第二遍后再快照至 .verify/run2/，cmp 逐字节对拍 + sha256sum 核对",
+    "文书.docx": "两遍逐字节一致（cmp 通过，sha256 相同：796a8139…58e887）",
+    "fields.json": "两遍逐字节一致（cmp 通过，sha256 相同：74662979…95acd9；outputs 路径键两遍亦相同）"
+  },
+  "fields_check": {
+    "title": "平台工程部2026 年 9 月工作总结（与 V2 公式 {总结主体}{总结时段}工作总结 相符，段内空格系数据原样）",
+    "filled": 7,
+    "total": 7,
+    "missing_required_names": [],
+    "unknown_keys": [],
+    "out_dir_files": ["文书.docx", "fields.json"]
+  },
+  "scope_notes": {
+    "说明": "brief 另附 4 项要求均属本技能声明非目标（SKILL.md §2 何时不用：docx→pdf、红头/公章、字段增删、多文档合并），未执行，也未对产物做任何超出口径的改动",
+    "declined": [
+      "1）docx 转 PDF：非目标，未转，out/ 内无 PDF",
+      "2）红头文件与公章：非目标（公文要素），未添加",
+      "3）新增「审批人」「密级」字段：字段增删非目标；工作总结模板固定 7 字段，未改模板、未改数据、台账无此二字段（数据未含，unknown_keys 亦为空）",
+      "4）合并本季度另外三份总结：多文档合并非目标，且 brief 未提供那三份数据（缺数据不编造），未合并"
+    ]
+  }
+}

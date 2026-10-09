@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t05-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 183875,
+  "started_at_ms": 1791492436861,
+  "session_id": "sess_7cc29cec-c7af-41f1-8b68-dae1e14d7950",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t05-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1683264,
+      "ot": 17656,
+      "dur": 149410,
+      "n": 46
+    }
+  ],
+  "input_tokens": 1683264,
+  "output_tokens": 17656,
+  "stdout_bytes": 3009,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "e reproduced as complete sentences including their terminal 。, with any added wording (the closing \\\"现就有关事项请示如下\\\", the post-purchase handling sentence) starting fresh rather than being spliced into the original sentence, so traceability stays exact.\\n\\n**Two things I filled in that weren't in your data**, both flagged under `非源数据补足项` in `fields.json` so they aren't mistaken for source facts: a 发文字号 (澜山物业综函〔2026〕12号), since a 请示 without one looks unfinished, and 抄送机关 (综合管理部档案室), taken as the handling unit for the request. Both need confirmation before the document actually goes out — the 发文字号 especially, since the flow number is arbitrary.\\n\\nOne note on fonts: the docx declares 仿宋_GB2312 / 方正小标宋简体 / 黑体, the standard Chinese official-document faces. Those aren't installed on this machine, so my preview render substituted Noto CJK. The layout, spacing, and text are faithful; on a Chinese Windows/Office install it will pick up the real faces, which are slightly narrower and may reflow by a character or two per line.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 46,\n    \"inputTokens\": 1683264,\n    \"outputTokens\": 17656,\n    \"totalTokens\": 1700920,\n    \"cacheReadTokens\": 1500800,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1875,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1700920,\n    \"contextUsed\": 53775,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "t05",
+  "rep": 1,
+  "slot": 34
+}

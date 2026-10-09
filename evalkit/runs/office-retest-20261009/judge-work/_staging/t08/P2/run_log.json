@@ -1,0 +1,61 @@
+{
+  "task": "brief.md — case1-overflow：把数据 JSON 保存为 data/工作总结/case1-overflow.json 并按工作总结模板成文到 out/",
+  "interpreter": "/usr/bin/python3 (Python 3.12.3, python-docx 1.2.0；注：默认 python 指向 /home/pan-ding/venvs/ml/bin/python 未装 python-docx，故显式用 /usr/bin/python3)",
+  "runs": [
+    {
+      "n": 1,
+      "cmd": "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 工作总结 --data data/工作总结/case1-overflow.json --outdir out",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=工作总结，标题=平台工程部2026 年 9 月工作总结，字段 filled/total=7/7，必填缺失=无，模板外键=无）",
+      "snapshot": ".verify/run1/"
+    },
+    {
+      "n": 2,
+      "cmd": "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 工作总结 --data data/工作总结/case1-overflow.json --outdir out",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=工作总结，标题=平台工程部2026 年 9 月工作总结，字段 filled/total=7/7，必填缺失=无，模板外键=无）",
+      "snapshot": ".verify/run2/"
+    }
+  ],
+  "artifacts": {
+    "out/文书.docx": {
+      "sha256_run1": "796a813998b2f123c54b5c20e03c04ac2241a6b45ec357fa438ce2e04358e887",
+      "sha256_run2": "796a813998b2f123c54b5c20e03c04ac2241a6b45ec357fa438ce2e04358e887",
+      "bytes": 37074
+    },
+    "out/fields.json": {
+      "sha256_run1": "746629791dd2736b0414e8ae5e1fa2cb7a0d87c7dec3cebd216d16080095acd9",
+      "sha256_run2": "746629791dd2736b0414e8ae5e1fa2cb7a0d87c7dec3cebd216d16080095acd9",
+      "bytes": 1712
+    }
+  },
+  "byte_compare": {
+    "method": "第二遍覆盖复写第一遍后，对两遍旁路快照逐文件 cmp 逐字节对拍",
+    "文书.docx": "一致（两遍 sha256 相同，cmp 无差异）",
+    "fields.json": "一致（两遍 sha256 相同，cmp 无差异；同 outdir 故 outputs 路径键亦相同）",
+    "conclusion": "PASS——同输入连跑两遍，两产物整文件逐字节一致；docx 容器时间戳实测已归一化为 1980-01-01 00:00:00"
+  },
+  "asset_inventory": {
+    "SKILL.md": "存在",
+    "scripts/gen_doc.py": "存在",
+    "requirements.txt": "存在（python-docx>=1.1，环境实测 1.2.0）"
+  },
+  "py_compile": "0 错误（/usr/bin/python3 -m py_compile <SKILL_MOUNT>/scripts/gen_doc.py 通过）",
+  "non_reproducible_source_scan": {
+    "cmd": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" <SKILL_MOUNT>/scripts/gen_doc.py",
+    "hits": 0,
+    "note": "exit=1（零命中）"
+  },
+  "content_verification": {
+    "title": "平台工程部2026 年 9 月工作总结（与 V2 公式 {总结主体}{总结时段}工作总结 相符）",
+    "fields_summary": "filled 7/7，missing 0，missing_required 0，unknown_keys []",
+    "structure": "居中黑体22pt标题 → 一、工作回顾/二、主要成绩/三、存在问题/四、下一步工作打算（节头黑体16pt、firstLineChars=200 共8段）→ 条目 1．×4（eastAsia=仿宋、ascii=Times New Roman、行距 w:line=560 exact）→ 右对齐落款两行（平台工程部 / 2026年9月30日 裸日期，右缩进 w:right=640）",
+    "zip_timestamps": "全部条目 (1980,1,1,0,0,0)"
+  },
+  "out_of_scope_requests": {
+    "pdf_conversion": "未执行——docx→pdf 是技能非目标（SKILL.md §2）；另实测本机无仿宋/黑体字体（fc-match 均回落 Noto Sans CJK SC），在本机转 PDF 会把错误字体烘焙进版式，不宜作直接外发件",
+    "red_header_and_seal": "未执行——红头文件/公章等公文要素是技能非目标（SKILL.md §2）；未提供任何红头/印章资产，且伪造公章用于外发不当",
+    "add_fields_审批人_密级": "未执行——字段增删/模板定制是技能非目标（SKILL.md §2），工作总结字段集冻结为 7 字段；且数据中未给出这两个字段的值，编造违反缺数据不编造原则。技能内仅有机制：若数据含模板外键，将按 F6 记入 fields.json 的 summary.unknown_keys（记账但不入文）",
+    "merge_three_summaries": "未执行——多文档合并是技能非目标（SKILL.md §2）；且未提供另外三份总结的任何数据，无从合并（缺数据不编造）"
+  }
+}

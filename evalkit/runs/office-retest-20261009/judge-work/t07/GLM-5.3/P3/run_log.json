@@ -1,0 +1,61 @@
+{
+  "task": "office-templates-skill-t07",
+  "arm": "<redacted>",
+  "template": "周报",
+  "input_data": "yuguang_q3.json",
+  "note": "题面素材为「工作总结」格式的季度数据，模板为「周报」。baseline 臂按 arms_manifest 声明 baseline_has_skill=false，自建 gen_doc.py 实现，未调用 treatment 臂挂载的技能包。",
+  "runs": [
+    {
+      "pass": 1,
+      "command": ".venv/bin/python gen_doc.py --data yuguang_q3.json --outdir out/周报/case1",
+      "exit_code": 0,
+      "sha256": {
+        "文书.docx": "bdbfa7f89ab5d50f824787335ac018461f809e9dec69fdfbc5dfd303f8090655",
+        "fields.json": "4e5863cfedcc0150be992e97260d49df9beb66ede4b5d5a0b2ab5b1ff211fa36"
+      },
+      "bytes": {"文书.docx": 37166, "fields.json": 2085}
+    },
+    {
+      "pass": 2,
+      "command": ".venv/bin/python gen_doc.py --data yuguang_q3.json --outdir out/周报/case1",
+      "exit_code": 0,
+      "sha256": {
+        "文书.docx": "bdbfa7f89ab5d50f824787335ac018461f809e9dec69fdfbc5dfd303f8090655",
+        "fields.json": "4e5863cfedcc0150be992e97260d49df9beb66ede4b5d5a0b2ab5b1ff211fa36"
+      },
+      "bytes": {"文书.docx": 37166, "fields.json": 2085}
+    }
+  ],
+  "byte_compare": "两遍快照 diff -r 无差异，docx 与 fields.json 均整文件逐字节一致",
+  "zip_timestamps": "全部归一化为 (1980,1,1,0,0,0)",
+  "nondeterminism_scan": "grep -nE 'time\\(|random|uuid|datetime|now\\(' gen_doc.py → 0 命中（1980 固定纪元赋值除外）",
+  "compile": "python -m py_compile gen_doc.py → 0 错误",
+  "reject_cases": [
+    {"case": "数据文件不存在", "exit_code": 2, "artifact_written": false},
+    {"case": "非法 JSON", "exit_code": 2, "artifact_written": false},
+    {"case": "顶层非对象", "exit_code": 2, "artifact_written": false}
+  ],
+  "provenance_check": {
+    "method": "逐字溯源：每个 filled 字段的每个值必须在输入 JSON 的字符串池中逐字命中",
+    "filled_fields_checked": 6,
+    "fabricated_values": 0
+  },
+  "unfilled_fields": [
+    {
+      "name": "填报人",
+      "required": true,
+      "rendered_as": "以____占位",
+      "reason": "季度素材 7 键中无对应键，无真实来源；按「缺数据不编造」保持缺失，未自拟姓名"
+    }
+  ],
+  "unknown_keys": ["主要成绩"],
+  "unknown_keys_note": "「主要成绩」为工作总结字段，周报模板无对应项，未被消费，如实记账未丢弃",
+  "layout_check": {
+    "V1": "A4 21.0×29.7cm，页边距 3.7/3.5/2.8/2.6",
+    "V2": "标题「屿光咖啡品控组工作周报」居中、黑体、22pt",
+    "V4": "正文仿宋 16pt、首行缩进 firstLineChars=200、固定行距 28 磅",
+    "V5": "落款右对齐、右缩进 640 twips（≈32pt）",
+    "V6": "小节一、二、三 + 条目 1．2．3．全角编号",
+    "V7": "必填缺失处文中出现字面 ____"
+  }
+}

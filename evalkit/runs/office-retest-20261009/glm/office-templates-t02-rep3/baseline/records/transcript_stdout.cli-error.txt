@@ -1,0 +1,27 @@
+AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.
+{
+  "sessionId": "sess_1ccdc367-c97a-4535-8fc3-33a260f5b3f0",
+  "traceId": "468119e1-2140-4b60-9879-b0d17f2f6f53",
+  "turnId": "turn_24a31ff9-b123-4a35-bd27-335750080753",
+  "response": "Task complete. All deliverables are in place and every verification gate passed.\n\n**Deliverables**\n- `qingheng_teahui.json` — source data saved byte-faithful to the brief (including the stray spaces around 会议议题).\n- `out/文书.docx` — a one-page formal meeting notice in GB/T 9704 style: A4 with 公文 margins (3.7/3.5/2.8/2.6 cm), centered 2号小标宋 title 「青蘅茶社关于召开秋季会员茶话会的通知」， 顶格主送「全体会员：」, opening paragraph stating purpose/time/place with 「现将有关事项通知如下：」, items 一–七 (黑体 labels + 仿宋 values, digits in Times New Roman), the six 会议要求 sub-items （一）–（六） with standard 「；」/「。」 punctuation added, 「特此通知。」, and the signature block with 署名 centered above the date which sits 右空四字， plus a centered 「— 1 —」 page number.\n- `out/fields.json` — field manifest in the series convention (template/title/fields/summary): all 11 fields recorded as filled (11/11, 0 missing), with required-vs-optional flags and per-field rendering notes. The 议题 entry records the trimmed value and notes the source-space removal.\n- Supporting artifacts left in place: `gen_doc.js` (data-driven generator that produces both output files), `package.json`/lock + `node_modules` (docx@9.9.0), and `.render/` (PDF + PNG used for verification).\n\n**Verification chain**\n- `postcheck.py`: 0 errors, 0 warnings (the STXiaoBiaoSong fallback note is the intentional GB/T font chain, which degrades to 宋体加粗 on systems without it).\n- Content probe against the docx XML: all 11 field values from the source JSON present verbatim; no whitespace leakage from the 议题 field; sub-item punctuation correct.\n- Rendered via LibreOffice to a single page (as budgeted — no orphaned 落款 spill), and the documents:visual-judge acceptance pass returned **pass** with no issues: structure, alignment, spacing, and completeness all confirmed.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 22,
+    "inputTokens": 1142435,
+    "outputTokens": 25515,
+    "totalTokens": 1167950,
+    "cacheReadTokens": 1079488,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 19756,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1167950,
+    "contextUsed": 78470,
+    "contextWindow": 200000
+  }
+}

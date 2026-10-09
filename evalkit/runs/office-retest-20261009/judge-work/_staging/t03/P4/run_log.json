@@ -1,0 +1,174 @@
+{
+  "task": "office-templates-t03-rep1 / treatment",
+  "date": "2026-10-09",
+  "brief": "两份极端缺失数据分别成文：A 请示函空对象 {} → out/请示函-empty/；B 工作总结全空白 → out/工作总结-blank/。两份都必须产出 文书.docx + fields.json，缺数据照实处理不得报错中断。",
+  "environment": {
+    "python": "/usr/bin/python3 = Python 3.12.3（注意：PATH 默认的 python3 指向 /home/pan-ding/venvs/ml/bin/python3，该 venv 无 python-docx；本轮一律用 /usr/bin/python3）",
+    "python_docx": "1.2.0（/home/pan-ding/.local/lib/python3.12/site-packages）",
+    "entry_script": "<SKILL_MOUNT>/scripts/gen_doc.py"
+  },
+  "inputs": [
+    {
+      "id": "A",
+      "template": "请示函",
+      "data_file": "fixtures/qingshi_empty.json",
+      "data_content": "{}（brief 指定字面空对象）",
+      "note": "brief.md 给出字面内容但 fixtures/ 目录初始为空，故按 brief 原文逐字节创建该数据文件（printf '{}'，无尾随换行）"
+    },
+    {
+      "id": "B",
+      "template": "工作总结",
+      "data_file": "fixtures/zongjie_blank.json",
+      "data_content": "{ 总结主体: 两个半角空格, 总结时段: 空串, 工作回顾: [], 主要成绩: [单个半角空格], 存在问题: 两个半角空格, 下一步工作打算: [], 成文日期: 一个全角空格 U+3000 }",
+      "note": "同 A，按 brief 内嵌 JSON 原文创建；『主要成绩』是只含一个半角空格的全空白数组，按 F4 判缺失"
+    }
+  ],
+  "runs": [
+    {
+      "pass": 1,
+      "commands": [
+        {
+          "id": "A",
+          "argv": "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 请示函 --data fixtures/qingshi_empty.json --outdir out/请示函-empty",
+          "exit_code": 0,
+          "stdout": "已生成：out/请示函-empty/文书.docx（模板=请示函，标题=关于____的请示，字段 filled/total=0/8，必填缺失=['请示事由', '主送机关', '请示缘由', '请示事项', '请示单位']，模板外键=无）"
+        },
+        {
+          "id": "B",
+          "argv": "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 工作总结 --data fixtures/zongjie_blank.json --outdir out/工作总结-blank",
+          "exit_code": 0,
+          "stdout": "已生成：out/工作总结-blank/文书.docx（模板=工作总结，标题=________工作总结，字段 filled/total=0/7，必填缺失=['总结主体', '总结时段', '工作回顾', '主要成绩', '下一步工作打算']，模板外键=无）"
+        }
+      ]
+    },
+    {
+      "pass": 2,
+      "note": "以完全相同的命令行重跑一次到同一 --outdir（覆盖复写），跑完立即快照到 .verify/pass2/",
+      "commands": [
+        {
+          "id": "A",
+          "argv": "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 请示函 --data fixtures/qingshi_empty.json --outdir out/请示函-empty",
+          "exit_code": 0
+        },
+        {
+          "id": "B",
+          "argv": "/usr/bin/python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 工作总结 --data fixtures/zongjie_blank.json --outdir out/工作总结-blank",
+          "exit_code": 0
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "A",
+      "outdir": "out/请示函-empty",
+      "files": [
+        {
+          "name": "文书.docx",
+          "bytes": 36858,
+          "sha256_pass1": "ca2b46fd74e90ab98426fb1c1c4db5579e755eb946dbb54d84a83ed01c8dd8c7",
+          "sha256_pass2": "ca2b46fd74e90ab98426fb1c1c4db5579e755eb946dbb54d84a83ed01c8dd8c7",
+          "identical": true
+        },
+        {
+          "name": "fields.json",
+          "bytes": 2129,
+          "sha256_pass1": "807111a314b3605c3d02166b8a34462ba972ff8f1bd8dd3df1050e50580d3d84",
+          "sha256_pass2": "807111a314b3605c3d02166b8a34462ba972ff8f1bd8dd3df1050e50580d3d84",
+          "identical": true
+        }
+      ],
+      "file_count_in_outdir": 2
+    },
+    {
+      "id": "B",
+      "outdir": "out/工作总结-blank",
+      "files": [
+        {
+          "name": "文书.docx",
+          "bytes": 36893,
+          "sha256_pass1": "f635b5f50f5dc2129d36f1a18f9185b367610879b8837812e2071ea7790aa85c",
+          "sha256_pass2": "f635b5f50f5dc2129d36f1a18f9185b367610879b8837812e2071ea7790aa85c",
+          "identical": true
+        },
+        {
+          "name": "fields.json",
+          "bytes": 1964,
+          "sha256_pass1": "96136b3dbaa444d3e4e51d798cc4200de3243efe237be19564fe4edb1a063e42",
+          "sha256_pass2": "96136b3dbaa444d3e4e51d798cc4200de3243efe237be19564fe4edb1a063e42",
+          "identical": true
+        }
+      ],
+      "file_count_in_outdir": 2
+    }
+  ],
+  "determinism": {
+    "method": "同一命令行连跑两遍到同一 --outdir；每遍跑完立刻 cp -a 快照到 .verify/ 下的 pass1/ 与 pass2/（快照在 --outdir 之外，不污染产物目录）",
+    "byte_compare_fields_json": "两遍 fields.json 整文件逐字节一致（含 outputs 路径键——两遍用同一相对路径，故连 outputs 也相同）",
+    "byte_compare_docx": "两份文书.docx 整文件逐字节一致（4/4 sha256 相等）",
+    "diff -r .verify/pass1 .verify/pass2": "无输出，判定 IDENTICAL",
+    "verdict": "一致（4/4 sha256 相等，无差异说明）"
+  },
+  "self_checks": {
+    "three_piece_inventory": {
+      "SKILL.md": "齐全，12517 bytes",
+      "scripts/gen_doc.py": "齐全，19354 bytes",
+      "requirements.txt": "齐全，17 bytes",
+      "references/请示函.md": "齐全，2193 bytes",
+      "references/工作总结.md": "齐全，2633 bytes（references 四类齐备）"
+    },
+    "py_compile": {
+      "command": "/usr/bin/python3 -m py_compile <SKILL_MOUNT>/scripts/gen_doc.py",
+      "result": "退出码 0，0 错误"
+    },
+    "non_reproducible_source_scan": {
+      "command": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" <SKILL_MOUNT>/scripts/gen_doc.py",
+      "hits": 0
+    }
+  },
+  "ledger_review": {
+    "A_请示函": {
+      "title": "关于____的请示",
+      "total": 8,
+      "filled": 0,
+      "missing": 8,
+      "missing_required": 5,
+      "missing_required_names": ["请示事由", "主送机关", "请示缘由", "请示事项", "请示单位"],
+      "missing_optional_names": ["联系人", "联系电话", "成文日期"],
+      "unknown_keys": [],
+      "rendered_document_paragraphs": [
+        "[0] 居中 关于____的请示",
+        "[1] 顶格 ____：",
+        "[2] 正文 ____",
+        "[3] 正文 ____",
+        "[4] 正文 联系人：　　联系电话：（标签保留、值留空，F2）",
+        "[5] 右对齐 ____（请示单位占位）",
+        "[6] 右对齐 空串（成文日期选填留空）"
+      ]
+    },
+    "B_工作总结": {
+      "title": "________工作总结",
+      "title_note": "V2 标题公式 {总结主体}{总结时段}工作总结，两个必填均缺失各代入一个 ____，故连成 8 个下划线",
+      "total": 7,
+      "filled": 0,
+      "missing": 7,
+      "missing_required": 5,
+      "missing_required_names": ["总结主体", "总结时段", "工作回顾", "主要成绩", "下一步工作打算"],
+      "missing_optional_names": ["存在问题", "成文日期"],
+      "unknown_keys": [],
+      "rendered_document_paragraphs": [
+        "[0] 居中 ________工作总结",
+        "[1] 一、工作回顾",
+        "[2] 1．____（必填列表缺失 → 占位条目，F4）",
+        "[3] 二、主要成绩",
+        "[4] 1．____（输入 [\" \"] 全空白数组 → 判缺失，同 F4）",
+        "[5] 四、下一步工作打算",
+        "[6] 1．____",
+        "[7] 右对齐 ____（总结主体占位）",
+        "[8] 右对齐 空串（成文日期选填留空）"
+      ],
+      "omission_observation": "『存在问题』为选填且缺失，按 F4 整节省略、节头不出现在文中；因节序号沿用模板固定编号，文中呈 一、二、四（三被跳过），这是省略选填小节后的既有渲染结果，非渲染故障，如实记录供知悉"
+    }
+  },
+  "conclusion": "两份文书均按缺数据不编造的口径如实成文并落盘，四件产物齐备，两遍引擎输出逐字节可复现（4/4 sha256 相等），无报错、无中断、全程退出码 0。"
+}

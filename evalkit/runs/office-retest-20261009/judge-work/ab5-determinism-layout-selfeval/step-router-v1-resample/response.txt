@@ -1,0 +1,8 @@
+{
+  "scores": {
+    "Q1": {
+      "total": 6.5,
+      "evidence": "1.确定性：run_log两遍sha256相同，docx解析10段对齐/字体/行距一致，zip部件全同；2.布局：run_log outdir_check显示out/会议通知/case1恰含两产物；3.runner对拍：_replay_facts runner_delivered exit1 ok false，unit_scoped_agreement rate 0.0%；4.红绿：_replay_facts green 68/68 pass exit0，red exit1 units_found失败；5.三件套：run_log command与_replay_facts replayed_command证明gen_doc.py可运行，缺SKILL.md/requirements.txt证据。"
+    }
+  }
+}

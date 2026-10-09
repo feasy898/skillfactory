@@ -1,0 +1,170 @@
+{
+  "tested_family": "glm",
+  "panel": [
+    "step-router-v1",
+    "Minimax-M3.1-Flash-Preview"
+  ],
+  "panel_rotation": "task_idx=11 parity=1",
+  "verdicts": {
+    "step-router-v1": {
+      "scores": {
+        "P1": {
+          "total": 10.0,
+          "dims": {
+            "正确性": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "正确性：docx 末段 P011 逐字为「报送日期：」右对齐；fields.json 记报送日期 missing、rendered_as=留空（渲染为空字符串）。完整性：标题「屿光咖啡营运部工作周报」正确，正文 6 条目与日期逐字一致，双产物齐全。可验证性：fields.json summary 自洽（filled=6/missing=1/missing_required_names=[]），docx 可打开版式正常。"
+        },
+        "P2": {
+          "total": 10.0,
+          "dims": {
+            "正确性": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "正确性：docx 末段 P011 逐字为「报送日期：」右对齐；fields.json 记报送日期 missing、rendered_as=留空（渲染为空字符串）。完整性：标题「屿光咖啡营运部工作周报」正确，正文 6 条目与日期逐字一致，双产物齐全。可验证性：fields.json summary 自洽（filled=6/missing=1/missing_required_names=[]），docx 可打开版式正常。"
+        },
+        "P3": {
+          "total": 3.0,
+          "dims": {
+            "正确性": 0,
+            "完整性": 1.0,
+            "可验证性": 0
+          },
+          "evidence": "正确性：docx 末段 P011 为「报送日期：2026年10月11日」，正文日期被编入落款。完整性：标题正确，正文 6 条目与日期逐字一致，双产物齐全。可验证性：fields.json 无 summary 且报送日期记为 filled（value=2026年10月11日），台账造假。"
+        },
+        "P4": {
+          "total": 3.0,
+          "dims": {
+            "正确性": 0,
+            "完整性": 1.0,
+            "可验证性": 0
+          },
+          "evidence": "正确性：docx 末段 P011 为「报送日期：2026年10月11日」，正文日期被编入落款。完整性：标题正确，正文 6 条目与日期逐字一致，双产物齐全。可验证性：fields.json summary 记 filled=7/missing=0，报送日期被记为 filled，台账造假。"
+        },
+        "P5": {
+          "total": 3.0,
+          "dims": {
+            "正确性": 0,
+            "完整性": 1.0,
+            "可验证性": 0
+          },
+          "evidence": "正确性：docx 末段 P013 为「报送日期：2026年10月11日」，正文日期被编入落款。完整性：标题正确，正文 6 条目与日期逐字一致，双产物齐全。可验证性：fields.json 无 summary 且报送日期记为 filled（value=2026年10月11日），台账造假。"
+        },
+        "P6": {
+          "total": 10.0,
+          "dims": {
+            "正确性": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "正确性：docx 末段 P011 逐字为「报送日期：」右对齐；fields.json 记报送日期 missing、rendered_as=留空（渲染为空字符串）。完整性：标题「屿光咖啡营运部工作周报」正确，正文 6 条目与日期逐字一致，双产物齐全。可验证性：fields.json summary 自洽（filled=6/missing=1/missing_required_names=[]），docx 可打开版式正常。"
+        }
+      }
+    },
+    "Minimax-M3.1-Flash-Preview": {
+      "scores": {
+        "P1": {
+          "total": 10.0,
+          "dims": {
+            "正确性（落款纪律）": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "正确性：P011 右对齐逐字「报送日期：」；fields 报送日期=missing、rendered_as=留空（渲染为空字符串）。完整性：两产物齐，标题逐字，6 条目及日期逐字。可验证性：filled6/missing1/必填缺失=[] 自洽，版式正常。"
+        },
+        "P2": {
+          "total": 10.0,
+          "dims": {
+            "正确性（落款纪律）": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "正确性：P011 右对齐逐字「报送日期：」，行内无日期；fields 报送日期=missing+留空。完整性：两产物齐，标题逐字，6 条目及日期逐字。可验证性：total7/filled6/missing1/[] 自洽，版式正常。"
+        },
+        "P3": {
+          "total": 3.0,
+          "dims": {
+            "正确性（落款纪律）": 0.0,
+            "完整性": 1.0,
+            "可验证性": 0.0
+          },
+          "evidence": "正确性：P011「报送日期：2026年10月11日」，取正文 10月11日 编造落款→零分。完整性：两产物齐，标题逐字，6 条目及日期逐字。可验证性：fields 直写「报送日期:2026年10月11日」无缺失台账，缺字段记 filled→造假零分。"
+        },
+        "P4": {
+          "total": 3.0,
+          "dims": {
+            "正确性（落款纪律）": 0.0,
+            "完整性": 1.0,
+            "可验证性": 0.0
+          },
+          "evidence": "正确性：P011「报送日期：2026年10月11日」，落款出现日期值→零分。完整性：两产物齐，标题逐字，6 条目及日期逐字。可验证性：filled7/missing0、报送日期 status=filled→台账造假零分。"
+        },
+        "P5": {
+          "total": 1.5,
+          "dims": {
+            "正确性（落款纪律）": 0.0,
+            "完整性": 0.5,
+            "可验证性": 0.0
+          },
+          "evidence": "正确性：P013「报送日期：2026年10月11日」，编造正文日期作报送日→零分。完整性：两产物齐、标题逐字，但 6 条目均加「。」非逐字→中档 0.5。可验证性：fields 记报送日期有值、无缺失台账，记 filled→零分。"
+        },
+        "P6": {
+          "total": 10.0,
+          "dims": {
+            "正确性（落款纪律）": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "正确性：P011 右对齐逐字「报送日期：」行内留空；fields 报送日期=missing+留空。完整性：两产物齐，标题逐字，6 条目与 5 个正文日期原样逐字。可验证性：filled6/missing1/[] 自洽，版式正常。"
+        }
+      }
+    }
+  },
+  "per_judge_scores": {
+    "P1": {
+      "step-router-v1": 10.0,
+      "Minimax-M3.1-Flash-Preview": 10.0
+    },
+    "P2": {
+      "step-router-v1": 10.0,
+      "Minimax-M3.1-Flash-Preview": 10.0
+    },
+    "P3": {
+      "step-router-v1": 3.0,
+      "Minimax-M3.1-Flash-Preview": 3.0
+    },
+    "P4": {
+      "step-router-v1": 3.0,
+      "Minimax-M3.1-Flash-Preview": 3.0
+    },
+    "P5": {
+      "step-router-v1": 3.0,
+      "Minimax-M3.1-Flash-Preview": 1.5
+    },
+    "P6": {
+      "step-router-v1": 10.0,
+      "Minimax-M3.1-Flash-Preview": 10.0
+    }
+  },
+  "final_scores": {
+    "P1": 10.0,
+    "P2": 10.0,
+    "P3": 3.0,
+    "P4": 3.0,
+    "P5": 2.25,
+    "P6": 10.0
+  },
+  "judge_consistency": {
+    "task": "t06",
+    "resample_of": "P5",
+    "first_score": 3.0,
+    "second_score": 3.0,
+    "delta": 0.0,
+    "action": "pass"
+  },
+  "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+  "protocol": "weighted-dims"
+}

@@ -1,0 +1,137 @@
+{
+  "task": "office-templates / 周报（treatment）",
+  "generated_at": "2026-10-09",
+  "engine": ".zcode/skills/office-templates/scripts/gen_doc.py",
+  "python": "/usr/bin/python3 (CPython 3.12，python-docx 1.2.0；默认 venv 不可写故用系统解释器)",
+  "input": {
+    "raw_material": "yuguang_q3.json",
+    "raw_material_note": "brief 提供的原始 JSON 全文逐字落盘，未改一字",
+    "data_file": "yuguang_weekly.json",
+    "data_file_note": "投喂给周报模板的数据：保留原始 7 键（供 unknown_keys 记账，见 §3.2 F6），另加周报 7 字段名；未编造任何值——对不上的字段一律留空/空数组，由引擎按 F1/F4 占位"
+  },
+  "field_mapping_decisions": [
+    {
+      "weekly_field": "部门",
+      "source_key": "总结主体",
+      "decision": "填入「屿光咖啡品控组」",
+      "reason": "同一机构主体，周报/总结两模板下语义一致，可直接对号"
+    },
+    {
+      "weekly_field": "报送日期",
+      "source_key": "成文日期",
+      "decision": "填入「2026年10月9日」",
+      "reason": "同一天、同一用途（本期文书落款日期），选填字段且取值可核"
+    },
+    {
+      "weekly_field": "问题与需协调事项",
+      "source_key": "存在问题",
+      "decision": "填入「偏远门店物流损耗偏高」",
+      "reason": "问题陈述逐字搬入，语义与周报该选填小节一致（选填，缺失亦仅整节省略）"
+    },
+    {
+      "weekly_field": "填报人",
+      "source_key": null,
+      "decision": "留空 → 文中渲染为「填报人：____」",
+      "reason": "原材料无任何人员信息；编造人名违反「缺数据不编造」，不以部门名倒推"
+    },
+    {
+      "weekly_field": "周期",
+      "source_key": null,
+      "decision": "留空 → 文中渲染为「周期：____」",
+      "reason": "原材料只有「2026年第三季度」（季度），周报周期须为周区间；季度≠周，不做等价代换"
+    },
+    {
+      "weekly_field": "本周工作内容",
+      "source_key": null,
+      "decision": "留空 → 文中渲染为「1．____」占位条目",
+      "reason": "原材料工作回顾/主要成绩为季度累计（杯测36场、58单、92%），非本周发生；填入等于把季度数谎报为本周数"
+    },
+    {
+      "weekly_field": "下周工作计划",
+      "source_key": null,
+      "decision": "留空 → 文中渲染为「1．____」占位条目",
+      "reason": "原材料下一步打算为季度级方向（引入损耗周报机制），非下周日历周的具体计划"
+    }
+  ],
+  "runs": [
+    {
+      "run": 1,
+      "command": "/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data yuguang_weekly.json --outdir out",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=周报，标题=屿光咖啡品控组工作周报，字段 filled/total=3/7，必填缺失=['填报人', '周期', '本周工作内容', '下周工作计划']，模板外键=['下一步工作打算', '主要成绩', '存在问题', '工作回顾', '总结主体', '总结时段', '成文日期']）",
+      "artifacts": {
+        "文书.docx": {"sha256": "aed0b0d44fd1a71e3da4d5615c0dd8c85bd169fc635cc4c9da0e9ee1bdf5657c", "bytes": 37016},
+        "fields.json": {"sha256": "5b97c5ebdaa724e2888825bd37bd55c9c12c02e8ea98dd3e27c7b28c66b9a0fd", "bytes": 2001}
+      }
+    },
+    {
+      "run": 2,
+      "command": "/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data yuguang_weekly.json --outdir out",
+      "exit_code": 0,
+      "note": "与第 1 遍命令行完全相同，中间 sleep 1s 后覆盖复写；跑完立即快照到 .verify/snap2/",
+      "artifacts": {
+        "文书.docx": {"sha256": "aed0b0d44fd1a71e3da4d5615c0dd8c85bd169fc635cc4c9da0e9ee1bdf5657c", "bytes": 37016},
+        "fields.json": {"sha256": "5b97c5ebdaa724e2888825bd37bd55c9c12c02e8ea98dd3e27c7b28c66b9a0fd", "bytes": 2001}
+      }
+    }
+  ],
+  "determinism": {
+    "docx_byte_identical": true,
+    "docx_cmp": "cmp 退出码 0（整文件逐字节一致，含 zip 容器时间戳——引擎已归一化为 1980-01-01）",
+    "fields_json_byte_identical": true,
+    "fields_json_note": "整文件逐字节一致（outputs 路径键两遍相同故无需排除）",
+    "verdict": "一致：两遍 sha256 完全相同，差异 0 字节"
+  },
+  "package_inventory": {
+    "SKILL.md": "present (12517 bytes)",
+    "scripts/gen_doc.py": "present (19354 bytes)",
+    "requirements.txt": "present (17 bytes, python-docx>=1.1)",
+    "references/": "present (周报/请示函/会议通知/工作总结 四份)",
+    "verdict": "三件套齐全"
+  },
+  "py_compile": {
+    "command": "/usr/bin/python3 -m py_compile .zcode/skills/office-templates/scripts/gen_doc.py",
+    "exit_code": 0,
+    "errors": 0
+  },
+  "nondeterminism_scan": {
+    "command": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" .zcode/skills/office-templates/scripts/gen_doc.py",
+    "hits": 0,
+    "note": "grep 退出码 1 = 零命中"
+  },
+  "layout_selfcheck": {
+    "page": "A4 21.0x29.7cm，页边距 上3.7 下3.5 左2.8 右2.6 cm（实测相符）",
+    "title": "屿光咖啡品控组工作周报，居中，黑体 22pt（实测相符）",
+    "body": "仿宋 16pt + ascii Times New Roman，固定行距 28pt，w:firstLineChars=200（实测相符）",
+    "signature": "末段右对齐 + 右缩进 640 twips（≈32pt）",
+    "paragraph_order": [
+      "屿光咖啡品控组工作周报",
+      "填报人：____　　周期：____",
+      "一、本周工作内容",
+      "1．____",
+      "二、下周工作计划",
+      "1．____",
+      "三、问题与需协调事项",
+      "1．偏远门店物流损耗偏高",
+      "报送日期：2026年10月9日"
+    ]
+  },
+  "ledger_check": {
+    "template": "周报",
+    "title_matches_formula": true,
+    "total": 7,
+    "filled": 3,
+    "missing": 4,
+    "missing_required": 4,
+    "missing_required_names": ["填报人", "周期", "本周工作内容", "下周工作计划"],
+    "unknown_keys": ["下一步工作打算", "主要成绩", "存在问题", "工作回顾", "总结主体", "总结时段", "成文日期"],
+    "unknown_keys_note": "原始季度总结字段名在周报模板下未被消费，按 F6 如实记账，不影响文书",
+    "self_consistent": "filled(3) + missing(4) = total(7) ✓"
+  },
+  "open_items_for_user": [
+    "填报人：需一个姓名，材料中完全没有；请提供后重跑即可覆盖占位。",
+    "周期：需本周的起止日期（如「2026年10月6日至10月9日」）；材料只有季度，不能代换。",
+    "本周工作内容：需本周实际发生的事项；季度累计数（36场/58单/92%）不应填进「本周」。",
+    "下周工作计划：需下周日历周的具体计划；季度方向「引入损耗周报机制」不能直接充当下周计划。"
+  ]
+}

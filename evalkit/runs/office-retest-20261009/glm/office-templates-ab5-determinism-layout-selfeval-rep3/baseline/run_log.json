@@ -1,0 +1,184 @@
+{
+  "task": "ab5-determinism-layout-selfeval",
+  "arm": "baseline",
+  "rep": 3,
+  "说明": "确定性自评：同一输入连跑两遍到同一输出目录（第二遍覆盖复写第一遍），逐字节对比两遍产物",
+  "generator": "gen_doc.py",
+  "contract_command": "python3 gen_doc.py --template 会议通知 --data fixtures/会议通知/case1.json --outdir out/会议通知/case1",
+  "input_fixture": "fixtures/会议通知/case1.json",
+  "input_fixture_sha256": "89c0568932be989aff227912f06f67806ce95634034c054ac3841ac3e5a9f6b8",
+  "snapshot_dir": "records/run1_snapshot",
+  "runs": [
+    {
+      "遍": 1,
+      "标注": "第一遍",
+      "command": [
+        "/home/pan-ding/venvs/ml/bin/python3",
+        "gen_doc.py",
+        "--template",
+        "会议通知",
+        "--data",
+        "fixtures/会议通知/case1.json",
+        "--outdir",
+        "out/会议通知/case1"
+      ],
+      "started_at": "2026-10-09T05:38:08",
+      "finished_at": "2026-10-09T05:38:08",
+      "exit_code": 0,
+      "stdout": "已生成: out/会议通知/case1/文书.docx\n已生成: out/会议通知/case1/fields.json",
+      "artifacts": {
+        "文书.docx": {
+          "sha256": "b7e3c40f13adc75f3dd1af2139bc8f3e1ac196bad46e0264021f375807412846",
+          "bytes": 37499
+        },
+        "fields.json": {
+          "sha256": "2c511bedc79e8cb918831f52e2492571ee0ca2d65233229247ff9989300a6a9f",
+          "bytes": 902
+        }
+      },
+      "outdir_listing": [
+        "fields.json",
+        "文书.docx"
+      ],
+      "快照": {
+        "目录": "records/run1_snapshot",
+        "sha256": {
+          "文书.docx": "b7e3c40f13adc75f3dd1af2139bc8f3e1ac196bad46e0264021f375807412846",
+          "fields.json": "2c511bedc79e8cb918831f52e2492571ee0ca2d65233229247ff9989300a6a9f"
+        }
+      }
+    },
+    {
+      "遍": 2,
+      "标注": "第二遍（覆盖复写第一遍）",
+      "command": [
+        "/home/pan-ding/venvs/ml/bin/python3",
+        "gen_doc.py",
+        "--template",
+        "会议通知",
+        "--data",
+        "fixtures/会议通知/case1.json",
+        "--outdir",
+        "out/会议通知/case1"
+      ],
+      "started_at": "2026-10-09T05:38:08",
+      "finished_at": "2026-10-09T05:38:08",
+      "exit_code": 0,
+      "stdout": "已生成: out/会议通知/case1/文书.docx\n已生成: out/会议通知/case1/fields.json",
+      "artifacts": {
+        "文书.docx": {
+          "sha256": "b7e3c40f13adc75f3dd1af2139bc8f3e1ac196bad46e0264021f375807412846",
+          "bytes": 37499
+        },
+        "fields.json": {
+          "sha256": "2c511bedc79e8cb918831f52e2492571ee0ca2d65233229247ff9989300a6a9f",
+          "bytes": 902
+        }
+      },
+      "outdir_listing": [
+        "fields.json",
+        "文书.docx"
+      ]
+    }
+  ],
+  "对比": {
+    "逐字节对比": {
+      "文书.docx": {
+        "方法": "第一遍字节快照 records/run1_snapshot/文书.docx 与第二遍产物 整文件读入后 == 比较（逐字节）",
+        "sha256_第一遍": "b7e3c40f13adc75f3dd1af2139bc8f3e1ac196bad46e0264021f375807412846",
+        "sha256_第二遍": "b7e3c40f13adc75f3dd1af2139bc8f3e1ac196bad46e0264021f375807412846",
+        "结论": "一致"
+      },
+      "fields.json": {
+        "方法": "第一遍字节快照 records/run1_snapshot/fields.json 与第二遍产物 整文件读入后 == 比较（逐字节）",
+        "sha256_第一遍": "2c511bedc79e8cb918831f52e2492571ee0ca2d65233229247ff9989300a6a9f",
+        "sha256_第二遍": "2c511bedc79e8cb918831f52e2492571ee0ca2d65233229247ff9989300a6a9f",
+        "结论": "一致"
+      }
+    },
+    "docx解析对比": {
+      "维度": [
+        "段落文本",
+        "对齐",
+        "缩进（左缩进/首行缩进）",
+        "字体（西文/东亚/字号/加粗，逐 run）",
+        "行距（含规则/段前/段后）"
+      ],
+      "对比对象": [
+        "records/run1_snapshot/文书.docx",
+        "out/会议通知/case1/文书.docx"
+      ],
+      "对比段落数": 15,
+      "结论": "完全一致",
+      "差异说明": "",
+      "指纹首段示例": {
+        "i": 0,
+        "text": "关于召开三季度质量评审会的通知",
+        "align": "CENTER (1)",
+        "left_indent": null,
+        "first_line_indent": null,
+        "line_spacing": 457200,
+        "line_spacing_rule": "EXACTLY (4)",
+        "space_before": 0,
+        "space_after": 304800,
+        "runs": [
+          {
+            "text": "关于召开三季度质量评审会的通知",
+            "ascii_font": "Times New Roman",
+            "east_asia_font": "黑体",
+            "size_pt": 22.0,
+            "bold": false
+          }
+        ]
+      }
+    },
+    "fields_json对比": {
+      "口径": "除 outputs 类路径键外逐字节一致（任务书豁免口径）",
+      "实测": "两遍命令行相同，含 outputs 键在内的全文件逐字节一致（outputs 仅含产物文件名，不含任何绝对路径）"
+    },
+    "zip条目时间戳": {
+      "第一遍": {
+        "条目数": 17,
+        "时间戳集合": [
+          [
+            1980,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "第二遍": {
+        "条目数": 17,
+        "时间戳集合": [
+          [
+            1980,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "说明": "docx 保存后经 ZIP 规范化重写，全部条目时间戳固定为 1980-01-01 00:00:00，不含当前时间等不可复现源"
+    },
+    "输出目录检查": {
+      "期望": [
+        "fields.json",
+        "文书.docx"
+      ],
+      "实际": [
+        "fields.json",
+        "文书.docx"
+      ],
+      "结论": "恰含两产物"
+    }
+  },
+  "verdict": {
+    "结果": "一致",
+    "说明": "同输入连跑两遍：文书.docx 与 fields.json 逐字节一致；docx 解析后段落文本/对齐/缩进/字体/行距完全一致；输出目录恰含两产物"
+  }
+}

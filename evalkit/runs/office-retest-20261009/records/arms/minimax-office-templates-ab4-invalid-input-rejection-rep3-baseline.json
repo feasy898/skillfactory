@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 62159,
+  "started_at_ms": 1791491157433,
+  "session_id": "sess_e48ef6f7-3117-4692-9712-4adcf1385c37",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 467690,
+      "ot": 9311,
+      "dur": 51906,
+      "n": 18
+    }
+  ],
+  "input_tokens": 467690,
+  "output_tokens": 9311,
+  "stdout_bytes": 3480,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "brief asks for, because brief line 5 makes \\\"a missing required field is not invalid input\\\" a core requirement that none of the five main cases exercise: JSON valid but five of the seven 周报 fields absent exits 0 and fills them with 待定 rather than rejecting. It runs in a throwaway working directory that is deleted afterward, so the delivered layout stays exactly `run_log.json` + `out/周报/case1/`.\\n\\n## Two things worth flagging\\n\\nThe supported-template set (周报 / 请示函 / 工作总结 / 会议通知) is my choice, since the baseline arm ships no skill that declares it. The brief only pins down that 证书 must be rejected and 周报 must work, so any name outside a closed set is rejected — but if the treatment arm uses a different set, the two aren't directly comparable on cases 2–4.\\n\\n`python-docx` is installed under `/usr/bin/python3`, not under the `ml` venv that `python3` resolves to on this box. The harness pins `/usr/bin/python3` explicitly and records both the interpreter and its version in `run_log.json` so the evidence is reproducible.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 18,\n    \"inputTokens\": 467690,\n    \"outputTokens\": 9311,\n    \"totalTokens\": 477001,\n    \"cacheReadTokens\": 435318,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1026,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 477001,\n    \"contextUsed\": 33231,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "ab4-invalid-input-rejection",
+  "rep": 3,
+  "slot": 18
+}

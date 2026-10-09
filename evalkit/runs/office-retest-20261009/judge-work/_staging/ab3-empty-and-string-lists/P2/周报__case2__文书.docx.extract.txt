@@ -1,0 +1,8 @@
+EXTRACT OF 周报__case2__文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=330200 runs=[____工作周报/SimHei/22.0] text=____工作周报
+P001 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[一、本周工作内容/SimHei/14.0] text=一、本周工作内容
+P002 align=JUSTIFY (3) firstLineChars=None firstLineIndent=304800 spacing=None runs=[1．____/SimSun/12.0] text=1．____
+P003 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[二、下周工作计划/SimHei/14.0] text=二、下周工作计划
+P004 align=JUSTIFY (3) firstLineChars=None firstLineIndent=304800 spacing=None runs=[1．整理缺陷清单并分派责任人/SimSun/12.0] text=1．整理缺陷清单并分派责任人
+P005 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=None runs=[填报人：赵倩/SimSun/12.0] text=填报人：赵倩
+P006 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=None runs=[报送日期：2026年9月28/SimSun/12.0] text=报送日期：2026年9月28日

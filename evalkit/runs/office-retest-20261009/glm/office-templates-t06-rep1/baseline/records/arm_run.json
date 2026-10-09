@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t06-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 526799,
+  "started_at_ms": 1791498551954,
+  "session_id": "sess_62422f10-551c-4071-99fa-35380b5c2b2f",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t06-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 991795,
+      "ot": 18311,
+      "dur": 248470,
+      "n": 26
+    }
+  ],
+  "input_tokens": 991795,
+  "output_tokens": 18311,
+  "stdout_bytes": 2765,
+  "stderr_bytes": 1960,
+  "stderr_head": "AI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\n",
+  "stdout_tail": "beaf-40f8-8949-bc9e6b6de96c\",\n  \"response\": \"任务完成。周报已按 brief 成文，三件交付物全部就位：\\n\\n**交付物**\\n- `out/文书.docx` — 标题「屿光咖啡营运部工作周报」（居中黑体二号），基本信息行（填报人/周期），三个小节（本周工作内容 3 条、下周工作计划 2 条、问题与需协调事项 1 条，全角点编号），右对齐落款。A4、GB/T 9704 版心、仿宋三号正文、28 磅固定行距、首行缩进两字符（`w:firstLineChars=200`）。\\n- `out/fields.json` — 字段台账：7/7 全部 filled，无必填缺失、无模板外键。\\n- `yuguang_week.json` — brief 数据 6 字段原样保存，另按您的指示补入报送日期。\\n\\n**报送日期的判断**：选了 **2026年10月11日**。正文里的日期中，10月9/10/11日是本周已完成工作（10月11日月度盘点复核是最后一件），而 2026年10月第2周恰为 10月5日（周一）—10月11日（周日），周报须在本周工作全部完成后报送；10月18日、20日是下周事项的截止日，不能作报送日。落款为「报送日期：2026年10月11日」。\\n\\n**验证留痕**（`run_log.json` + `records/`）：用仓库内 office-templates 冻结引擎（assets 技能 v1.0.1 的 `gen_doc.py`，本目录留副本）生成；同命令双跑两遍，`文书.docx` 与 `fields.json` 均逐字节一致（sha256 相同，分别为 `d4e5b377…` 与 `f477cad5…`）；`py_compile` 0 错误；引擎无时间/随机源。\\n\\n**视觉验收（如实报告）**：渲染页内容、行距、落款缩进均通过；判定器提出一项——LibreOffice 渲染时首行缩进不可见。经像素级诊断复核坐实原因：docx 按冻结口径用 Word/WPS 标准的字符单位缩进声明（`firstLineChars=200`），LibreOffice 不读该属性（与仿宋/黑体被替换为 Noto Sans 同类的环境性差异）；在 Word/WPS 及解析 XML 的报表系统口径下缩进在位。故维持官方引擎产物不动，诊断证据存于 `.render/diag/`。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 26,\n    \"inputTokens\": 991795,\n    \"outputTokens\": 18311,\n    \"totalTokens\": 1010106,\n    \"cacheReadTokens\": 952896,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 12976,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1010106,\n    \"contextUsed\": 54378,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

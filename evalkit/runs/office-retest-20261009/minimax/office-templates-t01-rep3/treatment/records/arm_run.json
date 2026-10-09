@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 81187,
+  "started_at_ms": 1791491712142,
+  "session_id": "sess_5005e445-b8e7-4754-a97b-b46419895a4b",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 437640,
+      "ot": 4771,
+      "dur": 64571,
+      "n": 17
+    }
+  ],
+  "input_tokens": 437640,
+  "output_tokens": 4771,
+  "stdout_bytes": 3353,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "\\\": \\\"拾贝书店工作周报\\\"\\n}\\n```\\n\\n四键齐全、不多不少，内容逐项取自 `fields.json` 台账而非我的判断。\\n\\n## 三点需要你知道的数据处理\\n\\n**`温馨提示` 落在周报模板之外。** 周报只有 7 个字段，这个键没有对应版式位置，引擎按 F6 记入 `summary.unknown_keys` 而未消费。数据里的「本周五店休半天」因此没有出现在周报正文中。如果这条要出现在周报里，得由你自己决定放在哪个小节——我没有替它编一个归属。\\n\\n**两处空白项被丢弃，不计入缺失。** `本周工作内容` 里的 `\\\"   \\\"` 和 `问题与需协调事项` 里的 `\\\"\\\"` 按 F3 逐项 strip 去空，所以成文是 2 条工作内容、1 条协调事项。两个字段仍判为 filled（因为各自至少有一项有效内容），不是 missing。\\n\\n**`部门` 前后空格已按 F5 strip**，标题因此是「拾贝书店工作周报」而非带空格的形态。\\n\\n## 自检结果\\n\\n- **确定性**：完全相同的命令行连跑两遍到同一 `--outdir`，每遍立即快照到旁路目录。`文书.docx` 整文件逐字节一致（sha256 `384e9b24…e92b`，两遍相同），`fields.json` 除 `outputs` 外逐字节一致。引擎无时间源。\\n- **不可复现源扫描**：`grep -nE \\\"time\\\\(|random|uuid|datetime|now\\\\(\\\"` 对入口脚本零命中。\\n- **`py_compile`**：0 错误。\\n- **三件套**：SKILL.md / scripts/gen_doc.py / requirements.txt 齐全。\\n- 两次运行退出码均为 0。\\n\\n环境上有一处需要说明：系统 Python 受 PEP 668 保护装不了 python-docx，我按同批次既有 run 的做法建了本地 `.venv`（Python 3.12.3 + python-docx 1.2.0）。该目录是工具产物，不影响交付内容。\\n\\n`out/` 下现在是 3 个文件——引擎产物仍是引擎自己写的那 2 个，`delivery-report.json` 是简报另行要求的、由我依台账生成的核对报告，不参与确定性对拍，这一点已在 `run_log.json` 的 notes 里注明。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 17,\n    \"inputTokens\": 437640,\n    \"outputTokens\": 4771,\n    \"totalTokens\": 442411,\n    \"cacheReadTokens\": 406578,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 509,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 442411,\n    \"contextUsed\": 31917,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

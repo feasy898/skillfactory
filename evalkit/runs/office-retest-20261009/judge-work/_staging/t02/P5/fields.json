@@ -1,0 +1,116 @@
+{
+  "template": "会议通知",
+  "title": "关于召开秋季会员茶话会的通知",
+  "filled_fields": [
+    "会议名称",
+    "召开单位",
+    "主送对象",
+    "会议时间",
+    "会议地点",
+    "参会人员",
+    "会议议题",
+    "会议要求",
+    "联系人",
+    "联系电话",
+    "发文日期"
+  ],
+  "missing_fields": [],
+  "fields": [
+    {
+      "name": "会议名称",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "秋季会员茶话会"
+    },
+    {
+      "name": "召开单位",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "青蘅茶社"
+    },
+    {
+      "name": "主送对象",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "全体会员"
+    },
+    {
+      "name": "会议时间",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "2026年10月18日（周日）14:00"
+    },
+    {
+      "name": "会议地点",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "青蘅茶社二层听雨厅"
+    },
+    {
+      "name": "参会人员",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "社长、各堂主、志愿组代表"
+    },
+    {
+      "name": "会议议题",
+      "required": false,
+      "kind": "text",
+      "status": "filled",
+      "value": "秋季茶会流程与冬至茶会预告"
+    },
+    {
+      "name": "会议要求",
+      "required": false,
+      "kind": "list",
+      "status": "filled",
+      "value": [
+        "自备茶盏者请提前登记",
+        "会后提交品鉴短评",
+        "迟到十分钟以上改候补席",
+        "着装以素色为宜",
+        "带一名新会员优先入场",
+        "散会后协助收拾茶器"
+      ]
+    },
+    {
+      "name": "联系人",
+      "required": false,
+      "kind": "text",
+      "status": "filled",
+      "value": "储听兰"
+    },
+    {
+      "name": "联系电话",
+      "required": false,
+      "kind": "text",
+      "status": "filled",
+      "value": "137-5566-0099"
+    },
+    {
+      "name": "发文日期",
+      "required": false,
+      "kind": "text",
+      "status": "filled",
+      "value": "2026年10月9日"
+    }
+  ],
+  "summary": {
+    "total": 11,
+    "filled": 11,
+    "missing": 0,
+    "missing_required": 0,
+    "missing_required_names": [],
+    "unknown_keys": []
+  },
+  "outputs": {
+    "docx": "out/文书.docx",
+    "fields_json": "out/fields.json"
+  }
+}

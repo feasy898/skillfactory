@@ -194,11 +194,18 @@ def build_brief(task, staged, is_ab, pass_line=None):
         lines += ["", SCORING_RULE_AB]
     else:
         tj = json.load(open(os.path.join(MERGED, task, "task.json"), encoding="utf-8"))
+        notes_p = os.path.join(MERGED, task, "judge-notes.md")
+        notes = open(notes_p, encoding="utf-8").read().rstrip() if os.path.isfile(notes_p) else ""
+        # 判据面修正（2026-10-09）：rubric.md 判官执行节明确「判据与期望值见 judge-notes.md（判官专用）」，
+        # 首批 t01-t04 brief 漏嵌 notes 致双裁在档位边界发散（t04 P3/P5/P6 7.9 vs 10.0 在案）；
+        # 本修正补齐判官专用 notes，rubric/评分规则文本零改动，受影响任务全量重判（留痕 incidents）。
         lines = ["# office 重测盲评判分任务（增订题：%s，通过线 %s）" % (task, tj.get("pass_line")),
                  "", "你是盲评裁判。以下为本任务的匿名化产物（P1..Pn，顺序随机，来源对你保密）。",
-                 "", "## rubric（冻结原文，加权维度判分）", "", rubric_new(task).rstrip(),
-                 "", SCORING_RULE_NEW,
-                 "", "（题目指令原文备查，判分只按 rubric）：", "```", tj["instruction"], "```"]
+                 "", "## rubric（冻结原文，加权维度判分）", "", rubric_new(task).rstrip()]
+        if notes:
+            lines += ["", "## judge-notes（判官专用：判挂点与期望值，判分必照此执行）", "", notes]
+        lines += ["", SCORING_RULE_NEW,
+                  "", "（题目指令原文备查，判分只按 rubric 与 judge-notes）：", "```", tj["instruction"], "```"]
     lines += ["", "## 产物清单"]
     for s in staged:
         lines.append("- %s: %s" % (s["pid"], ", ".join(s["files"])))
@@ -254,10 +261,11 @@ def judge_call(judge, workdir, brief, staged, task_label):
                     parts.append("=== %s/%s ===\n%s" % (s["pid"], fn,
                                  open(p, encoding="utf-8", errors="replace").read()[:24000]))
             r = J.step_chat([{"role": "user", "content": "\n".join(
-                parts + ["", '现在直接输出最终评分 JSON：每个产品一个键，键含 "total" 与 "evidence"；除该 JSON 外不得输出任何文字。'])}],
-                max_tokens=32000,
-                assistant_prefill='{"scores": {"' + staged[0]["pid"] + '": {"total": ')
-            r["text"] = '{"scores": {"' + staged[0]["pid"] + '": {"total": ' + (r["text"] or "")
+                parts + ["", '现在直接输出最终评分 JSON：直接以 { 开头、以 } 结尾，最外层恰有一个 "scores" 键；每个产品一个键，键含 "total" 与 "evidence"；除该 JSON 外不得输出任何文字，不得重复输出 JSON。'])}],
+                max_tokens=32000)
+            # 通道修复注记（2026-10-09）：原 assistant_prefill 续写式拼接在 step-router-v1 上
+            # 实测产生「prefill+模型重启输出」双层嵌套 JSON 致解析 None（judge-work/*/response.txt
+            # 在案）；改为无 prefill + 强化输出纪律，评分规则与 brief 文本零改动。
             v = parse_verdict_json(r["text"])
             rec = {"exit_code": 0 if v else 1, "wall_ms": r["wall_ms"], "session_id": r["id"],
                    "model_id_observed": r["model"], "channel": "http-api",
@@ -339,104 +347,113 @@ def main():
         if isinstance(results.get(task), dict) and results[task].get("status") in ("judged", "unjudgeable"):
             print("SKIP judged %s" % task, flush=True)
             continue
-        fam = fam_of_task(task)
-        is_ab = task in AB_SET
-        if task == "ab5-determinism-layout-selfeval":
-            run_ab5_replays(reps)
-        units = task_unit_dirs(task, fam, reps)
-        missing = [u for u in units if not os.path.isfile(os.path.join(u[1], "records", "arm_run.json"))]
-        if missing:
-            results[task] = {"status": "infra_error", "missing": [m for m in missing]}
-            continue
-        staging = os.path.join(RUN, "judge-work", "_staging", task)
-        STAGING_ROOTS[task] = staging
-        seed = zlib.crc32(("office-retest-20261009|%s" % task).encode()) & 0xffffff
-        staged, mapping, meta = stage_products(task, units, staging, seed)
-        J.write_json(os.path.join(RUN, "records", "judge-staging", "%s.mapping.json" % task),
-                     {"mapping": mapping, "staged": staged, "seed": seed})
-        brief = build_brief(task, staged, is_ab)
-        panel = PANEL[fam][:]
-        if ti % 2 == 0:            # 位置轮换：偶数任务槽序互换
-            panel = panel[::-1]
-        scores, verdicts, ok = {}, {}, True
-
-        def _one_judge(judge):
-            wdir = os.path.join(RUN, "judge-work", task, judge.replace("/", "_"))
-            os.makedirs(wdir, exist_ok=True)
-            return judge_call(judge, wdir, brief, staged, task)
-
-        for judge in panel:
-            rec, v = _one_judge(judge)
-            verdicts[judge] = v
-            if not v or not isinstance(v.get("scores"), dict):
-                ok = False
+        try:
+            fam = fam_of_task(task)
+            is_ab = task in AB_SET
+            if task == "ab5-determinism-layout-selfeval":
+                run_ab5_replays(reps)
+            units = task_unit_dirs(task, fam, reps)
+            missing = [u for u in units if not os.path.isfile(os.path.join(u[1], "records", "arm_run.json"))]
+            if missing:
+                results[task] = {"status": "infra_error", "missing": [m for m in missing]}
                 continue
-            for pid, sv in v["scores"].items():
-                scores.setdefault(pid, {})[judge] = sv.get("total")
+            staging = os.path.join(RUN, "judge-work", "_staging", task)
+            STAGING_ROOTS[task] = staging
+            seed = zlib.crc32(("office-retest-20261009|%s" % task).encode()) & 0xffffff
+            staged, mapping, meta = stage_products(task, units, staging, seed)
+            J.write_json(os.path.join(RUN, "records", "judge-staging", "%s.mapping.json" % task),
+                         {"mapping": mapping, "staged": staged, "seed": seed})
+            brief = build_brief(task, staged, is_ab)
+            panel = PANEL[fam][:]
+            if ti % 2 == 0:            # 位置轮换：偶数任务槽序互换
+                panel = panel[::-1]
+            scores, verdicts, ok = {}, {}, True
 
-        def _scored_judges():
-            return {j for d in scores.values() for j in d if d[j] is not None}
+            def _one_judge(judge):
+                wdir = os.path.join(RUN, "judge-work", task, judge.replace("/", "_"))
+                os.makedirs(wdir, exist_ok=True)
+                return judge_call(judge, wdir, brief, staged, task)
 
-        if len(_scored_judges()) < 2:
             for judge in panel:
-                if len(_scored_judges()) >= 2:
-                    break
-                if judge in _scored_judges():
-                    continue
                 rec, v = _one_judge(judge)
-                verdicts[judge + "#retry"] = v
-                if v and isinstance(v.get("scores"), dict):
-                    for pid, sv in v["scores"].items():
-                        scores.setdefault(pid, {})[judge] = sv.get("total")
-        # §3.4 抽检：按任务序轮换抽 1 份（覆盖两臂），同裁判匿名复评
-        sampled_pid = staged[(ti - 1) % len(staged)]["pid"]
-        judge0 = panel[0]
-        wdir2 = os.path.join(RUN, "judge-work", task, judge0.replace("/", "_") + "-resample")
-        os.makedirs(wdir2, exist_ok=True)
-        staged2 = [{"pid": "Q1", "files": next(s["files"] for s in staged if s["pid"] == sampled_pid)}]
-        brief2 = build_brief(task, staged2, is_ab)
-        STAGING_ROOTS["%s-resample" % task] = os.path.join(staging, sampled_pid + "_resample")
-        os.makedirs(STAGING_ROOTS["%s-resample" % task], exist_ok=True)
-        import shutil as _sh
-        _sh.copytree(os.path.join(staging, sampled_pid),
-                     STAGING_ROOTS["%s-resample" % task], dirs_exist_ok=True)
-        rec2, v2 = judge_call(judge0, wdir2, brief2, staged2, "%s-resample" % task)
-        first = scores.get(sampled_pid, {}).get(judge0)
-        second = v2.get("scores", {}).get("Q1", {}).get("total") if v2 else None
-        action, jc_delta = "pass", (abs(first - second) if (first is not None and second is not None) else None)
-        final_scores = {pid: (sum([s for s in d.values() if s is not None]) /
-                              len([s for s in d.values() if s is not None])
-                              if d and any(s is not None for s in d.values()) else None)
-                        for pid, d in scores.items()}
-        if jc_delta is not None and jc_delta > 2:
-            action = "re-judged"
-            judge1 = panel[1]
-            if verdicts.get(judge1) and isinstance(verdicts[judge1].get("scores"), dict):
-                news = {pid: sv.get("total") for pid, sv in verdicts[judge1]["scores"].items()}
-                final_scores = {pid: news.get(pid) for pid in final_scores}
-                if news.get(sampled_pid) is not None and first is not None \
-                        and abs(news[sampled_pid] - first) > 2:
+                verdicts[judge] = v
+                if not v or not isinstance(v.get("scores"), dict):
+                    ok = False
+                    continue
+                for pid, sv in v["scores"].items():
+                    scores.setdefault(pid, {})[judge] = sv.get("total")
+
+            def _scored_judges():
+                return {j for d in scores.values() for j in d if d[j] is not None}
+
+            if len(_scored_judges()) < 2:
+                for judge in panel:
+                    if len(_scored_judges()) >= 2:
+                        break
+                    if judge in _scored_judges():
+                        continue
+                    rec, v = _one_judge(judge)
+                    verdicts[judge + "#retry"] = v
+                    if v and isinstance(v.get("scores"), dict):
+                        for pid, sv in v["scores"].items():
+                            scores.setdefault(pid, {})[judge] = sv.get("total")
+            # §3.4 抽检：按任务序轮换抽 1 份（覆盖两臂），同裁判匿名复评
+            sampled_pid = staged[(ti - 1) % len(staged)]["pid"]
+            judge0 = panel[0]
+            wdir2 = os.path.join(RUN, "judge-work", task, judge0.replace("/", "_") + "-resample")
+            os.makedirs(wdir2, exist_ok=True)
+            staged2 = [{"pid": "Q1", "files": next(s["files"] for s in staged if s["pid"] == sampled_pid)}]
+            brief2 = build_brief(task, staged2, is_ab)
+            STAGING_ROOTS["%s-resample" % task] = os.path.join(staging, sampled_pid + "_resample")
+            os.makedirs(STAGING_ROOTS["%s-resample" % task], exist_ok=True)
+            import shutil as _sh
+            _sh.copytree(os.path.join(staging, sampled_pid),
+                         STAGING_ROOTS["%s-resample" % task], dirs_exist_ok=True)
+            rec2, v2 = judge_call(judge0, wdir2, brief2, staged2, "%s-resample" % task)
+            first = scores.get(sampled_pid, {}).get(judge0)
+            second = v2.get("scores", {}).get("Q1", {}).get("total") if v2 else None
+            action, jc_delta = "pass", (abs(first - second) if (first is not None and second is not None) else None)
+            final_scores = {pid: (sum([s for s in d.values() if s is not None]) /
+                                  len([s for s in d.values() if s is not None])
+                                  if d and any(s is not None for s in d.values()) else None)
+                            for pid, d in scores.items()}
+            if jc_delta is not None and jc_delta > 2:
+                action = "re-judged"
+                judge1 = panel[1]
+                if verdicts.get(judge1) and isinstance(verdicts[judge1].get("scores"), dict):
+                    news = {pid: sv.get("total") for pid, sv in verdicts[judge1]["scores"].items()}
+                    final_scores = {pid: news.get(pid) for pid in final_scores}
+                    if news.get(sampled_pid) is not None and first is not None \
+                            and abs(news[sampled_pid] - first) > 2:
+                        action = "unjudgeable"
+                else:
                     action = "unjudgeable"
-            else:
-                action = "unjudgeable"
-        J.write_json(os.path.join(RUN, "records", "judging", "%s.json" % task),
-                     {"tested_family": fam, "panel": panel,
-                      "panel_rotation": "task_idx=%d parity=%s" % (ti, ti % 2),
-                      "verdicts": {k: v for k, v in verdicts.items()},
-                      "per_judge_scores": scores, "final_scores": final_scores,
-                      "judge_consistency": {"task": task, "resample_of": sampled_pid,
-                                            "first_score": first, "second_score": second,
-                                            "delta": jc_delta, "action": action},
-                      "judge_prompt_version": J.JUDGE_PROMPT_VERSION,
-                      "protocol": "ab-item" if is_ab else "weighted-dims"})
-        results[task] = {"status": "judged" if action != "unjudgeable" else "unjudgeable",
-                         "tested_family": fam, "panel": panel,
-                         "final_scores": final_scores, "mapping": mapping,
-                         "judge_consistency": {"task": task, "resample_of": sampled_pid,
-                                               "first_score": first, "second_score": second,
-                                               "delta": jc_delta, "action": action}}
-        J.write_json(jp, results)
-        print("JUDGED %s fam=%s action=%s" % (task, fam, action), flush=True)
+            J.write_json(os.path.join(RUN, "records", "judging", "%s.json" % task),
+                         {"tested_family": fam, "panel": panel,
+                          "panel_rotation": "task_idx=%d parity=%s" % (ti, ti % 2),
+                          "verdicts": {k: v for k, v in verdicts.items()},
+                          "per_judge_scores": scores, "final_scores": final_scores,
+                          "judge_consistency": {"task": task, "resample_of": sampled_pid,
+                                                "first_score": first, "second_score": second,
+                                                "delta": jc_delta, "action": action},
+                          "judge_prompt_version": J.JUDGE_PROMPT_VERSION,
+                          "protocol": "ab-item" if is_ab else "weighted-dims"})
+            results[task] = {"status": "judged" if action != "unjudgeable" else "unjudgeable",
+                             "tested_family": fam, "panel": panel,
+                             "final_scores": final_scores, "mapping": mapping,
+                             "judge_consistency": {"task": task, "resample_of": sampled_pid,
+                                                   "first_score": first, "second_score": second,
+                                                   "delta": jc_delta, "action": action}}
+            J.write_json(jp, results)
+            print("JUDGED %s fam=%s action=%s" % (task, fam, action), flush=True)
+        except Exception as exc:
+            import traceback
+            results[task] = {"status": "infra_error",
+                             "error": type(exc).__name__ + ":" + str(exc)[:300],
+                             "trace": traceback.format_exc()[-1500:]}
+            J.write_json(jp, results)
+            print("INFRA_ERROR %s: %s" % (task, exc), flush=True)
+            continue
     J.write_json(os.path.join(RUN, "records", "judge-results.json"),
                  {"office-templates": results})
     bad = [1 for t in results.values() if t.get("status") in ("unjudgeable", "infra_error")]

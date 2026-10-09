@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t07-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 82186,
+  "started_at_ms": 1791493670586,
+  "session_id": "sess_aeb5c148-86af-4793-8e2d-43507a780d0d",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t07-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 767617,
+      "ot": 11210,
+      "dur": 67235,
+      "n": 26
+    }
+  ],
+  "input_tokens": 767617,
+  "output_tokens": 11210,
+  "stdout_bytes": 3269,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " straight across; the quarter's content is carried forward under its own **二、季度数据回溯（2026年第三季度口径，非本周发生额）** heading so the numbers stay true to their scope; and the week's actual figures are listed as a short, concrete 待补 list — this week's session count, ticket volume, closure rate, any new issues. A closing 字段对照表 shows all 11 fields with their status, so you can see at a glance what was mapped, what was downgraded to quarterly scope, and what's still open. That's a document you can finish in a few minutes, not a wall of empty placeholders.\\n\\n**Two things need your confirmation.** First, the week range Oct 5–11 is my inference from the report date — source data has no week in it, so if your actual reporting week differs, that has to be swapped before this is final. It's marked 推导-待确认 in both files. Second, the three 本周待补 figures need to come from whoever logged the week's activity.\\n\\nThe mechanical conversion is reproducible via `gen_doc.py` if you want to re-run it with a corrected week range once you confirm that.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 26,\n    \"inputTokens\": 767617,\n    \"outputTokens\": 11210,\n    \"totalTokens\": 778827,\n    \"cacheReadTokens\": 727508,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1857,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 778827,\n    \"contextUsed\": 40886,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "t07",
+  "rep": 3,
+  "slot": 48
+}

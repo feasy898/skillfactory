@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t06-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 270989,
+  "started_at_ms": 1791499580877,
+  "session_id": "sess_15c36430-07a5-4fd8-8db3-561aff0906c3",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t06-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1091770,
+      "ot": 20783,
+      "dur": 239763,
+      "n": 22
+    }
+  ],
+  "input_tokens": 1091770,
+  "output_tokens": 20783,
+  "stdout_bytes": 2200,
+  "stderr_bytes": 392,
+  "stderr_head": "AI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\n",
+  "stdout_tail": "AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.\n{\n  \"sessionId\": \"sess_15c36430-07a5-4fd8-8db3-561aff0906c3\",\n  \"traceId\": \"d224081b-d2e0-4a33-9533-14cb387a7e4a\",\n  \"turnId\": \"turn_8136f380-e6fc-44f6-adea-398c448ef95b\",\n  \"response\": \"周报已成文，三份交付物全部就位并通过校验。\\n\\n**交付物**\\n\\n- `out/文书.docx` — 单页 A4 正式周报：居中标题「屿光咖啡营运部工作周报」+ 周期副题（2026年10月第2周），部门/填报人信息栏（带分隔线），三个小节（一、本周工作内容 3 项；二、下周工作计划 2 项；三、问题与需协调事项 1 项），条目文字与原数据逐字一致，仅按公文惯例补句号；右对齐落款含「填报人：计雨时」与「报送日期：2026年10月11日」。黑体标题、宋体正文、1.3 倍行距、首行缩进两字符。\\n- `out/fields.json` — 文档字段的结构化数据：原 5 个字段 + 补入的 `报送日期`。\\n- `yuguang_week.json`（工作目录根）— 你提供的原始数据，原样保存。\\n\\n**报送日期的推导**：正文里 10月9日/10日/11日 是本周已完成事项，10月18日/20日 是下周截止。周报须覆盖全部本周工作后报送，而 2026年10月11日（月度盘点复核完成日）恰是「10月第2周」的周日收口日——这是唯一自洽的选择，已补到落款。\\n\\n**校验**：docx 后检脚本 9/9 通过（0 错误 0 警告）；LibreOffice 渲染为单页 A4，视觉验收判定 pass（无乱码、无缺字、版式正常）；XML 级文本核对 15 项必需内容全部在档。生成脚本 `gen_doc.js` 与渲染留证 `.render/` 留在工作目录备查。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 22,\n    \"inputTokens\": 1091770,\n    \"outputTokens\": 20783,\n    \"totalTokens\": 1112553,\n    \"cacheReadTokens\": 1040000,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 17184,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1112553,\n    \"contextUsed\": 67130,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

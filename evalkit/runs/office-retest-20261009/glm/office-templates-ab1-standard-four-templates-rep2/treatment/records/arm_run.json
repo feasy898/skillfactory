@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab1-standard-four-templates-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 158274,
+  "started_at_ms": 1791490534171,
+  "session_id": "sess_a127b43f-584a-4c94-b754-0f3e7202f1e3",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab1-standard-four-templates-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 756089,
+      "ot": 10849,
+      "dur": 147560,
+      "n": 22
+    }
+  ],
+  "input_tokens": 756089,
+  "output_tokens": 10849,
+  "stdout_bytes": 2972,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " 关于召开三季度质量评审会的通知 | filled 11/11 |\\n| 工作总结 | 评测技术部2026年第三季度工作总结 | filled 7/7 |\\n\\n四份 fixtures 字段齐全，因此全部 filled、无必填缺失占位、无模板外键；每份 `fields.json` 顶层含 title、fields 明细（名称/必填/kind/状态/值）与 summary（filled/missing/total 等计数，`filled+missing=total` 自洽断言通过）。\\n\\n## 实现与验证\\n\\n- **实现方式**：调用工作目录内的 `office-templates` 技能引擎（`.zcode/skills/office-templates/scripts/gen_doc.py`），按 brief 的命令行契约 `--template/--data/--outdir` 逐类生成，四条命令均退出码 0。环境上有一个坑：PATH 的 `python3` 是 venv 解释器且无 docx，改用系统 `/usr/bin/python3`（3.12.3 + python-docx 1.2.0，满足 requirements）。\\n- **版式核验**：四份 docx 均为 A4、GB/T 9704 版心边距（上3.7/下3.5/左2.8/右2.6 cm），标题居中黑体二号、正文仿宋三号、首行缩进两字符（`w:firstLineChars=200`）、28 磅固定行距、称谓顶格（请示函/会议通知）、落款右对齐、小节「一、」+ 条目「1．」——段落结构与各 references 规范逐段一致。\\n- **确定性对拍**：同命令连跑两遍覆盖复写，旁路快照（`.verify/snap1`、`.verify/snap2`，在产物目录之外）逐字节对拍——8 个产物 sha256 两遍全部相同，整文件逐字节一致（docx 容器时间戳已归一化为 1980-01-01）；入口脚本 `py_compile` 0 错误，时间/随机源扫描 0 命中。\\n- **留痕**：`run_log.json`（落在工作目录、不进产物目录）完整记录两遍命令行与退出码、各产物 sha256/字节数、对拍结论、三件套盘点与上述自检结果。\\n\\n所有交付物已就位：`out/`（8 个产物）、`run_log.json`、`.verify/`（对拍证据快照）。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 22,\n    \"inputTokens\": 756089,\n    \"outputTokens\": 10849,\n    \"totalTokens\": 766938,\n    \"cacheReadTokens\": 724224,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 5621,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 766938,\n    \"contextUsed\": 47602,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

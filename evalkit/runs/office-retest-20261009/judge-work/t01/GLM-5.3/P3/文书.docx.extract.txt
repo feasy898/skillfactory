@@ -1,0 +1,18 @@
+EXTRACT OF 文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=355600 runs=[拾贝书店 2026年10月第/SimHei/22.0] text=拾贝书店 2026年10月第2周 工作周报
+P001 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=203200 runs=[内部工作周报/SimSun/10.5] text=内部工作周报
+P002 align=None firstLineChars=None firstLineIndent=None spacing=203200 runs=[一、本周工作内容/SimHei/13.0] text=一、本周工作内容
+P003 align=JUSTIFY (3) firstLineChars=None firstLineIndent=None spacing=1.3 runs=[完成店庆档期主题陈列改造/SimSun/12.0] text=完成店庆档期主题陈列改造
+P004 align=JUSTIFY (3) firstLineChars=None firstLineIndent=None spacing=1.3 runs=[复盘会员日核销数据并输出简报/SimSun/12.0] text=复盘会员日核销数据并输出简报
+P005 align=None firstLineChars=None firstLineIndent=None spacing=203200 runs=[二、下周工作计划/SimHei/13.0] text=二、下周工作计划
+P006 align=JUSTIFY (3) firstLineChars=None firstLineIndent=304800 spacing=1.3 runs=[启动冬季书单选品/SimSun/12.0] text=启动冬季书单选品
+P007 align=None firstLineChars=None firstLineIndent=None spacing=203200 runs=[三、问题与需协调事项/SimHei/13.0] text=三、问题与需协调事项
+P008 align=JUSTIFY (3) firstLineChars=None firstLineIndent=None spacing=1.3 runs=[收银终端老化，需要报修/SimSun/12.0] text=收银终端老化，需要报修
+P009 align=None firstLineChars=None firstLineIndent=None spacing=203200 runs=[四、温馨提示/SimHei/13.0] text=四、温馨提示
+P011 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=1.3 runs=[填报人：关菡/SimSun/12.0] text=填报人：关菡
+P012 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=1.3 runs=[2026-10-12/SimSun/12.0] text=2026-10-12
+TABLE1 2行×4列:
+  部门 ┃ 拾贝书店 ┃ 报送周期 ┃ 2026年10月第2周（10月5日-10月9日）
+  填报人 ┃ 关菡 ┃ 报送日期 ┃ 2026-10-12
+TABLE2 1行×1列:
+  温馨提示：本周五店休半天

@@ -1,0 +1,170 @@
+{
+  "tested_family": "glm",
+  "panel": [
+    "step-router-v1",
+    "Minimax-M3.1-Flash-Preview"
+  ],
+  "panel_rotation": "task_idx=9 parity=1",
+  "verdicts": {
+    "step-router-v1": {
+      "scores": {
+        "P1": {
+          "total": 10.0,
+          "dims": {
+            "正确性": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "unknown_keys序列正确且正文无污染；会议议题空标签、会议要求整节省略、联系人空标签、联系电话有值；summary计数自洽。"
+        },
+        "P2": {
+          "total": 0.0,
+          "dims": {
+            "正确性": 0.0,
+            "完整性": 0.0,
+            "可验证性": 0.0
+          },
+          "evidence": "unknown_keys缺失且正文混入附件编号与1号议程值；会议议题错标且联系人标签缺失；无summary且文书矛盾。"
+        },
+        "P3": {
+          "total": 10.0,
+          "dims": {
+            "正确性": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "unknown_keys序列正确且正文无污染；会议议题空标签、会议要求整节省略、联系人空标签、联系电话有值；summary计数自洽。"
+        },
+        "P4": {
+          "total": 0.0,
+          "dims": {
+            "正确性": 0.0,
+            "完整性": 0.0,
+            "可验证性": 0.0
+          },
+          "evidence": "unknown_keys缺失且正文混入附件编号与1号议程值；会议议题错标且联系人标签缺失；无summary且文书矛盾。"
+        },
+        "P5": {
+          "total": 10.0,
+          "dims": {
+            "正确性": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "unknown_keys序列正确且正文无污染；会议议题空标签、会议要求整节省略、联系人空标签、联系电话有值；summary计数自洽。"
+        },
+        "P6": {
+          "total": 10.0,
+          "dims": {
+            "正确性": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "unknown_keys序列正确且正文无污染；会议议题空标签、会议要求整节省略、联系人空标签、联系电话有值；summary计数自洽。"
+        }
+      }
+    },
+    "Minimax-M3.1-Flash-Preview": {
+      "scores": {
+        "P1": {
+          "total": 10.0,
+          "dims": {
+            "正确性（unknown 序列+正文无污染）": 1.0,
+            "完整性（选填三形态渲染）": 1.0,
+            "可验证性（计数自洽）": 1.0
+          },
+          "evidence": "正确性：summary.unknown_keys=[1号议程,Zebra,_private,abc,备用3,附件编号,📋备注] 逐项等于期望码点序，emoji 键居末；抽取全文对 7 键名及其值（draft/待定/QN-2026-118/暖炉采购比价等）零命中。完整性：P006『四、会议议题：』标签在、值空；全文无『会议要求』节头（整节省略）；P007『五、联系人：』标签在、值空；P008『六、联系电话：137-5566-0099』有值，四处全对。可验证性：total=11/filled=8/missing=3/missing_required=0/missing_required_names=[]，与 fields 明细 8 filled+3 missing=11 逐条自洽；文书可打开，版式未因缺数据破坏。"
+        },
+        "P2": {
+          "total": 0.0,
+          "dims": {
+            "正确性（unknown 序列+正文无污染）": 0.0,
+            "完整性（选填三形态渲染）": 0.0,
+            "可验证性（计数自洽）": 0.0
+          },
+          "evidence": "正确性：fields.json 为输入数据照抄（13 键），无 summary/unknown_keys，序列内容缺失；正文 P006『四、会议议程：暖炉采购比价』混入未知键 1号议程 之值、P009『附件编号：QN-2026-118』混入未知键名与值，命中零分档『混入正文』。完整性：会议议题 未作留空标签（整行删除改填议程值）、联系人 无留空标签，错 2 处→零分档；仅会议要求 省略、联系电话 有值两处对。可验证性：无 summary 计数台账，且正文渲染了台账外的附件编号，台账与文书矛盾→零分档。"
+        },
+        "P3": {
+          "total": 10.0,
+          "dims": {
+            "正确性（unknown 序列+正文无污染）": 1.0,
+            "完整性（选填三形态渲染）": 1.0,
+            "可验证性（计数自洽）": 1.0
+          },
+          "evidence": "正确性：summary.unknown_keys 七项逐字等于期望码点序（📋备注 排末）；抽取正文对任一未知键名/值零命中。完整性：P005『会议议题：』标签在、值空；全文无『会议要求』节头；P006『联系人：　　联系电话：137-5566-0099』联系人标签值空、联系电话有值，四形态全对。可验证性：total=11/filled=8/missing=3/missing_required=0/missing_required_names=[] 与 fields 明细一致；run_log 记两遍 exit 0、sha256 相同（2ddbebc1…/946aca70…），版式未破损。"
+        },
+        "P4": {
+          "total": 0.0,
+          "dims": {
+            "正确性（unknown 序列+正文无污染）": 0.0,
+            "完整性（选填三形态渲染）": 0.0,
+            "可验证性（计数自洽）": 0.0
+          },
+          "evidence": "正确性：fields.json 无 summary/unknown_keys（且把会议议题 由 \"\" 改写为 [\"暖炉采购比价\"]）；正文 P006『四、会议议题：暖炉采购比价』、P009『附件编号：QN-2026-118』混入未知键 1号议程 的值与 附件编号 的键名值，序列缺失+正文污染，零分档。完整性：会议议题 标签后未留空（填入未知键值）、联系人 无留空标签，错 2 处→零分档；会议要求 省略、联系电话 有值两处对。可验证性：无 summary 计数（total/filled/missing 全缺），无法核对，且文书渲染附件编号 与 11 字段台账矛盾→零分档。"
+        },
+        "P5": {
+          "total": 10.0,
+          "dims": {
+            "正确性（unknown 序列+正文无污染）": 1.0,
+            "完整性（选填三形态渲染）": 1.0,
+            "可验证性（计数自洽）": 1.0
+          },
+          "evidence": "正确性：summary.unknown_keys=[1号议程,Zebra,_private,abc,备用3,附件编号,📋备注] 逐项等于期望码点序；抽取正文对 7 键名及其值零命中。完整性：P005『会议议题：』标签在、值空；全文无『会议要求』节头；P006『联系人：　　联系电话：137-5566-0099』联系人留空标签 + 联系电话有值，四处全对。可验证性：total=11/filled=8/missing=3/missing_required=0/missing_required_names=[] 与 fields 明细逐条自洽；run_log 记 exit 0、文书.docx sha256 2ddbebc1…，版式无破损。"
+        },
+        "P6": {
+          "total": 10.0,
+          "dims": {
+            "正确性（unknown 序列+正文无污染）": 1.0,
+            "完整性（选填三形态渲染）": 1.0,
+            "可验证性（计数自洽）": 1.0
+          },
+          "evidence": "正确性：summary.unknown_keys 七项逐字等于期望码点序（emoji 键 📋备注 居末）；抽取正文零命中任一未知键名/值。完整性：P005『会议议题：』标签在、值空；全文无『会议要求』节头；P006『联系人：　　联系电话：137-5566-0099』联系人标签留空、联系电话有值，四处全对。可验证性：total=11/filled=8/missing=3/missing_required=0/missing_required_names=[]，与 fields 明细一致；run_log 记两遍 exit 0、sha256 相同，版式未因缺数据破坏。"
+        }
+      }
+    }
+  },
+  "per_judge_scores": {
+    "P1": {
+      "step-router-v1": 10.0,
+      "Minimax-M3.1-Flash-Preview": 10.0
+    },
+    "P2": {
+      "step-router-v1": 0.0,
+      "Minimax-M3.1-Flash-Preview": 0.0
+    },
+    "P3": {
+      "step-router-v1": 10.0,
+      "Minimax-M3.1-Flash-Preview": 10.0
+    },
+    "P4": {
+      "step-router-v1": 0.0,
+      "Minimax-M3.1-Flash-Preview": 0.0
+    },
+    "P5": {
+      "step-router-v1": 10.0,
+      "Minimax-M3.1-Flash-Preview": 10.0
+    },
+    "P6": {
+      "step-router-v1": 10.0,
+      "Minimax-M3.1-Flash-Preview": 10.0
+    }
+  },
+  "final_scores": {
+    "P1": 10.0,
+    "P2": 0.0,
+    "P3": 10.0,
+    "P4": 0.0,
+    "P5": 10.0,
+    "P6": 10.0
+  },
+  "judge_consistency": {
+    "task": "t04",
+    "resample_of": "P3",
+    "first_score": 10.0,
+    "second_score": null,
+    "delta": null,
+    "action": "pass"
+  },
+  "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+  "protocol": "weighted-dims"
+}

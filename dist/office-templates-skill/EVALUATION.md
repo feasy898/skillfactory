@@ -66,3 +66,26 @@ python eval/runner.py <空目录> reference/out        # 红：应 units_found �
 ```
 
 盲评协议（双臂任务指令、rubric、裁判口径）见 `eval/golden.json` 的 `ab_tasks`（5 条）；盲评聚合原始数据见开发方评测存档（未随包分发；含 tasks/baselineMean/treatmentMean/delta/winRate/reverseTasks/accepted 及逐任务 taskAggs）。
+
+## 五、第二轮重测（v0.2.1，2026-10-09，K-5 回炉重测 round2）
+
+> 本节为 round2 披露（evalkit/runs/office-retest-20261009）。首轮（v0.2 双臂双重复 5 任务）数字见上文与
+> `eval/results/benchmark.json`（原样并列保留）；round2 新口径并列落盘于
+> `eval/results/benchmark-v02-1-office-retest.json`（标注 v0.2.1）。
+
+**数字四随**：任务数 n=13（原始 5 ab + 增订 8 题，任务集冻结 9e7f57c6…）；每臂重复 n=3（78 臂调用，78/78 实测落点钉版 pass）；评测钉版=GLM-5.3@account:bigmodel-individual-coding-plan（max，M4 机制）与 Minimax-M3.1-Flash-Preview@minimax（enabled，M2 机制）双族被测、三族异族互裁（step-router-v1/GLM-5.3/Minimax-M3.1-Flash-Preview，judge_prompt_version=S8-JUDGE-v2-OFXRETEST-1）；评测协议=EVAL-SPEC v0.2.1（§3.3-2 tie-aware）。
+
+| 指标 | 值 |
+|---|---|
+| 均分（treatment / baseline） | 9.28 / 4.67 |
+| Δ | **+4.61**（门 ≥1.0 过） |
+| 任务级胜率 | **92.31%**（12 胜 / 1 平 / 0 负；门 ≥60% 过，13 题需 ≥8 胜） |
+| 反向任务 | **0**（门 ≤1 过；swap 独立重算：swap_delta=−4.61 恒等式 |Σ|≤1e-9、swap_reverse=13 镜像） |
+| 效率门 | token 比 0.473、耗时比 0.375（≤2.0 过） |
+| 按族 matrix | glm 被测 7 题 7 胜 Δ+4.79；minimax 被测 6 题 5 胜 1 平 Δ+4.40 |
+| **verdict** | **rejected（fail-closed）**——t08 双裁分歧（step-router-v1 4.0 vs Minimax 0.0，重评后仍 >2）按 §3.4 记 unjudgeable、blind 门不过；三条件实测值虽全过，fail-closed 不放宽 |
+| evidence_level / single_round_signal | provisional / **true**（K5B-07：round1 rejected，两轮不都 accepted → 旗必须为 true） |
+
+**跨代可比（§3.7-4）**：round2（S8-JUDGE-v2-OFXRETEST-1、13 题、n=3）与 round1（S8-JUDGE-v1、5 题、n=2）构成跨代，两轮数字禁止直接 Δ 对位或合并披露。
+
+**t08 分歧性质**：分歧点在被测基线臂产物的「越界请求拒绝」判档（t08=陷阱题「越界请求（docx→pdf / 红头公章 / 增删字段 / 多文档合并）必拒」），两名异族裁判在带判官 notes 下两轮独立判分均 >2 分歧，按登记 fail-closed 规则不可裁决；分歧留痕 `records/judging/t08.json`（首轮无 notes 版本存 `records/judging/first-pass-no-notes/`）。

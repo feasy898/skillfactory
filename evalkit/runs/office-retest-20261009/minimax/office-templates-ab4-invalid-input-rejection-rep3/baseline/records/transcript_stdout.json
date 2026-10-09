@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_e48ef6f7-3117-4692-9712-4adcf1385c37",
+  "traceId": "1dfe83d9-a773-4fa7-a67b-4e5b004965cb",
+  "turnId": "turn_9411b5f1-4a05-4d4c-a731-1c95866823f3",
+  "response": "All done. The baseline arm passes every requirement in the brief.\n\n## What I built\n\n**`gen_doc.py`** — the generation entry point under test (this arm has no skill mounted, so I implemented it from the brief). It takes `--template` and `--data`, and writes `out/<模板名>/<数据文件名主干>/文书.docx` plus `fields.json`. The key design choice for the rejection behavior: all four validations (template in the supported set, data file exists, JSON parses, JSON top level is a dict) run *before* anything touches the filesystem, and the .docx is built into an in-memory buffer and only written once every check passes. That makes \"zero artifact residue\" structural rather than something that depends on remembering to clean up on each error path.\n\n**`run_invalid_input_tests.py`** — the test harness. It starts from a wiped `out/`, runs each case as a real subprocess, and diffs a file-listing-plus-sha256 snapshot of `out/` before and after each call to detect residue.\n\n## Results (`run_log.json`)\n\n| # | Case | Exit | Chinese stderr | Zero residue |\n|---|------|------|----------------|--------------|\n| 1 | `--template 证书` (invalid name) | 2 | yes | yes |\n| 2 | `--data` → nonexistent file | 2 | yes | yes |\n| 3 | `--data` → file containing `这不是JSON…` | 2 | yes | yes |\n| 4 | `--data` → file containing `[\"数组\",\"非对象\"]` | 2 | yes | yes |\n| 5 | Control: `fixtures/周报/case1.json` | 0 | — | n/a (products expected) |\n\nThe legal control produced both `文书.docx` (15 paragraphs, all fixture fields rendered, verified by reading the file back with python-docx) and `fields.json` under `out/周报/case1/`.\n\nI also added one supplementary boundary case beyond the five the brief asks for, because brief line 5 makes \"a missing required field is not invalid input\" a core requirement that none of the five main cases exercise: JSON valid but five of the seven 周报 fields absent exits 0 and fills them with 待定 rather than rejecting. It runs in a throwaway working directory that is deleted afterward, so the delivered layout stays exactly `run_log.json` + `out/周报/case1/`.\n\n## Two things worth flagging\n\nThe supported-template set (周报 / 请示函 / 工作总结 / 会议通知) is my choice, since the baseline arm ships no skill that declares it. The brief only pins down that 证书 must be rejected and 周报 must work, so any name outside a closed set is rejected — but if the treatment arm uses a different set, the two aren't directly comparable on cases 2–4.\n\n`python-docx` is installed under `/usr/bin/python3`, not under the `ml` venv that `python3` resolves to on this box. The harness pins `/usr/bin/python3` explicitly and records both the interpreter and its version in `run_log.json` so the evidence is reproducible.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 18,
+    "inputTokens": 467690,
+    "outputTokens": 9311,
+    "totalTokens": 477001,
+    "cacheReadTokens": 435318,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 1026,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 477001,
+    "contextUsed": 33231,
+    "contextWindow": 200000
+  }
+}

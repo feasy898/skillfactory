@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab2-boundary-missing-required-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 98057,
+  "started_at_ms": 1791490675633,
+  "session_id": "sess_0b2aa8a4-aa29-4650-82a2-a1b7f70050de",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab2-boundary-missing-required-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 925460,
+      "ot": 18546,
+      "dur": 87231,
+      "n": 27
+    }
+  ],
+  "input_tokens": 925460,
+  "output_tokens": 18546,
+  "stdout_bytes": 2832,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "\\nrun_all.sh    一键渲染两个单元目录\\nverify.py     自检：产物齐全 / 退出码 0 / 占位 / 记账 / 版式\\nREADME.md     契约与行为说明\\nout/请示函/case2/    文书.docx + fields.json\\nout/会议通知/case2/  文书.docx + fields.json\\n```\\n\\n## 记账结果与输入缺失事实一致\\n\\n| 模板 | missing_required | missing_optional | unknown_keys |\\n| --- | --- | --- | --- |\\n| 请示函 | 主送机关（键缺）、请示事项（空串） | 成文日期、联系电话 | 无 |\\n| 会议通知 | 会议名称（键缺）、会议地点（空串） | 会议议题、会议要求、联系人、联系电话 | 备注 |\\n\\n关键区分已落实：空字符串与「键不存在」同判为缺失必填；选填缺失整行省略、只进 `missing_optional`、不进 `missing_required`；`备注` 的值记入 `unknown_keys`/`unknown_key_values` 但**未泄漏进正文**（已用 XML 原文断言核验）；`联系人：李工` 有值故正常渲染，未被误记为缺失。fields.json 另含逐字段的 `filled`/`render_as`/`rendered_value`，可直接对照渲染去向。\\n\\n## 版式未因缺数据而破坏\\n\\n两文档经 LibreOffice 转 PDF 实渲确认：标题居中、称谓顶格（无首行缩进）、正文首行缩进 2 字符、落款右对齐。请示函缺失的 `成文日期` 使落款只剩单位一行，落款块仍保持右对齐。\\n\\n## 一处实现取舍\\n\\n本机 PATH 上的 `python3` 指向的 venv **没有装 python-docx**（仅 `/usr/bin/python3` 有）。为保证评分方用任意解释器调用都能跑通，`gen_doc.py` 改用标准库 `zipfile` + OOXML 直写 DOCX，零第三方依赖；zip 时间戳固定，相同输入产出字节一致的包。缩进同时写出 `w:firstLineChars`（Word 按字符精确缩进）与 `w:firstLine`（twips，供只读该属性的解析器判定），避免解析器把缩进误判为无。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 27,\n    \"inputTokens\": 925460,\n    \"outputTokens\": 18546,\n    \"totalTokens\": 944006,\n    \"cacheReadTokens\": 878646,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 2639,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 944006,\n    \"contextUsed\": 47568,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

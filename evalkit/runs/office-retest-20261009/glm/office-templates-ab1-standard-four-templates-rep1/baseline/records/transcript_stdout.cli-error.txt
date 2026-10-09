@@ -1,0 +1,27 @@
+AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.
+{
+  "sessionId": "sess_150f768b-244b-4438-bbcc-816ecbae60d6",
+  "traceId": "f78ac517-c417-46ae-97e2-ffa16baa16a1",
+  "turnId": "turn_3bc4dd5a-ebb4-41dd-a9e8-89d43d8f5fa0",
+  "response": "任务完成。四个单元目录与产物齐全，程序化自检与视觉验收全部通过。\n\n## 交付物\n\n**`out/<模板>/case1/`×4，每目录恰含 `文书.docx` + `fields.json`：**\n\n| 单元目录 | 文书标题（fields.json title） | 字段记账 |\n|---|---|---|\n| `out/周报/case1` | 研发部工作周报（副题行：周期） | filled=7 / missing=0 / total=7 |\n| `out/请示函/case1` | 评测技术部关于采购评测用 GPU 服务器的请示 | filled=8 / missing=0 / total=8 |\n| `out/会议通知/case1` | 评测技术部关于召开三季度质量评审会的通知 | filled=11 / missing=0 / total=11 |\n| `out/工作总结/case1` | 评测技术部2026年第三季度工作总结 | filled=7 / missing=0 / total=7 |\n\n实现方式：自写脚本 `gen_doc.py`（python-docx），严格按任务书命令行契约调用 4 次（`--template/--data/--outdir`），每次产出两个文件。fixture 数据全部字段齐全且值全部原样进入文书，无编造。\n\n## GB/T 9704 风格落实\n\nA4 版面，页边距上37/下35/左28/右26mm（版心 156×225mm），版式网格 22 行/页（行距固定 28.95pt）；标题 2 号方正小标宋居中、正文 3 号仿宋_GB2312、一级标题 3 号黑体、页码「— 1 —」4 号宋体居右；请示函/会议通知主送顶格加全角冒号；成文日期右空四字、署名居中于日期之上；请示函按规范在日期下加左空二字圆括号附注（联系人/电话），并有「妥否，请批示。」惯用语，通知有「特此通知。」。\n\n## fields.json 记账口径\n\n顶层含 `title`/`fields`/`summary`（另有 `template` 辅助键），每字段五要素：名称、是否必填、状态（filled/placeholder/omitted）、值（原样保留，列表即列表）、渲染方式（说明该值落在版面何处）。case1 数据齐全故全部 filled、missing=0；缺数据路径也已实现：必填缺失以 `____` 占位、选填缺失省略该段并如实记 omitted。\n\n## 验证结论\n\n- 程序化自检 `verify.py`：目录文件构成、fields.json 结构与计数自洽、docx 逐值包含、A4/边距/网格/字号/行距全部断言通过（EXIT=0）。\n- LibreOffice 渲染 4 页均单页 A4；visual-judge 视觉验收四页全过。第一轮唯一建议项（请示函标题 451pt 超版心宽 442pt，自动换行把「请示」一词拆断）已修复：实现标题回行算法（词边界断行、文种词不拆、上长下短梯形、行首不留虚词标点），改为「评测技术部关于采购评测用 / GPU 服务器的请示」，复审实测两行居中、梯形排布，通过。\n- 渲染证据留存于 `.render/`（4 PDF + 4 PNG），不在 out/ 交付目录内。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 41,
+    "inputTokens": 2247553,
+    "outputTokens": 50742,
+    "totalTokens": 2298295,
+    "cacheReadTokens": 2144000,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 37028,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 2298295,
+    "contextUsed": 81866,
+    "contextWindow": 200000
+  }
+}

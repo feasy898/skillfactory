@@ -1,0 +1,152 @@
+{
+  "cases": [
+    {
+      "id": "case1_bad_template",
+      "title": "① --template 证书（模板名非法）",
+      "expect": "exit 2 + 零产物残留",
+      "command": "python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 证书 --data fixtures/周报/case1.json --outdir /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/.probe/out/case1_bad_template",
+      "command_full": "/home/pan-ding/venvs/ml/bin/python3 /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/.zcode/skills/office-templates/scripts/gen_doc.py --template 证书 --data fixtures/周报/case1.json --outdir /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/.probe/out/case1_bad_template",
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "usage: gen_doc.py [-h] --template {周报,请示函,会议通知,工作总结} --data DATA --outdir\n                  OUTDIR\ngen_doc.py: error: argument --template: invalid choice: '证书' (choose from '周报', '请示函', '会议通知', '工作总结')",
+      "stderr_lines": [
+        "usage: gen_doc.py [-h] --template {周报,请示函,会议通知,工作总结} --data DATA --outdir",
+        "                  OUTDIR",
+        "gen_doc.py: error: argument --template: invalid choice: '证书' (choose from '周报', '请示函', '会议通知', '工作总结')"
+      ],
+      "residue_check": {
+        "outdir": ".probe/out/case1_bad_template",
+        "outdir_existed_before": false,
+        "outdir_created_by_this_call": false,
+        "outdir_exists_after": false,
+        "files_after": [],
+        "file_count_after": 0,
+        "has_docx": false,
+        "has_fields_json": false,
+        "zero_residue": true
+      }
+    },
+    {
+      "id": "case2_missing_data",
+      "title": "② --data 指向不存在的文件",
+      "expect": "exit 2 + 零产物残留",
+      "command": "python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data fixtures/周报/不存在的数据.json --outdir /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/.probe/out/case2_missing_data",
+      "command_full": "/home/pan-ding/venvs/ml/bin/python3 /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/.zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data fixtures/周报/不存在的数据.json --outdir /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/.probe/out/case2_missing_data",
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "错误：数据文件不存在：fixtures/周报/不存在的数据.json",
+      "stderr_lines": [
+        "错误：数据文件不存在：fixtures/周报/不存在的数据.json"
+      ],
+      "residue_check": {
+        "outdir": ".probe/out/case2_missing_data",
+        "outdir_existed_before": false,
+        "outdir_created_by_this_call": false,
+        "outdir_exists_after": false,
+        "files_after": [],
+        "file_count_after": 0,
+        "has_docx": false,
+        "has_fields_json": false,
+        "zero_residue": true
+      }
+    },
+    {
+      "id": "case3_not_json",
+      "title": "③ --data 指向内容为「不是JSON」的文件",
+      "expect": "exit 2 + 零产物残留",
+      "command": "python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data .probe/not_json.json --outdir /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/.probe/out/case3_not_json",
+      "command_full": "/home/pan-ding/venvs/ml/bin/python3 /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/.zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data .probe/not_json.json --outdir /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/.probe/out/case3_not_json",
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "错误：数据文件不是合法 JSON：.probe/not_json.json（Expecting value: line 1 column 1 (char 0)）",
+      "stderr_lines": [
+        "错误：数据文件不是合法 JSON：.probe/not_json.json（Expecting value: line 1 column 1 (char 0)）"
+      ],
+      "residue_check": {
+        "outdir": ".probe/out/case3_not_json",
+        "outdir_existed_before": false,
+        "outdir_created_by_this_call": false,
+        "outdir_exists_after": false,
+        "files_after": [],
+        "file_count_after": 0,
+        "has_docx": false,
+        "has_fields_json": false,
+        "zero_residue": true
+      }
+    },
+    {
+      "id": "case4_top_level_array",
+      "title": "④ --data 指向内容为 [\"数组\",\"非对象\"] 的文件（顶层非对象）",
+      "expect": "exit 2 + 零产物残留",
+      "command": "python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data .probe/top_level_array.json --outdir /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/.probe/out/case4_top_level_array",
+      "command_full": "/home/pan-ding/venvs/ml/bin/python3 /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/.zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data .probe/top_level_array.json --outdir /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/.probe/out/case4_top_level_array",
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "错误：数据 JSON 顶层必须是对象（键值对），实际为 list",
+      "stderr_lines": [
+        "错误：数据 JSON 顶层必须是对象（键值对），实际为 list"
+      ],
+      "residue_check": {
+        "outdir": ".probe/out/case4_top_level_array",
+        "outdir_existed_before": false,
+        "outdir_created_by_this_call": false,
+        "outdir_exists_after": false,
+        "files_after": [],
+        "file_count_after": 0,
+        "has_docx": false,
+        "has_fields_json": false,
+        "zero_residue": true
+      }
+    },
+    {
+      "id": "case5_control_legal",
+      "title": "⑤ 合法对照组：fixtures/周报/case1.json",
+      "expect": "exit 0 + 两产物",
+      "command": "python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data fixtures/周报/case1.json --outdir /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/out/周报/case1",
+      "command_full": "/home/pan-ding/venvs/ml/bin/python3 /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/.zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data fixtures/周报/case1.json --outdir /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/out/周报/case1",
+      "exit_code": 0,
+      "stdout": "已生成：/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/out/周报/case1/文书.docx（模板=周报，标题=研发部工作周报，字段 filled/total=7/7，必填缺失=无，模板外键=无）",
+      "stderr": "",
+      "stderr_lines": [],
+      "residue_check": {
+        "outdir": "out/周报/case1",
+        "outdir_existed_before": false,
+        "outdir_created_by_this_call": true,
+        "outdir_exists_after": true,
+        "files_after": [
+          "fields.json",
+          "文书.docx"
+        ],
+        "file_count_after": 2,
+        "has_docx": true,
+        "has_fields_json": true,
+        "zero_residue": false
+      }
+    },
+    {
+      "id": "case6_missing_required",
+      "title": "⑥ 附加探针：必填缺失输入（不算非法，应 exit 0 并正常产出）",
+      "expect": "exit 0 + 两产物",
+      "command": "python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data .probe/missing_required.json --outdir /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/.probe/out/case6_missing_required",
+      "command_full": "/home/pan-ding/venvs/ml/bin/python3 /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/.zcode/skills/office-templates/scripts/gen_doc.py --template 周报 --data .probe/missing_required.json --outdir /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/.probe/out/case6_missing_required",
+      "exit_code": 0,
+      "stdout": "已生成：/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/treatment/.probe/out/case6_missing_required/文书.docx（模板=周报，标题=____工作周报，字段 filled/total=2/7，必填缺失=['部门', '周期', '本周工作内容', '下周工作计划']，模板外键=无）",
+      "stderr": "",
+      "stderr_lines": [],
+      "residue_check": {
+        "outdir": ".probe/out/case6_missing_required",
+        "outdir_existed_before": false,
+        "outdir_created_by_this_call": true,
+        "outdir_exists_after": true,
+        "files_after": [
+          "fields.json",
+          "文书.docx"
+        ],
+        "file_count_after": 2,
+        "has_docx": true,
+        "has_fields_json": true,
+        "zero_residue": false
+      }
+    }
+  ]
+}

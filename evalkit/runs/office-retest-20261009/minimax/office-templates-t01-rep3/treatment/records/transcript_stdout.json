@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_5005e445-b8e7-4754-a97b-b46419895a4b",
+  "traceId": "6d9e51b7-5948-4c34-ab73-f5584178c1fc",
+  "turnId": "turn_b651cafa-6856-487d-aae7-70bb3e18dbc0",
+  "response": "周报已生成并交付，全部产物在位。\n\n## 交付物\n\n| 文件 | 内容 |\n|---|---|\n| `out/文书.docx` | 《拾贝书店工作周报》，GB/T 9704 版式，37144 字节 |\n| `out/fields.json` | 字段填充台账，7/7 全部 filled |\n| `out/delivery-report.json` | 交付前核对报告，严格 4 键 |\n| `shibei_week42.json` | 按简报要求保存的数据 JSON 全文 |\n| `run_log.json` | 确定性对拍与自检留痕（落在工作目录，未污染产物目录） |\n\n## 核对报告（`out/delivery-report.json`）\n\n```json\n{\n  \"missing_required_names\": [],\n  \"missing_optional\": [],\n  \"unknown_keys\": [\"温馨提示\"],\n  \"title\": \"拾贝书店工作周报\"\n}\n```\n\n四键齐全、不多不少，内容逐项取自 `fields.json` 台账而非我的判断。\n\n## 三点需要你知道的数据处理\n\n**`温馨提示` 落在周报模板之外。** 周报只有 7 个字段，这个键没有对应版式位置，引擎按 F6 记入 `summary.unknown_keys` 而未消费。数据里的「本周五店休半天」因此没有出现在周报正文中。如果这条要出现在周报里，得由你自己决定放在哪个小节——我没有替它编一个归属。\n\n**两处空白项被丢弃，不计入缺失。** `本周工作内容` 里的 `\"   \"` 和 `问题与需协调事项` 里的 `\"\"` 按 F3 逐项 strip 去空，所以成文是 2 条工作内容、1 条协调事项。两个字段仍判为 filled（因为各自至少有一项有效内容），不是 missing。\n\n**`部门` 前后空格已按 F5 strip**，标题因此是「拾贝书店工作周报」而非带空格的形态。\n\n## 自检结果\n\n- **确定性**：完全相同的命令行连跑两遍到同一 `--outdir`，每遍立即快照到旁路目录。`文书.docx` 整文件逐字节一致（sha256 `384e9b24…e92b`，两遍相同），`fields.json` 除 `outputs` 外逐字节一致。引擎无时间源。\n- **不可复现源扫描**：`grep -nE \"time\\(|random|uuid|datetime|now\\(\"` 对入口脚本零命中。\n- **`py_compile`**：0 错误。\n- **三件套**：SKILL.md / scripts/gen_doc.py / requirements.txt 齐全。\n- 两次运行退出码均为 0。\n\n环境上有一处需要说明：系统 Python 受 PEP 668 保护装不了 python-docx，我按同批次既有 run 的做法建了本地 `.venv`（Python 3.12.3 + python-docx 1.2.0）。该目录是工具产物，不影响交付内容。\n\n`out/` 下现在是 3 个文件——引擎产物仍是引擎自己写的那 2 个，`delivery-report.json` 是简报另行要求的、由我依台账生成的核对报告，不参与确定性对拍，这一点已在 `run_log.json` 的 notes 里注明。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 17,
+    "inputTokens": 437640,
+    "outputTokens": 4771,
+    "totalTokens": 442411,
+    "cacheReadTokens": 406578,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 509,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 442411,
+    "contextUsed": 31917,
+    "contextWindow": 200000
+  }
+}

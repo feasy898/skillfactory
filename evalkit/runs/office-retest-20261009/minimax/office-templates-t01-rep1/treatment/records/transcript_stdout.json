@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_ce19cce9-fe5a-41d0-b7d3-0b5339a9fc34",
+  "traceId": "c78b0f14-9322-4f66-afd3-123578ec74e6",
+  "turnId": "turn_93585445-9054-48f1-b4db-a6fb98e747ba",
+  "response": "周报已生成，7/7 字段全部填充，无缺失项，确定性复现通过对拍验证。\n\n**产物**（均在 `out/`）\n- `文书.docx` — 标题「拾贝书店工作周报」居中黑体二号，正文仿宋三号首行缩进，落款右对齐。全文三节：本周工作内容 2 条、下周工作计划 1 条、问题与需协调事项 1 条。\n- `fields.json` — 字段台账，`filled 7/7`、`missing 0`、`missing_required_names` 为空。\n- `delivery-report.json` — 按要求只含四个键，值全部从 `fields.json` 读出而非手写：\n\n```json\n{\"missing_required_names\": [], \"missing_optional\": [], \"unknown_keys\": [\"温馨提示\"], \"title\": \"拾贝书店工作周报\"}\n```\n\n**数据里的边界情况，引擎按容错规则如实处理**（这是本次数据的重点，五处都有意埋了脏值）：\n\n- `部门` 是 `\" 拾贝书店 \"`，前后空格按 strip 规则去掉，标题渲染为「拾贝书店工作周报」，不含空格。\n- `本周工作内容` 第二项是三个空格的纯空白串，按去空规则剔除，只渲染 2 条（编号不跳号）。\n- `问题与需协调事项` 第二项是空串，同样剔除，只渲染「1．收银终端老化，需要报修」。\n- `下周工作计划` 给的是字符串而非数组，按宽容取值渲染为单项。\n- `温馨提示`（\"本周五店休半天\"）不在周报模板字段表内，**未编入文书**，只记入 `unknown_keys`。这条数据事实上无处可去——周报版式没有温馨提示的位置，我没有擅自找个位置塞进去。如果这条需要出现在周报里，得先确认放哪儿（比如并入问题与需协调事项，或作为基本信息行的附加项），那样属于改模板而非填数据。\n\n**确定性验证**：同一条命令行连跑两遍，两遍产物快照到 `out/` 之外后逐字节对拍——`文书.docx` 整文件 sha256 两遍相同（`384e9b24…e92b`，37144 字节），`fields.json` 亦相同，`cmp` 均返回一致。入口脚本 `py_compile` 零错误，耗时/随机源扫描零命中。留痕写在工作目录的 `run_log.json`（未写进 `out/`，保持产物目录只放产物）。\n\n一处环境说明：系统 Python 是 externally-managed，装不了 `python-docx`，我在工作目录建了 `.venv` 并装入 python-docx 1.2.0 来跑引擎；技能三件套 `SKILL.md`、`scripts/gen_doc.py`、`requirements.txt` 齐全。`.venv` 是我为完成任务新建的，不需要的话可以删掉。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 18,
+    "inputTokens": 464144,
+    "outputTokens": 4872,
+    "totalTokens": 469016,
+    "cacheReadTokens": 433188,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 789,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 469016,
+    "contextUsed": 31751,
+    "contextWindow": 200000
+  }
+}

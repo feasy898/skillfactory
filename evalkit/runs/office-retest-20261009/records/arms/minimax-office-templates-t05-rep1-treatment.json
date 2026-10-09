@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t05-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 59077,
+  "started_at_ms": 1791492622754,
+  "session_id": "sess_6e181caa-4509-49f9-86d9-d929083c3068",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t05-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 597355,
+      "ot": 6461,
+      "dur": 45568,
+      "n": 22
+    }
+  ],
+  "input_tokens": 597355,
+  "output_tokens": 6461,
+  "stdout_bytes": 3141,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "其余内容不受影响。\\n\\n**产物（均在工作目录内）**\\n\\n- `lanshan_miji.json` — brief 数据原文照录，UTF-8。\\n- `out/文书.docx`（37143 字节）与 `out/fields.json`（1972 字节）——`out` 内恰含这两个产物。\\n- `run_log.json` — 留痕：两遍命令行与退出码、逐产物 sha256/字节数、对拍结论、三件套盘点、`py_compile` 结果、不可复现源扫描。\\n- `.snap/run1`、`.snap/run2` — 两遍产物快照（放在 `out` 之外）。\\n\\n**成文核对（对 `references/请示函.md`）**\\n\\n共 7 段：标题「关于购置档案密集架的请示的请示」居中黑体 22pt；称谓「澜山物业管理有限公司：」顶格无缩进、全角冒号收尾；请示缘由、请示事项、联系行「联系人：皮之常　　联系电话：0571-8812-3456」三段首行缩进两字符、仿宋 16pt、固定行距 28 磅；落款「澜山物业综合管理部」与「2026年10月12日」右对齐、右缩进 640 twips（=32pt≈两字）。页面 A4，页边距上 3.7 / 下 3.5 / 左 2.8 / 右 2.6 cm。\\n\\n**台账与自评**\\n\\n`fields.json` 记 total 8 / filled 8 / missing 0，`missing_required_names` 为空，`unknown_keys` 为空，因此文中没有任何 `____` 占位，也没有标签留空的选填项。两次运行退出码均为 0，两遍 sha256 相同（`文书.docx` = fd1bb9e3…，`fields.json` = 233f18b2…），`cmp` 无差异；docx 容器内所有 zip 条目时间戳实测固定为 1980-01-01 00:00。`py_compile` 0 错误，`grep -nE \\\"time\\\\(|random|uuid|datetime|now\\\\(\\\"` 零命中。\\n\\n环境上有一处偏差如实说明：系统 Python3.12.3 未装 `python-docx`，且 pip 因 PEP 668 拒绝安装，我改用了仓库内已有的 `.venv-dev`（CPython 3.12.3，已含 python-docx）执行引擎，未改动任何依赖配置。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 22,\n    \"inputTokens\": 597355,\n    \"outputTokens\": 6461,\n    \"totalTokens\": 603816,\n    \"cacheReadTokens\": 563422,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1039,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 603816,\n    \"contextUsed\": 34814,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "t05",
+  "rep": 1,
+  "slot": 36
+}

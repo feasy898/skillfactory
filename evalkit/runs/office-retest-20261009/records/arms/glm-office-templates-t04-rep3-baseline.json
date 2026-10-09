@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t04-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 285106,
+  "started_at_ms": 1791498129756,
+  "session_id": "sess_3ddc0054-76b2-455d-a49c-151bac30e880",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t04-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 792560,
+      "ot": 22125,
+      "dur": 251448,
+      "n": 20
+    }
+  ],
+  "input_tokens": 792560,
+  "output_tokens": 22125,
+  "stdout_bytes": 2796,
+  "stderr_bytes": 392,
+  "stderr_head": "AI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\n",
+  "stdout_tail": "d from both outputs.\\n- `会议议题` was empty in the source, but `1号议程: 暖炉采购比价` is topically coherent agenda content (a winter heating coordination meeting), so it fills the 议题 section as `[\\\"暖炉采购比价\\\"]`.\\n- `会议要求: []` is empty → the section is omitted entirely rather than rendered as an empty stub.\\n- `附件编号 QN-2026-118` is a structured official value, so it was kept as a line after the body, before the signature.\\n\\n**Verification:** `postcheck.py` passed 9/9 (0 errors, 0 warnings); the rendered page passed the visual acceptance gate (correct layout, all five items with right values, no junk keys, no empty sections); programmatic text extraction confirmed every required field value is present and every junk key is absent; `fields.json` is valid UTF-8 JSON.\\n\\nCreated ::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t04-rep3/baseline/out/文书.docx\\\" purpose=\\\"output\\\"}, with `out/fields.json` alongside as its machine-readable field companion.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 20,\n    \"inputTokens\": 792560,\n    \"outputTokens\": 22125,\n    \"totalTokens\": 814685,\n    \"cacheReadTokens\": 748992,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 18429,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 814685,\n    \"contextUsed\": 59467,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "t04",
+  "rep": 3,
+  "slot": 65
+}

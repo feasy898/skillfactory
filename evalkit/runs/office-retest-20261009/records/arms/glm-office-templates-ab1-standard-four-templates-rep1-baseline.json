@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab1-standard-four-templates-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 970174,
+  "started_at_ms": 1791489061854,
+  "session_id": "sess_150f768b-244b-4438-bbcc-816ecbae60d6",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab1-standard-four-templates-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 2247553,
+      "ot": 50742,
+      "dur": 719441,
+      "n": 41
+    }
+  ],
+  "input_tokens": 2247553,
+  "output_tokens": 50742,
+  "stdout_bytes": 3493,
+  "stderr_bytes": 22252,
+  "stderr_head": "ProviderBusinessError: [1302][您的账户已达到速率限制，请您控制请求频率][20261009035902fbd650a739844f9e]\n    at detectProviderBusinessError (/opt/ZCode/resources/glm/zcode.cjs:2067:11088)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.fetch (/opt/ZCode/resources/glm/zcode.cjs:2067:10584)\n    at async /opt/ZCode/resources/glm/zcode.cjs:2058:21545\n    at async postToApi (/opt/ZCode/resources/glm/zcode.cjs:2031:22186)\n    at async gIs.doStream (/opt/ZCode/resources/glm/zcode.cjs:2032:51208)\n    at async fn (/opt/ZCode/resources/glm/zcode.cjs:2099:15517)\n    at async /opt/ZCode/resources/glm/zcode.cjs:2094:964\n    at async _retryWithExponentialBackoff (/opt/ZCode/resources/glm/zcode.cjs:2094:5143)\n    at async streamStep (/opt/ZCode/resources/glm/zcode.cjs:2099:14640) {\n  code: 'PROVIDER_BUSINESS_ERROR',\n  isProviderBusinessError: true,\n  providerCode: '1302',\n  providerId: 'account:bigmodel-individual-coding-plan',\n  providerKind: 'anthropic',\n  providerMessage: '[1302][您的账户已达到速率限制，请您控制请求频率][20261009035902fbd650a739844f9e]',\n  providerRequestId: '20261009035902fbd650a739844f9e',\n  responseBodySummary: {\n    keys: [ 'type', 'error', 'request_id' ],\n    success: undefined,\n    code: undefined,\n    error_code: undefined,\n    msg: undefined,\n    message: undefined,\n    request_id: '20261009035902fbd650a739844f9e',\n    requestId: undefined,\n    error: {\n      keys: [Array],\n      code: '1302',\n      error_code: undefined,\n      msg: undefined,\n      message: '[1302][您的账户已达到速率限制，请您控制请求频率][20261009035902fbd650a739844f9e]',\n      request_id: undefined,\n      requestId: undefined,\n      type: 'rate_limit_error'\n    }\n  },\n  responseHeaders: {\n    'alt-svc': 'h3=\":443\"; ma=3600',\n    'anthropic-ratelimit-unified-status': 'rejected',\n    connection: 'keep-alive',\n    'content-length': '225',\n    'content-type': 'application/json',\n    date: 'Thu, 08 Oct 2026 19:59:03 GMT',\n    'ga-traceid': '367b601f6a852757ca39d9cb45233a3f',\n    'request-id': '",
+  "stdout_tail": "total=11 |\\n| `out/工作总结/case1` | 评测技术部2026年第三季度工作总结 | filled=7 / missing=0 / total=7 |\\n\\n实现方式：自写脚本 `gen_doc.py`（python-docx），严格按任务书命令行契约调用 4 次（`--template/--data/--outdir`），每次产出两个文件。fixture 数据全部字段齐全且值全部原样进入文书，无编造。\\n\\n## GB/T 9704 风格落实\\n\\nA4 版面，页边距上37/下35/左28/右26mm（版心 156×225mm），版式网格 22 行/页（行距固定 28.95pt）；标题 2 号方正小标宋居中、正文 3 号仿宋_GB2312、一级标题 3 号黑体、页码「— 1 —」4 号宋体居右；请示函/会议通知主送顶格加全角冒号；成文日期右空四字、署名居中于日期之上；请示函按规范在日期下加左空二字圆括号附注（联系人/电话），并有「妥否，请批示。」惯用语，通知有「特此通知。」。\\n\\n## fields.json 记账口径\\n\\n顶层含 `title`/`fields`/`summary`（另有 `template` 辅助键），每字段五要素：名称、是否必填、状态（filled/placeholder/omitted）、值（原样保留，列表即列表）、渲染方式（说明该值落在版面何处）。case1 数据齐全故全部 filled、missing=0；缺数据路径也已实现：必填缺失以 `____` 占位、选填缺失省略该段并如实记 omitted。\\n\\n## 验证结论\\n\\n- 程序化自检 `verify.py`：目录文件构成、fields.json 结构与计数自洽、docx 逐值包含、A4/边距/网格/字号/行距全部断言通过（EXIT=0）。\\n- LibreOffice 渲染 4 页均单页 A4；visual-judge 视觉验收四页全过。第一轮唯一建议项（请示函标题 451pt 超版心宽 442pt，自动换行把「请示」一词拆断）已修复：实现标题回行算法（词边界断行、文种词不拆、上长下短梯形、行首不留虚词标点），改为「评测技术部关于采购评测用 / GPU 服务器的请示」，复审实测两行居中、梯形排布，通过。\\n- 渲染证据留存于 `.render/`（4 PDF + 4 PNG），不在 out/ 交付目录内。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 41,\n    \"inputTokens\": 2247553,\n    \"outputTokens\": 50742,\n    \"totalTokens\": 2298295,\n    \"cacheReadTokens\": 2144000,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 37028,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 2298295,\n    \"contextUsed\": 81866,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "ab1-standard-four-templates",
+  "rep": 1,
+  "slot": 1
+}

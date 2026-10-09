@@ -1,0 +1,76 @@
+[Advisor consultation #1]
+[Advisor review]
+
+<function_calls>
+<invoke name="advisor">
+<parameter name="question">The assistant is scoring 6 products (P1-P6) for an office document generation task. The rubric has three dimensions: correctness (unknown_keys sequence + no pollution in body), completeness (rendering of 3 optional fields: 会议议题 empty tag, 会议要求 whole section omitted, 联系人 tag retained with empty value, 联系电话 filled), and verifiability (count self-consistency: total=11, filled=8, missing=3, missing_required=0, missing_required_names=[]).
+
+Products P1, P3, P5, P6 have correct unknown_keys, correct rendering, and correct summary counts, scoring 10.0. Products P2 and P4 have problems.
+
+P2: fields.json has no summary, no unknown_keys field, and includes unknown keys "1号议程" and "附件编号". Document body includes "附件编号：QN-2026-118" (pollution). "会议议题" is "" in data but rendered as "四、会议议程：暖炉采购比价" (label wrong and value filled). "联系人" tag missing. No "会议要求" section. So assistant gave correctness 0.0, completeness 0.3 (2 errors), and verifiability 0.3 (no summary, counting can't be verified). Weighted score = 10*(0*0.4 + 0.3*0.3 + 0.3*0.3) = 1.8.
+
+P4: similar, but "会议议题" in fields.json is ["暖炉采购比价"] (array, not empty). Same rendering as "四、会议议题：暖炉采购比价". No summary, unknown_keys missing, "附件编号" pollution. Same scores.
+
+Question: Is the verifiability score of 0.3 justified for P2/P4? The rubric's mid-tier says "计数错 1 项 0.3". The zero-tier is "台账与文书矛盾". Since there is no summary, is it a counting error or a contradiction? Also, P2's fields.json shows "会议议题": "" but document shows it filled, which is a contradiction. Should that drive verifiability to 0.0? The assistant wants to confirm the scores before outputting.</parameter>
+</invoke>
+</function_calls>
+[End of advisor consultation #1]
+
+{
+  "scores": {
+    "P1": {
+      "total": 10.0,
+      "dims": {
+        "正确性": 1.0,
+        "完整性": 1.0,
+        "可验证性": 1.0
+      },
+      "evidence": "unknown_keys序列正确且正文无污染；会议议题空标签、会议要求整节省略、联系人空标签、联系电话有值；summary计数自洽。"
+    },
+    "P2": {
+      "total": 0.0,
+      "dims": {
+        "正确性": 0.0,
+        "完整性": 0.0,
+        "可验证性": 0.0
+      },
+      "evidence": "unknown_keys缺失且正文混入附件编号与1号议程值；会议议题错标且联系人标签缺失；无summary且文书矛盾。"
+    },
+    "P3": {
+      "total": 10.0,
+      "dims": {
+        "正确性": 1.0,
+        "完整性": 1.0,
+        "可验证性": 1.0
+      },
+      "evidence": "unknown_keys序列正确且正文无污染；会议议题空标签、会议要求整节省略、联系人空标签、联系电话有值；summary计数自洽。"
+    },
+    "P4": {
+      "total": 0.0,
+      "dims": {
+        "正确性": 0.0,
+        "完整性": 0.0,
+        "可验证性": 0.0
+      },
+      "evidence": "unknown_keys缺失且正文混入附件编号与1号议程值；会议议题错标且联系人标签缺失；无summary且文书矛盾。"
+    },
+    "P5": {
+      "total": 10.0,
+      "dims": {
+        "正确性": 1.0,
+        "完整性": 1.0,
+        "可验证性": 1.0
+      },
+      "evidence": "unknown_keys序列正确且正文无污染；会议议题空标签、会议要求整节省略、联系人空标签、联系电话有值；summary计数自洽。"
+    },
+    "P6": {
+      "total": 10.0,
+      "dims": {
+        "正确性": 1.0,
+        "完整性": 1.0,
+        "可验证性": 1.0
+      },
+      "evidence": "unknown_keys序列正确且正文无污染；会议议题空标签、会议要求整节省略、联系人空标签、联系电话有值；summary计数自洽。"
+    }
+  }
+}

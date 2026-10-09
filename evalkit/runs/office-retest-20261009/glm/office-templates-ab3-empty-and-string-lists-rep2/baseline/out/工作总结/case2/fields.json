@@ -1,0 +1,97 @@
+{
+  "template": "工作总结",
+  "data": "fixtures/工作总结/case2.json",
+  "title": "____2026年9月工作总结",
+  "sections_rendered": [
+    "一、工作回顾",
+    "二、主要成绩",
+    "三、下一步工作打算"
+  ],
+  "sections_omitted": [
+    "存在问题"
+  ],
+  "fields": {
+    "总结主体": {
+      "required": true,
+      "status": "placeholder",
+      "input_type": null,
+      "value": null,
+      "rendered": "____",
+      "note": "必填字段缺失，以____占位",
+      "render_in": [
+        "title",
+        "signature"
+      ]
+    },
+    "总结时段": {
+      "required": true,
+      "status": "present",
+      "input_type": "string",
+      "value": "2026年9月",
+      "rendered": "2026年9月",
+      "render_in": "title"
+    },
+    "工作回顾": {
+      "required": true,
+      "status": "present",
+      "input_type": "string",
+      "value": [
+        "完成评测平台月度巡检"
+      ],
+      "normalization": "string_single_item_list",
+      "raw_input": "完成评测平台月度巡检",
+      "note": "字符串型列表按单项化处理：渲染为单项条目，字段值为单元素数组",
+      "rendered": [
+        "1．完成评测平台月度巡检"
+      ]
+    },
+    "主要成绩": {
+      "required": true,
+      "status": "placeholder",
+      "input_type": "list",
+      "value": [],
+      "rendered": [
+        "1．____"
+      ],
+      "note": "必填列表空列表，按必填缺失处理：渲染占位条目「1．____」"
+    },
+    "存在问题": {
+      "required": false,
+      "status": "missing",
+      "input_type": null,
+      "value": null,
+      "rendered": null,
+      "note": "选填小节缺失/为空：正文整节省略（不出现该节头）"
+    },
+    "下一步工作打算": {
+      "required": true,
+      "status": "present",
+      "input_type": "list",
+      "value": [
+        "制定四季度评测排期"
+      ],
+      "rendered": [
+        "1．制定四季度评测排期"
+      ]
+    },
+    "成文日期": {
+      "required": false,
+      "status": "missing",
+      "input_type": null,
+      "value": null,
+      "rendered": null,
+      "note": "选填字段缺失，对应渲染位置省略",
+      "render_in": "signature"
+    }
+  },
+  "signature": {
+    "alignment": "right",
+    "lines": [
+      "____"
+    ]
+  },
+  "artifacts": [
+    "文书.docx",
+    "fields.json"
+  ]
+}

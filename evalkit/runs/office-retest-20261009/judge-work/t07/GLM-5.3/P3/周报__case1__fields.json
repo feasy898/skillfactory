@@ -1,0 +1,97 @@
+{
+  "template": "周报",
+  "title": "屿光咖啡品控组工作周报",
+  "filled_fields": [
+    "部门",
+    "周期",
+    "本周工作内容",
+    "下周工作计划",
+    "问题与需协调事项",
+    "报送日期"
+  ],
+  "missing_fields": [
+    "填报人"
+  ],
+  "fields": [
+    {
+      "name": "部门",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "屿光咖啡品控组",
+      "source_key": "总结主体"
+    },
+    {
+      "name": "填报人",
+      "required": true,
+      "kind": "text",
+      "status": "missing",
+      "value": null,
+      "rendered_as": "以____占位",
+      "source_key": null,
+      "note": "季度素材中无对应键，无真实来源，未编造"
+    },
+    {
+      "name": "周期",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "2026年第三季度",
+      "source_key": "总结时段"
+    },
+    {
+      "name": "本周工作内容",
+      "required": true,
+      "kind": "list",
+      "status": "filled",
+      "value": [
+        "完成季度杯测 36 场",
+        "处理客诉工单 58 单"
+      ],
+      "source_key": "工作回顾"
+    },
+    {
+      "name": "下周工作计划",
+      "required": true,
+      "kind": "list",
+      "status": "filled",
+      "value": [
+        "引入损耗周报机制"
+      ],
+      "source_key": "下一步工作打算"
+    },
+    {
+      "name": "问题与需协调事项",
+      "required": false,
+      "kind": "list",
+      "status": "filled",
+      "value": [
+        "偏远门店物流损耗偏高"
+      ],
+      "source_key": "存在问题"
+    },
+    {
+      "name": "报送日期",
+      "required": false,
+      "kind": "text",
+      "status": "filled",
+      "value": "2026年10月9日",
+      "source_key": "成文日期"
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "filled": 6,
+    "missing": 1,
+    "missing_required": 1,
+    "missing_required_names": [
+      "填报人"
+    ],
+    "unknown_keys": [
+      "主要成绩"
+    ]
+  },
+  "outputs": {
+    "文书.docx": "文书.docx"
+  }
+}

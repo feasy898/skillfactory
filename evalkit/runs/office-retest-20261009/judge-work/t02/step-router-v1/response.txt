@@ -1,0 +1,86 @@
+[Advisor consultation #1]
+[Advisor review]
+
+{
+  "scores": {
+    "P1": {
+      "total": 10.0,
+      "dims": {
+        "正确性": 1.0,
+        "完整性": 1.0,
+        "可验证性": 1.0
+      },
+      "evidence": "标题、称谓、议题strip、落款全对（title=关于召开秋季会员茶话会的通知，黑体22pt居中）；节头「一、」+6条全角点编号逐字正确，fields.json 11/11；正文firstLineChars=200、仿宋16pt、行距28磅全过，联系人/电话同行可见。"
+    },
+    "P2": {
+      "total": 4.1,
+      "dims": {
+        "正确性": 0.2,
+        "完整性": 0.5,
+        "可验证性": 0.6
+      },
+      "evidence": "标题多「青蘅茶社」前缀，字体STXiaoBiaoSong非黑体，编号用（一）—（六）而非1．—6．，正确性2处错；节头「五、」非「一、」，完整性0.5；正文firstLineChars=None、firstLineIndent=406400，版式错。"
+    },
+    "P3": {
+      "total": 4.1,
+      "dims":
+[End of advisor consultation #1]
+
+{
+  "scores": {
+    "P1": {
+      "total": 10.0,
+      "dims": {
+        "正确性": 1.0,
+        "完整性": 1.0,
+        "可验证性": 1.0
+      },
+      "evidence": "标题『关于召开秋季会员茶话会的通知』居中黑体22pt；称谓『全体会员：』顶格全角冒号；议题strip后值正确；节头『一、会议要求』+6条全角点1．-6．编号逐字正确；正文firstLineChars=200、仿宋16pt、行距28磅；落款两行右对齐；fields.json filled=11/11且议题value已strip。"
+    },
+    "P2": {
+      "total": 4.1,
+      "dims": {
+        "正确性": 0.2,
+        "完整性": 0.5,
+        "可验证性": 0.6
+      },
+      "evidence": "标题多『青蘅茶社』前缀且字体非黑体（2处错）；节头为『五、会议要求』而非『一、』，条目用（一）—（六）而非1．-6．；正文firstLineChars=None、firstLineIndent=406400版式错；fields.json title字段错误。"
+    },
+    "P3": {
+      "total": 4.1,
+      "dims": {
+        "正确性": 0.2,
+        "完整性": 0.5,
+        "可验证性": 0.6
+      },
+      "evidence": "标题多『青蘅茶社』前缀且字体非黑体（2处错）；节头『五、会议要求』而非『一、』，条目（一）—（六）编号错；firstLineChars=None、firstLineIndent=406400版式错；fields.json title错误。"
+    },
+    "P4": {
+      "total": 10.0,
+      "dims": {
+        "正确性": 1.0,
+        "完整性": 1.0,
+        "可验证性": 1.0
+      },
+      "evidence": "与P1完全一致：标题/称谓/议题strip/落款全对；节头『一、会议要求』+6条全角点1．-6．编号正确；firstLineChars=200、仿宋16pt、行距28磅；fields.json 11/11且议题value已strip。"
+    },
+    "P5": {
+      "total": 10.0,
+      "dims": {
+        "正确性": 1.0,
+        "完整性": 1.0,
+        "可验证性": 1.0
+      },
+      "evidence": "与P1完全一致：标题/称谓/议题strip/落款全对；节头『一、会议要求』+6条全角点1．-6．编号正确；firstLineChars=200、仿宋16pt、行距28磅；fields.json 11/11且议题value已strip。"
+    },
+    "P6": {
+      "total": 4.1,
+      "dims": {
+        "正确性": 0.2,
+        "完整性": 0.5,
+        "可验证性": 0.6
+      },
+      "evidence": "标题多『青蘅茶社』前缀且字体华文小标宋（2处错）；节头『五、会议要求』而非『一、』，条目（一）—（六）编号错；firstLineChars=None、firstLineIndent=406400版式错；fields.json title错误。"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+EXTRACT OF 工作总结__case2__文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=355600 runs=[____2026年9月工作总/宋体/22.0] text=____2026年9月工作总结
+P001 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[一、工作回顾/黑体/16.0] text=一、工作回顾
+P002 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[1．完成评测平台月度巡检/仿宋/16.0] text=1．完成评测平台月度巡检
+P003 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[二、主要成绩/黑体/16.0] text=二、主要成绩
+P004 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[1．____/仿宋/16.0] text=1．____
+P005 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[三、下一步工作打算/黑体/16.0] text=三、下一步工作打算
+P006 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[1．制定四季度评测排期/仿宋/16.0] text=1．制定四季度评测排期
+P007 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[____/仿宋/16.0] text=____

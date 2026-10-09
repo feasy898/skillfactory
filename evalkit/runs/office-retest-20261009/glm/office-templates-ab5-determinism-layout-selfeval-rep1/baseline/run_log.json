@@ -1,0 +1,150 @@
+{
+  "task": "office 重测臂 ab5-determinism-layout-selfeval（baseline）：同输入连跑两遍确定性自评（会议通知 case1）",
+  "protocol": "同一输入与命令行连跑两遍到同一输出目录 out/会议通知/case1（第 2 遍覆盖复写第 1 遍）；每遍记录 文书.docx 与 fields.json 的 sha256；两遍产物逐字节对比；docx 另做解析级版面签名对比；输出目录恰含两产物。",
+  "engine": "gen_doc.py（本臂自实现生成器；实现方式不限；GB/T 9704-2012 风格 A4 会议通知；docx 保存后 zip 容器归一化：条目时间戳固定 1980-01-01、权限 0644、ZIP_DEFLATED、条目顺序沿用源包）",
+  "command_run1": "/usr/bin/python3 gen_doc.py --template 会议通知 --data fixtures/会议通知/case1.json --outdir out/会议通知/case1",
+  "command_run2": "/usr/bin/python3 gen_doc.py --template 会议通知 --data fixtures/会议通知/case1.json --outdir out/会议通知/case1（与第 1 遍完全相同）",
+  "environment": {
+    "python": "3.12.3",
+    "python_executable": "/usr/bin/python3",
+    "python-docx": "1.2.0",
+    "platform": "linux",
+    "cwd": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab5-determinism-layout-selfeval-rep1/baseline"
+  },
+  "nondeterminism_scan": {
+    "pattern": "\\btime\\(|\\bnow\\(|\\bdatetime\\b|\\brandom\\b|\\buuid\\b|strftime|time\\.time",
+    "hits": 0,
+    "hit_lines": [],
+    "note": "生成器源码全文扫描；zip 条目时间戳为固定常量 1980-01-01，非系统时钟读取"
+  },
+  "runs": [
+    {
+      "第几遍": 1,
+      "exit_code": 0,
+      "stdout": "[OK] 会议通知 -> out/会议通知/case1/文书.docx + fields.json（filled=11 missing=0 total=11）",
+      "products": {
+        "文书.docx": {
+          "bytes": 38163,
+          "sha256": "5a7c606fe641efd7f7448a6bc6fab13273edd64af9e8aa4c649dc922acafbbe4"
+        },
+        "fields.json": {
+          "bytes": 2862,
+          "sha256": "7d34f714790c903b62ae699ff6703ba33411a9ad10844d4e49c769358232cea5"
+        }
+      }
+    },
+    {
+      "第几遍": 2,
+      "exit_code": 0,
+      "stdout": "[OK] 会议通知 -> out/会议通知/case1/文书.docx + fields.json（filled=11 missing=0 total=11）",
+      "products": {
+        "文书.docx": {
+          "bytes": 38163,
+          "sha256": "5a7c606fe641efd7f7448a6bc6fab13273edd64af9e8aa4c649dc922acafbbe4"
+        },
+        "fields.json": {
+          "bytes": 2862,
+          "sha256": "7d34f714790c903b62ae699ff6703ba33411a9ad10844d4e49c769358232cea5"
+        }
+      }
+    }
+  ],
+  "comparison": {
+    "byte_level": {
+      "文书.docx": {
+        "sha256_run1": "5a7c606fe641efd7f7448a6bc6fab13273edd64af9e8aa4c649dc922acafbbe4",
+        "sha256_run2": "5a7c606fe641efd7f7448a6bc6fab13273edd64af9e8aa4c649dc922acafbbe4",
+        "bytes_run1": 38163,
+        "bytes_run2": 38163,
+        "identical": true,
+        "差异说明": "无差异（逐字节一致）"
+      },
+      "fields.json": {
+        "sha256_run1": "7d34f714790c903b62ae699ff6703ba33411a9ad10844d4e49c769358232cea5",
+        "sha256_run2": "7d34f714790c903b62ae699ff6703ba33411a9ad10844d4e49c769358232cea5",
+        "bytes_run1": 2862,
+        "bytes_run2": 2862,
+        "identical": true,
+        "差异说明": "无差异（逐字节一致）",
+        "路径键豁免条款": "不适用：机械扫描 fields.json 全部 7 个键名，无 outputs 类路径键（命中 空）；全文均为输入数据派生字段，全文件逐字节对比口径成立"
+      }
+    },
+    "docx_parsed": {
+      "对比维度": [
+        "段落文本",
+        "对齐",
+        "缩进（首行/左/右）",
+        "行距（值与规则）",
+        "字体（ascii/eastAsia/字号/加粗）",
+        "段前/段后距",
+        "页面几何（A4/页边距/页脚距）",
+        "页脚页码段"
+      ],
+      "paragraphs": 16,
+      "footer_paragraphs": 1,
+      "runs_total": 24,
+      "signature_sha256_run1": "e65004d5622c557a76c2e1f47ac50f4731b570812b0ce85def9ed6b1f9ab75ef",
+      "signature_sha256_run2": "e65004d5622c557a76c2e1f47ac50f4731b570812b0ce85def9ed6b1f9ab75ef",
+      "identical": true,
+      "差异说明": "无差异（段落文本/对齐/缩进/字体/行距等版面签名逐项一致）"
+    },
+    "outdir_contents": {
+      "expected_exactly": [
+        "fields.json",
+        "文书.docx"
+      ],
+      "actual": [
+        "fields.json",
+        "文书.docx"
+      ],
+      "exactly_two_products": true
+    }
+  },
+  "control_experiment": {
+    "purpose": "证明裸 python-docx 保存携带保存时刻（不可复现源），且本生成器的 zip 归一化恰好消除之；同时说明「同秒连跑两次」会假通过，两遍协议不能靠连跑速度碰运气。",
+    "raw_save": {
+      "bytes_identical": false,
+      "sha256_run_a": "e3c1a2c4fd32f29a2a3114152bc4c61e781362b716fd74d0ad84e0a4ea99fb44",
+      "sha256_run_b": "c88cb036b83ffc3bc3afa51d8823c6f75605d873c2c4e9a8e0e542e2a6bed8df",
+      "zip_entry_stamps_run_a": [
+        [
+          2026,
+          10,
+          9,
+          5,
+          9,
+          24
+        ]
+      ],
+      "zip_entry_stamps_run_b": [
+        [
+          2026,
+          10,
+          9,
+          5,
+          9,
+          26
+        ]
+      ],
+      "hazard_confirmed": true
+    },
+    "after_normalize": {
+      "bytes_identical": true,
+      "sha256_run_a": "5a7c606fe641efd7f7448a6bc6fab13273edd64af9e8aa4c649dc922acafbbe4",
+      "sha256_run_b": "5a7c606fe641efd7f7448a6bc6fab13273edd64af9e8aa4c649dc922acafbbe4"
+    },
+    "outdir_product_zip_entry_stamps": [
+      [
+        1980,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    ],
+    "conclusion": "裸保存两遍逐字节不同（zip 条目头含保存时刻，不可复现源坐实）；归一化后两遍逐字节一致（归一化有效消除该差异源）；在位产物 zip 条目时间戳全为固定常量 1980-01-01 00:00:00。"
+  },
+  "conclusion": "一致（PASS）：同输入（fixtures/会议通知/case1.json）同一命令连跑两遍，文书.docx 与 fields.json 逐字节一致；docx 解析级段落文本/对齐/缩进/字体/行距完全一致；生成路径无当前时间、随机内容等不可复现源；输出目录恰含两产物。",
+  "witness": "第 2 遍覆盖前留存的第 1 遍产物副本在 .determinism/run1/，可复核逐字节对比"
+}

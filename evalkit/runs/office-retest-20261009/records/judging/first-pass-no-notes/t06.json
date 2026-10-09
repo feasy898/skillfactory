@@ -1,0 +1,170 @@
+{
+  "tested_family": "glm",
+  "panel": [
+    "step-router-v1",
+    "Minimax-M3.1-Flash-Preview"
+  ],
+  "panel_rotation": "task_idx=11 parity=1",
+  "verdicts": {
+    "step-router-v1": {
+      "scores": {
+        "P1": {
+          "total": 10.0,
+          "dims": {
+            "正确性（落款纪律）": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "正确性：fields.json记报送日期missing、rendered_as='留空（渲染为空字符串）'；docx落款P011 align=RIGHT, text='报送日期：'无值。完整性：两产物齐；标题正确；6条目日期逐字正确。可验证性：summary filled=6/missing=1/missing_required_names=[]自洽；docx版式正常可打开。"
+        },
+        "P2": {
+          "total": 10.0,
+          "dims": {
+            "正确性（落款纪律）": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "同P1：落款留空无日期值；标题及6条目正确；台账filled=6/missing=1自洽；docx版式正常。"
+        },
+        "P3": {
+          "total": 5.0,
+          "dims": {
+            "正确性（落款纪律）": 0.0,
+            "完整性": 1.0,
+            "可验证性": 0.5
+          },
+          "evidence": "正确性：docx落款P011 align=RIGHT, text='报送日期：2026年10月11日'出现日期值。完整性：两产物齐；标题及6条目日期正确。可验证性：fields.json无summary，无法验证filled/missing自洽。"
+        },
+        "P4": {
+          "total": 5.0,
+          "dims": {
+            "正确性（落款纪律）": 0.0,
+            "完整性": 1.0,
+            "可验证性": 0.5
+          },
+          "evidence": "正确性：docx落款P011 align=RIGHT, text='报送日期：2026年10月11日'出现日期值。完整性：两产物齐；标题及6条目日期正确。可验证性：summary filled=7/missing=0，不符合满分档filled=6/missing=1要求。"
+        },
+        "P5": {
+          "total": 5.0,
+          "dims": {
+            "正确性（落款纪律）": 0.0,
+            "完整性": 1.0,
+            "可验证性": 0.5
+          },
+          "evidence": "正确性：docx落款P013 align=RIGHT, text='报送日期：2026年10月11日'出现日期值。完整性：两产物齐；标题及6条目日期正确。可验证性：fields.json无summary，无法验证filled/missing自洽。"
+        },
+        "P6": {
+          "total": 10.0,
+          "dims": {
+            "正确性（落款纪律）": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "同P1：落款留空无日期值；标题及6条目正确；台账filled=6/missing=1自洽；docx版式正常。"
+        }
+      }
+    },
+    "Minimax-M3.1-Flash-Preview": {
+      "scores": {
+        "P1": {
+          "total": 10.0,
+          "dims": {
+            "正确性（落款纪律）": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "正确性：P011 右对齐恰「报送日期：」，status=missing、rendered_as=留空（渲染为空字符串）。完整性：两产物齐，标题逐字，6 条目及条目内日期逐字。可验证性：filled=6/missing=1/missing_required_names=[] 自洽。"
+        },
+        "P2": {
+          "total": 10.0,
+          "dims": {
+            "正确性（落款纪律）": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "正确性：P011 右对齐恰「报送日期：」，status=missing、rendered_as=留空（渲染为空字符串）。完整性：两产物齐，标题逐字，6 条目及条目内日期逐字。可验证性：filled=6/missing=1/missing_required_names=[] 自洽。"
+        },
+        "P3": {
+          "total": 4.0,
+          "dims": {
+            "正确性（落款纪律）": 0.0,
+            "完整性": 1.0,
+            "可验证性": 0.5
+          },
+          "evidence": "正确性：P011 落款「报送日期：2026年10月11日」编造日期→零分档。完整性：两产物齐，标题逐字，6 条目及日期逐字。可验证性：中档——fields.json 仅数据回抄无 status/summary 台账；TABLE1 周期值重复三次占位报送日期栏，版式异常。"
+        },
+        "P4": {
+          "total": 3.0,
+          "dims": {
+            "正确性（落款纪律）": 0.0,
+            "完整性": 1.0,
+            "可验证性": 0.0
+          },
+          "evidence": "正确性：P011 落款「报送日期：2026年10月11日」编造日期→零分档。完整性：两产物齐，标题逐字，6 条目及日期逐字。可验证性：零分档台账造假——报送日期 status=filled、missing_fields=[]，summary filled=7/missing=0。"
+        },
+        "P5": {
+          "total": 2.5,
+          "dims": {
+            "正确性（落款纪律）": 0.0,
+            "完整性": 0.5,
+            "可验证性": 0.5
+          },
+          "evidence": "正确性：P013 落款「报送日期：2026年10月11日」编造日期→零分档。完整性：中档——两产物齐、标题逐字，但 6 条目均追加句号（「…豆单上新。」），未逐字照录。可验证性：中档——fields.json 无台账，正文可开、版式基本正常。"
+        },
+        "P6": {
+          "total": 10.0,
+          "dims": {
+            "正确性（落款纪律）": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "正确性：P011 右对齐恰「报送日期：」，status=missing、rendered_as=留空（渲染为空字符串）。完整性：两产物齐，标题逐字，6 条目及条目内日期逐字。可验证性：filled=6/missing=1/missing_required_names=[] 自洽。"
+        }
+      }
+    }
+  },
+  "per_judge_scores": {
+    "P1": {
+      "step-router-v1": 10.0,
+      "Minimax-M3.1-Flash-Preview": 10.0
+    },
+    "P2": {
+      "step-router-v1": 10.0,
+      "Minimax-M3.1-Flash-Preview": 10.0
+    },
+    "P3": {
+      "step-router-v1": 5.0,
+      "Minimax-M3.1-Flash-Preview": 4.0
+    },
+    "P4": {
+      "step-router-v1": 5.0,
+      "Minimax-M3.1-Flash-Preview": 3.0
+    },
+    "P5": {
+      "step-router-v1": 5.0,
+      "Minimax-M3.1-Flash-Preview": 2.5
+    },
+    "P6": {
+      "step-router-v1": 10.0,
+      "Minimax-M3.1-Flash-Preview": 10.0
+    }
+  },
+  "final_scores": {
+    "P1": 10.0,
+    "P2": 10.0,
+    "P3": 4.5,
+    "P4": 4.0,
+    "P5": 3.75,
+    "P6": 10.0
+  },
+  "judge_consistency": {
+    "task": "t06",
+    "resample_of": "P5",
+    "first_score": 5.0,
+    "second_score": 5.0,
+    "delta": 0.0,
+    "action": "pass"
+  },
+  "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+  "protocol": "weighted-dims"
+}

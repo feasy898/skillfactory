@@ -1,0 +1,86 @@
+{
+  "template": "周报",
+  "title": "拾贝书店工作周报",
+  "filled_fields": [
+    "部门",
+    "填报人",
+    "周期",
+    "本周工作内容",
+    "下周工作计划",
+    "问题与需协调事项",
+    "报送日期"
+  ],
+  "missing_fields": [],
+  "fields": [
+    {
+      "name": "部门",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "拾贝书店"
+    },
+    {
+      "name": "填报人",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "关菡"
+    },
+    {
+      "name": "周期",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "2026年10月第2周（10月5日-10月9日）"
+    },
+    {
+      "name": "本周工作内容",
+      "required": true,
+      "kind": "list",
+      "status": "filled",
+      "value": [
+        "完成店庆档期主题陈列改造",
+        "复盘会员日核销数据并输出简报"
+      ]
+    },
+    {
+      "name": "下周工作计划",
+      "required": true,
+      "kind": "list",
+      "status": "filled",
+      "value": [
+        "启动冬季书单选品"
+      ]
+    },
+    {
+      "name": "问题与需协调事项",
+      "required": false,
+      "kind": "list",
+      "status": "filled",
+      "value": [
+        "收银终端老化，需要报修"
+      ]
+    },
+    {
+      "name": "报送日期",
+      "required": false,
+      "kind": "text",
+      "status": "filled",
+      "value": "2026-10-12"
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "filled": 7,
+    "missing": 0,
+    "missing_required": 0,
+    "missing_required_names": [],
+    "unknown_keys": [
+      "温馨提示"
+    ]
+  },
+  "outputs": {
+    "docx": "out/文书.docx",
+    "fields_json": "out/fields.json"
+  }
+}

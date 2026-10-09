@@ -1,0 +1,85 @@
+{
+  "template": "工作总结",
+  "title": "平台工程部2026 年 9 月工作总结",
+  "filled_fields": [
+    "总结主体",
+    "总结时段",
+    "工作回顾",
+    "主要成绩",
+    "存在问题",
+    "下一步工作打算",
+    "成文日期"
+  ],
+  "missing_fields": [],
+  "fields": [
+    {
+      "name": "总结主体",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "平台工程部"
+    },
+    {
+      "name": "总结时段",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "2026 年 9 月"
+    },
+    {
+      "name": "工作回顾",
+      "required": true,
+      "kind": "list",
+      "status": "filled",
+      "value": [
+        "完成网关灰度切换"
+      ]
+    },
+    {
+      "name": "主要成绩",
+      "required": true,
+      "kind": "list",
+      "status": "filled",
+      "value": [
+        "切换期间零回滚"
+      ]
+    },
+    {
+      "name": "存在问题",
+      "required": false,
+      "kind": "list",
+      "status": "filled",
+      "value": [
+        "老旧实例尚未下线"
+      ]
+    },
+    {
+      "name": "下一步工作打算",
+      "required": true,
+      "kind": "list",
+      "status": "filled",
+      "value": [
+        "把灰度流程沉淀为标准作业"
+      ]
+    },
+    {
+      "name": "成文日期",
+      "required": false,
+      "kind": "text",
+      "status": "filled",
+      "value": "2026年9月30日"
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "filled": 7,
+    "missing": 0,
+    "missing_required": 0,
+    "missing_required_names": [],
+    "unknown_keys": []
+  },
+  "outputs": {
+    "docx": "out/文书.docx",
+    "fields_json": "out/fields.json"
+  }
+}

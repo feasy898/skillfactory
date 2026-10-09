@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t03-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 159071,
+  "started_at_ms": 1791492015579,
+  "session_id": "sess_fbd75897-5b68-40b4-8280-1c0981538ac5",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t03-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 2071469,
+      "ot": 21813,
+      "dur": 133310,
+      "n": 46
+    }
+  ],
+  "input_tokens": 2071469,
+  "output_tokens": 21813,
+  "stdout_bytes": 4015,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": ", `gen.py` runs both. Formatting follows GB/T 9704 — 小标宋 title at 二号, 黑体 level-1 headings, 仿宋 三号 body on a fixed 28pt line grid, 公文 margins, and a 「— 页码 —」 footer.\\n\\n## Verification\\n\\n- `postcheck.py` passes 9/9 with 0 errors on both files.\\n- Both render to a single clean page via LibreOffice → PDF → PNG. The first render stranded a one-character orphan on each title's second line; I added a semantic break at the 关于 boundary, which fixed both.\\n- I smoke-tested the filled and malformed paths (all fields populated; mixed blank/non-blank/None/non-string/wrong-type values) — every case produced a valid docx without aborting, and a fully-populated 工作总结 renders with correct numbered items and a single-line title.\\n- Scratch render directories were removed; only the deliverables and the generator scripts remain.\\n\\nOne note on the render above: this machine has no 仿宋/黑体/楷体 installed, so LibreOffice substituted Noto CJK. The `.docx` itself specifies the correct GB/T font names and will render as intended in Word/WPS.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 46,\n    \"inputTokens\": 2071469,\n    \"outputTokens\": 21813,\n    \"totalTokens\": 2093282,\n    \"cacheReadTokens\": 2009183,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 3670,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 2093282,\n    \"contextUsed\": 63298,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

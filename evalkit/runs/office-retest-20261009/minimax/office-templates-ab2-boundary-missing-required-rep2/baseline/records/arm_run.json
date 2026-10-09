@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab2-boundary-missing-required-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 249210,
+  "started_at_ms": 1791490365318,
+  "session_id": "sess_4e40a252-ea99-4a46-b09e-6804b5c3dd8c",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab2-boundary-missing-required-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 2295253,
+      "ot": 31229,
+      "dur": 216456,
+      "n": 50
+    }
+  ],
+  "input_tokens": 2295253,
+  "output_tokens": 31229,
+  "stdout_bytes": 3945,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "y generating left/dist/start variants produced byte-identical output — `w:jc` was being ignored entirely — which pointed at `w:ind`, not alignment. Twips-only indentation renders correctly.\\n- **Wrong unit conversion** produced a 64000-twip (32cm) indent instead of 640. `w:sz` is half-points and `firstLineChars` is hundredths of a character.\\n- **`w:pPr` children were emitted out of CT_PPr schema order.** Reordered to `kinsoku → overflowPunct → spacing → ind → jc`.\\n\\nFinal rendering confirms the required layout holds: 称谓 flush at the left margin, body indented two characters, 落款 right-aligned.\\n\\nOne cosmetic caveat worth flagging: a `。` still lands at a line start after the placeholder in the 会议通知 body. `w:kinsoku` is set, but LibreOffice only honors it with document-level East Asian settings that this minimal package omits. Word applies kinsoku at the application level, so it should break correctly there — but I have not verified that, and it is the one thing in this deliverable I checked only in one renderer.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 50,\n    \"inputTokens\": 2295253,\n    \"outputTokens\": 31229,\n    \"totalTokens\": 2326482,\n    \"cacheReadTokens\": 2227724,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 5540,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 2326482,\n    \"contextUsed\": 68442,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

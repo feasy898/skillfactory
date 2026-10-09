@@ -1,0 +1,8 @@
+{
+  "scores": {
+    "Q1": {
+      "total": 5.0,
+      "evidence": "R1: run_log 确认四目录各含两产物且两遍一致；无 runner.py pass。R2: 标题居中黑体 22pt 且与 fields.json.title 一致；称谓顶格；正文 firstLineChars=200、仿宋 16pt、28 磅行距；落款右对齐。缺右缩进。R3: 无版心边距数据；标题符合公式。R4: fields.json 键一致，filled/total 满额（7/7、8/8、11/11、7/7），自洽。R5: 无 runner agreement；filled=total 间接支持。"
+    }
+  }
+}

@@ -9,7 +9,7 @@
   "owner_directive": "本轮=office 重测：dist/office-templates-skill 以补强后 v3/assets/office-templates（e82b3cb）按原打包口径重打包（1.0.1，包内绿自检 68/68 exit 0 双跑留证）；重测装置=新题集 8 题（merged office 子树）+ 原始 5 ab 任务（golden.json 冻结），两臂照 sf0008-k5b 机制（treatment 挂重打包后 dist 包可交付面、baseline 裸臂、隔离探针、oracle/判分器不进臂）",
   "run_id": "office-retest-20261009",
   "kind": "round_plan_registration",
-  "status": "apparatus_ready_arms_not_started",
+  "status": "completed_round2_verdict_rejected_failclosed",
   "base_commit": "9827318",
   "base_commit_note": "本卡登记开工时 git rev-parse HEAD 实读值（9827318=planner ab5 裁决提交；本轮装置与重打包随本卡提交落盘，P4 口径以实际开工值为准）",
   "opened_at": "2026-10-09T03:31+0800",
@@ -69,12 +69,28 @@
         "pkg": "office-templates",
         "n": 3,
         "tasks": 13,
-        "glm_tasks": ["ab1-standard-four-templates", "ab3-empty-and-string-lists",
-                      "ab5-determinism-layout-selfeval", "t02", "t04", "t06", "t08"],
-        "minimax_tasks": ["ab2-boundary-missing-required", "ab4-invalid-input-rejection",
-                          "t01", "t03", "t05", "t07"],
+        "glm_tasks": [
+          "ab1-standard-four-templates",
+          "ab3-empty-and-string-lists",
+          "ab5-determinism-layout-selfeval",
+          "t02",
+          "t04",
+          "t06",
+          "t08"
+        ],
+        "minimax_tasks": [
+          "ab2-boundary-missing-required",
+          "ab4-invalid-input-rejection",
+          "t01",
+          "t03",
+          "t05",
+          "t07"
+        ],
         "arm_calls": 78,
-        "by_family": {"glm": 42, "minimax": 36}
+        "by_family": {
+          "glm": 42,
+          "minimax": 36
+        }
       }
     ],
     "total_arm_calls": 78,
@@ -91,7 +107,12 @@
       "composition_rule": "被测族=glm → 裁判=[step-router-v1, Minimax-M3.1-Flash-Preview]；被测族=minimax → 裁判=[step-router-v1, GLM-5.3]",
       "per_task_judges": "每任务 ≥2 名异族裁判（下限 2，来自 2 个不同族，与被测族交集为空）",
       "position_rotation": "裁判槽位按任务序奇偶互换；EVAL-SPEC §3.2-4 甲乙呈现位置在任务间与重复间轮换",
-      "blind": ["裁判对两臂来源与顺序不知情", "产物匿名化（P1..Pn 洗牌）+ docx 事实预抽取 + 路径/挂载痕迹漂白；映射仅存 records/judge-staging/", "评分必附实测证据，禁同情分", "裁判模型 ID 与裁判 prompt 版本随轮落盘（model_pin.judge_model_id、judge_prompt_version）"]
+      "blind": [
+        "裁判对两臂来源与顺序不知情",
+        "产物匿名化（P1..Pn 洗牌）+ docx 事实预抽取 + 路径/挂载痕迹漂白；映射仅存 records/judge-staging/",
+        "评分必附实测证据，禁同情分",
+        "裁判模型 ID 与裁判 prompt 版本随轮落盘（model_pin.judge_model_id、judge_prompt_version）"
+      ]
     },
     "protocols": {
       "ab_item_scoring": "原始 5 ab 任务：golden.json rubric（冻结原文）逐条 0/0.5/1/1.5/2，总分=round(10×Σ项÷(2×项数),1)（照 K5B 口径）",
@@ -116,10 +137,44 @@
   },
   "repack_record": {
     "dist_package": "dist/office-templates-skill（1.0.0→1.0.1 重打包，包结构不变）",
-    "content_updates": ["SKILL.md 正文=补强版 package/SKILL.md（§2/§5/§6-V8/§9-5）", "scripts/gen_doc.py=补强版引擎（canonicalize_docx_zip）", "README.md 红线②表述同步", "CHANGELOG.md 新增 1.0.1 重打包条目（打包流程留痕照旧例）", "MANIFEST.md/front-matter 版本随包升 1.0.1"],
-    "untouched": ["references/ 四份", "requirements.txt", "eval/runner.py", "eval/golden.json（冻结 2fa58b07…）", "reference/inputs/", "reference/out/（照旧例取自 oracle/out，本轮 oracle 参照零改动）", "LICENSE/EVALUATION.md/eval/results/benchmark.json"],
+    "content_updates": [
+      "SKILL.md 正文=补强版 package/SKILL.md（§2/§5/§6-V8/§9-5）",
+      "scripts/gen_doc.py=补强版引擎（canonicalize_docx_zip）",
+      "README.md 红线②表述同步",
+      "CHANGELOG.md 新增 1.0.1 重打包条目（打包流程留痕照旧例）",
+      "MANIFEST.md/front-matter 版本随包升 1.0.1"
+    ],
+    "untouched": [
+      "references/ 四份",
+      "requirements.txt",
+      "eval/runner.py",
+      "eval/golden.json（冻结 2fa58b07…）",
+      "reference/inputs/",
+      "reference/out/（照旧例取自 oracle/out，本轮 oracle 参照零改动）",
+      "LICENSE/EVALUATION.md/eval/results/benchmark.json"
+    ],
     "canonical_source_zero_change": "v3/assets/office-templates 本轮零改动（补强已收口 e82b3cb）",
-    "verification": ["包内绿自检 exit 0 双跑（68/68 checks、双跑输出逐字节一致）", "空目录红检 exit 1", "v3 源侧 oracle self 68/68 exit 0", "oracle/verify.py PASS=8 FAIL=0"],
+    "verification": [
+      "包内绿自检 exit 0 双跑（68/68 checks、双跑输出逐字节一致）",
+      "空目录红检 exit 1",
+      "v3 源侧 oracle self 68/68 exit 0",
+      "oracle/verify.py PASS=8 FAIL=0"
+    ],
     "registry_note": "REGISTRY.md:72-73 登记的 dist SKILL.md/gen_doc.py sha256 描述重打包前形态（K5B 时点），golden 行（:75）仍有效；REGISTRY 全行刷新归发布阶段（本轮不动 REGISTRY，留待 owner 批准点一并处理）"
+  },
+  "closed_at": "2026-10-09T12:20+0800",
+  "result_summary": {
+    "delta": 4.61,
+    "win_rate": 0.9231,
+    "w/l/t": "12/1/0",
+    "reverse": 0,
+    "unjudgeable": [
+      "t08"
+    ],
+    "verdict": "rejected（fail-closed）",
+    "efficiency": {
+      "token_ratio": 0.473,
+      "duration_ratio": 0.375
+    }
   }
 }

@@ -1,0 +1,147 @@
+{
+  "task": "ab4-invalid-input-rejection",
+  "arm": "baseline",
+  "entry_point": "gen_doc.py",
+  "python": "3.12.3",
+  "convention": {
+    "invalid_exit_code": 2,
+    "invalid_stderr_language": "中文",
+    "invalid_residue_policy": "零产物残留：不创建输出目录、不写半成品",
+    "missing_required_field_policy": "必填缺失不算非法输入，占位符补齐并正常生成"
+  },
+  "cases": [
+    {
+      "group": "illegal-1-invalid-template",
+      "description": "--template 证书（模板名非法）",
+      "input_class": "非法",
+      "command": "python3 gen_doc.py --template 证书 --data fixtures/周报/case1.json",
+      "exit_code": 2,
+      "stderr": "错误：模板名非法：证书，可用模板为 会议通知、周报、工作总结、请示函。",
+      "stderr_summary": [
+        "错误：模板名非法：证书，可用模板为 会议通知、周报、工作总结、请示函。"
+      ],
+      "stderr_has_chinese": true,
+      "stdout": "",
+      "artifacts_before": [],
+      "artifacts_after": [],
+      "newly_created_files": [],
+      "residue_free": true,
+      "expected_output_dir": null,
+      "exit_code_matches_convention": true,
+      "rejected_with_convention_code": true,
+      "rejected_with_chinese_stderr": true,
+      "created_out_dir": false,
+      "no_partial_artifact": true
+    },
+    {
+      "group": "illegal-2-data-file-missing",
+      "description": "--data 指向不存在的文件",
+      "input_class": "非法",
+      "command": "python3 gen_doc.py --template 周报 --data fixtures/周报/不存在.json",
+      "exit_code": 2,
+      "stderr": "错误：数据文件不存在：fixtures/周报/不存在.json，请检查 --data 指定的路径。",
+      "stderr_summary": [
+        "错误：数据文件不存在：fixtures/周报/不存在.json，请检查 --data 指定的路径。"
+      ],
+      "stderr_has_chinese": true,
+      "stdout": "",
+      "artifacts_before": [],
+      "artifacts_after": [],
+      "newly_created_files": [],
+      "residue_free": true,
+      "expected_output_dir": null,
+      "exit_code_matches_convention": true,
+      "rejected_with_convention_code": true,
+      "rejected_with_chinese_stderr": true,
+      "created_out_dir": false,
+      "no_partial_artifact": true
+    },
+    {
+      "group": "illegal-3-json-parse-failure",
+      "description": "--data 指向内容为「不是JSON」的文件",
+      "input_class": "非法",
+      "command": "python3 gen_doc.py --template 周报 --data /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/baseline/tmp_inputs/notjson.json",
+      "exit_code": 2,
+      "stderr": "错误：数据文件不是合法 JSON，解析失败：/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/baseline/tmp_inputs/notjson.json（Expecting value: line 1 column 1 (char 0)）。",
+      "stderr_summary": [
+        "错误：数据文件不是合法 JSON，解析失败：/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/baseline/tmp_inputs/notjson.json（Expecting value: line 1 column 1 (char 0)）。"
+      ],
+      "stderr_has_chinese": true,
+      "stdout": "",
+      "artifacts_before": [],
+      "artifacts_after": [],
+      "newly_created_files": [],
+      "residue_free": true,
+      "expected_output_dir": null,
+      "exit_code_matches_convention": true,
+      "rejected_with_convention_code": true,
+      "rejected_with_chinese_stderr": true,
+      "created_out_dir": false,
+      "no_partial_artifact": true
+    },
+    {
+      "group": "illegal-4-toplevel-not-object",
+      "description": "--data 指向内容为 [\"数组\",\"非对象\"] 的文件",
+      "input_class": "非法",
+      "command": "python3 gen_doc.py --template 周报 --data /home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/baseline/tmp_inputs/array.json",
+      "exit_code": 2,
+      "stderr": "错误：数据文件 JSON 顶层必须是对象（键值对），实际为 list：/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/baseline/tmp_inputs/array.json。",
+      "stderr_summary": [
+        "错误：数据文件 JSON 顶层必须是对象（键值对），实际为 list：/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/baseline/tmp_inputs/array.json。"
+      ],
+      "stderr_has_chinese": true,
+      "stdout": "",
+      "artifacts_before": [],
+      "artifacts_after": [],
+      "newly_created_files": [],
+      "residue_free": true,
+      "expected_output_dir": null,
+      "exit_code_matches_convention": true,
+      "rejected_with_convention_code": true,
+      "rejected_with_chinese_stderr": true,
+      "created_out_dir": false,
+      "no_partial_artifact": true
+    },
+    {
+      "group": "legal-control",
+      "description": "合法对照组：fixtures/周报/case1.json",
+      "input_class": "合法",
+      "command": "python3 gen_doc.py --template 周报 --data fixtures/周报/case1.json",
+      "exit_code": 0,
+      "stderr": "",
+      "stderr_summary": [],
+      "stderr_has_chinese": false,
+      "stdout": "已生成：out/周报/case1",
+      "artifacts_before": [],
+      "artifacts_after": [
+        "out/周报/case1/fields.json",
+        "out/周报/case1/文书.docx"
+      ],
+      "newly_created_files": [
+        "out/周报/case1/fields.json",
+        "out/周报/case1/文书.docx"
+      ],
+      "residue_free": false,
+      "expected_output_dir": "out/周报/case1",
+      "expected_output_dir_exists": true,
+      "expected_artifacts": [
+        "文书.docx",
+        "fields.json"
+      ],
+      "expected_artifacts_present": [
+        "fields.json",
+        "文书.docx"
+      ],
+      "exit_code_matches_convention": true
+    }
+  ],
+  "summary": {
+    "illegal_total": 4,
+    "illegal_rejected_with_exit_2": 4,
+    "illegal_with_chinese_stderr": 4,
+    "illegal_with_zero_residue": 4,
+    "legal_exit_0": 1,
+    "legal_artifacts_ok": 1,
+    "all_passed": true
+  }
+}

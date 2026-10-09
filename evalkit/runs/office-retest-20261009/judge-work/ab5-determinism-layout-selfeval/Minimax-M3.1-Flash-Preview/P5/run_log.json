@@ -1,0 +1,91 @@
+{
+  "task": "ab5-determinism-layout-selfeval（确定性自评：同输入连跑两遍，第二遍覆盖复写第一遍）",
+  "run_id": "<redacted>",
+  "template": "会议通知",
+  "data": "fixtures/会议通知/case1.json",
+  "outdir": "out/会议通知/case1",
+  "command": "python3 gen_doc.py --template 会议通知 --data fixtures/会议通知/case1.json --outdir out/会议通知/case1",
+  "python": "3.12.3",
+  "interpreter": "/usr/bin/python3.12",
+  "passes": [
+    {
+      "pass": 1,
+      "finished_at": "2026-10-09T05:26:13.784819",
+      "exit_code": 0,
+      "files": {
+        "文书.docx": {
+          "sha256": "586e4d54bf067c4693bff40991175abbcd0bbb7849d8af6597460d6092879c99",
+          "size_bytes": 37404
+        },
+        "fields.json": {
+          "sha256": "9fcba2f2b7e9d41160bf2dea67e190b52d2d2f3576794dcd29e12d423699a11c",
+          "size_bytes": 906
+        }
+      },
+      "snapshot_dir": ".determinism/pass1"
+    },
+    {
+      "pass": 2,
+      "finished_at": "2026-10-09T05:26:14.116019",
+      "exit_code": 0,
+      "files": {
+        "文书.docx": {
+          "sha256": "586e4d54bf067c4693bff40991175abbcd0bbb7849d8af6597460d6092879c99",
+          "size_bytes": 37404
+        },
+        "fields.json": {
+          "sha256": "9fcba2f2b7e9d41160bf2dea67e190b52d2d2f3576794dcd29e12d423699a11c",
+          "size_bytes": 906
+        }
+      }
+    }
+  ],
+  "status": "done",
+  "byte_comparison": {
+    "文书.docx": {
+      "byte_identical": true,
+      "size_equal": true,
+      "size_bytes": 37404,
+      "sha256_equal": true,
+      "first_diff_byte_offset": null,
+      "detail": "两遍产物均为 37404 字节，逐字节读取比对完全一致"
+    },
+    "fields.json": {
+      "byte_identical": true,
+      "size_equal": true,
+      "size_bytes": 906,
+      "sha256_equal": true,
+      "first_diff_byte_offset": null,
+      "detail": "两遍产物均为 906 字节，逐字节读取比对完全一致",
+      "excluding_output_keys_equal": true
+    }
+  },
+  "stdout_stderr_identical": true,
+  "docx_parsed_comparison": {
+    "paragraph_count_pass1": 10,
+    "paragraph_count_pass2": 10,
+    "paragraph_profiles_equal": true,
+    "text_equal": true,
+    "alignment_equal": true,
+    "indent_equal": true,
+    "font_equal": true,
+    "line_spacing_equal": true,
+    "zip_parts": {
+      "names_equal": true,
+      "part_count": 17,
+      "all_part_sha256_equal": true
+    }
+  },
+  "outdir_check": {
+    "expected": [
+      "fields.json",
+      "文书.docx"
+    ],
+    "actual": [
+      "fields.json",
+      "文书.docx"
+    ],
+    "exactly_two_products": true
+  },
+  "conclusion": "一致：同输入（fixtures/会议通知/case1.json）连跑两遍至同一输出目录 out/会议通知/case1，文书.docx 两遍 sha256 均为 586e4d54bf067c4693bff40991175abbcd0bbb7849d8af6597460d6092879c99、逐字节比对完全一致；fields.json 两遍 sha256 均为 9fcba2f2b7e9d41160bf2dea67e190b52d2d2f3576794dcd29e12d423699a11c、逐字节比对完全一致（剔除 outputs 类路径键后归一化对比亦一致）；docx 解析后 10 个段落的文本/对齐/缩进/字体/行距逐项完全一致，包内 17 个 zip 部件逐一 sha256 相同；两遍 stdout/stderr 输出一致；输出目录恰含 文书.docx 与 fields.json 两个产物；产物中未发现当前时间、随机内容等不可复现源（docProps/core.xml 创建/修改时间与 zip 条目时间戳均固定为 2000-01-01）。"
+}

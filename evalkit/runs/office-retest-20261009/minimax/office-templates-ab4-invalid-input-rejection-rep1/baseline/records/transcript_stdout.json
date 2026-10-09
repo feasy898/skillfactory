@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_3abf20c8-130d-430f-8869-c4ed7e66866d",
+  "traceId": "24509ed5-2d0c-4854-93eb-7cdd8154609f",
+  "turnId": "turn_069c3b8c-ab14-440b-aa0d-7e1d5dfd2662",
+  "response": "All five groups pass. Here's what was built and what the results show.\n\n## Outcome\n\nI built the generation entry point from scratch (this is the baseline arm — bare, only `brief.md` + `fixtures/`, no skill mounted) and ran the full five-group test. All groups behave to contract:\n\n| Group | Input class | Exit | Chinese stderr | Residue |\n|---|---|---|---|---|\n| 1 `--template 证书` | 非法 | 2 | yes | none |\n| 2 `--data` nonexistent | 非法 | 2 | yes | none |\n| 3 `--data` non-JSON | 非法 | 2 | yes | none |\n| 4 `--data` `[\"数组\",\"非对象\"]` | 非法 | 2 | yes | none |\n| 5 `fixtures/周报/case1.json` | 合法 | 0 | — | two artifacts |\n\nFor the legal control group, `out/周报/case1/` contains both `文书.docx` (verified a real Word 2007+ file that reopens cleanly) and `fields.json`.\n\n## The key design decision\n\nThe brief's hardest requirement is the contrast between \"illegal\" and \"missing required field\" — missing must *not* be rejected. So I ordered the entry point as validate-everything-then-produce: template name, then data file existence, then JSON parse, then top-level-is-object, all four bail out with exit 2 before any directory is created. Only after all four pass does it call `os.makedirs`. The docx is also built fully in memory as bytes before anything touches disk, so a mid-generation failure can't leave a half-written file.\n\nMissing fields take a separate path: they're filled with a `待定` placeholder, a hint goes to stderr, and generation proceeds with exit 0. I verified this independently of the driver's own bookkeeping — a partial input and even `{}` both produced complete artifacts at exit 0, while the four illegal groups created no `out/` directory at all.\n\nOne environment note worth flagging: `python-docx` isn't importable from the venv's default path, so `gen_doc.py` resolves it from user site-packages via a small fallback at import time. Without that the legal control group would have failed on a missing dependency rather than on its actual behavior.\n\n## Files in place\n\n- `gen_doc.py` — the entry point under test\n- `run_cases.py` — the test driver\n- `run_log.json` — per-group record: full command, exit code, stderr summary, and before/after artifact listings backing the residue check\n- `out/周报/case1/文书.docx` + `fields.json` — legal control group products\n\nEach illegal group is cleaned up after being recorded, so every group starts from a zero-residue state and the residue findings are independent rather than inherited.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 23,
+    "inputTokens": 670068,
+    "outputTokens": 10560,
+    "totalTokens": 680628,
+    "cacheReadTokens": 639744,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 1790,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 680628,
+    "contextUsed": 38170,
+    "contextWindow": 200000
+  }
+}

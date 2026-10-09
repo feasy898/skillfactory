@@ -1,0 +1,15 @@
+EXTRACT OF 文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=262890 runs=[屿光咖啡营运部工作周报/SimHei/18.0] text=屿光咖啡营运部工作周报
+P001 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=1.3 runs=[（2026年10月第2周）/SimSun/12.0] text=（2026年10月第2周）
+P002 align=LEFT (0) firstLineChars=None firstLineIndent=None spacing=1.3 runs=[部门：屿光咖啡营运部/SimSun/12.0 | 　　/SimSun/12.0 | 填报人：计雨时/SimSun/12.0] text=部门：屿光咖啡营运部　　填报人：计雨时
+P003 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[一、本周工作内容/SimHei/14.0] text=一、本周工作内容
+P004 align=JUSTIFY (3) firstLineChars=None firstLineIndent=304800 spacing=1.3 runs=[1. 10月9日完成季节限定/SimSun/12.0] text=1. 10月9日完成季节限定豆单上新。
+P005 align=JUSTIFY (3) firstLineChars=None firstLineIndent=304800 spacing=1.3 runs=[2. 大学城二店10月10日/SimSun/12.0] text=2. 大学城二店10月10日起延时营业至23时。
+P006 align=JUSTIFY (3) firstLineChars=None firstLineIndent=304800 spacing=1.3 runs=[3. 10月11日完成月度盘/SimSun/12.0] text=3. 10月11日完成月度盘点差异复核。
+P007 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[二、下周工作计划/SimHei/14.0] text=二、下周工作计划
+P008 align=JUSTIFY (3) firstLineChars=None firstLineIndent=304800 spacing=1.3 runs=[1. 启动圣诞杯具供应商比价/SimSun/12.0] text=1. 启动圣诞杯具供应商比价。
+P009 align=JUSTIFY (3) firstLineChars=None firstLineIndent=304800 spacing=1.3 runs=[2. 10月20日前输出四季/SimSun/12.0] text=2. 10月20日前输出四季度排班初稿。
+P010 align=None firstLineChars=None firstLineIndent=None spacing=None runs=[三、问题与需协调事项/SimHei/14.0] text=三、问题与需协调事项
+P011 align=JUSTIFY (3) firstLineChars=None firstLineIndent=304800 spacing=1.3 runs=[1. 望人事组于10月18日/SimSun/12.0] text=1. 望人事组于10月18日前批复两名兼职编制。
+P012 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=1.3 runs=[填报人：计雨时/SimSun/12.0] text=填报人：计雨时
+P013 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=1.3 runs=[报送日期：2026年10月1/SimSun/12.0] text=报送日期：2026年10月11日

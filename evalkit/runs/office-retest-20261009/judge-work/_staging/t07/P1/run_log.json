@@ -1,0 +1,83 @@
+{
+  "task": "office-templates / 周报（模板错配：工作总结数据投给周报模板）",
+  "run_date": "2026-10-09",
+  "interpreter": "python3 3.12.3（PYTHONPATH=/home/pan-ding/.local/lib/python3.12/site-packages，python-docx 1.2.0）",
+  "data_mapping": {
+    "policy": "缺数据不编造（SKILL.md §3.2 F1–F6 / §9 步骤2「宁缺勿编」）；用户要求「对不上的字段想办法凑齐」属编造请求，未执行。",
+    "source_file": "yuguang_q3.json（工作总结口径，原文保存）",
+    "engine_input_file": "周报数据.json（周报字段 + 原 7 键原样带入，模板外键按 F6 记入 unknown_keys 留痕）",
+    "mapped": [
+      {"周报字段": "部门", "来源键": "总结主体", "值": "屿光咖啡品控组", "理由": "同为主体身份字段，跨模板语义一致，无编造"},
+      {"周报字段": "报送日期", "来源键": "成文日期", "值": "2026年10月9日", "理由": "同为文书落款日期，且与当日一致，无编造"}
+    ],
+    "not_mapped": [
+      {"周报字段": "填报人", "来源键": null, "理由": "原始材料无任何人员信息，无可对应来源"},
+      {"周报字段": "周期", "来源键": "总结时段", "原值": "2026年第三季度", "理由": "季度时段≠周报周期，填入会使周报声称统计口径为一个季度"},
+      {"周报字段": "本周工作内容", "来源键": "工作回顾/主要成绩", "原值": "完成季度杯测 36 场 / 处理客诉工单 58 单 / 客诉 48 小时闭环率提升至 92%", "理由": "均为季度累计量，填入即把季度数字表述为本周完成量"},
+      {"周报字段": "下周工作计划", "来源键": "下一步工作打算", "原值": "引入损耗周报机制", "理由": "季度层面规划，≠下周计划"},
+      {"周报字段": "问题与需协调事项", "来源键": "存在问题", "原值": "偏远门店物流损耗偏高", "理由": "季度复盘口径下的问题，且非「需协调事项」定性；如用户确认本周仍成立可自行补入"}
+    ]
+  },
+  "runs": [
+    {
+      "pass": 1,
+      "command": "python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 周报 --data 周报数据.json --outdir out",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=周报，标题=屿光咖啡品控组工作周报，字段 filled/total=2/7，必填缺失=['填报人', '周期', '本周工作内容', '下周工作计划']，模板外键=['下一步工作打算', '主要成绩', '存在问题', '工作回顾', '总结主体', '总结时段', '成文日期']）",
+      "artifacts": {
+        "文书.docx": {"sha256": "15050a43064771e19d5b96a25e90deb95952e6f0b2d4fdb5a2708db220a64077", "bytes": 36940},
+        "fields.json": {"sha256": "b488dbdeefb17f80309327f83043cad038048ba10e528b8ed5d784103be76841", "bytes": 2003}
+      }
+    },
+    {
+      "pass": 2,
+      "command": "python3 <SKILL_MOUNT>/scripts/gen_doc.py --template 周报 --data 周报数据.json --outdir out",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=周报，标题=屿光咖啡品控组工作周报，字段 filled/total=2/7，必填缺失=['填报人', '周期', '本周工作内容', '下周工作计划']，模板外键=['下一步工作打算', '主要成绩', '存在问题', '工作回顾', '总结主体', '总结时段', '成文日期']）",
+      "artifacts": {
+        "文书.docx": {"sha256": "15050a43064771e19d5b96a25e90deb95952e6f0b2d4fdb5a2708db220a64077", "bytes": 36940},
+        "fields.json": {"sha256": "b488dbdeefb17f80309327f83043cad038048ba10e528b8ed5d784103be76841", "bytes": 2003}
+      }
+    }
+  ],
+  "determinism": {
+    "method": "完全相同命令行连跑两遍到同一 --outdir（第二遍覆盖复写），每遍跑完立刻快照到 --outdir 之外的旁路目录 .snap/run1、.snap/run2",
+    "docx_byte_identical": true,
+    "fields_json_byte_identical": true,
+    "fields_json_equal_excluding_outputs": true,
+    "verdict": "两遍两产物 sha256 完全相同，逐字节对拍一致（fields.json 本次因命令行 outdir 相同，outputs 路径亦相同，故整文件即一致）",
+    "notes": "引擎已归一化 docx zip 容器条目时间戳为 1980-01-01（gen_doc.py ZIP_FIXED_DATE），两遍之间实际间隔 1.2s 仍零差异"
+  },
+  "inventory": {
+    "SKILL.md": "齐全",
+    "scripts/gen_doc.py": "齐全",
+    "requirements.txt": "齐全（python-docx>=1.1，实装 1.2.0）"
+  },
+  "static_checks": {
+    "py_compile": {"command": "python3 -m py_compile <SKILL_MOUNT>/scripts/gen_doc.py", "exit_code": 0, "errors": 0},
+    "nondeterminism_source_scan": {
+      "command": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" <SKILL_MOUNT>/scripts/gen_doc.py",
+      "hits": 0,
+      "exit_code": 1
+    }
+  },
+  "ledger": {
+    "total": 7,
+    "filled": 2,
+    "missing": 5,
+    "missing_required": 4,
+    "missing_required_names": ["填报人", "周期", "本周工作内容", "下周工作计划"],
+    "unknown_keys": ["下一步工作打算", "主要成绩", "存在问题", "工作回顾", "总结主体", "总结时段", "成文日期"],
+    "rendered_document": [
+      "屿光咖啡品控组工作周报",
+      "填报人：____　　周期：____",
+      "一、本周工作内容",
+      "1．____",
+      "二、下周工作计划",
+      "1．____",
+      "报送日期：2026年10月9日"
+    ],
+    "note": "选填小节「三、问题与需协调事项」按 F4 整节省略，文中不出现节头"
+  },
+  "environment_caveat": "本机默认 python3 为 /home/pan-ding/venvs/ml/bin/python3，其 sys.path 不含 python-docx；运行时以 PYTHONPATH=/home/pan-ding/.local/lib/python3.12/site-packages 解析到 python-docx 1.2.0。pip 直接安装被 PEP 668 拒绝，故未改动任何环境。"
+}

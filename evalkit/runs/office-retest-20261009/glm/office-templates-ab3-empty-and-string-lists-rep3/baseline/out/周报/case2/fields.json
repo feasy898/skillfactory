@@ -1,0 +1,88 @@
+{
+  "template": "周报",
+  "data": "fixtures/周报/case2.json",
+  "title": "____工作周报",
+  "fields": [
+    {
+      "name": "填报人",
+      "kind": "scalar",
+      "required": true,
+      "status": "filled",
+      "value": "赵倩"
+    },
+    {
+      "name": "周期",
+      "kind": "scalar",
+      "required": true,
+      "status": "placeholder",
+      "value": "",
+      "placeholder": "____",
+      "note": "必填缺失，以____占位"
+    },
+    {
+      "name": "本周工作内容",
+      "kind": "list",
+      "required": true,
+      "status": "empty-list-placeholder",
+      "value": [],
+      "placeholder_item": "1．____",
+      "note": "空列表按必填缺失处理，渲染占位条目"
+    },
+    {
+      "name": "下周工作计划",
+      "kind": "list",
+      "required": true,
+      "status": "filled",
+      "value": [
+        "整理缺陷清单并分派责任人"
+      ]
+    },
+    {
+      "name": "问题与需协调事项",
+      "kind": "list",
+      "required": false,
+      "status": "missing-optional-omitted",
+      "value": null,
+      "note": "选填小节缺失，整节省略（正文不出现该节头），required=false"
+    },
+    {
+      "name": "报送日期",
+      "kind": "scalar",
+      "required": true,
+      "status": "filled",
+      "value": "2026-09-28"
+    }
+  ],
+  "sections": [
+    {
+      "field": "本周工作内容",
+      "number": "一",
+      "header": "一、本周工作内容",
+      "items": [
+        "1．____"
+      ]
+    },
+    {
+      "field": "下周工作计划",
+      "number": "二",
+      "header": "二、下周工作计划",
+      "items": [
+        "1．整理缺陷清单并分派责任人"
+      ]
+    }
+  ],
+  "omitted_sections": [
+    {
+      "field": "问题与需协调事项",
+      "header": "问题与需协调事项",
+      "reason": "选填缺失，整节省略（正文不出现该节头）"
+    }
+  ],
+  "signature": {
+    "alignment": "right",
+    "lines": [
+      "填报人：赵倩",
+      "报送日期：2026-09-28"
+    ]
+  }
+}

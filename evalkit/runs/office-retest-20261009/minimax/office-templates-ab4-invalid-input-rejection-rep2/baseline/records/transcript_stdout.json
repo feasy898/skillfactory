@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_e12aea3b-4c1a-495d-92bd-1db2c7341620",
+  "traceId": "1fdb270b-2924-41ac-819f-6d5bf8b64a74",
+  "turnId": "turn_58b74816-63bb-4fa4-a7b8-d4ac6b70d8a1",
+  "response": "任务完成，六组用例全部通过（`run_cases.py` 退出码 0）。\n\n## 结论\n\n这个 baseline 臂没有挂载任何技能包（`arms_manifest.json` 里 `baseline_has_skill: false`），所以我从零写了一个生成入口 `gen.py`，再对它施加任务书要求的四组非法输入、一组合法对照和一组必填缺失补测。四组非法输入全部以退出码 2 拒绝、stderr 给出中文错误信息、且零产物残留；合法对照组退出码 0 并在 `out/周报/case1/` 下同时产出 `文书.docx` 与 `fields.json`。\n\n| 组 | 输入 | 退出码 | stderr 中文 | 残留 | 判定 |\n|---|---|---|---|---|---|\n| ① | `--template 证书` | 2 | 是 | 0 | pass |\n| ② | `--data`指向不存在的文件 | 2 | 是 | 0 | pass |\n| ③ | `--data` 内容「不是JSON」 | 2 | 是 | 0 | pass |\n| ④ | `--data` 内容 `[\"数组\",\"非对象\"]` | 2 | 是 | 0 | pass |\n| 对照 | `fixtures/周报/case1.json` | 0 | — | 5 条（预期产物） | pass |\n| 补测 | 缺 周期/下周工作计划/问题与需协调事项 | 0 | — | 输出到 `.scratch/` | pass |\n\n## 两个关键设计点\n\n**零残留靠「校验全通过才落盘」**：`gen.py` 先依次校验模板名 → 数据文件存在且是普通文件 → JSON 可解析 → 顶层是对象，四步全过才开始建目录、写文件。`fields.json` 和 `文书.docx` 都走「写同目录 `.xxx.tmp` 再 `os.replace`」，所以中途出错也不会留下半成品。残留检查用执行前后对臂目录做递归快照取差集，`fixtures/`、`invalid_inputs/`、`extra_inputs/` 和脚本自身算执行前既有。② 号输入的文件是刻意不存在于盘上的，所以没有对应 fixture。\n\n**必填缺失没被当成非法**：任务书明确要求「含必填缺失的输入不算非法」。缺失字段按「（未填写）」占位，正常出文书、退出码 0，`fields.json` 的 `missing_fields` 如实记录是哪几个。为不污染任务书约定的 `out/周报/case1/` 布局，这组用 `--outdir .scratch/missing-required` 改写出图位置，记录进日志后由执行器删除（`summary.scratch_cleaned` 为证）。\n\n## 落盘物\n\n```\ngen.py                      生成入口（校验/渲染/原子落盘）\nrun_cases.py                用例执行器（六组子进程调用 + 快照残留检查）\nrun_log.json                逐组留证：完整命令、argv、退出码、stderr 摘要、残留路径、判定\nREADME.md                   复现方式与口径说明\ninvalid_inputs/             not-json.txt、top-level-array.json\nextra_inputs/               missing-required.json\nout/周报/case1/文书.docx      37,024 字节，正文七个字段齐全，CJK 字体已设\nout/周报/case1/fields.json   模板元信息 + 逐字段 present/value + missing_fields\n```\n\n一处环境说明：本机 `python3` 指向的 venv 禁用了 user site，直接 `import docx` 会失败。`gen.py` 里加了 fallback，在导入失败时把 `~/.local/lib/python3.*/site-packages` 追加进 `sys.path` 再重试，因此在 `/home/pan-ding/venvs/ml/bin/python3` 和 `/usr/bin/python3` 两个解释器下都能跑。实际使用的解释器路径记在 `run_log.json` 的 `interpreter` 字段。\n\n首轮跑出的合法对照组曾是 fail，原因是我自己的断言漏算了 `out`、`out/周报`、`out/周报/case1` 这三个中间目录，属于检查器写错而非行为不符，已修正并清仓重跑确认幂等。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 32,
+    "inputTokens": 1036743,
+    "outputTokens": 17267,
+    "totalTokens": 1054010,
+    "cacheReadTokens": 989724,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 2621,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1054010,
+    "contextUsed": 48092,
+    "contextWindow": 200000
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "title": "拾贝书店周报（2026年10月第2周）",
+  "source": "shibei_week42.json",
+  "fields": [
+    {
+      "name": "部门",
+      "type": "text",
+      "required": true,
+      "present": true,
+      "missing": false,
+      "dropped_blank_items": 0,
+      "raw": " 拾贝书店 ",
+      "value": "拾贝书店"
+    },
+    {
+      "name": "填报人",
+      "type": "text",
+      "required": true,
+      "present": true,
+      "missing": false,
+      "dropped_blank_items": 0,
+      "raw": "关菡",
+      "value": "关菡"
+    },
+    {
+      "name": "周期",
+      "type": "text",
+      "required": true,
+      "present": true,
+      "missing": false,
+      "dropped_blank_items": 0,
+      "raw": "2026年10月第2周（10月5日-10月9日）",
+      "value": "2026年10月第2周（10月5日-10月9日）"
+    },
+    {
+      "name": "本周工作内容",
+      "type": "list",
+      "required": true,
+      "present": true,
+      "missing": false,
+      "dropped_blank_items": 1,
+      "raw": [
+        "完成店庆档期主题陈列改造",
+        "   ",
+        "复盘会员日核销数据并输出简报"
+      ],
+      "value": [
+        "完成店庆档期主题陈列改造",
+        "复盘会员日核销数据并输出简报"
+      ]
+    },
+    {
+      "name": "下周工作计划",
+      "type": "text",
+      "required": true,
+      "present": true,
+      "missing": false,
+      "dropped_blank_items": 0,
+      "raw": "启动冬季书单选品",
+      "value": "启动冬季书单选品"
+    },
+    {
+      "name": "问题与需协调事项",
+      "type": "list",
+      "required": true,
+      "present": true,
+      "missing": false,
+      "dropped_blank_items": 1,
+      "raw": [
+        "收银终端老化，需要报修",
+        ""
+      ],
+      "value": [
+        "收银终端老化，需要报修"
+      ]
+    },
+    {
+      "name": "报送日期",
+      "type": "text",
+      "required": true,
+      "present": true,
+      "missing": false,
+      "dropped_blank_items": 0,
+      "raw": "2026-10-12",
+      "value": "2026-10-12"
+    },
+    {
+      "name": "温馨提示",
+      "type": "text",
+      "required": false,
+      "present": true,
+      "missing": false,
+      "dropped_blank_items": 0,
+      "raw": "本周五店休半天",
+      "value": "本周五店休半天"
+    }
+  ],
+  "missing_required_names": [],
+  "missing_optional": [],
+  "unknown_keys": []
+}

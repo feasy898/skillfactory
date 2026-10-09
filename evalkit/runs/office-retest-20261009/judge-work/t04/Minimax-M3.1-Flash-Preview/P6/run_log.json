@@ -1,0 +1,72 @@
+{
+  "task": "qingheng_dongji.json（会议通知）→ out/文书.docx + out/fields.json",
+  "engine": "<redacted>",
+  "runs": [
+    {
+      "run": 1,
+      "command": ".venv/bin/python <SKILL_MOUNT>/scripts/gen_doc.py --template 会议通知 --data qingheng_dongji.json --outdir out",
+      "exit_code": 0,
+      "stdout_summary": "已生成：out/文书.docx（模板=会议通知，标题=关于召开冬季送暖协调会的通知，字段 filled/total=8/11，必填缺失=无，模板外键=['1号议程', 'Zebra', '_private', 'abc', '备用3', '附件编号', '📋备注']）",
+      "snapshot": ".verify/run1/",
+      "sha256": {
+        "文书.docx": "2ddbebc1f764653f722fd05217f7a383ad953e3d1c7e2eac6d352a2d84cc24e6",
+        "fields.json": "946aca709f88f08074359b243963379ad68b4ce6099f82cf32b78a9a77c07baa"
+      },
+      "bytes": {
+        "文书.docx": 37058,
+        "fields.json": 2561
+      }
+    },
+    {
+      "run": 2,
+      "command": ".venv/bin/python <SKILL_MOUNT>/scripts/gen_doc.py --template 会议通知 --data qingheng_dongji.json --outdir out",
+      "exit_code": 0,
+      "stdout_summary": "已生成：out/文书.docx（模板=会议通知，标题=关于召开冬季送暖协调会的通知，字段 filled/total=8/11，必填缺失=无，模板外键=['1号议程', 'Zebra', '_private', 'abc', '备用3', '附件编号', '📋备注']）",
+      "snapshot": ".verify/run2/",
+      "sha256": {
+        "文书.docx": "2ddbebc1f764653f722fd05217f7a383ad953e3d1c7e2eac6d352a2d84cc24e6",
+        "fields.json": "946aca709f88f08074359b243963379ad68b4ce6099f82cf32b78a9a77c07baa"
+      },
+      "bytes": {
+        "文书.docx": 37058,
+        "fields.json": 2561
+      }
+    }
+  ],
+  "byte_compare": {
+    "method": "cmp 逐字节对拍（.verify/run1 vs .verify/run2 快照）",
+    "文书.docx": "一致（两遍 sha256 相同，整文件逐字节一致）",
+    "fields.json": "一致（同一 --outdir，outputs 路径键亦相同，整文件逐字节一致）",
+    "conclusion": "确定性复现 PASS"
+  },
+  "skill_inventory": {
+    "SKILL.md": "存在",
+    "scripts/gen_doc.py": "存在",
+    "references/会议通知.md": "存在",
+    "requirements.txt": "存在（python-docx>=1.1，venv 实装 1.2.0）"
+  },
+  "py_compile": "python -m py_compile gen_doc.py → 0 错误",
+  "nonrepro_scan": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" gen_doc.py → 0 命中",
+  "layout_checks": {
+    "V1_页面": "A4 11906×16838 twips；边距 上2098/右1474/下1984/左1587 twips = 3.7/2.6/3.5/2.8 cm",
+    "V2_标题": "段1 居中 黑体 sz44(22pt)『关于召开冬季送暖协调会的通知』",
+    "V3_称谓": "段2 顶格无缩进『各分社负责人：』全角冒号",
+    "V4_正文": "段3-7 firstLineChars=200，仿宋+Times New Roman sz32(16pt)",
+    "V5_落款": "段8-9 右对齐 right=640twips(两字)『青蘅茶社志愿组』/『2026年10月28日』（裸日期）",
+    "V6_小节": "会议要求缺失→整节省略，文中无『一、会议要求』节头",
+    "V7_占位": "必填缺失=0，文中无 ____",
+    "V8_时间源": "zip 条目时间戳归一化 1980-01-01 00:00:00"
+  },
+  "field_accounting": {
+    "total": 11,
+    "filled": 8,
+    "missing": 3,
+    "missing_required_names": [],
+    "missing_optional": {
+      "会议议题": "留空（标签保留，段6『会议议题：』）",
+      "会议要求": "省略该条目/小节（空数组 → F4）",
+      "联系人": "留空（段7『联系人：　　联系电话：137-5566-0099』标签保留）"
+    },
+    "unknown_keys": "['1号议程', 'Zebra', '_private', 'abc', '备用3', '附件编号', '📋备注']（字典序记账，未入文）"
+  }
+}

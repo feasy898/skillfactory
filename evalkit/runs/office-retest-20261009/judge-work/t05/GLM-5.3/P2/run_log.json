@@ -1,0 +1,67 @@
+{
+  "task": "澜山物业综合管理部·购置档案密集架的请示（模板=请示函）",
+  "data_file": "lanshan_miji.json",
+  "interpreter": "<REPOROOT>/.venv-dev/bin/python (CPython 3.12.3, python-docx 已装)",
+  "command": "python <SKILL_MOUNT>/scripts/gen_doc.py --template 请示函 --data lanshan_miji.json --outdir out",
+  "runs": [
+    {
+      "pass": 1,
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=请示函，标题=关于购置档案密集架的请示的请示，字段 filled/total=8/8，必填缺失=无，模板外键=无）",
+      "snapshot_dir": ".snap/run1",
+      "artifacts": [
+        {"name": "文书.docx", "bytes": 37143, "sha256": "fd1bb9e3eb7574dddaa6bbfa62f3b41e926a75df4f8bc1bd1230e1637ac0d249"},
+        {"name": "fields.json", "bytes": 1972, "sha256": "233f18b27c3ebb363e159d7817f445172afbf1d51a557c2b0e5f2adbca2081a2"}
+      ]
+    },
+    {
+      "pass": 2,
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=请示函，标题=关于购置档案密集架的请示的请示，字段 filled/total=8/8，必填缺失=无，模板外键=无）",
+      "snapshot_dir": ".snap/run2",
+      "artifacts": [
+        {"name": "文书.docx", "bytes": 37143, "sha256": "fd1bb9e3eb7574dddaa6bbfa62f3b41e926a75df4f8bc1bd1230e1637ac0d249"},
+        {"name": "fields.json", "bytes": 1972, "sha256": "233f18b27c3ebb363e159d7817f445172afbf1d51a557c2b0e5f2adbca2081a2"}
+      ]
+    }
+  ],
+  "determinism_check": {
+    "method": "完全相同命令行连跑两遍到同一 --outdir（第二遍覆盖复写），每遍跑完把两产物快照到 outdir 之外的 .snap/run1 与 .snap/run2，再逐字节对拍（cmp）",
+    "文书.docx": "两遍 sha256 相等，cmp 无差异：整文件逐字节一致（含 docx 容器层，zip 条目时间戳实测全部为 1980-01-01 00:00）",
+    "fields.json": "两遍 sha256 相等，cmp 无差异：逐字节一致（含 outputs 路径键，两遍 outdir 相同故路径值亦相同）",
+    "conclusion": "一致"
+  },
+  "inventory": {
+    "SKILL.md": "present",
+    "scripts/gen_doc.py": "present",
+    "requirements.txt": "present",
+    "references/请示函.md": "present"
+  },
+  "py_compile": {
+    "command": "python -m py_compile <SKILL_MOUNT>/scripts/gen_doc.py",
+    "exit_code": 0,
+    "errors": 0
+  },
+  "nondeterminism_scan": {
+    "command": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" <SKILL_MOUNT>/scripts/gen_doc.py",
+    "hits": 0,
+    "note": "grep 退出码 1（无命中）"
+  },
+  "field_ledger": {
+    "total": 8,
+    "filled": 8,
+    "missing": 0,
+    "missing_required": 0,
+    "missing_required_names": [],
+    "unknown_keys": [],
+    "note": "八字段全部命中，无 ____ 占位、无选填留空、无模板外键；数据 JSON 与 brief 原文逐字段一致，未做任何改写。"
+  },
+  "layout_check": {
+    "paragraphs": 7,
+    "title": "关于购置档案密集架的请示的请示（居中/黑体/22pt）",
+    "salutation": "澜山物业管理有限公司：（顶格无缩进，全角冒号收尾）",
+    "body": "请示缘由、请示事项、联系行三段均为 firstLineChars=200、仿宋 16pt、固定行距 28 磅",
+    "signature": "落款两行右对齐、右缩进 640 twips（=32pt≈两字）",
+    "page": "A4 21.0×29.7cm，页边距 上3.7/下3.5/左2.8/右2.6 cm"
+  }
+}

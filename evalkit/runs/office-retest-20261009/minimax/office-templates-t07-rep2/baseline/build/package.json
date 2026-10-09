@@ -1,0 +1,6 @@
+{
+  "name": "yuguang-weekly-report-build",
+  "private": true,
+  "description": "Builder for out/文书.docx (docx 9.9.0). Run: npm install docx && node gen_doc.js",
+  "dependencies": { "docx": "9.9.0" }
+}

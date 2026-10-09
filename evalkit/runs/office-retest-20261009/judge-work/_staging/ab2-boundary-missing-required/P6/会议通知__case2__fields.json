@@ -1,0 +1,175 @@
+{
+  "template": "会议通知",
+  "template_title": "会议通知",
+  "data_path": "fixtures/会议通知/case2.json",
+  "generator": "gen_doc.py",
+  "placeholder": "____",
+  "artifacts": [
+    "文书.docx",
+    "fields.json"
+  ],
+  "fields": [
+    {
+      "name": "会议名称",
+      "required": true,
+      "role": "标题",
+      "layout": "居中",
+      "present_in_input": false,
+      "value": null,
+      "rendered": "____",
+      "missing_reason": "absent_key",
+      "state": "missing_required"
+    },
+    {
+      "name": "主送对象",
+      "required": true,
+      "role": "称谓",
+      "layout": "顶格",
+      "present_in_input": true,
+      "state": "present",
+      "value": "各部门",
+      "rendered": "各部门",
+      "missing_reason": ""
+    },
+    {
+      "name": "召开单位",
+      "required": true,
+      "role": "正文",
+      "layout": "正文缩进",
+      "present_in_input": true,
+      "state": "present",
+      "value": "评测技术部",
+      "rendered": "评测技术部",
+      "missing_reason": ""
+    },
+    {
+      "name": "会议时间",
+      "required": true,
+      "role": "正文",
+      "layout": "正文缩进",
+      "present_in_input": true,
+      "state": "present",
+      "value": "2026年10月16日（周五）10:00",
+      "rendered": "2026年10月16日（周五）10:00",
+      "missing_reason": ""
+    },
+    {
+      "name": "会议地点",
+      "required": true,
+      "role": "正文",
+      "layout": "正文缩进",
+      "present_in_input": true,
+      "value": null,
+      "rendered": "____",
+      "missing_reason": "empty_string",
+      "state": "missing_required"
+    },
+    {
+      "name": "参会人员",
+      "required": true,
+      "role": "正文",
+      "layout": "正文缩进",
+      "present_in_input": true,
+      "state": "present",
+      "value": "全体评测组成员",
+      "rendered": "全体评测组成员",
+      "missing_reason": ""
+    },
+    {
+      "name": "会议议题",
+      "required": false,
+      "role": "正文",
+      "layout": "正文缩进",
+      "present_in_input": false,
+      "value": null,
+      "rendered": "",
+      "missing_reason": "absent_key",
+      "state": "missing_optional"
+    },
+    {
+      "name": "会议要求",
+      "required": false,
+      "role": "正文",
+      "layout": "正文缩进",
+      "present_in_input": false,
+      "value": null,
+      "rendered": "",
+      "missing_reason": "absent_key",
+      "state": "missing_optional"
+    },
+    {
+      "name": "联系人",
+      "required": false,
+      "role": "落款",
+      "layout": "右对齐",
+      "present_in_input": false,
+      "value": null,
+      "rendered": "",
+      "missing_reason": "absent_key",
+      "state": "missing_optional"
+    },
+    {
+      "name": "联系电话",
+      "required": false,
+      "role": "落款",
+      "layout": "右对齐",
+      "present_in_input": false,
+      "value": null,
+      "rendered": "",
+      "missing_reason": "absent_key",
+      "state": "missing_optional"
+    },
+    {
+      "name": "发文日期",
+      "required": false,
+      "role": "落款",
+      "layout": "右对齐",
+      "present_in_input": true,
+      "state": "present",
+      "value": "2026年9月30日",
+      "rendered": "2026年9月30日",
+      "missing_reason": ""
+    }
+  ],
+  "missing_required": [
+    "会议名称",
+    "会议地点"
+  ],
+  "missing_optional": [
+    "会议议题",
+    "会议要求",
+    "联系人",
+    "联系电话"
+  ],
+  "unknown_keys": [
+    "备注"
+  ],
+  "unknown_key_values": {
+    "备注": "此键不在模板字段内，用于测试 unknown_keys 记录"
+  },
+  "missing_reason_detail": {
+    "会议名称": "absent_key",
+    "会议地点": "empty_string",
+    "会议议题": "absent_key",
+    "会议要求": "absent_key",
+    "联系人": "absent_key",
+    "联系电话": "absent_key"
+  },
+  "missing_reason_text": {
+    "会议名称": "输入数据中无此键",
+    "会议地点": "输入数据中该键为空字符串",
+    "会议议题": "输入数据中无此键",
+    "会议要求": "输入数据中无此键",
+    "联系人": "输入数据中无此键",
+    "联系电话": "输入数据中无此键"
+  },
+  "counts": {
+    "schema_fields": 11,
+    "input_keys": 7,
+    "present": 5,
+    "missing_required": 2,
+    "missing_optional": 4,
+    "unknown_keys": 1
+  },
+  "exit_code": 0
+}

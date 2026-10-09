@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_f0415de8-5a8e-4885-8a3f-047976c05794",
+  "traceId": "400a6db9-5124-4267-9732-a90dbe237a52",
+  "turnId": "turn_7dec1662-c986-4657-a4e1-082ebd5284e6",
+  "response": "任务完成。会议通知已生成，全部产物就位，确定性对拍通过。\n\n**产物**（均在 `treatment/` 工作目录）：\n- `qingheng_dongji.json` — 按 brief 原文逐字保存的输入数据（含 7 个遗留杂项键，未做增删）\n- `out/文书.docx` — GB/T 9704 风格会议通知（37058 字节，sha256 `2ddbebc1…cc24e6`）\n- `out/fields.json` — 字段填充台账（2561 字节，sha256 `946aca70…c07baa`）\n- `run_log.json` — 留痕日志（两遍命令行/退出码/sha256/对拍结论/盘点/py_compile/源扫描）\n- `.verify/run1、run2` — 两遍运行的旁路快照（对拍用，在 `out/` 之外，产物目录内恰含两产物）\n\n**成文情况**：标题《关于召开冬季送暖协调会的通知》居中黑体二号；称谓“各分社负责人：\"顶格；会议时间/地点/参会人员正文缩进两字符；落款两行右对齐（青蘅茶社志愿组 / 2026年10月28日）。字段 filled 8/11，**必填全部齐备，文中无 `____` 占位**。三个选填缺失如实记账：会议议题为空串→行内标签保留值留空；会议要求为空数组→整节省略（文中不出现“一、会议要求”节头）；联系行渲染为“联系人：　　联系电话：137-5566-0099”（联系人键缺失，标签保留）。\n\n**杂项键处理**：`1号议程、Zebra、_private、abc、备用3、附件编号、📋备注` 这 7 个模板外键按字典序记入 `summary.unknown_keys`，不影响文书内容。\n\n**确定性验证**：同命令连跑两遍到同一 `--outdir`，`文书.docx` 与 `fields.json` 均逐字节一致（cmp + sha256 双重核对相等）；`py_compile` 0 错误；引擎源码扫描 `time(/random/uuid/datetime/now(` 0 命中。\n\n一个环境说明：默认 venv（~/venvs/ml）缺 python-docx 且目录只读装不进去，改用系统 `/usr/bin/python3`（Python 3.12.3 + python-docx 1.2.0，即技能实测版本），未对任何环境做改动。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 20,
+    "inputTokens": 706962,
+    "outputTokens": 10320,
+    "totalTokens": 717282,
+    "cacheReadTokens": 677184,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 6637,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 717282,
+    "contextUsed": 45546,
+    "contextWindow": 200000
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 108731,
+  "started_at_ms": 1791491312622,
+  "session_id": "sess_789e1d4c-4899-4eb8-9283-38ed7dd82393",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1471224,
+      "ot": 16490,
+      "dur": 92379,
+      "n": 34
+    }
+  ],
+  "input_tokens": 1471224,
+  "output_tokens": 16490,
+  "stdout_bytes": 2781,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "标题「拾贝书店 2026年10月第2周 工作周报」+ 副题横线，2×4 抬头信息表（部门/报送周期/填报人/报送日期，标签列浅底），四个编号章节（本周工作内容 2 条、下周工作计划、问题与需协调事项 1 条、温馨提示提示条），右下角签署块，页脚居中页码。\\n- `out/fields.json` — 字段台账：8 个字段逐项记录 `required` / `present` / `missing` / `raw` / `value` / `cleaning`，外加 summary 统计。\\n- `out/delivery-report.json` — 严格四个键：`missing_required_names`、`missing_optional`、`unknown_keys` 均为空数组，`title` 为文书标题。四个值全部由 `fields.json` 台账推导，未另行判断。\\n- `shibei_week42.json` — 原始数据（按简报要求保存）。\\n\\n**数据清洗（台账中如实留痕，未静默处理）**\\n\\n原始数据带三处脏数据，台账 `cleaning` 字段记录了动作：\\n\\n1. `部门` 值为 `\\\" 拾贝书店 \\\"`，首尾各有一个空格 → 去空白后为 `拾贝书店`（`trim`）。\\n2. `本周工作内容` 数组含一项 `\\\"   \\\"`（纯空白）→ 清洗后剔除，实际 2 条（`trim` + `drop_blank_items`）。\\n3. `问题与需协调事项` 数组含一项 `\\\"\\\"`（空串）→ 剔除，实际 1 条（`drop_blank_items`）。\\n\\n文书正文中这三处均按清洗后的值呈现，未出现空行或空白编号项。\\n\\n**校验结果**\\n\\n- `postcheck.py` 9/9 全部通过，0 错误 0 警告（首轮有一条行距不一致警告，已把表格单元格行距统一到 312 twips 后复跑清零）。\\n- LibreOffice 渲染 + 视觉检查：单页，无空白页、无溢出/截断/重叠，四个章节、提示条、签署块、页码均正常；期间调整了信息表列宽（标签 15% / 值 35%）以改善「报送周期」的换行。\\n- 注：本次 `documents:visual-judge` 子代理因 Provider Registry 报错不可用，按 skill 文档的回退路径由我直接检视渲染页完成视觉门禁。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 34,\n    \"inputTokens\": 1471224,\n    \"outputTokens\": 16490,\n    \"totalTokens\": 1487714,\n    \"cacheReadTokens\": 1409087,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 3173,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1487714,\n    \"contextUsed\": 62887,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "t01",
+  "rep": 1,
+  "slot": 20
+}

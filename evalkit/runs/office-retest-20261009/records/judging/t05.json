@@ -1,0 +1,170 @@
+{
+  "tested_family": "minimax",
+  "panel": [
+    "GLM-5.3",
+    "step-router-v1"
+  ],
+  "panel_rotation": "task_idx=10 parity=0",
+  "verdicts": {
+    "GLM-5.3": {
+      "scores": {
+        "P1": {
+          "total": 10.0,
+          "dims": {
+            "正确性（标题公式纪律）": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "docx首非空段与fields.title均逐字==「关于购置档案密集架的请示的请示」双尾缀纯代入；称谓顶格、缘由/事项段逐字==源值、落款两行右对齐；summary filled=8/8；台账与文书互洽、联系行在文（P004）；run_log两遍exit_code=0"
+        },
+        "P2": {
+          "total": 10.0,
+          "dims": {
+            "正确性（标题公式纪律）": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "首段=title=「关于购置档案密集架的请示的请示」纯代入（extract/fields与P1 sha256同）；称谓/缘由/事项/落款逐字代入；filled=8/8；联系行在文；run_log两遍exit_code=0且两遍产物sha256对拍一致"
+        },
+        "P3": {
+          "total": 10.0,
+          "dims": {
+            "正确性（标题公式纪律）": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "首段=title=「关于购置档案密集架的请示的请示」纯代入，run_log stdout同串；称谓/缘由/事项/落款逐字；filled=8/8；联系行在文；两遍exit_code=0、byte_identical_across_runs=true"
+        },
+        "P4": {
+          "total": 4.0,
+          "dims": {
+            "正确性（标题公式纪律）": 0.0,
+            "完整性": 1.0,
+            "可验证性": 0.5
+          },
+          "evidence": "标题段=「关于购置档案密集架的请示」去重形式（首段另为「澜山物业综合管理部文件」）、fields.json无title键→正确性0；两产物齐、称谓/缘由/事项/落款逐字==、8键值全填→完整性1.0；台账值与文书互洽、联系行在文、无run_log证exit0→可验证性0.5"
+        },
+        "P5": {
+          "total": 4.0,
+          "dims": {
+            "正确性（标题公式纪律）": 0.0,
+            "完整性": 1.0,
+            "可验证性": 0.5
+          },
+          "evidence": "标题=「澜山物业综合管理部关于购置档案密集架的请示」（冠机关名+去重改写），fields自述transform_rule去「的请示」尾缀→正确性0；称谓/缘由/事项/落款逐字、field_count=8全填→1.0；placement段落映射与docx互洽、联系行在文、无run_log→0.5"
+        },
+        "P6": {
+          "total": 2.5,
+          "dims": {
+            "正确性（标题公式纪律）": 0.0,
+            "完整性": 0.5,
+            "可验证性": 0.5
+          },
+          "evidence": "标题段=「关于购置档案密集架的请示」去重、fields.标题同串→正确性0；缘由/事项段源句后追加自拟句并前置「一、」非逐字代入→完整性0.5；台账「文中表述」与docx互洽（自述拟制发文字号/抄送）、联系行在文P011、无run_log→0.5"
+        }
+      }
+    },
+    "step-router-v1": {
+      "scores": {
+        "P1": {
+          "total": 10.0,
+          "dims": {
+            "正确性": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "docx首段与fields.title均为'关于购置档案密集架的请示的请示'；称谓/缘由/事项/落款四段逐字代入，filled=8/8；联系人/电话行在文，run_log exit 0，台账互洽。"
+        },
+        "P2": {
+          "total": 10.0,
+          "dims": {
+            "正确性": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "docx首段与fields.title均为'关于购置档案密集架的请示的请示'；称谓/缘由/事项/落款四段逐字代入，filled=8/8；联系人/电话行在文，run_log exit 0，台账互洽。"
+        },
+        "P3": {
+          "total": 10.0,
+          "dims": {
+            "正确性": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "docx首段与fields.title均为'关于购置档案密集架的请示的请示'；称谓/缘由/事项/落款四段逐字代入，filled=8/8；联系人/电话行在文，run_log exit 0，台账互洽。"
+        },
+        "P4": {
+          "total": 4.0,
+          "dims": {
+            "正确性": 0.0,
+            "完整性": 1.0,
+            "可验证性": 0.5
+          },
+          "evidence": "docx首段为'澜山物业综合管理部文件'，非公式标题且fields.json无title；称谓/缘由/事项/落款四段逐字代入，filled=8/8；联系人/电话行在文但加括号，无run_log。"
+        },
+        "P5": {
+          "total": 4.0,
+          "dims": {
+            "正确性": 0.0,
+            "完整性": 1.0,
+            "可验证性": 0.5
+          },
+          "evidence": "docx标题与fields.title均为'澜山物业综合管理部关于购置档案密集架的请示'，去重并加前缀；称谓/缘由/事项/落款逐字代入，filled=8/8；联系人/电话行在文但加括号，无run_log。"
+        },
+        "P6": {
+          "total": 1.0,
+          "dims": {
+            "正确性": 0.0,
+            "完整性": 0.0,
+            "可验证性": 0.5
+          },
+          "evidence": "docx标题与fields.title均为'关于购置档案密集架的请示'，去重；缘由/事项段被扩充非逐字代入；联系人/电话行在文，无run_log。"
+        }
+      }
+    }
+  },
+  "per_judge_scores": {
+    "P1": {
+      "GLM-5.3": 10.0,
+      "step-router-v1": 10.0
+    },
+    "P2": {
+      "GLM-5.3": 10.0,
+      "step-router-v1": 10.0
+    },
+    "P3": {
+      "GLM-5.3": 10.0,
+      "step-router-v1": 10.0
+    },
+    "P4": {
+      "GLM-5.3": 4.0,
+      "step-router-v1": 4.0
+    },
+    "P5": {
+      "GLM-5.3": 4.0,
+      "step-router-v1": 4.0
+    },
+    "P6": {
+      "GLM-5.3": 2.5,
+      "step-router-v1": 1.0
+    }
+  },
+  "final_scores": {
+    "P1": 10.0,
+    "P2": 10.0,
+    "P3": 10.0,
+    "P4": 4.0,
+    "P5": 4.0,
+    "P6": 1.75
+  },
+  "judge_consistency": {
+    "task": "t05",
+    "resample_of": "P4",
+    "first_score": 4.0,
+    "second_score": 5.0,
+    "delta": 1.0,
+    "action": "pass"
+  },
+  "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+  "protocol": "weighted-dims"
+}

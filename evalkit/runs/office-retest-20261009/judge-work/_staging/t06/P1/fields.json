@@ -1,0 +1,88 @@
+{
+  "template": "周报",
+  "title": "屿光咖啡营运部工作周报",
+  "filled_fields": [
+    "部门",
+    "填报人",
+    "周期",
+    "本周工作内容",
+    "下周工作计划",
+    "问题与需协调事项"
+  ],
+  "missing_fields": [
+    "报送日期"
+  ],
+  "fields": [
+    {
+      "name": "部门",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "屿光咖啡营运部"
+    },
+    {
+      "name": "填报人",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "计雨时"
+    },
+    {
+      "name": "周期",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "2026年10月第2周"
+    },
+    {
+      "name": "本周工作内容",
+      "required": true,
+      "kind": "list",
+      "status": "filled",
+      "value": [
+        "10月9日完成季节限定豆单上新",
+        "大学城二店10月10日起延时营业至23时",
+        "10月11日完成月度盘点差异复核"
+      ]
+    },
+    {
+      "name": "下周工作计划",
+      "required": true,
+      "kind": "list",
+      "status": "filled",
+      "value": [
+        "启动圣诞杯具供应商比价",
+        "10月20日前输出四季度排班初稿"
+      ]
+    },
+    {
+      "name": "问题与需协调事项",
+      "required": false,
+      "kind": "list",
+      "status": "filled",
+      "value": [
+        "望人事组于10月18日前批复两名兼职编制"
+      ]
+    },
+    {
+      "name": "报送日期",
+      "required": false,
+      "kind": "text",
+      "status": "missing",
+      "value": null,
+      "rendered_as": "留空（渲染为空字符串）"
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "filled": 6,
+    "missing": 1,
+    "missing_required": 0,
+    "missing_required_names": [],
+    "unknown_keys": []
+  },
+  "outputs": {
+    "docx": "out/文书.docx",
+    "fields_json": "out/fields.json"
+  }
+}

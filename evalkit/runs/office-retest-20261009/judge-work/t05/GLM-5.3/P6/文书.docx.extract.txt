@@ -1,0 +1,14 @@
+EXTRACT OF 文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=685800 runs=[澜山物业管理有限公司/方正小标宋简体/42.0] text=澜山物业管理有限公司
+P001 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=368300 runs=[澜山物业综函〔2026〕12/仿宋_GB2312/16.0] text=澜山物业综函〔2026〕12号
+P003 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=457200 runs=[关于购置档案密集架的请示/方正小标宋简体/22.0] text=关于购置档案密集架的请示
+P004 align=JUSTIFY (3) firstLineChars=None firstLineIndent=None spacing=368300 runs=[澜山物业管理有限公司：/仿宋_GB2312/16.0] text=澜山物业管理有限公司：
+P005 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=368300 runs=[综合管理部档案室现用木制档案/仿宋_GB2312/16.0] text=综合管理部档案室现用木制档案柜已达使用年限，且2025年新增业委会档案214卷，存储空间严重不足。档案存储空间已无法满足现有归档与保管要求，为保障业委会档案资料安全、完整存放，现就有关事项请示如下。
+P006 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=368300 runs=[一、/黑体/16.0 | 申请购置手摇式档案密集架4组/仿宋_GB2312/16.0] text=一、申请购置手摇式档案密集架4组，预算3.6万元，列入本年度固定资产。所购密集架到位后，由综合管理部档案室统一验收、登记造册并纳入固定资产台账管理。
+P007 align=JUSTIFY (3) firstLineChars=None firstLineIndent=406400 spacing=368300 runs=[妥否，请批示。/仿宋_GB2312/16.0] text=妥否，请批示。
+P008 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=368300 runs=[澜山物业综合管理部/方正小标宋简体/16.0] text=澜山物业综合管理部
+P009 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=368300 runs=[2026年10月12日/仿宋_GB2312/16.0] text=2026年10月12日
+P010 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=368300 runs=[（此处加盖澜山物业综合管理部/仿宋_GB2312/14.0] text=（此处加盖澜山物业综合管理部公章）
+P011 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=368300 runs=[联系人：皮之常　　联系电话：/仿宋_GB2312/14.0] text=联系人：皮之常　　联系电话：0571-8812-3456
+P012 align=None firstLineChars=None firstLineIndent=None spacing=228600 runs=[抄送：综合管理部档案室。/宋体/14.0] text=抄送：综合管理部档案室。
+P013 align=None firstLineChars=None firstLineIndent=None spacing=228600 runs=[印发机关：澜山物业综合管理部/宋体/14.0] text=印发机关：澜山物业综合管理部　　印发日期：2026年10月12日

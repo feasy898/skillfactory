@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 48197,
+  "started_at_ms": 1791491568822,
+  "session_id": "sess_be1fa6a3-88ce-4c4b-a314-8c2dd2df6352",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 436162,
+      "ot": 5003,
+      "dur": 32209,
+      "n": 17
+    }
+  ],
+  "input_tokens": 436162,
+  "output_tokens": 5003,
+  "stdout_bytes": 3014,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "eferences/周报.md` 的段落顺序逐段相符：标题居中二号黑体 → 基本信息行 → 一、本周工作内容（2 条）→ 二、下周工作计划（1 条）→ 三、问题与需协调事项（1 条）→ 右对齐落款「报送日期：2026-10-12」\\n- `out/fields.json` — 引擎生成的字段台账\\n- `out/delivery-report.json` — 四个键，照台账如实填\\n- `run_log.json` — 确定性留痕（按技能要求写在工作目录，未写进 `out`，以保持产物目录内恰含 brief 指定的文件）\\n\\n**核对报告内容**：`missing_required_names` 空、`missing_optional` 空、`unknown_keys` 为 `[\\\"温馨提示\\\"]`、`title` 为「拾贝书店工作周报」。\\n\\n**需要注意的一件事**：你给的 JSON里有 `温馨提示`（\\\"本周五店休半天\\\"），但周报模板的 7 个字段里没有它，所以它没有被写进文书，只作为模板外键记进台账的 `unknown_keys`。如果这句提醒需要出现在周报正文里，告诉我放在哪一节，我重跑一次。\\n\\n**输入数据的几处边界处理**（都由引擎按规范记账，未编造）：\\n- `部门` 值带前后空格 `\\\" 拾贝书店 \\\"` → 入文与台账均为 `拾贝书店`\\n- `本周工作内容` 里的 `\\\"   \\\"` 和 `问题与需协调事项` 里的 `\\\"\\\"` 是空白项 → 按 F3 去空丢弃，所以条目分别是 2 条和 1 条\\n- `下周工作计划` 给的是字符串而非数组 → 按 F3 宽容取为单项列表\\n\\n**确定性验证**：以完全相同的命令行连跑两遍，每遍跑完立刻快照到 `--outdir` 之外，`cmp` 逐字节对拍 —— 文书与台账两遍 sha256 均相等（`384e9b24…` / `1e3a734b…`），判定 PASS。入口脚本 `py_compile` 退出 0，`grep -nE \\\"time\\\\(|random|uuid|datetime|now\\\\(\\\"` 零命中。\\n\\n一处环境说明：系统 Python 受 PEP 668 保护，无法直接 `pip install python-docx`，我在 `/tmp/otvenv` 建了虚拟环境装 python-docx 1.2.0 供本次运行，未改动系统环境。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 17,\n    \"inputTokens\": 436162,\n    \"outputTokens\": 5003,\n    \"totalTokens\": 441165,\n    \"cacheReadTokens\": 405212,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 793,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 441165,\n    \"contextUsed\": 31762,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

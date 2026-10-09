@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_d5735b75-aed9-4a73-acf8-9af338716248",
+  "traceId": "b9c2dc86-97b0-4c33-bc96-8677616a7291",
+  "turnId": "turn_074e7a23-83ea-42b0-b7e7-388b56875936",
+  "response": "任务完成。两个单元目录与产物齐全，全部边界行为核验通过，确定性双跑逐字节一致。\n\n**执行方式**：使用本目录内置的 office-templates 技能引擎 `.zcode/skills/office-templates/scripts/gen_doc.py`（python-docx 1.2.0，经 `/usr/bin/python3` 运行——PATH 上的 `python3` 是无 docx 的 venv），按 brief 的命令行契约各调用一次，产物写入：\n\n- `out/周报/case2/` — 恰含 `文书.docx` + `fields.json`\n- `out/工作总结/case2/` — 恰含 `文书.docx` + `fields.json`\n\n**周报/case2 边界行为**（周期空串、本周工作内容空数组、问题与需协调事项选填缺失）：\n- 标题 `____工作周报`（部门缺失占位，居中黑体 22pt）；基本信息行 `填报人：赵倩　　周期：____`\n- `一、本周工作内容` 节头保留 + 占位条目 `1．____`；`二、下周工作计划` 下 `1．整理缺陷清单并分派责任人`\n- 问题与需协调事项整节省略，正文无「三、」节头，但 fields.json 记 `missing`（required=false, rendered_as=省略该条目/小节）\n- 落款 `报送日期：2026-09-28` 右对齐；台账 filled 3/7，missing_required_names=[部门, 周期, 本周工作内容]\n\n**工作总结/case2 边界行为**（总结主体缺失、主要成绩空数组、工作回顾字符串型列表、存在问题与成文日期选填缺失）：\n- 标题 `____2026年9月工作总结`；工作回顾单项化为 `1．完成评测平台月度巡检`，fields.json 中该字段值为单元素数组\n- `二、主要成绩` + `1．____` 占位条目；存在问题整节省略（正文无「三、」），小节编号保持 `四、下一步工作打算`\n- 落款一 `____` 右对齐、落款二空段（成文日期缺失不破坏右对齐）；台账 filled 3/7，missing_required_names=[总结主体, 主要成绩]\n\n**确定性与留痕**：相同命令行连跑两遍，四个产物 `cmp` 逐字节全部 IDENTICAL（docx 容器时间戳已归一化，sha256 记录在案）；`py_compile` 0 错误、不可复现源扫描 0 命中。证据落在工作目录 `run_log.json`，两遍快照在 `.verify/run1|run2/`（均在 outdir 之外，不污染单元目录）。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 22,
+    "inputTokens": 768100,
+    "outputTokens": 9586,
+    "totalTokens": 777686,
+    "cacheReadTokens": 736640,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 5506,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 777686,
+    "contextUsed": 47171,
+    "contextWindow": 200000
+  }
+}

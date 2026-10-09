@@ -1,0 +1,12 @@
+{
+  "k5b07_check": {
+    "rounds": 2,
+    "round2_verdict": "rejected",
+    "round1_verdict": "rejected",
+    "delta_round2": 4.61,
+    "delta_round1": 0.725,
+    "both_accepted_and_same_sign": false,
+    "single_round_signal": true,
+    "assertion_ok": true
+  }
+}

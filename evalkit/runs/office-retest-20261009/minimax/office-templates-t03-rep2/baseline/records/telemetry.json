@@ -1,0 +1,21 @@
+{
+  "available": true,
+  "session_id": "sess_fbd75897-5b68-40b4-8280-1c0981538ac5",
+  "session": {
+    "directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t03-rep2/baseline"
+  },
+  "directory_matches_arm": true,
+  "db_source": "global",
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 2071469,
+      "ot": 21813,
+      "dur": 133310,
+      "n": 46
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "template": "请示函",
+  "template_title": "请示函",
+  "data_path": "fixtures/请示函/case2.json",
+  "generator": "gen_doc.py",
+  "placeholder": "____",
+  "artifacts": [
+    "文书.docx",
+    "fields.json"
+  ],
+  "fields": [
+    {
+      "name": "主送机关",
+      "required": true,
+      "role": "称谓",
+      "layout": "顶格",
+      "present_in_input": false,
+      "value": null,
+      "rendered": "____",
+      "missing_reason": "absent_key",
+      "state": "missing_required"
+    },
+    {
+      "name": "请示事由",
+      "required": true,
+      "role": "正文",
+      "layout": "正文缩进",
+      "present_in_input": true,
+      "state": "present",
+      "value": "延期举办季度评审会",
+      "rendered": "延期举办季度评审会",
+      "missing_reason": ""
+    },
+    {
+      "name": "请示缘由",
+      "required": true,
+      "role": "正文",
+      "layout": "正文缩进",
+      "present_in_input": true,
+      "state": "present",
+      "value": "因关键评审人出差，原定会议时间无法保证评审质量。",
+      "rendered": "因关键评审人出差，原定会议时间无法保证评审质量。",
+      "missing_reason": ""
+    },
+    {
+      "name": "请示事项",
+      "required": true,
+      "role": "正文",
+      "layout": "正文缩进",
+      "present_in_input": true,
+      "value": null,
+      "rendered": "____",
+      "missing_reason": "empty_string",
+      "state": "missing_required"
+    },
+    {
+      "name": "请示单位",
+      "required": true,
+      "role": "落款",
+      "layout": "右对齐",
+      "present_in_input": true,
+      "state": "present",
+      "value": "评测技术部",
+      "rendered": "评测技术部",
+      "missing_reason": ""
+    },
+    {
+      "name": "联系人",
+      "required": false,
+      "role": "落款",
+      "layout": "右对齐",
+      "present_in_input": true,
+      "state": "present",
+      "value": "李工",
+      "rendered": "李工",
+      "missing_reason": ""
+    },
+    {
+      "name": "联系电话",
+      "required": false,
+      "role": "落款",
+      "layout": "右对齐",
+      "present_in_input": false,
+      "value": null,
+      "rendered": "",
+      "missing_reason": "absent_key",
+      "state": "missing_optional"
+    },
+    {
+      "name": "成文日期",
+      "required": false,
+      "role": "落款",
+      "layout": "右对齐",
+      "present_in_input": false,
+      "value": null,
+      "rendered": "",
+      "missing_reason": "absent_key",
+      "state": "missing_optional"
+    }
+  ],
+  "missing_required": [
+    "主送机关",
+    "请示事项"
+  ],
+  "missing_optional": [
+    "联系电话",
+    "成文日期"
+  ],
+  "unknown_keys": [],
+  "unknown_key_values": {},
+  "missing_reason_detail": {
+    "主送机关": "absent_key",
+    "请示事项": "empty_string",
+    "联系电话": "absent_key",
+    "成文日期": "absent_key"
+  },
+  "missing_reason_text": {
+    "主送机关": "输入数据中无此键",
+    "请示事项": "输入数据中该键为空字符串",
+    "联系电话": "输入数据中无此键",
+    "成文日期": "输入数据中无此键"
+  },
+  "counts": {
+    "schema_fields": 8,
+    "input_keys": 5,
+    "present": 4,
+    "missing_required": 2,
+    "missing_optional": 2,
+    "unknown_keys": 0
+  },
+  "exit_code": 0
+}

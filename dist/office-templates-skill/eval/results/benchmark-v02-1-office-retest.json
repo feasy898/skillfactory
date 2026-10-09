@@ -1,0 +1,1505 @@
+{
+  "asset": {
+    "name": "office-templates",
+    "version": "1.0.1（本轮重打包；重测对应补强后资产 e82b3cb）",
+    "form": "skill"
+  },
+  "evalbench": {
+    "version": "dist golden.json v1.0.0（5 ab_tasks 冻结）+ merged office 子树 8 题（9e7f57c6…）",
+    "golden_version": "2fa58b07481b44bc2840b2fdd757ef19faa5ebe37e1918baf936b2b923f4ecbf",
+    "taskset_frozen_96": "9e7f57c6f4094f184483fab0d59f61121abd82316b1779072e9e99df43c0c535",
+    "gate_version": "v0.2.1（tie-aware + 跨代可比条件）"
+  },
+  "model_pin": {
+    "testers": {
+      "glm": {
+        "model_id": "GLM-5.3",
+        "provider_base_url": "account:bigmodel-individual-coding-plan",
+        "reasoning_variant": "max",
+        "mechanism": "M4"
+      },
+      "minimax": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_base_url": "minimax",
+        "reasoning_variant": "enabled",
+        "mechanism": "M2"
+      }
+    },
+    "judge_model_id": {
+      "tested_glm": [
+        "step-router-v1",
+        "Minimax-M3.1-Flash-Preview"
+      ],
+      "tested_minimax": [
+        "step-router-v1",
+        "GLM-5.3"
+      ]
+    },
+    "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+    "date": "2026-10-09",
+    "cli_version": "zcode-app-cli 3.14.4 (embedded) / zcode-runtime 0.16.9"
+  },
+  "tasks": [
+    {
+      "id": "ab1-standard-four-templates",
+      "tested_family": "glm",
+      "source": "dist golden.json ab_tasks（忠实改写臂任务书）",
+      "pass_line": null,
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 6.0,
+              "tokens": 344053,
+              "duration_s": 87.04,
+              "session_id": "sess_0083568d-71f7-4a4a-8515-f777317e9f7d",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "4 个单元产物在位可解析",
+              "assertion": null
+            },
+            {
+              "score": 6.25,
+              "tokens": 766938,
+              "duration_s": 158.274,
+              "session_id": "sess_a127b43f-584a-4c94-b754-0f3e7202f1e3",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "4 个单元产物在位可解析",
+              "assertion": null
+            },
+            {
+              "score": 6.0,
+              "tokens": 685496,
+              "duration_s": 153.815,
+              "session_id": "sess_03d3034b-2cd7-4528-a3d4-a7386ef00623",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "4 个单元产物在位可解析",
+              "assertion": null
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 3.65,
+              "tokens": 2298295,
+              "duration_s": 970.174,
+              "session_id": "sess_150f768b-244b-4438-bbcc-816ecbae60d6",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "4 个单元产物在位可解析",
+              "assertion": null
+            },
+            {
+              "score": 4.0,
+              "tokens": 1128598,
+              "duration_s": 382.432,
+              "session_id": "sess_e8a61caf-240c-47a2-b900-e8b2a9f8d683",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "4 个单元产物在位可解析",
+              "assertion": null
+            },
+            {
+              "score": 4.0,
+              "tokens": 808973,
+              "duration_s": 298.222,
+              "session_id": "sess_7cbcb6f0-72b0-4f4c-8bb4-bb5c463e15d1",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "4 个单元产物在位可解析",
+              "assertion": null
+            }
+          ]
+        }
+      },
+      "task_mean_t": 6.083333333333333,
+      "task_mean_b": 3.8833333333333333,
+      "delta": 2.1999999999999997,
+      "h": 3,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false
+    },
+    {
+      "id": "ab2-boundary-missing-required",
+      "tested_family": "minimax",
+      "source": "dist golden.json ab_tasks（忠实改写臂任务书）",
+      "pass_line": null,
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 10.0,
+              "tokens": 515816,
+              "duration_s": 97.87,
+              "session_id": "sess_27b1ad49-f3f0-4b07-902c-4c0b48ca621b",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "2 个单元产物在位可解析",
+              "assertion": null
+            },
+            {
+              "score": 10.0,
+              "tokens": 549443,
+              "duration_s": 57.089,
+              "session_id": "sess_acb8ac1b-48c5-403d-8de3-7df6fcc8eb2f",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "2 个单元产物在位可解析",
+              "assertion": null
+            },
+            {
+              "score": 10.0,
+              "tokens": 577890,
+              "duration_s": 62.365,
+              "session_id": "sess_8f6d77a7-cdc5-4c63-b6b6-e135ac71fbc0",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "2 个单元产物在位可解析",
+              "assertion": null
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 6.75,
+              "tokens": 1118955,
+              "duration_s": 113.697,
+              "session_id": "sess_d1f039f8-100c-49c6-a905-30e8da0496a3",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "2 个单元产物在位可解析",
+              "assertion": null
+            },
+            {
+              "score": 6.0,
+              "tokens": 2326482,
+              "duration_s": 249.21,
+              "session_id": "sess_4e40a252-ea99-4a46-b09e-6804b5c3dd8c",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "2 个单元产物在位可解析",
+              "assertion": null
+            },
+            {
+              "score": 7.5,
+              "tokens": 944006,
+              "duration_s": 98.057,
+              "session_id": "sess_0b2aa8a4-aa29-4650-82a2-a1b7f70050de",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "2 个单元产物在位可解析",
+              "assertion": null
+            }
+          ]
+        }
+      },
+      "task_mean_t": 10.0,
+      "task_mean_b": 6.75,
+      "delta": 3.25,
+      "h": 3,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false
+    },
+    {
+      "id": "ab3-empty-and-string-lists",
+      "tested_family": "glm",
+      "source": "dist golden.json ab_tasks（忠实改写臂任务书）",
+      "pass_line": null,
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 9.75,
+              "tokens": 777686,
+              "duration_s": 137.937,
+              "session_id": "sess_d5735b75-aed9-4a73-acf8-9af338716248",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "2 个单元产物在位可解析",
+              "assertion": null
+            },
+            {
+              "score": 9.75,
+              "tokens": 886726,
+              "duration_s": 187.881,
+              "session_id": "sess_efd57437-eb30-4fb0-85f4-914f8d635382",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "2 个单元产物在位可解析",
+              "assertion": null
+            },
+            {
+              "score": 9.75,
+              "tokens": 585704,
+              "duration_s": 133.012,
+              "session_id": "sess_eeca2186-0744-49ad-99a1-476504926270",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "2 个单元产物在位可解析",
+              "assertion": null
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 8.75,
+              "tokens": 2186438,
+              "duration_s": 587.934,
+              "session_id": "sess_b7a183ff-c501-437c-bd6e-e4d63597f426",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "2 个单元产物在位可解析",
+              "assertion": null
+            },
+            {
+              "score": 8.75,
+              "tokens": 1540841,
+              "duration_s": 574.968,
+              "session_id": "sess_9297540d-8ab2-4aa5-baf5-dfc7af400b79",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "2 个单元产物在位可解析",
+              "assertion": null
+            },
+            {
+              "score": 8.75,
+              "tokens": 667194,
+              "duration_s": 489.859,
+              "session_id": "sess_672001bb-aa09-4bfe-948c-7b23bef9ba91",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "2 个单元产物在位可解析",
+              "assertion": null
+            }
+          ]
+        }
+      },
+      "task_mean_t": 9.75,
+      "task_mean_b": 8.75,
+      "delta": 1.0,
+      "h": 3,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false
+    },
+    {
+      "id": "ab4-invalid-input-rejection",
+      "tested_family": "minimax",
+      "source": "dist golden.json ab_tasks（忠实改写臂任务书）",
+      "pass_line": null,
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 7.75,
+              "tokens": 750138,
+              "duration_s": 57.593,
+              "session_id": "sess_7da5ce8b-9ba0-4c13-94d1-07ea7673df31",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "run_log + 1 个单元产物在位可解析",
+              "assertion": null
+            },
+            {
+              "score": 7.5,
+              "tokens": 686270,
+              "duration_s": 73.262,
+              "session_id": "sess_eca7d870-74a9-4e92-a7f7-3273300bf8d6",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "run_log + 1 个单元产物在位可解析",
+              "assertion": null
+            },
+            {
+              "score": 8.0,
+              "tokens": 1101528,
+              "duration_s": 89.008,
+              "session_id": "sess_cad19673-11aa-46ea-9473-cf37a40c99ef",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "run_log + 1 个单元产物在位可解析",
+              "assertion": null
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 6.0,
+              "tokens": 680628,
+              "duration_s": 85.611,
+              "session_id": "sess_3abf20c8-130d-430f-8869-c4ed7e66866d",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "run_log + 1 个单元产物在位可解析",
+              "assertion": null
+            },
+            {
+              "score": 8.0,
+              "tokens": 1054010,
+              "duration_s": 92.855,
+              "session_id": "sess_e12aea3b-4c1a-495d-92bd-1db2c7341620",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "run_log + 1 个单元产物在位可解析",
+              "assertion": null
+            },
+            {
+              "score": 8.0,
+              "tokens": 477001,
+              "duration_s": 62.159,
+              "session_id": "sess_e48ef6f7-3117-4692-9712-4adcf1385c37",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "run_log + 1 个单元产物在位可解析",
+              "assertion": null
+            }
+          ]
+        }
+      },
+      "task_mean_t": 7.75,
+      "task_mean_b": 7.333333333333333,
+      "delta": 0.41666666666666696,
+      "h": 1,
+      "l": 1,
+      "task_verdict": "tie",
+      "reverse_flag": false
+    },
+    {
+      "id": "ab5-determinism-layout-selfeval",
+      "tested_family": "glm",
+      "source": "dist golden.json ab_tasks（忠实改写臂任务书）",
+      "pass_line": null,
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 9.0,
+              "tokens": 767448,
+              "duration_s": 381.118,
+              "session_id": "sess_8b1f2af3-8614-4461-a48b-60a3d869ee68",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "run_log + 1 个单元产物在位可解析",
+              "assertion": null
+            },
+            {
+              "score": 8.25,
+              "tokens": 735279,
+              "duration_s": 190.609,
+              "session_id": "sess_a2e60b5f-345c-41e3-ac61-905035f33266",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "run_log + 1 个单元产物在位可解析",
+              "assertion": null
+            },
+            {
+              "score": 9.0,
+              "tokens": 744409,
+              "duration_s": 206.744,
+              "session_id": "sess_6e5d2d27-aac4-4153-b47d-606c9d1bb236",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "run_log + 1 个单元产物在位可解析",
+              "assertion": null
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 6.0,
+              "tokens": 2271448,
+              "duration_s": 778.284,
+              "session_id": "sess_c5cbbb20-8b1c-4738-a0cd-98c7528ce409",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "run_log + 1 个单元产物在位可解析",
+              "assertion": null
+            },
+            {
+              "score": 6.0,
+              "tokens": 910358,
+              "duration_s": 394.611,
+              "session_id": "sess_a0fe0ad7-5cd4-4eba-b8f8-754334ad42db",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "run_log + 1 个单元产物在位可解析",
+              "assertion": null
+            },
+            {
+              "score": 6.5,
+              "tokens": 1824671,
+              "duration_s": 527.106,
+              "session_id": "sess_952dd390-ff5e-4bf7-ade2-e3c3d61872f6",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": "run_log + 1 个单元产物在位可解析",
+              "assertion": null
+            }
+          ]
+        }
+      },
+      "task_mean_t": 8.75,
+      "task_mean_b": 6.166666666666667,
+      "delta": 2.583333333333333,
+      "h": 3,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false
+    },
+    {
+      "id": "t01",
+      "tested_family": "minimax",
+      "source": "planning/taskset-redesign/merged office 子树（冻结 9e7f57c6…）",
+      "pass_line": 8.0,
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 10.0,
+              "tokens": 469016,
+              "duration_s": 53.166,
+              "session_id": "sess_ce19cce9-fe5a-41d0-b7d3-0b5339a9fc34",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 10.0,
+              "tokens": 441165,
+              "duration_s": 48.197,
+              "session_id": "sess_be1fa6a3-88ce-4c4b-a314-8c2dd2df6352",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 10.0,
+              "tokens": 442411,
+              "duration_s": 81.187,
+              "session_id": "sess_5005e445-b8e7-4754-a97b-b46419895a4b",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 3.0,
+              "tokens": 1487714,
+              "duration_s": 108.731,
+              "session_id": "sess_789e1d4c-4899-4eb8-9283-38ed7dd82393",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 3.0,
+              "tokens": 1027070,
+              "duration_s": 88.269,
+              "session_id": "sess_d5bd7a01-ff29-4088-8735-64f6b250077a",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 3.0,
+              "tokens": 994147,
+              "duration_s": 91.103,
+              "session_id": "sess_64aaead3-fc18-48a9-9ff4-1210da33651d",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            }
+          ]
+        }
+      },
+      "task_mean_t": 10.0,
+      "task_mean_b": 3.0,
+      "delta": 7.0,
+      "h": 3,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false
+    },
+    {
+      "id": "t02",
+      "tested_family": "glm",
+      "source": "planning/taskset-redesign/merged office 子树（冻结 9e7f57c6…）",
+      "pass_line": 8.0,
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 10.0,
+              "tokens": 448259,
+              "duration_s": 89.853,
+              "session_id": "sess_920db0fd-3b06-48cd-b8f0-c13ac1e54361",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 10.0,
+              "tokens": 435051,
+              "duration_s": 144.434,
+              "session_id": "sess_2e6726f5-d064-4b15-b0f0-87eb8b15942c",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 10.0,
+              "tokens": 492594,
+              "duration_s": 122.767,
+              "session_id": "sess_7c7eaeeb-33a1-4d81-9380-83a4705d3d8c",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 4.1,
+              "tokens": 1778617,
+              "duration_s": 428.147,
+              "session_id": "sess_d3bd20aa-5869-4b15-86a2-a2ea0bda80c4",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 4.1,
+              "tokens": 1445062,
+              "duration_s": 302.807,
+              "session_id": "sess_900998c8-585b-4e58-b712-394d0e2067d7",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 4.1,
+              "tokens": 1167950,
+              "duration_s": 347.675,
+              "session_id": "sess_1ccdc367-c97a-4535-8fc3-33a260f5b3f0",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            }
+          ]
+        }
+      },
+      "task_mean_t": 10.0,
+      "task_mean_b": 4.1,
+      "delta": 5.9,
+      "h": 3,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false
+    },
+    {
+      "id": "t03",
+      "tested_family": "minimax",
+      "source": "planning/taskset-redesign/merged office 子树（冻结 9e7f57c6…）",
+      "pass_line": 8.0,
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 10.0,
+              "tokens": 673469,
+              "duration_s": 88.84,
+              "session_id": "sess_984b7b8f-dd31-46b5-9b7d-b40b617721db",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 10.0,
+              "tokens": 729497,
+              "duration_s": 75.703,
+              "session_id": "sess_806952d6-fb6f-4322-8a63-8e29725e6cd9",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 10.0,
+              "tokens": 633166,
+              "duration_s": 60.425,
+              "session_id": "sess_1ea749f4-289e-4b45-aed1-344243def880",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 4.55,
+              "tokens": 1184805,
+              "duration_s": 127.359,
+              "session_id": "sess_7bc19dfa-aa67-42f5-a4e2-ecdbde792044",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 2.25,
+              "tokens": 2093282,
+              "duration_s": 159.071,
+              "session_id": "sess_fbd75897-5b68-40b4-8280-1c0981538ac5",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 2.25,
+              "tokens": 717645,
+              "duration_s": 118.025,
+              "session_id": "sess_f4d0be8c-7c1d-41be-abe8-167770aaa3be",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            }
+          ]
+        }
+      },
+      "task_mean_t": 10.0,
+      "task_mean_b": 3.016666666666667,
+      "delta": 6.9833333333333325,
+      "h": 3,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false
+    },
+    {
+      "id": "t04",
+      "tested_family": "glm",
+      "source": "planning/taskset-redesign/merged office 子树（冻结 9e7f57c6…）",
+      "pass_line": 8.0,
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 10.0,
+              "tokens": 468534,
+              "duration_s": 104.681,
+              "session_id": "sess_5a4cac46-40a5-429b-83fe-b65525ff80f9",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 10.0,
+              "tokens": 643393,
+              "duration_s": 122.213,
+              "session_id": "sess_2f0227ea-538e-434a-855f-c68a107fc449",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 10.0,
+              "tokens": 717282,
+              "duration_s": 133.064,
+              "session_id": "sess_f0415de8-5a8e-4885-8a3f-047976c05794",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 0.0,
+              "tokens": 1007681,
+              "duration_s": 354.891,
+              "session_id": "sess_c5492e5c-e3df-49e8-8824-92d56e017b4c",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 10.0,
+              "tokens": 1346970,
+              "duration_s": 327.44,
+              "session_id": "sess_90625bba-0574-4598-8163-8b859e9f4543",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 0.0,
+              "tokens": 814685,
+              "duration_s": 285.106,
+              "session_id": "sess_3ddc0054-76b2-455d-a49c-151bac30e880",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            }
+          ]
+        }
+      },
+      "task_mean_t": 10.0,
+      "task_mean_b": 3.3333333333333335,
+      "delta": 6.666666666666666,
+      "h": 2,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false
+    },
+    {
+      "id": "t05",
+      "tested_family": "minimax",
+      "source": "planning/taskset-redesign/merged office 子树（冻结 9e7f57c6…）",
+      "pass_line": 8.5,
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 10.0,
+              "tokens": 603816,
+              "duration_s": 59.077,
+              "session_id": "sess_6e181caa-4509-49f9-86d9-d929083c3068",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 10.0,
+              "tokens": 534911,
+              "duration_s": 51.595,
+              "session_id": "sess_395e90a1-e85d-48f3-8de4-684f9e611997",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 10.0,
+              "tokens": 506498,
+              "duration_s": 46.413,
+              "session_id": "sess_577f9f36-0766-4fb2-9f8b-f6edc2f14679",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 1.75,
+              "tokens": 1700920,
+              "duration_s": 183.875,
+              "session_id": "sess_7cc29cec-c7af-41f1-8b68-dae1e14d7950",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 4.0,
+              "tokens": 2642418,
+              "duration_s": 223.995,
+              "session_id": "sess_206d3cfc-9970-4a46-bfc9-0eb6844627b5",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 4.0,
+              "tokens": 519118,
+              "duration_s": 71.682,
+              "session_id": "sess_93173268-ae98-454b-bb84-c2d54460254b",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            }
+          ]
+        }
+      },
+      "task_mean_t": 10.0,
+      "task_mean_b": 3.25,
+      "delta": 6.75,
+      "h": 3,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false
+    },
+    {
+      "id": "t06",
+      "tested_family": "glm",
+      "source": "planning/taskset-redesign/merged office 子树（冻结 9e7f57c6…）",
+      "pass_line": 8.5,
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 10.0,
+              "tokens": 437122,
+              "duration_s": 95.71,
+              "session_id": "sess_674ee422-75ef-47bb-b9ee-867a82acc7bb",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 10.0,
+              "tokens": 558083,
+              "duration_s": 122.447,
+              "session_id": "sess_b8f3fafa-f3d2-4926-80d2-eb2129c12c3e",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 10.0,
+              "tokens": 755416,
+              "duration_s": 127.09,
+              "session_id": "sess_37ab712c-89ce-41cb-8179-47ca724b69bd",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 3.0,
+              "tokens": 1010106,
+              "duration_s": 526.799,
+              "session_id": "sess_62422f10-551c-4071-99fa-35380b5c2b2f",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 3.0,
+              "tokens": 776090,
+              "duration_s": 275.914,
+              "session_id": "sess_8a46e8e9-da1e-4f9a-ba0b-40c3fc0ef5c9",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 2.25,
+              "tokens": 1112553,
+              "duration_s": 270.989,
+              "session_id": "sess_15c36430-07a5-4fd8-8db3-561aff0906c3",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            }
+          ]
+        }
+      },
+      "task_mean_t": 10.0,
+      "task_mean_b": 2.75,
+      "delta": 7.25,
+      "h": 3,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false
+    },
+    {
+      "id": "t07",
+      "tested_family": "minimax",
+      "source": "planning/taskset-redesign/merged office 子树（冻结 9e7f57c6…）",
+      "pass_line": 8.5,
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 10.0,
+              "tokens": 665134,
+              "duration_s": 111.099,
+              "session_id": "sess_af67e197-f921-44f5-8e50-baa48e2bf7d0",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 7.5,
+              "tokens": 715086,
+              "duration_s": 64.076,
+              "session_id": "sess_5ec8afb9-0517-4408-a781-dbc94a4bdcfd",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 7.5,
+              "tokens": 1019876,
+              "duration_s": 121.94,
+              "session_id": "sess_7df7ef24-de64-4081-8af6-280315f3c7bf",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 10.0,
+              "tokens": 1381888,
+              "duration_s": 144.206,
+              "session_id": "sess_104bfdb6-597d-48e9-9d72-8741d522eca0",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 4.5,
+              "tokens": 2119963,
+              "duration_s": 257.602,
+              "session_id": "sess_97e485f2-b998-4a25-a488-67ab90325535",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 4.5,
+              "tokens": 778827,
+              "duration_s": 82.186,
+              "session_id": "sess_aeb5c148-86af-4793-8e2d-43507a780d0d",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            }
+          ]
+        }
+      },
+      "task_mean_t": 8.333333333333334,
+      "task_mean_b": 6.333333333333333,
+      "delta": 2.000000000000001,
+      "h": 2,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false
+    },
+    {
+      "id": "t08",
+      "tested_family": "glm",
+      "source": "planning/taskset-redesign/merged office 子树（冻结 9e7f57c6…）",
+      "pass_line": 8.5,
+      "arms": {
+        "treatment": {
+          "runs": [
+            {
+              "score": 10.0,
+              "tokens": 753445,
+              "duration_s": 195.454,
+              "session_id": "sess_e568d77b-ec38-42e0-8c8a-17307c92eb50",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 10.0,
+              "tokens": 411633,
+              "duration_s": 134.916,
+              "session_id": "sess_dd3b383e-ad19-401a-9d8e-67899ff6e207",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 10.0,
+              "tokens": 544837,
+              "duration_s": 162.814,
+              "session_id": "sess_d044ce3b-b9f9-47fa-a82c-2d17aebbded7",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            }
+          ]
+        },
+        "baseline": {
+          "runs": [
+            {
+              "score": 6.3,
+              "tokens": 1481156,
+              "duration_s": 619.694,
+              "session_id": "sess_db38febf-818c-4744-b4bf-4cdcab2a7e90",
+              "infra_error": false,
+              "rep": 1,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 0.0,
+              "tokens": 2332916,
+              "duration_s": 554.037,
+              "session_id": "sess_2c98d26e-26a7-4a3d-8b57-21c1716525f1",
+              "infra_error": false,
+              "rep": 2,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            },
+            {
+              "score": 0.0,
+              "tokens": 753794,
+              "duration_s": 317.283,
+              "session_id": "sess_e91851ee-a1f9-459b-8dd9-4415911ebc6a",
+              "infra_error": false,
+              "rep": 3,
+              "bucket": "measured_failure",
+              "pin_verdict": "pass",
+              "format_check": null,
+              "assertion": null
+            }
+          ]
+        }
+      },
+      "task_mean_t": 10.0,
+      "task_mean_b": 2.1,
+      "delta": 7.9,
+      "h": 3,
+      "l": 0,
+      "task_verdict": "win",
+      "reverse_flag": false
+    }
+  ],
+  "judge_consistency": [
+    {
+      "task": "ab1-standard-four-templates",
+      "resample_of": "P1",
+      "first_score": 5.0,
+      "second_score": 5.0,
+      "delta": 0.0,
+      "action": "pass"
+    },
+    {
+      "task": "ab2-boundary-missing-required",
+      "resample_of": "P2",
+      "first_score": 8.0,
+      "second_score": 8.0,
+      "delta": 0.0,
+      "action": "pass"
+    },
+    {
+      "task": "ab3-empty-and-string-lists",
+      "resample_of": "P3",
+      "first_score": 10.0,
+      "second_score": 9.5,
+      "delta": 0.5,
+      "action": "pass"
+    },
+    {
+      "task": "ab4-invalid-input-rejection",
+      "resample_of": "P4",
+      "first_score": 8.0,
+      "second_score": 8.5,
+      "delta": 0.5,
+      "action": "pass"
+    },
+    {
+      "task": "ab5-determinism-layout-selfeval",
+      "resample_of": "P5",
+      "first_score": 6.0,
+      "second_score": 6.5,
+      "delta": 0.5,
+      "action": "pass"
+    },
+    {
+      "task": "t01",
+      "resample_of": "P6",
+      "first_score": 10.0,
+      "second_score": 10.0,
+      "delta": 0.0,
+      "action": "pass"
+    },
+    {
+      "task": "t02",
+      "resample_of": "P1",
+      "first_score": 10.0,
+      "second_score": 10.0,
+      "delta": 0.0,
+      "action": "pass"
+    },
+    {
+      "task": "t03",
+      "resample_of": "P2",
+      "first_score": 4.5,
+      "second_score": 4.5,
+      "delta": 0.0,
+      "action": "pass"
+    },
+    {
+      "task": "t04",
+      "resample_of": "P3",
+      "first_score": 10.0,
+      "second_score": null,
+      "delta": null,
+      "action": "pass"
+    },
+    {
+      "task": "t05",
+      "resample_of": "P4",
+      "first_score": 4.0,
+      "second_score": 5.0,
+      "delta": 1.0,
+      "action": "pass"
+    },
+    {
+      "task": "t06",
+      "resample_of": "P5",
+      "first_score": 3.0,
+      "second_score": 3.0,
+      "delta": 0.0,
+      "action": "pass"
+    },
+    {
+      "task": "t07",
+      "resample_of": "P6",
+      "first_score": 4.0,
+      "second_score": 2.5,
+      "delta": 1.5,
+      "action": "pass"
+    },
+    {
+      "task": "t08",
+      "resample_of": "P1",
+      "first_score": 4.0,
+      "second_score": 0.0,
+      "delta": 4.0,
+      "action": "unjudgeable"
+    }
+  ],
+  "infra_errors": [],
+  "aggregate": {
+    "mean_baseline": 4.674,
+    "mean_treatment": 9.282,
+    "delta": 4.61,
+    "task_win_rate": 0.9231,
+    "pair_win_rate": null,
+    "reverse_tasks": 0,
+    "ties": 1,
+    "valid_tasks": 12,
+    "total_tasks": 13,
+    "fam_tasks": {
+      "glm": {
+        "n_tasks": 7,
+        "wins": 7,
+        "losses": 0,
+        "ties": 0,
+        "delta_mean": 4.79,
+        "win_rate": 1.0,
+        "reverse": 0,
+        "task_verdicts": {
+          "ab1-standard-four-templates": "win",
+          "ab3-empty-and-string-lists": "win",
+          "ab5-determinism-layout-selfeval": "win",
+          "t02": "win",
+          "t04": "win",
+          "t06": "win",
+          "t08": "win"
+        }
+      },
+      "minimax": {
+        "n_tasks": 6,
+        "wins": 5,
+        "losses": 0,
+        "ties": 1,
+        "delta_mean": 4.4,
+        "win_rate": 0.8333,
+        "reverse": 0,
+        "task_verdicts": {
+          "ab2-boundary-missing-required": "win",
+          "ab4-invalid-input-rejection": "tie",
+          "t01": "win",
+          "t03": "win",
+          "t05": "win",
+          "t07": "win"
+        }
+      }
+    },
+    "tie_aware_rule": "§3.3-2 v0.2.1：n=3 h≥2 胜 / l≥2 负 / 其余平"
+  },
+  "acceptance": {
+    "gates": {
+      "delta_ge_1": {
+        "value": 4.61,
+        "pass": true
+      },
+      "winrate_ge_60": {
+        "value": 0.9231,
+        "wins": 12,
+        "denominator": 13,
+        "need_wins_13tasks": 8,
+        "pass": true
+      },
+      "reverse_le_1": {
+        "value": 0,
+        "pass": true
+      },
+      "efficiency_le_2": {
+        "token_ratio": 0.473,
+        "duration_ratio": 0.375,
+        "pass": true
+      }
+    },
+    "blind_detail": {
+      "panel": "被测 glm→[step-router-v1, Minimax-M3.1-Flash-Preview]；被测 minimax→[step-router-v1, GLM-5.3]",
+      "blind": "产物匿名化 P1..Pn 洗牌 + docx 事实抽取 + 路径漂白；映射仅存 records/judge-staging/",
+      "ab5_replay": "rubric ③④ 裁判侧臂外重放（planner 裁决 9827318），①②⑤ 原口径"
+    },
+    "evidence_level": "provisional",
+    "verdict": "rejected"
+  },
+  "disclosure": {
+    "rounds": 2,
+    "single_round_signal": true,
+    "single_round_signal_basis": "K5B-07：round1（K5B v0.2，verdict=rejected）未 accepted，两轮不都 accepted → 必须为 true",
+    "delta_range": null,
+    "round1_source": "dist/office-templates-skill/eval/results/benchmark.json（K5B round1 v0.2 原样并列保留）",
+    "cross_generation_note": "v0.2.1 §3.7-4：round2 与 round1 判分协议版本不同（S8-JUDGE-v1→S8-JUDGE-v2-OFXRETEST-1）、任务集 5→13、n=2→3，构成跨代——两轮数字禁止直接 Δ 对位或合并披露；round2 按 v0.2.1 独立判定",
+    "d3_note": "不适用（本轮无 D3 轨）"
+  },
+  "_efficiency": {
+    "token_ratio": 0.473,
+    "duration_ratio": 0.375,
+    "tokens_traceability": "records/arms/* db model_usage join 实测回填（input+output）",
+    "n_non_infra_runs": 78
+  },
+  "_swap_check": {
+    "swap_delta": -4.607692,
+    "swap_win_rate": 0.0,
+    "tie_rate": 0.0769,
+    "swap_reverse_tasks": 13,
+    "identity_abs_swap_delta_plus_delta": 0.0,
+    "note": "从原始 per-pair 分数独立重算（EVAL-SPEC v0.2.1 §3.3-2/3 tie-aware）；恒等式 swap_delta + delta ≈ 0；swap_reverse_tasks=swap 侧资产方向真实反向数"
+  },
+  "_k5b02": {
+    "tasks": 13,
+    "runs_per_arm": 3,
+    "required": "n=3（边界带/复检轮）",
+    "pass": true
+  },
+  "_round2_meta": {
+    "run_id": "office-retest-20261009",
+    "base_commit": "9827318",
+    "retest_commit": null,
+    "protocol_deviations": [
+      "ab5 rubric ③④ 取证方式=裁判侧臂外重放（9827318；权重不变，隔离不破）",
+      "新题判分=加权维度协议（rubric.md/judge-notes），ab 题照 K5B 项判分"
+    ],
+    "new_vs_old_parallel": "本文件为 round2 v0.2.1 新口径并列落盘；round1 文件原样未动"
+  }
+}

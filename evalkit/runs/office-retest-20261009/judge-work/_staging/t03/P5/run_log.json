@@ -1,0 +1,126 @@
+{
+  "task": "office-templates 两份空白/全缺失数据成文（请示函 + 工作总结）",
+  "date": "2026-10-09",
+  "interpreter": "/usr/bin/python3 (CPython 3.12.3)",
+  "note_on_interpreter": "venvs/ml 的 python3.12 未挂载用户 site-packages，import docx 失败；改用系统 /usr/bin/python3，python-docx 1.2.0 位于 /home/pan-ding/.local/lib/python3.12/site-packages。引擎与产物不受影响。",
+  "engine": "<redacted>",
+  "cases": [
+    {
+      "id": "A",
+      "template": "请示函",
+      "data": "fixtures/qingshi_empty.json",
+      "data_content": "{}（字面空对象）",
+      "outdir": "out/请示函-empty",
+      "runs": [
+        {"pass": 1, "exit_code": 0},
+        {"pass": 2, "exit_code": 0, "note": "确定性复跑，覆盖复写同一 outdir"}
+      ],
+      "artifacts": [
+        {
+          "file": "文书.docx",
+          "bytes": 36858,
+          "sha256_pass1": "ca2b46fd74e90ab98426fb1c1c4db5579e755eb946dbb54d84a83ed01c8dd8c7",
+          "sha256_pass2": "ca2b46fd74e90ab98426fb1c1c4db5579e755eb946dbb54d84a83ed01c8dd8c7",
+          "byte_identical": true
+        },
+        {
+          "file": "fields.json",
+          "bytes": 2129,
+          "sha256_pass1": "807111a314b3605c3d02166b8a34462ba972ff8f1bd8dd3df1050e50580d3d84",
+          "sha256_pass2": "807111a314b3605c3d02166b8a34462ba972ff8f1bd8dd3df1050e50580d3d84",
+          "byte_identical": true
+        }
+      ],
+      "fields_summary": {
+        "title": "关于____的请示",
+        "total": 8,
+        "filled": 0,
+        "missing": 8,
+        "missing_required": 5,
+        "missing_required_names": ["请示事由", "主送机关", "请示缘由", "请示事项", "请示单位"],
+        "optional_missing_names": ["联系人", "联系电话", "成文日期"],
+        "unknown_keys": []
+      },
+      "rendered_paragraphs": [
+        "关于____的请示",
+        "____：",
+        "____",
+        "____",
+        "联系人：　　联系电话：",
+        "____（落款一，右对齐）",
+        "（落款二空段，右对齐）"
+      ],
+      "boundary_handling": "8/8 字段全缺失：5 个必填以 ____ 占位，3 个选填留空（F2）；必填缺失非错误（F7/C3），退出码 0，如实记账。"
+    },
+    {
+      "id": "B",
+      "template": "工作总结",
+      "data": "fixtures/zongjie_blank.json",
+      "data_content": "7 键齐全但全为空白/空数组：文本值为 '  '、''、'　'，列表为 [] 与 [' ']",
+      "outdir": "out/工作总结-blank",
+      "runs": [
+        {"pass": 1, "exit_code": 0},
+        {"pass": 2, "exit_code": 0, "note": "确定性复跑，覆盖复写同一 outdir"}
+      ],
+      "artifacts": [
+        {
+          "file": "文书.docx",
+          "bytes": 36893,
+          "sha256_pass1": "f635b5f50f5dc2129d36f1a18f9185b367610879b8837812e2071ea7790aa85c",
+          "sha256_pass2": "f635b5f50f5dc2129d36f1a18f9185b367610879b8837812e2071ea7790aa85c",
+          "byte_identical": true
+        },
+        {
+          "file": "fields.json",
+          "bytes": 1964,
+          "sha256_pass1": "96136b3dbaa444d3e4e51d798cc4200de3243efe237be19564fe4edb1a063e42",
+          "sha256_pass2": "96136b3dbaa444d3e4e51d798cc4200de3243efe237be19564fe4edb1a063e42",
+          "byte_identical": true
+        }
+      ],
+      "fields_summary": {
+        "title": "________工作总结",
+        "total": 7,
+        "filled": 0,
+        "missing": 7,
+        "missing_required": 5,
+        "missing_required_names": ["总结主体", "总结时段", "工作回顾", "主要成绩", "下一步工作打算"],
+        "optional_missing_names": ["存在问题", "成文日期"],
+        "unknown_keys": []
+      },
+      "rendered_paragraphs": [
+        "________工作总结（总结主体 ____ + 总结时段 ____ + 固定词）",
+        "一、工作回顾",
+        "1．____",
+        "二、主要成绩",
+        "1．____",
+        "四、下一步工作打算",
+        "1．____",
+        "____（落款一，右对齐）",
+        "（落款二空段，右对齐）"
+      ],
+      "boundary_handling": "键齐全但值全空白：strip 后为空判缺失（F1/F5）；'存在问题' 虽是文本 \"  \" 但 kind=list，按 F3 宽容取单项再 strip → 空 → 缺失，按选填 F4 整节省略，文中不出现「三、存在问题」节头，故小节编号从二直接跳到四；[' '] 单元素全空白数组同样判缺失（F4）。"
+    }
+  ],
+  "determinism_verdict": {
+    "method": "完全相同命令行连跑两遍到同一 --outdir，每遍跑完立刻快照到 /tmp 旁路目录，对两遍快照 diff -r + sha256sum 逐字节对拍",
+    "docx_identical": true,
+    "fields_json_identical": true,
+    "note": "fields.json 含 outputs 路径键，两遍 --outdir 相同故亦逐字节一致。"
+  },
+  "self_check": {
+    "triad_complete": {
+      "SKILL.md": true,
+      "scripts/gen_doc.py": true,
+      "requirements.txt": true
+    },
+    "py_compile": {"cmd": "/usr/bin/python3 -m py_compile <SKILL_MOUNT>/scripts/gen_doc.py", "exit_code": 0, "errors": 0},
+    "nondeterminism_scan": {
+      "cmd": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" <SKILL_MOUNT>/scripts/gen_doc.py",
+      "hits": 0,
+      "grep_exit": 1
+    },
+    "outdir_contains_exactly_two_files": true
+  },
+  "exit_codes": {"A": 0, "B": 0, "errors": 0}
+}

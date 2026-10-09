@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_7da5ce8b-9ba0-4c13-94d1-07ea7673df31",
+  "traceId": "ead98f14-24d2-4806-8887-4cbb9bdf3913",
+  "turnId": "turn_e61574a3-2331-4933-911f-39832f3c21b7",
+  "response": "All six probes pass and deliverables are in place. Summary of what was done and found:\n\n**Result: the office-templates engine correctly rejects all four invalid inputs (exit code 2, Chinese stderr, zero residue) and accepts the legal control case (exit 0, exactly two products). No defect found.**\n\nWhat I ran, per the brief:\n\n1. `--template 证书` → exit 2, argparse rejects with the four valid template names listed. The outdir `.probe/out/case1_bad_template` was never created.\n2. `--data fixtures/周报/不存在的数据.json` → exit 2, stderr `错误：数据文件不存在：…`. Outdir never created.\n3. `--data .probe/not_json.json` (contents literally `这不是JSON`) → exit 2, stderr `错误：数据文件不是合法 JSON：…（Expecting value: line 1 column 1）`. Outdir never created.\n4. `--data .probe/top_level_array.json` (contents `[\"数组\", \"非对象\"]`) → exit 2, stderr `错误：数据 JSON 顶层必须是对象（键值对），实际为 list`. Outdir never created.\n5. Legal control with the frozen `fixtures/周报/case1.json` → exit 0, wrote `out/周报/case1/文书.docx` (37,164 bytes) and `fields.json`, and nothing else. The docx text extracts correctly (`研发部工作周报`, three numbered sections, five items, `报送日期：2026-09-28`), and fields.json reports 7/7 filled with title `研发部工作周报`.\n6. Added probe for the brief's boundary rule \"required-field absence is not invalid\": a 周报 payload missing four required fields → exit 0, produces both artifacts with `____` placeholders and `missing_required_names` = `[部门, 周期, 本周工作内容, 下周工作计划]`. So missing data is accounted for, not rejected.\n\nTwo things worth flagging. First, the illegal-input groups each used their own fresh `--outdir` under `.probe/out/` specifically to prove the directory itself is not created — reusing a pre-existing directory would have masked a residue bug. Second, case 1's stderr is argparse's own message, which leads with an English `usage:` line and `invalid choice`, carrying the Chinese template names rather than a Chinese sentence. The brief asks for \"stderr 有中文错误信息\"; it does contain Chinese and the skill's own §7 specifies argparse for this case specifically, so I recorded it as a pass with that caveat noted explicitly in `run_log.json` rather than silently.\n\nI ran the full six-call sequence twice with identical commands and diffed the results: byte-identical, so the rejection behavior and products reproduce across runs. Only exit codes 0 and 2 appeared, with no tracebacks.\n\nOne environment note: this shell's default `python3` is from `venvs/ml`, which has no `python-docx`. The already-installed 1.2.0 lives in the user site-packages, so probes ran with `PYTHONPATH` pointing there. Full commands including that context are recorded verbatim in each case's `command_full`.\n\nDeliverables left in place: `run_log.json` (six groups with full command, exit code, stdout, stderr, Chinese-error check, residue check, plus product hashes for the control case, repeat-run diff, and verdict), the control products at `out/周报/case1/`, and the probe harness with its raw snapshots under `.probe/`.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 23,
+    "inputTokens": 741215,
+    "outputTokens": 8923,
+    "totalTokens": 750138,
+    "cacheReadTokens": 698251,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 1406,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 750138,
+    "contextUsed": 43900,
+    "contextWindow": 200000
+  }
+}

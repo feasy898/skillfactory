@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t02-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 144434,
+  "started_at_ms": 1791496591564,
+  "session_id": "sess_2e6726f5-d064-4b15-b0f0-87eb8b15942c",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t02-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 427014,
+      "ot": 8037,
+      "dur": 124150,
+      "n": 15
+    }
+  ],
+  "input_tokens": 427014,
+  "output_tokens": 8037,
+  "stdout_bytes": 2491,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "95-0386776296e9\",\n  \"turnId\": \"turn_b0ea1dcb-f220-4e76-a8ce-3ad314982cc1\",\n  \"response\": \"任务完成。会议通知已生成并通过全部核验，交付物就位。\\n\\n**交付物**（均在 `treatment/` 下）：\\n- `out/文书.docx` — 正式会议通知（GB/T 9704 风格版式）\\n- `out/fields.json` — 字段填充台账（`out/` 内恰含这两个文件）\\n- `qingheng_teahui.json` — 按简报原文保存的输入数据\\n- `run_log.json` — 确定性对拍留痕（含两遍命令行、退出码、sha256、逐字节对拍结论、三件套盘点、py_compile 与不可复现源扫描结果）；旁路快照在 `.snap1/`、`.snap2/`\\n\\n**成文情况**：数据 11 个字段全部填充（filled/total = 11/11），无必填缺失、无 `____` 占位、无模板外键。标题为《关于召开秋季会员茶话会的通知》，称谓「全体会员：」顶格，正文含时间/地点/参会人员/议题，「一、会议要求」节下列出 6 条要求（`1．`–`6．`全角点编号），联系行居中信息，落款「青蘅茶社 / 2026年10月9日」右对齐。数据里「会议议题」原值带首尾空格，已按规范 strip 后入文并如实记账。\\n\\n**版式与确定性核验**：\\n- 逐段核验通过：标题黑体 22pt 居中；正文首行缩进两字符（`firstLineChars=200`）、仿宋 16pt、固定行距 28 磅；落款右缩进 32pt；页面 A4、边距 3.7/3.5/2.8/2.6 cm。\\n- 确定性对拍通过：同命令连跑两遍，`文书.docx` 与 `fields.json` 均整文件逐字节一致（两遍 sha256 相同，分别为 `31ffca88…` 与 `fb860340…`）。\\n- 入口脚本 `py_compile` 0 错误；`time/random/uuid/datetime/now` 扫描 0 命中。\\n\\n一点说明：SKILL.md 记载的入口路径是 `package/scripts/gen_doc.py`，盘上实际安装布局为 `scripts/gen_doc.py`（内容齐备），本次按实际路径调用，已写入 run_log.json 备查。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 15,\n    \"inputTokens\": 427014,\n    \"outputTokens\": 8037,\n    \"totalTokens\": 435051,\n    \"cacheReadTokens\": 406272,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 4941,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 435051,\n    \"contextUsed\": 36698,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

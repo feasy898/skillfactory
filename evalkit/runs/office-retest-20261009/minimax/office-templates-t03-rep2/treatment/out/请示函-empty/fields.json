@@ -1,0 +1,99 @@
+{
+  "template": "请示函",
+  "title": "关于____的请示",
+  "filled_fields": [],
+  "missing_fields": [
+    "请示事由",
+    "主送机关",
+    "请示缘由",
+    "请示事项",
+    "请示单位",
+    "联系人",
+    "联系电话",
+    "成文日期"
+  ],
+  "fields": [
+    {
+      "name": "请示事由",
+      "required": true,
+      "kind": "text",
+      "status": "missing",
+      "value": null,
+      "rendered_as": "以____占位"
+    },
+    {
+      "name": "主送机关",
+      "required": true,
+      "kind": "text",
+      "status": "missing",
+      "value": null,
+      "rendered_as": "以____占位"
+    },
+    {
+      "name": "请示缘由",
+      "required": true,
+      "kind": "text",
+      "status": "missing",
+      "value": null,
+      "rendered_as": "以____占位"
+    },
+    {
+      "name": "请示事项",
+      "required": true,
+      "kind": "text",
+      "status": "missing",
+      "value": null,
+      "rendered_as": "以____占位"
+    },
+    {
+      "name": "请示单位",
+      "required": true,
+      "kind": "text",
+      "status": "missing",
+      "value": null,
+      "rendered_as": "以____占位"
+    },
+    {
+      "name": "联系人",
+      "required": false,
+      "kind": "text",
+      "status": "missing",
+      "value": null,
+      "rendered_as": "留空（渲染为空字符串）"
+    },
+    {
+      "name": "联系电话",
+      "required": false,
+      "kind": "text",
+      "status": "missing",
+      "value": null,
+      "rendered_as": "留空（渲染为空字符串）"
+    },
+    {
+      "name": "成文日期",
+      "required": false,
+      "kind": "text",
+      "status": "missing",
+      "value": null,
+      "rendered_as": "留空（渲染为空字符串）"
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "filled": 0,
+    "missing": 8,
+    "missing_required": 5,
+    "missing_required_names": [
+      "请示事由",
+      "主送机关",
+      "请示缘由",
+      "请示事项",
+      "请示单位"
+    ],
+    "unknown_keys": []
+  },
+  "outputs": {
+    "docx": "out/请示函-empty/文书.docx",
+    "fields_json": "out/请示函-empty/fields.json"
+  }
+}

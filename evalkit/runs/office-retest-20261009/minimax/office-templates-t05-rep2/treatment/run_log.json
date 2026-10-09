@@ -1,0 +1,72 @@
+{
+  "task": "office-templates / 请示函 / t05-rep2 / treatment",
+  "date": "2026-10-09",
+  "interpreter_note": "PATH 上的 python3 为 venv /home/pan-ding/venvs/ml/bin/python3，未安装 python-docx；改用 /usr/bin/python3（python-docx 1.2.0 已装于 ~/.local/lib/python3.12/site-packages）",
+  "input_data": "lanshan_miji.json",
+  "commands": [
+    {
+      "run": 1,
+      "cmdline": "/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 请示函 --data lanshan_miji.json --outdir out",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=请示函，标题=关于购置档案密集架的请示的请示，字段 filled/total=8/8，必填缺失=无，模板外键=无）"
+    },
+    {
+      "run": 2,
+      "cmdline": "/usr/bin/python3 .zcode/skills/office-templates/scripts/gen_doc.py --template 请示函 --data lanshan_miji.json --outdir out",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=请示函，标题=关于购置档案密集架的请示的请示，字段 filled/total=8/8，必填缺失=无，模板外键=无）"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "out/文书.docx",
+      "sha256_run1": "fd1bb9e3eb7574dddaa6bbfa62f3b41e926a75df4f8bc1bd1230e1637ac0d249",
+      "sha256_run2": "fd1bb9e3eb7574dddaa6bbfa62f3b41e926a75df4f8bc1bd1230e1637ac0d249",
+      "bytes": 37143,
+      "byte_identical_across_runs": true
+    },
+    {
+      "path": "out/fields.json",
+      "sha256_run1": "233f18b27c3ebb363e159d7817f445172afbf1d51a557c2b0e5f2adbca2081a2",
+      "sha256_run2": "233f18b27c3ebb363e159d7817f445172afbf1d51a557c2b0e5f2adbca2081a2",
+      "bytes": 1972,
+      "byte_identical_across_runs": true
+    }
+  ],
+  "byte_compare": {
+    "method": "同参数连跑两遍到同一 outdir，每遍跑完快照到 .snap/run1 与 .snap/run2，sha256sum 对拍",
+    "conclusion": "一致",
+    "diff_note": "两遍 文书.docx 与 fields.json 哈希均逐一相等，含 fields.json 的 outputs 路径键在内整文件相同"
+  },
+  "field_ledger_check": {
+    "total": 8,
+    "filled": 8,
+    "missing": 0,
+    "missing_required_names": [],
+    "unknown_keys": [],
+    "title_matches_formula": "关于{请示事由}的请示 → 关于购置档案密集架的请示的请示（相符；但输入 请示事由 值本身含『的请示』，导致标题『…的请示的请示』重复，机械公式所致，非引擎缺陷）"
+  },
+  "document_paragraphs": [
+    {"idx": 0, "text": "关于购置档案密集架的请示的请示", "align": "CENTER", "role": "标题（V2 居中 22pt 黑体）"},
+    {"idx": 1, "text": "澜山物业管理有限公司：", "align": "left/顶格", "role": "称谓（V3 无首行缩进、全角冒号）"},
+    {"idx": 2, "text": "综合管理部档案室现用木制档案柜已达使用年限，且2025年新增业委会档案214卷，存储空间严重不足。", "align": "justify", "role": "正文·请示缘由（V4 缩进两字符 16pt 仿宋）"},
+    {"idx": 3, "text": "申请购置手摇式档案密集架4组，预算3.6万元，列入本年度固定资产。", "align": "justify", "role": "正文·请示事项"},
+    {"idx": 4, "text": "联系人：皮之常　　联系电话：0571-8812-3456", "align": "justify", "role": "联系行"},
+    {"idx": 5, "text": "澜山物业综合管理部", "align": "RIGHT", "role": "落款一（V5 右对齐右缩进两字）"},
+    {"idx": 6, "text": "2026年10月12日", "align": "RIGHT", "role": "落款二（裸日期无标签）"}
+  ],
+  "package_inventory": {
+    "SKILL.md": true,
+    "scripts/gen_doc.py": true,
+    "requirements.txt": true,
+    "references/请示函.md": true
+  },
+  "py_compile": {
+    "cmd": "/usr/bin/python3 -m py_compile .zcode/skills/office-templates/scripts/gen_doc.py",
+    "exit_code": 0
+  },
+  "nondeterminism_scan": {
+    "cmd": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" .zcode/skills/office-templates/scripts/gen_doc.py",
+    "hits": 0
+  }
+}

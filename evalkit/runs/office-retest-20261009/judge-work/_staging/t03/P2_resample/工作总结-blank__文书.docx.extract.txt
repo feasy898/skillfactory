@@ -1,0 +1,10 @@
+EXTRACT OF 工作总结-blank__文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=None runs=[____（____年__月）/方正小标宋简体/22.0] text=____（____年__月）工作总结
+P001 align=None firstLineChars=None firstLineIndent=406400 spacing=None runs=[一、工作回顾/黑体/16.0] text=一、工作回顾
+P002 align=None firstLineChars=None firstLineIndent=406400 spacing=None runs=[1．____/仿宋_GB2312/16.0] text=1．____
+P003 align=None firstLineChars=None firstLineIndent=406400 spacing=None runs=[二、主要成绩/黑体/16.0] text=二、主要成绩
+P004 align=None firstLineChars=None firstLineIndent=406400 spacing=None runs=[1．____/仿宋_GB2312/16.0] text=1．____
+P005 align=None firstLineChars=None firstLineIndent=406400 spacing=None runs=[三、下一步工作打算/黑体/16.0] text=三、下一步工作打算
+P006 align=None firstLineChars=None firstLineIndent=406400 spacing=None runs=[1．____/仿宋_GB2312/16.0] text=1．____
+P007 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=None runs=[____/仿宋_GB2312/16.0] text=____
+P008 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=None runs=[____年__月__日/仿宋_GB2312/16.0] text=____年__月__日

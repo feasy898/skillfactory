@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t04-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 104681,
+  "started_at_ms": 1791497569383,
+  "session_id": "sess_5a4cac46-40a5-429b-83fe-b65525ff80f9",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t04-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 460356,
+      "ot": 8178,
+      "dur": 94570,
+      "n": 16
+    }
+  ],
+  "input_tokens": 460356,
+  "output_tokens": 8178,
+  "stdout_bytes": 2358,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "{\n  \"sessionId\": \"sess_5a4cac46-40a5-429b-83fe-b65525ff80f9\",\n  \"traceId\": \"0840ac3a-f114-4735-9ff8-ffb217878f0f\",\n  \"turnId\": \"turn_b6ee4ddc-12b8-48b9-a2f3-290e0fee526a\",\n  \"response\": \"任务完成。会议通知已按 office-templates 技能生成并通过全部核对，交付物都在 `treatment/` 下：\\n\\n**交付物**\\n- `qingheng_dongji.json` — 按简报原文保存的输入数据\\n- `out/文书.docx` — 会议通知成文，标题《关于召开冬季送暖协调会的通知》，GB/T 9704 风格版式（A4、上3.7/下3.5/左2.8/右2.6 cm 边距；居中黑体二号标题；称谓「各分社负责人：」顶格；正文仿宋三号、首行缩进两字符；右对齐两行落款「青蘅茶社志愿组／2026年10月28日」）\\n- `out/fields.json` — 字段填充台账（产物目录内恰含这两个文件）\\n- `run_log.json` — 确定性验证留痕（按技能要求放在工作目录而非 out/）\\n\\n**字段记账**（8/11 已填，必填缺失为零，文中无 `____` 占位）\\n- 三个选填缺失如实记账：`会议议题`（空串→标签保留值留空，正文有「会议议题：」行）、`会议要求`（空数组→整节省略，文中不出现「一、会议要求」节头）、`联系人`（缺键→联系行保留「联系人：」空标签，电话 137-5566-0099 正常填入）\\n- 历次活动遗留的 7 个杂项键（`1号议程`、`Zebra`、`_private`、`abc`、`备用3`、`附件编号`、`📋备注`）按 F6 字典序记入 `summary.unknown_keys`，未进入文书\\n\\n**确定性验证**：同命令连跑两遍并旁路快照对拍——`文书.docx` 两遍 sha256 相同（`2ddbebc1…`，整文件逐字节一致，docx 容器时间戳已归一化为 1980-01-01），`fields.json` 亦逐字节一致（`946aca70…`）；引擎脚本 `py_compile` 零错误，`grep` 扫描 time/random/uuid/datetime/now 零命中。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 16,\n    \"inputTokens\": 460356,\n    \"outputTokens\": 8178,\n    \"totalTokens\": 468534,\n    \"cacheReadTokens\": 439744,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 4603,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 468534,\n    \"contextUsed\": 36664,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

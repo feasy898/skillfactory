@@ -1,0 +1,21 @@
+{
+  "available": true,
+  "session_id": "sess_e91851ee-a1f9-459b-8dd9-4415911ebc6a",
+  "session": {
+    "directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t08-rep3/baseline"
+  },
+  "directory_matches_arm": true,
+  "db_source": "global",
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 730411,
+      "ot": 23383,
+      "dur": 286646,
+      "n": 15
+    }
+  ]
+}

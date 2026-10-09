@@ -1,0 +1,13 @@
+EXTRACT OF 会议通知__case1__文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=None runs=[关于召开三季度质量评审会的通/黑体/22.0] text=关于召开三季度质量评审会的通知
+P001 align=None firstLineChars=None firstLineIndent=None spacing=355600 runs=[各部门、各项目组：/仿宋/16.0] text=各部门、各项目组：
+P002 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[会议时间：2026年10月9/仿宋/16.0] text=会议时间：2026年10月9日（周五）14:00
+P003 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[会议地点：3 号楼 501 /仿宋/16.0] text=会议地点：3 号楼 501 会议室
+P004 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[参会人员：各部门负责人、各项/仿宋/16.0] text=参会人员：各部门负责人、各项目组 PM
+P005 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[会议议题：三季度评测结果复盘/仿宋/16.0] text=会议议题：三季度评测结果复盘与四季度计划
+P006 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[一、会议要求/黑体/16.0] text=一、会议要求
+P007 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[1．会前提交本部门质量简报/仿宋/16.0] text=1．会前提交本部门质量简报
+P008 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[2．迟到 10 分钟以上按缺/仿宋/16.0] text=2．迟到 10 分钟以上按缺席处理
+P009 align=None firstLineChars=200 firstLineIndent=None spacing=355600 runs=[联系人：李工　　联系电话：0/仿宋/16.0] text=联系人：李工　　联系电话：010-88886666
+P010 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[评测技术部/仿宋/16.0] text=评测技术部
+P011 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[2026年9月28日/仿宋/16.0] text=2026年9月28日

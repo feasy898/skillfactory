@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_27b1ad49-f3f0-4b07-902c-4c0b48ca621b",
+  "traceId": "d6738bc0-9867-4f16-9290-57f779894610",
+  "turnId": "turn_9383325b-b3f3-4e45-9b05-214333fdb875",
+  "response": "两个单元都已完成，产物齐全且全部行为符合「缺数据不编造、如实记账」的要求。\n\n## 做了什么\n\n用臂内的 office-templates 技能引擎（`.zcode/skills/office-templates/scripts/gen_doc.py`）按命令行契约处理两份边界数据，产物写入 `out/<模板>/case2/`，每目录恰含 `文书.docx` 与 `fields.json` 两项。四次调用（两模板 × 确定性对拍两遍）**退出码全为 0**。\n\n## 记账结果与输入缺失事实一致\n\n**请示函/case2**（filled 4/8）：`主送机关` 键不存在、`请示事项` 为空字符串，两者均按必填缺失以 `____` 占位并记入 `missing_required_names`；选填的 `联系电话`、`成文日期` 缺失记为 `rendered_as=\"留空（渲染为空字符串）\"`，未被误记为必填。渲染核对：称谓段为 `____：` 且无首行缩进（顶格），落款一 `评测技术部` 右对齐，右缩进 32pt；因成文日期缺失产生的空段仍保持右对齐，落款行序不破坏。\n\n**会议通知/case2**（filled 5/11）：`会议名称` 缺失进标题成为 `关于召开____的通知`，`会议地点` 空字符串在正文渲染为 `会议地点：____`，二者记入必填缺失；选填的 `会议议题` 留空但标签保留，选填列表 `会议要求` 缺失按 F4 **整节省略**（文中确实不出现 `一、会议要求` 节头），`联系人`/`联系电话` 标签保留值为空；模板外键 `备注` 按字典序记入 `summary.unknown_keys`，未进入文书与台账明细。称谓 `各部门：` 顶格，落款两行均右对齐。\n\n## 交付自评留痕\n\n同一条命令行连跑两遍、两遍产物快照到旁路目录后逐字节对拍：**四组 sha256 全部相等**（`文书.docx` 整文件一致，`fields.json` 连 `outputs` 路径键在内也完全一致）。`python -m py_compile` 退出 0 无错误；入口脚本不可复现源扫描（`time(|random|uuid|datetime|now(`）**0 命中**；技能三件套 `SKILL.md`/`scripts/gen_doc.py`/`requirements.txt` 齐全。留痕写在工作目录的 `run_log.json`（未写入 `--outdir`，以保持产物目录恰含两产物）。\n\n一处环境说明：系统 `python3` 受 PEP 668 保护无法直接安装依赖，我另建了 `/tmp/otenv` 虚拟环境并按 `requirements.txt` 装入 python-docx 1.2.0 来运行引擎，引擎代码本身未做任何改动，此事已如实记入 `run_log.json` 的 interpreter 字段。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 17,
+    "inputTokens": 509047,
+    "outputTokens": 6769,
+    "totalTokens": 515816,
+    "cacheReadTokens": 468420,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 572,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 515816,
+    "contextUsed": 41426,
+    "contextWindow": 200000
+  }
+}

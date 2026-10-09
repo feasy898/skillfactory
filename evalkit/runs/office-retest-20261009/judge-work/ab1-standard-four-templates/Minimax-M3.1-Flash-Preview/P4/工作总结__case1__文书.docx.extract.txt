@@ -1,0 +1,16 @@
+EXTRACT OF 工作总结__case1__文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=431800 runs=[评测技术部2026年第三季度/宋体/22.0] text=评测技术部2026年第三季度工作总结
+P001 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[一、工作回顾/黑体/16.0] text=一、工作回顾
+P002 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[1.完成 P0 打分器三轮迭/仿宋/16.0] text=1.完成 P0 打分器三轮迭代
+P003 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[2.建设 12 份评测 JS/仿宋/16.0] text=2.建设 12 份评测 JSON 台账
+P004 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[二、主要成绩/黑体/16.0] text=二、主要成绩
+P005 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[1.打分一致性从 6.1 提/仿宋/16.0] text=1.打分一致性从 6.1 提升到 7.4
+P006 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[2.评测周期缩短 30%/仿宋/16.0] text=2.评测周期缩短 30%
+P007 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[三、存在问题/黑体/16.0] text=三、存在问题
+P008 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[1.标注规范仍有歧义/仿宋/16.0] text=1.标注规范仍有歧义
+P009 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[2.GPU 资源排期紧张/仿宋/16.0] text=2.GPU 资源排期紧张
+P010 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[四、下一步工作打算/黑体/16.0] text=四、下一步工作打算
+P011 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[1.发布标注规范 v2/仿宋/16.0] text=1.发布标注规范 v2
+P012 align=None firstLineChars=None firstLineIndent=406400 spacing=355600 runs=[2.引入自动化回归评测/仿宋/16.0] text=2.引入自动化回归评测
+P013 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[评测技术部/仿宋/16.0] text=评测技术部
+P014 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=355600 runs=[2026年9月30日/仿宋/16.0] text=2026年9月30日

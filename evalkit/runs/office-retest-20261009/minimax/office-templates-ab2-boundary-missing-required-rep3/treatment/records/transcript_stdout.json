@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_8f6d77a7-cdc5-4c63-b6b6-e135ac71fbc0",
+  "traceId": "102b13a0-2c17-4065-a416-79804bae1b79",
+  "turnId": "turn_065f16b9-9ca2-494f-90ad-eaae4928a453",
+  "response": "两份边界数据都已成文，两个单元目录各恰含 `文书.docx` 与 `fields.json`，全程退出码 0，50 项交付前核对断言全通过。\n\n**结果对照输入缺失事实（独立复算，非照抄引擎输出）**\n\n请示函（`fixtures/请示函/case2.json`）输入有5 键，其中 `请示事项` 是空字符串应判缺失、`主送机关`/`联系电话`/`成文日期` 键不存在，合计 4 项缺失。台账记为：必填缺失 `主送机关`、`请示事项`；选填缺失 `联系电话`、`成文日期`；无模板外键；filled 4/8。文书中称谓渲染成 `____：`（仍顶格、全角冒号收尾），正文段为 `____`，联系行为 `联系人：李工　　联系电话：`（标签保留、值留空），落款 `评测技术部` 右对齐，第二行因成文日期缺失成空段。文中 `____` 恰出现 2 处，与必填缺失数一致。\n\n会议通知（`fixtures/会议通知/case2.json`）输入 8 键，`会议地点` 为空字符串判缺失，`会议名称`/`会议议题`/`会议要求`/`联系人`/`联系电话` 键不存在，`备注` 为模板外键。台账记为：必填缺失 `会议名称`、`会议地点`；选填缺失 `会议议题`、`会议要求`、`联系人`、`联系电话`；`unknown_keys=[\"备注\"]`；filled 5/11。文中标题为 `关于召开____的通知`，`会议地点：____` 占位，选填列表小节「会议要求」整节省略（正文无节头、无「一、」编号），联系行两标签均留空。`会议要求` 未被误记为必填。\n\n**版式未被缺数据破坏**：两例标题居中、称谓顶格无首行缩进、末个非空段落款右对齐且右缩进 32pt、页边距 3.7/3.5/2.8/2.6 cm，逐条实测通过。\n\n**确定性**：以完全相同的命令行连跑两遍到同一 `--outdir`，每遍跑完立即把两产物快照到 `.verify/pass1`、`.verify/pass2`。四件产物两遍 sha256 完全相同，`diff -r` 无差异，逐字节一致。`py_compile` 退出 0，入口脚本 `time(|random|uuid|datetime|now(` 扫描 0 命中。\n\n**留痕文件**（均写在工作目录，未污染产物目录）：`run_log.json` 记录两遍命令行原文与退出码、四件产物 sha256 与字节数、逐字节对拍结论、三件套盘点、py_compile 结果与不可复现源扫描；`verify.py` 是可复跑的核对脚本（`.venv/bin/python verify.py`，EXIT=0）。\n\n两点如实说明：系统 pip 走 PEP 668 externally-managed，无法直接装 python-docx，故在臂目录内建了 `.venv` 并用它安装 `requirements.txt`；`.verify/` 是对拍旁路快照目录，若需保持臂目录极简可删，但 `run_log.json` 中的 sha256 数据不依赖它。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 20,
+    "inputTokens": 570458,
+    "outputTokens": 7432,
+    "totalTokens": 577890,
+    "cacheReadTokens": 533988,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 947,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 577890,
+    "contextUsed": 37354,
+    "contextWindow": 200000
+  }
+}

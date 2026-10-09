@@ -1,0 +1,14 @@
+EXTRACT OF 工作总结-blank__文书.docx (python-docx 确定性抽取，段落含对齐/缩进/字体/字号/行距事实)
+P000 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=368300 runs=[［未填写］/方正小标宋简体/22.0] text=［未填写］
+P001 align=None firstLineChars=None firstLineIndent=406400 spacing=368300 runs=[［未填写］/仿宋_GB2312/16.0] text=［未填写］
+P002 align=None firstLineChars=None firstLineIndent=406400 spacing=368300 runs=[一、工作回顾/黑体/16.0] text=一、工作回顾
+P003 align=None firstLineChars=None firstLineIndent=406400 spacing=368300 runs=[（一）［未填写］/仿宋_GB2312/16.0] text=（一）［未填写］
+P004 align=None firstLineChars=None firstLineIndent=406400 spacing=368300 runs=[二、主要成绩/黑体/16.0] text=二、主要成绩
+P005 align=None firstLineChars=None firstLineIndent=406400 spacing=368300 runs=[（一）［未填写］/仿宋_GB2312/16.0] text=（一）［未填写］
+P006 align=None firstLineChars=None firstLineIndent=406400 spacing=368300 runs=[三、存在问题/黑体/16.0] text=三、存在问题
+P007 align=None firstLineChars=None firstLineIndent=406400 spacing=368300 runs=[［未填写］/仿宋_GB2312/16.0] text=［未填写］
+P008 align=None firstLineChars=None firstLineIndent=406400 spacing=368300 runs=[四、下一步工作打算/黑体/16.0] text=四、下一步工作打算
+P009 align=None firstLineChars=None firstLineIndent=406400 spacing=368300 runs=[（一）［未填写］/仿宋_GB2312/16.0] text=（一）［未填写］
+P010 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=368300 runs=[［未填写］/仿宋_GB2312/16.0] text=［未填写］
+P011 align=RIGHT (2) firstLineChars=None firstLineIndent=None spacing=368300 runs=[［未填写］/仿宋_GB2312/16.0] text=［未填写］
+P012 align=CENTER (1) firstLineChars=None firstLineIndent=None spacing=None runs=[（本件由空数据生成，正文 ［/仿宋_GB2312/10.5] text=（本件由空数据生成，正文 ［未填写］ 处待补充）

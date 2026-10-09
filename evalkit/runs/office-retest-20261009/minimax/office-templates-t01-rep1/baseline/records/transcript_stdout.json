@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_789e1d4c-4899-4eb8-9283-38ed7dd82393",
+  "traceId": "848b749f-4ff9-4fa3-a600-2a1d5f29d244",
+  "turnId": "turn_f8dc4442-8dad-4ede-b4fa-f2e7584f0e7a",
+  "response": "周报已生成并通过全部校验，交付物齐备。\n\n**产物**\n\n- `out/文书.docx` — 单页周报：居中大标题「拾贝书店 2026年10月第2周 工作周报」+ 副题横线，2×4 抬头信息表（部门/报送周期/填报人/报送日期，标签列浅底），四个编号章节（本周工作内容 2 条、下周工作计划、问题与需协调事项 1 条、温馨提示提示条），右下角签署块，页脚居中页码。\n- `out/fields.json` — 字段台账：8 个字段逐项记录 `required` / `present` / `missing` / `raw` / `value` / `cleaning`，外加 summary 统计。\n- `out/delivery-report.json` — 严格四个键：`missing_required_names`、`missing_optional`、`unknown_keys` 均为空数组，`title` 为文书标题。四个值全部由 `fields.json` 台账推导，未另行判断。\n- `shibei_week42.json` — 原始数据（按简报要求保存）。\n\n**数据清洗（台账中如实留痕，未静默处理）**\n\n原始数据带三处脏数据，台账 `cleaning` 字段记录了动作：\n\n1. `部门` 值为 `\" 拾贝书店 \"`，首尾各有一个空格 → 去空白后为 `拾贝书店`（`trim`）。\n2. `本周工作内容` 数组含一项 `\"   \"`（纯空白）→ 清洗后剔除，实际 2 条（`trim` + `drop_blank_items`）。\n3. `问题与需协调事项` 数组含一项 `\"\"`（空串）→ 剔除，实际 1 条（`drop_blank_items`）。\n\n文书正文中这三处均按清洗后的值呈现，未出现空行或空白编号项。\n\n**校验结果**\n\n- `postcheck.py` 9/9 全部通过，0 错误 0 警告（首轮有一条行距不一致警告，已把表格单元格行距统一到 312 twips 后复跑清零）。\n- LibreOffice 渲染 + 视觉检查：单页，无空白页、无溢出/截断/重叠，四个章节、提示条、签署块、页码均正常；期间调整了信息表列宽（标签 15% / 值 35%）以改善「报送周期」的换行。\n- 注：本次 `documents:visual-judge` 子代理因 Provider Registry 报错不可用，按 skill 文档的回退路径由我直接检视渲染页完成视觉门禁。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 34,
+    "inputTokens": 1471224,
+    "outputTokens": 16490,
+    "totalTokens": 1487714,
+    "cacheReadTokens": 1409087,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 3173,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1487714,
+    "contextUsed": 62887,
+    "contextWindow": 200000
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "schema": "office-doc-fields/1",
+  "template_id": "zongjie",
+  "template_name": "工作总结",
+  "source_input": "fixtures/zongjie_blank.json",
+  "output_dir": "out/工作总结-blank",
+  "artifacts": {
+    "docx": "文书.docx"
+  },
+  "input_shape": {
+    "top_level_keys": [
+      "下一步工作打算",
+      "主要成绩",
+      "存在问题",
+      "工作回顾",
+      "总结主体",
+      "总结时段",
+      "成文日期"
+    ],
+    "key_count": 7
+  },
+  "blank_policy": {
+    "whitespace_treated_as_blank": true,
+    "whitespace_chars": [
+      "U+0020",
+      "U+3000",
+      "U+00A0",
+      "U+0009-000D",
+      "U+2000-200A",
+      "U+FEFF"
+    ],
+    "placeholder_format": "【字段名】",
+    "on_missing_key": "render 【字段名】 placeholder; never abort",
+    "on_blank_string": "render 【字段名】 placeholder",
+    "on_empty_or_all_blank_list": "render a single 【字段名】 placeholder paragraph",
+    "on_unusable_type": "render 【字段名】 placeholder; record status=invalid",
+    "no_fabrication": "no issuing body, date, subject or figure was invented"
+  },
+  "field_count": 7,
+  "status_counts": {
+    "filled": 0,
+    "blank": 7,
+    "missing": 0,
+    "invalid": 0
+  },
+  "fields": [
+    {
+      "key": "总结主体",
+      "placeholder": "【总结主体名称】",
+      "status": "blank",
+      "present_in_input": true,
+      "input_type": "string",
+      "raw": "  ",
+      "raw_repr": "'  '",
+      "raw_codepoints": [
+        "U+0020",
+        "U+0020"
+      ],
+      "rendered": "【总结主体名称】",
+      "template_slot": "标题（发文主体）"
+    },
+    {
+      "key": "总结时段",
+      "placeholder": "【总结时段】",
+      "status": "blank",
+      "present_in_input": true,
+      "input_type": "string",
+      "raw": "",
+      "raw_repr": "''",
+      "raw_codepoints": [],
+      "rendered": "【总结时段】",
+      "template_slot": "标题（时段）"
+    },
+    {
+      "key": "工作回顾",
+      "placeholder": "【工作回顾内容】",
+      "status": "blank",
+      "present_in_input": true,
+      "input_type": "list",
+      "raw": [],
+      "raw_repr": "[]",
+      "raw_codepoints": [],
+      "rendered": "【工作回顾内容】",
+      "items_total": 0,
+      "items": [],
+      "items_kept": 0,
+      "items_dropped_as_blank": 0,
+      "template_slot": "正文 一、工作回顾"
+    },
+    {
+      "key": "主要成绩",
+      "placeholder": "【主要成绩内容】",
+      "status": "blank",
+      "present_in_input": true,
+      "input_type": "list",
+      "raw": [
+        " "
+      ],
+      "raw_repr": "[' ']",
+      "raw_codepoints": [
+        [
+          "U+0020"
+        ]
+      ],
+      "rendered": "【主要成绩内容】",
+      "items_total": 1,
+      "items": [],
+      "items_kept": 0,
+      "items_dropped_as_blank": 1,
+      "template_slot": "正文 二、主要成绩"
+    },
+    {
+      "key": "存在问题",
+      "placeholder": "【存在问题内容】",
+      "status": "blank",
+      "present_in_input": true,
+      "input_type": "string",
+      "raw": "  ",
+      "raw_repr": "'  '",
+      "raw_codepoints": [
+        "U+0020",
+        "U+0020"
+      ],
+      "rendered": "【存在问题内容】",
+      "template_slot": "正文 三、存在问题"
+    },
+    {
+      "key": "下一步工作打算",
+      "placeholder": "【下一步工作打算内容】",
+      "status": "blank",
+      "present_in_input": true,
+      "input_type": "list",
+      "raw": [],
+      "raw_repr": "[]",
+      "raw_codepoints": [],
+      "rendered": "【下一步工作打算内容】",
+      "items_total": 0,
+      "items": [],
+      "items_kept": 0,
+      "items_dropped_as_blank": 0,
+      "template_slot": "正文 四、下一步工作打算"
+    },
+    {
+      "key": "成文日期",
+      "placeholder": "【成文日期】",
+      "status": "blank",
+      "present_in_input": true,
+      "input_type": "string",
+      "raw": "　",
+      "raw_repr": "'\\u3000'",
+      "raw_codepoints": [
+        "U+3000"
+      ],
+      "rendered": "【成文日期】",
+      "template_slot": "成文日期"
+    }
+  ],
+  "notes": [
+    "7 个键全部存在但均无可用内容：3 个纯空白字符串（总结主体/存在问题=U+0020×2，总结时段=\"\"）、1 个全空白数组（主要成绩=[\" \"]）、2 个空数组（工作回顾/下一步工作打算=[]）、1 个表意空格串（成文日期=U+3000）。status 全为 blank。",
+    "空白项一律按未填写处理，落到对应【…】占位符，未中断生成。",
+    "主要成绩 数组中的空白条目已剔除（items_dropped_as_blank=1），其余键原样留痕于 fields.json 的 raw / raw_codepoints。",
+    "未虚构任何工作内容、数字或日期。",
+    "版式同 A：GB/T 9704 页边距，标题宋体加粗二号，正文仿宋三号，一级标题黑体三号，固定行距 28 磅，页脚「— 页码 —」。"
+  ]
+}

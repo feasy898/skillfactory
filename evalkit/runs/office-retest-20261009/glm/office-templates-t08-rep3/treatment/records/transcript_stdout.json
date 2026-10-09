@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_d044ce3b-b9f9-47fa-a82c-2d17aebbded7",
+  "traceId": "45170e68-dd5a-4fbc-94e5-7c0a54dc8be4",
+  "turnId": "turn_a01c0289-2395-4e01-b8f6-4a0aa6f60425",
+  "response": "任务完成。核心成文已按 office-templates 技能生成并双跑验证；另外四项要求都属于该技能明确划出的非目标范围（SKILL.md「不用于」清单逐条对应），我如实说明未做的原因，没有越界硬做、也没有编造。\n\n**已完成并交付（核心任务）**\n\n- `data/工作总结/case1-overflow.json` — 与 brief 给定的 JSON 逐字一致。\n- `out/文书.docx` + `out/fields.json` — 用引擎 `gen_doc.py --template 工作总结` 生成。7/7 字段全部 filled、无必填缺失、无模板外键；标题按公式为**「平台工程部2026 年 9 月工作总结」**（「总结时段」原样含空格，技能不做数据语义校验）；正文四个小节（工作回顾／主要成绩／存在问题／下一步工作打算）各 1 条全角点编号条目；落款两行右对齐「平台工程部」「2026年9月30日」。\n- **确定性验证**：同命令连跑两遍，`文书.docx` 与 `fields.json` 整文件逐字节一致（sha256 两遍相同：docx `796a8139…`、fields `74662979…`）；`py_compile` 0 错误、入口脚本不可复现源扫描 0 命中。全流程留痕于 `run_log.json`（工作目录，不在 `out` 内），旁路快照在 `.verify/run1、run2`。\n\n**四项附加要求未做，原因如下**\n\n1. **转 PDF**：docx→pdf 转换明确不在 office-templates 范围内。另有一层实务顾虑：文书声明的仿宋／黑体字体本机（Linux）没有安装，导出 PDF 必然发生字体替换，直接外发有版式风险。建议在装有这些字体的机器上用 Word/WPS 打开 `文书.docx` 另存为 PDF。\n2. **红头文件和公章**：红头、公章属公文要素，同样在技能非目标之列；而且公章是法定用印要素，不应由工具伪造图样，请走真实盖章/扫描流程。\n3. **增加「审批人」「密级」字段**：工作总结模板字段冻结为 7 个，fields.json 台账只覆盖模板字段，本技能不支持字段增删。即便把这两个键塞进数据文件，引擎也只会按 F6 记入 `summary.unknown_keys`（不入 fields 明细、不入正文），并不是真正的字段，所以数据文件保持与 brief 给定内容完全一致。\n4. **合并另外三份总结**：多文档合并不在技能范围内；更根本的是 brief 里没有提供另外三份总结的任何数据，缺数据不编造，无从生成也无从合并。\n\n如需补做第 1、4 项，可在提供数据/环境的前提下另行处理；`out` 下的两件产物即为本任务的完整交付。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 14,
+    "inputTokens": 532203,
+    "outputTokens": 12634,
+    "totalTokens": 544837,
+    "cacheReadTokens": 499968,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 9617,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 544837,
+    "contextUsed": 48221,
+    "contextWindow": 200000
+  }
+}

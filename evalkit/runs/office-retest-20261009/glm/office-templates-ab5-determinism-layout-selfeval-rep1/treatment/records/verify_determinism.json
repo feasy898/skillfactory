@@ -1,0 +1,232 @@
+{
+  "fields_json_except_outputs_equal": true,
+  "fields_json_outputs_run1": {
+    "docx": "out/会议通知/case1/文书.docx",
+    "fields_json": "out/会议通知/case1/fields.json"
+  },
+  "fields_json_outputs_run2": {
+    "docx": "out/会议通知/case1/文书.docx",
+    "fields_json": "out/会议通知/case1/fields.json"
+  },
+  "fields_json_outputs_equal_same_outdir": true,
+  "docx_zip_entries_identical": true,
+  "docx_zip_entry_count": 17,
+  "docx_zip_timestamps_all_1980": true,
+  "docx_parsed_identical": true,
+  "docx_paragraph_count": 12,
+  "docx_page": {
+    "w_cm": 21.00086111111111,
+    "h_cm": 29.70036111111111,
+    "top": 3.700638888888889,
+    "bottom": 3.4995555555555558,
+    "left": 2.7992916666666665,
+    "right": 2.599972222222222
+  },
+  "docx_paragraphs": [
+    {
+      "text": "关于召开三季度质量评审会的通知",
+      "alignment": "CENTER (1)",
+      "firstLineChars": null,
+      "right_indent_pt": null,
+      "line_spacing": "None",
+      "space_before": null,
+      "space_after": null,
+      "runs": [
+        {
+          "text": "关于召开三季度质量评审会的通知",
+          "size_pt": 22.0,
+          "ascii_font": "黑体",
+          "eastAsia_font": "黑体"
+        }
+      ]
+    },
+    {
+      "text": "各部门、各项目组：",
+      "alignment": "None",
+      "firstLineChars": null,
+      "right_indent_pt": null,
+      "line_spacing": "355600",
+      "space_before": 0.0,
+      "space_after": 0.0,
+      "runs": [
+        {
+          "text": "各部门、各项目组：",
+          "size_pt": 16.0,
+          "ascii_font": "Times New Roman",
+          "eastAsia_font": "仿宋"
+        }
+      ]
+    },
+    {
+      "text": "会议时间：2026年10月9日（周五）14:00",
+      "alignment": "None",
+      "firstLineChars": "200",
+      "right_indent_pt": null,
+      "line_spacing": "355600",
+      "space_before": 0.0,
+      "space_after": 0.0,
+      "runs": [
+        {
+          "text": "会议时间：2026年10月9日（周五）14:00",
+          "size_pt": 16.0,
+          "ascii_font": "Times New Roman",
+          "eastAsia_font": "仿宋"
+        }
+      ]
+    },
+    {
+      "text": "会议地点：3 号楼 501 会议室",
+      "alignment": "None",
+      "firstLineChars": "200",
+      "right_indent_pt": null,
+      "line_spacing": "355600",
+      "space_before": 0.0,
+      "space_after": 0.0,
+      "runs": [
+        {
+          "text": "会议地点：3 号楼 501 会议室",
+          "size_pt": 16.0,
+          "ascii_font": "Times New Roman",
+          "eastAsia_font": "仿宋"
+        }
+      ]
+    },
+    {
+      "text": "参会人员：各部门负责人、各项目组 PM",
+      "alignment": "None",
+      "firstLineChars": "200",
+      "right_indent_pt": null,
+      "line_spacing": "355600",
+      "space_before": 0.0,
+      "space_after": 0.0,
+      "runs": [
+        {
+          "text": "参会人员：各部门负责人、各项目组 PM",
+          "size_pt": 16.0,
+          "ascii_font": "Times New Roman",
+          "eastAsia_font": "仿宋"
+        }
+      ]
+    },
+    {
+      "text": "会议议题：三季度评测结果复盘与四季度计划",
+      "alignment": "None",
+      "firstLineChars": "200",
+      "right_indent_pt": null,
+      "line_spacing": "355600",
+      "space_before": 0.0,
+      "space_after": 0.0,
+      "runs": [
+        {
+          "text": "会议议题：三季度评测结果复盘与四季度计划",
+          "size_pt": 16.0,
+          "ascii_font": "Times New Roman",
+          "eastAsia_font": "仿宋"
+        }
+      ]
+    },
+    {
+      "text": "一、会议要求",
+      "alignment": "None",
+      "firstLineChars": "200",
+      "right_indent_pt": null,
+      "line_spacing": "355600",
+      "space_before": 0.0,
+      "space_after": 0.0,
+      "runs": [
+        {
+          "text": "一、会议要求",
+          "size_pt": 16.0,
+          "ascii_font": "黑体",
+          "eastAsia_font": "黑体"
+        }
+      ]
+    },
+    {
+      "text": "1．会前提交本部门质量简报",
+      "alignment": "None",
+      "firstLineChars": "200",
+      "right_indent_pt": null,
+      "line_spacing": "355600",
+      "space_before": 0.0,
+      "space_after": 0.0,
+      "runs": [
+        {
+          "text": "1．会前提交本部门质量简报",
+          "size_pt": 16.0,
+          "ascii_font": "Times New Roman",
+          "eastAsia_font": "仿宋"
+        }
+      ]
+    },
+    {
+      "text": "2．迟到 10 分钟以上按缺席处理",
+      "alignment": "None",
+      "firstLineChars": "200",
+      "right_indent_pt": null,
+      "line_spacing": "355600",
+      "space_before": 0.0,
+      "space_after": 0.0,
+      "runs": [
+        {
+          "text": "2．迟到 10 分钟以上按缺席处理",
+          "size_pt": 16.0,
+          "ascii_font": "Times New Roman",
+          "eastAsia_font": "仿宋"
+        }
+      ]
+    },
+    {
+      "text": "联系人：李工　　联系电话：010-88886666",
+      "alignment": "None",
+      "firstLineChars": "200",
+      "right_indent_pt": null,
+      "line_spacing": "355600",
+      "space_before": 0.0,
+      "space_after": 0.0,
+      "runs": [
+        {
+          "text": "联系人：李工　　联系电话：010-88886666",
+          "size_pt": 16.0,
+          "ascii_font": "Times New Roman",
+          "eastAsia_font": "仿宋"
+        }
+      ]
+    },
+    {
+      "text": "评测技术部",
+      "alignment": "RIGHT (2)",
+      "firstLineChars": null,
+      "right_indent_pt": 32.0,
+      "line_spacing": "355600",
+      "space_before": 0.0,
+      "space_after": 0.0,
+      "runs": [
+        {
+          "text": "评测技术部",
+          "size_pt": 16.0,
+          "ascii_font": "Times New Roman",
+          "eastAsia_font": "仿宋"
+        }
+      ]
+    },
+    {
+      "text": "2026年9月28日",
+      "alignment": "RIGHT (2)",
+      "firstLineChars": null,
+      "right_indent_pt": 32.0,
+      "line_spacing": "355600",
+      "space_before": 0.0,
+      "space_after": 0.0,
+      "runs": [
+        {
+          "text": "2026年9月28日",
+          "size_pt": 16.0,
+          "ascii_font": "Times New Roman",
+          "eastAsia_font": "仿宋"
+        }
+      ]
+    }
+  ],
+  "docx_text_no_wallclock_pattern": true
+}

@@ -1,0 +1,654 @@
+{
+  "office-templates": {
+    "ab1-standard-four-templates": {
+      "status": "judged",
+      "tested_family": "glm",
+      "panel": [
+        "step-router-v1",
+        "Minimax-M3.1-Flash-Preview"
+      ],
+      "final_scores": {
+        "P1": 6.0,
+        "P2": 6.25,
+        "P3": 6.0,
+        "P4": 4.0,
+        "P5": 3.65,
+        "P6": 4.0
+      },
+      "mapping": {
+        "P1": {
+          "rep": 3,
+          "arm": "treatment"
+        },
+        "P2": {
+          "rep": 2,
+          "arm": "treatment"
+        },
+        "P3": {
+          "rep": 1,
+          "arm": "treatment"
+        },
+        "P4": {
+          "rep": 2,
+          "arm": "baseline"
+        },
+        "P5": {
+          "rep": 1,
+          "arm": "baseline"
+        },
+        "P6": {
+          "rep": 3,
+          "arm": "baseline"
+        }
+      },
+      "judge_consistency": {
+        "task": "ab1-standard-four-templates",
+        "resample_of": "P1",
+        "first_score": 5.0,
+        "second_score": null,
+        "delta": null,
+        "action": "pass"
+      }
+    },
+    "ab2-boundary-missing-required": {
+      "status": "judged",
+      "tested_family": "minimax",
+      "panel": [
+        "GLM-5.3",
+        "step-router-v1"
+      ],
+      "final_scores": {
+        "P1": 10.0,
+        "P2": 7.5,
+        "P3": 6.75,
+        "P4": 10.0,
+        "P5": 10.0,
+        "P6": 6.0
+      },
+      "mapping": {
+        "P1": {
+          "rep": 1,
+          "arm": "treatment"
+        },
+        "P2": {
+          "rep": 3,
+          "arm": "baseline"
+        },
+        "P3": {
+          "rep": 1,
+          "arm": "baseline"
+        },
+        "P4": {
+          "rep": 3,
+          "arm": "treatment"
+        },
+        "P5": {
+          "rep": 2,
+          "arm": "treatment"
+        },
+        "P6": {
+          "rep": 2,
+          "arm": "baseline"
+        }
+      },
+      "judge_consistency": {
+        "task": "ab2-boundary-missing-required",
+        "resample_of": "P2",
+        "first_score": 8.0,
+        "second_score": 8.0,
+        "delta": 0.0,
+        "action": "pass"
+      }
+    },
+    "ab3-empty-and-string-lists": {
+      "status": "judged",
+      "tested_family": "glm",
+      "panel": [
+        "step-router-v1",
+        "Minimax-M3.1-Flash-Preview"
+      ],
+      "final_scores": {
+        "P1": 9.5,
+        "P2": 9.0,
+        "P3": 9.5,
+        "P4": 9.5,
+        "P5": 9.0,
+        "P6": 9.0
+      },
+      "mapping": {
+        "P1": {
+          "rep": 1,
+          "arm": "treatment"
+        },
+        "P2": {
+          "rep": 2,
+          "arm": "baseline"
+        },
+        "P3": {
+          "rep": 3,
+          "arm": "treatment"
+        },
+        "P4": {
+          "rep": 2,
+          "arm": "treatment"
+        },
+        "P5": {
+          "rep": 3,
+          "arm": "baseline"
+        },
+        "P6": {
+          "rep": 1,
+          "arm": "baseline"
+        }
+      },
+      "judge_consistency": {
+        "task": "ab3-empty-and-string-lists",
+        "resample_of": "P3",
+        "first_score": null,
+        "second_score": 9.5,
+        "delta": null,
+        "action": "pass"
+      }
+    },
+    "ab4-invalid-input-rejection": {
+      "status": "judged",
+      "tested_family": "minimax",
+      "panel": [
+        "GLM-5.3",
+        "step-router-v1"
+      ],
+      "final_scores": {
+        "P1": 8.0,
+        "P2": 7.5,
+        "P3": 8.0,
+        "P4": 7.75,
+        "P5": 6.0,
+        "P6": 8.0
+      },
+      "mapping": {
+        "P1": {
+          "rep": 3,
+          "arm": "baseline"
+        },
+        "P2": {
+          "rep": 2,
+          "arm": "treatment"
+        },
+        "P3": {
+          "rep": 2,
+          "arm": "baseline"
+        },
+        "P4": {
+          "rep": 1,
+          "arm": "treatment"
+        },
+        "P5": {
+          "rep": 1,
+          "arm": "baseline"
+        },
+        "P6": {
+          "rep": 3,
+          "arm": "treatment"
+        }
+      },
+      "judge_consistency": {
+        "task": "ab4-invalid-input-rejection",
+        "resample_of": "P4",
+        "first_score": 8.0,
+        "second_score": 8.5,
+        "delta": 0.5,
+        "action": "pass"
+      }
+    },
+    "ab5-determinism-layout-selfeval": {
+      "status": "judged",
+      "tested_family": "glm",
+      "panel": [
+        "step-router-v1",
+        "Minimax-M3.1-Flash-Preview"
+      ],
+      "final_scores": {
+        "P1": 9.0,
+        "P2": 9.0,
+        "P3": 6.0,
+        "P4": 6.5,
+        "P5": 6.0,
+        "P6": 8.25
+      },
+      "mapping": {
+        "P1": {
+          "rep": 1,
+          "arm": "treatment"
+        },
+        "P2": {
+          "rep": 3,
+          "arm": "treatment"
+        },
+        "P3": {
+          "rep": 1,
+          "arm": "baseline"
+        },
+        "P4": {
+          "rep": 3,
+          "arm": "baseline"
+        },
+        "P5": {
+          "rep": 2,
+          "arm": "baseline"
+        },
+        "P6": {
+          "rep": 2,
+          "arm": "treatment"
+        }
+      },
+      "judge_consistency": {
+        "task": "ab5-determinism-layout-selfeval",
+        "resample_of": "P5",
+        "first_score": 6.0,
+        "second_score": 6.5,
+        "delta": 0.5,
+        "action": "pass"
+      }
+    },
+    "t01": {
+      "status": "judged",
+      "tested_family": "minimax",
+      "panel": [
+        "GLM-5.3",
+        "step-router-v1"
+      ],
+      "final_scores": {
+        "P1": 3.0,
+        "P2": 3.0,
+        "P3": 3.0,
+        "P4": 10.0,
+        "P5": 10.0,
+        "P6": 10.0
+      },
+      "mapping": {
+        "P1": {
+          "rep": 3,
+          "arm": "baseline"
+        },
+        "P2": {
+          "rep": 2,
+          "arm": "baseline"
+        },
+        "P3": {
+          "rep": 1,
+          "arm": "baseline"
+        },
+        "P4": {
+          "rep": 1,
+          "arm": "treatment"
+        },
+        "P5": {
+          "rep": 3,
+          "arm": "treatment"
+        },
+        "P6": {
+          "rep": 2,
+          "arm": "treatment"
+        }
+      },
+      "judge_consistency": {
+        "task": "t01",
+        "resample_of": "P6",
+        "first_score": 10.0,
+        "second_score": 10.0,
+        "delta": 0.0,
+        "action": "pass"
+      }
+    },
+    "t02": {
+      "status": "judged",
+      "tested_family": "glm",
+      "panel": [
+        "step-router-v1",
+        "Minimax-M3.1-Flash-Preview"
+      ],
+      "final_scores": {
+        "P1": 10.0,
+        "P2": 4.1,
+        "P3": 4.1,
+        "P4": 10.0,
+        "P5": 10.0,
+        "P6": 4.1
+      },
+      "mapping": {
+        "P1": {
+          "rep": 2,
+          "arm": "treatment"
+        },
+        "P2": {
+          "rep": 3,
+          "arm": "baseline"
+        },
+        "P3": {
+          "rep": 2,
+          "arm": "baseline"
+        },
+        "P4": {
+          "rep": 3,
+          "arm": "treatment"
+        },
+        "P5": {
+          "rep": 1,
+          "arm": "treatment"
+        },
+        "P6": {
+          "rep": 1,
+          "arm": "baseline"
+        }
+      },
+      "judge_consistency": {
+        "task": "t02",
+        "resample_of": "P1",
+        "first_score": 10.0,
+        "second_score": 10.0,
+        "delta": 0.0,
+        "action": "pass"
+      }
+    },
+    "t03": {
+      "status": "judged",
+      "tested_family": "minimax",
+      "panel": [
+        "GLM-5.3",
+        "step-router-v1"
+      ],
+      "final_scores": {
+        "P1": 2.25,
+        "P2": 4.55,
+        "P3": 10.0,
+        "P4": 10.0,
+        "P5": 10.0,
+        "P6": 2.25
+      },
+      "mapping": {
+        "P1": {
+          "rep": 2,
+          "arm": "baseline"
+        },
+        "P2": {
+          "rep": 1,
+          "arm": "baseline"
+        },
+        "P3": {
+          "rep": 2,
+          "arm": "treatment"
+        },
+        "P4": {
+          "rep": 1,
+          "arm": "treatment"
+        },
+        "P5": {
+          "rep": 3,
+          "arm": "treatment"
+        },
+        "P6": {
+          "rep": 3,
+          "arm": "baseline"
+        }
+      },
+      "judge_consistency": {
+        "task": "t03",
+        "resample_of": "P2",
+        "first_score": 4.5,
+        "second_score": 4.5,
+        "delta": 0.0,
+        "action": "pass"
+      }
+    },
+    "t04": {
+      "status": "judged",
+      "tested_family": "glm",
+      "panel": [
+        "step-router-v1",
+        "Minimax-M3.1-Flash-Preview"
+      ],
+      "final_scores": {
+        "P1": 10.0,
+        "P2": 0.0,
+        "P3": 10.0,
+        "P4": 0.0,
+        "P5": 10.0,
+        "P6": 10.0
+      },
+      "mapping": {
+        "P1": {
+          "rep": 2,
+          "arm": "baseline"
+        },
+        "P2": {
+          "rep": 1,
+          "arm": "baseline"
+        },
+        "P3": {
+          "rep": 2,
+          "arm": "treatment"
+        },
+        "P4": {
+          "rep": 3,
+          "arm": "baseline"
+        },
+        "P5": {
+          "rep": 3,
+          "arm": "treatment"
+        },
+        "P6": {
+          "rep": 1,
+          "arm": "treatment"
+        }
+      },
+      "judge_consistency": {
+        "task": "t04",
+        "resample_of": "P3",
+        "first_score": 10.0,
+        "second_score": null,
+        "delta": null,
+        "action": "pass"
+      }
+    },
+    "t05": {
+      "status": "judged",
+      "tested_family": "minimax",
+      "panel": [
+        "GLM-5.3",
+        "step-router-v1"
+      ],
+      "final_scores": {
+        "P1": 10.0,
+        "P2": 10.0,
+        "P3": 10.0,
+        "P4": 4.0,
+        "P5": 4.0,
+        "P6": 1.75
+      },
+      "mapping": {
+        "P1": {
+          "rep": 3,
+          "arm": "treatment"
+        },
+        "P2": {
+          "rep": 1,
+          "arm": "treatment"
+        },
+        "P3": {
+          "rep": 2,
+          "arm": "treatment"
+        },
+        "P4": {
+          "rep": 3,
+          "arm": "baseline"
+        },
+        "P5": {
+          "rep": 2,
+          "arm": "baseline"
+        },
+        "P6": {
+          "rep": 1,
+          "arm": "baseline"
+        }
+      },
+      "judge_consistency": {
+        "task": "t05",
+        "resample_of": "P4",
+        "first_score": 4.0,
+        "second_score": 5.0,
+        "delta": 1.0,
+        "action": "pass"
+      }
+    },
+    "t06": {
+      "status": "judged",
+      "tested_family": "glm",
+      "panel": [
+        "step-router-v1",
+        "Minimax-M3.1-Flash-Preview"
+      ],
+      "final_scores": {
+        "P1": 10.0,
+        "P2": 10.0,
+        "P3": 3.0,
+        "P4": 3.0,
+        "P5": 2.25,
+        "P6": 10.0
+      },
+      "mapping": {
+        "P1": {
+          "rep": 3,
+          "arm": "treatment"
+        },
+        "P2": {
+          "rep": 2,
+          "arm": "treatment"
+        },
+        "P3": {
+          "rep": 2,
+          "arm": "baseline"
+        },
+        "P4": {
+          "rep": 1,
+          "arm": "baseline"
+        },
+        "P5": {
+          "rep": 3,
+          "arm": "baseline"
+        },
+        "P6": {
+          "rep": 1,
+          "arm": "treatment"
+        }
+      },
+      "judge_consistency": {
+        "task": "t06",
+        "resample_of": "P5",
+        "first_score": 3.0,
+        "second_score": 3.0,
+        "delta": 0.0,
+        "action": "pass"
+      }
+    },
+    "t07": {
+      "status": "judged",
+      "tested_family": "minimax",
+      "panel": [
+        "GLM-5.3",
+        "step-router-v1"
+      ],
+      "final_scores": {
+        "P1": 7.5,
+        "P2": 10.0,
+        "P3": 10.0,
+        "P4": 7.5,
+        "P5": 4.5,
+        "P6": 4.5
+      },
+      "mapping": {
+        "P1": {
+          "rep": 2,
+          "arm": "treatment"
+        },
+        "P2": {
+          "rep": 1,
+          "arm": "treatment"
+        },
+        "P3": {
+          "rep": 1,
+          "arm": "baseline"
+        },
+        "P4": {
+          "rep": 3,
+          "arm": "treatment"
+        },
+        "P5": {
+          "rep": 2,
+          "arm": "baseline"
+        },
+        "P6": {
+          "rep": 3,
+          "arm": "baseline"
+        }
+      },
+      "judge_consistency": {
+        "task": "t07",
+        "resample_of": "P6",
+        "first_score": 4.0,
+        "second_score": 2.5,
+        "delta": 1.5,
+        "action": "pass"
+      }
+    },
+    "t08": {
+      "status": "unjudgeable",
+      "tested_family": "glm",
+      "panel": [
+        "step-router-v1",
+        "Minimax-M3.1-Flash-Preview"
+      ],
+      "final_scores": {
+        "P1": 0.0,
+        "P2": 10.0,
+        "P3": 10.0,
+        "P4": 0.0,
+        "P5": 10.0,
+        "P6": 6.3
+      },
+      "mapping": {
+        "P1": {
+          "rep": 2,
+          "arm": "baseline"
+        },
+        "P2": {
+          "rep": 1,
+          "arm": "treatment"
+        },
+        "P3": {
+          "rep": 2,
+          "arm": "treatment"
+        },
+        "P4": {
+          "rep": 3,
+          "arm": "baseline"
+        },
+        "P5": {
+          "rep": 3,
+          "arm": "treatment"
+        },
+        "P6": {
+          "rep": 1,
+          "arm": "baseline"
+        }
+      },
+      "judge_consistency": {
+        "task": "t08",
+        "resample_of": "P1",
+        "first_score": 4.0,
+        "second_score": 0.0,
+        "delta": 4.0,
+        "action": "unjudgeable"
+      }
+    }
+  }
+}

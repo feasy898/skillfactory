@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_eeca2186-0744-49ad-99a1-476504926270",
+  "traceId": "762eed5c-0431-48df-b02f-9c4bd86b6d89",
+  "turnId": "turn_ba5c3376-3b78-4125-8e40-bb353fdddffa",
+  "response": "任务完成。两个单元目录与产物齐全，brief 的全部核心行为要求均已核验通过。\n\n**执行方式**：直接调用了臂数据包内置的 office-templates 技能 v1.0.1 引擎（`.zcode/skills/office-templates/scripts/gen_doc.py`，新建 `.venv` 安装 python-docx），按命令行契约对两份 fixtures 各跑一遍生成，未改任何引擎代码。\n\n**产物**（每目录恰含两文件）：\n- `out/周报/case2/`：文书.docx（36,961 字节）+ fields.json（1,800 字节）\n- `out/工作总结/case2/`：文书.docx（36,963 字节）+ fields.json（1,867 字节）\n\n**六项核心行为核验结果**：\n1. **空列表按必填缺失**：周报「一、本周工作内容」节头保留 + 条目 `1．____`；工作总结「二、主要成绩」同式占位。fields.json 均记 `missing`、`rendered_as=\"以____占位条目\"`。\n2. **字符串型列表单项化**：工作回顾（字符串）渲染为单条 `1．完成评测平台月度巡检`，fields.json 中该字段值为单元素数组 `[\"完成评测平台月度巡检\"]`。\n3. **选填小节缺失整节省略**：周报「三、问题与需协调事项」与工作总结「三、存在问题」节头均未出现在正文（后续小节仍按冻结编号「四、」），fields.json 记 `missing` 且 `required=false`、`rendered_as=\"省略该条目/小节\"`。\n4. **必填缺失____占位**：标题分别为「____工作周报」（部门缺失）与「____2026年9月工作总结」（总结主体缺失）；周期空字符串渲染为「周期：____」。\n5. **编号规范**：小节「一、二、四、」、条目全角点「1．」，节头黑体、正文仿宋三号、首行缩进两字符、28 磅固定行距、A4 GB/T 9704 版心，均实测符合。\n6. **落款不因空日期/缺主体破坏**：周报落款「报送日期：2026-09-28」右对齐右缩进 32pt；工作总结落款一 `____`（缺主体占位）右对齐，落款二为空段（成文日期选填缺失留空），末个非空段落款仍右对齐。\n\n**台账口径**：两份 fields.json 均 filled 3/7；missing_required_names 周报=[部门， 周期， 本周工作内容]、工作总结=[总结主体， 主要成绩]，unknown_keys 为空，计数自洽。\n\n**确定性留痕**：每个单元以完全相同命令连跑两遍并旁路快照对拍，`文书.docx` 与 `fields.json` 均逐字节一致（sha256 相等；docx zip 条目时间戳已归一化为 1980-01-01）；入口脚本 py_compile 0 错误、不可复现源扫描 0 命中。证据已落盘 `run_log.json`（工作目录，不在产物目录内），快照在 `.verify/`。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 17,
+    "inputTokens": 577910,
+    "outputTokens": 7794,
+    "totalTokens": 585704,
+    "cacheReadTokens": 547904,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 4497,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 585704,
+    "contextUsed": 46031,
+    "contextWindow": 200000
+  }
+}

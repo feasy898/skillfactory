@@ -1,0 +1,85 @@
+{
+  "template": "请示函",
+  "title": "关于购置档案密集架的请示的请示",
+  "filled_fields": [
+    "请示事由",
+    "主送机关",
+    "请示缘由",
+    "请示事项",
+    "请示单位",
+    "联系人",
+    "联系电话",
+    "成文日期"
+  ],
+  "missing_fields": [],
+  "fields": [
+    {
+      "name": "请示事由",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "购置档案密集架的请示"
+    },
+    {
+      "name": "主送机关",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "澜山物业管理有限公司"
+    },
+    {
+      "name": "请示缘由",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "综合管理部档案室现用木制档案柜已达使用年限，且2025年新增业委会档案214卷，存储空间严重不足。"
+    },
+    {
+      "name": "请示事项",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "申请购置手摇式档案密集架4组，预算3.6万元，列入本年度固定资产。"
+    },
+    {
+      "name": "请示单位",
+      "required": true,
+      "kind": "text",
+      "status": "filled",
+      "value": "澜山物业综合管理部"
+    },
+    {
+      "name": "联系人",
+      "required": false,
+      "kind": "text",
+      "status": "filled",
+      "value": "皮之常"
+    },
+    {
+      "name": "联系电话",
+      "required": false,
+      "kind": "text",
+      "status": "filled",
+      "value": "0571-8812-3456"
+    },
+    {
+      "name": "成文日期",
+      "required": false,
+      "kind": "text",
+      "status": "filled",
+      "value": "2026年10月12日"
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "filled": 8,
+    "missing": 0,
+    "missing_required": 0,
+    "missing_required_names": [],
+    "unknown_keys": []
+  },
+  "outputs": {
+    "docx": "out/文书.docx",
+    "fields_json": "out/fields.json"
+  }
+}

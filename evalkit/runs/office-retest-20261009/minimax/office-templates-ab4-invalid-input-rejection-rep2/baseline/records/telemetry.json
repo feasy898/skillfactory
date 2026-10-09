@@ -1,0 +1,21 @@
+{
+  "available": true,
+  "session_id": "sess_e12aea3b-4c1a-495d-92bd-1db2c7341620",
+  "session": {
+    "directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep2/baseline"
+  },
+  "directory_matches_arm": true,
+  "db_source": "global",
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1036743,
+      "ot": 17267,
+      "dur": 80285,
+      "n": 32
+    }
+  ]
+}

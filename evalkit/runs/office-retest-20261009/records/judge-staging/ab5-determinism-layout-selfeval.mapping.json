@@ -1,0 +1,85 @@
+{
+  "mapping": {
+    "P1": {
+      "rep": 1,
+      "arm": "treatment"
+    },
+    "P2": {
+      "rep": 3,
+      "arm": "treatment"
+    },
+    "P3": {
+      "rep": 1,
+      "arm": "baseline"
+    },
+    "P4": {
+      "rep": 3,
+      "arm": "baseline"
+    },
+    "P5": {
+      "rep": 2,
+      "arm": "baseline"
+    },
+    "P6": {
+      "rep": 2,
+      "arm": "treatment"
+    }
+  },
+  "staged": [
+    {
+      "pid": "P1",
+      "files": [
+        "run_log.json",
+        "会议通知__case1__fields.json",
+        "会议通知__case1__文书.docx.extract.txt",
+        "_replay_facts.json"
+      ]
+    },
+    {
+      "pid": "P2",
+      "files": [
+        "run_log.json",
+        "会议通知__case1__fields.json",
+        "会议通知__case1__文书.docx.extract.txt",
+        "_replay_facts.json"
+      ]
+    },
+    {
+      "pid": "P3",
+      "files": [
+        "run_log.json",
+        "会议通知__case1__fields.json",
+        "会议通知__case1__文书.docx.extract.txt",
+        "_replay_facts.json"
+      ]
+    },
+    {
+      "pid": "P4",
+      "files": [
+        "run_log.json",
+        "会议通知__case1__fields.json",
+        "会议通知__case1__文书.docx.extract.txt",
+        "_replay_facts.json"
+      ]
+    },
+    {
+      "pid": "P5",
+      "files": [
+        "run_log.json",
+        "会议通知__case1__fields.json",
+        "会议通知__case1__文书.docx.extract.txt",
+        "_replay_facts.json"
+      ]
+    },
+    {
+      "pid": "P6",
+      "files": [
+        "run_log.json",
+        "会议通知__case1__fields.json",
+        "会议通知__case1__文书.docx.extract.txt",
+        "_replay_facts.json"
+      ]
+    }
+  ],
+  "seed": 1988415
+}

@@ -1,0 +1,170 @@
+{
+  "tested_family": "glm",
+  "panel": [
+    "step-router-v1",
+    "Minimax-M3.1-Flash-Preview"
+  ],
+  "panel_rotation": "task_idx=9 parity=1",
+  "verdicts": {
+    "step-router-v1": {
+      "scores": {
+        "P1": {
+          "total": 10.0,
+          "dims": {
+            "正确性": 1.0,
+            "完整性": 1.0,
+            "可验证性": 1.0
+          },
+          "evidence": "unknown_keys=['1号议程','Zebra','_private','abc','备用3','附件编号','📋备注']与Python sorted()码点序逐项相等；正文无unknown键。会议议题'四、会议议题：'标签保留值留空，会议要求整节省略，联系人'五、联系人：'标签保留值留空，联系电话'137-5566-0099'有值。summary total=11/filled=8/missing=3/missing_required_names=[]，计数自洽，文书可打开。"
+        },
+        "P2": {
+          "total": 0.0,
+          "dims": {
+            "正确性": 0.0,
+            "完整性": 0.0,
+            "可验证性": 0.0
+          },
+          "evidence": "fields.json无unknown_keys字段，且将'1号议程''附件编号'作为filled字段；正文混入'四、会议议程：暖炉采购比价'（标签错且内容来自1号议程）及'附件编号：QN-2026-118'。会议议题渲染为'会议议程'且填值，联系人字段缺失。fields.json共12字段，filled=10/missing=2，与total=11/filled=8/missing=3矛盾。"
+        },
+        "P3": {
+          "total": 7.9,
+          "dims": {
+            "正确性": 1.0,
+            "完整性": 0.3,
+            "可验证性": 1.0
+          },
+          "evidence": "unknown_keys顺序正确，正文无unknown键。会议议题'会议议题：'标签保留值留空，会议要求省略。但联系人'联系人：'与联系电话合并为'联系人：　　联系电话：137-5566-0099'，值部分含空格且非独立留空标签，判为渲染形态错1处。summary total=11/filled=8/missing=3/missing_required_names=[]，计数自洽，文书可打开。"
+        },
+        "P4": {
+          "total": 0.0,
+          "dims": {
+            "正确性": 0.0,
+            "完整性": 0.0,
+            "可验证性": 0.0
+          },
+          "evidence": "fields.json无unknown_keys，且'附件编号'混入正文（段9'附件编号：QN-2026-118'）。会议议题填为['暖炉采购比价']并渲染'四、会议议题：暖炉采购比价'，非留空；联系人字段缺失。fields.json仅10字段，filled≈10/missing=2，与期望11/8/3矛盾。"
+        },
+        "P5": {
+          "total": 7.9,
+          "dims": {
+            "正确性": 1.0,
+            "完整性": 0.3,
+            "可验证性": 1.0
+          },
+          "evidence": "unknown_keys=['1号议程','Zebra','_private','abc','备用3','附件编号','📋备注']顺序正确，正文无unknown键。会议议题标签保留值留空，会议要求省略。联系人'联系人：'与联系电话合并渲染，值部分含空格，判为形态错1处。summary total=11/filled=8/missing=3/missing_required_names=[]，计数自洽，文书可打开。"
+        },
+        "P6": {
+          "total": 7.9,
+          "dims": {
+            "正确性": 1.0,
+            "完整性": 0.3,
+            "可验证性": 1.0
+          },
+          "evidence": "unknown_keys顺序正确，正文无unknown键污染。会议议题标签保留值留空，会议要求省略。联系人'联系人：'与联系电话合并为同一段，值部分含空格，非独立留空标签，判为渲染形态错1处。summary total=11/filled=8/missing=3/missing_required_names=[]，计数自洽，文书可打开。"
+        }
+      }
+    },
+    "Minimax-M3.1-Flash-Preview": {
+      "scores": {
+        "P1": {
+          "total": 10.0,
+          "dims": {
+            "正确性（unknown 序列+正文无污染）": 1.0,
+            "完整性（选填三形态渲染）": 1.0,
+            "可验证性（计数自洽）": 1.0
+          },
+          "evidence": "正确性：summary.unknown_keys=[1号议程,Zebra,_private,abc,备用3,附件编号,📋备注] 与期望码点序逐项相等；抽取全文零命中 7 键名与值（draft/待定/QN-2026-118/暖炉采购比价 等均无）。完整性：P006『四、会议议题：』标签在、值空；全文无『会议要求』节头（F4 整节省略）；P007『五、联系人：』标签在、值空；P008『六、联系电话：137-5566-0099』有值，四处全对。可验证性：summary total=11/filled=8/missing=3/missing_required=0/missing_required_names=[]，与 fields 明细逐条一致（8 filled+3 missing=11）；文书可打开，段落对齐/字体/行距无缺数据破坏。"
+        },
+        "P2": {
+          "total": 0.0,
+          "dims": {
+            "正确性（unknown 序列+正文无污染）": 0.0,
+            "完整性（选填三形态渲染）": 0.0,
+            "可验证性（计数自洽）": 0.0
+          },
+          "evidence": "正确性：fields.json 为原始数据照抄（仅 13 键），无 unknown_keys 记账，序列内容缺失；正文 P006『四、会议议程：暖炉采购比价』混入未知键 1号议程 之值，P009『附件编号：QN-2026-118』混入未知键名与值，属『混入正文』零分档。完整性：会议议题 未渲染留空标签（整行删除且改填议程值）、联系人 无标签（应为留空标签），错 2 处→零分档；仅『会议要求』省略、『联系电话』有值两处对。可验证性：无 summary/计数台账，且正文渲染了台账外的附件编号，台账与文书矛盾→零分档。"
+        },
+        "P3": {
+          "total": 10.0,
+          "dims": {
+            "正确性（unknown 序列+正文无污染）": 1.0,
+            "完整性（选填三形态渲染）": 1.0,
+            "可验证性（计数自洽）": 1.0
+          },
+          "evidence": "正确性：summary.unknown_keys 七项逐字等于期望码点序（📋备注 U+1F4CB 排末）；抽取正文零命中任一未知键名/值。完整性：P005『会议议题：』标签在、值空；全文无『会议要求』节头；P006『联系人：　　联系电话：137-5566-0099』联系人标签在值空、联系电话有值，四形态全对。可验证性：total=11/filled=8/missing=3/missing_required=0/missing_required_names=[]，与 fields 明细一致（filled_fields 8 项、missing_fields 会议议题/会议要求/联系人）；run_log 记录两遍 exit 0 且 sha256 相同，文书版式未被缺数据破坏。"
+        },
+        "P4": {
+          "total": 0.0,
+          "dims": {
+            "正确性（unknown 序列+正文无污染）": 0.0,
+            "完整性（选填三形态渲染）": 0.0,
+            "可验证性（计数自洽）": 0.0
+          },
+          "evidence": "正确性：fields.json 无 unknown_keys 台账（且把会议议题 由 \"\" 篡改为 [\"暖炉采购比价\"]）；正文 P006『四、会议议题：暖炉采购比价』与 P009『附件编号：QN-2026-118』分别混入未知键 1号议程 的值、附件编号 的键名与值，序列缺失+正文污染，零分档。完整性：会议议题 标签后未留空（填入未知键值）、联系人 无留空标签，错 2 处→零分档；会议要求 省略、联系电话 有值两处对。可验证性：fields.json 无 summary 计数（无 total/filled/missing），无法核对，且文书渲染附件编号 与 11 字段台账矛盾→零分档。"
+        },
+        "P5": {
+          "total": 10.0,
+          "dims": {
+            "正确性（unknown 序列+正文无污染）": 1.0,
+            "完整性（选填三形态渲染）": 1.0,
+            "可验证性（计数自洽）": 1.0
+          },
+          "evidence": "正确性：summary.unknown_keys=[1号议程,Zebra,_private,abc,备用3,附件编号,📋备注] 逐项等于期望码点序；抽取正文对 7 键名与其值（draft/待定/QN-2026-118/暖炉采购比价/emoji 键排序锚点等）零命中。完整性：P005『会议议题：』标签在值空；全文无『会议要求』节头（F4）；P006『联系人：　　联系电话：137-5566-0099』联系人留空标签 + 联系电话有值，四处全对。可验证性：total=11/filled=8/missing=3/missing_required=0/missing_required_names=[] 与 fields 明细逐条自洽；run_log 记两遍 exit 0、sha256 相同，文书版式无破损。"
+        },
+        "P6": {
+          "total": 10.0,
+          "dims": {
+            "正确性（unknown 序列+正文无污染）": 1.0,
+            "完整性（选填三形态渲染）": 1.0,
+            "可验证性（计数自洽）": 1.0
+          },
+          "evidence": "正确性：summary.unknown_keys 七项逐字等于期望码点序（emoji 键 📋备注 居末）；抽取正文零命中任一未知键名/值。完整性：P005『会议议题：』标签在、值空；全文无『会议要求』节头；P006『联系人：　　联系电话：137-5566-0099』联系人标签留空、联系电话有值，四处全对。可验证性：total=11/filled=8/missing=3/missing_required=0/missing_required_names=[]，与 fields 明细一致；run_log 记 V1-V8 版式校验与两遍 sha256 相同（2ddbebc1…/946aca70…），文书可打开且版式未因缺数据破坏。"
+        }
+      }
+    }
+  },
+  "per_judge_scores": {
+    "P1": {
+      "step-router-v1": 10.0,
+      "Minimax-M3.1-Flash-Preview": 10.0
+    },
+    "P2": {
+      "step-router-v1": 0.0,
+      "Minimax-M3.1-Flash-Preview": 0.0
+    },
+    "P3": {
+      "step-router-v1": 7.9,
+      "Minimax-M3.1-Flash-Preview": 10.0
+    },
+    "P4": {
+      "step-router-v1": 0.0,
+      "Minimax-M3.1-Flash-Preview": 0.0
+    },
+    "P5": {
+      "step-router-v1": 7.9,
+      "Minimax-M3.1-Flash-Preview": 10.0
+    },
+    "P6": {
+      "step-router-v1": 7.9,
+      "Minimax-M3.1-Flash-Preview": 10.0
+    }
+  },
+  "final_scores": {
+    "P1": 10.0,
+    "P2": 0.0,
+    "P3": 10.0,
+    "P4": 0.0,
+    "P5": 10.0,
+    "P6": 10.0
+  },
+  "judge_consistency": {
+    "task": "t04",
+    "resample_of": "P3",
+    "first_score": 7.9,
+    "second_score": 10.0,
+    "delta": 2.0999999999999996,
+    "action": "unjudgeable"
+  },
+  "judge_prompt_version": "S8-JUDGE-v2-OFXRETEST-1",
+  "protocol": "weighted-dims"
+}

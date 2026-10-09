@@ -1,0 +1,61 @@
+{
+  "task": "会议通知：qingheng_teahui.json → out/文书.docx + out/fields.json（青蘅茶社秋季会员茶话会）",
+  "engine_entry": "<SKILL_MOUNT>/scripts/gen_doc.py",
+  "python": "Python 3.12.3（venv：.venv，python-docx 1.2.0，按 requirements.txt 安装）",
+  "runs": [
+    {
+      "run": 1,
+      "command": ".venv/bin/python <SKILL_MOUNT>/scripts/gen_doc.py --template 会议通知 --data qingheng_teahui.json --outdir out",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=会议通知，标题=关于召开秋季会员茶话会的通知，字段 filled/total=11/11，必填缺失=无，模板外键=无）",
+      "snapshot_dir": ".snap1",
+      "artifacts": {
+        "文书.docx": {"sha256": "31ffca885af7f44cc25148e193ae8d25ca6612e14e04f2f3b17f4c7fae750d7e", "bytes": 37304},
+        "fields.json": {"sha256": "fb860340137924fa11e244222913d24207bfb7ad3892716957314d35bab136ab", "bytes": 2546}
+      }
+    },
+    {
+      "run": 2,
+      "command": ".venv/bin/python <SKILL_MOUNT>/scripts/gen_doc.py --template 会议通知 --data qingheng_teahui.json --outdir out",
+      "exit_code": 0,
+      "stdout": "已生成：out/文书.docx（模板=会议通知，标题=关于召开秋季会员茶话会的通知，字段 filled/total=11/11，必填缺失=无，模板外键=无）",
+      "snapshot_dir": ".snap2",
+      "artifacts": {
+        "文书.docx": {"sha256": "31ffca885af7f44cc25148e193ae8d25ca6612e14e04f2f3b17f4c7fae750d7e", "bytes": 37304},
+        "fields.json": {"sha256": "fb860340137924fa11e244222913d24207bfb7ad3892716957314d35bab136ab", "bytes": 2546}
+      }
+    }
+  ],
+  "byte_compare": {
+    "文书.docx": "一致（cmp 逐字节相同；两遍 sha256 相同）",
+    "fields.json": "一致（cmp 逐字节相同；两遍 sha256 相同；两遍 --outdir 相同故 outputs 路径键亦相同）",
+    "conclusion": "确定性对拍通过：同输入同命令连跑两遍，两产物整文件逐字节一致"
+  },
+  "inventory": {
+    "SKILL.md": "存在（<SKILL_MOUNT>/SKILL.md，12517 字节）",
+    "scripts/gen_doc.py": "存在（19354 字节，即本次调用入口；SKILL.md 记 package/scripts/ 路径，盘上实际安装布局为 scripts/，内容齐备）",
+    "requirements.txt": "存在（内容 python-docx>=1.1，实际安装 1.2.0）",
+    "references/会议通知.md": "存在（已按其核对成文结构与字段规范）"
+  },
+  "py_compile": {
+    "command": ".venv/bin/python -m py_compile <SKILL_MOUNT>/scripts/gen_doc.py",
+    "exit_code": 0,
+    "errors": 0
+  },
+  "nondeterminism_scan": {
+    "command": "grep -nE \"time\\(|random|uuid|datetime|now\\(\" <SKILL_MOUNT>/scripts/gen_doc.py",
+    "exit_code": 1,
+    "hits": 0,
+    "note": "0 命中（grep exit 1 即无匹配），入口脚本无墙钟/随机源"
+  },
+  "fields_ledger_check": {
+    "summary": {"total": 11, "filled": 11, "missing": 0, "missing_required": 0, "missing_required_names": [], "unknown_keys": []},
+    "title": "关于召开秋季会员茶话会的通知（与 V2 标题公式一致）",
+    "notes": [
+      "数据中 会议议题 值带首尾空格，入文与台账均按 F5 strip 后记账（value=秋季茶会流程与冬至茶会预告）",
+      "会议要求 6 条按 F3 列表逐项渲染为 1．–6．",
+      "无必填缺失（无 ____ 占位）、无选填留空、无模板外键"
+    ]
+  },
+  "layout_check": "docx 逐段核验：标题居中黑体22pt；称谓『全体会员：』顶格全角冒号；正文段 firstLineChars=200、eastAsia=仿宋16pt、行距28磅exact；节头『一、会议要求』黑体；落款两行右对齐右缩进640twips(≈32pt)；页面 A4、边距 3.7/3.5/2.8/2.6cm"
+}

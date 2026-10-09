@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 85611,
+  "started_at_ms": 1791490840074,
+  "session_id": "sess_3abf20c8-130d-430f-8869-c4ed7e66866d",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-ab4-invalid-input-rejection-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 670068,
+      "ot": 10560,
+      "dur": 75266,
+      "n": 23
+    }
+  ],
+  "input_tokens": 670068,
+  "output_tokens": 10560,
+  "stdout_bytes": 3209,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "and generation proceeds with exit 0. I verified this independently of the driver's own bookkeeping — a partial input and even `{}` both produced complete artifacts at exit 0, while the four illegal groups created no `out/` directory at all.\\n\\nOne environment note worth flagging: `python-docx` isn't importable from the venv's default path, so `gen_doc.py` resolves it from user site-packages via a small fallback at import time. Without that the legal control group would have failed on a missing dependency rather than on its actual behavior.\\n\\n## Files in place\\n\\n- `gen_doc.py` — the entry point under test\\n- `run_cases.py` — the test driver\\n- `run_log.json` — per-group record: full command, exit code, stderr summary, and before/after artifact listings backing the residue check\\n- `out/周报/case1/文书.docx` + `fields.json` — legal control group products\\n\\nEach illegal group is cleaned up after being recorded, so every group starts from a zero-residue state and the residue findings are independent rather than inherited.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 23,\n    \"inputTokens\": 670068,\n    \"outputTokens\": 10560,\n    \"totalTokens\": 680628,\n    \"cacheReadTokens\": 639744,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1790,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 680628,\n    \"contextUsed\": 38170,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "ab4-invalid-input-rejection",
+  "rep": 1,
+  "slot": 12
+}

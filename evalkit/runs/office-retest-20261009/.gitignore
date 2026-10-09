@@ -1,0 +1,11 @@
+# 装置排除（2026-10-09，Phase 2 收口）：臂工作树内被测模型自装的第三方依赖环境
+# （.venv/node_modules/.deps/site-packages/__pycache__——python-docx/lxml/docx 等
+#  706.9MB）属可复现环境噪声、非判分证据面；判分证据面=brief/fixtures/out/run_log/
+# records 全部保留入库。排除决定随本 .gitignore 留痕。
+.venv/
+venv/
+node_modules/
+.deps/
+site-packages/
+__pycache__/
+*.pyc

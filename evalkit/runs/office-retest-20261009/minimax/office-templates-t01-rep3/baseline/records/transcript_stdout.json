@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_64aaead3-fc18-48a9-9ff4-1210da33651d",
+  "traceId": "081cc320-ac0d-460f-886c-7eb9594f7034",
+  "turnId": "turn_9b055320-738a-4a8d-b954-ef92dd6d0d3d",
+  "response": "周报已生成并通过全部验收检查，四件产物均已就位。\n\n## 交付内容\n\n**`shibei_week42.json`** — 按简报要求把 JSON 全文原样落盘（含 `\" 拾贝书店 \"`、`\"   \"`、`\"\"` 等脏数据，保留原貌以便追溯）。\n\n**`out/fields.json`** — 字段台账，交付核对的唯一依据。八个字段逐一记录 `required / present / missing / raw / value`，并额外记了 `dropped_blank_items` 让清洗动作可审计；顶层给出 `title`、`missing_required_names`、`missing_optional`、`unknown_keys`。\n\n**`out/文书.docx`** — 单页周报。标题「拾贝书店周报（2026年10月第2周）」，三行两列报送信息表，正文四个栏目（一、本周工作内容 / 二、下周工作计划 / 三、问题与需协调事项 / 四、温馨提示）。中文正文宋体小四、标题黑体四级，行距 1.3 倍，正文首行缩进 2 字符，栏目挂 Heading 2 语义样式（导航可用），编号条目缩进对齐。\n\n**`out/delivery-report.json`** — 恰好四个键，顺序为 `missing_required_names`、`missing_optional`、`unknown_keys`、`title`；三个数组本次均为空数组，标题为上述周报标题。\n\n## 数据清洗与核对结论\n\n三处脏数据被剔除并在台账中留痕：部门去掉首尾空格得「拾贝书店」；`本周工作内容` 里的纯空白项 `\"   \"` 剔除后剩 2 条；`问题与需协调事项` 里的空串 `\"\"` 剔除后剩 1 条。八个键全部命中模板字段、且归一化后都有值，因此必填缺失、可选缺失、未知键三项均为空。标题里周期取了括号前的主干「2026年10月第2周」，避免与括号补注叠成套括号；表内仍保留完整的「2026年10月第2周（10月5日-10月9日）」。\n\n## 验证结果\n\n- **渲染验收**：`soffice` 转 PDF 再转 PNG，单页，无方块字/乱码、无溢出截断、无多余空白条目或空段落（仅表格后一个刻意留的分隔段）。\n- **自动检查**：docx skill 的 `postcheck.py` 通过 9/9，0 错误 0 警告。\n- **结构复算**：独立写了脚本重算四类清单并与 `delivery-report.json` 逐项比对，12 条断言全部 PASS，退出码 0。\n\n两点说明：一是 `documents:visual-judge` 子代理在本机报 Provider 不存在，所以视觉验收是我直接看渲染图完成的；二是本机 `python-docx` 未预装且默认 venv 不可写，改用 `pip --target /tmp/pylibs` 安装后经 PYTHONPATH 引入，生成脚本留在 `gen_report.py`，可重跑复现。这两点连同工具链细节已写入记忆，后续不必重查。\n\n::zcode-file-citation{path=\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep3/baseline/out/文书.docx\" purpose=\"output\"}\n\n::zcode-file-citation{path=\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep3/baseline/out/fields.json\" purpose=\"output\"}\n\n::zcode-file-citation{path=\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep3/baseline/out/delivery-report.json\" purpose=\"output\"}\n\n::zcode-file-citation{path=\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/minimax/office-templates-t01-rep3/baseline/shibei_week42.json\" purpose=\"output\"}",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 31,
+    "inputTokens": 982944,
+    "outputTokens": 11203,
+    "totalTokens": 994147,
+    "cacheReadTokens": 941495,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 1841,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 994147,
+    "contextUsed": 42536,
+    "contextWindow": 200000
+  }
+}

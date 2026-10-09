@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t02-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 428147,
+  "started_at_ms": 1791495764731,
+  "session_id": "sess_d3bd20aa-5869-4b15-86a2-a2ea0bda80c4",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-t02-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1747319,
+      "ot": 31298,
+      "dur": 379854,
+      "n": 34
+    }
+  ],
+  "input_tokens": 1747319,
+  "output_tokens": 31298,
+  "stdout_bytes": 3247,
+  "stderr_bytes": 392,
+  "stderr_head": "AI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\n",
+  "stdout_tail": " (`summary: filled 11 / missing 0 / total 11`). The 会议议题 source value had stray leading/trailing half-width spaces; those were trimmed for rendering and this is explicitly recorded in the field's 渲染方式, with the ledger value showing the trimmed text. The requirement list items gained standard ；/。 punctuation per official-document list conventions — also disclosed in the ledger. 发文日期 stays in Arabic numerals as given, which matches the current GB/T 9704—2012 rule.\\n\\n**Verification.** Four independent gates all passed: a full text readback against 19 required strings (every source value appears exactly, no stray spaces or placeholder residue), the skill's mandatory `postcheck.py` (0 errors, 0 warnings), a LibreOffice PDF render confirming exactly one page with the signature block intact (an initial overflow that pushed the date to page 2 was fixed by tightening spacing and binding 署名/日期 with keep-with-next), and a visual-judge acceptance pass on the rendered page. Render evidence (PDF + PNG) is kept in `.render/`.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 34,\n    \"inputTokens\": 1747319,\n    \"outputTokens\": 31298,\n    \"totalTokens\": 1778617,\n    \"cacheReadTokens\": 1685184,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 22759,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1778617,\n    \"contextUsed\": 77232,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "office-templates",
+  "task": "t02",
+  "rep": 1,
+  "slot": 55
+}

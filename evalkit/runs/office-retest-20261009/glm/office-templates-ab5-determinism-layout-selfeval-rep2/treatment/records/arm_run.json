@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab5-determinism-layout-selfeval-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 190609,
+  "started_at_ms": 1791494834235,
+  "session_id": "sess_a2e60b5f-345c-41e3-ac61-905035f33266",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/office-retest-20261009/glm/office-templates-ab5-determinism-layout-selfeval-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 721905,
+      "ot": 13374,
+      "dur": 161486,
+      "n": 20
+    }
+  ],
+  "input_tokens": 721905,
+  "output_tokens": 13374,
+  "stdout_bytes": 2763,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " --data fixtures/会议通知/case1.json --outdir out/会议通知/case1\\n```\\n两遍 stdout 也逐字相同：标题「关于召开三季度质量评审会的通知」，字段 filled/total=11/11，必填缺失=无，模板外键=无。第二遍覆盖复写第一遍。\\n\\n**对拍结论（全部一致）**：\\n\\n| 检查项 | 结果 |\\n|---|---|\\n| 文书.docx 整文件 | 两遍 sha256 相同（`0de99668…6284`，37200 字节），cmp 零差异 |\\n| fields.json | 两遍 sha256 相同（`6c67eef5…589f`，2458 字节），整文件逐字节一致；「除 outputs 路径键外」口径亦一致（本例两遍路径全同，outputs 键也同值） |\\n| docx 解析级 | 12 个段落的文本/对齐/首行缩进(firstLineChars=200)/字体（黑体22pt 标题、仿宋16pt+Times New Roman 正文、28 磅固定行距、落款右对齐+右缩进32pt）及 A4 版心逐属性完全一致 |\\n| 输出目录 | `out/会议通知/case1` 恰含 文书.docx 与 fields.json 两产物 |\\n\\n**不可复现源排查**：入口脚本 `grep -E \\\"time\\\\(|random|uuid|datetime|now\\\\(\\\"` 0 命中；docx zip 容器 17 个条目时间戳全部归一化为 1980-01-01；core.xml 仅含 python-docx 库模板的固定常量日期，无墙钟写入。\\n\\n**交付物**（均已留位）：\\n- `out/会议通知/case1/文书.docx` + `fields.json`（最终态即第二遍产物）\\n- `run_log.json`（工作目录，含两遍命令行/退出码/stdout、两产物逐遍 sha256 与字节数、逐字节与解析级对拍结论、三件套盘点、py_compile 0 错误、不可复现源扫描）\\n- `.snapshots/run1/`、`.snapshots/run2/`（旁路快照，对拍证据）\\n\\n环境说明：python-docx 1.2.0 因共享 venv 无写权限，安装到了工作目录 `.deps` 并经 `PYTHONPATH` 引用，不影响 CLI 三参数契约。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 20,\n    \"inputTokens\": 721905,\n    \"outputTokens\": 13374,\n    \"totalTokens\": 735279,\n    \"cacheReadTokens\": 652928,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 7492,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 735279,\n    \"contextUsed\": 49399,\n    \"contextWindow\": 200000\n  }\n}\n"
+}
