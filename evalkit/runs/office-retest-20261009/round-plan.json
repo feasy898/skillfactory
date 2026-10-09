@@ -177,7 +177,7 @@
     "d2_rejudge": "t08 复判一次后 13/13 全部可判且三门过 → office 转 accepted（OFFICE-RETEST-RULING §D2）",
     "d3_correction": "首轮 w/l/t 原误记 12/1/0，实算 12 胜/0 负/1 平（ab4 平）=12/0/1（alpha 裁决 D3 更正）",
     "delta_range_calibration": {
-      "note": "内部 Δ 范围口径更正（alpha 裁决 D3）：t01-t07 Δ 范围 +2.00~+7.25，+7.90 是首轮 t08（复判后 t08=+7.70）；首轮 t08 baseline 2.10 是 §3.4 换裁后 Minimax 单裁口径（step 首评口径 baseline=4.77）；复判后 t08 baseline=2.30 为双裁一致均值（step 0.0/Minimax 0.0 等）",
+      "note": "内部 Δ 范围口径更正（alpha 裁决 D3；收敛表述再更正：alpha 终裁 C5，2026-10-09——t08 复判非六产物双裁完全收敛：P1-P5 两裁判一致，P6 7.5 对 6.3（|Δ|=1.2 容差内），P6 终值 6.9 系双裁均值）：t01-t07 Δ 范围 +2.00~+7.25，+7.90 是首轮 t08（复判后 t08=+7.70）；首轮 t08 baseline 2.10 是 §3.4 换裁后 Minimax 单裁口径（step 首评口径 baseline=4.77）；复判后 t08 baseline=2.30 为三份 baseline 产物（P1/P4/P6）终值均值，其中 P1/P4 双裁一致 0.0、P6=6.9 系双裁均值",
       "per_task_delta_final": {
         "ab1": 2.2,
         "ab2": 3.25,

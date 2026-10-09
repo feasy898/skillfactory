@@ -179,7 +179,8 @@
       "Minimax-M3.1-Flash-Preview": [
         "sess_b5987779-8884-4eff-9fe1-25132c55a53d"
       ]
-    }
+    },
+    "correction_note": "更正注记（alpha 终裁 C3，2026-10-09，纯追加；本文件判分数据零改动）：上方 d2_rejudge.panel_sessions 登记 Minimax-M3.1-Flash-Preview=sess_b5987779（slot 157）为终轮复核会话；落盘 verdict.json 三份 md5 均 dc5f9ce723467605a1835243246a2a9c，字节实际出自第 2 轮 sess_7ac785de（slot 154），终轮系复核后沿用未重写（终轮 transcript 自述「verdict.json is already written … I left it in place rather than overwriting」）。D2 实发 3 轮（budget slot 149-151/153-155/156-158，另 slot 152 崩溃），第 1 轮判词原文未保存，_attempt1-crash-archive 的 _run1 与 _run2 逐文件 md5 22/22 相同、均系第 2 轮产物（存档标签有误）。详情与结果不变性证据链见 records/judging/t08-rejudge/d2-rejudge-record.json 的 correction_note；authority=planning/test-cards-20261008/OFFICE-K5-FINAL-RULING-20261009.md §D2/C3。"
   },
   "judge_arith_check": {
     "step-router-v1": [

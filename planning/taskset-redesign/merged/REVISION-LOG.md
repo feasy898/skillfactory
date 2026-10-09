@@ -348,3 +348,33 @@
 ### ⚠️ 延续性声明（D1 轮）
 
 本轮为裁决 §D1 前置锚点澄清，按裁决须 **alpha 签收逐字对照表后方可开跑 D2 复判**；本轮自证仅覆盖锚点澄清落盘与不变量，不构成对 t08 复判结论的预判。mm/hot 三处审计缺口（mm/t08、hot/t07、hot/t08）照 D1 同款流程另行开卡修订，本卡未动其题面。
+
+---
+
+# C1-C6 披露更正轮 — office 单包 K-5 终裁更正清单落盘（2026-10-09，零模型调用）
+
+执行者：glm-flash-开发工程师（零模型调用）。
+修订依据：`planning/test-cards-20261008/OFFICE-K5-FINAL-RULING-20261009.md`（alpha 终裁 C1-C6，本目录之外在盘）；D1 签收文件 `planning/test-cards-20261008/D1-SIGNOFF-20261009.md`（approved，同在 merged/ 之外）。两份裁决文件落盘于 `planning/test-cards-20261008/`（merged/ 之外），不影响本目录任何冻结口径；本节即终裁 C6 要求的 REVISION-LOG 引用登记。
+
+## 本轮落盘清单（判分数据零改动，更正=更正记录与披露文本）
+
+| 更正 | 落盘文件 | 形态 |
+|---|---|---|
+| C1 | `dist/office-templates-skill/EVALUATION.md` 结论先行与 §二 | 重写：头条只写 round2 accepted（provisional，single_round_signal=true）；按代分节披露 ①开发管线自评 +1.20（跨代、未获 K-5 采信）②K5B round1 rejected（v0.2、S8-JUDGE-v1、5 题、n=2、Δ0.725/胜率 40%/反向 1）③K-5 2026-10-08 裁决 rejected；§五导语「首轮数字见上文」删除，round2 数字唯一正确来源= `eval/results/benchmark-v02-1-office-retest.json` |
+| C2 | 同上 §五 | Δ+4.59 去单点头条呈现；注明单轮信号、同代第二轮（同 judge_model_id 与 judge_prompt_version）确认前禁止对外引用单点 Δ（§3.7-1）；对外口径限于 verdict/n=13/rep=3/同代轮次=1/模型钉版/evalbench 版本；逐题 Δ 范围（t01-t07 +2.00~+7.25、t08 +7.70）仅内部登记不外引 |
+| C3 | 同上 §五 D2 复判段 + `evalkit/runs/office-retest-20261009/records/judging/t08-rejudge/d2-rejudge-record.json`（顶层 correction_note）+ `records/judging/t08.json`（d2_rejudge.correction_note）+ `budget.json`（顶层 closing_note） | 四处追加更正注记：D2 实发 3 轮（slot 149-151/153-155/156-158，另 slot 152 崩溃）；第 1 轮判词原文未保存；_run1 与 _run2 逐文件 md5 22/22 相同、均系第 2 轮产物（存档标签有误）；Minimax verdict 字节出自 sess_7ac785de（slot 154），终轮 sess_b5987779 系复核后沿用（transcript 自述「verdict.json is already written … I left it in place rather than overwriting」）；删「均新会话」；登记结果不变性七条证据链，定性装置偏差不改判。三份 JSON 均纯追加键，判分数据零改动 |
+| C4 | 同上 §五 数字四随段 + 两份 `benchmark-v02-1-office-retest.json`（dist 与 records 副本，evalbench.t08_judge_face_note） | 补注：t08 判官面已按 D1 修订（rubric 3280f0cd…、judge-notes 3bceaabc…，现行冻结净荷 99 文件=c783e2cd…），投喂面零改动 |
+| C5 | `evalkit/runs/office-retest-20261009/round-plan.json` result_summary.delta_range_calibration.note | 收敛表述更正：「P1-P5 两裁判一致，P6 7.5 对 6.3（\|Δ\|=1.2 容差内），P6 终值 6.9 系双裁均值」；result_summary 其余门值字段与 per_task_delta_final 零改动 |
+| C6 | 本节 | D1 签收与本终裁两文件均在 merged/ 之外（`planning/test-cards-20261008/`），冻结净荷零触碰；本日志引用登记 |
+
+## 三口径哈希（本轮）
+
+| 口径 | 现值 | 本轮 |
+|---|---|---|
+| 99 文件净荷（D1 轮口径，不含本日志/index） | `c783e2cd66c0170fa6d12323f8ab465c3170ed1af625d0c64a14f811e4191ca8` | **不变**（本轮零触碰净荷文件，实测复算相符） |
+| 72 文件可比（task.json/brief.md/rubric.md） | `0c40c7711c4fa51092d41a9b68c008ec1a566b83e9f1505336cbce3bd26fef8a` | **不变**（实测复算相符） |
+| 全树（含本日志/index.json/selection/BLIND-REVIEW*/裁决/D1-DIFF-TABLE/D5-ANCHOR-AUDIT） | 值记于 `index.json.frozen_sha256_fulltree`（本文件在全树口径内，故本日志不复写该值；验证=把字段值替换回哨兵 `SELFREF-SENTINEL-`+47 个 0 重跑命令即应复得；本节与本轮 dist/evalkit 更正文件计入新值） | 重算登记 |
+
+### ⚠️ 延续性声明（C1-C6 更正轮）
+
+本轮仅更正披露文本与更正注记：78 臂数据、13 题判分记录（verdicts/scores/final_scores/judge_arith_check）、门值字段（delta/win_rate/reverse/token 比/耗时比/unjudgeable）零改动（git diff 与深度比对自证）；不影响 D1 签收与 D2 复判结论。alpha 终裁纪律重申：更正落盘并经复核前状态为「已确认、待披露更正、未呈 owner」；dist 仍停在 owner 批准点，发布、上架、分发、对外宣传必须 owner 亲签。

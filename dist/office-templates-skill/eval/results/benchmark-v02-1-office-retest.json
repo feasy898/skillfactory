@@ -8,7 +8,8 @@
     "version": "dist golden.json v1.0.0（5 ab_tasks 冻结）+ merged office 子树 8 题（9e7f57c6…）",
     "golden_version": "2fa58b07481b44bc2840b2fdd757ef19faa5ebe37e1918baf936b2b923f4ecbf",
     "taskset_frozen_96": "9e7f57c6f4094f184483fab0d59f61121abd82316b1779072e9e99df43c0c535",
-    "gate_version": "v0.2.1（tie-aware + 跨代可比条件）"
+    "gate_version": "v0.2.1（tie-aware + 跨代可比条件）",
+    "t08_judge_face_note": "更正注记（alpha 终裁 C4，2026-10-09）：t08 判官面已按 D1 锚点澄清修订后投喂——rubric.md sha256=3280f0cd498d86bd7a85bddc9efe39ab39cce7dc0e6647f349a057cc027eaf9e、judge-notes.md=3bceaabc16c51d7f58f54d0d3220d010eb5a92f9aaa6b775e9573a23169ba0bf（与 merged index.json 冻结值一致），D1 修订后现行冻结净荷（99 文件）=c783e2cd66c0170fa6d12323f8ab465c3170ed1af625d0c64a14f811e4191ca8；投喂面零改动（task.json/brief.md 与两臂 78 份产物未动）。判据面修订仅影响 t08 判官口径，其余 12 题判官面未动。"
   },
   "model_pin": {
     "testers": {

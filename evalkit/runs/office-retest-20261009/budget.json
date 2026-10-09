@@ -2975,5 +2975,6 @@
     "记账刚性：spawn 前 pending 占位即计数（防并发超预算），事后回填 status/exit/session/tokens；只增不改历史行",
     "超出 78 臂/裁判下限+余量的调用须先经 planner 批准，超额进程不计入结果",
     "judge prompt 版本 S8-JUDGE-v2-OFXRETEST-1 与 model_pin.judge_model_id 随轮落盘（§3.7-4 同代可比前提）"
-  ]
+  ],
+  "closing_note": "更正注记（alpha 终裁 C3，2026-10-09，纯追加；ledger_entries 历史行零改动）：task=t08-rejudge-d2* 的 slot 149-158 为 D2 复判期全部调用——实发 3 轮（slot 149-151/153-155/156-158）+ slot 152 脚本崩溃（KeyError，exit 1；重跑由崩溃触发，非看结果挑选）。第 1 轮判词原文未保存；judge-work/t08-rejudge/_attempt1-crash-archive 的 _run1 与 _run2 逐文件 md5 22/22 相同、均系第 2 轮产物（存档标签有误）。Minimax 落盘 verdict.json 三份 md5 均 dc5f9ce723467605a1835243246a2a9c，字节出自 slot 154（sess_7ac785de）；slot 157（sess_b5987779）为终轮复核会话、复核后沿用未重写（transcript 自述「verdict.json is already written … I left it in place rather than overwriting」）。alpha 终裁定性：留痕与披露缺陷，不推翻结论；结果不变性七条证据链见 records/judging/t08-rejudge/d2-rejudge-record.json 的 correction_note；authority=planning/test-cards-20261008/OFFICE-K5-FINAL-RULING-20261009.md §D2/C3。"
 }

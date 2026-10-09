@@ -473,5 +473,19 @@
     "action": "pass"
   },
   "action": "pass",
-  "blind": "匿名化产物原样投喂（P1..P6 与首轮逐字节相同，sha256 见 staging_sha256）"
+  "blind": "匿名化产物原样投喂（P1..P6 与首轮逐字节相同，sha256 见 staging_sha256）",
+  "correction_note": {
+    "authority": "planning/test-cards-20261008/OFFICE-K5-FINAL-RULING-20261009.md §D2 与 C3（alpha 终裁，2026-10-09）",
+    "nature": "纯追加更正注记：本记录判分数据（staging_sha256/judges/verdict/per_judge_scores/final_scores/judge_arith_check）零改动，以下据实更正执行留痕与归属登记",
+    "device_deviation": {
+      "rounds_actually_sent": "D2 实发 3 轮（非『只复判一次』的单次执行）：budget slot 149-151=第 1 轮（step 7fed2f0e…/Minimax sess_56acc7b7…/resample ce786a4b…）、slot 153-155=第 2 轮（step ce12b23a…/Minimax sess_7ac785de…/resample f7b1f23f…）、slot 156-158=第 3 轮即终轮（step 7a95fdaf…/Minimax sess_b5987779…/resample a63277b7…）；另 slot 152 脚本崩溃（KeyError，exit 1）",
+      "run1_verdicts_not_saved": "第 1 轮判词原文未保存：_attempt1-crash-archive 的 _run1 与 _run2 逐文件 md5 实测 22/22 相同，均系第 2 轮产物——_run1 存档标签有误",
+      "minimax_verdict_provenance": "本记录 Minimax attempts[0] 登记的 session_id=sess_b5987779（slot 157，终轮）系复核会话：落盘 verdict.json 三份（终轮目录+_run1+_run2）md5 均 dc5f9ce723467605a1835243246a2a9c，字节实际出自第 2 轮 sess_7ac785de（slot 154）；终轮 transcript（judge-work/t08-rejudge/Minimax-M3.1-Flash-Preview-main/transcript_stdout.txt）自述「`verdict.json` is already written in the working directory and validates clean — and my independent re-judging landed on exactly the same six totals, so I left it in place rather than overwriting.」即复核后沿用第 2 轮判词文件，未重写",
+      "step_side_consistent": "step-router-v1 侧登记与实际一致：终轮主判 slot 156（7a95fdaf…，attempt1 即过 arith、判词落盘）、resample slot 158（a63277b7…）",
+      "registry_correction": "本记录与 records/judging/t08.json 的 d2_rejudge.panel_sessions 按『attempt1 即过 arith』口径登记终轮会话，未反映 Minimax verdict 字节实际出处，均以本注记为准；EVALUATION.md 原「面板 step-router-v1+Minimax 均新会话」表述已删除（见 EVALUATION.md §五 D2 执行偏差更正注记）"
+    },
+    "result_invariance_evidence_chain": "七条（alpha 终裁定性：留痕与披露缺陷，不推翻结论）：①盲态未破（verdict 只有 P 标签，臂映射仅在 judge-staging）；②污染仅同裁同 brief（BRIEF_SAME 实测）；③Minimax 首轮干净会话 6 总分（0/10/10/0/10/6.3，records/judging/first-pass-pre-d2/t08.json）与 D2 verdict 字节完全相同（独立复现）；④step 第 2/3 轮总分逐值一致，§3.4 抽检走 step 通道；⑤t08 treatment 每轮每裁均 10.0、baseline 最高 6.9，恒为 win；⑥重跑由脚本崩溃触发（slot 152 KeyError），非看结果挑选；⑦方向保守（P6 6.3→6.9，t08 Δ+7.90→+7.70）",
+    "ruling": "装置偏差不改判：t08 复判终分（P1=0.0/P2=10.0/P3=10.0/P4=0.0/P5=10.0/P6=6.9）与 verdict 转移（fail-closed rejected → accepted provisional）维持不变",
+    "recorded_at": "2026-10-09（零模型调用更正卡，依据 alpha 终裁 C1-C6）"
+  }
 }

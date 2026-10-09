@@ -842,7 +842,7 @@
     "items": "16/16 执行，逐条前后对照见 REVISION-LOG.md",
     "file_schema": "每题 4 文件：task.json（含 instruction 字段=两臂唯一投喂文本）/brief.md（投喂题面存档）/rubric.md（评分）/judge-notes.md（判官专用判据）"
   },
-  "frozen_sha256_fulltree": "53f5a4951c350040ec766ed5615c9fb6965be1d613a54f05a94a23aadf97bc2e",
+  "frozen_sha256_fulltree": "1f67e38bd09bb52ab53ec7f6bd72f30a92175ad6c0db8a8e066238304cb6bf5c",
   "frozen_note": "D1 锚点澄清修订后冻结，2026-10-09",
   "revision": {
     "date": "2026-10-09（D1 锚点澄清轮，office 重测裁决前置）",
