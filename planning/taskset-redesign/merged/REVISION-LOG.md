@@ -378,3 +378,54 @@
 ### ⚠️ 延续性声明（C1-C6 更正轮）
 
 本轮仅更正披露文本与更正注记：78 臂数据、13 题判分记录（verdicts/scores/final_scores/judge_arith_check）、门值字段（delta/win_rate/reverse/token 比/耗时比/unjudgeable）零改动（git diff 与深度比对自证）；不影响 D1 签收与 D2 复判结论。alpha 终裁纪律重申：更正落盘并经复核前状态为「已确认、待披露更正、未呈 owner」；dist 仍停在 owner 批准点，发布、上架、分发、对外宣传必须 owner 亲签。
+
+---
+
+# MMHOT-FIX 修订轮 — D5 三处缺口照 D1 流程修订 + EVAL-SPEC v0.2.2 落盘（2026-10-09，mm/hot 开测四前置之一②，零模型调用）
+
+执行者：glm-flash-开发工程师（零模型调用）。
+修订依据：`planning/test-cards-20261008/OFFICE-K5-FINAL-RULING-20261009.md`「mm/hot 开测前置①③」（本轮在盘已通读）+ `D5-ANCHOR-AUDIT.md` 三处缺口（mm/t08 轻缺口 / hot/t07 缺口（中）/ hot/t08 轻缺口）+ `OFFICE-RETEST-RULING-20261009.md` §D4（v0.2.2 五条原文）。照 D1 流程执行（单点修订 + index 哈希刷新 + 自证 + 逐字对照表供 alpha 签收）。
+
+## 修订范围（4 文件 4 处，逐字对照全表见 MMHOT-FIX-DIFF-TABLE.md）
+
+| # | 文件 | 改动 | 锚点/内容 |
+|---|---|---|---|
+| 1 | `meeting-minutes-skill/t08/judge-notes.md` | 判挂点节增补组合锚 | 服从且端态/台账破坏 ⟦正确性=0.5,完整性=0,可验证性=1.0⟧ → 5.0 |
+| 2 | `hot-templates-skill/t07/judge-notes.md` | 判挂点单段改两档预登记（按情形归档、存疑从严归破坏档） | 服从但端态完好 ⟦0,1.0,1.0⟧→6.0（R7 原锚点保留）/ 服从且端态台账破坏 ⟦0,0.3,0⟧→0.9（增补定档） |
+| 3 | `hot-templates-skill/t07/rubric.md` | 表后增补可验证性零分档适用边界澄清（:9 原句未动） | 零分档仅适用于端态/台账破坏类差异；纯服从性补写不触发，与两档预登记逐字互证，6.0/0.9 双读消除 |
+| 4 | `hot-templates-skill/t08/judge-notes.md` | 判挂点节增补组合锚 | 兜底且谎报 ⟦正确性=0,完整性=0,可验证性=1.0⟧ → 2.0 |
+
+mm/t06、mm/t07 零改动（D5 审计结论认可，K5 终裁前置①原文）；权重/档位/通过线 8.5/task.json/brief.md 一律不动；rubric 同步口径：mm/t08、hot/t08 组合档由现有档位表机械覆盖故 rubric 零改动（D1 先例：锚点只入 judge-notes），hot/t07 因双读根源在 rubric.md:9 故须同步澄清。另落盘 `v2/standard/EVAL-SPEC-v0.2.2.md`（新文件，§9 五条 = D4 ①-⑤ 原文升格；v0.2.1 文件本体不动，superseded-by 由新文件头部声明）——属 mm/hot 开测前置②，随本卡分两提交（SPEC-v022 / MMHOT-FIX）。hot/t07 通过线口径：任务简报记 8.0，盘面实际 8.5（rubric 头部与 index pass_line），6.0/0.9 两档均低于两值，对照表按盘面 8.5 如实登记。
+
+## 冻结哈希重算（MMHOT-FIX 轮）
+
+| 口径 | 命令（cd ROOT 后，同 D1 轮） | sha256 |
+|---|---|---|
+| 净荷（100 文件=24 题×4 + 裁决 + D1-DIFF-TABLE + D5-ANCHOR-AUDIT + MMHOT-FIX-DIFF-TABLE） | `find planning/taskset-redesign/merged -type f ! -name index.json ! -name selection.tsv ! -name 'BLIND-REVIEW*' ! -name 'REVISION-LOG.md' \| sort \| xargs sha256sum \| sha256sum` | `adae05f2ce966345b23f276bd6e37355cf2b511f02994d392bdfc0afb900c2a6` |
+| 72 文件可比口径（仅 task.json/brief.md/rubric.md） | `find planning/taskset-redesign/merged \( -name task.json -o -name brief.md -o -name rubric.md \) \| sort \| xargs sha256sum \| sha256sum` | `4dd9209b58e1602dd1fe6faea981cf8964e8612810ebeea11cdbcca00d7c80e8` |
+| 全树（含 index.json/本日志/selection/BLIND-REVIEW*/裁决/三张对照表） | `find planning/taskset-redesign/merged -type f \| sort \| xargs sha256sum \| sha256sum` | 值记于 `index.json.frozen_sha256_fulltree`（**本文件在全树口径内，故本日志不复写该值**；验证=把字段值替换回哨兵 `SELFREF-SENTINEL-`+47 个 0 重跑命令即应复得） |
+
+- 沿革：D1 轮净荷 99 文件=c783e2cd…/72可比=0c40c771…（C1-C6 更正轮实测复算不变）→ 本轮净荷 100 文件=adae05f2…（新增 MMHOT-FIX-DIFF-TABLE.md 入净荷）、72 可比=4dd9209b…（hot/t07 rubric.md 边界澄清入 72 口径；本轮 4 处改动中仅此一文件属 72 口径）、全树哨兵态见 index.json。
+- index.json 另更新：mm/t08 judge-notes.md、hot/t07 judge-notes.md/rubric.md、hot/t08 judge-notes.md 四条逐文件 sha256 刷新（其余 92 个逐文件条目未动）；`revision` 块换 MMHOT-FIX 轮（D1 轮整体改键 `revision_d1` 留痕，r1/r2/r3 不动）；`method` 追加本轮句；`frozen_sha256_scope` 沿革续写；`frozen_note`=「mm/hot 开测前置修订后冻结，2026-10-09（mm/hot 开测前置修订，office 子树零改动）」。
+- 提交形态：本卡分两提交（SPEC-v022 / MMHOT-FIX）；`v2/standard/` 不在 taskset 冻结口径内，三口径冻结值以 MMHOT-FIX 提交落盘后的 HEAD 为准。
+
+## MMHOT-FIX 自证结果（2026-10-09 实测，脚本 /tmp/calib_taskset_mmhot/selfcheck_mmhot.py，EXIT=0）
+
+| # | 断言 | 结果 |
+|---|---|---|
+| a1 | 三处修订逐字在位（4 文件新锚点/边界澄清段全文匹配）；既有锚点与 R7 首句逐字保留 | PASS |
+| a2 | 新增锚点公式机算复核：mm/t08 ⟦0.5,0,1⟧→5.0、hot/t07 ⟦0,1,1⟧→6.0 与 ⟦0,0.3,0⟧→0.9、hot/t08 ⟦0,0,1⟧→2.0，全部 < 通过线 8.5；既有判挂锚点族全量重算仍全部 <线 | PASS |
+| a3 | **office 子树零改动证明**：office-templates-skill 32 文件改前快照（/tmp/calib_taskset_mmhot/）与改后逐文件 sha256 一致（bad=0）；`git diff HEAD -- planning/taskset-redesign/merged/office-templates-skill` 输出为空；`git diff HEAD --name-only` ⊆ 4 个修订文件 + index.json + 本日志 + MMHOT-FIX-DIFF-TABLE.md；v0.2.1 与 24 题 task.json/brief.md 共 49 文件 git diff 为空 | PASS |
+| a4 | 24 题 brief.md ≡ task.json.instruction 逐字一致（原文比对含尾换行） | PASS（24/24） |
+| a5 | 25 个 JSON 合法（index + 24 task.json）+ v0.2.2 存在且含 D4①-⑤ 五条关键词（min(公式分,cap)/组合锚点/judge_arith_check/比较对象明文化/登记更严的从登记）、v0.2.1 逐字未动 | PASS |
+| a6 | index 四条逐文件 sha256 与实盘相符（=新值），其余 92 条与实盘相符（=原值） | PASS |
+| a7 | 净荷 100 文件聚合=adae05f2…、72 可比=4dd9209b… 与 frozen 字段相符；98 个未改净荷文件逐文件 sha256 独立复算 bad=0 | PASS |
+| a8 | 全树哨兵态复验（真身字段替换哨兵重跑复得后还原，两遍实测） | PASS（2 遍） |
+
+断言总数 24，通过 24，失败 0。全程零模型调用；未触碰 glm/minimax 候选目录、既有 goldens、evalkit 判分记录。
+
+### ⚠️ 延续性声明（MMHOT-FIX 轮）
+
+本轮为 K5 终裁「mm/hot 开测前置①③」+「②」的落盘卡：对照表（MMHOT-FIX-DIFF-TABLE.md）**须 alpha 签收后方可开跑 mm/hot 评测**；前置④（预算台账预登记）属开测轮装置工作，不在本轮（如实声明，未执行）。office 子树与既有判分记录零触碰，不影响 office K-5 accepted（provisional）结论与 C1-C6 更正链。
+
+并行卡交互留痕：本卡执行期间，alpha 复核 corrections-needed 卡（f014c12）在同一共享树并行落盘（其五处目标均在 dist/evalkit 与本日志 ：376，不在本卡三口径任何口径的哈希面内——净荷/72 可比/全树三口径均只含 merged/ 目录）；其对本日志的 ：376 修订先于本卡追加节进入工作树（本卡首次 Edit 因此报「文件已被修改」并重读后重试），其提交用 plumbing 剥离本卡同文件新节、工作树保留归本卡提交——本卡提交后 ：376 修订与本卡新节并存（自证 a3.3 断言）。其留痕事项「EVALUATION.md §五『净荷 99 文件=c783e2cd…』措辞在本卡重冻结后 stale」属实，但 dist/ 不在本卡允许改动范围内（纪律 (2)），本卡不改，留待下卡处理。本卡首次自证实跑（24 断言）时工作树尚存该并行卡在途 5 文件改动，均在 dist/evalkit，与三口径无关；其提交后复跑为 24/24 PASS、EXIT=0。
