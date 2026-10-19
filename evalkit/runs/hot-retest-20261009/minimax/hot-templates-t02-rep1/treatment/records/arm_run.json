@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t02-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 28110,
+  "started_at_ms": 1791529495355,
+  "session_id": "sess_e2539f67-4460-4464-9519-5240ec36b3d2",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t02-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 202413,
+      "ot": 1802,
+      "dur": 23392,
+      "n": 8
+    }
+  ],
+  "input_tokens": 202413,
+  "output_tokens": 1802,
+  "stdout_bytes": 2301,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "d-09ed-42a5-8e75-31711f623058\",\n  \"turnId\": \"turn_93be433e-6b13-4813-a37c-2c928a02c1ae\",\n  \"response\": \"短视频分镜表骨架已生成，产物在 `out/骨架.md` 和 `out/structure.json`。\\n\\n**执行方式**：按 SKILL.md 规则先重读 SKILL.md，再完整读完 `references/video.md`（平台对应那份），然后走确定性渲染引擎 `scripts/gen.py` 单次调用生成 `video` 平台，未手写或改写 `structure.json`。\\n\\n**成功判据三条全部满足**：exit 0；stdout 打印 `OK platform=video topic=露营灯选购 elements=6 open_placeholders=12 filled_from_input=4 -> out`；两份产物存在且非空（5951 / 7229 字节）。\\n\\n**产物内容**：主题「露营灯选购」，模板 `video` v1.0（分镜表：时间轴/画面/口播/字幕），6 镜 45 秒时间轴冻结为 00:00-00:03 / 00:03-00:10 / 00:10-00:20 / 00:20-00:30 / 00:30-00:40 / 00:40-00:45。三个卖点全部落入 `shot_3/4/5` 的口播列（色温 3500K、续航倍选、磁吸加挂钩），`points_input_count=3`、`points_used` 三条全填、`points_unused` 为空。\\n\\n**自校验结果**：`structure.json` 顶层 11 键、每要素 9 键、`placeholder_stats` 5 键齐备，beat 冻结文案正确；未填占位符 12 处、已从输入填充 4 处（topic + 三卖点），与 video 满 3 卖点的参考值 12 一致；`{{ }}` 未填充模板变量残留为 0；同输入重跑与首跑 `diff -r` 逐字节一致。\\n\\n12 处 `【占位:…】` 是技能设计内的开放槽位（画面描述、痛点行为、口播补充效果、下期选题等），按红线留给扩写环节补写，我未编造内容填充。后续如需我按 `references/video.md` 的写法方法把它扩写成逐字稿版分镜表，告诉我即可。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 8,\n    \"inputTokens\": 202413,\n    \"outputTokens\": 1802,\n    \"totalTokens\": 204215,\n    \"cacheReadTokens\": 150972,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 291,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 204215,\n    \"contextUsed\": 29572,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

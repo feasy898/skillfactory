@@ -1,0 +1,27 @@
+AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.
+{
+  "sessionId": "sess_0cc1d5c7-fc98-49e0-af21-bd0fa48932f1",
+  "traceId": "7f8e32c6-8dd4-4430-af5a-b7275159492e",
+  "turnId": "turn_f56b3d75-8578-40fe-8bab-f965bda10e95",
+  "response": "任务完成。三份产物已就位并通过全部校验：\n\n- **`nanping_water_0926.txt`** — 转写稿 10 段发言逐字保存，与 brief.md 逐字节 diff 一致。\n- **`out/纪要.docx`** — 三段式会议纪要（公文风格：黑体节标题、宋体正文、黑色细线表格、\"— X —\"页码）。标题「秋季检修准备事项会议纪要」下先列会议概况（主题／时间据文件名与时间戳推定并注明来源／主持人／出席人员／提及人员／记录依据），随后：\n  - **一、决议事项（5 条）**：编号牌重做并用国标款、范晓芸汇总终审材料、行政部 10 月 16 日 17:00 前完成会场布置、检修期间客服热线延长一小时、实习生小林负责接待登记；\n  - **二、待办事项（8 行表格）**：事项／负责人／完成时限／备注（含转写出处 `[10:0X]` 时间戳，便于回溯核对）。会上未明确的栏位如实标注「会议未明确」，未作虚构；\n  - **三、风险与关注（2 条）**：老系统并网停水风险（对应待办第 4 项），以及部分事项责任人／时限缺口。\n- **`out/summary.json`** — 四键条数统计：决议事项 5、待办事项 8、风险与关注 2、合计 15。\n\n校验情况：docx 生成后 postcheck 9/9 零错误；渲染 PDF/PNG 后经视觉验收两页均 pass（表格跨页时表头自动重复，无截断乱码）；程序化核对确认 docx 三节条数与 summary.json 完全一致，且转写稿中 15 项关键事实（人名、单位、日期、时限）全部在纪要中命中、无遗漏。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 20,
+    "inputTokens": 1031903,
+    "outputTokens": 25080,
+    "totalTokens": 1056983,
+    "cacheReadTokens": 976384,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 19388,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1056983,
+    "contextUsed": 71125,
+    "contextWindow": 200000
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t06-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 38084,
+  "started_at_ms": 1791530947030,
+  "session_id": "sess_c99154fb-ddd2-4312-99e8-dda0d68af84a",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t06-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 188880,
+      "ot": 1419,
+      "dur": 32443,
+      "n": 8
+    }
+  ],
+  "input_tokens": 188880,
+  "output_tokens": 1419,
+  "stdout_bytes": 2363,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "-8a9f-9c36521f5eca\",\n  \"response\": \"骨架已生成并落盘在 `out/`，两条成功判据全部满足（exit 0 + `OK platform=xhs …` 打印行 + 两份非空文件）。\\n\\n**生成方式**：严格按 SKILL.md 红线走确定性渲染引擎 `scripts/gen.py`，没有手写 `structure.json`：\\n\\n```bash\\npython scripts/gen.py --platform xhs --topic '无纸化通关' \\\\\\n  --points '[\\\"无纸化申报随附单证自拍存档\\\",\\\"   \\\",\\\"错峰值机攻略\\\",\\\"候补票改签时限\\\",\\\"会员日里程翻倍\\\"]' \\\\\\n  --outdir out\\n# OK platform=xhs topic=无纸化通关 elements=7 open_placeholders=9 filled_from_input=8 -> .../out\\n```\\n\\n**卖点规整结果**（模板固定 3 个槽位，输入 5 条）：\\n- `point_block_1` = 无纸化申报随附单证自拍存档（实填，末行 `filled_from_input` 记 `point#1`）\\n- `point_block_2` = `【占位:价值点2】` —— 第 2 项 `\\\"   \\\"` 是纯空白串，按 SKILL.md gotchas 视同缺失处理，`points_used[1]` 为 `null`\\n- `point_block_3` = 错峰值机攻略（实填 `point#3`）\\n- 第 4、5 条（候补票改签时限、会员日里程翻倍）超出槽位，保序落 `points_unused`\\n\\n**产物内容**：`骨架.md` 为小红书图文 7 要素骨架（标题带数字 + emoji 规则 + 正文分块 + 标签组），冻结标记 `🔥`/`✅`/`💡`/`📌`/`🏷️` 与标签6 个口径均在位，首标签由主题派生为 `#无纸化通关`。`structure.json` 顶层 11 键齐全，JSON 合法，UTF-8/LF。\\n\\n**校验**：未填充模板变量 `{{ }}` 计数为 0（两份文件 grep 均为 0 处）；开放槽位 9 处未动，`【占位:…】` 按红线保留原样待扩写——其中干货块 2 之所以是 2 处，是卖点位与步骤位都空。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 8,\n    \"inputTokens\": 188880,\n    \"outputTokens\": 1419,\n    \"totalTokens\": 190299,\n    \"cacheReadTokens\": 162456,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 352,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 190299,\n    \"contextUsed\": 27104,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

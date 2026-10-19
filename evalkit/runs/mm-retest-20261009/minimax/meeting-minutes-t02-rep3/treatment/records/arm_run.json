@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t02-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 73089,
+  "started_at_ms": 1791530900677,
+  "session_id": "sess_1d7e4128-5f34-4727-9df0-a16ce8a85fe1",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t02-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 344500,
+      "ot": 6060,
+      "dur": 62567,
+      "n": 13
+    }
+  ],
+  "input_tokens": 344500,
+  "output_tokens": 6060,
+  "stdout_bytes": 2741,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "n_f4ee0b6f-e455-4e30-9bd3-95afa2226545\",\n  \"response\": \"会议纪要已生成并通过全部验收检查。\\n\\n**产物**（均在工作目录内）：\\n- `bailuzhou_lib_1014.txt` — 转写稿已按要求落盘（42 行发言）\\n- `out/纪要.docx` — 三段式纪要\\n- `out/summary.json` — `{\\\"决议事项\\\": 4, \\\"待办事项\\\": 6, \\\"风险与关注\\\": 3, \\\"合计\\\": 13}`\\n\\n**做法**：用 `meeting-minutes` 技能的 `scripts/minutes.py` 跑出产物。系统 Python 缺 `python-docx` 且被 PEP 668 挡住，我在 `/tmp/mmvenv` 建了虚拟环境装上 1.2.0 后执行，退出码 0，回读确认两个产物真实存在。\\n\\n**内容**：42 行发言中 13 行命中关键词被收录，其余按规则整行排除。决议 4 条全部来自馆长远山（14:03 同意定稿、14:08 定开幕式、14:14 合并捐赠仪式、14:21 三条结论）；待办 6 条为展品清单终审、绘本剧场场地、印刷报价再问一轮、逾期费减免口径、对讲机借调、伴手礼数量核算；风险 3 条为借阅上限待定、备用锁具到货/布展延期、自习区占座。\\n\\n**验收**：逐条核对了技能 `docx-and-summary.md` 的七项清单，全部通过——三节标题齐全且顺序正确、条目编号从 1 连续、待办为「事项/负责人/期限」3列表格 6 行数据、summary 四键与 docx 实际条数逐项一致且合计 13 等于元信息行数字、每条（含表格「事项」列）都能在转写稿按时间戳+说话人逐字溯源、负责人与期限或在原文逐字可寻或为「待定」，无编造。技能包的 `eval/runner.py` 未随包发布，所以第 2 步的官方评测脚本改用上述手工清单等价执行。\\n\\n有一处提请注意：待办「逾期费减免口径需要馆里拍板，截止到本月15号报修订组」的期限填的是「本月」而非「本月15号」。这是 `extraction-heuristics.md` 期限规则的固有结果——第 4 条 `本(周|月|季度)(底|末|内)?` 优先于第 6 条「截止到X」命中，而「15号」不符合第 2 条要求的 `m月d日` 格式。规则优先即结果，我按红线未作改写。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 13,\n    \"inputTokens\": 344500,\n    \"outputTokens\": 6060,\n    \"totalTokens\": 350560,\n    \"cacheReadTokens\": 312190,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1028,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 350560,\n    \"contextUsed\": 33070,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

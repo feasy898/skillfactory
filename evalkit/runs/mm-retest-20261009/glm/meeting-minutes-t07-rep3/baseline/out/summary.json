@@ -1,0 +1,139 @@
+{
+  "document_type": "meeting_minutes",
+  "language": "zh-CN",
+  "organization": "鹤鸣幼儿园",
+  "source_transcript": "heming_kg_1016.txt",
+  "minutes_file": "out/纪要.docx",
+  "meeting": {
+    "title": "膳房安全专题会议",
+    "date": "2026-10-16",
+    "date_basis": "日期依归档文件名 heming_kg_1016 推定（转写稿未含年份）；时间以转写稿标注为准",
+    "start": "15:00",
+    "end": "15:09",
+    "location": null,
+    "location_note": "转写稿未记录，纪要以占位符【会议地点】留待补填",
+    "host": "柴迎秋（园长）",
+    "attendees": [
+      "柴迎秋（园长）",
+      "糜暖（保健医）",
+      "阎实（后勤）"
+    ],
+    "mentioned_not_attending": [
+      "老赵（监控型号审定）",
+      "小唐（晨检记录复核）",
+      "苏芮（晨检台账汇总）",
+      "财务（费用口径确认）"
+    ],
+    "recorder": null,
+    "recorder_note": "转写稿未记录，纪要以占位符【记录人】留待补填"
+  },
+  "decisions": [
+    {
+      "id": "D1",
+      "text": "后厨重地列为家长开放日禁入区，即日执行",
+      "decided_by": "柴迎秋（园长）",
+      "source_ref": "15:01"
+    },
+    {
+      "id": "D2",
+      "text": "明厨亮灶视频每周五定期上传",
+      "decided_by": "柴迎秋（园长）",
+      "source_ref": "15:05"
+    }
+  ],
+  "action_items": [
+    {
+      "id": "T1",
+      "task": "与财务确认费用列支口径（按二季度预算）",
+      "owner": "阎实",
+      "owner_basis": "minutes-assigned",
+      "due": "2026-10-20",
+      "due_basis": "minutes-proposed",
+      "source_ref": "15:08"
+    },
+    {
+      "id": "T2",
+      "task": "向供货商补齐本批检验报告缺失的两页",
+      "owner": "糜暖",
+      "owner_basis": "minutes-assigned",
+      "due": "2026-10-23",
+      "due_basis": "minutes-proposed",
+      "source_ref": "15:07"
+    },
+    {
+      "id": "T3",
+      "task": "明厨亮灶视频首次上传，此后每周五定期上传",
+      "owner": "阎实",
+      "owner_basis": "minutes-assigned",
+      "due": "2026-10-23",
+      "due_basis": "minutes-proposed",
+      "due_note": "每周五为例行频次（会上议定），仅首期日期为拟定",
+      "recurrence": "weekly(FRI)",
+      "source_ref": "15:05"
+    },
+    {
+      "id": "T4",
+      "task": "完成灭蚊灯安装",
+      "owner": "阎实",
+      "owner_basis": "meeting",
+      "due": "2026-10-25",
+      "due_basis": "meeting-derived",
+      "due_note": "会上要求下周内装好，边界日期按下周日换算",
+      "source_ref": "15:04"
+    },
+    {
+      "id": "T5",
+      "task": "审定加装监控的型号",
+      "owner": "老赵",
+      "collaborator": "糜暖（跟进）",
+      "owner_basis": "meeting",
+      "due": "2026-10-30",
+      "due_basis": "minutes-proposed",
+      "source_ref": "15:02"
+    },
+    {
+      "id": "T6",
+      "task": "补做一轮晨检记录并复核",
+      "owner": "糜暖",
+      "collaborator": "小唐",
+      "owner_basis": "meeting",
+      "due": "2026-10-30",
+      "due_basis": "minutes-proposed",
+      "due_note": "须早于 T7 台账汇总（11月5日）完成",
+      "source_ref": "15:03"
+    },
+    {
+      "id": "T7",
+      "task": "汇总晨检台账并报送糜暖",
+      "owner": "苏芮",
+      "owner_basis": "meeting",
+      "due": "2026-11-05",
+      "due_basis": "meeting",
+      "source_ref": "15:06"
+    },
+    {
+      "id": "T8",
+      "task": "执行后厨禁入区管理（含家长开放日）",
+      "owner": "阎实",
+      "owner_basis": "minutes-assigned",
+      "due": null,
+      "due_basis": "standing",
+      "due_note": "即日起长期执行（依据议定事项 D1）",
+      "source_ref": "15:01"
+    }
+  ],
+  "risks": [
+    {
+      "id": "R1",
+      "text": "供货商本批检验报告缺少两页，食品安全证明材料存在不确定性",
+      "raised_by": "糜暖（保健医）",
+      "source_ref": "15:07",
+      "linked_action": "T2"
+    }
+  ],
+  "notes": [
+    "owner_basis / due_basis 取值：meeting=会上明确；meeting-derived=由会上表述换算；minutes-assigned / minutes-proposed=纪要整理时拟定（docx 表中标注▲）；standing=长期执行",
+    "纪要中拟定的责任人或期限（▲项）请于 2026-10-20 前向园长确认或提出调整",
+    "会议地点与记录人转写稿未记录，纪要中以【】占位符留待补填"
+  ]
+}

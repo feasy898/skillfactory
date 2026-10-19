@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t04-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 118513,
+  "started_at_ms": 1791530700510,
+  "session_id": "sess_89bb6842-ee51-4ee2-a76e-5846eacfd9d7",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t04-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 186005,
+      "ot": 6071,
+      "dur": 112904,
+      "n": 8
+    }
+  ],
+  "input_tokens": 186005,
+  "output_tokens": 6071,
+  "stdout_bytes": 2907,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "*CTA (56–60s)** — keyword comment hook 「学期末」.\\n\\nEach section carries `line` (话术), `visual` (画面), and `subtitle_key` (字幕大字), so the script is shootable as-is.\\n\\n**Files:**\\n- `out/骨架.md` — human-readable skeleton: timeline table, full per-section script, 爆款机制拆解, 拍摄与发布配置 (BGM cut points at 00:12/00:24/00:36, safe area, hashtags, publish window), plus a 30s 快版 and series-ization variant.\\n- `out/structure.json` — machine-readable mirror: `platform`, `topic`, `points`, 7 section objects with start/end/duration/line/visual, structured `pricing` tables, `viral_mechanics`, `publish_config`, `variants`.\\n\\n**Verification run:** 7 sections, durations sum to exactly 60s, timecodes are contiguous with no gaps or overlaps, each timecode span matches its declared `duration_sec`, and the three body-section `point` values match the brief's `points` array in order.\\n\\nNote: this is the baseline arm (`baseline_has_skill: false`), so I wrote the skeleton from first principles rather than using the treatment arm's `hot-templates` skill.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 8,\n    \"inputTokens\": 186005,\n    \"outputTokens\": 6071,\n    \"totalTokens\": 192076,\n    \"cacheReadTokens\": 163712,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 463,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 192076,\n    \"contextUsed\": 27955,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "t04",
+  "rep": 3,
+  "slot": 20
+}

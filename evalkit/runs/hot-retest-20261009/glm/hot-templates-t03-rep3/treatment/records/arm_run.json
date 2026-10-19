@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t03-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 122153,
+  "started_at_ms": 1791531419743,
+  "session_id": "sess_1143e529-bcfd-4cde-a659-fade0f727782",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t03-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 207064,
+      "ot": 5585,
+      "dur": 115522,
+      "n": 8
+    }
+  ],
+  "input_tokens": 207064,
+  "output_tokens": 5585,
+  "stdout_bytes": 2201,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "{\n  \"sessionId\": \"sess_1143e529-bcfd-4cde-a659-fade0f727782\",\n  \"traceId\": \"6edfc9dc-587d-417d-8051-b077b9d63b44\",\n  \"turnId\": \"turn_02d4336a-ab48-4752-90c7-d9894b1a5da6\",\n  \"response\": \"任务完成。小红书图文爆款骨架已生成在 `out/` 目录下，两份产物均通过全部验收判据。\\n\\n**执行过程**：按 `hot-templates` 技能规范，先完整读取 `references/xhs.md` 平台规范，然后用确定性渲染引擎 `scripts/gen.py` 生成（未手写任何结构），命令一次成功（exit 0，stdout 打印 `OK platform=xhs topic=#通勤背包选购 elements=7 open_placeholders=7 filled_from_input=10 -> out`）。\\n\\n**产物**（`out/骨架.md` + `out/structure.json`，UTF-8/LF）：\\n- **7 要素冻结结构**：标题（带数字）→ 开头钩子块 → 干货块×3 → 总结块 → 标签组，emoji 映射 🔥/✅/💡/📌 与冻结标记全部就位。\\n- **输入规整符合预期**：主题 ` #通勤背包选购 ` 首尾空格被 strip、`#` 经 `clean_tag` 派生为首标签 `#通勤背包选购`；第 1 条卖点 `  三档承重分装更护肩  ` 首尾空白被 strip 后填入「💡 干货1」，三条卖点全部入槽（`points_unused` 为空）。\\n- **开放槽位保持原样**：7 处 `【占位:…】`（目标人群/真实经历/操作拆解×3/互动引导/垂直标签）未被编造填充，`{{ }}` 类残留为 0；`filled_from_input=10` 与 reference 规定的填充口径逐项吻合。\\n- **确定性验证**：同输入重跑后两文件 sha256 逐字节一致，`structure.json` 顶层 11 键、每要素占位统计与 `骨架.md` 尾部统计节同源同构。\\n\\n骨架可直接交付；扩写成文时再由使用者补写那 7 处开放槽位即可。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 8,\n    \"inputTokens\": 207064,\n    \"outputTokens\": 5585,\n    \"totalTokens\": 212649,\n    \"cacheReadTokens\": 191488,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 4875,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 212649,\n    \"contextUsed\": 31750,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

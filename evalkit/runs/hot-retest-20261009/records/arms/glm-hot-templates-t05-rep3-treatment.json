@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t05-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 123724,
+  "started_at_ms": 1791532847550,
+  "session_id": "sess_6bdd2a73-931c-4d4d-b1c1-0a426f04bcb3",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t05-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 335819,
+      "ot": 6623,
+      "dur": 116177,
+      "n": 11
+    }
+  ],
+  "input_tokens": 335819,
+  "output_tokens": 6623,
+  "stdout_bytes": 2793,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "illed_from_input=10` 与 SKILL.md 预登记的 xhs 满 3 卖点参考值完全吻合。\\n\\n## 输入形态与产物落位\\n\\n| 形态 | `--points` 传入 | 输出目录 | 产物 |\\n|---|---|---|---|\\n| A 内联 JSON 串 | `'[\\\"泡沫箱打孔防涝\\\", \\\"蛋壳补钙碾碎拌土\\\", \\\"北侧种耐阴生菜\\\"]'` | `out/A-inline/` | 骨架.md (2545B) + structure.json (5277B) |\\n| B 文件·无 BOM | `points_plain.json`（首字节 `5b 22` 即 `[\\\"`） | `out/B-plain/` | 同上 |\\n| C 文件·带 BOM | `points_bom.json`（首字节 `ef bb bf`，去掉 BOM 后与 B 逐字节相同） | `out/C-bom/` | 同上 |\\n| D 文件·wrapped 对象 | `points_wrapped.json`（`{\\\"points\\\": [同数组]}`） | `out/D-wrapped/` | 同上 |\\n\\n三个自备 JSON 文件已保存在工作目录根下。引擎按 SKILL.md 预期处理了全部四种形态：文件路径命中即按 `utf-8-sig` 读取（BOM 被容忍），wrapped 对象正确取出 `points` 键，内联串直接解析。\\n\\n## 一致性与内容核验\\n\\n- **跨形态逐字节一致**：四组产物 sha256 完全相同（骨架.md 均为 `a87410f7…`，structure.json 均为 `583aeee8…`）——确定性引擎下同一有效输入的预期行为，证明四种形态归一后等价。\\n- **structure.json 结构**：顶层 11 键、`element_count=7`、`points_input_count=3`、`points_used` 为三条卖点原文、`points_unused=[]`、`platform_name=小红书图文`。\\n- **骨架.md 内容**：首行 `# 小红书图文 · 爆款骨架`，三条卖点全部进入干货块，`{{ }}` 类模板残留为 0；7 处 `【占位:…】` 为设计内开放槽位，未做任何编造填充。\\n\\n四次生成的全部产物与三个输入文件均已留在工作目录原处。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 11,\n    \"inputTokens\": 335819,\n    \"outputTokens\": 6623,\n    \"totalTokens\": 342442,\n    \"cacheReadTokens\": 312768,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 5232,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 342442,\n    \"contextUsed\": 39336,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "t05",
+  "rep": 3,
+  "slot": 42
+}

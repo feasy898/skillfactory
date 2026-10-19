@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t05-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 197201,
+  "started_at_ms": 1791536420734,
+  "session_id": "sess_dffc50e2-7eac-45fa-8cdb-096cbcfeec91",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t05-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 355521,
+      "ot": 9680,
+      "dur": 187617,
+      "n": 12
+    }
+  ],
+  "input_tokens": 355521,
+  "output_tokens": 9680,
+  "stdout_bytes": 3109,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "要（标题 + 元信息行 + 三节，待办为 事项/负责人/期限 三列表格）\\n- `out/summary.json` — `{决议事项: 2, 待办事项: 4, 风险与关注: 1, 合计: 7}`，与 docx 实际条数逐项一致\\n\\n**纪要内容概要**\\n\\n| 节 | 条目 |\\n|---|---|\\n| 一、决议事项（2） | ①【11:07 · 何莉】我们决定值班周期从双周改为单周；②【11:10 · 何莉】同意，巡检记录用新表格 |\\n| 二、待办事项（4） | 场地需要预订；何莉): 值班表需要更新；供暖设备巡检需要挂牌，截止到本月底（期限=本月底）；需要补充两名夜班门卫。负责人四条均无确定性规则命中，如实填「待定」 |\\n| 三、风险与关注（1） | ①【11:12 · 老佟】消防通道堆物现象有延期整改的记录，风险不小 |\\n\\n**按规则被排除的噪声行**（逐行核对过）：`[9:5]` 分钟不足两位、`[100:00]` 时为三位，均不符合发言格式正则；「散会前提醒：下周一开始穿工服」无时间戳；`[11:06] 值班表下月启用新版本` 与 `[11:16] 今天到这，散会` 零关键词。`[10:60]` 格式上合法（分两位），照常收录。\\n\\n**过程说明**：技能首选的脚本路径直接跑通（`scripts/minutes.py`），但本机默认 `python` 是无 python-docx 的 venv，改用已装有 python-docx 1.2.0 的 `/usr/bin/python3` 执行，退出码 0 且两个产物回读确认存在。技能文档提到的 `eval/runner.py` 并不在这个技能包里（包内只有 SKILL.md、references、scripts、requirements.txt），故按包内 `docx-and-summary.md` 的验收清单做了逐项自查：三节标题齐全、条目格式与连续编号、待办表头三列、summary 四键与实际条数一致、每个条目（含表格事项列）都能在转写稿逐字溯源、负责人/期限或逐字出自原文或为「待定」——9 项全部 PASS。\\n\\n一个如实记录的边界：`[11:05] 副队长(代:何莉)` 的说话人本身含冒号，违反了规则的输入假设，解析按第一个冒号切分，事项列因此呈现为「何莉): 值班表需要更新」——这是规则冻结行为（逐字、不修正），溯源检查仍然通过，我未做人工改写。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 12,\n    \"inputTokens\": 355521,\n    \"outputTokens\": 9680,\n    \"totalTokens\": 365201,\n    \"cacheReadTokens\": 335040,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 7558,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 365201,\n    \"contextUsed\": 37228,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

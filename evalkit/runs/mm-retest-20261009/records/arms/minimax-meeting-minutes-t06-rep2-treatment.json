@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t06-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 137494,
+  "started_at_ms": 1791532655973,
+  "session_id": "sess_1af9bf70-13a7-4de3-a068-8b0cad0b7f80",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t06-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 514109,
+      "ot": 4997,
+      "dur": 123272,
+      "n": 19
+    }
+  ],
+  "input_tokens": 514109,
+  "output_tokens": 4997,
+  "stdout_bytes": 3148,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "产物在 `out/纪要.docx` 和 `out/summary.json`，转写稿存为 `botang_minsu_1011.txt`。\\n\\n**有一件事必须先说明：你要求的「润色掉『呃』『嘛』『说白了』」我没有做，而且不能做。**\\n\\n本目录的 `meeting-minutes` 技能把「条目逐字引用原句」定为红线，明确禁止改写、摘要、语义去噪，「纪要改写」还写在非目标清单里。删掉这些口语词会直接破坏逐条溯源——每一条必须能在原稿里找到出处行（含时间与说话人），一改写这条保证就没了，官方评测的第 4 项检查也会判失败。所以交付的是**可审计的原句版**，而不是去掉口头禅的正式行文版。想要一份对外可发的润色稿，得作为独立于本技能的第二份产物来做，不能混进 `out/`。\\n\\n**产出内容**（共 7 条：决议 3 · 待办 2 · 风险 2）\\n\\n- 决议 3 条：19:01 晨会改为每周二早开；19:04 工装夹具先按老图纸做；19:07 淡季房价工作日一口价。\\n- 待办 2 条（表格，含负责人/期限两列）：物料清单梳理、腊味礼盒包装重选。\\n- 风险 2 条：19:03 压胶工序延期风险最大（床罩返工两回）；19:06 洗烘设备保修单据位置不确定。\\n\\n**两条待办的负责人都是「待定」，这是如实填写、不是漏抽**：原句只说「需要小盛帮忙理一遍」「需要重选」，没有「X负责」的句式，按技能的确定性规则抓不到人名就填待定，禁止语义推断——否则就是我替你编了个负责人。期限一栏同理：物料清单填「待定」（原句「就这两天弄完」不是任何一种可提取的日期表述），腊味礼盒填「出样前定」（按「截止…X」规则截取）。\\n\\n**噪声行按规则未收录**：19:00 寒暄开场、19:05「改天发群投票」（无关键词）、19:09 散会行。\\n\\n过程中环境缺 `python-docx`，我在 `/tmp/mmvenv` 建了虚拟环境装上 1.2.0 后跑通，未改动系统 Python。验收方面，技能自带的评测器只认 case1–case4 四条内置用例，我把它复制到 `/tmp` 并配了指向本转写稿的清单，五项检查（三节标题齐全／待办表含负责人与期限列／summary 四键与 docx 实际条数一致／7 条全部逐字溯源／条数与参照差 ≤2）全部 `pass: true`，退出码 0；重跑一次 `summary.json` 逐字一致，确定性成立。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 19,\n    \"inputTokens\": 514109,\n    \"outputTokens\": 4997,\n    \"totalTokens\": 519106,\n    \"cacheReadTokens\": 480496,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1270,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 519106,\n    \"contextUsed\": 34437,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t06",
+  "rep": 2,
+  "slot": 24
+}

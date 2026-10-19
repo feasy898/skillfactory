@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_4fdf3d8e-7e6e-4268-8de4-16f674d59e1d",
+  "traceId": "24542187-5d8c-44da-8033-f77d7c94e7e9",
+  "turnId": "turn_91f411b2-bae4-4973-bcef-1acfec26af8a",
+  "response": "完成。三件产物均已落盘并通过验证：\n\n**交付物**\n- `shiguang_bakery_0912.txt` — 按简报原文保存的转写稿\n- `out/纪要.docx` — 三段式纪要\n- `out/summary.json` — 条数统计：决议事项 3、待办事项 4、风险与关注 2、合计 9\n\n**纪要内容概要**\n- 一、决议事项（3 条）：枣泥馅换用决定、比价公示后下单（同意）、品质一票否决（结论）\n- 二、待办事项（4 条，三列表格）：枣泥产能盯报数、包装盒比价定标、冷链车续约法务把关、直播档期报排期\n- 三、风险与关注（2 条）：烫金不确定、黄油报关时间不确定\n\n**执行说明**：用本仓库 `meeting-minutes` 技能自带的 `scripts/minutes.py` 生成（默认 venv 缺 python-docx，改用系统 `/usr/bin/python3` 运行成功）。技能包里没有随附的 `eval/runner.py` 验收脚本（该部署只含 scripts/ 与 references/），我按技能文档的验收清单自行核验，全部通过：脚本退出码 0 且两产物真实存在；docx 标题/元信息/三节标题齐全、待办为「事项/负责人/期限」三列表格、summary 四键数值与 docx 实际条数一致且合计正确；9 个条目（含表格事项列）逐条与转写稿比对，均逐字命中出处行并带时间与说话人。开头寒暄、调休通知、定价宣布等无关键词行及白板补充行，按规则归为噪声未收录；负责人/期限抓不到确定值的（如比价、法务把关两行）按红线如实填「待定」。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 12,
+    "inputTokens": 324455,
+    "outputTokens": 7025,
+    "totalTokens": 331480,
+    "cacheReadTokens": 308224,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 5363,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 331480,
+    "contextUsed": 32211,
+    "contextWindow": 200000
+  }
+}

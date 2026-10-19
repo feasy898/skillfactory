@@ -1,0 +1,27 @@
+AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.
+{
+  "sessionId": "sess_279d085a-f01e-4bbf-9f95-9dc9c0c2ee0f",
+  "traceId": "1bc2fef3-1ec3-4a07-975a-1c5270d10a10",
+  "turnId": "turn_2c4944de-deda-48d7-aeca-573a58545eee",
+  "response": "完成。三件产物已就位：\n\n- `heping_campus_1112.txt` — 转写稿按原文逐字保存（含 `[9:5]`、`[10:60]`、`[100:00]` 三处异常时间戳及全角冒号，均未改动）\n- `out/纪要.docx` — 三段式会议纪要（公文样式：仿宋正文、黑体小节标题、无封面无目录、「— X —」页脚）\n- `out/summary.json` — 条数统计：决议事项 3／待办事项 6／风险与关注 1／合计 10，与 docx 内容逐一核对一致\n\n内容归类说明：\n\n- **决议事项（3）**：值班周期双周改单周（何莉，11:07）、值班表下月启用新版本（11:06）、供暖巡检记录用新表格（11:10）。\n- **待办事项（6，表格）**：场地预订（后勤组）、值班表更新（副队长，何莉代提）、秋冬季巡逻加频（门卫办）、供暖设备巡检挂牌（老佟，本月底）、补充两名夜班门卫（老佟提出）、下周一起全员穿工服（散会前提醒归入待办，时限下周一开始）。转写稿未给时限的填“未明确”，未指派负责方的如实标注，未虚构。\n- **风险与关注（1）**：消防通道堆物且有延期整改记录（老佟，11:12），并注明整改责任人与时限会上未明确。\n- 开场“例行巡逻开始”与“散会”为程序性发言，不计入任何一类。\n\n质检：postcheck 0 错误（仅 1 条行距提示，系公文正文 28 磅固定行距与表格紧凑行距并存所致，属场景预期）；LibreOffice 渲染 2 页送视觉评审，两页均 pass。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 15,
+    "inputTokens": 762163,
+    "outputTokens": 18460,
+    "totalTokens": 780623,
+    "cacheReadTokens": 713600,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 15041,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 780623,
+    "contextUsed": 64112,
+    "contextWindow": 200000
+  }
+}

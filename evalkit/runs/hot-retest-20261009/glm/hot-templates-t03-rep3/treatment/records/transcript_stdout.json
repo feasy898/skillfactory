@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_1143e529-bcfd-4cde-a659-fade0f727782",
+  "traceId": "6edfc9dc-587d-417d-8051-b077b9d63b44",
+  "turnId": "turn_02d4336a-ab48-4752-90c7-d9894b1a5da6",
+  "response": "任务完成。小红书图文爆款骨架已生成在 `out/` 目录下，两份产物均通过全部验收判据。\n\n**执行过程**：按 `hot-templates` 技能规范，先完整读取 `references/xhs.md` 平台规范，然后用确定性渲染引擎 `scripts/gen.py` 生成（未手写任何结构），命令一次成功（exit 0，stdout 打印 `OK platform=xhs topic=#通勤背包选购 elements=7 open_placeholders=7 filled_from_input=10 -> out`）。\n\n**产物**（`out/骨架.md` + `out/structure.json`，UTF-8/LF）：\n- **7 要素冻结结构**：标题（带数字）→ 开头钩子块 → 干货块×3 → 总结块 → 标签组，emoji 映射 🔥/✅/💡/📌 与冻结标记全部就位。\n- **输入规整符合预期**：主题 ` #通勤背包选购 ` 首尾空格被 strip、`#` 经 `clean_tag` 派生为首标签 `#通勤背包选购`；第 1 条卖点 `  三档承重分装更护肩  ` 首尾空白被 strip 后填入「💡 干货1」，三条卖点全部入槽（`points_unused` 为空）。\n- **开放槽位保持原样**：7 处 `【占位:…】`（目标人群/真实经历/操作拆解×3/互动引导/垂直标签）未被编造填充，`{{ }}` 类残留为 0；`filled_from_input=10` 与 reference 规定的填充口径逐项吻合。\n- **确定性验证**：同输入重跑后两文件 sha256 逐字节一致，`structure.json` 顶层 11 键、每要素占位统计与 `骨架.md` 尾部统计节同源同构。\n\n骨架可直接交付；扩写成文时再由使用者补写那 7 处开放槽位即可。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 8,
+    "inputTokens": 207064,
+    "outputTokens": 5585,
+    "totalTokens": 212649,
+    "cacheReadTokens": 191488,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 4875,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 212649,
+    "contextUsed": 31750,
+    "contextWindow": 200000
+  }
+}

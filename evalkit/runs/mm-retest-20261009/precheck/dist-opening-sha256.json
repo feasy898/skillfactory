@@ -1,0 +1,33 @@
+{
+  "pkg": "meeting-minutes-skill",
+  "files": {
+    "meeting-minutes-skill/README.md": "2493ccb1c5017e4478c4af854223779db81a9b7294e5a803e8c2956797aaed68",
+    "meeting-minutes-skill/SKILL.md": "181c8daa8069640cf8a32e32e791d914e79fe4bfb1deca0f4dbdb7107cc56827",
+    "meeting-minutes-skill/requirements.txt": "dfea9cd01250f46caa09e7e7041e7105cd29d5383c7c3d3fff4a8dd24e79509b",
+    "meeting-minutes-skill/CHANGELOG.md": "8aa7d155bacbccfb91d0a3702a986da380947b88822e84f1b65b9f966d9bf1e1",
+    "meeting-minutes-skill/EVALUATION.md": "885b761ef79f354812b04783476de0356aecf7beb88e23fb748a8390b078651c",
+    "meeting-minutes-skill/LICENSE": "fc1d71276934d21069136891d65c1ba29b0d3a96db751a2fdd8c8f308d0fed59",
+    "meeting-minutes-skill/MANIFEST.md": "3f055c2bffde5fb00f26c1cdce739510adc72f9ca3e302ab27986db27a36308e",
+    "meeting-minutes-skill/reference/out/case3/summary.json": "45ddfda3e7b9fdd011dcad2d562c8208f1120d794934b80a63e4123910d5a3c5",
+    "meeting-minutes-skill/reference/out/case3/纪要.docx": "547933d0044bea732aaf9f7a39edfb89e1d6cd705be900424bab6e62e515fa8d",
+    "meeting-minutes-skill/reference/out/case2/summary.json": "855972d90ed9654dacd5ca8896210e15c89360c2c475d4b014b41a543a33b83f",
+    "meeting-minutes-skill/reference/out/case2/纪要.docx": "38a161385cbef2c19f9ba8e542f33703594a362e2a8d22967dba9f7505c5919f",
+    "meeting-minutes-skill/reference/out/case1/summary.json": "85c181b10d2eb39eb73ed2e2f37b8e590b04a9a2c7a27e5ad4202153784915c0",
+    "meeting-minutes-skill/reference/out/case1/纪要.docx": "20698621942e3ba94955229c2149767784d7d3ffd886b9b99e7556b3bbb0011f",
+    "meeting-minutes-skill/reference/out/case4/summary.json": "6a0c731003a2ee4ed57e8fc8cf4ec5424a26f4c2f3d7a399e79eb5cc8156ee35",
+    "meeting-minutes-skill/reference/out/case4/纪要.docx": "55ffdece358400adacf4555207c396005dcc795378967d33671e58a1f58c262d",
+    "meeting-minutes-skill/reference/inputs/case3.txt": "4b43625f24fe1532457da444651da47acdd4c78ac4356ed1c7c18f1d8ddd22a5",
+    "meeting-minutes-skill/reference/inputs/case4.txt": "a32c06c47a32d648d8acb8be381796ae660e8fce982f8baf8a8afb14b927e76c",
+    "meeting-minutes-skill/reference/inputs/case1.txt": "3dad4dc3d0f989fe56a9701c79cd9f352ce48f2a1cbf4e628df8f28a08ee33b7",
+    "meeting-minutes-skill/reference/inputs/case2.txt": "c433caeb142a35307a7519aa7764ab41b607802f4c6c98837c808329879a0cca",
+    "meeting-minutes-skill/eval/golden.json": "b3be400ae3b4984a1537d4909b9ea379246d8b978d3c8a179c90182c5c854315",
+    "meeting-minutes-skill/eval/runner.py": "51721efdf7fcb33bca866746c72e52ca3294eb8bd43a2e5d44402793788ab872",
+    "meeting-minutes-skill/eval/__pycache__/runner.cpython-312.pyc": "c9ebfdfb6f5d5ab8ff4ecd9aae6913f62b3f65a5416ef0accb05fd2f5f4fc1aa",
+    "meeting-minutes-skill/eval/results/benchmark.json": "cb3e7a0d214087d2a724a4f14587f52eef9ba7adfb92145d618710b1c94b7d71",
+    "meeting-minutes-skill/references/classification-rules.md": "4347864b3586e900170a88e5b3a53889107352852ada33a3335172b668ab70fc",
+    "meeting-minutes-skill/references/docx-and-summary.md": "595000dac3ec67e09ed0c6b5b972dd5ffd334a566ecdd9f9225fd50d10813763",
+    "meeting-minutes-skill/references/extraction-heuristics.md": "0c6a997ee56e4d1bd24c68689d0f6f7754fefd0af177eb79cf219e5c2fe6626c",
+    "meeting-minutes-skill/scripts/gen_docx.py": "2b252735a79a4e5df887b2ef079a9584510873167492cbe79b10c8cb9b823f0e",
+    "meeting-minutes-skill/scripts/minutes.py": "630068f4d33206e863cf0f53d6111b6056fe481c25fffd030da8dd783e513f80"
+  }
+}

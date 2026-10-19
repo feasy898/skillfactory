@@ -1,0 +1,227 @@
+{
+  "schema_version": "1.0",
+  "source": {
+    "transcript_file": "botang_minsu_1011.txt",
+    "transcript_utterances": 10,
+    "meeting_start": "19:00",
+    "meeting_end": "19:09",
+    "duration_minutes": 9
+  },
+  "meeting": {
+    "name": "泊棠民宿淡季工作协调会",
+    "date_label": "10 月 11 日",
+    "time_range": "19:00—19:09",
+    "host": "岑晏",
+    "attendees": [
+      {
+        "name": "岑晏",
+        "role": "掌柜",
+        "attended": true
+      },
+      {
+        "name": "苏莞",
+        "role": "管家",
+        "attended": true
+      },
+      {
+        "name": "郁南",
+        "role": "布草房",
+        "attended": true
+      }
+    ],
+    "topic": "淡季经营事项协调"
+  },
+  "attendees": [
+    {
+      "name": "岑晏",
+      "role": "掌柜",
+      "attended": true
+    },
+    {
+      "name": "苏莞",
+      "role": "管家",
+      "attended": true
+    },
+    {
+      "name": "郁南",
+      "role": "布草房",
+      "attended": true
+    }
+  ],
+  "discussion": [
+    {
+      "id": "C1",
+      "topic": "会议开场与议题范围",
+      "content": "掌柜岑晏宣布人员到齐，本次会议围绕淡季经营事项交换意见。",
+      "speaker": "岑晏",
+      "source_time": "19:00"
+    },
+    {
+      "id": "C2",
+      "topic": "晨会时间调整",
+      "content": "掌柜岑晏提出，晨会此后的召开时间固定为每周二上午。",
+      "speaker": "岑晏",
+      "source_time": "19:01"
+    },
+    {
+      "id": "C3",
+      "topic": "物料清单梳理",
+      "content": "管家苏莞提出，物料清单需请小盛协助通盘梳理，要求在两日内完成。",
+      "speaker": "苏莞",
+      "source_time": "19:02"
+    },
+    {
+      "id": "C4",
+      "topic": "压胶工序延期风险",
+      "content": "布草房郁南指出，压胶工序仍是延期风险最集中的环节，床罩已发生两回返工。",
+      "speaker": "郁南",
+      "source_time": "19:03"
+    },
+    {
+      "id": "C5",
+      "topic": "工装夹具制作依据",
+      "content": "掌柜岑晏在征询在场意见后提出，工装夹具先按原有图纸制作。",
+      "speaker": "岑晏",
+      "source_time": "19:04"
+    },
+    {
+      "id": "C6",
+      "topic": "淡季房价方案的形成程序",
+      "content": "管家苏莞表示，淡季房价方案拟另日发群交由众人投票。",
+      "speaker": "苏莞",
+      "source_time": "19:05"
+    },
+    {
+      "id": "C7",
+      "topic": "洗烘设备保修单据归档",
+      "content": "布草房郁南说明，洗烘设备的保修单据目前无法确认存放于哪个文件夹。",
+      "speaker": "郁南",
+      "source_time": "19:06"
+    },
+    {
+      "id": "C8",
+      "topic": "淡季房价执行口径",
+      "content": "掌柜岑晏明确，淡季房价方案当场议定，工作日执行一口价。",
+      "speaker": "岑晏",
+      "source_time": "19:07"
+    },
+    {
+      "id": "C9",
+      "topic": "腊味礼盒包装改版",
+      "content": "管家苏莞提出，腊味礼盒的包装方案需重新选定，务必在出样前定稿。",
+      "speaker": "苏莞",
+      "source_time": "19:08"
+    },
+    {
+      "id": "C10",
+      "topic": "会议结束",
+      "content": "掌柜岑晏宣布本次会议到此结束，并提醒在场人员尽早休息。",
+      "speaker": "岑晏",
+      "source_time": "19:09"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D1",
+      "time": "19:01",
+      "topic": "晨会时间",
+      "content": "晨会召开时间自本次会议起固定为每周二上午。",
+      "owner": "岑晏",
+      "source_time": "19:01"
+    },
+    {
+      "id": "D2",
+      "time": "19:04",
+      "topic": "工装夹具",
+      "content": "工装夹具先行按原有图纸制作，本阶段不另行变更图纸。",
+      "owner": "郁南",
+      "source_time": "19:04"
+    },
+    {
+      "id": "D3",
+      "time": "19:07",
+      "topic": "淡季房价",
+      "content": "淡季房价方案当场议定，工作日执行一口价。",
+      "owner": "苏莞",
+      "source_time": "19:07"
+    }
+  ],
+  "action_items": [
+    {
+      "id": "A1",
+      "content": "通盘梳理物料清单。",
+      "owner": "苏莞",
+      "coordinator": "小盛",
+      "deadline": "两日内",
+      "source_time": "19:02"
+    },
+    {
+      "id": "A2",
+      "content": "重新选定腊味礼盒的包装方案。",
+      "owner": "苏莞",
+      "coordinator": "苏莞",
+      "deadline": "出样前",
+      "source_time": "19:08"
+    },
+    {
+      "id": "A3",
+      "content": "确认洗烘设备保修单据的存放位置并归入指定文件夹。",
+      "owner": "郁南",
+      "coordinator": "郁南",
+      "deadline": "",
+      "source_time": "19:06"
+    }
+  ],
+  "risks": [
+    {
+      "id": "R1",
+      "content": "压胶工序为当前延期风险最集中的环节，床罩已发生两回返工，需关注其对交付节点的影响。",
+      "reported_by": "郁南",
+      "source_time": "19:03"
+    },
+    {
+      "id": "R2",
+      "content": "洗烘设备保修单据归档位置不明，存在单据遗失后无法追溯保修责任的风险。",
+      "reported_by": "郁南",
+      "source_time": "19:06"
+    }
+  ],
+  "open_questions": [
+    {
+      "id": "Q1",
+      "content": "淡季房价方案的形成程序在原记录中存在两种表述：19:05 提议另日发群投票，19:07 当场议定工作日一口价。本纪要依后一条记为决议 D3；前一条是否随之作废、是否仍需补充群投票环节，待确认。",
+      "source_time": "19:05 / 19:07"
+    },
+    {
+      "id": "Q2",
+      "content": "19:04 掌柜以「同意的举个手」征询意见，但原记录未载明表决对象与表决结果；该意见究竟对应压胶工序风险还是工装夹具图纸一事，待确认。",
+      "source_time": "19:03 / 19:04"
+    },
+    {
+      "id": "Q3",
+      "content": "洗烘设备保修单据的归档时限在原记录中未明确，需另行确定。",
+      "source_time": "19:06"
+    }
+  ],
+  "statistics": {
+    "discussion": 10,
+    "decisions": 3,
+    "action_items": 3,
+    "risks": 2,
+    "open_questions": 3,
+    "action_items_without_deadline": 1,
+    "utterances_covered": 10
+  },
+  "filler_words_removed": [
+    "咱们",
+    "呃",
+    "那个",
+    "嘛",
+    "说白了",
+    "哈"
+  ],
+  "outputs": {
+    "docx": "纪要.docx",
+    "summary_json": "summary.json"
+  }
+}

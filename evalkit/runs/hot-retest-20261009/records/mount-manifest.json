@@ -1,0 +1,42 @@
+{
+  "hot-templates-skill": {
+    "source": "dist/hot-templates-skill",
+    "source_note": "dist 包（v1.0.0，本轮零改动 owner 批准点形态）",
+    "source_untouched": true,
+    "filter_whitelist": [
+      "SKILL.md",
+      "references",
+      "scripts",
+      "requirements.txt"
+    ],
+    "excluded": [
+      "reference",
+      "eval",
+      "EVALUATION.md",
+      "CHANGELOG.md",
+      "README.md",
+      "MANIFEST.md",
+      "LICENSE"
+    ],
+    "files": [
+      "SKILL.md",
+      "references/dy.md",
+      "references/frozen-tokens.md",
+      "references/video.md",
+      "references/wx.md",
+      "references/xhs.md",
+      "requirements.txt",
+      "scripts/gen.py"
+    ],
+    "file_sha256": {
+      "SKILL.md": "6ba95aeeafcbf7b9f76787aa2961081f58f777d2765eeb308499520e965ab69d",
+      "references/dy.md": "15f10bf4b5b558e58f7ebf3008767bdfb159c24fa3d4eef16e355e544acd6c90",
+      "references/frozen-tokens.md": "4229b293091b3483bb3cff1f8afc9c6ecf7be3e7cffa032340b785cb337e06e0",
+      "references/video.md": "4bfe30f234a33788a21b14ef12ca2de4b2a086d5d1a18fec8334e43dca32c52d",
+      "references/wx.md": "5d5bd63db4c1a57510f6bc941cd492167aa14b6c981278dcf84e94f8c04bc33d",
+      "references/xhs.md": "1ec677bbf7b91d7e3cf37f1549cd26ed3ac1fa36175561686a7e3d23fc14584d",
+      "requirements.txt": "8bc7053b27227a8b7969f823fa1b78aeef611746df71238d83f5f9763334f204",
+      "scripts/gen.py": "ec0ffe6a065a5f690a992e2053ffbe5e254c7fe941b14e130ed626038f54a0aa"
+    }
+  }
+}

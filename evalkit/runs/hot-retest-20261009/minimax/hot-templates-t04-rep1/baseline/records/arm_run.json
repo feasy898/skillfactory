@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t04-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 237795,
+  "started_at_ms": 1791530200233,
+  "session_id": "sess_a11f4d31-c6bf-4991-8a51-e656d0aa3cf8",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t04-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 336281,
+      "ot": 14222,
+      "dur": 230572,
+      "n": 12
+    }
+  ],
+  "input_tokens": 336281,
+  "output_tokens": 14222,
+  "stdout_bytes": 2964,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "8s | 单一 CTA：评论区打「回收」领三张定价表 |\\n\\nEach segment carries 口播原文 / 画面 / 景别 / 字幕 / 音效 / 互动 / 设计理由, plus 3 alternate hooks for A/B, cover, 4 title options, hashtags, subtitle rules, compliance risks, and a reuse template.\\n\\n**`structure.json`** — the same data machine-readable: 7 sections with start/end/duration, 7-beat timeline, `point_coverage` mapping each brief point to its section, plus interaction/risk/checklist/review-metric arrays.\\n\\n## Verification\\n\\nRather than asserting the pacing numbers, I computed them and wrote them into the file: 328 字 total across 68s, per-section 4.00–5.43 字/秒 (all inside a comfortable口播 range), timeline contiguous 0→68s, all 7 voiceover lines present verbatim in the Markdown, and all 3 brief points mapped one-to-one to P2/P3/P4. Check output was PASS.\\n\\nTwo judgment calls worth flagging: I gave each point equal14–15s rather than weighting by importance, and the CTA's hook object (三张定价表) is one each of the three points' own artifacts — so the reward for commenting recaps the whole video.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 12,\n    \"inputTokens\": 336281,\n    \"outputTokens\": 14222,\n    \"totalTokens\": 350503,\n    \"cacheReadTokens\": 298743,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 2452,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 350503,\n    \"contextUsed\": 38331,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

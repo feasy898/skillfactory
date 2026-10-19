@@ -1,0 +1,115 @@
+{
+  "template_version": "1.0",
+  "platform": "wx",
+  "platform_name": "公众号文章",
+  "structure_name": "引子 + 三段论 + 金句收尾",
+  "topic": "家庭应急包收纳",
+  "points_input_count": 3,
+  "points_used": [
+    "手电和备用电池分袋封装",
+    "药品每半年核对效期更换",
+    "证件复印件防水袋随身"
+  ],
+  "points_unused": [],
+  "element_count": 5,
+  "elements": [
+    {
+      "id": "lead_in",
+      "name": "引子",
+      "order": 1,
+      "required": true,
+      "text": "上周四夜里十一点，小区突然整片停电。邻居群里炸开了锅：有人摸黑翻了十分钟抽屉才找到手电，电池早漏了液；有人翻出退烧药，一看过期八个月；还有人急着找保单号报修，柜子钥匙却想不起放在哪。灯亮以后大家才发现，东西其实都买了，只是要用的时候一概掉链子。——这背后，其实是同一个问题：家庭应急包收纳。",
+      "placeholder_count": 0,
+      "open_placeholders": [],
+      "filled_from_input": [
+        "topic"
+      ],
+      "meta": {
+        "beat": "场景化开场，把读者拉进问题现场"
+      }
+    },
+    {
+      "id": "thesis_what",
+      "name": "三段论·一（是什么）",
+      "order": 2,
+      "required": true,
+      "text": "一、是什么\n家庭应急包收纳的本质，不是把物资买齐、塞进柜子就算准备好了，而是让手电、药品、证件这三类救命物资各有固定位置、各有巡检周期、各有随身副本的一套家庭微型管理系统。",
+      "placeholder_count": 0,
+      "open_placeholders": [],
+      "filled_from_input": [
+        "topic"
+      ],
+      "meta": {
+        "beat": "先破后立，给出定义"
+      }
+    },
+    {
+      "id": "thesis_why",
+      "name": "三段论·二（为什么）",
+      "order": 3,
+      "required": true,
+      "text": "二、为什么\n大多数人在家庭应急包收纳上反复失败，根源有三：物资没有固定归位，和日常杂物混放，急用时只能摸黑翻找；缺少巡检节奏，药品耗材买回来就没人再看一眼，过期了也无人察觉；关键证件只有原件一份，锁在柜子深处，撤离时既来不及取、也怕水损。",
+      "placeholder_count": 0,
+      "open_placeholders": [],
+      "filled_from_input": [
+        "topic"
+      ],
+      "meta": {
+        "beat": "归因，三条根因对齐后文三个抓手"
+      }
+    },
+    {
+      "id": "thesis_how",
+      "name": "三段论·三（怎么办）",
+      "order": 4,
+      "required": true,
+      "text": "三、怎么办\n落到操作层面，给你三个抓手：\n1. 手电和备用电池分袋封装——把手电、头灯和对应型号的备用电池装进一个密封袋，贴上「停电应急」标签，固定放在床头柜最外层；电池不预先装进手电，防止久置漏液腐蚀触点，袋里附一张卡片写明封装日期。上个月台风夜整片停电，摸黑翻抽屉的人还在找电池，提前分袋封装的家庭半分钟就点亮了灯。今晚就能做的最小动作：找一个密封袋，装入手电和四节新电池，写上日期。\n2. 药品每半年核对效期更换——把常备药集中进一个专用药盒，列一张三列清单（药名、效期、数量），在手机日历设两个固定提醒，比如每年三月一日和九月一日，到点逐项核对：临期三个月以内的一律换新，缺的当天补齐。朋友家孩子半夜发烧，翻出的退烧药已过期半年，只能连夜跑急诊——若半年核对一次，这一趟本可避免。现在就能做的最小动作：给家里药箱拍张照，先把三列清单建起来。\n3. 证件复印件防水袋随身——把身份证、户口本、房产证、保单的关键页各复印两份，连同写着紧急联系人的卡片一起装进防水密封袋，一份收进应急包，一份交给信得过的家人，电子版扫描后存入加密云盘，原件仍留在家里稳妥处。暴雨撤离拎包就走，办临时住宿、挂失银行卡、报保险理赔，复印件当场就能派上用场。这周末就能做的最小动作：复印全家身份证，装进密封袋放进应急包最外层。",
+      "placeholder_count": 0,
+      "open_placeholders": [],
+      "filled_from_input": [
+        "point#1",
+        "point#2",
+        "point#3"
+      ],
+      "meta": {
+        "beat": "三个抓手一一对应三条根因，可执行"
+      }
+    },
+    {
+      "id": "golden_ending",
+      "name": "金句收尾",
+      "order": 5,
+      "required": true,
+      "text": "「家庭应急包收纳这件事，真正的安全感不是靠把物资堆满柜子，而是靠在需要的那三十秒里，每样东西都在它该在的位置、都在有效期内。」\n共勉。",
+      "placeholder_count": 0,
+      "open_placeholders": [],
+      "filled_from_input": [
+        "topic"
+      ],
+      "meta": {
+        "beat": "一句话收束，可直接被读者摘抄转发"
+      }
+    }
+  ],
+  "placeholder_stats": {
+    "total_open": 0,
+    "total_filled_from_input": 7,
+    "by_element": {
+      "lead_in": 0,
+      "thesis_what": 0,
+      "thesis_why": 0,
+      "thesis_how": 0,
+      "golden_ending": 0
+    },
+    "open_tokens_unique": [],
+    "filled_slots": [
+      "topic",
+      "topic",
+      "topic",
+      "point#1",
+      "point#2",
+      "point#3",
+      "topic"
+    ]
+  }
+}

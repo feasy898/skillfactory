@@ -1,0 +1,148 @@
+{
+  "platform": "xhs",
+  "topic": "无纸化通关",
+  "content_form": "图文笔记",
+  "title": "无纸化通关实录｜踩过的 4 个坑写在这",
+  "positioning": "清单型干货：携带具体动作与实测数字的通关避坑清单",
+  "input_points": [
+    {
+      "index": 1,
+      "raw": "无纸化申报随附单证自拍存档",
+      "stripped": "无纸化申报随附单证自拍存档",
+      "status": "kept",
+      "reason": "有效要点，作为正文小节 1 依据"
+    },
+    {
+      "index": 2,
+      "raw": "   ",
+      "stripped": "",
+      "status": "dropped",
+      "reason": "纯空白串：strip() 后长度为 0，无语义内容，不生成小节、不占位、不编号"
+    },
+    {
+      "index": 3,
+      "raw": "错峰值机攻略",
+      "stripped": "错峰值机攻略",
+      "status": "kept",
+      "reason": "有效要点，作为正文小节 2 依据"
+    },
+    {
+      "index": 4,
+      "raw": "候补票改签时限",
+      "stripped": "候补票改签时限",
+      "status": "kept",
+      "reason": "有效要点，作为正文小节 3 依据"
+    },
+    {
+      "index": 5,
+      "raw": "会员日里程翻倍",
+      "stripped": "会员日里程翻倍",
+      "status": "kept",
+      "reason": "有效要点，作为正文小节 4 依据"
+    }
+  ],
+  "input_summary": {
+    "total": 5,
+    "kept": 4,
+    "dropped": 1,
+    "dropped_indices": [2],
+    "rule": "strip() 后为空字符串的要点整条剔除；章节编号按有效要点连续重排，不跳号"
+  },
+  "cover": {
+    "title_limit": 20,
+    "subtitle_limit": 12,
+    "title": "无纸化通关实录｜4个坑1张表",
+    "subtitle": "通关8分钟的前提"
+  },
+  "title_candidates": [
+    { "style": "悬念型", "text": "无纸化通关真的不用纸质单了？这4步是前提" },
+    { "style": "利益型", "text": "无纸化通关实录｜踩过的4个坑写在这" },
+    { "style": "反差型", "text": "通关只花8分钟，前提是你没犯这4个错" }
+  ],
+  "title_constraints": {
+    "max_emoji": 2,
+    "forbidden": ["绝对化用语（最/第一/100%）", "无关热点", "导流信息"],
+    "unit": "字"
+  },
+  "hook": {
+    "position": "正文前2行",
+    "char_range": [40, 60],
+    "formula": "场景痛点 + 一句话结论 + 结果留白悬念",
+    "placeholder": "「」"
+  },
+  "sections": [
+    {
+      "order": 1,
+      "source_index": 1,
+      "heading": "无纸化申报 · 随附单证自拍存档",
+      "slots": [
+        { "name": "适用场景", "hint": "什么时候能免纸质单" },
+        { "name": "关键动作", "type": "ordered_list", "count": 3 },
+        { "name": "易错提醒" },
+        { "name": "配图", "type": "images", "count": 2, "note": "存档界面截图 + 自拍姿势示例，角标「别漏这一步」" }
+      ]
+    },
+    {
+      "order": 2,
+      "source_index": 3,
+      "heading": "错峰值机攻略",
+      "slots": [
+        { "name": "核心结论前置" },
+        { "name": "时段表", "type": "table", "columns": ["时段", "排队时长", "建议"], "min_rows": 2 },
+        { "name": "补充说明" }
+      ]
+    },
+    {
+      "order": 3,
+      "source_index": 4,
+      "heading": "候补票改签时限",
+      "slots": [
+        { "name": "时限硬数字", "placement": "首句" },
+        { "name": "分情形说明", "type": "list", "cases": ["改签成功", "改签失败", "超时未操作"] },
+        { "name": "加粗提醒" }
+      ]
+    },
+    {
+      "order": 4,
+      "source_index": 5,
+      "heading": "会员日里程翻倍",
+      "slots": [
+        { "name": "参与条件与倍率" },
+        { "name": "起止时间" },
+        { "name": "易踩坑" },
+        { "name": "收藏引导" }
+      ]
+    }
+  ],
+  "cta": {
+    "interaction_hook": "「」",
+    "follow_line": "「」",
+    "tags": [
+      "#无纸化通关",
+      "#出入境攻略",
+      "#出行避坑",
+      "#拍照存档"
+    ]
+  },
+  "format_spec": {
+    "paragraph_max_lines": 3,
+    "paragraph_max_chars": 40,
+    "blank_line_between_paragraphs": true,
+    "numbering_style": "emoji_digits",
+    "bold_max_count": 5,
+    "bold_for": ["数字", "时限", "倍率"],
+    "emoji_usage": "仅小标题开头，正文段内不用",
+    "image_count_range": [6, 9],
+    "required_images": ["封面", "每小节1-2张", "1张时段表格截图"],
+    "forbidden_content": ["平台规则", "他人联系方式", "导流二维码"]
+  },
+  "publish_config": {
+    "tag_range": [3, 8],
+    "publish_time": "出行前1-3天 20:00-22:00",
+    "pinned_comment": "补充一条最容易被问到的细节"
+  },
+  "outputs": {
+    "markdown": "out/骨架.md",
+    "structure": "out/structure.json"
+  }
+}

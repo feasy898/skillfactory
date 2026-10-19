@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t06-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 31253,
+  "started_at_ms": 1791531193795,
+  "session_id": "sess_00851152-805b-4d80-8cf2-20541a6f842f",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t06-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 243959,
+      "ot": 1861,
+      "dur": 25484,
+      "n": 10
+    }
+  ],
+  "input_tokens": 243959,
+  "output_tokens": 1861,
+  "stdout_bytes": 2558,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "  \"response\": \"骨架已生成并落盘在 `out/`。\\n\\n**运行命令与结果**\\n\\n```\\npython .zcode/skills/hot-templates/scripts/gen.py --platform xhs \\\\\\n  --topic \\\"无纸化通关\\\" \\\\\\n  --points '[\\\"无纸化申报随附单证自拍存档\\\", \\\"   \\\", \\\"错峰值机攻略\\\", \\\"候补票改签时限\\\", \\\"会员日里程翻倍\\\"]' \\\\\\n  --outdir out\\n→ OK platform=xhs topic=无纸化通关 elements=7 open_placeholders=9 filled_from_input=8 -> out   (exit 0)\\n```\\n\\n**产物**：`out/骨架.md`（人读，7 要素分节 + 占位符统计）和 `out/structure.json`（机器可读，顶层 11 键，每要素 9 键）。\\n\\n**卖点规整结果**：输入 5 条，模板只有 3 个价值点槽位。第 2 项 `\\\"   \\\"` 是纯空白串，按「缺失」处理，所以 `points_used` = `[\\\"无纸化申报随附单证自拍存档\\\", null, \\\"错峰值机攻略\\\"]` —— 干货块 2 的卖点位落 `【占位:价值点2】`，总结块三点复述里同样带这个占位；第 4、5 条（`候补票改签时限`、`会员日里程翻倍`）超出槽位上限，保序进 `points_unused`，未进入骨架正文。\\n\\n**自查**：同输入重跑两份文件逐字节一致（`diff -r` 无差异，引擎无时间戳/随机数）；`{{ }}` 类未填充模板变量残留为 0。开放槽位共 9 处（`【占位:…】`），按技能红线**未**自行编造内容填充 —— 目标人群、翻车经历、三处操作拆解、互动引导、垂直标签这些由使用者在扩写成文时补写。\\n\\n一点说明：这个分发包里没有 `eval/runner.py`（只有 `references/`、`scripts/`、`SKILL.md`、`requirements.txt`），所以 SKILL 里写的包内验收跑不了；我用了上面两项等价的一致性/残留自检代替。另外第一次执行时我在 shell 参数里把卖点打错了一个字，已 `rm -rf out` 后用简报原文重跑，当前 `out/` 是干净正确的一版。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 10,\n    \"inputTokens\": 243959,\n    \"outputTokens\": 1861,\n    \"totalTokens\": 245820,\n    \"cacheReadTokens\": 213248,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 325,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 245820,\n    \"contextUsed\": 28320,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

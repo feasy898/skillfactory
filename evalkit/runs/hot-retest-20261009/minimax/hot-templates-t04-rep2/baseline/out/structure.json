@@ -1,0 +1,171 @@
+{
+  "schema_version": "1.0",
+  "platform": "dy",
+  "topic": "二手书循环",
+  "points": [
+    "教材按学期末集中回收",
+    "封面破损评级再定价",
+    "跨界换书市集引流"
+  ],
+  "generated_at": "2026-10-09",
+  "content_type": "口播短视频骨架",
+  "video": {
+    "duration_sec": 75,
+    "aspect_ratio": "9:16",
+    "speech_rate_cps": 5.1,
+    "script_chars": 381,
+    "presenter": "单人口播（主播半身为主，插入实拍空镜）",
+    "subtitle": "全量硬字幕，重点词（A/B/C/D、两三百斤）加大变色"
+  },
+  "audience": {
+    "primary": "大学生，尤其是期末阶段有教材处置需求的人",
+    "secondary": "想做低成本副业循环经济的小微个体",
+    "pain_point": "教材没人收、卖不上价；不知道从哪一步开始"
+  },
+  "core_promise": "一套「时间窗 × 分级定价 × 场景引流」的三步循环动作，看完就能照着做",
+  "title_candidates": [
+    "期末这 7 天，宿舍楼下的书能换出一台笔记本",
+    "收来的旧书别一口价，我用四档评级把均价拉高了 60%",
+    "期末结束那天，我在宿舍楼下摆了个收书摊",
+    "二手书不赚钱？在咖啡馆摆张换书桌试试"
+  ],
+  "cover": {
+    "style": "竖版旧书堆实拍 + 主播侧脸半身",
+    "primary_copy": "收书价目表",
+    "alt_copies": ["收废纸不如收书"]
+  },
+  "hashtags": [
+    "#二手书循环",
+    "#大学生经济",
+    "#期末回收",
+    "#副业",
+    "#循环经济",
+    "#书摊"
+  ],
+  "sections": [
+    {
+      "id": "s0",
+      "name": "钩子",
+      "role": "hook",
+      "start_sec": 0,
+      "end_sec": 4,
+      "duration_sec": 4,
+      "chars": 19,
+      "key_message": "反常识数字开场，用书堆冲击画面留人",
+      "script": "全校闲置教材堆起来，能压出一座图书馆。",
+      "onscreen_text": ["全校闲置教材 = 一座图书馆？"],
+      "visual": ["堆到房顶的旧书全景，快速推近"],
+      "sfx": "低频「咚」+ 书本砸落声"
+    },
+    {
+      "id": "s1",
+      "name": "痛点铺垫",
+      "role": "setup",
+      "start_sec": 4,
+      "end_sec": 11,
+      "duration_sec": 7,
+      "chars": 35,
+      "key_message": "宿舍楼下没人捡的书堆，建立共鸣并亮出主角身份",
+      "script": "每到期末，大伙儿的书往楼道一扔就走了。我用一套循环，把书变成钱和流量。",
+      "onscreen_text": [],
+      "visual": ["楼道被书堵住的过道", "切回主播半身"],
+      "sfx": null
+    },
+    {
+      "id": "s2",
+      "name": "观点一 · 教材按学期末集中回收",
+      "role": "value_point",
+      "point_index": 0,
+      "point": "教材按学期末集中回收",
+      "start_sec": 11,
+      "end_sec": 28,
+      "duration_sec": 17,
+      "chars": 86,
+      "key_message": "踩准学期末时间窗，越晚收越不值；收书点下沉到宿舍楼下",
+      "script": "第一步，踩准学期末这个时间窗。期末考完那几天是黄金期，一本书只有前两周值钱。学生刚考完就想甩，供给最集中，越往后越没人要。收书点摆在宿舍楼下，按斤称按捆收，一晚清两三百斤。",
+      "onscreen_text": ["学期末黄金窗口时间轴"],
+      "visual": ["宿舍楼下收书摊实拍", "书捆堆叠画面"],
+      "sfx": null,
+      "numbers_used": ["前两周", "两三百斤"]
+    },
+    {
+      "id": "s3",
+      "name": "观点二 · 封面破损评级再定价",
+      "role": "value_point",
+      "point_index": 1,
+      "point": "封面破损评级再定价",
+      "start_sec": 28,
+      "end_sec": 47,
+      "duration_sec": 19,
+      "chars": 99,
+      "key_message": "回收后按 A/B/C/D 四档重新定价；评级是分流不是压价",
+      "script": "第二步，回收回来别一口价，我按封面破损分四档再定价。A 全新塑封折两成；B 轻微翻痕折四成；C 书角磨白压五折；D 缺页涂改按纸重算，两块钱一斤。关键是，评级不是压价是分流：好书慢慢卖高价，破书当天打包走。",
+      "onscreen_text": ["A 全新塑封 折两成", "B 轻微翻痕 折四成", "C 书角磨白 折五成", "D 缺页涂改 按纸重算"],
+      "visual": ["四档速查表停留 ≥4 秒", "手部翻书展示破损细节"],
+      "sfx": null,
+      "pricing_tiers": [
+        { "tier": "A", "condition": "全新塑封", "rule": "折价两成" },
+        { "tier": "B", "condition": "轻微翻痕", "rule": "折价四成" },
+        { "tier": "C", "condition": "书角磨白", "rule": "压到五折" },
+        { "tier": "D", "condition": "缺页、批注涂改", "rule": "按纸重算，2 元/斤" }
+      ],
+      "twist": "先给分级标准，再抛「评级不是压价，是分流」的反转结论"
+    },
+    {
+      "id": "s4",
+      "name": "观点三 · 跨界换书市集引流",
+      "role": "value_point",
+      "point_index": 2,
+      "point": "跨界换书市集引流",
+      "start_sec": 47,
+      "end_sec": 63,
+      "duration_sec": 16,
+      "chars": 81,
+      "key_message": "在咖啡馆/旧物店摆换书桌，把线下人流变成回收订单",
+      "script": "第三步，光卖书还得把人引进来。我在旁边咖啡馆摆张换书桌，捐一本换一本，不收钱。第一天来的人一半为换书，一半是顺路进店的新客。换出去的每一本，都是下一轮的回收订单。",
+      "onscreen_text": ["换书桌 = 免费获客位"],
+      "visual": ["咖啡馆换书桌实拍", "路人被招牌吸引走进店内"],
+      "sfx": null
+    },
+    {
+      "id": "s5",
+      "name": "收束金句",
+      "role": "payoff",
+      "start_sec": 63,
+      "end_sec": 71,
+      "duration_sec": 8,
+      "chars": 41,
+      "key_message": "把三步拔高成一句可记忆的判断标准",
+      "script": "所以二手书循环不是谁书多谁赢，是在对的时间、用对的价格、对的地方，把书和人转起来。",
+      "onscreen_text": [],
+      "visual": ["主播正面收尾，背景为成捆旧书"],
+      "sfx": null
+    },
+    {
+      "id": "s6",
+      "name": "互动引导",
+      "role": "cta",
+      "start_sec": 71,
+      "end_sec": 75,
+      "duration_sec": 4,
+      "chars": 20,
+      "key_message": "以低成本动作索取评论，不推销不索取联系方式",
+      "script": "评论区报个学校名，我教你第一周怎么开局。",
+      "onscreen_text": ["评论区报校名 + 省份"],
+      "visual": ["主播指向评论区位置的手势"],
+      "sfx": null,
+      "pinned_comment": "报学校名 + 省份，我按你们的放假时间排回收档期"
+    }
+  ],
+  "rhythm_design": "前 11 秒讲观众都见过的烂摊子建立共鸣；28–63s 给三步可执行干货；71s 后只索评论不推销，压低广告感。",
+  "publish": {
+    "recommended_slots": ["周五 18:30–20:30", "周日 20:00"],
+    "best_period": "期末结束前一周",
+    "comment_reply_target": "首小时评论回复率 > 15%，每条提问都用「报校名」话术反哺"
+  },
+  "reusability": {
+    "splittable": true,
+    "note": "三个 points 互不依赖，可各拆一条 25–30s 短视频单独投放，按数据选出最优钩子后再合并成完整版。",
+    "asset": "A/B/C/D 四档价格折算可直接做成评论区可复制表格模板，是主要承接理由。"
+  }
+}

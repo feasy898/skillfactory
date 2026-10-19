@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_028ad5e7-c22d-4db4-a3cd-96ae8d561959",
+  "traceId": "ea4cbccb-3df9-44b2-98a6-a1ffeabe993e",
+  "turnId": "turn_f7c76056-5e2f-4e62-aee7-eea1e7ef98f4",
+  "response": "验证完成，四次生成全部成功，四种输入形态产物逐字节一致。\n\n## 结果总览\n\n**引擎**：`dist/hot-templates-skill/scripts/gen.py`（实际生成引擎，非手工伪造），四次调用均 exit 0。\n\n**自备输入文件**（已在工作目录）：\n- `points_plain.json` — UTF-8 无 BOM，78 字节，内容为卖点数组\n- `points_bom.json` — UTF-8 带 BOM（`EF BB BF` 前缀实测确认），81 字节，内容同 B\n- `points_wrapped.json` — 无 BOM，内容为 `{\"points\": [同数组]}` 包装对象\n\n**四目录产物**（各含 `骨架.md` 2545B + `structure.json` 5277B，均非空）：\n\n| 形态 | 输入 | exit | 结果 |\n|---|---|---|---|\n| A-inline | 内联 JSON 串 | 0 | 成功 |\n| B-plain | 无 BOM 文件 | 0 | 成功 |\n| C-bom | 带 BOM 文件 | 0 | 成功（BOM 被正确剥除） |\n| D-wrapped | 包装对象文件 | 0 | 成功（points 键被正确解包） |\n\n**跨形态同一性（核心验证点）**：\n- 四份 `骨架.md` 两两 md5 全等（唯一值 `b0ffe8e3…`）\n- 四份 `structure.json` 两两 md5 全等（唯一值 `2baa65a6…`）\n\n**内容口径断言**（四份 structure.json 全部 PASS）：`points_input_count=3`、`points_used` 为三条卖点原文逐字（泡沫箱打孔防涝 / 蛋壳补钙碾碎拌土 / 北侧种耐阴生菜）、`points_unused=[]`、`element_count=7`、开放占位合计 7 处、骨架首标签 `#阳台种菜入门`、总结块三点复述含卖点原文。\n\n一点透明说明：A 形态首次调用时我在内联串里把第三条卖点误打成「北侧种菜入门」，当即发现后删除该次输出、用正确串重跑——当前留在 `out/A-inline/` 的产物是更正后的正确结果，与 B/C/D 逐字节一致。所有交付物（三个输入 JSON + 四目录产物）均已留在工作目录原位。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 18,
+    "inputTokens": 495931,
+    "outputTokens": 6488,
+    "totalTokens": 502419,
+    "cacheReadTokens": 476480,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 4358,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 502419,
+    "contextUsed": 35417,
+    "contextWindow": 200000
+  }
+}

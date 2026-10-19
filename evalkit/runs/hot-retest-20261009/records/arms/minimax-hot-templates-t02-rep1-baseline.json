@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t02-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 63007,
+  "started_at_ms": 1791529430344,
+  "session_id": "sess_c99f8160-2eeb-4dbd-a5ae-e4c11c006e14",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t02-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 263414,
+      "ot": 6398,
+      "dur": 57267,
+      "n": 11
+    }
+  ],
+  "input_tokens": 263414,
+  "output_tokens": 6398,
+  "stdout_bytes": 2537,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "a split-screen; a calculator graphic showing 8h rated ÷ 2 = ~4h real; and a single-take magnet-stick-then-hook-throw at a tree branch so the light stays on. It also ships title candidates, cover spec, hashtags, a BGM curve that drops a half-beat of silence at 00:08 and 00:28 to land the arguments, a publish window, and comment-ops copy.\\n\\n**Verification.** `structure.json` is an exact mirror of the Markdown, and I checked that programmatically rather than by eye: the timeline is contiguous from 00:00 to 00:45 with no gaps, the duration fields sum to 45 (3+5+10+10+10+7), all three of your points appear verbatim in both files, and every shot field, title, and hashtag in the JSON was located in the Markdown. All 90+ assertions passed.\\n\\nOne note on scope: the `fixtures/` directory in this arm is empty and `arms_manifest.json` records `baseline_has_skill: false`, so I generated the skeleton from the brief alone without a skill or template to conform to — hence the self-declared `baseline-v1` version marker in both files.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 11,\n    \"inputTokens\": 263414,\n    \"outputTokens\": 6398,\n    \"totalTokens\": 269812,\n    \"cacheReadTokens\": 210618,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 464,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 269812,\n    \"contextUsed\": 30057,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "t02",
+  "rep": 1,
+  "slot": 3
+}

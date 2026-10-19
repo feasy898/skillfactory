@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t01-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 215080,
+  "started_at_ms": 1791529060787,
+  "session_id": "sess_729a63d3-3000-4067-90fe-ae84a6564bec",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t01-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 278985,
+      "ot": 10662,
+      "dur": 204014,
+      "n": 11
+    }
+  ],
+  "input_tokens": 278985,
+  "output_tokens": 10662,
+  "stdout_bytes": 2227,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "{\n  \"sessionId\": \"sess_729a63d3-3000-4067-90fe-ae84a6564bec\",\n  \"traceId\": \"65360fd8-7882-4fc6-90d3-4511a0a5f072\",\n  \"turnId\": \"turn_c0e842bb-0552-42b2-9b0b-162e422096c0\",\n  \"response\": \"任务完成。按 brief.md 的要求，公众号「宿舍省电费」爆款内容骨架已生成在 `out/` 目录下，两个产物齐全且通过校验：\\n\\n**`out/骨架.md`（人类可读骨架）** — 完整的微信图文创作蓝图，包含：\\n- **定位速览**：目标读者（4–6 人合寝、电费 AA 的大学生）、情绪曲线（惊→共鸣→行动→转发）、1200–1500 字预算\\n- **3 个 A/B 标题候选**：主推「查了下我们宿舍的电费，全寝沉默了：3 招把它打下来」，附标题写作规则（前 16 字关键词前置、保留数字锚点、避开绝对化用语）\\n- **分享卡片摘要 + 开头钩子**（账单惊吓场景→共鸣吐槽→快速入题）\\n- **正文 3 招逐节展开**，严格对应 brief 的三个 points：每招含小标题模板、痛点句、3 条可操作做法、带「发布前核实」标记的数据位、金句和配图位\\n- **结尾 CTA**（省钱画面感算账 + 转宿舍群的转发钩子 + 评论区引导）、公众号排版建议（金句居中、「第 X 招」徽章、话题标签）和合规提醒\\n\\n**`out/structure.json`（机器可读版）** — 与 md 一一镜像的结构化数据（`hot-content-skeleton/v1`），sections 按 `hook → p1/p2/p3 → ending` 组织，每个 point 节点含 pain_point、actions、data_slot、golden_sentence 等字段，便于下游程序消费。\\n\\n校验结果：JSON 解析合法；`platform=wx`、`topic=宿舍省电费`、三个 points 与 brief 中的内联 JSON 串逐字一致（正文小节顺序也一致）。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 11,\n    \"inputTokens\": 278985,\n    \"outputTokens\": 10662,\n    \"totalTokens\": 289647,\n    \"cacheReadTokens\": 245888,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 6303,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 289647,\n    \"contextUsed\": 33387,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "t01",
+  "rep": 1,
+  "slot": 1
+}

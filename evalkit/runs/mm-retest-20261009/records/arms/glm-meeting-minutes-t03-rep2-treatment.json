@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t03-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 144563,
+  "started_at_ms": 1791533272539,
+  "session_id": "sess_47f28670-a884-4d7c-bd39-8026c7363d50",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t03-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 388193,
+      "ot": 6494,
+      "dur": 123391,
+      "n": 14
+    }
+  ],
+  "input_tokens": 388193,
+  "output_tokens": 6494,
+  "stdout_bytes": 2463,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "c-bd39-8026c7363d50\",\n  \"traceId\": \"ee14a8c1-55d8-4ee8-9792-527d104794d6\",\n  \"turnId\": \"turn_97b19915-5bd5-4d30-87bd-f1ed16368e6a\",\n  \"response\": \"任务已完成。所有交付物均已到位并通过验收。\\n\\n## 产出\\n\\n| 文件 | 内容 |\\n|---|---|\\n| `nanping_water_0926.txt` | 原始转写稿（10 条发言） |\\n| `out/纪要.docx` | 三段式会议纪要 |\\n| `out/summary.json` | 条数统计：决议事项 2 / 待办事项 5 / 风险与关注 1 / 合计 8 |\\n\\n## 纪要内容概要\\n\\n- **一、决议事项（2 条）**：[10:02] 莫向洋「同意，编号牌样式用国标款」；[10:07] 小覃「议定检修期间客服热线延长一小时」。\\n- **二、待办事项（5 条，表格）**：编号牌重做（闻雨生 / 11月30日之前）、终审材料汇总（范晓芸 / 待定）、会场布置（行政部 / 10月16日）、物料清点（祁队 / 后天）、接待登记（负责人待定 / 待定——「新来的实习生小林」超出确定性提取规则的字数上限，按红线如实填「待定」，未做语义推断）。\\n- **三、风险与关注（1 条）**：[10:05] 老系统并网后停水风险、预案要细化。\\n\\n[10:00] 开场行与 [10:09] 收尾行均不含 11 个分类关键词，按规则不收录。\\n\\n## 过程说明\\n\\n运行随包 `scripts/minutes.py` 生成产物。环境的共享 venv 不可写且缺 `python-docx`，我在 `/tmp/mm_venv` 建了独立 venv 完成安装与运行（脚本退出码 0，产物回读确认存在）。随包的 `eval/runner.py` 在本部署中不存在，故按 `references/docx-and-summary.md` 的验收清单逐项自查，全部通过：三节标题逐字齐全、条目格式 `<i>. 【hh:mm · 说话人】内容` 编号连续、待办为 3 列 Table Grid 表格、全部 8 个条目（含表格「事项」列）在转写稿中逐字溯源成功、summary 四键与 docx 实际条数逐项一致（2+5+1=8，与元信息行数字相符）。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 14,\n    \"inputTokens\": 388193,\n    \"outputTokens\": 6494,\n    \"totalTokens\": 394687,\n    \"cacheReadTokens\": 370688,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 4764,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 394687,\n    \"contextUsed\": 33912,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t03",
+  "rep": 2,
+  "slot": 29
+}

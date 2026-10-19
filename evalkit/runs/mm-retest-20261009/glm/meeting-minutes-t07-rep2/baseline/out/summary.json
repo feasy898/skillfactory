@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "kind": "meeting-minutes",
+    "org": "鹤鸣幼儿园",
+    "title": "鹤鸣幼儿园膳房安全工作会议纪要",
+    "meeting_date": "2026-10-16",
+    "meeting_weekday": "星期五",
+    "start_time": "15:00",
+    "end_time": "15:09",
+    "location": null,
+    "location_note": "转写稿未载，纪要以【会议地点】留位待补",
+    "chair": "柴迎秋（园长）",
+    "attendees": [
+      { "name": "柴迎秋", "role": "园长" },
+      { "name": "糜暖", "role": "保健医" },
+      { "name": "阎实", "role": "后勤" }
+    ],
+    "mentioned_persons": [
+      { "name": "老赵", "assignment": "监控型号审定", "spoke_in_transcript": false },
+      { "name": "小唐", "assignment": "晨检记录补录复核", "spoke_in_transcript": false },
+      { "name": "苏芮", "assignment": "晨检台账汇总", "spoke_in_transcript": false }
+    ],
+    "topic": "膳房安全管理",
+    "source_transcript": "heming_kg_1016.txt",
+    "minutes_docx": "out/纪要.docx",
+    "date_basis": "会议日期据转写稿文件名（1016）与发言时间戳（15:00—15:09）记为2026-10-16（星期五）；年份按当前年度补记",
+    "prepared_at": "2026-10-09"
+  },
+  "decisions": [
+    { "id": "D1", "time": "15:01", "by": "柴迎秋（园长）", "content": "同意把后厨重地列为家长开放日禁入区。" },
+    { "id": "D2", "time": "15:05", "by": "柴迎秋（园长）", "content": "议定每周五上传明厨亮灶视频。" }
+  ],
+  "action_items": [
+    {
+      "id": "T1",
+      "task": "拟加装监控的型号报老赵审定，审定后确定型号",
+      "owners": [
+        { "name": "老赵", "duty": "审定" },
+        { "name": "糜暖", "duty": "对接跟进" }
+      ],
+      "deadline": "2026-10-23",
+      "deadline_label": "2026年10月23日（周五）前",
+      "owner_basis": "meeting",
+      "deadline_basis": "proposed",
+      "note": "会议明确需老赵点头才能定型号"
+    },
+    {
+      "id": "T2",
+      "task": "晨检记录补录一轮，糜暖会同小唐共同复核",
+      "owners": [
+        { "name": "糜暖", "duty": "牵头" },
+        { "name": "小唐", "duty": "配合复核" }
+      ],
+      "deadline": "2026-10-30",
+      "deadline_label": "2026年10月30日（周五）前",
+      "owner_basis": "meeting",
+      "deadline_basis": "proposed",
+      "note": "会议明确补录一轮并拉小唐一起过；时限为纪要拟定，为台账汇总（T5）预留一周"
+    },
+    {
+      "id": "T3",
+      "task": "灭蚊灯加装完成（下周内装好）",
+      "owners": [
+        { "name": "阎实", "duty": "后勤跟进督办" }
+      ],
+      "deadline": "2026-10-23",
+      "deadline_label": "2026年10月23日（周五）前",
+      "owner_basis": "meeting",
+      "deadline_basis": "meeting",
+      "note": "会议明确下周装好、后勤盯办"
+    },
+    {
+      "id": "T4",
+      "task": "明厨亮灶视频首次上传，此后每周五定期上传",
+      "owners": [
+        { "name": "阎实", "duty": "上传执行" }
+      ],
+      "deadline": "2026-10-23",
+      "deadline_label": "首次2026年10月23日（周五）；此后每周五",
+      "recurrence": "weekly-friday",
+      "owner_basis": "proposed",
+      "deadline_basis": "meeting",
+      "note": "会议明确每周五上传的频次；具体责任人会议未指定，纪要拟定阎实，请园长确认"
+    },
+    {
+      "id": "T5",
+      "task": "晨检台账汇总，提交糜暖",
+      "owners": [
+        { "name": "苏芮", "duty": "汇总" },
+        { "name": "糜暖", "duty": "接收" }
+      ],
+      "deadline": "2026-11-05",
+      "deadline_label": "2026年11月5日（周四）前",
+      "owner_basis": "meeting",
+      "deadline_basis": "meeting",
+      "note": "会议明确：苏芮汇总、11月5日前交糜暖"
+    },
+    {
+      "id": "T6",
+      "task": "向供货商补齐本批检验报告缺失的两页",
+      "owners": [
+        { "name": "糜暖", "duty": "索要补齐" }
+      ],
+      "deadline": "2026-10-23",
+      "deadline_label": "2026年10月23日（周五）前",
+      "owner_basis": "proposed",
+      "deadline_basis": "proposed",
+      "note": "会议通报本批检验报告缺两页、存在不确定性；补齐责任人与时限为纪要拟定"
+    },
+    {
+      "id": "T7",
+      "task": "与财务确认费用列支二季度预算的口径",
+      "owners": [
+        { "name": "阎实", "duty": "对接财务" }
+      ],
+      "deadline": "2026-10-21",
+      "deadline_label": "2026年10月21日（周三）前",
+      "owner_basis": "proposed",
+      "deadline_basis": "proposed",
+      "note": "会议明确费用走二季度预算、财务确认口径；对接人与时限为纪要拟定"
+    }
+  ],
+  "risks": [
+    {
+      "id": "R1",
+      "time": "15:07",
+      "raised_by": "糜暖（保健医）",
+      "content": "供货商本批检验报告缺了两页，存在不确定性",
+      "linked_action": "T6"
+    }
+  ],
+  "counts": {
+    "decisions": 2,
+    "action_items": 7,
+    "action_items_with_named_owner": 7,
+    "action_items_with_explicit_deadline": 7,
+    "action_items_fully_meeting_set": 2
+  },
+  "notes": [
+    "会议日期依据转写稿文件名 1016 与发言时间戳（15:00—15:09）整理，年份按当前年度（2026）补记。",
+    "owner_basis / deadline_basis 为 meeting 的条目系会议明确内容；为 proposed 的条目系纪要整理建议，供园长审定后执行。",
+    "所有完成时限均指最晚完成时间。"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t04-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 169495,
+  "started_at_ms": 1791531552097,
+  "session_id": "sess_f7258b20-4698-4088-a3b7-18bb716a5a67",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t04-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 839851,
+      "ot": 8619,
+      "dur": 153168,
+      "n": 30
+    }
+  ],
+  "input_tokens": 839851,
+  "output_tokens": 8619,
+  "stdout_bytes": 2490,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "ections.\\n- `out/summary.json` — `{\\\"决议事项\\\": 3, \\\"待办事项\\\": 4, \\\"风险与关注\\\": 3, \\\"合计\\\": 10}`.\\n- `build_minutes.py` — the generator script, kept alongside so the docx is reproducible.\\n\\n**How the 11 transcript lines were classified** (10 counted items; the 10:00 \\\"人到齐了就开始\\\" line is a call to order with no content):\\n- 决议事项 (3): 报销同意书审批流改走新版OA、主播冯议定下周排班确认、下周三同一时间复盘双11预案.\\n- 待办事项 (4, table with 序号/待办事项/责任人/截止时间/状态): 退货延期赔偿口径传达各销区(运营费晔)、面料回修工单跟进并落到车间(物控祁妙)、重配直播间优惠券风控规则(运营费晔，本月底前)、群内接龙应急小组名单(客服总监宦悦).\\n- 风险与关注 (3): 尺码相关差评高度集中、尾货清仓定价未定(会上无结论)、快递合作伙伴履约时效存在延期风险.\\n\\n**Verification:** I rendered the DOCX to PDF via LibreOffice and inspected the page image. Chinese glyphs render correctly with no tofu boxes, and the whole document fits on a single page with the table's 待办事项 column wide enough to avoid awkward wrapping. Two earlier layout defects (cramped table column, mid-section page break) were found in that render and fixed — the column widths needed an explicit `w:tblLayout` fixed setting to be honored, not just per-cell widths.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 30,\n    \"inputTokens\": 839851,\n    \"outputTokens\": 8619,\n    \"totalTokens\": 848470,\n    \"cacheReadTokens\": 802205,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1189,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 848470,\n    \"contextUsed\": 38527,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t04",
+  "rep": 3,
+  "slot": 16
+}

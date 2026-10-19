@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t02-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 289664,
+  "started_at_ms": 1791530181724,
+  "session_id": "sess_dd0e4439-3f71-4c04-aa4c-91694c001d45",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t02-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1762463,
+      "ot": 17553,
+      "dur": 266930,
+      "n": 35
+    }
+  ],
+  "input_tokens": 1762463,
+  "output_tokens": 17553,
+  "stdout_bytes": 3656,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "y times (14:00—14:41), so I wrote \\\"10月14日\\\" from the transcript's filename and annotated it inline as 据转写稿文件名推定，请核对 rather than asserting it as fact.\\n\\n**Verification:** `postcheck.py` passes with 0 errors (9 checks); a LibreOffice render to PNG showed all three pages correct — CJK text renders cleanly, no blank pages, page numbers 1/2/3, no row truncation, header row repeated on the page-3 continuation. I inspected the pages directly because the visual-judge subagent is unavailable in this environment (provider not registered). One cosmetic defect found and fixed: the 序号 header was wrapping to two lines, resolved by widening that column from 6% to 9%.\\n\\nOne caveat worth your call: I used Noto Serif/Sans CJK SC rather than SimSun/SimHei because those are what is actually installed here, which guarantees the render I verified. If these minutes will be opened on Windows Word, where SimSun/SimHei are standard, it's worth switching the font mapping — postcheck flags these as potentially missing on a target system.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 35,\n    \"inputTokens\": 1762463,\n    \"outputTokens\": 17553,\n    \"totalTokens\": 1780016,\n    \"cacheReadTokens\": 1692680,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 2977,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1780016,\n    \"contextUsed\": 70680,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

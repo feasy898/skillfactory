@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t07-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 635161,
+  "started_at_ms": 1791537582151,
+  "session_id": "sess_ff7a6c72-04b5-42e5-8f69-a5bf9da32d8f",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t07-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 765319,
+      "ot": 35032,
+      "dur": 565776,
+      "n": 14
+    }
+  ],
+  "input_tokens": 765319,
+  "output_tokens": 35032,
+  "stdout_bytes": 3141,
+  "stderr_bytes": 784,
+  "stderr_head": "AI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\n",
+  "stdout_tail": " minutes (3 pages, 公文风格：黑体标题、仿宋正文、28pt 行距、\\\"— 页码 —\\\"页脚)：\\n  - **一、会议概况**：时间 2026年10月16日（周五）15:00—15:09、主持人柴迎秋（园长）、出席三人、点名交办的老赵/小唐/苏芮；地点转写稿未载，以【会议地点】留位待补。\\n  - **二、会议内容与议定事项**：2 条议定（后厨列为家长开放日禁入区、每周五上传明厨亮灶视频）+ 6 条通报讨论事项，均注明发言人与时间戳。\\n  - **三、待办事项及责任分工**：7 条待办，**条条有具体责任人、条条有具体日期，无一“待定”** —— 责任人精确到人（老赵审定/糜暖对接、糜暖牵头/小唐配合、阎实、苏芮），时限为 10月21日（周三）、10月23日（周五，即“下周”之内，灭蚊灯/监控型号/检验报告补页/视频首传）、10月30日（晨检补录，给台账汇总留一周）、11月5日（周四，台账交糜暖）。会议没定责任人/时限的条目，表格备注里如实标注“拟定”供您审定，其余标注“会议明确”，问责时不混淆。\\n- `out/summary.json` — 结构化摘要：会议元信息、2 条决议、7 条待办（每条含责任人、职责、ISO 日期、`meeting`/`proposed` 来源标记、周期性事项 recurrence）、1 条风险（供货商检验报告缺两页，关联补办项）。\\n\\n**Verification**: postcheck 0 errors（唯一警告是表格内行距紧凑于正文，属公文表格惯例）；LibreOffice 渲染 3 页经视觉验收全部通过（表格跨页表头自动重复、无裁切无溢出）；summary.json 校验合法且 7/7 待办均具名 + 具限期。\\n\\n一点透明说明：会议日期按转写稿文件名（1016）与时间戳整理为 2026-10-16（周五），年份按本年度补记，此依据已写入纪要文末附注和 summary.json，未虚构任何会议未发生的内容。\\n\\n::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t07-rep2/baseline/out/纪要.docx\\\" purpose=\\\"output\\\"}\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 14,\n    \"inputTokens\": 765319,\n    \"outputTokens\": 35032,\n    \"totalTokens\": 800351,\n    \"cacheReadTokens\": 626752,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 25486,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 800351,\n    \"contextUsed\": 81398,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t07",
+  "rep": 2,
+  "slot": 45
+}

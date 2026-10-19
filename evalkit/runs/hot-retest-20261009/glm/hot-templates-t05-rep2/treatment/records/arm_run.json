@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t05-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 215749,
+  "started_at_ms": 1791532460430,
+  "session_id": "sess_a3ae72fa-6bd2-4706-babe-20c3da8a2800",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t05-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 448442,
+      "ot": 8482,
+      "dur": 205030,
+      "n": 13
+    }
+  ],
+  "input_tokens": 448442,
+  "output_tokens": 8482,
+  "stdout_bytes": 3023,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " 0 | 同上 | `out/D-wrapped/` |\\n\\n四次运行的 OK 行完全相同，每个输出目录各含非空的 `骨架.md`（2545 字节）与 `structure.json`（5277 字节）。\\n\\n## 输入文件（已备在工作目录）\\n\\n- `points_plain.json`：78 字节，UTF-8 无 BOM，首字节 `[`；\\n- `points_bom.json`：81 字节 = B + `EF BB BF` 前缀（仅差 BOM 3 字节，内容同 B）；\\n- `points_wrapped.json`：90 字节，`{\\\"points\\\": [同数组]}`。\\n三个文件用 `utf-8-sig` 解析后均还原为同一数组（已逐个验证）。\\n\\n## 一致性验证\\n\\n- **四形态产物逐字节相同**：四份 `骨架.md` sha256 均为 `a87410f7…a0c2`，四份 `structure.json` 均为 `583aeee8…358`——输入形态（内联/文件/BOM/wrapped）不影响产物，符合引擎确定性承诺。\\n- **结构字段正确**：`platform=xhs`、`platform_name=小红书图文`、`topic=阳台种菜入门`、`points_input_count=3`、`points_used` 为三条卖点原文、`points_unused=[]`、`element_count=7`，要素 id 序列 `title → hook_block → point_block_1..3 → summary_block → tag_group` 冻结序无误。\\n- **占位符口径符合参考值**：`open_placeholders=7` 正是 xhs 满 3 卖点的参考值；`filled_from_input=10` = topic×2 + point#1..3 + 总结块（topic+3 卖点）+ 派生标签。冻结标记（标题 🔥 与数字、✅/💡/📌 各归其位、首标签 `#阳台种菜入门` 主题派生）全部在位，三条卖点已入 `💡 干货1..3` 与总结块复述，产物中无 `{{ }}` 类残留。\\n\\n结论：`--points` 的四种合法输入形态（内联串、无 BOM 文件、带 BOM 文件、`{\\\"points\\\":…}` 包装对象）在该 xhs 用例下行为完全等价，全部交付物已就位。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 13,\n    \"inputTokens\": 448442,\n    \"outputTokens\": 8482,\n    \"totalTokens\": 456924,\n    \"cacheReadTokens\": 419392,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 6761,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 456924,\n    \"contextUsed\": 45044,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_8cc61993-c8c8-4f46-be10-f8a41fbba77f",
+  "traceId": "4b102a87-832c-49b3-8798-97f3c4c18945",
+  "turnId": "turn_486ff9d0-8162-4759-8113-2ba0931a4e4f",
+  "response": "Done. Both deliverables are in `out/`, JSON validated.\n\n**The one judgment call that mattered:** the second point in your list is `\"   \"` — three spaces, not an empty-ish label. `strip()` makes it length zero, so I dropped it entirely rather than treating it as a short-but-real point. Concretely that means it produces no section, no placeholder slot, and no chapter number. The four real points are renumbered 1–4 consecutively, so the 错峰值机攻略 section lands at \"2\" instead of \"3\" — no gap where the blank used to sit. Forcing it through would have produced an empty titled chapter and a numbering hole in both files. The drop is recorded explicitly in both deliverables rather than silently corrected, so you can audit it: `structure.json` marks it `status: \"dropped\"` with the reason and the source `index`, and `骨架.md` §五 carries the same five-row table.\n\n**What you got:**\n\n`out/骨架.md` is a fill-in skeleton, not finished prose — 爆款三件套 (cover title/subtitle ≤20/≤12 chars, plus three title candidates in 悬念/利益/反差 styles with a no-absolute-superlatives constraint), a body with the hook formula pinned to the first 2 lines, one section per surviving point, and closing CTA + tags. Each section carries its own slot hints — 错峰值机 gets a 时段/排队时长/建议 table skeleton with values left for the writer to fill from real observation, 候补票 insists the deadline number lands in the first sentence. Also a 排版规范 section (≤40 chars/paragraph, ≤5 bolds, emoji only at subsection heads, 6–9 images) and the 输入清洗记录.\n\n`out/structure.json` mirrors it in machine form: `platform`/`topic` as given, the full `input_points` audit trail with `raw`/`stripped`/`status`/`reason` per entry, `input_summary` with counts and the renumbering rule, cover and title arrays, a `sections` array carrying `source_index` back to the original input position (so 错峰值机 shows `source_index: 3, order: 2` — the mapping survives), CTA/tags, and `format_spec`.\n\nOne caveat worth stating plainly: the numbers a writer will be tempted to drop into those slots — queue times, 改签时限, 里程倍率 — I left empty on purpose. A skeleton that ships plausible-looking figures invites them being published as fact. Fill them from the carrier/operator's actual published rules.",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 7,
+    "inputTokens": 151713,
+    "outputTokens": 4033,
+    "totalTokens": 155746,
+    "cacheReadTokens": 126208,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 322,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 155746,
+    "contextUsed": 24753,
+    "contextWindow": 200000
+  }
+}

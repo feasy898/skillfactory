@@ -1,0 +1,188 @@
+{
+  "schema_version": "1.0",
+  "platform": "xhs",
+  "topic": "无纸化通关",
+  "generated_at": "2026-10-09",
+  "input": {
+    "platform": "xhs",
+    "topic": "无纸化通关",
+    "points": [
+      "无纸化申报随附单证自拍存档",
+      "   ",
+      "错峰值机攻略",
+      "候补票改签时限",
+      "会员日里程翻倍"
+    ],
+    "point_count_in": 5
+  },
+  "normalization": {
+    "rule": "strip-then-test-empty: 去除首尾空白后为空串的条目判为无效，不进入正文、不占位、不占号",
+    "trimmed_count": 4,
+    "dropped": [
+      {
+        "source_index": 2,
+        "raw_text": "   ",
+        "trimmed_text": "",
+        "reason_code": "blank_whitespace_only",
+        "reason": "第 2 项为纯空白串（3 个空格），strip 后为空，无可用语义",
+        "action": "dropped",
+        "consumes_section_id": false,
+        "consumes_numbering": false
+      }
+    ]
+  },
+  "point_count_out": 4,
+  "sections": [
+    {
+      "id": "sec-01",
+      "number": 1,
+      "source_index": 1,
+      "title": "无纸化申报：随附单证自拍存档",
+      "hook": "不用带纸，但要把电子版留住。",
+      "key_points": [
+        "电子化后追溯全靠截图/照片",
+        "申报完成页整屏截图 + 关键信息页单独存",
+        "出行前再截一张出发状态页",
+        "建立独立相册并按 日期_目的地_事项 命名",
+        "出发前确认已下载且离线可用"
+      ],
+      "image": {
+        "index": 2,
+        "type": "screenshot_triptych",
+        "caption": "申报完成页 / 单证页 / 出发状态页 三格示例"
+      },
+      "cta": "你们存哪儿？我用相册。",
+      "needs_source_verification": false
+    },
+    {
+      "id": "sec-02",
+      "number": 2,
+      "source_index": 3,
+      "title": "错峰值机攻略",
+      "hook": "避开两段，排队能少一半。",
+      "key_points": [
+        "无纸化不等于免排队，安检/边检/托运各有高峰",
+        "早高峰：提前到 与 卡点到的取舍",
+        "晚高峰：转机与夜间到达反而更顺",
+        "自助值机与柜台的动线差异与各自适用情形"
+      ],
+      "placeholders": [
+        "[早高峰时段——按当日航班分布核对后填写]",
+        "[晚高峰时段——按当日航班分布核对后填写]"
+      ],
+      "image": {
+        "index": 3,
+        "type": "self_drawn_bar",
+        "caption": "时段 × 拥堵度 示意条"
+      },
+      "cta": null,
+      "needs_source_verification": true,
+      "verification_note": "时段为经验值，落笔前按当日实际航班表核对，不作绝对承诺"
+    },
+    {
+      "id": "sec-03",
+      "number": 3,
+      "source_index": 4,
+      "title": "候补票改签时限",
+      "hook": "候补上了不等于锁定，先看这个时间点。",
+      "key_points": [
+        "先确认候补票适用的改签规则（产品/渠道不同）",
+        "时限起算点：从出票成功起算还是从申请时刻起算，必须说清",
+        "免费改与付费改的适用情形",
+        "逾时后果：改签失败或按原航班作废的损失归属"
+      ],
+      "placeholders": [
+        "[改签时限——以官方公告/订单页原文为准]"
+      ],
+      "image": {
+        "index": 4,
+        "type": "timeline",
+        "caption": "候补登记 → 兑现 → 改签截止"
+      },
+      "cta": "踩过『以为锁定了』这个坑的举个手。",
+      "needs_source_verification": true,
+      "verification_note": "时限数字须来自官方渠道原文并附来源，禁止凭印象填写"
+    },
+    {
+      "id": "sec-04",
+      "number": 4,
+      "source_index": 5,
+      "title": "会员日里程翻倍",
+      "hook": "同样是飞，登记时机差了能少赚一半。",
+      "key_points": [
+        "参与条件：是否需提前注册、是否限舱位与航线",
+        "登记时点：开票前还是开票后，错过能否补录",
+        "叠加上限：与基础里程及其他活动能否叠加、封顶多少",
+        "避坑：舱位降级或改签后里程是否回退"
+      ],
+      "placeholders": [],
+      "image": {
+        "index": 5,
+        "type": "rule_card",
+        "caption": "活动规则拆解卡"
+      },
+      "cta": "临出发前翻手机，比落地后补救有用。",
+      "needs_source_verification": true,
+      "verification_note": "活动规则时效性强，发布日当天复核；已过期则改写为『这类活动怎么蹲』"
+    }
+  ],
+  "opening_hook": {
+    "template": "第一次全程没掏纸质凭证，回来复盘发现，真正决定顺不顺利的不是『有没有单证』，而是这 4 个细节。逐条说。",
+    "line_budget": 3
+  },
+  "closing": {
+    "summary_line": "无纸化不是免麻烦，是把麻烦提前存好。",
+    "one_liner": "留证、错峰、看时限、算里程——四个动作做完，通关基本不慌。",
+    "cta": "先收藏，出行前按这 4 条对一遍。评论区说说你最怕哪一条。"
+  },
+  "titles": [
+    "无纸化通关后我删了所有纸质凭证｜4 个坑提前避",
+    "第一次无纸化出行？这 4 件事做错真的会卡住",
+    "无纸化通关保姆级：随附单证、错峰、候补、里程全梳理",
+    "别人都在问的 4 个细节，我一次性整理完了"
+  ],
+  "cover": {
+    "image_index": 1,
+    "headline": "无纸化通关 · 4 个细节",
+    "subheadline": "做错真的会卡住",
+    "badge": "2026 最新｜建议收藏"
+  },
+  "image_plan": {
+    "count": 6,
+    "order": [
+      "封面",
+      "sec-01 截图三格",
+      "sec-02 拥堵示意条",
+      "sec-03 时间轴",
+      "sec-04 规则拆解卡",
+      "避坑总览"
+    ]
+  },
+  "hashtags": {
+    "primary": ["#出国旅行", "#出境游攻略", "#机场通关", "#旅行干货"],
+    "secondary": ["#无纸化通关", "#值机攻略", "#候补票", "#里程攻略", "#免签出行"],
+    "engagement": ["#第一次出国", "#出行避坑", "#收藏级攻略"],
+    "total": 12
+  },
+  "publish_config": {
+    "body_word_count": "600-900",
+    "paragraph_line_limit": 3,
+    "first_comment": "补充放行时间表/官方查询入口，吃长尾词",
+    "publish_time": "工作日 20:00-22:30；出行前一周 12:00-13:30",
+    "reply_window_minutes": 30,
+    "compliance": [
+      "不写保证通过 / 100% 成功",
+      "涉及官方规则的段落标注来源与核对日期"
+    ]
+  },
+  "self_check": {
+    "all_points_covered": true,
+    "no_empty_heading_from_dropped_point": true,
+    "numbering_contiguous": true,
+    "source_verification_pending": ["sec-02", "sec-03", "sec-04"]
+  },
+  "artifacts": {
+    "skeleton_markdown": "骨架.md",
+    "structure_json": "structure.json"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t06-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 41599,
+  "started_at_ms": 1791531150190,
+  "session_id": "sess_8cc61993-c8c8-4f46-be10-f8a41fbba77f",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t06-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 151713,
+      "ot": 4033,
+      "dur": 35680,
+      "n": 7
+    }
+  ],
+  "input_tokens": 151713,
+  "output_tokens": 4033,
+  "stdout_bytes": 3032,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "ch section carries its own slot hints — 错峰值机 gets a 时段/排队时长/建议 table skeleton with values left for the writer to fill from real observation, 候补票 insists the deadline number lands in the first sentence. Also a 排版规范 section (≤40 chars/paragraph, ≤5 bolds, emoji only at subsection heads, 6–9 images) and the 输入清洗记录.\\n\\n`out/structure.json` mirrors it in machine form: `platform`/`topic` as given, the full `input_points` audit trail with `raw`/`stripped`/`status`/`reason` per entry, `input_summary` with counts and the renumbering rule, cover and title arrays, a `sections` array carrying `source_index` back to the original input position (so 错峰值机 shows `source_index: 3, order: 2` — the mapping survives), CTA/tags, and `format_spec`.\\n\\nOne caveat worth stating plainly: the numbers a writer will be tempted to drop into those slots — queue times, 改签时限, 里程倍率 — I left empty on purpose. A skeleton that ships plausible-looking figures invites them being published as fact. Fill them from the carrier/operator's actual published rules.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 7,\n    \"inputTokens\": 151713,\n    \"outputTokens\": 4033,\n    \"totalTokens\": 155746,\n    \"cacheReadTokens\": 126208,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 322,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 155746,\n    \"contextUsed\": 24753,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "t06",
+  "rep": 3,
+  "slot": 27
+}

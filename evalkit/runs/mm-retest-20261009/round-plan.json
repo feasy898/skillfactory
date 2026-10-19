@@ -1,0 +1,77 @@
+{
+ "card": "mm-retest（K-5 独立轮·meeting-minutes-skill 新题集重测）",
+ "card_source": [
+  "planning/taskset-redesign/merged/（任务集冻结，净荷 100 文件=adae05f2ce966345b23f276bd6e37355cf2b511f02994d392bdfc0afb900c2a6，本轮开工实算复算相符 exit 0）",
+  "planning/test-cards-20261008/OFFICE-K5-FINAL-RULING-20261009.md（mm/hot 开测前置①②③④ + 装置教训全套 + D2 五条新纪律）",
+  "v2/standard/EVAL-SPEC-v0.2.2.md（生效协议：§9 五条收紧首轮即生效 + v0.2.1 全文并入）",
+  "evalkit/runs/office-retest-20261009/（K-5 重提序列第 1 轮先例：装置机制照搬移植）"
+ ],
+ "owner_directive": "本轮 ask：meeting-minutes-skill 新题集重测（K-5 独立轮）。8 任务（merged/mm/t01..t08）× {glm, minimax} × {baseline, treatment} × n=3，treatment 挂 dist/meeting-minutes-skill；判分=三族面板异族 ≥2 互裁盲态 + judge_arith_check 首轮即生效 + §3.4 每题抽检 1 份；聚合=EVAL-SPEC v0.2.2 tie-aware + benchmark-v02-2 口径落盘（新旧并列不覆盖）+ 单轮信号披露；通道故障/预算触顶如实降级",
+ "run_id": "mm-retest-20261009",
+ "kind": "round_plan_registration",
+ "status": "registered_not_started",
+ "base_commit": "8d14a159d2d05911c771e93e8363eb13ba97110b",
+ "base_commit_note": "本卡登记开工时 git rev-parse HEAD 实读值（P4 口径：以实际开工值为准）",
+ "opened_at": "2026-10-09T14:46+0800",
+ "budget_reading_note": "ask 预算公式括注『8 任务×2族×2臂×n=3』按全展乘积=96，与 ask 明文的刚性上限『48 臂』矛盾。处置：从刚性上限 48=8×2×3 展开——族维度按任务级 1-based 序号奇偶轮换分配（EVAL-SPEC §4.2 双臂同模型：同一任务两臂与全部重复同族），照 sf0008-k5b/s8_arms.py 与 office-retest-20261009 先例公式形状（13 任务×2臂×n=3=78，族按奇偶、非乘子）。glm=t01/t03/t05/t07（4 题×2臂×3=24）、minimax=t02/t04/t06/t08（24）。本条为轮前预登记，轮后不改",
+ "families": {
+  "glm": {"model_pin_required": "GLM-5.3 @ account:bigmodel-individual-coding-plan", "reasoning_variant": "max", "mechanism": "M4（ZCODE_DATA_BASE_DIR 派生数据目录+凭据副本明文 identity 注入，照 sf0006-b-smoke-2/sf0008-k5b/office-retest 实测）"},
+  "minimax": {"model_pin_required": "Minimax-M3.1-Flash-Preview @ minimax", "reasoning_variant": "enabled", "mechanism": "M2（进程级成对 env+defaultModelSelection.options.reasoningLevel）"},
+  "step": {"model_pin_required": "step-router-v1 @ new-provider", "mechanism": "裁判专用通道：模型 API 直调（OpenAI 兼容 chat/completions），endpoint/凭据运行时读全局配置入内存，零落盘零回显；不用 assistant-prefill（office D2 教训：prefill 续写式拼接产生双层嵌套 JSON）", "caveat": "连通性沿用 office-retest-20261009 实测已通记录；首调失败重试 ≤1，仍不通该裁判 fail-closed"}
+ },
+ "arm_allocation": {
+  "rule": "48 臂调用上限（ask 刚性）=8 任务×2 臂×n=3；族按任务 1-based 序号奇偶轮换（奇=glm、偶=minimax）；同一任务两臂与全部重复同族（EVAL-SPEC §4.2）",
+  "glm_tasks": ["t01", "t03", "t05", "t07"],
+  "minimax_tasks": ["t02", "t04", "t06", "t08"],
+  "n": 3,
+  "arm_calls": {"total": 48, "by_family": {"glm": 24, "minimax": 24}},
+  "retry_policy": "每臂 rate_limited 退避重试 ≤1（不占 48 正式额度，逐条留痕 ledger_entries kind=rate_limited-retry）；装置 bug/无效尝试条目不占额度；超额进程不计入结果"
+ },
+ "apparatus": {
+  "two_arms": "照 office-retest-20261009/x_arms.py 机制移植：treatment 挂 dist/meeting-minutes-skill 可交付面过滤副本（MOUNTABLE=SKILL.md/references/scripts/requirements.txt，挂 .zcode/skills/meeting-minutes 产品发现根）；baseline 裸臂（仅 brief.md+fixtures/）；两臂 brief.md 逐字同、prompt 逐字同",
+  "mount_provenance": "dist 包零改动（开工 sha256 快照）；treatment 挂载副本逐文件 sha256 落 records/mount-manifest.json",
+  "excluded_from_arms": ["reference/（含 reference/out 参照产物=oracle 面）", "eval/（golden.json/runner.py）", "EVALUATION.md", "CHANGELOG.md", "README.md", "MANIFEST.md", "LICENSE", "rubric.md", "judge-notes.md"],
+  "arm_task_books": "brief.md = merged task.json.instruction 逐字（<outdir>→out 机械替换，唯一改动；8 题 brief≡instruction 逐字相等已开工核验）；fixtures/ 空目录在位（make_arms 装置要求；输入转写稿内嵌 instruction，臂自存数据文件属任务面）",
+  "isolation": "隔离断言：任何臂树禁 reference|oracle 目录与 runner.py/golden.json/rubric.md/judge-notes.md 文件；baseline 禁 .zcode；treatment 必有技能挂载；两臂 brief sha256 相等（prep 全 24 单元×2 臂断言）",
+  "unique_workdir": "D2 纪律：唯一新工作目录 evalkit/runs/mm-retest-20261009/（新树）；scratch=/tmp/mm-retest-20261009-pin-scratch 与 /tmp/mm-retest-20261009-judge-scratch（新建，不复用历史轮目录）",
+  "crash_rerun_policy": "D2 纪律：崩溃重跑事前登记——任何装置崩溃后的重跑，须先在 round-plan.json 增补 crash_rerun_registrations 条目（范围+原因+预期调用）再执行；判词按 slot 先写后处理（judge_call 落盘 verdict-slot<k>.json 于任何解析/处理之前）；判词归属记实际会话（每判词 attempt 记 session_id/model_id_observed）"
+ },
+ "judging": {
+  "panel": {
+   "composition_rule": "被测族=glm（t01/t03/t05/t07）→ 裁判=[step-router-v1, Minimax-M3.1-Flash-Preview]；被测族=minimax（t02/t04/t06/t08）→ 裁判=[step-router-v1, GLM-5.3]（≥2 族互裁，与被测族交集为空）",
+   "position_rotation": "裁判槽位按任务序奇偶互换；EVAL-SPEC §3.2-4 甲乙呈现位置在任务间与重复间轮换（staging 洗牌 seed=任务名派生）",
+   "blind": [
+    "裁判对两臂来源与顺序不知情",
+    "产物匿名化（P1..P6 洗牌）+ docx 事实预抽取（python-docx 确定性抽取）+ 路径/挂载痕迹漂白；映射仅存 records/judge-staging/，不进裁判工作目录",
+    "评分必附实测证据，禁同情分",
+    "裁判模型 ID 与裁判 prompt 版本随轮落盘"
+   ]
+  },
+  "protocol": "全 8 题=加权维度协议：rubric.md 加权维度判分（满分档=1.0、零分档=0.0、中档=rubric 明示分/未明示 0.5），加权分=round(10×Σ(维度分×权重)÷Σ权重,1)，通过线=task.json.pass_line（能力/边界 8.0、陷阱 8.5）；判据面=rubric.md+judge-notes.md（仅进裁判暂存，不进臂）",
+  "judge_notes_first_batch": "装置教训（OFFICE-K5-FINAL-RULING / office 首批 t01-t04 漏嵌 notes 事故）：judge-notes 自首批起全部嵌入裁判 brief（『判官专用：判挂点与期望值，判分必照此执行』节），8 题全嵌",
+  "judge_arith_check": "§9-3 首轮即生效：harness 对每份判词逐产物按 rubric 权重机算公式分 total=Decimal round_half_up(10×Σ(dim×w)/Σw,1)（本轮 8 题 rubric 无封顶条款，无 min(·,cap) 项——开工扫描实证）；判官 total vs 机算不一致 → 判词无效，同裁判新会话重发 1 次，仍不一致 → fail-closed unjudgeable（禁止人工改数或择优取用）；§3.4 复评判词同受约束",
+  "anchor_prereg": "锚点预登记（开工核验 2026-10-09）：8 题 judge-notes 在位且含引擎实测校准记录；陷阱题组合锚=mm/t08 ⟦0.5,0,1⟧→5.0（MMHOT-FIX 修订轮新增）；t06/t07 零改动结论认可（OFFICE-K5-FINAL-RULING ①）；8 题判挂点加权分全部跌破通过线（rubric 算术自检节）",
+  "consistency_spot_check": "EVAL-SPEC v0.2.1 §3.4 + §9-4 照做：每任务抽 1 份产物（按任务序轮换覆盖两臂）同裁判匿名复评（Q1）；比较对象=同裁判首评 vs 复评；|Δ|>2 → 换面板内另一异族裁判重评全任务，比较对象=换上裁判对被抽产物分数 vs 失格裁判对该产物首评（§9-4 明文化）；仍>2 → 该任务 unjudgeable",
+  "exit_statistics_prereg": "§9-5 预登记（从严口径）：unjudgeable 任务退出本轮统计且 blind=false 计负（照 office-retest 同款登记）；轮后禁放宽或改选口径",
+  "judge_prompt_version": "S8-JUDGE-v2-MMRETEST-1",
+  "channel_failure_policy": "step 通道故障：重试 ≤1 后仍不通 → 该裁判 fail-closed；若致单任务异族裁判 <2 族 → 该任务 fail-closed 记 unjudgeable、blind=false，不得放宽；全部如实降级留痕（judge_calls ledger channel_failure 字段），禁止静默剔除",
+  "budget_accounting": "judge_calls 每次调用前记 pending、事后回填；下限=主判 16（8 题×2 裁判）+抽检复评 8（每题 1）；重发余量 ≤16（arith 不一致/通道故障每判词重发 ≤1）；换裁判重评按实发记账"
+ },
+ "acceptance": {
+  "spec": "EVAL-SPEC v0.2.2（=v0.2.1 全文+§9 收紧）§3.6 盲评门三条件【必须】同时满足，逐条给实算值",
+  "conditions": [
+   "① 均分差 Δ ≥ 1.0（0–10 加权制，§3.3-1）",
+   "② 任务级胜率 ≥ 60%（§3.3-3；8 任务需 ≥5 胜；平局计入分母不计胜）",
+   "③ 反向任务 ≤ 1（反向=treatment 任务均分 < baseline 或 treatment 任务均分=0；平局不进反向计数）；三条以最严格者裁决"
+  ],
+  "task_verdict_rule": "§3.3-2（v0.2.1 tie-aware，n=3，§9 生效版）：逐对比较计更高 h 与更低 l（h+l+p=3）——h≥2 胜；l≥2 负；其余（含全平与双 10 满饱和）平",
+  "swap_check": "K5B-05 勘误口径：swap 侧从原始 per-pair 分数独立重算（禁止 verdict 标签互换）；恒等式 swap_delta+delta≈0 实算落盘",
+  "efficiency_gate": "token 比率与耗时比率 ≤2.0（db join 实测，测量项随轮披露）",
+  "cross_generation": "§3.7-4：本轮（S8-JUDGE-v2-MMRETEST-1、merged 新题集 8 题、n=3、v0.2.2）与 K5B round1（S8-JUDGE-v1、旧题集 8 题、n=2、v0.2）构成跨代——禁止与 K5B benchmark.json Δ 直接对位或合并披露；K5B verdict 不追溯改判",
+  "disclosure": "single_round_signal=true；同代第二轮确认前禁止外引单点 Δ（§3.7-1）；对外口径限于 verdict/n/rep/轮次/钉版/evalbench 版本",
+  "end_state_principle": "§3.8-7：断言与裁判判产物端态，不因实现路径与参照不同扣分",
+  "holdout_discipline": "不碰 <HOLDOUT>；goldens 与 pool-state 签署不动；REGISTRY 不写；不改判卷器与 rubric（merged/ 冻结净荷零改动，开工/收工哈希复算留痕）"
+ },
+ "mock_dryrun_prereg": "D2 纪律：mock 三分支干跑（主判/复评/重发）于实判前执行——x_selfcheck.py 以 mock 判官函数零模型干跑三分支：①主判全链路（staging→brief→调用→slot 落盘→解析→arith 机算→记录）；②复评链路（抽样→Q1 匿名→复评→分差比较）；③重发链路（arith 不一致判词→同裁判重发 1 次→仍不一致 fail-closed）。退出码 0 方可开判",
+ "crash_rerun_registrations": []
+}

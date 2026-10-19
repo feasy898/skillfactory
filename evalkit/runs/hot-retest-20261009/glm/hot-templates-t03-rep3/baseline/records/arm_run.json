@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t03-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 162130,
+  "started_at_ms": 1791531255599,
+  "session_id": "sess_bfdf0c16-c283-4261-94d7-19ad9812b2fa",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t03-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 321116,
+      "ot": 4981,
+      "dur": 154486,
+      "n": 13
+    }
+  ],
+  "input_tokens": 321116,
+  "output_tokens": 4981,
+  "stdout_bytes": 2592,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " stripped to `#通勤背包选购`, which appears in the title, hook, and summary blocks.\\n- The first point `  三档承重分装更护肩  ` was stripped to `三档承重分装更护肩` and filled into `point_block_1`; `points_used` holds all three stripped points, `points_unused` is empty, and `points_input_count` is 3 (pre-normalization count).\\n- The tag group's first tag `#通勤背包选购` was derived from the topic by removing all `#` and whitespace, then re-deriving, per the frozen `clean_tag` rule.\\n\\n**Output conformance:** `structure.json` has the 11 required top-level keys with the 7 frozen elements (title, hook_block, point_block_1–3, summary_block, tag_group) each carrying 9 keys, the correct emoji mapping (🔥/✅/💡/📌/🏷️), and placeholder stats of 7 open slots / 10 input-filled slots. `骨架.md` has the correct header, per-element sections, and the 占位符统计 footer. No `{{ }}` residue, and a re-run to a temp directory produced byte-identical files, confirming deterministic output. All `【占位:…】` slots were left open for the user to fill, as the skill's red lines require.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 13,\n    \"inputTokens\": 321116,\n    \"outputTokens\": 4981,\n    \"totalTokens\": 326097,\n    \"cacheReadTokens\": 304960,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 4074,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 326097,\n    \"contextUsed\": 32092,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

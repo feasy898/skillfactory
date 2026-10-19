@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t04-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 171073,
+  "started_at_ms": 1791530489158,
+  "session_id": "sess_29e0e908-d570-4500-a6fa-01a08dc1738e",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t04-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 401861,
+      "ot": 15514,
+      "dur": 163440,
+      "n": 15
+    }
+  ],
+  "input_tokens": 401861,
+  "output_tokens": 15514,
+  "stdout_bytes": 2897,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " A/B/C/D grading rule.\\n\\n**One thing worth flagging:** my first draft's script ran523 characters against a declared 75-second runtime — at the real ~5 字/秒 口播 pace that would have been a 109-second video, not 75s, and every section was over budget. I caught it on verification, cut the script to 381 characters, and recomputed every timestamp from the actual character counts. The file now states `duration_sec: 75`, `script_chars: 381`, `speech_rate_cps: 5.1`, and a verification pass confirms the timeline is continuous, every segment's stated duration and char count match the text, all per-section speaking rates land in a 4.75–5.21 字/秒 band, and each of the three brief points maps to exactly one `value_point` section in order. I also fixed a U+FFFD corruption that crept into the first draft's overview table.\\n\\nNote on method: this is the baseline arm (`baseline_has_skill: false`), so I worked from the brief alone and deliberately did not open the treatment arm's `hot-templates` skill, to keep the A/B comparison honest.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 15,\n    \"inputTokens\": 401861,\n    \"outputTokens\": 15514,\n    \"totalTokens\": 417375,\n    \"cacheReadTokens\": 364297,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 2205,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 417375,\n    \"contextUsed\": 38350,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "t04",
+  "rep": 2,
+  "slot": 16
+}

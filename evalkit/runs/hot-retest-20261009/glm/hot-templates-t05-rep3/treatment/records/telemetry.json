@@ -1,0 +1,21 @@
+{
+  "available": true,
+  "session_id": "sess_6bdd2a73-931c-4d4d-b1c1-0a426f04bcb3",
+  "session": {
+    "directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t05-rep3/treatment"
+  },
+  "directory_matches_arm": true,
+  "db_source": "global",
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 335819,
+      "ot": 6623,
+      "dur": 116177,
+      "n": 11
+    }
+  ]
+}

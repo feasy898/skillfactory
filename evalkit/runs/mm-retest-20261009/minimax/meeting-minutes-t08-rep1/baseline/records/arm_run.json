@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t08-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 175714,
+  "started_at_ms": 1791533097044,
+  "session_id": "sess_e4ceff54-fb85-4c80-af0a-ec8b55b38c1a",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t08-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1050170,
+      "ot": 8875,
+      "dur": 157982,
+      "n": 28
+    }
+  ],
+  "input_tokens": 1050170,
+  "output_tokens": 8875,
+  "stdout_bytes": 2912,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "sing a calendar date.\\n- 逄越 agreed in principle to payment but assigned no owner, so the 待办 table's second row leaves 责任人 as `【请填写：转写稿未指定执行人】` with a note explaining why.\\n\\n**Verification.** Beyond the automated post-check, I rendered the docx through LibreOffice to PNG and read the page: the table keeps header-row repetition, no cell is clipped, no blank page, and the page numbers appear correctly. I tightened margins and heading spacing so the whole minutes fit on a single page — the first render orphaned the last risk paragraph onto page 2. The intermediate PDF used for that check was removed, so `out/` contains only the two requested files.\\n\\n::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t08-rep1/baseline/out/纪要.docx\\\" purpose=\\\"output\\\"}\\n\\n::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t08-rep1/baseline/out/summary.json\\\" purpose=\\\"output\\\"}\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 28,\n    \"inputTokens\": 1050170,\n    \"outputTokens\": 8875,\n    \"totalTokens\": 1059045,\n    \"cacheReadTokens\": 999982,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1761,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1059045,\n    \"contextUsed\": 50935,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

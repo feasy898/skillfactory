@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t08-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 123904,
+  "started_at_ms": 1791531227061,
+  "session_id": "sess_5723e19a-5888-46a9-89ff-73dfe66ce169",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t08-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 233394,
+      "ot": 7043,
+      "dur": 117761,
+      "n": 10
+    }
+  ],
+  "input_tokens": 233394,
+  "output_tokens": 7043,
+  "stdout_bytes": 3272,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "s the requested path, `selling_points_source_available: false`, `origin: \\\"self_authored_fallback\\\"`, and the three verification checks that were actually run. Each of the three `selling_points` carries its own `origin: \\\"self_authored_fallback\\\"` so the label travels with the content rather than sitting in one disclaimer. An `integrity` block asserts no fabricated statistics, no fabricated source citation, and no content attributed to the missing file.\\n\\nTwo things I deliberately did **not** invent: the 前后对比 section would naturally carry a \\\"翻找耗时 40 秒 → 5 秒\\\" number, but with no measurement behind it I left the seconds out and flagged in both files that no such figure should be stated as fact without a real test. Same for the posting-time slots, which are labelled 创作经验值 rather than presented as measured results.\\n\\nIf `./data/旧衣改造卖点.json` shows up later, only section 3 of the markdown and the `selling_points` array in the JSON need swapping — the surrounding structure holds regardless of which selling points fill it.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 10,\n    \"inputTokens\": 233394,\n    \"outputTokens\": 7043,\n    \"totalTokens\": 240437,\n    \"cacheReadTokens\": 204619,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 712,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 240437,\n    \"contextUsed\": 29579,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "t08",
+  "rep": 1,
+  "slot": 29
+}

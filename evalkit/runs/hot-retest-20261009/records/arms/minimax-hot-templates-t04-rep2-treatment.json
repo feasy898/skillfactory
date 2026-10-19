@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t04-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 36261,
+  "started_at_ms": 1791530662237,
+  "session_id": "sess_37447908-7c09-4e0d-bd87-053a78b58922",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t04-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 244490,
+      "ot": 2097,
+      "dur": 29988,
+      "n": 10
+    }
+  ],
+  "input_tokens": 244490,
+  "output_tokens": 2097,
+  "stdout_bytes": 3444,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "d there are zero `{{ }}`-style unfilled template variables in either file, since those would be a real defect rather than a designed slot.\\n\\n**Verification beyond the stated criteria:** I re-ran the engine with identical inputs into a temp directory and diffed it against `out/` — byte-identical, confirming determinism — then removed the temp copy. I could not run the package's own acceptance suite (`eval/runner.py`); that directory does not exist in this skill package, which ships only `references/`, `scripts/`, `requirements.txt`, and `SKILL.md`. So the structural conformance claims above are from my own direct inspection of the output against `references/dy.md`, not from that harness.\\n\\nThe next step, if wanted, is the expansion pass described in step 5 of the skill: filling the six open slots by following the writing notes in `骨架.md` (hook ≤15 characters and identity-based, spoken sentences ≤20 characters, one takeaway per value point). I've left that to you since it sits on the deliberate no-fabrication boundary.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 10,\n    \"inputTokens\": 244490,\n    \"outputTokens\": 2097,\n    \"totalTokens\": 246587,\n    \"cacheReadTokens\": 214784,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 455,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 246587,\n    \"contextUsed\": 27452,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "t04",
+  "rep": 2,
+  "slot": 19
+}

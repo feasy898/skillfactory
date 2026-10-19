@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t08-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 244416,
+  "started_at_ms": 1791533562306,
+  "session_id": "sess_8c452409-36f8-4f4f-b3dc-f14c6dfe2b6c",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t08-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1202841,
+      "ot": 11660,
+      "dur": 217157,
+      "n": 31
+    }
+  ],
+  "input_tokens": 1202841,
+  "output_tokens": 11660,
+  "stdout_bytes": 2873,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "s marked as unrecorded instead of inferred — including a 待确认事项 line at the end.\\n\\n**Verification:** `postcheck.py` passed 9/9 with0 errors and 0 warnings. I rendered via LibreOffice to PNG and read both pages — Chinese renders correctly through the local fontconfig substitution (SimSun→Noto Serif CJK SC, SimHei→Noto Sans CJK SC), the table fits within the text block, no overflow or blank pages, page numbers present. I made two layout fixes from looking at the renders: the 说明 column was cramped at 4 lines, so I rebalanced widths, which then wrapped the 序号 header onto two lines, so I widened that column again. The final render is clean on both pages.\\n\\nOne caveat on process: the `documents:visual-judge` subagent failed with a provider error (`Provider Registry 中不存在 Provider`), so I inspected the page images myself as the documented fallback rather than shipping the visual gate unchecked. Build scripts stayed in `/tmp/mmbuild`, so the arm directory contains only `brief.md`, `fixtures/`, the transcript, and `out/`.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 31,\n    \"inputTokens\": 1202841,\n    \"outputTokens\": 11660,\n    \"totalTokens\": 1214501,\n    \"cacheReadTokens\": 1149634,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1924,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1214501,\n    \"contextUsed\": 53961,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t08",
+  "rep": 3,
+  "slot": 34
+}

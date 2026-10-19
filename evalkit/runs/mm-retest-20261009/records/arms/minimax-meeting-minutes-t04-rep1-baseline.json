@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t04-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 252490,
+  "started_at_ms": 1791530975771,
+  "session_id": "sess_d7fe9c79-52a1-4f47-a887-0d619080ef77",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t04-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1690858,
+      "ot": 14588,
+      "dur": 231081,
+      "n": 35
+    }
+  ],
+  "input_tokens": 1690858,
+  "output_tokens": 14588,
+  "stdout_bytes": 2383,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "待办事项 (5-row table: 序号／待办事项／责任人／完成时限／提出时间), 三、风险与关注 (3 items). Every item carries a （依据：HH:MM） trace back to the transcript line.\\n- `out/summary.json` — `{\\\"决议事项\\\": 3, \\\"待办事项\\\": 5, \\\"风险与关注\\\": 3, \\\"合计\\\": 11}`.\\n\\n**Judgment calls worth knowing about**\\n\\n- 尾货清仓定价 appears twice on purpose: as a 待办 (会上未形成结论，需另行商定) and as a 风险 (尾货变现进度不确定). Same for the speaker-derived owners — 责任人 is filled only where the transcript makes the speaker the actor.\\n- Deadlines other than the coupon rule were never set in the transcript, so those cells read 会上未明确 rather than an invented date. 会议地点 is the one field marked with a 【请填写：会议地点】 placeholder, since the transcript gives no location.\\n- The 下周三双11复盘 item sits in the overview block as 下次会议 rather than a fourth section, to keep the brief's 三段式 structure intact and avoid a near-empty third page.\\n\\nVerification: `postcheck.py` passes 9/9 with 0 errors and 0 warnings, and a LibreOffice render to PDF/PNG was inspected page by page — no blank pages, no split table rows, no clipped text.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 35,\n    \"inputTokens\": 1690858,\n    \"outputTokens\": 14588,\n    \"totalTokens\": 1705446,\n    \"cacheReadTokens\": 1620202,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 3348,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1705446,\n    \"contextUsed\": 71260,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t04",
+  "rep": 1,
+  "slot": 11
+}

@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t01-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 182134,
+  "started_at_ms": 1791530815399,
+  "session_id": "sess_4fdf3d8e-7e6e-4268-8de4-16f674d59e1d",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t01-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 324455,
+      "ot": 7025,
+      "dur": 173505,
+      "n": 12
+    }
+  ],
+  "input_tokens": 324455,
+  "output_tokens": 7025,
+  "stdout_bytes": 2209,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "{\n  \"sessionId\": \"sess_4fdf3d8e-7e6e-4268-8de4-16f674d59e1d\",\n  \"traceId\": \"24542187-5d8c-44da-8033-f77d7c94e7e9\",\n  \"turnId\": \"turn_91f411b2-bae4-4973-bcef-1acfec26af8a\",\n  \"response\": \"完成。三件产物均已落盘并通过验证：\\n\\n**交付物**\\n- `shiguang_bakery_0912.txt` — 按简报原文保存的转写稿\\n- `out/纪要.docx` — 三段式纪要\\n- `out/summary.json` — 条数统计：决议事项 3、待办事项 4、风险与关注 2、合计 9\\n\\n**纪要内容概要**\\n- 一、决议事项（3 条）：枣泥馅换用决定、比价公示后下单（同意）、品质一票否决（结论）\\n- 二、待办事项（4 条，三列表格）：枣泥产能盯报数、包装盒比价定标、冷链车续约法务把关、直播档期报排期\\n- 三、风险与关注（2 条）：烫金不确定、黄油报关时间不确定\\n\\n**执行说明**：用本仓库 `meeting-minutes` 技能自带的 `scripts/minutes.py` 生成（默认 venv 缺 python-docx，改用系统 `/usr/bin/python3` 运行成功）。技能包里没有随附的 `eval/runner.py` 验收脚本（该部署只含 scripts/ 与 references/），我按技能文档的验收清单自行核验，全部通过：脚本退出码 0 且两产物真实存在；docx 标题/元信息/三节标题齐全、待办为「事项/负责人/期限」三列表格、summary 四键数值与 docx 实际条数一致且合计正确；9 个条目（含表格事项列）逐条与转写稿比对，均逐字命中出处行并带时间与说话人。开头寒暄、调休通知、定价宣布等无关键词行及白板补充行，按规则归为噪声未收录；负责人/期限抓不到确定值的（如比价、法务把关两行）按红线如实填「待定」。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 12,\n    \"inputTokens\": 324455,\n    \"outputTokens\": 7025,\n    \"totalTokens\": 331480,\n    \"cacheReadTokens\": 308224,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 5363,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 331480,\n    \"contextUsed\": 32211,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t01",
+  "rep": 2,
+  "slot": 9
+}

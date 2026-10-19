@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t04-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 73861,
+  "started_at_ms": 1791531723597,
+  "session_id": "sess_d43cb7f4-bc3e-4938-8153-cbd82ae6fac9",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t04-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 395965,
+      "ot": 4797,
+      "dur": 64053,
+      "n": 15
+    }
+  ],
+  "input_tokens": 395965,
+  "output_tokens": 4797,
+  "stdout_bytes": 2622,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " \"sess_d43cb7f4-bc3e-4938-8153-cbd82ae6fac9\",\n  \"traceId\": \"19dd20ea-83e4-4a13-9b2f-a10a30678fd1\",\n  \"turnId\": \"turn_251f884d-712a-40d8-8fe9-63c7759a5cde\",\n  \"response\": \"会议纪要已生成并通过全部验收检查。产物在 `out/`：`纪要.docx` 与 `summary.json`，转写稿按要求存为 `xiangqi_fashion_1009.txt`。\\n\\n**条数统计**：决议事项 3、待办事项 3、风险与关注 2、合计 8。\\n\\n**分类结果**（按技能规定的关键词优先级 决议 > 待办 > 风险，11 行发言中 3 行无关键词被排除）：\\n\\n- 一、决议事项 — 10:01「报销同意书的审批流需要走新版OA」（命中\\\"同意\\\"）、10:03「差评里关于尺码的结论性吐槽很集中」（命中\\\"结论\\\"）、10:04「主播冯议定下周的排班没问题」（命中\\\"议定\\\"）\\n- 二、待办事项 — 10:02 传达到位、10:05 工单跟进、10:07 风控规则重新配，期限提取到「月底前」\\n- 三、风险与关注 — 10:06 定价不确定、10:09 履约时效延期风险\\n\\n被排除的 3 行是 10:00 开场、10:08 名单接龙、10:10 散会，均不含11 个关键词之一。\\n\\n**执行方式**：直接跑了技能包自带的 `scripts/minutes.py`，退出码 0，两个产物都已回读确认存在。\\n\\n**验收结果**（技能第 2 步的 `eval/runner.py` 在本环境不存在，`reference/out` 参照目录也为空，所以我逐项手工跑了等价检查，全部通过）：三个章节标题齐全；待办为「事项/负责人/期限」三列表格；summary 四键名精确、合计等于三者之和、且与 docx 实际条数逐项一致；5 条编号条目与 3 条表格事项全部能在转写稿中找到唯一出处行，时间与说话人吻合、内容逐字一致；两节编号从 1 连续。\\n\\n两点如实说明：三条待办的负责人都是「待定」——原句「责任落到车间」不在技能规定的提取模式内，按红线不编造。「报销同意书」里的\\\"同意\\\"是名词性用法却命中了决议关键词，这是技能文档明确列为「已知可接受的错」的规则行为，我没有自作聪明修正。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 15,\n    \"inputTokens\": 395965,\n    \"outputTokens\": 4797,\n    \"totalTokens\": 400762,\n    \"cacheReadTokens\": 364460,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 938,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 400762,\n    \"contextUsed\": 32185,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

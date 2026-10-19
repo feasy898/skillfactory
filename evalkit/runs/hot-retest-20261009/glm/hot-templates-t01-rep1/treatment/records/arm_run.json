@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t01-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 124441,
+  "started_at_ms": 1791529277878,
+  "session_id": "sess_dca95963-1561-42dd-be6b-f6895d46a409",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t01-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 171539,
+      "ot": 2365,
+      "dur": 119741,
+      "n": 7
+    }
+  ],
+  "input_tokens": 171539,
+  "output_tokens": 2365,
+  "stdout_bytes": 1986,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "{\n  \"sessionId\": \"sess_dca95963-1561-42dd-be6b-f6895d46a409\",\n  \"traceId\": \"2a67171b-0810-455f-b87e-26092a2071fb\",\n  \"turnId\": \"turn_d9d271ad-5a7b-4bfb-8e63-71275afe2ade\",\n  \"response\": \"任务完成。公众号文章爆款骨架已按 `hot-templates` 技能的确定性渲染引擎生成并落盘。\\n\\n**产物**（位于当前目录 `out/` 下，两份文件均非空）：\\n\\n- `out/骨架.md` — 人读骨架，采用「引子 + 三段论 + 金句收尾」5 要素结构\\n- `out/structure.json` — 机器可读版，11 个顶层键齐全，与骨架同源同构\\n\\n**关键结果**：\\n\\n- 引擎退出码 0，stdout 打印 `OK platform=wx topic=宿舍省电费 elements=5 open_placeholders=10 filled_from_input=7 -> out`，符合技能规定的成功判据（满 3 卖点时 open=10、filled=7）。\\n- 三条卖点（离开寝室随手断插排 / 空调设 26 度配合风扇 / 插座改用带开关款）全部填入 `thesis_how`（三、怎么办）的三个抓手行，`points_unused` 为空。\\n- 冻结标记全部原样保留：三段论以「一、是什么」「二、为什么」「三、怎么办」开头、金句收尾含「共勉」。\\n- 10 处 `【占位:…】` 开放槽位（引子场景、常见误解、一句话定义、三条根因、三个抓手展开、金句主体）保持原样未编造填充，留待后续扩写成文时补写。\\n\\n如需下一步，可按 `references/wx.md` 的写法要点（段落 ≤5 行、先破后立、根因按机制补写等）把骨架扩写为成文。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 7,\n    \"inputTokens\": 171539,\n    \"outputTokens\": 2365,\n    \"totalTokens\": 173904,\n    \"cacheReadTokens\": 159616,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1984,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 173904,\n    \"contextUsed\": 27962,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

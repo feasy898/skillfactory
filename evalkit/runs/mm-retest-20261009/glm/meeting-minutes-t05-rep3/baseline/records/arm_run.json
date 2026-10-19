@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t05-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 613665,
+  "started_at_ms": 1791535805053,
+  "session_id": "sess_0db74b61-1f03-4039-8961-ec400c532dfb",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t05-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1117437,
+      "ot": 27264,
+      "dur": 573437,
+      "n": 20
+    }
+  ],
+  "input_tokens": 1117437,
+  "output_tokens": 27264,
+  "stdout_bytes": 3113,
+  "stderr_bytes": 196,
+  "stderr_head": "AI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\n",
+  "stdout_tail": "-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t05-rep3/baseline/out/纪要.docx\\\" purpose=\\\"output\\\"} — 公文风格三段式纪要：标题《和平校区安保工作例会会议纪要》＋会议概况（时间/主持人/出席/记录依据），正文 **一、决议事项**（3 条：值班周期双周改单周；值班表下月启用新版本；同意供暖巡检挂牌于本月底前完成且巡检记录用新表格）、**二、待办事项**（5 列表格 6 行：场地预订、更新值班表、秋冬季巡逻加频、供暖挂牌、下周一起穿工服、补充 2 名夜班门卫，含提出人/时限/备注）、**三、风险与关注**（消防通道堆物且有延期整改记录），文末附整理说明 4 条。\\n3. **`out/summary.json`** ::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t05-rep3/baseline/out/summary.json\\\" purpose=\\\"output\\\"} — 四键统计：决议事项 3／待办事项 6／风险与关注 1／合计 10。\\n\\n**整理口径**（已在文档“整理说明”中如实披露）\\n\\n- “例行巡逻开始”“散会”属程序性发言，不计入条目；副队长(代:何莉)的“值班表需要更新”归入待办第 2 行，其后续表态归入决议。\\n- “供暖巡检挂牌”在决议（表决通过）与待办（执行事项，时限本月底）各计一次，属决议→执行的正常对应关系，备注列已互相引用。\\n- 异常时间戳不擅自修正，引用处保留原样并括注标明；会议日期 11 月 12 日系依据文件名推定（年份未标注），未杜撰会议名称、地点等转写稿没有的信息。\\n\\n**质量验证**：postcheck.py 0 错误（仅 1 条表格行距与正文不同的一致性提示，属公文表格的正常紧凑行距）；LibreOffice 渲染两页 PNG 经视觉评审均通过；docx 内条目数（3/6/1）与 summary.json 逐项核对一致。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 20,\n    \"inputTokens\": 1117437,\n    \"outputTokens\": 27264,\n    \"totalTokens\": 1144701,\n    \"cacheReadTokens\": 1057920,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 19930,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1144701,\n    \"contextUsed\": 75330,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

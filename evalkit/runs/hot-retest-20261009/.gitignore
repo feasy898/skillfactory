@@ -1,0 +1,11 @@
+# 装置排除（2026-10-09，照 office-retest-20261009 同款口径）：臂工作树内被测模型自装的
+# 第三方依赖环境（.venv/node_modules/.deps/site-packages/__pycache__）属可复现环境噪声、
+# 非判分证据面；判分证据面=brief/fixtures/out/run_log/records/judge-work 全部保留入库。
+# 排除决定随本 .gitignore 留痕。
+.venv/
+venv/
+node_modules/
+.deps/
+site-packages/
+__pycache__/
+*.pyc

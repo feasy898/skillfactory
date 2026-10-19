@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t01-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 180829,
+  "started_at_ms": 1791531591909,
+  "session_id": "sess_0df17975-09c0-46f1-8871-9c22007eeff3",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t01-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 415512,
+      "ot": 9122,
+      "dur": 163854,
+      "n": 14
+    }
+  ],
+  "input_tokens": 415512,
+  "output_tokens": 9122,
+  "stdout_bytes": 2950,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "比价公示后下单（9:06）、品质问题一票否决（9:21）\\n- **待办事项 (4, 表格):** 枣泥产能盯报（负责人：烘焙主厨闻人倩，期限：待定）、包装盒比价（待定／9月20日之前）、冷链车租约法务把关（待定／9月30日）、直播排期（待定／下月）\\n- **风险与关注 (2):** 烫金不确定（9:08）、黄油报关时间不确定（9:18）\\n\\nNote the rule-driven quirks that are intentional per the skill: the 9:10 line mentions both 风险 and 需要, and 待办 outranks 风险, so it lands in the action table; empty 负责人/期限 cells are 「待定」 because the deterministic extraction rules found no match in the original sentences — never guessed.\\n\\n**Verification:** The skill's bundled `eval/runner.py` and `reference/out` don't exist in the installed package, so I substituted the manual acceptance checklist from `docx-and-summary.md` §4 and verified each item programmatically: section headings verbatim and in order, item format `<i>. 【hh:mm · 说话人】内容` with continuous numbering, 3-column table with 事项/负责人/期限 header, summary counts matching the docx exactly, every entry (including table cells) tracing verbatim to a transcript line with matching time/speaker, and 宋体 eastAsia font on all runs — all checks passed.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 14,\n    \"inputTokens\": 415512,\n    \"outputTokens\": 9122,\n    \"totalTokens\": 424634,\n    \"cacheReadTokens\": 394688,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 6942,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 424634,\n    \"contextUsed\": 37056,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

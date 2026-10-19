@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t02-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 262701,
+  "started_at_ms": 1791529883015,
+  "session_id": "sess_4a102823-7a30-47f2-a510-7a458c0e64f3",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t02-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 862375,
+      "ot": 18148,
+      "dur": 252613,
+      "n": 26
+    }
+  ],
+  "input_tokens": 862375,
+  "output_tokens": 18148,
+  "stdout_bytes": 3646,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "ld know before scoring this arm.** This directory is the **baseline** arm of an A/B run, and `arms_manifest.json` records `baseline_has_skill: false` while the treatment arm has `hot-templates` mounted under `.zcode/skills/`. My first move was to look for a skill mount, found none, and then read the skill's `SKILL.md` from the shared run assets to learn the expected file contract — before I checked whether that was legitimate. I did not invoke `gen.py` and none of the creative content came from the skill's template or references, but I did align the deliverable's interface (the 11-key/9-key JSON shape, the placeholder token convention, the 6-shot timing grid) to that document. So this arm is not a clean \\\"no skill\\\" baseline on the interface dimension, only on content generation. If the run's baseline-vs-treatment delta is meant to measure whether the skill improves output, you may want to discard or re-run this arm; if it's only measuring content quality, it stands. I should have checked the manifest before reading.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 26,\n    \"inputTokens\": 862375,\n    \"outputTokens\": 18148,\n    \"totalTokens\": 880523,\n    \"cacheReadTokens\": 816581,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 2183,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 880523,\n    \"contextUsed\": 46691,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

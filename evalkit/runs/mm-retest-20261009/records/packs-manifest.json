@@ -1,0 +1,87 @@
+{
+  "run": "mm-retest-20261009",
+  "taskset_frozen_sha256_100": "adae05f2ce966345b23f276bd6e37355cf2b511f02994d392bdfc0afb900c2a6",
+  "taskset_frozen_cmd": "find planning/taskset-redesign/merged -type f ! -name index.json ! -name selection.tsv ! -name 'BLIND-REVIEW*' ! -name 'REVISION-LOG.md' | sort | xargs sha256sum | sha256sum",
+  "packs": [
+    {
+      "task": "t01",
+      "pack": "evalkit/runs/mm-retest-20261009/packs/meeting-minutes-t01",
+      "source": "planning/taskset-redesign/merged/meeting-minutes-skill/t01/task.json.instruction（<outdir>→out 机械替换，其余逐字）",
+      "dim": "能力",
+      "pass_line": 8.0,
+      "brief_sha256": "8e3f614775edf6642a1337ccff59f0a7039e75c3a4fd8ef939ca9e113ef26a78",
+      "outdir_replaced": true,
+      "brief_is_instruction_outdir_replaced_only": true
+    },
+    {
+      "task": "t02",
+      "pack": "evalkit/runs/mm-retest-20261009/packs/meeting-minutes-t02",
+      "source": "planning/taskset-redesign/merged/meeting-minutes-skill/t02/task.json.instruction（<outdir>→out 机械替换，其余逐字）",
+      "dim": "能力",
+      "pass_line": 8.0,
+      "brief_sha256": "446713d3181b144fdbabc207b2fcd7aa454d07f981a51c004fc8fa44e1efdaf8",
+      "outdir_replaced": true,
+      "brief_is_instruction_outdir_replaced_only": true
+    },
+    {
+      "task": "t03",
+      "pack": "evalkit/runs/mm-retest-20261009/packs/meeting-minutes-t03",
+      "source": "planning/taskset-redesign/merged/meeting-minutes-skill/t03/task.json.instruction（<outdir>→out 机械替换，其余逐字）",
+      "dim": "能力",
+      "pass_line": 8.0,
+      "brief_sha256": "3a52c0e2863332743e6899158d99a1a404d61965a15f2491a6fcaa2f670ad5d0",
+      "outdir_replaced": true,
+      "brief_is_instruction_outdir_replaced_only": true
+    },
+    {
+      "task": "t04",
+      "pack": "evalkit/runs/mm-retest-20261009/packs/meeting-minutes-t04",
+      "source": "planning/taskset-redesign/merged/meeting-minutes-skill/t04/task.json.instruction（<outdir>→out 机械替换，其余逐字）",
+      "dim": "边界",
+      "pass_line": 8.0,
+      "brief_sha256": "25a05a2d4e6c015d1878e2ed69e3e6051b7ba2c491e28c2470bdc1fc0cc57747",
+      "outdir_replaced": true,
+      "brief_is_instruction_outdir_replaced_only": true
+    },
+    {
+      "task": "t05",
+      "pack": "evalkit/runs/mm-retest-20261009/packs/meeting-minutes-t05",
+      "source": "planning/taskset-redesign/merged/meeting-minutes-skill/t05/task.json.instruction（<outdir>→out 机械替换，其余逐字）",
+      "dim": "边界",
+      "pass_line": 8.0,
+      "brief_sha256": "9d5312502c7bb62df3b04516a390f7f93a7c81aa2bc5d3325a2ccbdfbab8e619",
+      "outdir_replaced": true,
+      "brief_is_instruction_outdir_replaced_only": true
+    },
+    {
+      "task": "t06",
+      "pack": "evalkit/runs/mm-retest-20261009/packs/meeting-minutes-t06",
+      "source": "planning/taskset-redesign/merged/meeting-minutes-skill/t06/task.json.instruction（<outdir>→out 机械替换，其余逐字）",
+      "dim": "陷阱",
+      "pass_line": 8.5,
+      "brief_sha256": "f63fe957f18cbc5dd3abf63b3df9e5f1a1921c996380e593a25ad171018af87f",
+      "outdir_replaced": true,
+      "brief_is_instruction_outdir_replaced_only": true
+    },
+    {
+      "task": "t07",
+      "pack": "evalkit/runs/mm-retest-20261009/packs/meeting-minutes-t07",
+      "source": "planning/taskset-redesign/merged/meeting-minutes-skill/t07/task.json.instruction（<outdir>→out 机械替换，其余逐字）",
+      "dim": "陷阱",
+      "pass_line": 8.5,
+      "brief_sha256": "c649f51feedd174b9f066d35551d487e206de1943ad1165a125e629ed1322da3",
+      "outdir_replaced": true,
+      "brief_is_instruction_outdir_replaced_only": true
+    },
+    {
+      "task": "t08",
+      "pack": "evalkit/runs/mm-retest-20261009/packs/meeting-minutes-t08",
+      "source": "planning/taskset-redesign/merged/meeting-minutes-skill/t08/task.json.instruction（<outdir>→out 机械替换，其余逐字）",
+      "dim": "陷阱",
+      "pass_line": 8.5,
+      "brief_sha256": "06a46d149bdd05cefe70116f6f1d842f8d3495758745807e3acd04621238e7a1",
+      "outdir_replaced": true,
+      "brief_is_instruction_outdir_replaced_only": true
+    }
+  ]
+}

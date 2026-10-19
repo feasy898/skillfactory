@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t07-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 250830,
+  "started_at_ms": 1791532973279,
+  "session_id": "sess_e43930c1-16c6-4c83-9358-d484c1b416fa",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t07-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 209692,
+      "ot": 13411,
+      "dur": 242632,
+      "n": 8
+    }
+  ],
+  "input_tokens": 209692,
+  "output_tokens": 13411,
+  "stdout_bytes": 2376,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "tructure: scene-based hook (2 a.m. blackout) → pain-point resonance (\\\"买了≠备了\\\") → three detail sections covering the required points (flashlight/batteries in separate sealed bags; twice-yearly medicine expiry checks tied to fixed calendar anchors; document copies in waterproof bags, kept grab-and-go) → emotional lift → 20-minute-action CTA → comment/in-看 interaction prompt\\n- **5 quotable golden sentences**, layout/imagery execution notes (font sizes, divider styling, 4 concrete photo suggestions, posting window Sun 20:00–22:00), and a compliance self-check (no absolute claims, no unsourced statistics, titles ≤64 chars)\\n\\n**`structure.json`** — machine-readable version of the same skeleton: valid JSON with `platform`, `topic`, positioning, titles with selection rationale, all 8 sections carrying full content plus `steps`/`golden_quote`/`transition` fields, `points_coverage` explicitly confirming all 3 required points map to sections 3/4/5 and are covered, media suggestions, and `compliance.placeholders_remaining: 0`.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 8,\n    \"inputTokens\": 209692,\n    \"outputTokens\": 13411,\n    \"totalTokens\": 223103,\n    \"cacheReadTokens\": 190976,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 7920,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 223103,\n    \"contextUsed\": 34671,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "t07",
+  "rep": 1,
+  "slot": 43
+}

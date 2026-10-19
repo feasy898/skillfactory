@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_729a63d3-3000-4067-90fe-ae84a6564bec",
+  "traceId": "65360fd8-7882-4fc6-90d3-4511a0a5f072",
+  "turnId": "turn_c0e842bb-0552-42b2-9b0b-162e422096c0",
+  "response": "任务完成。按 brief.md 的要求，公众号「宿舍省电费」爆款内容骨架已生成在 `out/` 目录下，两个产物齐全且通过校验：\n\n**`out/骨架.md`（人类可读骨架）** — 完整的微信图文创作蓝图，包含：\n- **定位速览**：目标读者（4–6 人合寝、电费 AA 的大学生）、情绪曲线（惊→共鸣→行动→转发）、1200–1500 字预算\n- **3 个 A/B 标题候选**：主推「查了下我们宿舍的电费，全寝沉默了：3 招把它打下来」，附标题写作规则（前 16 字关键词前置、保留数字锚点、避开绝对化用语）\n- **分享卡片摘要 + 开头钩子**（账单惊吓场景→共鸣吐槽→快速入题）\n- **正文 3 招逐节展开**，严格对应 brief 的三个 points：每招含小标题模板、痛点句、3 条可操作做法、带「发布前核实」标记的数据位、金句和配图位\n- **结尾 CTA**（省钱画面感算账 + 转宿舍群的转发钩子 + 评论区引导）、公众号排版建议（金句居中、「第 X 招」徽章、话题标签）和合规提醒\n\n**`out/structure.json`（机器可读版）** — 与 md 一一镜像的结构化数据（`hot-content-skeleton/v1`），sections 按 `hook → p1/p2/p3 → ending` 组织，每个 point 节点含 pain_point、actions、data_slot、golden_sentence 等字段，便于下游程序消费。\n\n校验结果：JSON 解析合法；`platform=wx`、`topic=宿舍省电费`、三个 points 与 brief 中的内联 JSON 串逐字一致（正文小节顺序也一致）。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 11,
+    "inputTokens": 278985,
+    "outputTokens": 10662,
+    "totalTokens": 289647,
+    "cacheReadTokens": 245888,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 6303,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 289647,
+    "contextUsed": 33387,
+    "contextWindow": 200000
+  }
+}

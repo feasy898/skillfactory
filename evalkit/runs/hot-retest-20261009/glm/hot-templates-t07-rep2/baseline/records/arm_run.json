@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t07-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 633681,
+  "started_at_ms": 1791533660194,
+  "session_id": "sess_eb30564a-809b-4035-9ddc-099bb7e414e7",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t07-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1157675,
+      "ot": 24979,
+      "dur": 609401,
+      "n": 30
+    }
+  ],
+  "input_tokens": 1157675,
+  "output_tokens": 24979,
+  "stdout_bytes": 2385,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "{\n  \"sessionId\": \"sess_eb30564a-809b-4035-9ddc-099bb7e414e7\",\n  \"traceId\": \"f7a8679d-5f4f-437c-9996-9eab6ee3e098\",\n  \"turnId\": \"turn_3475668c-ed2b-47c1-9e11-73181c02869c\",\n  \"response\": \"任务完成。两份产物已写入 `out/`，是一篇可直接发布的公众号成稿骨架，没有任何残留占位符。\\n\\n**做法**：brief 对应 hot-templates 技能的 wx（公众号文章）模板，我按该技能的规约分两步走——先用包内确定性渲染引擎 `dist/hot-templates-skill/scripts/gen.py` 生成基线骨架（红线要求骨架生成必须走引擎），再执行模板许可的「扩写成文」步骤，把全部 10 处 `【占位:…】` 开放槽位补写为成稿内容。\\n\\n**产物内容**：\\n- `out/骨架.md` — 五要素结构（引子 → 三段论「是什么/为什么/怎么办」→ 金句收尾）：引子以深夜停电的邻居群场景切入；「怎么办」三个抓手逐字承载三条卖点（手电电池分袋封装、药品半年效期核对、证件复印件防水袋），每条含具体做法、生活化例子和最小启动动作；结尾金句按「真正的…不是靠…，而是靠…」句式收束并保留「共勉」。\\n- `out/structure.json` — 与引擎输出同构的机器可读版：11 个顶层键、要素 id/名称/顺序、meta 全部原样保留，占位记账如实更新为已补写状态（`total_open: 0`、各要素 `placeholder_count: 0`、`open_tokens_unique: []`，7 处输入填充记录不变）。\\n\\n**验证**（31 项全部通过）：零 `【占位:` 残留、零广告法绝对化用语命中（含「第一/绝对/最佳」等 11 个冻结词样）、零 `{{` 模板残留；冻结标记（三段论段首标题、抓手行格式、「…这件事」+ 共勉结构、引擎尾部句式）逐项比对未改动；三个卖点逐字在位且顺序一致；md 与 json 逐要素同源；UTF-8/LF 编码合规。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 30,\n    \"inputTokens\": 1157675,\n    \"outputTokens\": 24979,\n    \"totalTokens\": 1182654,\n    \"cacheReadTokens\": 1103744,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 19521,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1182654,\n    \"contextUsed\": 69112,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

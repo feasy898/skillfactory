@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t06-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 212849,
+  "started_at_ms": 1791532795471,
+  "session_id": "sess_d0f12f75-d501-4af7-9c1d-d4c16dff595d",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t06-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1020563,
+      "ot": 13288,
+      "dur": 198744,
+      "n": 27
+    }
+  ],
+  "input_tokens": 1020563,
+  "output_tokens": 13288,
+  "stdout_bytes": 3118,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "docx` —— 正式会议纪要，共 2 页\\n- `out/summary.json` —— 结构化摘要：议定/待办/待明确事项、口语词清理清单、待确认字段、未推定事项\\n\\n**润色幅度**（只动语言层，含义与原话一致）：删掉「呃」「嘛」「说白了」「哈」「咱们」「那个」「行」等语气与赘词，把「老图纸」写成「现行图纸」、「返工了两回」写成「返工两次」、「改天发群投票」写成「改日在群内发起投票」。只有一处是原样保留的：「就这两天弄完」——这句时限本身含糊，直接抹平会丢信息，所以原话引注并标注未指明具体日期。\\n\\n**纪要结构**：会议基本情况表 + 一、会议议定事项（晨会固定周二上午／工装夹具按现行图纸做／淡季工作日房价一口价）+ 二、待办事项表（物料清单→小盛、腊味礼盒包装重选）+ 三、待明确事项（压胶工序延期风险、洗烘设备保修单据归档、房价方案表决方式）+ 四、记录说明。\\n\\n**三处我没有替你拍板，纪要里按原样留了标记**：\\n1. 19:04「同意的举个手」——转写稿没记表决结果，所以写的是「表决情况待补」，没写成全员通过。\\n2. 19:05 苏莞提群投票、19:07 你当场议定工作日一口价——两句都留着，先后关系标为待确认。\\n3. 会议日期只有 19:00–19:09，没有日期。我没有按文件名 `1011` 推成 10 月 11 日，「会议时间」栏写的是「转写稿未记录具体日期，待补充」。会议地点、记录人、晨会具体钟点同样留空待补。\\n\\n压胶工序延期风险和洗烘设备保修单据这两件，转写稿里只有提出人、没有结论和责任人，我放在「待明确事项」而非编进决议。\\n\\n排版为 A4、纯黑无装饰色、1.3 倍行距、标题黑体系正文宋体系（本机无 SimSun/SimHei，用 Noto Serif/Sans CJK 替代，在 WPS 上可整体换回宋体黑体）。自动检查 9 项 0 错 0 警，另经 LibreOffice 转 PDF 逐页看过，无空白页与溢出。\\n\\n::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t06-rep3/baseline/out/纪要.docx\\\" purpose=\\\"output\\\"}\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 27,\n    \"inputTokens\": 1020563,\n    \"outputTokens\": 13288,\n    \"totalTokens\": 1033851,\n    \"cacheReadTokens\": 976640,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1854,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1033851,\n    \"contextUsed\": 54539,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t06",
+  "rep": 3,
+  "slot": 26
+}

@@ -1,0 +1,21 @@
+{
+  "available": true,
+  "session_id": "sess_bda40b73-8607-4d58-b91e-ec773ee843c4",
+  "session": {
+    "directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t05-rep1/treatment"
+  },
+  "directory_matches_arm": true,
+  "db_source": "global",
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 330374,
+      "ot": 9977,
+      "dur": 156426,
+      "n": 11
+    }
+  ]
+}

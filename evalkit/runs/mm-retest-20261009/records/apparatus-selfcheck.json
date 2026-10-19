@@ -1,0 +1,216 @@
+{
+  "checks": [
+    {
+      "name": "taskset_frozen_100_recompute",
+      "ok": true,
+      "detail": "adae05f2ce966345b23f276bd6e37355cf2b511f02994d392bdfc0afb900c2a6"
+    },
+    {
+      "name": "packs_8_in_place",
+      "ok": true,
+      "detail": "8 packs"
+    },
+    {
+      "name": "pack_t01_brief_同instruction逐字",
+      "ok": true,
+      "detail": "sha=8e3f614775ed"
+    },
+    {
+      "name": "pack_t02_brief_同instruction逐字",
+      "ok": true,
+      "detail": "sha=446713d3181b"
+    },
+    {
+      "name": "pack_t03_brief_同instruction逐字",
+      "ok": true,
+      "detail": "sha=3a52c0e28633"
+    },
+    {
+      "name": "pack_t04_brief_同instruction逐字",
+      "ok": true,
+      "detail": "sha=25a05a2d4e6c"
+    },
+    {
+      "name": "pack_t05_brief_同instruction逐字",
+      "ok": true,
+      "detail": "sha=9d5312502c7b"
+    },
+    {
+      "name": "pack_t06_brief_同instruction逐字",
+      "ok": true,
+      "detail": "sha=f63fe957f18c"
+    },
+    {
+      "name": "pack_t07_brief_同instruction逐字",
+      "ok": true,
+      "detail": "sha=c649f51feedd"
+    },
+    {
+      "name": "pack_t08_brief_同instruction逐字",
+      "ok": true,
+      "detail": "sha=06a46d149bdd"
+    },
+    {
+      "name": "rubric_t01_权重机读",
+      "ok": true,
+      "detail": "['可验证性', '完整性', '正确性'] Σw=1.0"
+    },
+    {
+      "name": "rubric_t01_无封顶条款",
+      "ok": true,
+      "detail": "§9-1：无 min(·,cap) 项"
+    },
+    {
+      "name": "notes_t01_引擎校准在位",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "rubric_t02_权重机读",
+      "ok": true,
+      "detail": "['可验证性', '完整性', '正确性'] Σw=1.0"
+    },
+    {
+      "name": "rubric_t02_无封顶条款",
+      "ok": true,
+      "detail": "§9-1：无 min(·,cap) 项"
+    },
+    {
+      "name": "notes_t02_引擎校准在位",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "rubric_t03_权重机读",
+      "ok": true,
+      "detail": "['可验证性', '完整性', '正确性'] Σw=1.0"
+    },
+    {
+      "name": "rubric_t03_无封顶条款",
+      "ok": true,
+      "detail": "§9-1：无 min(·,cap) 项"
+    },
+    {
+      "name": "notes_t03_引擎校准在位",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "rubric_t04_权重机读",
+      "ok": true,
+      "detail": "['可验证性', '完整性', '正确性'] Σw=1.0"
+    },
+    {
+      "name": "rubric_t04_无封顶条款",
+      "ok": true,
+      "detail": "§9-1：无 min(·,cap) 项"
+    },
+    {
+      "name": "notes_t04_引擎校准在位",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "rubric_t05_权重机读",
+      "ok": true,
+      "detail": "['可验证性', '完整性', '正确性'] Σw=1.0"
+    },
+    {
+      "name": "rubric_t05_无封顶条款",
+      "ok": true,
+      "detail": "§9-1：无 min(·,cap) 项"
+    },
+    {
+      "name": "notes_t05_引擎校准在位",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "rubric_t06_权重机读",
+      "ok": true,
+      "detail": "['可验证性', '完整性', '正确性'] Σw=1.0"
+    },
+    {
+      "name": "rubric_t06_无封顶条款",
+      "ok": true,
+      "detail": "§9-1：无 min(·,cap) 项"
+    },
+    {
+      "name": "notes_t06_引擎校准在位",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "rubric_t07_权重机读",
+      "ok": true,
+      "detail": "['可验证性', '完整性', '正确性'] Σw=1.0"
+    },
+    {
+      "name": "rubric_t07_无封顶条款",
+      "ok": true,
+      "detail": "§9-1：无 min(·,cap) 项"
+    },
+    {
+      "name": "notes_t07_引擎校准在位",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "rubric_t08_权重机读",
+      "ok": true,
+      "detail": "['可验证性', '完整性', '正确性'] Σw=1.0"
+    },
+    {
+      "name": "rubric_t08_无封顶条款",
+      "ok": true,
+      "detail": "§9-1：无 min(·,cap) 项"
+    },
+    {
+      "name": "notes_t08_引擎校准在位",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "锚点_t08_组合锚⟦正确性=0.5,完整性=0,可验证性=1.0⟧→5.0",
+      "ok": true,
+      "detail": "MMHOT-FIX 修订轮新增锚在位"
+    },
+    {
+      "name": "mock_主判_arith相符一次通过",
+      "ok": true,
+      "detail": "attempts=1 invalid=False"
+    },
+    {
+      "name": "mock_重发_arith不一致重发1次后通过",
+      "ok": true,
+      "detail": "attempts=2 invalid=False"
+    },
+    {
+      "name": "mock_重发_仍不一致fail_closed",
+      "ok": true,
+      "detail": "invalid=True v=True attempts=2"
+    },
+    {
+      "name": "mock_复评_Q1匿名_分差0.5_pass",
+      "ok": true,
+      "detail": "delta=0.5 rinvalid=False"
+    },
+    {
+      "name": "mock_复评超差_换裁判比较对象按§9-4",
+      "ok": true,
+      "detail": "首评=8.0 复评超差 换上=8.0 |Δ|=0.0"
+    },
+    {
+      "name": "mock_三分支干跑",
+      "ok": true,
+      "detail": "主判/复评/重发（零模型）"
+    },
+    {
+      "name": "aggregator_fail_closed",
+      "ok": true,
+      "detail": "exit=2（判分缺席）"
+    }
+  ],
+  "all_ok": true,
+  "at": "2026-10-09T14:57:55+0800"
+}

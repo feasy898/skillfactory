@@ -1,0 +1,54 @@
+14:58:09 packs: 8（build_packs.py 预构建，本步校验在位）
+14:58:09 PREP 完成：24 单元（48 臂目录），隔离断言全过
+15:08:42 ARM done glm/meeting-minutes-t01-rep1/baseline exit=0 tokens=1123503+31277 pin=pass
+15:12:31 ARM done glm/meeting-minutes-t01-rep1/treatment exit=0 tokens=413042+11481 pin=pass
+15:12:31 RUN 阶段结束：counted=2 redline=False thread_error=[]
+15:12:49 SKIP 已完成臂 glm/meeting-minutes-t01-rep1/baseline
+15:12:49 SKIP 已完成臂 glm/meeting-minutes-t01-rep1/treatment
+15:15:13 ARM done minimax/meeting-minutes-t02-rep1/baseline exit=0 tokens=1038591+11857 pin=pass
+15:16:21 ARM done minimax/meeting-minutes-t02-rep1/treatment exit=0 tokens=430670+4734 pin=pass
+15:21:13 ARM done minimax/meeting-minutes-t02-rep2/baseline exit=0 tokens=1762463+17553 pin=pass
+15:22:26 ARM done minimax/meeting-minutes-t02-rep2/treatment exit=0 tokens=320528+4872 pin=pass
+15:26:55 ARM done glm/meeting-minutes-t01-rep2/baseline exit=0 tokens=1798142+38042 pin=pass
+15:28:20 ARM done minimax/meeting-minutes-t02-rep3/baseline exit=0 tokens=1166544+13484 pin=pass
+15:29:35 ARM done minimax/meeting-minutes-t02-rep3/treatment exit=0 tokens=344500+6060 pin=pass
+15:29:59 ARM done glm/meeting-minutes-t01-rep2/treatment exit=0 tokens=324455+7025 pin=pass
+15:33:50 ARM done minimax/meeting-minutes-t04-rep1/baseline exit=0 tokens=1690858+14588 pin=pass
+15:35:12 ARM done minimax/meeting-minutes-t04-rep1/treatment exit=0 tokens=483281+8376 pin=pass
+15:37:16 ARM done minimax/meeting-minutes-t04-rep2/baseline exit=0 tokens=858660+8965 pin=pass
+15:39:12 ARM done minimax/meeting-minutes-t04-rep2/treatment exit=0 tokens=395920+6217 pin=pass
+15:39:51 ARM done glm/meeting-minutes-t01-rep3/baseline exit=0 tokens=1273263+26693 pin=pass
+15:42:03 ARM done minimax/meeting-minutes-t04-rep3/baseline exit=0 tokens=839851+8619 pin=pass
+15:42:54 ARM done glm/meeting-minutes-t01-rep3/treatment exit=0 tokens=415512+9122 pin=pass
+15:43:19 ARM done minimax/meeting-minutes-t04-rep3/treatment exit=0 tokens=395965+4797 pin=pass
+15:46:28 ARM done minimax/meeting-minutes-t06-rep1/baseline exit=0 tokens=866032+9760 pin=pass
+15:48:33 ARM done minimax/meeting-minutes-t06-rep1/treatment exit=0 tokens=490847+6593 pin=pass
+15:55:14 ARM done glm/meeting-minutes-t03-rep1/baseline exit=0 tokens=2145099+37026 pin=pass
+15:57:35 ARM done minimax/meeting-minutes-t06-rep2/baseline exit=0 tokens=3431076+28842 pin=pass
+15:58:43 ARM done glm/meeting-minutes-t03-rep1/treatment exit=0 tokens=478929+9288 pin=pass
+15:59:55 ARM done minimax/meeting-minutes-t06-rep2/treatment exit=0 tokens=514109+4997 pin=pass
+16:03:30 ARM done minimax/meeting-minutes-t06-rep3/baseline exit=0 tokens=1020563+13288 pin=pass
+16:04:57 ARM done minimax/meeting-minutes-t06-rep3/treatment exit=0 tokens=336048+3465 pin=pass
+16:07:52 ARM done glm/meeting-minutes-t03-rep2/baseline exit=0 tokens=1031903+25080 pin=pass
+16:07:54 ARM done minimax/meeting-minutes-t08-rep1/baseline exit=0 tokens=1050170+8875 pin=pass
+16:09:09 ARM done minimax/meeting-minutes-t08-rep1/treatment exit=0 tokens=505385+5933 pin=pass
+16:10:19 ARM done glm/meeting-minutes-t03-rep2/treatment exit=0 tokens=388193+6494 pin=pass
+16:11:04 ARM done minimax/meeting-minutes-t08-rep2/baseline exit=0 tokens=666573+7835 pin=pass
+16:12:42 ARM done minimax/meeting-minutes-t08-rep2/treatment exit=0 tokens=609070+6946 pin=pass
+16:16:48 ARM done minimax/meeting-minutes-t08-rep3/baseline exit=0 tokens=1202841+11660 pin=pass
+16:17:53 ARM done minimax/meeting-minutes-t08-rep3/treatment exit=0 tokens=408181+3766 pin=pass
+16:22:44 ARM done glm/meeting-minutes-t03-rep3/baseline exit=0 tokens=1182189+31496 pin=pass
+16:25:43 ARM done glm/meeting-minutes-t03-rep3/treatment exit=0 tokens=361981+7348 pin=pass
+16:34:33 ARM done glm/meeting-minutes-t05-rep1/baseline exit=0 tokens=762163+18460 pin=pass
+16:37:24 ARM done glm/meeting-minutes-t05-rep1/treatment exit=0 tokens=330374+9977 pin=pass
+16:46:48 ARM done glm/meeting-minutes-t05-rep2/baseline exit=0 tokens=1342562+27098 pin=pass
+16:50:05 ARM done glm/meeting-minutes-t05-rep2/treatment exit=0 tokens=375671+8547 pin=pass
+17:00:20 ARM done glm/meeting-minutes-t05-rep3/baseline exit=0 tokens=1117437+27264 pin=pass
+17:03:39 ARM done glm/meeting-minutes-t05-rep3/treatment exit=0 tokens=355521+9680 pin=pass
+17:15:13 ARM done glm/meeting-minutes-t07-rep1/baseline exit=0 tokens=911888+35825 pin=pass
+17:19:42 ARM done glm/meeting-minutes-t07-rep1/treatment exit=0 tokens=469670+13865 pin=pass
+17:30:19 ARM done glm/meeting-minutes-t07-rep2/baseline exit=0 tokens=765319+35032 pin=pass
+17:32:58 ARM done glm/meeting-minutes-t07-rep2/treatment exit=0 tokens=382062+8241 pin=pass
+17:45:09 ARM done glm/meeting-minutes-t07-rep3/baseline exit=0 tokens=1827156+42188 pin=pass
+17:48:47 ARM done glm/meeting-minutes-t07-rep3/treatment exit=0 tokens=331943+10817 pin=pass
+17:48:47 RUN 阶段结束：counted=48 redline=False thread_error=[]

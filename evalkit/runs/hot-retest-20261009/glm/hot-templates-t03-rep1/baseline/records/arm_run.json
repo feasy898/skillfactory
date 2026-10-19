@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t03-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 279095,
+  "started_at_ms": 1791530256178,
+  "session_id": "sess_776e7c35-808b-4356-96cb-90dae62e1181",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t03-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 957021,
+      "ot": 10896,
+      "dur": 266434,
+      "n": 29
+    }
+  ],
+  "input_tokens": 957021,
+  "output_tokens": 10896,
+  "stdout_bytes": 3127,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " tag). Tag-line total is 6 by the frozen counting regex (`#通勤背包选购 #干货分享 #方法论 #自我提升` plus 2 example tags inside the placeholder token), within the 3–8 rule.\\n- Point 1 `  三档承重分装更护肩  ` was stripped and fills 干货块1 verbatim, and the summary restates all three stripped points.\\n- Structure invariants: 7 frozen elements in order (`title → hook_block → point_block_1..3 → summary_block → tag_group`), emoji mapping 🔥/✅/💡/📌/🏷️, 11 top-level JSON keys in exact order, placeholder accounting three-way consistent (7 slots in structure.json stats = 7 in the markdown stats = 7 actual `【占位:…】` slots), `points_unused` empty, no `{{ }}` template residue, no banned absolute terms, UTF-8/LF, and a rerun reproduced both files byte-identically.\\n\\nOne nuance worth noting: a raw regex over the whole `骨架.md` finds 8 occurrences of `【占位:` because the footer explanation line literally mentions `【占位:…】` — I confirmed the package's own golden reference outputs have this same 8-vs-7 shape, so the artifact matches the canonical convention exactly.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 29,\n    \"inputTokens\": 957021,\n    \"outputTokens\": 10896,\n    \"totalTokens\": 967917,\n    \"cacheReadTokens\": 921088,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 7471,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 967917,\n    \"contextUsed\": 51657,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

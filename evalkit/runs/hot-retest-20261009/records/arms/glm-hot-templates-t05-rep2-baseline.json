@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t05-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 235378,
+  "started_at_ms": 1791532223043,
+  "session_id": "sess_0055cbd6-8c5c-4e74-adc3-52a5226178d3",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t05-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 583471,
+      "ot": 8748,
+      "dur": 225797,
+      "n": 18
+    }
+  ],
+  "input_tokens": 583471,
+  "output_tokens": 8748,
+  "stdout_bytes": 2271,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "0fcb6f-463c-49a3-a82f-a09aac296177\",\n  \"response\": \"验证完成，四形态全部通过。用 `dist/hot-templates-skill/scripts/gen.py`（确定性引擎）以 platform=`xhs`、topic=`阳台种菜入门` 跑了四次，所有交付物已就位。\\n\\n**输入准备**（三个 JSON 自备在工作目录，字节级核验过）：\\n- `points_plain.json`：UTF-8 无 BOM，内容即卖点数组\\n- `points_bom.json`：以 `EF BB BF` 开头，其余字节与 plain 完全相同\\n- `points_wrapped.json`：`{\\\"points\\\": [同数组]}` 包装对象\\n\\n**四次生成全部成功**（A 内联串 / B plain 文件 / C BOM 文件 / D 包装对象 → 对应 `out/` 目录）：各 exit 0，stdout 均为 `OK platform=xhs topic=阳台种菜入门 elements=7 open_placeholders=7 filled_from_input=10`，各产出非空的 `骨架.md` + `structure.json`。\\n\\n**跨形态同一性（md5 逐字节比对）**：\\n- 四份 `骨架.md` 同一 md5：`b0ffe8e3ce9a5e0234554b208853cb41`\\n- 四份 `structure.json` 同一 md5：`2baa65a6ac3157595e4bcdbd3e0ea996`\\n\\n即 BOM 剥除、包装对象解包、内联串三个解析分支同入同出，产物完全一致。\\n\\n**内容口径（四份 structure.json 逐份断言，14 项全 PASS）**：`points_input_count=3`、`points_used` 为 3 条卖点原文、`points_unused=[]`、首标签 `#阳台种菜入门`、summary 三点复述含 3 卖点原文、`elements[].text` 占位合计=7、`element_count=7`、stats={7,10}。\\n\\n结论：BOM 与包装对象均被引擎正确解析，未出现「非法 JSON 放弃该形态」或「漏解 points 键」的失败模式；四形态产物零漂移，本次生成输入形态验证通过。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 18,\n    \"inputTokens\": 583471,\n    \"outputTokens\": 8748,\n    \"totalTokens\": 592219,\n    \"cacheReadTokens\": 538304,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 6760,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 592219,\n    \"contextUsed\": 45404,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "t05",
+  "rep": 2,
+  "slot": 39
+}

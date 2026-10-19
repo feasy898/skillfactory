@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_ab43ea2a-f8df-4474-a42f-796dd2f92681",
+  "traceId": "cc5e2a9f-b603-4db6-a20a-e3a00d271aa0",
+  "turnId": "turn_79335f82-35f7-45ae-942e-d4c869c28359",
+  "response": "完成了。产物已全部落在 `baseline/` 下并逐项核验过。\n\n**交付物**\n\n- `bailuzhou_lib_1014.txt` — 转写稿全文 42 行，与 brief 正文逐行比对完全一致。\n- `out/纪要.docx` — 三段式纪要（A4 三页，中文字体与表头固定）：抬头信息表（会议时间 10月14日 14:00–14:41、主持人、参会部门、议题），一、决议事项 12 条，二、待办事项表格 18 行（序号／事项／负责人／截止时间／备注／转写时间），三、风险与关注 10 条（每条写明风险点、影响、关注人）。每条都带转写时间戳，可回溯原文。\n- `out/summary.json` — 四个键：`{\"决议事项\": 12, \"待办事项\": 18, \"风险与关注\": 10, \"合计\": 40}`。\n- `build_minutes.py` — 生成脚本，三个列表是唯一数据源，docx 与 json 同源生成，条数不会漂移。\n\n**统计口径**：一条事项只归入三段中的一段，不重复登记。馆长明确拍板/「结论先记三条」拆为展期十天、免预约、闭馆顺延一小时三条；伴手礼核算（含 10月25日 口径与负责人）作为决议留在第一段；「未明确截止」的相对时间表述（下周三、周六上午）保留原文措辞并标注「（原文表述）」，未擅自换算成具体日期；已完成项（音效文件拷贝、闭馆顺延同步保安公司）仍留在待办表中并标注「已完成」，便于核查销项。\n\n**核验方式**：LibreOffice 转 PDF 后逐页看图检查排版（首版待办表列宽失效导致「事项」列严重折行，已改为固定列宽并重排，序号列 1.2cm 避免表头折行）；再用脚本回读 docx 实测条数（12/18/10）与 summary.json 比对，四项全部吻合。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 33,
+    "inputTokens": 1166544,
+    "outputTokens": 13484,
+    "totalTokens": 1180028,
+    "cacheReadTokens": 975872,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 1361,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1180028,
+    "contextUsed": 49697,
+    "contextWindow": 200000
+  }
+}

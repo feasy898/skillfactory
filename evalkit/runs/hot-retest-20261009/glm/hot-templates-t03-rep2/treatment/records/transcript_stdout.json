@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_19d081e4-ba6d-41c0-9766-55158d4e116e",
+  "traceId": "4384fffa-f990-443f-8c4d-c3bef1d504d1",
+  "turnId": "turn_88adfb7f-be73-4e41-b29f-dd285efdfdac",
+  "response": "任务完成。小红书图文爆款骨架已生成并写入 `out/`，两份产物均在位且通过全部校验。\n\n**执行过程**\n1. 读取 `brief.md`：platform=`xhs`，topic=` #通勤背包选购 `（首尾空格、含 `#`），points 3 条（第 1 条首尾空白）。\n2. 加载 `hot-templates` 技能并完整读完 `references/xhs.md`（平台必读文档）。\n3. 按红线要求走确定性引擎生成，未手写任何产物文件：\n   ```bash\n   python .zcode/skills/hot-templates/scripts/gen.py --platform xhs \\\n     --topic ' #通勤背包选购 ' \\\n     --points '[\"  三档承重分装更护肩  \", \"YKK 拉链六年质保\", \"背部独立鞋仓\"]' \\\n     --outdir out\n   ```\n   引擎返回 `OK platform=xhs topic=#通勤背包选购 elements=7 open_placeholders=7 filled_from_input=10 -> out`，exit 0，一次成功。\n\n**产物**（`treatment/out/`）\n- `骨架.md`（2.5KB）：7 要素骨架——标题（带数字+🔥）、开头钩子块（✅）、干货块×3（💡，卖点入小标题）、总结块（📌，三点复述）、标签组（🏷️，首标签 `#通勤背包选购` 由主题派生），每要素附写法要点，尾部占位符统计节。\n- `structure.json`（5.3KB）：顶层 11 键齐全，`points_used` 为 strip 后的 3 条卖点，`points_unused` 为空。\n\n**边界输入的处理**：topic 首尾空格被引擎规整为 `#通勤背包选购`（`#` 保留）；第 1 条卖点首尾空白 strip 后入槽 `三档承重分装更护肩`——均由引擎自动完成，非手工改写。\n\n**校验结果**：三条成功判据全部满足（exit 0、OK 行、两文件非空）；冻结标记与 `references/xhs.md` 逐项吻合（emoji 映射、`💡 干货N｜` 起始、首标签派生规则、filled_from_input 计 10 处）；7 处 `【占位:…】` 开放槽位全部保持原样未编造填充，`{{ }}` 类残留为 0；同输入重跑字节级一致（diff 实证）。包内无 `eval/runner.py`（属评测侧），故该项验收以技能自身判据为准。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 9,
+    "inputTokens": 231401,
+    "outputTokens": 4385,
+    "totalTokens": 235786,
+    "cacheReadTokens": 216064,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 3836,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 235786,
+    "contextUsed": 31530,
+    "contextWindow": 200000
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_56834b25-fc09-49d0-90a0-d34031a86dec",
+  "traceId": "fc8c86ed-f87f-4112-a524-c231f78d2f61",
+  "turnId": "turn_4ae0d584-ad8c-4421-9b31-53ac39cc144c",
+  "response": "验证完成，四种输入形态全部通过。所有产物已就位。\n\n## 结果总览\n\n**四次生成全部成功**（exit 0，均打印 OK 行：`elements=7 open_placeholders=7 filled_from_input=10`，与 xhs 满 3 卖点的参考值完全一致）：\n\n| 形态 | --points 输入 | 输出目录 | 骨架.md | structure.json |\n|---|---|---|---|---|\n| A 内联 JSON 串 | `[\"泡沫箱打孔防涝\", …]` | `out/A-inline/` | ✅ 非空 | ✅ 非空 |\n| B 文件·无 BOM | `points_plain.json` | `out/B-plain/` | ✅ 非空 | ✅ 非空 |\n| C 文件·带 BOM | `points_bom.json` | `out/C-bom/` | ✅ 非空 | ✅ 非空 |\n| D 文件·wrapped | `points_wrapped.json` | `out/D-wrapped/` | ✅ 非空 | ✅ 非空 |\n\n**关键发现——四形态产物逐字节一致**：8 份产物中 `骨架.md` 的 md5 全部为 `b0ffe8e3…`、`structure.json` 全部为 `2baa65a6…`。说明引擎对四种合法输入形态（内联串 / 无 BOM 文件 / 带 BOM 文件 / `{\"points\":[…]}` 包装对象）解析后收敛到同一语义输入，确定性渲染无漂移，BOM 被 utf-8-sig 正确吞掉。\n\n## 交付物清单（均在当前工作目录）\n\n- 三个自备输入文件（已按字节校验）：`points_plain.json`（首字节 `[`，87 字节）、`points_bom.json`（首三字节 `EF BB BF`，实测 = BOM + plain 全文逐字节）、`points_wrapped.json`（首字节 `{`，含 `points` 键）\n- 四个输出目录各含 `骨架.md` + `structure.json`\n\n## 结构核验（四份 structure.json 全过）\n\n顶层 11 键齐全、`platform_name=小红书图文`、`topic=阳台种菜入门`、`points_input_count=3`、`points_used` 逐字等于三条卖点、`points_unused=[]`、7 要素 id 顺序冻结正确（`title → hook_block → point_block_1..3 → summary_block → tag_group`）。骨架内冻结标记均在位：标题含 🔥 与数字 3、干货块为 `💡 干货N｜<卖点>`、总结块三点复述用了卖点原值、标签组首标签为 `#阳台种菜入门`（主题派生）。占位符 7 处均为设计内开放槽位（每要素 1 处），无 `{{ }}` 类残留缺陷。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 11,
+    "inputTokens": 334351,
+    "outputTokens": 5245,
+    "totalTokens": 339596,
+    "cacheReadTokens": 309504,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 3996,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 339596,
+    "contextUsed": 41173,
+    "contextWindow": 200000
+  }
+}

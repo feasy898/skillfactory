@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t02-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 50506,
+  "started_at_ms": 1791530147720,
+  "session_id": "sess_8057f1c8-0457-412b-9f9d-493ad81eda64",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t02-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 197332,
+      "ot": 1575,
+      "dur": 45653,
+      "n": 8
+    }
+  ],
+  "input_tokens": 197332,
+  "output_tokens": 1575,
+  "stdout_bytes": 2757,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "`00:40-00:45` with the `共 45 秒` aggregate table. The 11 top-level JSON keys and 5-key `placeholder_stats` are present.\\n\\nThe three selling points landed correctly in the value-point slots `shot_3/4/5` (口播 column) as 第一招/第二招/第三招, with `points_used` full, `points_unused` empty, and 4 `filled_from_input` slots (topic + point#1..3). `open_placeholders=12` matches the skill's documented reference value for video with 3 points — so the 12 `【占位:…】` tokens (画面1–6、痛点行为描述、痛点一句话字幕、口播补充一句效果×3、下期选题) are the intended open slots, not a defect. I left them unfilled, per the skill's red line against fabricating slot content.\\n\\nDeterminism confirmed: a second run into a scratch directory produced byte-identical output (`diff -r` clean).\\n\\nOne note: the platform red line in `references/video.md` caps voiceover at ≤45 characters per 10-second shot — the engine's generated 第一招/第二招/第三招 lines are already within that, and the slot tokens like `【占位:口播补充一句效果】` are what need watching when this skeleton is later expanded into a finished script.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 8,\n    \"inputTokens\": 197332,\n    \"outputTokens\": 1575,\n    \"totalTokens\": 198907,\n    \"cacheReadTokens\": 170240,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 222,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 198907,\n    \"contextUsed\": 28528,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

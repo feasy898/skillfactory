@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t01-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 407908,
+  "started_at_ms": 1791529430345,
+  "session_id": "sess_9e135e7e-2494-4d59-93a4-3f149f135eca",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t01-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1350443,
+      "ot": 18935,
+      "dur": 396151,
+      "n": 30
+    }
+  ],
+  "input_tokens": 1350443,
+  "output_tokens": 18935,
+  "stdout_bytes": 2757,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": ":**\\n- `out/骨架.md` — 5-element skeleton “引子 + 三段论 + 金句收尾”： 引子 → 是什么 → 为什么 → 怎么办（三抓手 = the 3 points verbatim, each `N. 卖点——【占位:展开：具体做法+一个例子】`) → 金句收尾 ending 「宿舍省电费这件事，…共勉。」\\n- `out/structure.json` — machine-readable version: `element_count=5`, `points_used`=3 points verbatim, `points_unused=[]`, `placeholder_stats={total_open:10, total_filled_from_input:7}` (topic recorded once in each of 4 elements + point#1..3 in `thesis_how`)\\n- `gen_wx_skeleton.py` / `verify_out.py` — generator and verifier, kept as reproducibility evidence\\n\\n**Verification results:** all 44 end-state assertions pass — element order and 「一、二、三」 section prefixes, verbatim points with the `——` connector, filled semantics =7, per-element placeholder counts 1/2/3/3/1 totaling 10, 骨架.md statistics section consistent with structure.json, no `{{}}` residue, UTF-8/LF, and byte-identical re-runs. As a final cross-check I diffed against the repo's reference engine run with the same parameters: both files are **byte-identical** to the canonical output.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 30,\n    \"inputTokens\": 1350443,\n    \"outputTokens\": 18935,\n    \"totalTokens\": 1369378,\n    \"cacheReadTokens\": 1297408,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 12409,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1369378,\n    \"contextUsed\": 68632,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "t01",
+  "rep": 2,
+  "slot": 4
+}

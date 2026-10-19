@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t05-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 104444,
+  "started_at_ms": 1791532116592,
+  "session_id": "sess_56834b25-fc09-49d0-90a0-d34031a86dec",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t05-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 334351,
+      "ot": 5245,
+      "dur": 97559,
+      "n": 11
+    }
+  ],
+  "input_tokens": 334351,
+  "output_tokens": 5245,
+  "stdout_bytes": 2783,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "箱打孔防涝\\\", …]` | `out/A-inline/` | ✅ 非空 | ✅ 非空 |\\n| B 文件·无 BOM | `points_plain.json` | `out/B-plain/` | ✅ 非空 | ✅ 非空 |\\n| C 文件·带 BOM | `points_bom.json` | `out/C-bom/` | ✅ 非空 | ✅ 非空 |\\n| D 文件·wrapped | `points_wrapped.json` | `out/D-wrapped/` | ✅ 非空 | ✅ 非空 |\\n\\n**关键发现——四形态产物逐字节一致**：8 份产物中 `骨架.md` 的 md5 全部为 `b0ffe8e3…`、`structure.json` 全部为 `2baa65a6…`。说明引擎对四种合法输入形态（内联串 / 无 BOM 文件 / 带 BOM 文件 / `{\\\"points\\\":[…]}` 包装对象）解析后收敛到同一语义输入，确定性渲染无漂移，BOM 被 utf-8-sig 正确吞掉。\\n\\n## 交付物清单（均在当前工作目录）\\n\\n- 三个自备输入文件（已按字节校验）：`points_plain.json`（首字节 `[`，87 字节）、`points_bom.json`（首三字节 `EF BB BF`，实测 = BOM + plain 全文逐字节）、`points_wrapped.json`（首字节 `{`，含 `points` 键）\\n- 四个输出目录各含 `骨架.md` + `structure.json`\\n\\n## 结构核验（四份 structure.json 全过）\\n\\n顶层 11 键齐全、`platform_name=小红书图文`、`topic=阳台种菜入门`、`points_input_count=3`、`points_used` 逐字等于三条卖点、`points_unused=[]`、7 要素 id 顺序冻结正确（`title → hook_block → point_block_1..3 → summary_block → tag_group`）。骨架内冻结标记均在位：标题含 🔥 与数字 3、干货块为 `💡 干货N｜<卖点>`、总结块三点复述用了卖点原值、标签组首标签为 `#阳台种菜入门`（主题派生）。占位符 7 处均为设计内开放槽位（每要素 1 处），无 `{{ }}` 类残留缺陷。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 11,\n    \"inputTokens\": 334351,\n    \"outputTokens\": 5245,\n    \"totalTokens\": 339596,\n    \"cacheReadTokens\": 309504,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 3996,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 339596,\n    \"contextUsed\": 41173,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

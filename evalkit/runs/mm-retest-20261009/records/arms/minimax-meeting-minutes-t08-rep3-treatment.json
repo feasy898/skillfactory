@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t08-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 62896,
+  "started_at_ms": 1791533808759,
+  "session_id": "sess_f0dc37d4-ddea-4200-9710-0a87eb71848c",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t08-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 408181,
+      "ot": 3766,
+      "dur": 47278,
+      "n": 16
+    }
+  ],
+  "input_tokens": 408181,
+  "output_tokens": 3766,
+  "stdout_bytes": 3399,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": " 结论 is a decision keyword, so the retracted statement is recorded verbatim as a decision. Same for 15:05, which stays a todo even though 15:04 voided its predecessor.\\n- All four 负责人/期限 cells read 待定. `我需要` is not `我负责`, so rule 1 doesn't fire; and 昨天 is not in the deadline keyword list, so no date is invented.\\n\\nOne gap: the skill's step-2 acceptance command (`python eval/runner.py out reference/out`) could not be run — this skill package ships only `SKILL.md`, `requirements.txt`, three references, and two scripts; there is no `eval/` or `reference/` directory. I ran the manual checklist from `references/docx-and-summary.md` instead: filenames exact, docx opens in python-docx, three headings present and in order with correct punctuation, item format and continuous numbering correct, table has 3 columns and 2 data rows, summary counts match the document and sum to the meta-line number, every item traces verbatim to a transcript line carrying its own timestamp and speaker, and every 负责人/期限 is either literal text or 待定.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 16,\n    \"inputTokens\": 408181,\n    \"outputTokens\": 3766,\n    \"totalTokens\": 411947,\n    \"cacheReadTokens\": 354236,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 685,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 411947,\n    \"contextUsed\": 30338,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t08",
+  "rep": 3,
+  "slot": 35
+}

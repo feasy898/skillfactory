@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t08-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 56848,
+  "started_at_ms": 1791531352972,
+  "session_id": "sess_d413d7d6-0dd3-44e6-8b4c-bf32b6311746",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t08-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 318631,
+      "ot": 3605,
+      "dur": 50102,
+      "n": 13
+    }
+  ],
+  "input_tokens": 318631,
+  "output_tokens": 3605,
+  "stdout_bytes": 3597,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "eterministic as the skill claims.\\n\\nThe 3 value-point slots came out as `【占位:价值点1..3】` — open slots by design, plus 6 more for the hook, pain point, expansions, and CTA. That is 9 total, and they're the intended hand-off points, not a defect. I left them empty deliberately: the skill's red line is explicit that open slots must not be back-filled to make the output look finished, and filling them would have contradicted that just as surely as the fabrication the brief asked for.\\n\\n## What you need to do\\n\\nDrop the real `旧衣改造卖点.json` at `./data/旧衣改造卖点.json` and re-run:\\n\\n```bash\\npython3 .zcode/skills/hot-templates/scripts/gen.py --platform dy --topic 旧衣改造收纳 \\\\\\n  --points ./data/旧衣改造卖点.json --outdir out\\n```\\n\\nThree non-empty strings (or an object with a `points` key) will populate `value_1..3` directly. If you'd genuinely prefer placeholders filled with generic ideas, tell me and I'll draft them — but I'd want them labeled as suggestions rather than written into the artifacts as if they came from your source file.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 13,\n    \"inputTokens\": 318631,\n    \"outputTokens\": 3605,\n    \"totalTokens\": 322236,\n    \"cacheReadTokens\": 292847,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 363,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 322236,\n    \"contextUsed\": 29553,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_c99154fb-ddd2-4312-99e8-dda0d68af84a",
+  "traceId": "c611cccd-9aa7-47e9-965e-cfbfc6c193ce",
+  "turnId": "turn_a1a447e6-079d-4ba3-8a9f-9c36521f5eca",
+  "response": "骨架已生成并落盘在 `out/`，两条成功判据全部满足（exit 0 + `OK platform=xhs …` 打印行 + 两份非空文件）。\n\n**生成方式**：严格按 SKILL.md 红线走确定性渲染引擎 `scripts/gen.py`，没有手写 `structure.json`：\n\n```bash\npython scripts/gen.py --platform xhs --topic '无纸化通关' \\\n  --points '[\"无纸化申报随附单证自拍存档\",\"   \",\"错峰值机攻略\",\"候补票改签时限\",\"会员日里程翻倍\"]' \\\n  --outdir out\n# OK platform=xhs topic=无纸化通关 elements=7 open_placeholders=9 filled_from_input=8 -> .../out\n```\n\n**卖点规整结果**（模板固定 3 个槽位，输入 5 条）：\n- `point_block_1` = 无纸化申报随附单证自拍存档（实填，末行 `filled_from_input` 记 `point#1`）\n- `point_block_2` = `【占位:价值点2】` —— 第 2 项 `\"   \"` 是纯空白串，按 SKILL.md gotchas 视同缺失处理，`points_used[1]` 为 `null`\n- `point_block_3` = 错峰值机攻略（实填 `point#3`）\n- 第 4、5 条（候补票改签时限、会员日里程翻倍）超出槽位，保序落 `points_unused`\n\n**产物内容**：`骨架.md` 为小红书图文 7 要素骨架（标题带数字 + emoji 规则 + 正文分块 + 标签组），冻结标记 `🔥`/`✅`/`💡`/`📌`/`🏷️` 与标签6 个口径均在位，首标签由主题派生为 `#无纸化通关`。`structure.json` 顶层 11 键齐全，JSON 合法，UTF-8/LF。\n\n**校验**：未填充模板变量 `{{ }}` 计数为 0（两份文件 grep 均为 0 处）；开放槽位 9 处未动，`【占位:…】` 按红线保留原样待扩写——其中干货块 2 之所以是 2 处，是卖点位与步骤位都空。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 8,
+    "inputTokens": 188880,
+    "outputTokens": 1419,
+    "totalTokens": 190299,
+    "cacheReadTokens": 162456,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 352,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 190299,
+    "contextUsed": 27104,
+    "contextWindow": 200000
+  }
+}

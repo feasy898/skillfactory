@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t01-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 844355,
+  "started_at_ms": 1791529969036,
+  "session_id": "sess_4d8803b8-0407-47f7-9c03-3c6c87d21ad3",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t01-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1798142,
+      "ot": 38042,
+      "dur": 708505,
+      "n": 28
+    }
+  ],
+  "input_tokens": 1798142,
+  "output_tokens": 38042,
+  "stdout_bytes": 2945,
+  "stderr_bytes": 980,
+  "stderr_head": "AI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\nAI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\n",
+  "stdout_tail": "。三份产物已就位：\\n\\n- **`shiguang_bakery_0912.txt`** — 转写稿逐字保存（与 brief 原文逐字节一致，含白板补充行）\\n- **`out/纪要.docx`** — 三段式会议纪要（见文末引用）\\n- **`out/summary.json`** — 条数统计：决议事项 5、待办事项 8、风险与关注 3、合计 16\\n\\n**纪要内容概要**（公文风格：仿宋正文/黑体标题/宋体标题居中，固定 28 磅行距，页脚 — X — 页码，共 2 页）：\\n\\n- **会议概况**：9月12日 9:00—9:23、会议室、小蒋主持、六位参会人、记录来源注明转写稿文件名\\n- **一、决议事项（5 条）**：流心奶黄全部改用当天现熬枣泥馅；包装盒重新比价且结果须群内公示后方可下单；定价走高端线单价维持 68 元；专项资金已获财务批复（标注为会上通报事项）；品质问题一票否决\\n- **二、待办事项（8 行表格：序号/事项/负责人/完成期限/备注）**：产能盯控每日报数（闻人倩）、比价 9月20日前定标（糜若冰）、页面上新当晚（贡晓彤）、冷链车续约条款提请法务审查（桑克俭，9月30日前）、人事部发调休通知、试吃装明晨到店、直播排期 10月1日前报出、包装打样对照图纸 SG-09（白板补充，负责人与期限未明确则如实标注）\\n- **三、风险与关注（3 条）**：详情图烫金未定、冷链车租约 9月30日到期续约条款风险、进口黄油报关时间可能压到月底，各条均注明提出人\\n\\n**质量验证**：docx 后置检查 9/9 通过（0 错误 0 警告）；LibreOffice 渲染后经视觉评审两页均 pass（首版第 3 页有 2 行孤行溢出，已通过收紧页边距与标题间距修正为紧凑的 2 页）；内容审计确认转写稿全部关键事实（68 元、一票否决、SG-09、各期限等 40+ 关键词）无遗漏，且 summary.json 四键与文档实际条目数逐项核对一致。\\n\\n::zcode-file-citation{path=\\\"/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t01-rep2/baseline/out/纪要.docx\\\" purpose=\\\"output\\\"}\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 28,\n    \"inputTokens\": 1798142,\n    \"outputTokens\": 38042,\n    \"totalTokens\": 1836184,\n    \"cacheReadTokens\": 1722880,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 31313,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1836184,\n    \"contextUsed\": 91137,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t01",
+  "rep": 2,
+  "slot": 4
+}

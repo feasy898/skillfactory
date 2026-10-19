@@ -1,0 +1,21 @@
+{
+  "available": true,
+  "session_id": "sess_00851152-805b-4d80-8cf2-20541a6f842f",
+  "session": {
+    "directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t06-rep3/treatment"
+  },
+  "directory_matches_arm": true,
+  "db_source": "global",
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 243959,
+      "ot": 1861,
+      "dur": 25484,
+      "n": 10
+    }
+  ]
+}

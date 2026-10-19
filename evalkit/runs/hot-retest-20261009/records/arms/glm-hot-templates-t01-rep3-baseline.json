@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t01-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 247733,
+  "started_at_ms": 1791529934377,
+  "session_id": "sess_da2e04f6-2e6f-49e2-9a5a-2952c6883e2c",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t01-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 265773,
+      "ot": 13751,
+      "dur": 238097,
+      "n": 10
+    }
+  ],
+  "input_tokens": 265773,
+  "output_tokens": 13751,
+  "stdout_bytes": 2266,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "{\n  \"sessionId\": \"sess_da2e04f6-2e6f-49e2-9a5a-2952c6883e2c\",\n  \"traceId\": \"2e00e2a5-7221-437a-8417-c4b535d7c9ec\",\n  \"turnId\": \"turn_5831eeb8-f2af-4a30-8938-8b80dccde607\",\n  \"response\": \"已完成。这两个交付文件已放置在 `out/` 中，且 JSON 已通过验证（有效，三个 `brief points` 均原封不动地映射到各自的章节，摘要符合微信 120 字符的摘要限制）。\\n\\n**我产出的内容** —— 一篇关于“宿舍省电费”的微信公众号病毒式传播文章的内容骨架，仅基于 `brief.md` 构建（我没有查阅 `skill asset` 或之前的重复内容，以保持此基准的独立性）：\\n\\n- **`out/骨架.md`** —— 人类可读的骨架：5 个不同 `hook` 角度的备选标题（附带 ≤24 字符显示规则）、转发卡片摘要、开头 `hook` 草稿、三个观点章节（每个章节均包含：副标题、节拍、行动步骤、成本核算模板、可引用的金句、安全注意事项）、结尾升华、`CTA`、可截图的检查清单、图片/排版规范、发布时间以及合规纪律。\\n- **`out/structure.json`** —— 机器可读的镜像，包含稳定的章节 ID、各章节的字数目标、每个章节中逐字对应的源观点、媒体/发布/互动计划，以及一个汇总的 `open_placeholders` 列表。\\n\\n值得注意的内容决策：`空调 26℃+风扇` 这一观点被标记为主要的成本驱动因素，并分配了最大的字数预算；待机功耗核算和百分比声明均保留为【填】占位符，而不是编造数据，并附有合规说明：在发布前，每个占位符必须替换为实测或已获来源的数据，否则需降级为定性描述；文章明确提示需具备 3C 认证并遵守宿舍用电规定，以避免引导不安全的用电行为。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 10,\n    \"inputTokens\": 265773,\n    \"outputTokens\": 13751,\n    \"totalTokens\": 279524,\n    \"cacheReadTokens\": 244096,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 8114,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 279524,\n    \"contextUsed\": 37443,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "t01",
+  "rep": 3,
+  "slot": 10
+}

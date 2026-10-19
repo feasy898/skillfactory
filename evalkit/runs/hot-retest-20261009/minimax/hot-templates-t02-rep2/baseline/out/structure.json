@@ -1,0 +1,675 @@
+{
+  "schema_version": "1.0",
+  "artifact": "short_video_content_skeleton",
+  "generated_from": {
+    "brief": "brief.md",
+    "platform": "video",
+    "topic": "露营灯选购",
+    "points": [
+      "色温选 3500K 左右最显食物本色",
+      "续航按高出实际时长一倍选",
+      "磁吸加挂钩双固定更百搭"
+    ]
+  },
+  "meta": {
+    "companion_doc": "out/骨架.md",
+    "aspect_ratio": "9:16",
+    "resolution": "1080x1920",
+    "duration_sec": 60,
+    "shot_count": 15,
+    "section_count": 7,
+    "voiceover_char_count": 322,
+    "speech_rate_chars_per_sec": 5.37,
+    "genre": "干货清单型选购（对比型证据）",
+    "audience": "25–40 岁露营/房车新手，预算 100–400 元，首次购买露营灯",
+    "emotional_curve": [
+      "反常识好奇",
+      "被说中的认同",
+      "三次获得感",
+      "收藏冲动",
+      "评论区互动"
+    ],
+    "negative_promise": [
+      "不报价",
+      "不挂链接",
+      "不点名品牌",
+      "不给绝对化表述"
+    ],
+    "speech_rate_note": "口播语速基准约 5.2 字/秒（数字与英文缩写按 1 字计）；逐镜字数已按镜头时长校准，vo_chars/duration 均不超过 6.5"
+  },
+  "points": [
+    {
+      "index": 1,
+      "id": "p1",
+      "text": "色温选 3500K 左右最显食物本色",
+      "key_number": "3500K",
+      "conclusion_card": "① 结论：色温 3500K 左右",
+      "evidence_shots": [
+        "S4",
+        "S5"
+      ],
+      "beat_shots": [
+        "S4",
+        "S5",
+        "S6"
+      ]
+    },
+    {
+      "index": 2,
+      "id": "p2",
+      "text": "续航按高出实际时长一倍选",
+      "key_number": "×2",
+      "conclusion_card": "② 结论：续航按实际时长一倍选",
+      "evidence_shots": [
+        "S7",
+        "S8"
+      ],
+      "beat_shots": [
+        "S7",
+        "S8",
+        "S9"
+      ]
+    },
+    {
+      "index": 3,
+      "id": "p3",
+      "text": "磁吸加挂钩双固定更百搭",
+      "key_number": "磁吸 + 挂钩",
+      "conclusion_card": "磁吸+挂钩",
+      "evidence_shots": [
+        "S10",
+        "S11"
+      ],
+      "beat_shots": [
+        "S10",
+        "S11",
+        "S12"
+      ]
+    }
+  ],
+  "structure": [
+    {
+      "index": 1,
+      "name": "钩子 Hook",
+      "t_start": 0,
+      "t_end": 5,
+      "role": "3 秒内制造认知缺口，逼观众不划走",
+      "shots": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "index": 2,
+      "name": "立论与承诺",
+      "t_start": 5,
+      "t_end": 9,
+      "role": "给身份、给清单，让观众知道看完能拿走什么",
+      "shots": [
+        "S3"
+      ]
+    },
+    {
+      "index": 3,
+      "name": "论证 A · 色温",
+      "t_start": 9,
+      "t_end": 22,
+      "role": "现象 → 原理 → 参数 → 反例 → 一句话结论卡",
+      "shots": [
+        "S4",
+        "S5",
+        "S6"
+      ]
+    },
+    {
+      "index": 4,
+      "name": "论证 B · 续航",
+      "t_start": 22,
+      "t_end": 36,
+      "role": "同段式论证，用实测推翻标称",
+      "shots": [
+        "S7",
+        "S8",
+        "S9"
+      ]
+    },
+    {
+      "index": 5,
+      "name": "论证 C · 固定方式",
+      "t_start": 36,
+      "t_end": 49,
+      "role": "同段式论证，用翻车现场说明必要性",
+      "shots": [
+        "S10",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "index": 6,
+      "name": "加码与避坑",
+      "t_start": 49,
+      "t_end": 54,
+      "role": "处理未说出口的顾虑，制造差一点没听完的完播张力",
+      "shots": [
+        "S13"
+      ]
+    },
+    {
+      "index": 7,
+      "name": "收尾与 CTA",
+      "t_start": 54,
+      "t_end": 60,
+      "role": "转化动作单一化，只留评论与关注",
+      "shots": [
+        "S14",
+        "S15"
+      ]
+    }
+  ],
+  "hooks": {
+    "selected": {
+      "type": "反常识 + 痛点代入",
+      "shot": "S1",
+      "line": "买灯只看亮度，就错了。灯越亮，饭越没颜色——问题不在灯。",
+      "shots": [
+        "S1",
+        "S2"
+      ]
+    },
+    "alternatives": [
+      {
+        "type": "反常识",
+        "line": "你买的露营灯越亮，拍出来的饭越没颜色。"
+      },
+      {
+        "type": "痛点直击",
+        "line": "半夜三点灯闪了，你还在帐篷里翻包——这不是运气差，是续航选错了。"
+      },
+      {
+        "type": "结果前置",
+        "line": "记住三个数，露营灯你不会再买错。"
+      }
+    ]
+  },
+  "beats": [
+    {
+      "id": "S1",
+      "section_index": 1,
+      "t_start": 0,
+      "t_end": 2,
+      "duration": 2,
+      "beat_type": "hook",
+      "shot": "特写，一盏标注「2000 lm」的灯怼近镜头，画面过曝惨白，随即拉黑",
+      "voiceover": "买灯只看亮度，就错了。",
+      "subtitle": "2000 流明 = 露营够亮？",
+      "sfx": "无 BGM 只有环境虫鸣；过曝瞬间硬切黑场",
+      "point_index": null,
+      "retention_technique": "认知缺口前置",
+      "visual_change": false,
+      "vo_chars": 11
+    },
+    {
+      "id": "S2",
+      "section_index": 1,
+      "t_start": 2,
+      "t_end": 5,
+      "duration": 3,
+      "beat_type": "hook",
+      "shot": "夜景营地中景推近帐篷内，一盘烤肉在惨白光下毫无食欲，手持灯白光扫过",
+      "voiceover": "灯越亮，饭越没颜色——问题不在灯。",
+      "subtitle": "灯太亮 ≠ 拍得好",
+      "sfx": "BGM 低频鼓点起；惨白发灰四字放大抖动",
+      "point_index": null,
+      "retention_technique": "痛点代入",
+      "visual_change": false,
+      "vo_chars": 17
+    },
+    {
+      "id": "S3",
+      "section_index": 2,
+      "t_start": 5,
+      "t_end": 9,
+      "duration": 4,
+      "beat_type": "promise",
+      "shot": "出镜半身，手持三张卡片依次弹出（色温/续航/固定），右下角出现倒计时贴纸",
+      "voiceover": "记住三个数，买露营灯不踩坑：色温、续航、固定。",
+      "subtitle": "① 色温 ② 续航 ③ 固定方式",
+      "sfx": "节拍卡点弹卡；BGM 进主旋律",
+      "point_index": null,
+      "retention_technique": "信息增量承诺",
+      "visual_change": true,
+      "vo_chars": 23
+    },
+    {
+      "id": "S4",
+      "section_index": 3,
+      "t_start": 9,
+      "t_end": 11,
+      "duration": 2,
+      "beat_type": "point_intro",
+      "shot": "同一盏灯在冷白档与暖黄档之间切换打在一盘牛排上",
+      "voiceover": "第一个，先说色温。",
+      "subtitle": "① 色温 3500K",
+      "sfx": "切换瞬间叮；换挡音效",
+      "point_index": 1,
+      "retention_technique": "模式中断（物理动作）",
+      "visual_change": true,
+      "vo_chars": 9
+    },
+    {
+      "id": "S5",
+      "section_index": 3,
+      "t_start": 11,
+      "t_end": 19,
+      "duration": 8,
+      "beat_type": "evidence",
+      "shot": "左右分屏：左 6500K 冷白、右 3500K 暖黄，同一盘食材；右侧叠加色温-食欲曲线示意与取景框标记",
+      "voiceover": "同一盘牛排，6500K 打出来肉是灰的，3500K 是暖红的。冷白光会把颜色洗掉，3500K 最平衡。",
+      "subtitle": "左：6500K → 肉发灰<br>右：3500K → 显本色",
+      "sfx": "分屏对切节奏 0.8s/次；关键数值做放大-缩回动效",
+      "point_index": 1,
+      "retention_technique": "强对比画面",
+      "visual_change": true,
+      "vo_chars": 51
+    },
+    {
+      "id": "S6",
+      "section_index": 3,
+      "t_start": 19,
+      "t_end": 22,
+      "duration": 3,
+      "beat_type": "conclusion_card",
+      "shot": "三张对比图横向滑动，定格在 3500K 那一版；结论卡「① 3500K 左右」砸屏",
+      "voiceover": "色温选 3500K 左右，显本色。",
+      "subtitle": "① 结论：色温 3500K 左右",
+      "sfx": "结论卡带心跳音效；数字 3500K 做描边填充",
+      "point_index": 1,
+      "retention_technique": "结论卡复述",
+      "visual_change": true,
+      "vo_chars": 17
+    },
+    {
+      "id": "S7",
+      "section_index": 4,
+      "t_start": 22,
+      "t_end": 24,
+      "duration": 2,
+      "beat_type": "point_intro",
+      "shot": "手机备忘录特写「续航 8h」，画面外营地已全黑",
+      "voiceover": "第二个，续航别看标称。",
+      "subtitle": "② 续航 ×2",
+      "sfx": "环境音压暗，留半秒静音",
+      "point_index": 2,
+      "retention_technique": "模式中断（物理动作）",
+      "visual_change": true,
+      "vo_chars": 11
+    },
+    {
+      "id": "S8",
+      "section_index": 4,
+      "t_start": 24,
+      "t_end": 33,
+      "duration": 9,
+      "beat_type": "evidence",
+      "shot": "标称 8h 的灯实测第 4 小时开始频闪，画面右侧跑一条时间轴条；切到半夜摸黑翻包的真实困境",
+      "voiceover": "标称 8 小时，实测 4 小时就闪，那还是最低亮度。要用 6 小时，就买标称 12 小时以上。",
+      "subtitle": "标称 8h → 实测约 4–5h<br>要 6h ⇒ 选标称 ≥12h",
+      "sfx": "时间轴条推进配嘀声；半夜摸黑画面降饱和",
+      "point_index": 2,
+      "retention_technique": "强对比画面",
+      "visual_change": true,
+      "vo_chars": 47
+    },
+    {
+      "id": "S9",
+      "section_index": 4,
+      "t_start": 33,
+      "t_end": 36,
+      "duration": 3,
+      "beat_type": "conclusion_card",
+      "shot": "黑底结论卡「标称 ÷ 2 ≥ 实际需求」",
+      "voiceover": "实际要多久，标称就得有两个它。",
+      "subtitle": "② 结论：续航按实际时长一倍选",
+      "sfx": "公式用打字机效果逐字符出现",
+      "point_index": 2,
+      "retention_technique": "结论卡复述",
+      "visual_change": true,
+      "vo_chars": 15
+    },
+    {
+      "id": "S10",
+      "section_index": 5,
+      "t_start": 36,
+      "t_end": 38,
+      "duration": 2,
+      "beat_type": "point_intro",
+      "shot": "演示灯往帐篷杆上一靠滑落掉地（低机位、自然声，无伤害）",
+      "voiceover": "第三个，最容易漏。",
+      "subtitle": "③ 固定方式",
+      "sfx": "金属摩擦声保留；掉地瞬间音效放大",
+      "point_index": 3,
+      "retention_technique": "模式中断（物理动作）",
+      "visual_change": true,
+      "vo_chars": 9
+    },
+    {
+      "id": "S11",
+      "section_index": 5,
+      "t_start": 38,
+      "t_end": 46,
+      "duration": 8,
+      "beat_type": "evidence",
+      "shot": "三宫格快切：①磁吸吸车尾/树干 ②挂钩挂树杈/晾衣绳 ③双固定照亮帐篷内部；每格右上角标图标",
+      "voiceover": "只带磁吸，没铁的地方用不了；只带挂钩，大风就晃。磁吸加挂钩，金属面、树干、晾衣绳都能用，才叫百搭。",
+      "subtitle": "🧲 磁吸 = 金属点位<br>🪝 挂钩 = 任意点位",
+      "sfx": "三宫格按鼓点切，每格 2.5s；图标弹入",
+      "point_index": 3,
+      "retention_technique": "强对比画面",
+      "visual_change": true,
+      "vo_chars": 49
+    },
+    {
+      "id": "S12",
+      "section_index": 5,
+      "t_start": 46,
+      "t_end": 49,
+      "duration": 3,
+      "beat_type": "conclusion_card",
+      "shot": "三要点汇总卡依次落位：3500K / 续航 ×2 / 磁吸 + 挂钩",
+      "voiceover": "3500K、续航翻倍、磁吸加挂钩。",
+      "subtitle": "3500K · 续航×2 · 磁吸+挂钩",
+      "sfx": "三声落卡音效；卡片最后拼成一条横排",
+      "point_index": 3,
+      "retention_technique": "结论卡复述",
+      "visual_change": true,
+      "vo_chars": 17
+    },
+    {
+      "id": "S13",
+      "section_index": 6,
+      "t_start": 49,
+      "t_end": 54,
+      "duration": 5,
+      "beat_type": "pitfalls",
+      "shot": "三种常见错法快闪打红叉：①只看流明 ②电池焊死不可换电 ③防水低于 IP44",
+      "voiceover": "再避三个坑：只看流明、电池不可换、防水不到 IP44。",
+      "subtitle": "✗ 只看流明 ✗ 不可换电 ✗ 防水<IP44",
+      "sfx": "红叉盖章音效 ×3；BGM 留最紧一层制造还没完",
+      "point_index": null,
+      "retention_technique": "完播悬念",
+      "visual_change": true,
+      "vo_chars": 27
+    },
+    {
+      "id": "S14",
+      "section_index": 7,
+      "t_start": 54,
+      "t_end": 58,
+      "duration": 4,
+      "beat_type": "cta",
+      "shot": "三盏灯在营地桌面摆拍，手指下拉指向评论区图标",
+      "voiceover": "露营灯你踩过哪个坑？评论区见。点关注。",
+      "subtitle": "你踩过哪个坑？评论区见 ↓",
+      "sfx": "BGM 升调；评论区箭头动效",
+      "point_index": null,
+      "retention_technique": "单一 CTA",
+      "visual_change": true,
+      "vo_chars": 19
+    },
+    {
+      "id": "S15",
+      "section_index": 7,
+      "t_start": 58,
+      "t_end": 60,
+      "duration": 2,
+      "beat_type": "end_frame",
+      "shot": "尾帧静态卡：三要点 + 关注引导，灯缓慢亮起",
+      "voiceover": "",
+      "subtitle": "关注我｜露营装备不踩坑<br>① 3500K ② 续航×2 ③ 磁吸+挂钩",
+      "sfx": "BGM 收尾单音；画面定格不循环跳切",
+      "point_index": null,
+      "retention_technique": "尾帧信息复述",
+      "visual_change": false,
+      "vo_chars": 0,
+      "voiceover_note": "（无口播，留白）"
+    }
+  ],
+  "retention_design": [
+    {
+      "technique": "认知缺口前置",
+      "shot": "S1–S2",
+      "note": "推翻默认动作，观众必须听下去"
+    },
+    {
+      "technique": "信息增量承诺",
+      "shot": "S3",
+      "note": "明确三个数，把剩余时长变成待领取任务"
+    },
+    {
+      "technique": "模式中断（每 15 秒一次）",
+      "shot": "S4 / S7 / S10 / S13",
+      "note": "换点前先放物理动作，打破连续口播的视觉疲劳"
+    },
+    {
+      "technique": "强对比画面",
+      "shot": "S5 / S8 / S11",
+      "note": "分屏、时间轴、三宫格，信息密度从听升级为看；S8 为全片最长的 9 秒证据镜头，已按 44 字配速"
+    },
+    {
+      "technique": "结论卡复述",
+      "shot": "S6 / S9 / S12",
+      "note": "兼顾中途划走回看与截图收藏"
+    },
+    {
+      "technique": "完播悬念",
+      "shot": "S13",
+      "note": "以为讲完又来三条避坑，制造损失厌恶"
+    },
+    {
+      "technique": "单一 CTA",
+      "shot": "S14–S15",
+      "note": "只留评论与关注两个动作，降低门槛"
+    }
+  ],
+  "cliffhanger_checkpoints": [
+    {
+      "at_sec": 3,
+      "covered_by": "S2 结束于 5 秒"
+    },
+    {
+      "at_sec": 15,
+      "covered_by": "S6 结束于 22 秒 + S11 每 2.5 秒换画面"
+    },
+    {
+      "at_sec": 33,
+      "covered_by": "S9 结束于 36 秒"
+    }
+  ],
+  "subtitle_spec": {
+    "font": "黑体加粗",
+    "stroke_px": 4,
+    "min_font_size": 52,
+    "max_lines": 2,
+    "max_chars_per_line": 14,
+    "highlight_rule": "数字与单位（3500K / IP44 / ×2）高亮描红",
+    "sync_rule": "三个结论卡的数字必须与口播同步出现，不慢半拍"
+  },
+  "cover": {
+    "titles": [
+      {
+        "style": "信息缺口型",
+        "main": "露营灯别只看亮度",
+        "sub": "记住 3 个数，不踩坑"
+      },
+      {
+        "style": "反常识型",
+        "main": "6500K 的灯，拍的肉是灰的",
+        "sub": null
+      },
+      {
+        "style": "痛点型",
+        "main": "半夜灯没电？这 3 个参数先看",
+        "sub": null
+      }
+    ],
+    "image": "左右分屏 6500K / 3500K 同盘烤肉对比图，中央压大字，底部小字「露营灯选购」"
+  },
+  "hashtags": [
+    "#露营灯",
+    "#露营装备选购",
+    "#露营新手",
+    "#户外照明",
+    "#露营生活"
+  ],
+  "pinned_comment": "三个数记一下：① 色温 3500K ② 续航按实际时长 ×2 ③ 磁吸+挂钩 —— 你还见过什么智商税灯？",
+  "props": [
+    "露营灯 3 盏（可调色温 1 盏 / 磁吸 1 盏 / 挂钩 1 盏）",
+    "带磁吸底座的铁质件（车尾或铁架）",
+    "树杈或晾衣绳",
+    "牛排/烤肉一份",
+    "三脚架",
+    "遮光布（营造夜间）",
+    "手机备忘录纸牌",
+    "时间轴贴纸"
+  ],
+  "shooting_order": [
+    "先拍 S1–S2 夜景钩子（趁天完全黑）",
+    "再拍 S5 / S8 / S11 三组核心对比",
+    "最后补拍 S4 / S7 / S10 / S14 的人物与特写"
+  ],
+  "editing": {
+    "bgm_bpm_range": [
+      92,
+      110
+    ],
+    "bgm_cue": "前 5 秒无 BGM 只留环境音，第 5 秒主旋律 drop，与 S3 弹卡同步",
+    "cut_cadence_hook_sec_per_cut": 1,
+    "cut_cadence_evidence_sec_per_cut": "2–3",
+    "conclusion_card_hold_sec": 0.5,
+    "shooting_taboo": [
+      "色温对比必须同盘食物、同距离、同曝光，后期只调白平衡不做亮度补偿",
+      "续航频闪镜头实拍，不用后期模拟",
+      "滑落镜头用慢动作但不刻意夸张"
+    ]
+  },
+  "cut_45s_version": {
+    "duration_sec": 45,
+    "shot_map": [
+      {
+        "from": "S1+S2",
+        "t_start": 0,
+        "t_end": 4,
+        "note": "两钩子合成一镜，只留过曝与惨白发灰两个画面"
+      },
+      {
+        "from": "S3",
+        "t_start": 4,
+        "t_end": 7
+      },
+      {
+        "from": "S4+S5",
+        "t_start": 7,
+        "t_end": 15,
+        "note": "分屏对切减到 3 次，口播删掉 3000K 分支"
+      },
+      {
+        "from": "S6",
+        "t_start": 15,
+        "t_end": 17
+      },
+      {
+        "from": "S7+S8",
+        "t_start": 17,
+        "t_end": 26,
+        "note": "删实验室温度解释，只留实测与翻倍结论"
+      },
+      {
+        "from": "S9",
+        "t_start": 26,
+        "t_end": 28
+      },
+      {
+        "from": "S10+S11",
+        "t_start": 28,
+        "t_end": 36,
+        "note": "三宫格每格 1.5s，删风中晃动的解释"
+      },
+      {
+        "from": "S12",
+        "t_start": 36,
+        "t_end": 38
+      },
+      {
+        "from": "S13",
+        "t_start": 38,
+        "t_end": 42,
+        "note": "完播钩子不可删"
+      },
+      {
+        "from": "S14+S15",
+        "t_start": 42,
+        "t_end": 45
+      }
+    ],
+    "must_keep": [
+      "S1/S2 钩子",
+      "S3 承诺清单",
+      "三个结论卡 S6/S9/S12",
+      "S13 完播钩子",
+      "S14 CTA"
+    ]
+  },
+  "publish": {
+    "time_slots": [
+      "周五 19:00–21:00",
+      "周日 10:00–12:00"
+    ],
+    "first_30_min": "守评论区并把置顶顶上去",
+    "ab_variables": [
+      "封面标题",
+      "钩子首句（S1 口播）"
+    ],
+    "ab_rule": "一次只改一个"
+  },
+  "metrics": [
+    {
+      "name": "3 秒完播率",
+      "validates": "钩子是否成立",
+      "fix": "< 60% 只换封面标题与 S1 画面"
+    },
+    {
+      "name": "25 秒留存",
+      "validates": "第二个点是否掉人",
+      "fix": "S8 的 9 秒口播再压 2 秒"
+    },
+    {
+      "name": "收藏率",
+      "validates": "结论卡是否有效",
+      "fix": "结论卡数字提前半拍出现"
+    },
+    {
+      "name": "评论率",
+      "validates": "CTA 是否清晰",
+      "fix": "S14 口播保留单一问题"
+    }
+  ],
+  "compliance": {
+    "absolute_superlatives": false,
+    "brand_reference": false,
+    "price_promise": false,
+    "note": "全文无最/第一/唯一等绝对化用语；参数表述为选购常识说明而非绝对性能承诺；画面为真实拍摄，无第三方素材"
+  },
+  "consistency": {
+    "shot_ids_shared_with_md": true,
+    "timeline_shared_with_md": "0:00–1:00",
+    "point_binding_shared_with_md": true,
+    "voiceover_fulltext_in_md_section": "§4"
+  },
+  "cta": {
+    "primary": "评论区留言",
+    "secondary": "点关注",
+    "shot": "S14",
+    "line": "露营灯你踩过哪个坑？评论区见。点关注。"
+  }
+}

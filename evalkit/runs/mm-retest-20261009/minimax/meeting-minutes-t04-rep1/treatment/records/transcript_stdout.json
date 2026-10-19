@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_a3d5d175-23e4-483d-9d73-7197556a3c44",
+  "traceId": "b21c44cb-4c92-4bd2-9c0c-33c4a74df7eb",
+  "turnId": "turn_bb423643-becb-44ac-bb66-abcdcf64fa8f",
+  "response": "会议纪要已按 meeting-minutes 技能生成并通过全部 11 项验收检查，全部产物留在原位。\n\n## 交付物\n\n- `xiangqi_fashion_1009.txt` — 11 行转写稿，按 brief 原文保存\n- `out/纪要.docx` — 三段式纪要\n- `out/summary.json` — 四键条数统计\n\n## 结果：决议 3 · 待办 3 · 风险 2 · 合计 8\n\n三条被丢弃的行是零关键词噪声，符合规则：开场白「人到齐了就开始」、无关键词的「应急小组的名单群里接龙」、散会行「今天先到这，下周三同一时间复盘双11预案」。\n\n分类里有两处值得说明，都是优先级规则的直接结果而非误判：\n\n- `[10:01] 报销同意书的审批流需要走新版OA` 同时含「同意」和「需要」，按 **决议 > 待办** 归入决议事项，所以它没有出现在待办表格里。\n- `[10:02] 这批退货的延期赔偿口径，各销区需要传达到位` 同时含「延期」和「需要」，决议类未命中后由待办类接管，归待办。\n\n待办表格三行的负责人全部为「待定」——三条原句都不含「我负责」「由 X 负责」「负责人：」「@X」任一模式，按红线不编造。期限只有「截止月底前完成」这条抽出「月底前」，另两条无时间语。\n\n## 过程中的两个环境问题\n\n`python-docx` 缺失导致脚本首次退出码 1。系统 pip 受 PEP 668 保护不可直接安装，我在 `/tmp/mm_venv` 建了隔离虚拟环境装 python-docx 1.2.0，没有改动系统 Python；脚本本身一行未改，全部走随包脚本而非手工产出。\n\n需要说明的是，技能里写的验收命令 `eval/runner.py` 在本工作目录并不存在，所以那 5 项自动验收**没能执行**。我改为按 `references/docx-and-summary.md` 第 4 节的手工验收清单逐条自查，覆盖了同样的检查点（节标题齐全、表格三列、四键一致、逐字溯源、负责人/期限可溯），并额外验证了确定性——重复运行两次，`summary.json` 逐字一致、docx 全部段落与单元格文本逐字一致。\n\n自查过程中我自己的测试代码出过两个 bug（一处正则语法错误、一处把 `合计` 误算进求和），都已修正重跑；产物本身自始至终未被改动。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 17,
+    "inputTokens": 483281,
+    "outputTokens": 8376,
+    "totalTokens": 491657,
+    "cacheReadTokens": 422844,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 776,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 491657,
+    "contextUsed": 36165,
+    "contextWindow": 200000
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "schema_version": "1.0",
+  "source": {
+    "transcript_file": "botang_minsu_1011.txt",
+    "transcript_utterances": 10,
+    "meeting_start": "19:00",
+    "meeting_end": "19:09",
+    "duration_minutes": 9
+  },
+  "meeting": {
+    "name": "泊棠民宿淡季工作协调会",
+    "date_label": "10 月 11 日",
+    "time_range": "19:00—19:09",
+    "host": "掌柜 岑晏",
+    "attendees": [
+      {
+        "name": "岑晏",
+        "role": "掌柜",
+        "attended": true
+      },
+      {
+        "name": "苏莞",
+        "role": "管家",
+        "attended": true
+      },
+      {
+        "name": "郁南",
+        "role": "布草房",
+        "attended": true
+      },
+      {
+        "name": "小盛",
+        "role": "未列明（受托事项承接人）",
+        "attended": false
+      }
+    ],
+    "topic": "淡季经营与布草、物料、房价、包装等事项的协调与定夺"
+  },
+  "attendees": [
+    {
+      "name": "岑晏",
+      "role": "掌柜",
+      "attended": true
+    },
+    {
+      "name": "苏莞",
+      "role": "管家",
+      "attended": true
+    },
+    {
+      "name": "郁南",
+      "role": "布草房",
+      "attended": true
+    },
+    {
+      "name": "小盛",
+      "role": "未列明（受托事项承接人）",
+      "attended": false
+    }
+  ],
+  "discussion": [
+    {
+      "id": "P1",
+      "topic": "会议开场",
+      "content": "掌柜岑晏说明本次会议就淡季期间的经营事项进行沟通，与会人员到齐，会议开始。",
+      "speaker": "岑晏",
+      "source_time": "19:00"
+    },
+    {
+      "id": "P2",
+      "topic": "晨会安排",
+      "content": "岑晏宣布晨会改为每周二上午召开，并在会上就工装夹具的图面使用征求在场意见后形成结论。",
+      "speaker": "岑晏",
+      "source_time": "19:01 / 19:04"
+    },
+    {
+      "id": "P3",
+      "topic": "物料与布草",
+      "content": "苏莞提出物料清单需请小盛协助梳理，要求两日内完成；郁南说明压胶工序仍是延期风险最集中的环节，床罩已返工两次；另就洗烘设备保修单据的存放位置提出疑问。",
+      "speaker": "苏莞、郁南",
+      "source_time": "19:02 / 19:03 / 19:06"
+    },
+    {
+      "id": "P4",
+      "topic": "房价与包装",
+      "content": "苏莞提出淡季房价方案拟在群内发起投票，随后改由岑晏在会上直接议定，确定工作日执行一口价；腊味礼盒包装方案需重新选定，限期至出样前。",
+      "speaker": "苏莞、岑晏",
+      "source_time": "19:05 / 19:07 / 19:08"
+    },
+    {
+      "id": "P5",
+      "topic": "会议结束",
+      "content": "各项议题讨论完毕，岑晏宣布散会，并提醒在场人员注意休息。",
+      "speaker": "岑晏",
+      "source_time": "19:09"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D1",
+      "time": "19:01 / 19:04",
+      "topic": "晨会安排",
+      "content": "自本次会议起，晨会固定为每周二上午召开，时间不再临时调整。",
+      "owner": "岑晏",
+      "source_time": "19:01"
+    },
+    {
+      "id": "D2",
+      "time": "19:04",
+      "topic": "工装夹具",
+      "content": "工装夹具先行按原有图纸组织加工，本阶段不作图面变更。",
+      "owner": "岑晏",
+      "source_time": "19:04"
+    },
+    {
+      "id": "D3",
+      "time": "19:07",
+      "topic": "淡季房价",
+      "content": "淡季房价方案当场议定，工作日执行一口价，不设分档议价。",
+      "owner": "岑晏",
+      "source_time": "19:07"
+    }
+  ],
+  "action_items": [
+    {
+      "id": "A1",
+      "content": "梳理并核对物料清单，形成可用清单。",
+      "owner": "小盛",
+      "coordinator": "苏莞",
+      "deadline": "会议后两日内",
+      "source_time": "19:02"
+    },
+    {
+      "id": "A2",
+      "content": "定位洗烘设备保修单据归入的文件夹并归档。",
+      "owner": "苏莞 / 郁南",
+      "coordinator": "苏莞",
+      "deadline": "未明确，需另行确认",
+      "source_time": "19:06"
+    },
+    {
+      "id": "A3",
+      "content": "重新选定腊味礼盒包装方案。",
+      "owner": "苏莞",
+      "coordinator": "苏莞",
+      "deadline": "包装出样前",
+      "source_time": "19:08"
+    }
+  ],
+  "risks": [
+    {
+      "id": "R1",
+      "content": "压胶工序为当前延期风险最高的环节，床罩已发生两轮返工，须优先跟进。",
+      "reported_by": "郁南",
+      "source_time": "19:03"
+    }
+  ],
+  "open_questions": [
+    {
+      "id": "Q1",
+      "content": "淡季房价方案的确定程序存在两种表述：19:05 提议「改天发群投票」，19:07 当场议定「工作日一口价」。本次纪要按后一条记录为决议事项 D3，前一条是否作废、是否仍需补充群投票，请于确认后回填。",
+      "source_time": "19:05 / 19:07"
+    },
+    {
+      "id": "Q2",
+      "content": "洗烘设备保修单据的归档时限在原记录中未明确，需由苏莞补充确定。",
+      "source_time": "19:06"
+    }
+  ],
+  "statistics": {
+    "decisions": 3,
+    "action_items": 3,
+    "risks": 1,
+    "open_questions": 2,
+    "action_items_without_deadline": 1
+  },
+  "filler_words_removed": [
+    "呃",
+    "嘛",
+    "说白了",
+    "哈",
+    "啊",
+    "那个",
+    "行"
+  ],
+  "outputs": {
+    "docx": "out/纪要.docx",
+    "summary_json": "out/summary.json"
+  }
+}

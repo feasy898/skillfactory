@@ -1,0 +1,137 @@
+{
+  "platform": "dy",
+  "topic": "二手书循环",
+  "format": "真人口播 + 卡点画面",
+  "aspect_ratio": "9:16",
+  "resolution": "1080x1920",
+  "total_duration_sec": 60,
+  "points": [
+    "教材按学期末集中回收",
+    "封面破损评级再定价",
+    "跨界换书市集引流"
+  ],
+  "hook_type": "反常识前置",
+  "core_promise": "让观众看完知道二手书为什么值钱、什么时候收、怎么定价、去哪引流",
+  "target_action": "评论关键词「学期末」领回收定价表",
+  "sections": [
+    {
+      "id": 1,
+      "name": "钩子",
+      "start": "00:00",
+      "end": "00:03",
+      "duration_sec": 3,
+      "purpose": "前置反常识，拦住滑动",
+      "line": "家里那堆卖不掉的书，先别扔。它可能是一整学期的现金。",
+      "visual": "书堆特写，手把书从废纸箱里救出来，一本立起",
+      "subtitle_key": "先别扔",
+      "camera": "0.5s 推近 + 收音留白"
+    },
+    {
+      "id": 2,
+      "name": "痛点共鸣",
+      "start": "00:03",
+      "end": "00:12",
+      "duration_sec": 9,
+      "purpose": "制造「我亏了」的痛感",
+      "line": "每到毕业季，最扎心的一幕：整摞考研资料、四六级真题堆到天花板，落灰、压变形。称重一看，三斤八毛。不是书不值钱，是你卖给了错的人。",
+      "visual": "书墙全景，电子秤读数跳动，无奈表情特写",
+      "subtitle_key": "三斤八毛",
+      "camera": "前快后慢，「错的人」前停 0.3s"
+    },
+    {
+      "id": 3,
+      "name": "干货①",
+      "start": "00:12",
+      "end": "00:24",
+      "duration_sec": 12,
+      "point": "教材按学期末集中回收",
+      "purpose": "给出时间窗口，教观众卡点收",
+      "line": "第一个动作：卡窗口，别等毕业季。回收就三个高峰——期末考完那一周、开学前两周、考研结束那天。推着车堵在校门口收，你收的是没人要的当季教材，议价权全在你这边；等到六月，人人都急，你反而被压价。",
+      "visual": "三段文字卡（期末 / 开学前 / 考研结束）依次弹出，校门口收书实拍",
+      "subtitle_key": "卡窗口，别等毕业季",
+      "key_terms": ["期末回收", "开学前", "考研结束"]
+    },
+    {
+      "id": 4,
+      "name": "干货②",
+      "start": "00:24",
+      "end": "00:36",
+      "duration_sec": 12,
+      "point": "封面破损评级再定价",
+      "purpose": "给出两维定价法，避免贱卖",
+      "line": "第二个动作：定价分两步走。先按品类定基价——普通教材五毛到一块、教辅两块、绝版签名三块起。再按品相打折：全新九折、有笔记七折、缺页卷边五折，封面撕裂直接按废纸走。同样的书，评级差一档，进价差一倍都不奇怪。",
+      "visual": "基价表字幕，同一本书三张品相对比图（全新 / 有笔记 / 缺页）",
+      "subtitle_key": "定价分两步",
+      "pricing": {
+        "step_1_base_price_by_category": [
+          { "category": "普通教材", "price": "0.5-1元" },
+          { "category": "教辅", "price": "2元" },
+          { "category": "绝版签名", "price": "3元起" }
+        ],
+        "step_2_discount_by_condition": [
+          { "condition": "全新", "discount": 0.9 },
+          { "condition": "有笔记", "discount": 0.7 },
+          { "condition": "缺页卷边", "discount": 0.5 },
+          { "condition": "封面撕裂", "discount": "按废纸" }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "name": "干货③",
+      "start": "00:36",
+      "end": "00:50",
+      "duration_sec": 14,
+      "point": "跨界换书市集引流",
+      "purpose": "把卖书升级为做人群，提升单客价值",
+      "line": "第三个动作，也是最赚钱的：二手书的利润不在书里，在人群里。把收来的旧书搬到市集摆摊，两块钱押金办一张换书券，拿旧书换新书；挑出品相最好的那批再挂二手卖。你用三块钱的成本，换回来一个愿意逛半小时、愿意为九块九买单的人。",
+      "visual": "市集摊位全景，手写「换书券」牌子，顾客翻书特写",
+      "subtitle_key": "利润在人群里",
+      "metrics": { "deposit_yuan": 2, "cost_yuan": 3, "psychological_price_yuan": 9.9 }
+    },
+    {
+      "id": 6,
+      "name": "效果爆点",
+      "start": "00:50",
+      "end": "00:56",
+      "duration_sec": 6,
+      "purpose": "量化收益，回扣开头",
+      "line": "同样是收废品，窗口踩对、评级做细、人群接上，一年多赚的差价，够你换辆车。",
+      "visual": "账本数字逐行跳动，停在总额，切回开头那本书",
+      "subtitle_key": "够你换辆车"
+    },
+    {
+      "id": 7,
+      "name": "行动号召",
+      "start": "00:56",
+      "end": "01:00",
+      "duration_sec": 4,
+      "purpose": "用关键词把流量沉到评论区",
+      "line": "我把完整的回收定价表整理好了，评论区扣「学期末」，我发给你。",
+      "visual": "手指点评论区，评论气泡弹出「学期末」",
+      "subtitle_key": "扣「学期末」",
+      "cta": { "type": "comment_keyword", "keyword": "学期末", "reward": "回收定价表" }
+    }
+  ],
+  "viral_mechanics": [
+    { "mechanic": "反常识钩子", "section": 1, "note": "卖不掉的书 = 现金，与直觉相反" },
+    { "mechanic": "痛点前置", "section": 2, "note": "具象数字三斤八毛" },
+    { "mechanic": "数字密度", "section": "3-5", "note": "每段 3 个可记忆数字" },
+    { "mechanic": "可执行清单", "section": "3-5", "note": "每段动词开头：卡、算、搬" },
+    { "mechanic": "二次传播钩子", "section": 7, "note": "关键词学期末" }
+  ],
+  "publish_config": {
+    "title": "二手书为什么卖不上价？三个动作把废纸变现金",
+    "hashtags": ["#二手书回收", "#教材回收", "#循环经济", "#毕业季经济", "#搞钱思路"],
+    "cover": { "asset": "书堆", "headline": "先别扔", "headline_ratio": "1/3" },
+    "subtitle_font": "思源黑体 Bold 居中，每屏≤12字，关键词亮黄",
+    "safe_area_px": { "top": 220, "bottom": 220 },
+    "bgm": { "style": "中式鼓点卡点版", "cut_points": ["00:12", "00:24", "00:36"] },
+    "publish_window": "期末周（6月中 / 1月中）晚 19:30-21:00"
+  },
+  "variants": [
+    { "name": "30s 快版", "keep_sections": [1, 3, 4, 7], "note": "砍掉第5段扩写，CTA前加一句「第三点最重要」" },
+    { "name": "系列化", "keep_sections": [1, 2, 3, 7], "note": "每期拆一个动作，本期总览，下期深挖评级表" },
+    { "name": "评论区置顶", "keep_sections": [], "note": "补图：基价表 + 折扣表原图" }
+  ]
+}

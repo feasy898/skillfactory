@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t03-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 101832,
+  "started_at_ms": 1791530537278,
+  "session_id": "sess_25f73afa-0bb5-45b9-bf47-0cfee2089f57",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t03-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 209727,
+      "ot": 3880,
+      "dur": 95655,
+      "n": 8
+    }
+  ],
+  "input_tokens": 209727,
+  "output_tokens": 3880,
+  "stdout_bytes": 2074,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "an clean: `OK platform=xhs topic=#通勤背包选购 elements=7 open_placeholders=7 filled_from_input=10`, exit 0. The tricky inputs from the brief were handled by the engine as designed: the topic's leading/trailing spaces were stripped (stored as `#通勤背包选购`), and the first point's whitespace was stripped before filling (`三档承重分装更护肩`).\\n\\n**Deliverables** (both non-empty, UTF-8, in `out/`):\\n- `out/骨架.md` (2.5 KB) — 7 sections in frozen order: 标题（带数字，🔥+数字 3）、开头钩子块（✅）、干货块 1-3（💡，三个卖点各入一块）、总结块（📌，三点复述）、标签组（首标签 `#通勤背包选购` 由主题派生，去 `#` 与空白后重组）。\\n- `out/structure.json` (5.3 KB) — valid JSON with all 11 top-level keys; `points_used` = 3 条 stripped 卖点，`points_unused` = 空，`placeholder_stats` 与骨架.md 同源。\\n\\n**Verification** — re-ran the engine with identical input to a temp dir and diffed: byte-identical (determinism confirmed). 7 open placeholders matches the reference value for xhs with a full 3 points, one per element; per the skill's red line these `【占位:…】` slots are left as open slots for the user to fill — no content was invented for them.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 8,\n    \"inputTokens\": 209727,\n    \"outputTokens\": 3880,\n    \"totalTokens\": 213607,\n    \"cacheReadTokens\": 194368,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 3446,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 213607,\n    \"contextUsed\": 31542,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

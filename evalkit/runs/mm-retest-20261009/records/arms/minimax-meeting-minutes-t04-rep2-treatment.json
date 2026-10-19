@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t04-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 113793,
+  "started_at_ms": 1791531436295,
+  "session_id": "sess_6cd40279-064d-4bee-99c4-79a7ae0c4ab5",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t04-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 395920,
+      "ot": 6217,
+      "dur": 101725,
+      "n": 15
+    }
+  ],
+  "input_tokens": 395920,
+  "output_tokens": 6217,
+  "stdout_bytes": 3741,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "s and with the meta line, 宋体 set including the eastAsia attribute, and title centered at 18pt bold. Re-running via the alias entry `gen_docx.py` produced byte-identical `summary.json` and text-identical docx, confirming determinism.\\n\\nTwo things to flag honestly. First, `python-docx` was missing and the system Python is PEP 668-managed, so I installed it into a throwaway venv at `/tmp/mmvenv` and ran the script through that — no system packages were touched, and the artifacts don't depend on the venv. Second, the skill's step-2 acceptance command (`python eval/runner.py <out> reference/out`) could not run: this run directory contains no `eval/` directory and no `reference/out`, so the 5-check runner was unavailable. I substituted the equivalent checks from `references/docx-and-summary.md` §4 — every item on that checklist passed except the runner-only item \\\"与参照产物各类条数差 ≤2\\\", which cannot be evaluated without the reference output. If you have a reference directory elsewhere, point me at it and I'll run that last check.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 15,\n    \"inputTokens\": 395920,\n    \"outputTokens\": 6217,\n    \"totalTokens\": 402137,\n    \"cacheReadTokens\": 335744,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 659,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 402137,\n    \"contextUsed\": 33492,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t04",
+  "rep": 2,
+  "slot": 15
+}

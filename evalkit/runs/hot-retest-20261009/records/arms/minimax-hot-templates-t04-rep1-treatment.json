@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t04-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 47121,
+  "started_at_ms": 1791530440033,
+  "session_id": "sess_c6612852-1fb8-4677-ab31-c0e44c5cd6d8",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t04-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 222904,
+      "ot": 2080,
+      "dur": 40817,
+      "n": 9
+    }
+  ],
+  "input_tokens": 222904,
+  "output_tokens": 2080,
+  "stdout_bytes": 2635,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "6e0\",\n  \"turnId\": \"turn_df2c6e4a-dd91-4a40-958f-5c2022743a13\",\n  \"response\": \"抖音口播骨架已生成，产物在 `out/` 下：`骨架.md`（2082 字节）与 `structure.json`（4134 字节）。\\n\\n生成命令 exit 0，stdout 打印成功行：`OK platform=dy topic=二手书循环 elements=6 open_placeholders=6 filled_from_input=4 -> out`。我没有手写任何结构内容，全部走技能自带的确定性渲染引擎 `scripts/gen.py`。\\n\\n**产物内容**：模板为「3秒钩子 + 痛点 + 价值点×3 + CTA」共 6 个要素。三条卖点全部命中槽位、无截断——`第一招：教材按学期末集中回收`、`第二招：封面破损评级再定价`、`第三招：跨界换书市集引流`，`points_unused` 为空。主题「二手书循环」填入钩子，钩子以冻结句式「别划走！还在为「二手书循环」反复内耗的人」起头；CTA 保留冻结指令「点赞收藏，评论区扣「1」」。\\n\\n**留了 6 处开放槽位未填**，这是设计内行为、不是缺陷：钩子强句 1、痛点场景 1、三个「一句话展开」各 1、CTA 配套资料 1。技能红线明确禁止引擎或我为了看起来完整而编造内容填充，所以这些槽位原样保留给扩写环节补写。与之相对，残留缺陷类别的 `{{ }}` 未填充模板变量经 grep 确认为 0 处。\\n\\n**自检结果**：同输入重跑逐字节一致（`diff -r` 无差异，临时副本已清理）；`structure.json` 顶层 11 键、每要素 9 键、统计 5 键，与规范一致；JSON 解析通过；两文件均为 UTF-8/LF，无 CRLF。\\n\\n一点需要如实说明的情况：技能文档里的验收判据是 `python eval/runner.py <被测out> reference/out`（在技能包根目录运行），但本环境的技能包只包含 `SKILL.md`、`scripts/gen.py` 和五份 `references/`，**没有 `eval/` 目录也没有 `reference/out`**，所以这条命令无法执行。上述结论来自我自己做的确定性、键数、编码和冻结标记比对，不能替代官方的 8 case × 5 检查。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 9,\n    \"inputTokens\": 222904,\n    \"outputTokens\": 2080,\n    \"totalTokens\": 224984,\n    \"cacheReadTokens\": 196352,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 377,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 224984,\n    \"contextUsed\": 28319,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "t04",
+  "rep": 1,
+  "slot": 15
+}

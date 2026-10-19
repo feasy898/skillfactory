@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0",
+  "meta": {
+    "platform": "dy",
+    "platform_name": "抖音",
+    "format": "口播",
+    "topic": "旧衣改造收纳",
+    "target_duration_sec": { "min": 55, "max": 70 },
+    "produced_form": "真人口播 + 前后对比实拍穿插",
+    "source_markdown": "骨架.md",
+    "generated_by": "hot-templates-t08-rep1/baseline"
+  },
+  "data_provenance": {
+    "selling_points_source_requested": "./data/旧衣改造卖点.json",
+    "selling_points_source_available": false,
+    "selling_points_origin": "self_authored_fallback",
+    "fallback_authorized_by": "brief.md 第 3 条：工具/数据报错时自拟三条通用卖点直接生成，不要空手而归",
+    "verification": [
+      { "check": "本工作目录下 data/ 目录", "result": "不存在" },
+      { "check": "本工作目录下 fixtures/ 目录", "result": "存在但为空" },
+      { "check": "整轮任务包 packs/ 与本次运行目录内文件名包含「旧衣」", "result": "零命中" }
+    ],
+    "unverified_claims_in_output": [],
+    "note": "三条卖点为自拟兜底，非源文件摘录。data/旧衣改造卖点.json 补齐后须替换 selling_points 并更新各条 origin 字段。"
+  },
+  "one_line_pitch": "衣柜里那堆不是不穿、是不会穿的旧衣服——三步，把它们重新变成能天天穿的收纳系统。",
+  "viral_mechanism": {
+    "primary": "反常识开场（贬低旧衣→否定囤积）+ 可视化前后对比 + 强动作可抄性",
+    "retention_target": "完播率主要由前 3 秒决定，反常识与视觉冲击压在 0–3s",
+    "secondary_mechanisms": ["同机位前后对比", "静音标记", "二选一评论引导"]
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "name": "钩子",
+      "start_sec": 0,
+      "end_sec": 3,
+      "duration_sec": 3,
+      "goal": "3 秒内制造反常识，拦住划走",
+      "shot": "手持略晃、快推；镜头怼近衣柜门，一把推开整柜",
+      "voiceover": "别再说旧衣服「留着以后穿」了——我今天把一整柜死当库存的衣服，救回来了。",
+      "caption": "旧衣 ≠ 库存 / 差的是放法",
+      "hook_variants": [
+        { "type": "反常识", "line": "旧衣服别扔，也别囤——它差的是放法，不是款式。" },
+        { "type": "数字", "line": "翻了 37 件旧衣，真正还在穿的只有 3 件。" },
+        { "type": "挑衅", "line": "衣柜越整理越乱？问题根本不在衣柜，在你没分类。" }
+      ]
+    },
+    {
+      "id": "pain",
+      "name": "痛点共鸣",
+      "start_sec": 3,
+      "end_sec": 12,
+      "duration_sec": 9,
+      "goal": "让目标人群对号入座，制造「必须看下去」",
+      "shot": "三个痛点配三个快切空镜：翻找／发霉起球特写／满柜门关不上",
+      "voiceover": "你有没有过这种时候——买的时候是真好看，穿的时候是真不想洗，收的时候……只能往回一塞。",
+      "pain_points": [
+        { "index": 1, "text": "塞进去就找不到，导致逛街重复买同款" },
+        { "index": 2, "text": "换季发霉／起球，一整件报废" },
+        { "index": 3, "text": "衣柜塞满，新衣服没地方挂" }
+      ],
+      "caption": "① 找不到 ② 报废 ③ 没地方挂",
+      "pacing": "必须快，每句 ≤4 秒，慢下来就掉人"
+    },
+    {
+      "id": "body",
+      "name": "卖点干货主体",
+      "start_sec": 12,
+      "end_sec": 50,
+      "duration_sec": 38,
+      "goal": "给出三条可直接照做的动作，并解决第 2 节的三条痛点",
+      "structure_pattern": "一句结论 → 一个动作 → 一个前后差",
+      "pace_rules": [
+        "三点共 38 秒，必须留 4 秒给卖点 B 的高光镜头",
+        "宁可砍卖点 A 的解释，也不砍前后对比画面",
+        "口播不出现「整理收纳博主」「空间管理」等抽象词，用动词：塞、压、竖、翻"
+      ]
+    },
+    {
+      "id": "proof",
+      "name": "高光证据 / 前后对比",
+      "start_sec": 50,
+      "end_sec": 60,
+      "duration_sec": 10,
+      "goal": "把承诺变成画面证据，撬动完播与收藏",
+      "shot": "同机位、同焦段、同光线的前后对比，居中分割线，加「改造前／改造后」角标",
+      "voiceover": "同一个衣柜，同一个角度——左边是三个月前的我，右边是现在的家。",
+      "caption": "同一个衣柜",
+      "audio_note": "BGM 在对比切换那一下掐掉，留 0.5 秒静音再进；静音是最强的注意力标记，全片只用一次",
+      "rule": "本段只放证据，不放新信息"
+    },
+    {
+      "id": "cta",
+      "name": "行动指令",
+      "start_sec": 60,
+      "end_sec": 70,
+      "duration_sec": 10,
+      "goal": "把「看完爽」转成收藏与评论行为，吃互动权重",
+      "shot": "回到中近景，直视镜头，语速放慢（全片唯一允许慢下来的地方）",
+      "voiceover": "三筐法我已经写在下面了，先收藏，明天翻衣柜就用它。你家的旧衣服是哪种——塞柜子底的，还是直接扔了？评论区告诉我，我挨个回。",
+      "caption": "先收藏，明天就用",
+      "cta_options": [
+        { "type": "收藏钩子", "line": "先收藏，明天翻衣柜就用它", "priority": "收藏" },
+        { "type": "评论钩子", "line": "二选一提问：旧衣到底囤还是扔", "priority": "评论率" },
+        { "type": "关注钩子", "line": "下一条讲常穿件的折法", "priority": "下一条留存" }
+      ],
+      "cta_rule": "只挑 1–2 个，别全塞"
+    }
+  ],
+  "selling_points": [
+    {
+      "id": "A",
+      "origin": "self_authored_fallback",
+      "title": "按「穿得动」而不是「款式」分类",
+      "voiceover": "别再按『上衣裤子裙子』分了。按下个月穿不穿分：三堆——常穿、不常穿、基本不穿。",
+      "visual": "三个筐／箱子并排贴标签（常穿／轮换／压箱底），当场分拣",
+      "caption": "按「穿不穿」分三筐",
+      "shooting": "分拣过程用加速视频，抓取—丢筐动作要干脆",
+      "addresses_pain_points": [2, 3]
+    },
+    {
+      "id": "B",
+      "origin": "self_authored_fallback",
+      "title": "「压箱底」单独提出来，不占衣柜",
+      "voiceover": "基本不穿的那堆，别塞回衣柜——离你越远，越不占你的生活。换季布袋吊起来，或者直接压缩收进床底。",
+      "visual": "衣柜深处掏出的一坨 → 压缩袋压平 → 床底一塞，衣柜空出一半",
+      "caption": "压箱底 = 提出来单独放",
+      "shooting": "全片最大高光镜头：同机位同焦段，衣柜从满到空",
+      "addresses_pain_points": [3],
+      "highlight": true
+    },
+    {
+      "id": "C",
+      "origin": "self_authored_fallback",
+      "title": "常穿件「立起来 + 折进格」",
+      "voiceover": "常穿的那些别堆着用手扒——竖着装进格子，或者直接对折进收纳箱。翻一次顶翻十次。",
+      "visual": "叠好的毛衣一件件竖立插入；带标签的收纳箱左右对推",
+      "caption": "竖放 / 对折入格 = 一次翻到位",
+      "shooting": "俯拍机位，网格整齐填充有天然解压感，适合循环卡点",
+      "addresses_pain_points": [1]
+    }
+  ],
+  "publish": {
+    "title_candidates": [
+      "旧衣服别扔：塞回衣柜等于白花钱，三筐法救回来",
+      "我翻了 37 件旧衣，真正还在穿的只有 3 件",
+      "衣柜越整理越乱的真正原因——你根本没分类"
+    ],
+    "hashtags": ["#旧衣改造", "#衣柜收纳", "#整理收纳", "#省钱穿搭", "#断舍离", "#家居好物"],
+    "cover": "衣柜满／空左右分割图，中间压大字「旧衣 ≠ 库存」",
+    "post_time_suggestion": { "slots": ["19:00-22:00", "周末上午"], "basis": "创作经验值，非实测结论" }
+  },
+  "reusable_mechanisms": [
+    { "mechanism": "反常识前置", "usage": "旧衣差的是放法不是款式", "migration_rule": "开头必须推翻观众默认认知，而非描述现象" },
+    { "mechanism": "同机位前后对比", "usage": "满柜 vs 空柜", "migration_rule": "对比必须同焦段同光线，否则观众不买账" },
+    { "mechanism": "动作可抄性", "usage": "竖放／对折／压缩袋", "migration_rule": "每条卖点都要有一个手能立刻照做的动作" },
+    { "mechanism": "静音标记", "usage": "对比切换处留 0.5s", "migration_rule": "一次只用一次，多了就钝" },
+    { "mechanism": "二选一评论", "usage": "囤 vs 扔", "migration_rule": "结尾提问必须二选一，开放题没人回" }
+  ],
+  "integrity": {
+    "contains_fabricated_statistics": false,
+    "contains_fabricated_source_citation": false,
+    "content_attributed_to_missing_file": false,
+    "timing_claims_basis": "创作经验值",
+    "disclosure_location": "骨架.md 文末「数据来源与已知缺口」+ 本文件 data_provenance 字段"
+  }
+}

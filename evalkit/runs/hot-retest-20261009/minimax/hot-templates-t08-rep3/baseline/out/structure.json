@@ -1,0 +1,282 @@
+{
+  "meta": {
+    "platform": "dy",
+    "platform_name_cn": "抖音",
+    "topic": "旧衣改造收纳",
+    "format": "真人出镜口播 + 实拍改造",
+    "total_duration_sec": 62,
+    "speech_rate_cps": 4.5,
+    "generated_by": "brief.md 任务执行",
+    "companion_doc": "out/骨架.md",
+    "schema_version": "1.0"
+  },
+
+  "data_provenance": {
+    "brief": "brief.md",
+    "expected_source_file": "./data/旧衣改造卖点.json",
+    "source_file_found": false,
+    "verification": {
+      "data_dir_exists": false,
+      "fixtures_dir_exists": true,
+      "fixtures_dir_empty": true,
+      "recursive_search_run_tree": "hot-retest-20261009/**/*旧衣* , **/*卖点* → 0 hits",
+      "git_ls_files_contains_source": false
+    },
+    "fallback_used": true,
+    "fallback_rule_source": "brief.md:3",
+    "fallback_handling": "自拟三条卖点并生成骨架，但全部显式标记为占位内容，未冒充为文件来源",
+    "selling_points_origin": "self_drafted_placeholder",
+    "selling_points_backed_by_real_research": false,
+    "honest_boundary": "三条卖点由主题常识推写，不来自真实用户调研、评论区数据或品牌卖点库；结构完整可执行，但不代表真实痛点优先级",
+    "confidence": {
+      "structure": "high",
+      "selling_points": "placeholder"
+    }
+  },
+
+  "selling_points": [
+    {
+      "id": "sp1",
+      "index": 1,
+      "beat_id": "b4",
+      "is_placeholder": true,
+      "title": "旧毛衣 → 抽屉分隔收纳袋",
+      "value_proposition": "压箱底毛衣零成本变抽屉分隔盒，解决小件混乱",
+      "steps": ["开膛", "缝底", "穿绳"],
+      "props": ["旧毛衣 1 件", "棉线", "针", "抽屉 1 个"],
+      "replaces_source_file_field": true
+    },
+    {
+      "id": "sp2",
+      "index": 2,
+      "beat_id": "b5",
+      "is_placeholder": true,
+      "title": "宽大旧衬衫 → 宠物窝",
+      "value_proposition": "宽大衬衫剪裁缝合即成宠物窝，兼顾收纳与情感",
+      "steps": ["剪下衣身当内衬", "袖子缝合"],
+      "props": ["宽大衬衫 1 件", "棉花/旧毛毯", "针线", "宠物（可选）"],
+      "replaces_source_file_field": true
+    },
+    {
+      "id": "sp3",
+      "index": 3,
+      "beat_id": "b6",
+      "is_placeholder": true,
+      "title": "旧 T 恤 → 鞋撑 + 旅行收纳网兜",
+      "value_proposition": "一衣两用：袖子成鞋撑、领口成网兜，落到旅行收纳场景",
+      "steps": ["袖子打结", "领口剪开"],
+      "props": ["旧 T 恤 1 件", "鞋子", "行李箱"],
+      "replaces_source_file_field": true
+    }
+  ],
+
+  "beats": [
+    {
+      "id": "b1",
+      "seg": 1,
+      "name": "钩子",
+      "start_sec": 0,
+      "end_sec": 3,
+      "duration_sec": 3,
+      "function": "反常识拦截",
+      "hook_tags": ["反常识", "利益前置"],
+      "spoken": "衣柜里那件旧毛衣，别扔，它能变成收纳神器。",
+      "subtitle": "旧毛衣 → 收纳神器",
+      "visual": "手持旧毛衣从衣柜深处抽出，快速怼近镜头；胸上机位，背景虚化衣柜",
+      "edit_point": "第 0 帧直接出画面 + 出字幕，不要黑场片头",
+      "is_placeholder": false
+    },
+    {
+      "id": "b2",
+      "seg": 2,
+      "name": "痛点放大",
+      "start_sec": 3,
+      "end_sec": 8,
+      "duration_sec": 5,
+      "function": "共鸣确认",
+      "hook_tags": ["共鸣"],
+      "spoken": "一到换季，衣柜就爆满——塞不下、找不到、还特别占地方。",
+      "subtitle": "塞不下 / 找不到 / 占地方",
+      "visual": "三连快切：爆满衣柜 / 翻找衣物 / 凌乱台面，各 1.5s",
+      "edit_point": "3 次硬切，卡音乐重拍，节奏由慢转快",
+      "is_placeholder": false
+    },
+    {
+      "id": "b3",
+      "seg": 3,
+      "name": "转折·答案前置",
+      "start_sec": 8,
+      "end_sec": 14,
+      "duration_sec": 6,
+      "function": "给出希望",
+      "hook_tags": ["反差"],
+      "spoken": "我只用三步，把三件压箱底的旧衣，全变成了收纳工具。",
+      "subtitle": "3 步 / 3 件旧衣 → 3 个收纳工具",
+      "visual": "手持 3 件旧衣（毛衣/衬衫/T恤）一次入画，扇形展开怼镜头",
+      "edit_point": "开口前留 0.5s 停顿，制造期待",
+      "replace_slot": "S2",
+      "is_placeholder": false
+    },
+    {
+      "id": "b4",
+      "seg": 4,
+      "name": "卖点一",
+      "start_sec": 14,
+      "end_sec": 26,
+      "duration_sec": 12,
+      "function": "首个兑现",
+      "hook_tags": ["方法", "零成本"],
+      "spoken": "第一件，旧毛衣。开膛、缝底、穿上绳子，一个抽屉分隔盒就出来了，袜子围巾往里一塞，柜子立刻整齐。",
+      "subtitle": "① 旧毛衣 → 抽屉分隔盒 + 步骤字幕 开膛/缝底/穿绳",
+      "visual": "划线开膛（俯拍特写）→ 缝纫走线（侧拍微距）→ 放入抽屉（正面中景）",
+      "edit_point": "过程 0.8x 慢放卡点，成品切回 1x 加音效",
+      "replace_slot": "S1",
+      "is_placeholder": true,
+      "selling_point_id": "sp1"
+    },
+    {
+      "id": "b5",
+      "seg": 5,
+      "name": "卖点二",
+      "start_sec": 26,
+      "end_sec": 38,
+      "duration_sec": 12,
+      "function": "递进",
+      "hook_tags": ["方法", "反差"],
+      "spoken": "第二件，宽大衬衫。剪下衣身当内衬，剩下的袖子一缝就是个宠物窝，猫主子睡得比谁都香。",
+      "subtitle": "② 旧衬衫 → 宠物窝",
+      "visual": "剪裁（近景）→ 缝合成窝（俯拍）→ 猫入窝实拍（低机位）",
+      "edit_point": "猫咪入窝瞬间留 1s 实声，不叠 BGM",
+      "is_placeholder": true,
+      "selling_point_id": "sp2"
+    },
+    {
+      "id": "b6",
+      "seg": 6,
+      "name": "卖点三",
+      "start_sec": 38,
+      "end_sec": 50,
+      "duration_sec": 12,
+      "function": "递进",
+      "hook_tags": ["方法", "场景"],
+      "spoken": "第三件，旧 T 恤。两条袖子一系就是鞋撑，领口剪开就是衣物网兜，出门装卷好的内衣袜子，一路不乱。",
+      "subtitle": "③ 旧 T 恤 → 鞋撑 / 旅行网兜",
+      "visual": "袖子打结（手部特写）→ 领口剪开（俯拍）→ 行李箱演示（跟拍中景）",
+      "edit_point": "一衣两用做分屏对比，50s 硬切进高潮段",
+      "is_placeholder": true,
+      "selling_point_id": "sp3"
+    },
+    {
+      "id": "b7",
+      "seg": 7,
+      "name": "高潮·前后对比",
+      "start_sec": 50,
+      "end_sec": 57,
+      "duration_sec": 7,
+      "function": "视觉高潮",
+      "hook_tags": ["对比", "爽感"],
+      "spoken": "看，同一个衣柜，左边是我三年前的烂摊子，右边是现在——零买断，就用了三件旧衣。",
+      "subtitle": "3 年前 | 现在 + 0 元 角标",
+      "visual": "左右分屏对比衣柜，竖线扫过完成切换",
+      "edit_point": "切换点配明确转场音效，0 元 角标弹入",
+      "replace_slot": "S3",
+      "is_placeholder": false
+    },
+    {
+      "id": "b8",
+      "seg": 8,
+      "name": "CTA",
+      "start_sec": 57,
+      "end_sec": 62,
+      "duration_sec": 5,
+      "function": "评论区钩子",
+      "hook_tags": ["互动钩子", "追更"],
+      "spoken": "你家衣柜里最占地方的，是哪一件？评论区告诉我，下期我拆。",
+      "subtitle": "你最想改造哪件旧衣？评论区扣 1",
+      "visual": "正面中景，举旧衣，直视镜头",
+      "edit_point": "最后 1s 停留静止帧，方便阅读与评论",
+      "is_placeholder": false
+    }
+  ],
+
+  "replace_map": {
+    "S1": {
+      "at": "b4 卖点一口播稿",
+      "rule": "真实第一条卖点若非「旧衣变收纳用品」，换掉本句品类指代"
+    },
+    "S2": {
+      "at": "b3 转折段",
+      "rule": "真实卖点含确定数字承诺时，优先用真实数字并同步改字幕"
+    },
+    "S3": {
+      "at": "b7 高潮段成本表述",
+      "rule": "若实际有材料成本，按真实数字改口径，不要说「0 元」"
+    },
+    "sp_bodies": {
+      "at": ["b4", "b5", "b6"],
+      "rule": "拿到真实卖点文件后整体替换 spoken / subtitle；段落结构、时长、剪辑点、机位不变"
+    }
+  },
+
+  "publish": {
+    "titles": [
+      "旧毛衣别扔，3 步改成收纳神器，衣柜再也不爆",
+      "换季衣柜救星：3 件压箱底旧衣，全变成收纳工具",
+      "零成本改造旧衣，收纳 + 宠物窝 + 旅行三件套"
+    ],
+    "cover": {
+      "visual": "左旧右新分屏对比，右侧「现在」占 60% 画幅",
+      "headline": "旧衣 = 收纳神器",
+      "badges": ["3 步", "0 元"],
+      "note": "单独拍高分辨率图，非视频截帧"
+    },
+    "hashtags": [
+      "#旧衣改造",
+      "#收纳改造",
+      "#衣柜整理",
+      "#零成本生活",
+      "#家居好物",
+      "#手工diy",
+      "#断舍离"
+    ],
+    "series": [
+      "旧毛衣 → 抽屉分隔盒（本条）",
+      "旧衬衫 → 宠物窝",
+      "旧 T 恤 → 鞋撑 / 旅行网兜",
+      "旧牛仔裤 → 收纳凳 / 猫窝",
+      "旧丝巾围巾 → 首饰收纳",
+      "旧袜子 → 束口收纳袋 / 擦手巾"
+    ]
+  },
+
+  "shoot_checklist": {
+    "cameras": ["主机位（胸上中景）", "俯拍改造台", "细节微距"],
+    "lighting": "主光正前方 45°，改造台补柔光，避免阴影挡住手工细节",
+    "audio": "领夹麦；猫叫/剪刀声/缝纫声保留实声作音效层",
+    "subtitle_style": {
+      "font": "微软雅黑 Bold",
+      "color": "#FFFFFF",
+      "stroke": "2px 黑",
+      "keyword_color": "#FFD400",
+      "max_chars_per_screen": 12
+    },
+    "fps": "拍摄 30fps，慢放段 60fps 拍摄后降速",
+    "bgm": "中式轻快 / lofi，需有明显重拍以卡 5 个剪辑点",
+    "shooting_order": [
+      "先一次性拍完三段手工改造 B-roll",
+      "再拍痛点与对比空镜",
+      "最后架主机位补拍所有口播段"
+    ]
+  },
+
+  "compliance": {
+    "warnings": [
+      "避免绝对化用语；标题建议中的「再也不爆」若投放需改为「大幅改善」",
+      "「省钱 / 零成本」须真实成立，否则按实际材料成本表述",
+      "不使用品牌贬损或未授权他人素材",
+      "针线画面需加安全提示角标（如「小心扎手」）"
+    ]
+  },
+
+  "deliverables": ["out/骨架.md", "out/structure.json"]
+}

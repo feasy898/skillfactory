@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t06-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 107510,
+  "started_at_ms": 1791530987120,
+  "session_id": "sess_2afc517f-0fd2-4f4f-b77f-9ada173e10d2",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t06-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 214096,
+      "ot": 6509,
+      "dur": 101510,
+      "n": 9
+    }
+  ],
+  "input_tokens": 214096,
+  "output_tokens": 6509,
+  "stdout_bytes": 3111,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "space_only` reason code, and flags confirming the dropped item consumed neither a section id nor a numbering slot. Sections keep a `source_index` back-pointer so the 5-in / 4-out mapping stays auditable.\\n\\n## One judgment call worth flagging\\n\\nSections ② (错峰), ③ (候补票改签时限), and ④ (会员日里程翻倍) all turn on rules that vary by route, product, and date — and ④ is time-limited to the point of expiring. Rather than invent plausible-looking numbers to fill the gaps, I left explicit `[占位符]` slots and marked those three sections `needs_source_verification: true` with a note on what to check. Those placeholders are also flagged in `self_check.source_verification_pending`. A skeleton with three honest blanks is more useful here than one with fabricated specifics a publisher might ship.\\n\\nVerification run: `structure.json` parses, 5 input → 1 dropped → 4 contiguous sections, source indexes reconcile against the trimmed input, hashtag count matches the declared total of 12, and a regex scan confirms no numbered heading lost its title.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 9,\n    \"inputTokens\": 214096,\n    \"outputTokens\": 6509,\n    \"totalTokens\": 220605,\n    \"cacheReadTokens\": 191616,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 857,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 220605,\n    \"contextUsed\": 28546,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "t06",
+  "rep": 2,
+  "slot": 24
+}

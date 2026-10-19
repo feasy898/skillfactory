@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t07-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 432070,
+  "started_at_ms": 1791533226116,
+  "session_id": "sess_2440f607-1f19-4505-a3ed-04946b3fca80",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t07-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 656659,
+      "ot": 23119,
+      "dur": 419782,
+      "n": 16
+    }
+  ],
+  "input_tokens": 656659,
+  "output_tokens": 23119,
+  "stdout_bytes": 3034,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "扩写过程**\\n\\n1. **骨架生成**（走技能确定性引擎，未手写）：`gen.py --platform wx --topic 家庭应急包收纳 --points '[\\\"手电和备用电池分袋封装\\\",\\\"药品每半年核对效期更换\\\",\\\"证件复印件防水袋随身\\\"]' --outdir out`，exit 0，stdout 报 `elements=5 open_placeholders=10 filled_from_input=7`，符合满 3 卖点的 wx 预期画像。\\n2. **成稿补写**（按 brief 要求 + `references/wx.md` 写法方法）：\\n   - 引子：台风夜停电找手电的具体场景，约 150 字，落点接上冻结句「——这背后，其实是同一个问题：家庭应急包收纳」；\\n   - 是什么：先破「照清单买齐塞箱了事」的误解，再立「定位置、定封装、定更换节奏的系统，黑灯十秒任何人取对东西」的定义；\\n   - 为什么：三条**机制层**根因层层递进（不按取用场景分装 → 只进不出的静态库存 → 证件无可带离备份），并配了三个生活化瞬间；\\n   - 怎么办：三个抓手逐一对应三条根因，每条含具体做法、今晚就能做的第一步和一个例子；\\n   - 金句收尾：按建议句式写成「真正的安全感，不是靠一次性囤满一箱装备，而是靠全家都清楚的三个约定：东西在哪、何时该换、走时带什么」，保留「共勉」收束。\\n\\n**红线遵守与验证结果**\\n\\n- 全部冻结结构标记原样保留：三段论段首「一、是什么／二、为什么／三、怎么办」、三抓手行、金句「共勉」结构、引子固定落点句（grep 逐项确认在位）；\\n- `out/骨架.md` 按技能统计正则复查占位 token 计数为 **0**，`{{ }}` 类残留为 0，文末「占位符统计」节已如实改记为「无（原 10 处已全部在本轮补写成稿）」，并注明引擎原始口径；\\n- `out/structure.json` 保持引擎输出逐字节未动（sha256 前后一致：`6742e4d6…`），JSON 解析正常，仍如实记录引擎侧 `total_open=10 / filled_from_input=7` 的台账口径；\\n- 两文件均非空、UTF-8。\\n\\n最终交付：`out/骨架.md`（约 5 KB，五要素成稿）+ `out/structure.json`（4 KB，机器可读结构清单）。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 16,\n    \"inputTokens\": 656659,\n    \"outputTokens\": 23119,\n    \"totalTokens\": 679778,\n    \"cacheReadTokens\": 620224,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 20461,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 679778,\n    \"contextUsed\": 52559,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "t07",
+  "rep": 1,
+  "slot": 44
+}

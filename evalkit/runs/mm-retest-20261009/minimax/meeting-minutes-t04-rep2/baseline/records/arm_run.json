@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t04-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 122158,
+  "started_at_ms": 1791531312132,
+  "session_id": "sess_b5899489-6e8d-49a0-a6bd-23108403b39d",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t04-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 858660,
+      "ot": 8965,
+      "dur": 103136,
+      "n": 30
+    }
+  ],
+  "input_tokens": 858660,
+  "output_tokens": 8965,
+  "stdout_bytes": 2667,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "e8d-49a0-a6bd-23108403b39d\",\n  \"traceId\": \"1f50bfbc-45f8-42d0-8ca7-f5f4fe8ea7f9\",\n  \"turnId\": \"turn_25a3de3c-439c-4641-a256-2ae7ccba10d1\",\n  \"response\": \"会议纪要已生成并通过渲染校验，全部产物就位。\\n\\n**交付物**（工作目录 `baseline/` 下）：\\n- `xiangqi_fashion_1009.txt` — 转写稿原文 11 条，已逐字保存\\n- `out/纪要.docx` — 三段式会议纪要（2 页）\\n- `out/summary.json` — 四个键的条数统计\\n- `build_minutes.py` — 生成脚本，便于复跑\\n\\n**分类结果：决议 3 / 待办 5 / 风险 2 / 合计 10。** 转写稿共 11 条发言，`[10:00]` 是\\\"人到齐了就开始\\\"的开场寒暄，未形成条目；其余 10 条各归一段，无遗漏也无重复计数（已在文末\\\"说明\\\"里写明该口径）。\\n\\n- **一、决议事项**：报销同意书审批流改走新版 OA（10:01）、确认下周主播排班（10:04）、下周三同一时间复盘双11预案（10:10）。每条都带内容摘要、落实人和转写稿时间戳。\\n- **二、待办事项**（表格，列为 序号/待办事项/责任人/时限/来源）：延期赔偿口径传达、面料回修工单跟进、尾货清仓定价、优惠券风控规则（月底前）、应急小组名单接龙。\\n- **三、风险与关注**：尺码类差评高度集中、快递合作伙伴履约时效延期。\\n\\n两处需要你留意的判断：**尾货清仓定价**（10:06）发言人明确说\\\"不确定，想听大家意见\\\"，会上并未收敛，因此我放在待办而非决议，时限标为\\\"待定（会上未收敛）\\\"；**下次复盘安排**（10:10）是散会时的一句话安排，我按会议决议计入，否则合计只有 9 条。如果你的口径认为这两项应另作处理，告诉我怎么归类即可重跑。\\n\\n渲染校验用的是 LibreOffice 转 PDF 后逐页看图，据此修了两个问题：表格列宽被自动调整忽略导致待办列折成三行且溢出到第二页（已改为固定列宽布局，列宽总和正好等于 16.2cm 版心），以及\\\"三、风险与关注\\\"标题孤立在第一页页尾（已加 keep-with-next，现随内容一起移到第 2 页）。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 30,\n    \"inputTokens\": 858660,\n    \"outputTokens\": 8965,\n    \"totalTokens\": 867625,\n    \"cacheReadTokens\": 808448,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 997,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 867625,\n    \"contextUsed\": 40338,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

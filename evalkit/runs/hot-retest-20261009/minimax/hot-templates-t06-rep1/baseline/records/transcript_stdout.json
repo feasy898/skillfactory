@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_8d216c67-c707-4d94-a748-8df3534234c4",
+  "traceId": "a5d1efd9-6565-4c9b-841d-b215345d0928",
+  "turnId": "turn_f5cfc7fe-2268-4632-91ff-db7dd6891618",
+  "response": "完成。两份产物已写入 `baseline/out/`：`骨架.md` 与 `structure.json`（JSON 校验通过，标题均在 20 字内）。\n\n关键处理是输入里第 2 条要点是纯空白串 `\"   \"`。我没有为它凭空生成一节内容，而是把它整体丢弃：正文分节按剩余 4 条有效要点顺延编号为 01–04，编号连续不跳号。同时这一处置在两份产物里都显式留痕——Markdown 末尾有「未成节要点」表格说明第 2 条为空、需回填，`structure.json` 里有 `skipped_points` 字段记录原始值、原因（`blank_whitespace_only`）和 `needs_backfill: true`，便于下游程序识别缺口。\n\n骨架本身按小红书图文形态组织：封面、三选一标题、痛点开场钩子、四个分节（每节一句话结论 + 三条要点 + 落点句 + 配图）、结尾互动引导、6 个话题标签、5 张配图清单，`骨架.md` 与 `structure.json` 逐字段对应。\n\n需要提醒的是，内容要点是我依据要点标题（随附单证自拍存档、错峰值机、候补票改签时限、会员日里程翻倍）展开的通用常识性描述，其中的具体数字——错峰 40 分钟、起飞前 2 小时分水岭、双倍里程只认出票时间等——并非来自你的输入，仅为骨架示例。正式发布前建议核对 airline 与机场的实际规则。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 8,
+    "inputTokens": 193415,
+    "outputTokens": 5310,
+    "totalTokens": 198725,
+    "cacheReadTokens": 165552,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 929,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 198725,
+    "contextUsed": 28374,
+    "contextWindow": 200000
+  }
+}

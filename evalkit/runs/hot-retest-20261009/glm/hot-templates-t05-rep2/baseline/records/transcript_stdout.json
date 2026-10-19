@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_0055cbd6-8c5c-4e74-adc3-52a5226178d3",
+  "traceId": "985c5742-2dd2-40ee-8ea6-d717cb78dfac",
+  "turnId": "turn_130fcb6f-463c-49a3-a82f-a09aac296177",
+  "response": "验证完成，四形态全部通过。用 `dist/hot-templates-skill/scripts/gen.py`（确定性引擎）以 platform=`xhs`、topic=`阳台种菜入门` 跑了四次，所有交付物已就位。\n\n**输入准备**（三个 JSON 自备在工作目录，字节级核验过）：\n- `points_plain.json`：UTF-8 无 BOM，内容即卖点数组\n- `points_bom.json`：以 `EF BB BF` 开头，其余字节与 plain 完全相同\n- `points_wrapped.json`：`{\"points\": [同数组]}` 包装对象\n\n**四次生成全部成功**（A 内联串 / B plain 文件 / C BOM 文件 / D 包装对象 → 对应 `out/` 目录）：各 exit 0，stdout 均为 `OK platform=xhs topic=阳台种菜入门 elements=7 open_placeholders=7 filled_from_input=10`，各产出非空的 `骨架.md` + `structure.json`。\n\n**跨形态同一性（md5 逐字节比对）**：\n- 四份 `骨架.md` 同一 md5：`b0ffe8e3ce9a5e0234554b208853cb41`\n- 四份 `structure.json` 同一 md5：`2baa65a6ac3157595e4bcdbd3e0ea996`\n\n即 BOM 剥除、包装对象解包、内联串三个解析分支同入同出，产物完全一致。\n\n**内容口径（四份 structure.json 逐份断言，14 项全 PASS）**：`points_input_count=3`、`points_used` 为 3 条卖点原文、`points_unused=[]`、首标签 `#阳台种菜入门`、summary 三点复述含 3 卖点原文、`elements[].text` 占位合计=7、`element_count=7`、stats={7,10}。\n\n结论：BOM 与包装对象均被引擎正确解析，未出现「非法 JSON 放弃该形态」或「漏解 points 键」的失败模式；四形态产物零漂移，本次生成输入形态验证通过。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 18,
+    "inputTokens": 583471,
+    "outputTokens": 8748,
+    "totalTokens": 592219,
+    "cacheReadTokens": 538304,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 6760,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 592219,
+    "contextUsed": 45404,
+    "contextWindow": 200000
+  }
+}

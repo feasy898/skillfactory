@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t06-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 186918,
+  "started_at_ms": 1791531799470,
+  "session_id": "sess_47f8568d-e10c-4528-9f1f-63e3f046a0b3",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t06-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 866032,
+      "ot": 9760,
+      "dur": 168037,
+      "n": 29
+    }
+  ],
+  "input_tokens": 866032,
+  "output_tokens": 9760,
+  "stdout_bytes": 2733,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "10c-4528-9f1f-63e3f046a0b3\",\n  \"traceId\": \"adc21f1a-c8b5-4982-8efe-4ccb6fc1fd97\",\n  \"turnId\": \"turn_e9151edd-b25c-479d-b535-6511e4de3c01\",\n  \"response\": \"会议纪要已做好，三份产物都在位。\\n\\n**产出文件**\\n\\n- `botang_minsu_1011.txt` — 转写稿原文，按 brief 要求逐字保存\\n- `out/纪要.docx` — 正式会议纪要，3 页 A4，中文标题黑体、正文宋体、表格固定列宽、表头跨页重复\\n- `out/summary.json` — 结构化摘要，UTF-8 未转义，JSON 校验通过\\n- `build_minutes.py` — 生成脚本，改数据后可重跑\\n\\n**纪要结构**（七节）：会议信息表 → 会议概述 → 讨论要点（5 条）→ 决议事项（3 条）→ 待办事项（3 条）→ 风险提示（1 条）→ 待确认事项（2 条）→ 备注 + 落款。口语词「呃」「嘛」「说白了」等已全部剔除，条目内容与原意一致，没有增补或推断。\\n\\n**整理时发现两处原记录本身的问题，我没有替你抹平，单列成「待确认事项」，因为它们会影响执行口径：**\\n\\n1. **房价方案的定夺程序前后不一致。** 19:05 苏莞说「改天发群投票」，两分钟后 19:07 你说「就议定下来，工作日一口价」。纪要按后者记为决议 D3，但群投票那条是否作废、还需不需要补一轮投票，得由你确认后回填。\\n2. **洗烘设备保修单据的归档没定时限。** 19:06 只说了「不确定放在哪个文件夹」，没给完成时间。已列为待办 A2，责任挂苏莞/郁南，时限一栏如实写「未明确，需另行确认」。\\n\\n另外两点提请注意：**小盛全程没有发言**，只在 19:02 被指派梳理物料清单，所以待办 A1 的责任人是我从上下文推出来的，若他不在编，正式归档前建议核实一下。还有 **19:04「同意的举个手哈」没有留下表决结果**，纪要里只记了「工装夹具按老图纸做」这一结论（D2），没有写成「全会一致通过」——原稿确实没记录谁举了手。\\n\\n文档已用 LibreOffice 渲染逐页核对过，表格无断行、无列宽错位、无文字溢出。临时生成的 PDF 已清理，`out` 目录只留 brief 要求的两份产物。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 29,\n    \"inputTokens\": 866032,\n    \"outputTokens\": 9760,\n    \"totalTokens\": 875792,\n    \"cacheReadTokens\": 824471,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1417,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 875792,\n    \"contextUsed\": 42257,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t06",
+  "rep": 1,
+  "slot": 20
+}

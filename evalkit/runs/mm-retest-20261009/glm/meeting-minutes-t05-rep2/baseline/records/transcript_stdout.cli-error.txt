@@ -1,0 +1,27 @@
+AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.
+{
+  "sessionId": "sess_a30f394d-6193-465b-b9f0-0dae82f20a25",
+  "traceId": "4560d738-19ff-4d41-bd5d-ec17ff5a20da",
+  "turnId": "turn_72ff5bbb-d745-4ff0-a7bc-eecc8c7b52b8",
+  "response": "任务完成。三份产物均已就位并通过验证：\n\n- **`heping_campus_1112.txt`** — 转写稿全文原样保存（含异常时间戳）。\n- **`out/纪要.docx`** — 三段式会议纪要，公文风格（仿宋正文、黑体标题、固定 28 磅行距、\"— X —\"页码）。标题下附会议概况（时间/地点/主持人/出席方/记录来源），正文为：\n  - **一、决议事项（3 项）**：值班周期双周改单周；值班表下月启用新版本；同意供暖巡检挂牌、记录改用新表格。\n  - **二、待办事项（6 项，表格）**：序号/事项/责任人/完成时限/备注五列——预订场地（后勤组）、更新值班表（副队长，下月启用）、秋冬季巡逻加频（门卫办）、供暖巡检挂牌（老佟，截止本月底）、下周一起新穿工服（全员）、补充两名夜班门卫（老佟）。\n  - **三、风险与关注（1 项）**：消防通道堆物且有延期整改记录，风险较大。\n  - 文末“整理说明”注明：转写稿中 [9:5]、[10:60]、[100:00] 三个时间戳不符合时分格式，条目按原文顺序整理；会议日期/校区名/主持人均为有据推断（文件名、散会词），未注明的信息如实标注；开场巡逻与散会属程序性发言未计入。\n- **`out/summary.json`** — `{\"决议事项\": 3, \"待办事项\": 6, \"风险与关注\": 1, \"合计\": 10}`，合计与分项之和经校验一致。\n\n质量验证：postcheck 自动检查 0 错误（1 条行距提示属预期——表格单元格行距按惯例紧于正文，非缺陷）；文档经 LibreOffice 渲染为 2 页 PNG 后由视觉评审通道逐页验收，两页均通过（表格跨页处表头自动重复，无乱码、无溢出）。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 24,
+    "inputTokens": 1342562,
+    "outputTokens": 27098,
+    "totalTokens": 1369660,
+    "cacheReadTokens": 1282688,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 20041,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 1369660,
+    "contextUsed": 75150,
+    "contextWindow": 200000
+  }
+}

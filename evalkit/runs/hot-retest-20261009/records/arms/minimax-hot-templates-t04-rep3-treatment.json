@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t04-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 37238,
+  "started_at_ms": 1791530821037,
+  "session_id": "sess_8245d469-40fe-47cd-aa5e-c49dc24271a1",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t04-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 176280,
+      "ot": 1313,
+      "dur": 32032,
+      "n": 7
+    }
+  ],
+  "input_tokens": 176280,
+  "output_tokens": 1313,
+  "stdout_bytes": 2224,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "onId\": \"sess_8245d469-40fe-47cd-aa5e-c49dc24271a1\",\n  \"traceId\": \"5b2acae7-a5e6-403e-bfb8-665b0150afa4\",\n  \"turnId\": \"turn_7e497858-9d19-47aa-8e7b-e7f265842d75\",\n  \"response\": \"抖音口播稿骨架已生成并落盘，引擎按 `dy` 模板 v1.0 渲染，未手写或改写 `structure.json`。\\n\\n**执行结果**（`.zcode/skills/hot-templates/scripts/gen.py`，exit 0，stdout）：\\n\\n```\\nOK platform=dy topic=二手书循环 elements=6 open_placeholders=6 filled_from_input=4 -> .../treatment/out\\n```\\n\\n**产物**（`out/` 下两份，均非空）：\\n\\n- `out/骨架.md` — 人读版，首行「# 抖音口播稿 · 爆款骨架」，含主题/模板/卖点输入三行元信息、6 个要素小节（每节带「> 写法要点：」）、尾部「占位符统计」节。\\n- `out/structure.json` — 机器可读版，顶层 11 键、每要素 9 键、统计 5 键，UTF-8/LF。\\n\\n**结构要点**：模板为「3秒钩子 + 痛点 + 价值点×3 + CTA」，6要素 id 与顺序冻结（`hook_3s`、`pain_point`、`value_1..3`、`cta`）。3 条卖点正好填满三个价值点槽位，无缺失、无截断，`points_unused` 为空；`filled_from_input` 共 4 处（钩子填 `topic` + 三条 `point#1..3`），与 `filled=4` 吻合。\\n\\n**开放槽位保留**：6 处 `【占位:…】` 原样留在文中——钩子强句、痛点场景、三条「一句话展开」、CTA 配套资料/下期选题。按技能红线，这些是留给使用者的槽位，我没有代为编造填充。已确认产物中 `{{ }}` 类残留模板变量为 0（两文件 grep 均为 0 命中）。\\n\\n后续如需成稿，按 `references/dy.md` 的写法要点扩写各槽位即可（钩子 ≤15 字、单句 ≤20 字、痛点只选一个瞬间）。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 7,\n    \"inputTokens\": 176280,\n    \"outputTokens\": 1313,\n    \"totalTokens\": 177593,\n    \"cacheReadTokens\": 147271,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 339,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 177593,\n    \"contextUsed\": 29642,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "t04",
+  "rep": 3,
+  "slot": 21
+}

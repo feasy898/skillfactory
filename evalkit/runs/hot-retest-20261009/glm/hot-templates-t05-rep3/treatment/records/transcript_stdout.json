@@ -1,0 +1,26 @@
+{
+  "sessionId": "sess_6bdd2a73-931c-4d4d-b1c1-0a426f04bcb3",
+  "traceId": "6eb9beda-7306-4225-945e-2b1e8f643d48",
+  "turnId": "turn_d4163e94-3955-4084-9d8b-7208d2d1e56b",
+  "response": "验证完成：四种合法输入形态全部成功生成，产物齐全且逐字节一致。\n\n## 结果总览\n\n四次调用 `scripts/gen.py --platform xhs --topic 阳台种菜入门`（同一份三条卖点）全部 exit 0，stdout 均打印：\n\n```\nOK platform=xhs topic=阳台种菜入门 elements=7 open_placeholders=7 filled_from_input=10 -> <outdir>\n```\n\n`elements=7 / open_placeholders=7 / filled_from_input=10` 与 SKILL.md 预登记的 xhs 满 3 卖点参考值完全吻合。\n\n## 输入形态与产物落位\n\n| 形态 | `--points` 传入 | 输出目录 | 产物 |\n|---|---|---|---|\n| A 内联 JSON 串 | `'[\"泡沫箱打孔防涝\", \"蛋壳补钙碾碎拌土\", \"北侧种耐阴生菜\"]'` | `out/A-inline/` | 骨架.md (2545B) + structure.json (5277B) |\n| B 文件·无 BOM | `points_plain.json`（首字节 `5b 22` 即 `[\"`） | `out/B-plain/` | 同上 |\n| C 文件·带 BOM | `points_bom.json`（首字节 `ef bb bf`，去掉 BOM 后与 B 逐字节相同） | `out/C-bom/` | 同上 |\n| D 文件·wrapped 对象 | `points_wrapped.json`（`{\"points\": [同数组]}`） | `out/D-wrapped/` | 同上 |\n\n三个自备 JSON 文件已保存在工作目录根下。引擎按 SKILL.md 预期处理了全部四种形态：文件路径命中即按 `utf-8-sig` 读取（BOM 被容忍），wrapped 对象正确取出 `points` 键，内联串直接解析。\n\n## 一致性与内容核验\n\n- **跨形态逐字节一致**：四组产物 sha256 完全相同（骨架.md 均为 `a87410f7…`，structure.json 均为 `583aeee8…`）——确定性引擎下同一有效输入的预期行为，证明四种形态归一后等价。\n- **structure.json 结构**：顶层 11 键、`element_count=7`、`points_input_count=3`、`points_used` 为三条卖点原文、`points_unused=[]`、`platform_name=小红书图文`。\n- **骨架.md 内容**：首行 `# 小红书图文 · 爆款骨架`，三条卖点全部进入干货块，`{{ }}` 类模板残留为 0；7 处 `【占位:…】` 为设计内开放槽位，未做任何编造填充。\n\n四次生成的全部产物与三个输入文件均已留在工作目录原处。",
+  "usage": {
+    "source": "provider",
+    "modelRequestCount": 11,
+    "inputTokens": 335819,
+    "outputTokens": 6623,
+    "totalTokens": 342442,
+    "cacheReadTokens": 312768,
+    "cacheWriteTokens": 0,
+    "reasoningTokens": 0,
+    "webFetchRequests": 0,
+    "webSearchRequests": 0
+  },
+  "eventCount": 5232,
+  "projection": {
+    "status": "idle",
+    "turnCount": 1,
+    "totalTokenCount": 342442,
+    "contextUsed": 39336,
+    "contextWindow": 200000
+  }
+}

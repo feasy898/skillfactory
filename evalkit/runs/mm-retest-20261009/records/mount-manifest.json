@@ -1,0 +1,40 @@
+{
+  "meeting-minutes-skill": {
+    "source": "dist/meeting-minutes-skill",
+    "source_note": "dist 包（owner 批准点状态；本轮零改动，开工 sha256 快照见 precheck/）",
+    "source_untouched": true,
+    "filter_whitelist": [
+      "SKILL.md",
+      "references",
+      "scripts",
+      "requirements.txt"
+    ],
+    "excluded": [
+      "reference",
+      "eval",
+      "EVALUATION.md",
+      "CHANGELOG.md",
+      "README.md",
+      "MANIFEST.md",
+      "LICENSE"
+    ],
+    "files": [
+      "SKILL.md",
+      "references/classification-rules.md",
+      "references/docx-and-summary.md",
+      "references/extraction-heuristics.md",
+      "requirements.txt",
+      "scripts/gen_docx.py",
+      "scripts/minutes.py"
+    ],
+    "file_sha256": {
+      "SKILL.md": "181c8daa8069640cf8a32e32e791d914e79fe4bfb1deca0f4dbdb7107cc56827",
+      "references/classification-rules.md": "4347864b3586e900170a88e5b3a53889107352852ada33a3335172b668ab70fc",
+      "references/docx-and-summary.md": "595000dac3ec67e09ed0c6b5b972dd5ffd334a566ecdd9f9225fd50d10813763",
+      "references/extraction-heuristics.md": "0c6a997ee56e4d1bd24c68689d0f6f7754fefd0af177eb79cf219e5c2fe6626c",
+      "requirements.txt": "dfea9cd01250f46caa09e7e7041e7105cd29d5383c7c3d3fff4a8dd24e79509b",
+      "scripts/gen_docx.py": "2b252735a79a4e5df887b2ef079a9584510873167492cbe79b10c8cb9b823f0e",
+      "scripts/minutes.py": "630068f4d33206e863cf0f53d6111b6056fe481c25fffd030da8dd783e513f80"
+    }
+  }
+}

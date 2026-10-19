@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t03-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 546563,
+  "started_at_ms": 1791532723964,
+  "session_id": "sess_0cc1d5c7-fc98-49e0-af21-bd0fa48932f1",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t03-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1031903,
+      "ot": 25080,
+      "dur": 503305,
+      "n": 20
+    }
+  ],
+  "input_tokens": 1031903,
+  "output_tokens": 25080,
+  "stdout_bytes": 2363,
+  "stderr_bytes": 196,
+  "stderr_head": "AI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\n",
+  "stdout_tail": "AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.\n{\n  \"sessionId\": \"sess_0cc1d5c7-fc98-49e0-af21-bd0fa48932f1\",\n  \"traceId\": \"7f8e32c6-8dd4-4430-af5a-b7275159492e\",\n  \"turnId\": \"turn_f56b3d75-8578-40fe-8bab-f965bda10e95\",\n  \"response\": \"任务完成。三份产物已就位并通过全部校验：\\n\\n- **`nanping_water_0926.txt`** — 转写稿 10 段发言逐字保存，与 brief.md 逐字节 diff 一致。\\n- **`out/纪要.docx`** — 三段式会议纪要（公文风格：黑体节标题、宋体正文、黑色细线表格、\\\"— X —\\\"页码）。标题「秋季检修准备事项会议纪要」下先列会议概况（主题／时间据文件名与时间戳推定并注明来源／主持人／出席人员／提及人员／记录依据），随后：\\n  - **一、决议事项（5 条）**：编号牌重做并用国标款、范晓芸汇总终审材料、行政部 10 月 16 日 17:00 前完成会场布置、检修期间客服热线延长一小时、实习生小林负责接待登记；\\n  - **二、待办事项（8 行表格）**：事项／负责人／完成时限／备注（含转写出处 `[10:0X]` 时间戳，便于回溯核对）。会上未明确的栏位如实标注「会议未明确」，未作虚构；\\n  - **三、风险与关注（2 条）**：老系统并网停水风险（对应待办第 4 项），以及部分事项责任人／时限缺口。\\n- **`out/summary.json`** — 四键条数统计：决议事项 5、待办事项 8、风险与关注 2、合计 15。\\n\\n校验情况：docx 生成后 postcheck 9/9 零错误；渲染 PDF/PNG 后经视觉验收两页均 pass（表格跨页时表头自动重复，无截断乱码）；程序化核对确认 docx 三节条数与 summary.json 完全一致，且转写稿中 15 项关键事实（人名、单位、日期、时限）全部在纪要中命中、无遗漏。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 20,\n    \"inputTokens\": 1031903,\n    \"outputTokens\": 25080,\n    \"totalTokens\": 1056983,\n    \"cacheReadTokens\": 976384,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 19388,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1056983,\n    \"contextUsed\": 71125,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t03",
+  "rep": 2,
+  "slot": 25
+}

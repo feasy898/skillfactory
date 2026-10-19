@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t05-rep3/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 167358,
+  "started_at_ms": 1791532678187,
+  "session_id": "sess_028ad5e7-c22d-4db4-a3cd-96ae8d561959",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t05-rep3/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 495931,
+      "ot": 6488,
+      "dur": 158071,
+      "n": 18
+    }
+  ],
+  "input_tokens": 495931,
+  "output_tokens": 6488,
+  "stdout_bytes": 2510,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "成功，四种输入形态产物逐字节一致。\\n\\n## 结果总览\\n\\n**引擎**：`dist/hot-templates-skill/scripts/gen.py`（实际生成引擎，非手工伪造），四次调用均 exit 0。\\n\\n**自备输入文件**（已在工作目录）：\\n- `points_plain.json` — UTF-8 无 BOM，78 字节，内容为卖点数组\\n- `points_bom.json` — UTF-8 带 BOM（`EF BB BF` 前缀实测确认），81 字节，内容同 B\\n- `points_wrapped.json` — 无 BOM，内容为 `{\\\"points\\\": [同数组]}` 包装对象\\n\\n**四目录产物**（各含 `骨架.md` 2545B + `structure.json` 5277B，均非空）：\\n\\n| 形态 | 输入 | exit | 结果 |\\n|---|---|---|---|\\n| A-inline | 内联 JSON 串 | 0 | 成功 |\\n| B-plain | 无 BOM 文件 | 0 | 成功 |\\n| C-bom | 带 BOM 文件 | 0 | 成功（BOM 被正确剥除） |\\n| D-wrapped | 包装对象文件 | 0 | 成功（points 键被正确解包） |\\n\\n**跨形态同一性（核心验证点）**：\\n- 四份 `骨架.md` 两两 md5 全等（唯一值 `b0ffe8e3…`）\\n- 四份 `structure.json` 两两 md5 全等（唯一值 `2baa65a6…`）\\n\\n**内容口径断言**（四份 structure.json 全部 PASS）：`points_input_count=3`、`points_used` 为三条卖点原文逐字（泡沫箱打孔防涝 / 蛋壳补钙碾碎拌土 / 北侧种耐阴生菜）、`points_unused=[]`、`element_count=7`、开放占位合计 7 处、骨架首标签 `#阳台种菜入门`、总结块三点复述含卖点原文。\\n\\n一点透明说明：A 形态首次调用时我在内联串里把第三条卖点误打成「北侧种菜入门」，当即发现后删除该次输出、用正确串重跑——当前留在 `out/A-inline/` 的产物是更正后的正确结果，与 B/C/D 逐字节一致。所有交付物（三个输入 JSON + 四目录产物）均已留在工作目录原位。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 18,\n    \"inputTokens\": 495931,\n    \"outputTokens\": 6488,\n    \"totalTokens\": 502419,\n    \"cacheReadTokens\": 476480,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 4358,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 502419,\n    \"contextUsed\": 35417,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "t05",
+  "rep": 3,
+  "slot": 41
+}

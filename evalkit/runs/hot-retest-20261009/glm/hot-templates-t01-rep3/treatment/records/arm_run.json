@@ -1,0 +1,44 @@
+{
+  "family": "glm",
+  "arm": "treatment",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t01-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 70055,
+  "started_at_ms": 1791530184116,
+  "session_id": "sess_380febc4-77f8-4a54-8ec7-d515894dcfbb",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/glm/hot-templates-t01-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 214608,
+      "ot": 3343,
+      "dur": 63798,
+      "n": 8
+    }
+  ],
+  "input_tokens": 214608,
+  "output_tokens": 3343,
+  "stdout_bytes": 2604,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "。\\n\\n**执行过程**\\n1. 加载 hot-templates 技能并完整读取 `SKILL.md` 与 `references/wx.md`（平台必读文档）。\\n2. 一律走渲染引擎执行（红线要求，未手写任何产物）：\\n\\n```bash\\npython3 .zcode/skills/hot-templates/scripts/gen.py --platform wx --topic \\\"宿舍省电费\\\" \\\\\\n  --points '[\\\"离开寝室随手断插排\\\", \\\"空调设 26 度配合风扇\\\", \\\"插座改用带开关款\\\"]' --outdir out\\n```\\n\\n首次即成功：exit 0，stdout 为 `OK platform=wx topic=宿舍省电费 elements=5 open_placeholders=10 filled_from_input=7 -> out`。\\n\\n**产物验收（对照技能判据逐条通过）**\\n- `out/骨架.md`（2069 字节，非空）：首行 `# 公众号文章 · 爆款骨架`，5 要素按冻结顺序（引子 → 三段论·一/二/三 → 金句收尾），冻结标记齐全（「一、是什么」「二、为什么」「三、怎么办\\\\n落到操作层面，给你三个抓手：」、金句含「共勉」），三条卖点同居 `thesis_how` 的三个抓手（1. 离开寝室随手断插排 2. 空调设 26 度配合风扇 3. 插座改用带开关款），尾部含占位符统计节。\\n- `out/structure.json`（4028 字节，合法 JSON）：顶层恰 11 键且顺序符合规范，element ids 冻结序 `lead_in/thesis_what/thesis_why/thesis_how/golden_ending`，`points_used` 为全部 3 条卖点、`points_unused` 为空。\\n- 统计口径与参考值精确吻合：满 3 卖点的 wx 模板 `total_open=10`、`total_filled_from_input=7`（topic 记 4 次 + point#1..3），by_element 1/2/3/3/1。\\n- 无 `{{ }}` 类模板残留缺陷，UTF-8/LF 编码。\\n\\n按红线要求，`【占位:…】` 开放槽位（如引子场景、三条根因、抓手展开、金句主体）保持原样留白，由后续扩写时补写。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 8,\n    \"inputTokens\": 214608,\n    \"outputTokens\": 3343,\n    \"totalTokens\": 217951,\n    \"cacheReadTokens\": 198848,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 2709,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 217951,\n    \"contextUsed\": 32007,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

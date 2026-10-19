@@ -1,0 +1,54 @@
+14:57:30 packs: 8（build_packs.py 预构建，本步校验在位）
+14:57:30 PREP 完成：24 单元（48 臂目录），隔离断言全过
+15:01:17 ARM done glm/hot-templates-t01-rep1/baseline exit=0 tokens=278985+10662 pin=pass
+15:03:24 ARM done glm/hot-templates-t01-rep1/treatment exit=0 tokens=171539+2365 pin=pass
+15:03:24 RUN 阶段结束：counted=2 redline=False thread_error=[]
+15:03:50 SKIP 已完成臂 glm/hot-templates-t01-rep1/baseline
+15:03:50 SKIP 已完成臂 glm/hot-templates-t01-rep1/treatment
+15:04:55 ARM done minimax/hot-templates-t02-rep1/baseline exit=0 tokens=263414+6398 pin=pass
+15:05:25 ARM done minimax/hot-templates-t02-rep1/treatment exit=0 tokens=202413+1802 pin=pass
+15:10:40 ARM done glm/hot-templates-t01-rep2/baseline exit=0 tokens=1350443+18935 pin=pass
+15:10:49 ARM done minimax/hot-templates-t02-rep2/baseline exit=0 tokens=1108226+26564 pin=pass
+15:11:23 ARM done minimax/hot-templates-t02-rep2/treatment exit=0 tokens=221941+2036 pin=pass
+15:12:14 ARM done glm/hot-templates-t01-rep2/treatment exit=0 tokens=207947+4568 pin=pass
+15:15:47 ARM done minimax/hot-templates-t02-rep3/baseline exit=0 tokens=862375+18148 pin=pass
+15:16:24 ARM done glm/hot-templates-t01-rep3/baseline exit=0 tokens=265773+13751 pin=pass
+15:16:40 ARM done minimax/hot-templates-t02-rep3/treatment exit=0 tokens=197332+1575 pin=pass
+15:17:36 ARM done glm/hot-templates-t01-rep3/treatment exit=0 tokens=214608+3343 pin=pass
+15:20:40 ARM done minimax/hot-templates-t04-rep1/baseline exit=0 tokens=336281+14222 pin=pass
+15:21:29 ARM done minimax/hot-templates-t04-rep1/treatment exit=0 tokens=222904+2080 pin=pass
+15:22:17 ARM done glm/hot-templates-t03-rep1/baseline exit=0 tokens=957021+10896 pin=pass
+15:24:01 ARM done glm/hot-templates-t03-rep1/treatment exit=0 tokens=209727+3880 pin=pass
+15:24:22 ARM done minimax/hot-templates-t04-rep2/baseline exit=0 tokens=401861+15514 pin=pass
+15:25:00 ARM done minimax/hot-templates-t04-rep2/treatment exit=0 tokens=244490+2097 pin=pass
+15:27:01 ARM done minimax/hot-templates-t04-rep3/baseline exit=0 tokens=186005+6071 pin=pass
+15:27:40 ARM done minimax/hot-templates-t04-rep3/treatment exit=0 tokens=176280+1313 pin=pass
+15:29:07 ARM done minimax/hot-templates-t06-rep1/baseline exit=0 tokens=193415+5310 pin=pass
+15:29:47 ARM done minimax/hot-templates-t06-rep1/treatment exit=0 tokens=188880+1419 pin=pass
+15:31:36 ARM done minimax/hot-templates-t06-rep2/baseline exit=0 tokens=214096+6509 pin=pass
+15:32:15 ARM done glm/hot-templates-t03-rep2/baseline exit=0 tokens=662881+23624 pin=pass
+15:32:30 ARM done minimax/hot-templates-t06-rep2/treatment exit=0 tokens=200643+3540 pin=pass
+15:33:13 ARM done minimax/hot-templates-t06-rep3/baseline exit=0 tokens=151713+4033 pin=pass
+15:33:47 ARM done minimax/hot-templates-t06-rep3/treatment exit=0 tokens=243959+1861 pin=pass
+15:34:15 ARM done glm/hot-templates-t03-rep2/treatment exit=0 tokens=231401+4385 pin=pass
+15:35:52 ARM done minimax/hot-templates-t08-rep1/baseline exit=0 tokens=233394+7043 pin=pass
+15:36:51 ARM done minimax/hot-templates-t08-rep1/treatment exit=0 tokens=318631+3605 pin=pass
+15:36:59 ARM done glm/hot-templates-t03-rep3/baseline exit=0 tokens=321116+4981 pin=pass
+15:38:37 ARM done minimax/hot-templates-t08-rep2/baseline exit=0 tokens=310776+8411 pin=pass
+15:39:03 ARM done glm/hot-templates-t03-rep3/treatment exit=0 tokens=207064+5585 pin=pass
+15:39:56 ARM done minimax/hot-templates-t08-rep2/treatment exit=0 tokens=297306+4205 pin=pass
+15:42:26 ARM done minimax/hot-templates-t08-rep3/baseline exit=0 tokens=214422+9721 pin=pass
+15:43:50 ARM done minimax/hot-templates-t08-rep3/treatment exit=0 tokens=297797+3722 pin=pass
+15:48:36 ARM done glm/hot-templates-t05-rep1/baseline exit=0 tokens=1065088+24811 pin=pass
+15:50:23 ARM done glm/hot-templates-t05-rep1/treatment exit=0 tokens=334351+5245 pin=pass
+15:54:20 ARM done glm/hot-templates-t05-rep2/baseline exit=0 tokens=583471+8748 pin=pass
+15:57:58 ARM done glm/hot-templates-t05-rep2/treatment exit=0 tokens=448442+8482 pin=pass
+16:00:47 ARM done glm/hot-templates-t05-rep3/baseline exit=0 tokens=495931+6488 pin=pass
+16:02:53 ARM done glm/hot-templates-t05-rep3/treatment exit=0 tokens=335819+6623 pin=pass
+16:07:06 ARM done glm/hot-templates-t07-rep1/baseline exit=0 tokens=209692+13411 pin=pass
+16:14:20 ARM done glm/hot-templates-t07-rep1/treatment exit=0 tokens=656659+23119 pin=pass
+16:24:55 ARM done glm/hot-templates-t07-rep2/baseline exit=0 tokens=1157675+24979 pin=pass
+16:30:07 ARM done glm/hot-templates-t07-rep2/treatment exit=0 tokens=271782+15988 pin=pass
+16:34:16 ARM done glm/hot-templates-t07-rep3/baseline exit=0 tokens=209502+11775 pin=pass
+16:39:33 ARM done glm/hot-templates-t07-rep3/treatment exit=0 tokens=354177+17001 pin=pass
+16:39:33 RUN 阶段结束：counted=48 redline=False thread_error=[]

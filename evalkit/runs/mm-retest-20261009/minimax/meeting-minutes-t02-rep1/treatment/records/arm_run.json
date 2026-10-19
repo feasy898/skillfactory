@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t02-rep1/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 66336,
+  "started_at_ms": 1791530113384,
+  "session_id": "sess_0056dd8a-e2b7-4372-bc46-d236da8939c6",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t02-rep1/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 430670,
+      "ot": 4734,
+      "dur": 52178,
+      "n": 14
+    }
+  ],
+  "input_tokens": 430670,
+  "output_tokens": 4734,
+  "stdout_bytes": 3200,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "** and **`out/summary.json`**.\\n\\n**Result: 13 items classified — 4 决议事项 / 6 待办事项 / 3 风险与关注.**\\n\\n- 一、决议事项（4 条）：`14:03 同意…`、`14:08 决定…`、`14:14 议定…`、`14:21 结论…`，全部由远山拍板。\\n- 二、待办事项（6 行 3 列表格）：负责人栏只有三条按原文抽到了实体（`由后勤组负责对接`→后勤组、`负责人是器材科`→器材科、`交给芦芽负责统计`→芦芽），其余三条如实填「待定」；期限栏只有 `逾期费减免口径…截止到本月15号…` 抽到「本月」，其余填「待定」。没有编造任何人名或日期。\\n- 三、风险与关注（3 条）：`14:04` 借阅上限不确定、`14:18` 备用锁具到货不确定/布展延期可能、`14:23` 自习区占座风险最高。\\n\\n两个值得说明的地方。第一，`14:10 印刷厂的报价单不确定含不含装裱，我需要再问一轮` 同时命中「不确定」（风险）和「需要」（待办），按技能规定的优先级决议 > 待办 > 风险归入待办。第二，转写稿里像「文创雪糕的试制样下周三能到」「布展期间的加班餐从工会经费列支」「核算口径用10月25日的报名数」这类行没有任何关键词，按规则不进任何章节——即便它们含日期或「经费」这类看似可提炼的信息。技能明确不做语义推断，所以 42 条发言只落了 13 条。\\n\\n**环境上的一处处理**：技能脚本依赖 python-docx，系统 Python 与 `~/venvs/ml` 都装不上（PEP 668 限制 + lxml 是指向只读系统包的符号链接）。我在 `/tmp/mmvenv` 建了一个带 system-site-packages 的隔离虚拟环境来跑脚本，没有改动你的系统环境或既有 venv。如果你希望换回用项目 venv，装 `python-docx --no-deps` 即可（lxml 已经可用了）。\\n\\n**验收**：脚本退出码 0，且两个产物回读确认存在（仅退出码 0 不算完成）。随后我另写脚本逐条核对，全部通过——三个节标题逐字齐全且顺序正确、决议/风险条目编号连续、表格表头为「事项/负责人/期限」、summary 四键与 docx 实际条数逐项一致且合计=元和元信息行数字、13 个条目（含表格「事项」列）均能在转写稿中逐字溯源并对上时间与说话人。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 14,\n    \"inputTokens\": 430670,\n    \"outputTokens\": 4734,\n    \"totalTokens\": 435404,\n    \"cacheReadTokens\": 393875,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 1031,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 435404,\n    \"contextUsed\": 37622,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

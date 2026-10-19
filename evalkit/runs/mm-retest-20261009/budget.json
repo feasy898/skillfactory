@@ -1,0 +1,975 @@
+{
+  "card": "mm-retest（K-5 独立轮·meeting-minutes-skill 新题集重测）",
+  "run_id": "mm-retest-20261009",
+  "kind": "budget_registration",
+  "status": "registered_not_started",
+  "base_commit": "8d14a159d2d05911c771e93e8363eb13ba97110b",
+  "registered_at": "2026-10-09T14:46+0800",
+  "authority": "本轮 ask 预算：刚性 48 臂（8 任务×2臂×n=3，族按任务奇偶轮换；展开口径见 round-plan.budget_reading_note——全展 96 超刚性上限，从 48）+ 每臂 rate_limited 重试 ≤1 + 裁判调用记账（下限 16 主判 + 8 抽检复评 + 重发余量），全部记账本文件；超出本登记须先经 planner 批准，超额进程不计入结果",
+  "formula": {
+    "arm_calls": "8 任务 × 2 臂 × n=3 = 48（glm：t01/t03/t05/t07 ×2×3=24；minimax：t02/t04/t06/t08 ×2×3=24）",
+    "judge_calls": "下限 16（8 题×≥2 异族裁判）；另列 §3.4-1 一致性抽检复评 ≥1/题（8）；arith 不一致重发余量 ≤16 与换裁判重评按实发记账",
+    "rounds": 1
+  },
+  "arm_calls": {
+    "total": 48,
+    "by_family": {
+      "glm": 24,
+      "minimax": 24
+    },
+    "per_package": [
+      {
+        "pkg": "meeting-minutes",
+        "n": 3,
+        "tasks": 8,
+        "calls_per_task": 6,
+        "arm_calls": 48,
+        "by_family": {
+          "glm": 24,
+          "minimax": 24
+        }
+      }
+    ],
+    "counted_rule": "正式臂进程数以台账为准（spawn 前 pending、事后按 db model_usage 实测回填，照 sf0006-b/c、sf0008-k5b、office-retest 先例）；装置 bug/无效尝试条目（skipped_harness_bug 等）不占额度",
+    "counted_so_far": 48,
+    "counted_final": null,
+    "physical_entries": 0
+  },
+  "judge_calls": {
+    "floor": 16,
+    "floor_basis": "8 题 × ≥2 异族裁判（被测 glm→[step,minimax]；被测 minimax→[step,glm]）",
+    "consistency_spot_check_extra": 8,
+    "consistency_basis": "EVAL-SPEC v0.2.1 §3.4-1 每题 ≥1 份匿名复评（ask：每题抽检 1 份）",
+    "resend_margin": 16,
+    "resend_basis": "§9-3 judge_arith_check 不一致同裁判重发 1 次（每判词 ≤1）+ 通道故障重试 ≤1（每裁判调用 ≤1）；不占正式额度、逐条留痕",
+    "rejudge_extra_policy": "抽检 |Δ|>2 换面板内另一异族裁判重评全任务，按实发记账",
+    "used_so_far": 0,
+    "closing_note": null
+  },
+  "retry_policy": {
+    "retry_cap_per_arm": 1,
+    "judge_retry_cap_per_call": 1,
+    "used": 0,
+    "note": "重试进程/调用不占正式额度，逐条留痕 ledger_entries（kind=rate_limited-retry / judge-retry / resend）"
+  },
+  "pinning": {
+    "glm": "GLM-5.3 @ account:bigmodel-individual-coding-plan，variant=max，机制 M4（照 sf0006-b-smoke-2/sf0008-k5b/office-retest 实测）",
+    "minimax": "Minimax-M3.1-Flash-Preview @ minimax，variant=enabled，机制 M2",
+    "step_judge": "step-router-v1 @ new-provider，模型 API 直调（裁判专用，无 assistant-prefill）",
+    "drift_policy": "glm 臂落点漂移 → 红线停全批（B-01/SF-0004 DT-v1 同款）"
+  },
+  "ledger_entries": [
+    {
+      "arm": "glm/meeting-minutes-t01-rep1/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t01",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "14:58:15",
+      "status": "done",
+      "slot": 1,
+      "exit_code": 0,
+      "session_id": "sess_f32a9de9-6d1a-45f5-bad2-17707d022f38",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t01-rep1/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t01",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "15:08:42",
+      "status": "done",
+      "slot": 2,
+      "exit_code": 0,
+      "session_id": "sess_bfffa5a3-0f0e-4331-9fcc-b2e50ce3f6a9",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t02-rep1/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t02",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "15:12:49",
+      "status": "done",
+      "slot": 3,
+      "exit_code": 0,
+      "session_id": "sess_7f753060-31d3-4e5e-9460-ec9ab41ee85c",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t01-rep2/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t01",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "15:12:49",
+      "status": "done",
+      "slot": 4,
+      "exit_code": 0,
+      "session_id": "sess_4d8803b8-0407-47f7-9c03-3c6c87d21ad3",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t02-rep1/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t02",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "15:15:13",
+      "status": "done",
+      "slot": 5,
+      "exit_code": 0,
+      "session_id": "sess_0056dd8a-e2b7-4372-bc46-d236da8939c6",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t02-rep2/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t02",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "15:16:21",
+      "status": "done",
+      "slot": 6,
+      "exit_code": 0,
+      "session_id": "sess_dd0e4439-3f71-4c04-aa4c-91694c001d45",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t02-rep2/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t02",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "15:21:13",
+      "status": "done",
+      "slot": 7,
+      "exit_code": 0,
+      "session_id": "sess_3b4bf9a2-b8b3-4e7d-a845-23d971e0ad7e",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t02-rep3/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t02",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "15:22:26",
+      "status": "done",
+      "slot": 8,
+      "exit_code": 0,
+      "session_id": "sess_ab43ea2a-f8df-4474-a42f-796dd2f92681",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t01-rep2/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t01",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "15:26:55",
+      "status": "done",
+      "slot": 9,
+      "exit_code": 0,
+      "session_id": "sess_4fdf3d8e-7e6e-4268-8de4-16f674d59e1d",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t02-rep3/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t02",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "15:28:20",
+      "status": "done",
+      "slot": 10,
+      "exit_code": 0,
+      "session_id": "sess_1d7e4128-5f34-4727-9df0-a16ce8a85fe1",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t04-rep1/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t04",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "15:29:35",
+      "status": "done",
+      "slot": 11,
+      "exit_code": 0,
+      "session_id": "sess_d7fe9c79-52a1-4f47-a887-0d619080ef77",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t01-rep3/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t01",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "15:29:59",
+      "status": "done",
+      "slot": 12,
+      "exit_code": 0,
+      "session_id": "sess_6e1c99dd-101f-4818-bc66-2fb299d4c220",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t04-rep1/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t04",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "15:33:50",
+      "status": "done",
+      "slot": 13,
+      "exit_code": 0,
+      "session_id": "sess_a3d5d175-23e4-483d-9d73-7197556a3c44",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t04-rep2/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t04",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "15:35:12",
+      "status": "done",
+      "slot": 14,
+      "exit_code": 0,
+      "session_id": "sess_b5899489-6e8d-49a0-a6bd-23108403b39d",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t04-rep2/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t04",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "15:37:16",
+      "status": "done",
+      "slot": 15,
+      "exit_code": 0,
+      "session_id": "sess_6cd40279-064d-4bee-99c4-79a7ae0c4ab5",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t04-rep3/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t04",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "15:39:12",
+      "status": "done",
+      "slot": 16,
+      "exit_code": 0,
+      "session_id": "sess_f7258b20-4698-4088-a3b7-18bb716a5a67",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t01-rep3/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t01",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "15:39:51",
+      "status": "done",
+      "slot": 17,
+      "exit_code": 0,
+      "session_id": "sess_0df17975-09c0-46f1-8871-9c22007eeff3",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t04-rep3/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t04",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "15:42:03",
+      "status": "done",
+      "slot": 18,
+      "exit_code": 0,
+      "session_id": "sess_d43cb7f4-bc3e-4938-8153-cbd82ae6fac9",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t03-rep1/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t03",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "15:42:54",
+      "status": "done",
+      "slot": 19,
+      "exit_code": 0,
+      "session_id": "sess_31ffb84c-2d6c-4557-ad5c-9eeb39638d27",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t06-rep1/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t06",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "15:43:19",
+      "status": "done",
+      "slot": 20,
+      "exit_code": 0,
+      "session_id": "sess_47f8568d-e10c-4528-9f1f-63e3f046a0b3",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t06-rep1/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t06",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "15:46:28",
+      "status": "done",
+      "slot": 21,
+      "exit_code": 0,
+      "session_id": "sess_d4cda721-a8d0-48b4-9721-eb6abb540c83",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t06-rep2/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t06",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "15:48:33",
+      "status": "done",
+      "slot": 22,
+      "exit_code": 0,
+      "session_id": "sess_654133a2-b656-4a2e-917d-0b9bbec61b2b",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t03-rep1/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t03",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "15:55:14",
+      "status": "done",
+      "slot": 23,
+      "exit_code": 0,
+      "session_id": "sess_d9f96c33-d29d-462c-94b6-a19fbb3bdf9e",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t06-rep2/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t06",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "15:57:35",
+      "status": "done",
+      "slot": 24,
+      "exit_code": 0,
+      "session_id": "sess_1af9bf70-13a7-4de3-a068-8b0cad0b7f80",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t03-rep2/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t03",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "15:58:43",
+      "status": "done",
+      "slot": 25,
+      "exit_code": 0,
+      "session_id": "sess_0cc1d5c7-fc98-49e0-af21-bd0fa48932f1",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t06-rep3/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t06",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "15:59:55",
+      "status": "done",
+      "slot": 26,
+      "exit_code": 0,
+      "session_id": "sess_d0f12f75-d501-4af7-9c1d-d4c16dff595d",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t06-rep3/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t06",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "16:03:30",
+      "status": "done",
+      "slot": 27,
+      "exit_code": 0,
+      "session_id": "sess_5569758a-1a4a-448f-a35a-b27cc317357c",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t08-rep1/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t08",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "16:04:57",
+      "status": "done",
+      "slot": 28,
+      "exit_code": 0,
+      "session_id": "sess_e4ceff54-fb85-4c80-af0a-ec8b55b38c1a",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t03-rep2/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t03",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "16:07:52",
+      "status": "done",
+      "slot": 29,
+      "exit_code": 0,
+      "session_id": "sess_47f28670-a884-4d7c-bd39-8026c7363d50",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t08-rep1/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t08",
+      "family": "minimax",
+      "rep": 1,
+      "ts_intent": "16:07:54",
+      "status": "done",
+      "slot": 30,
+      "exit_code": 0,
+      "session_id": "sess_3969a7b0-b51a-4958-b770-04cd58c730d5",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t08-rep2/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t08",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "16:09:09",
+      "status": "done",
+      "slot": 31,
+      "exit_code": 0,
+      "session_id": "sess_cf84644e-bbd1-4c3e-90a3-fb1517335988",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t03-rep3/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t03",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "16:10:19",
+      "status": "done",
+      "slot": 32,
+      "exit_code": 0,
+      "session_id": "sess_9249df0b-3190-4ad2-ab16-3c7cd8aeee97",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t08-rep2/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t08",
+      "family": "minimax",
+      "rep": 2,
+      "ts_intent": "16:11:04",
+      "status": "done",
+      "slot": 33,
+      "exit_code": 0,
+      "session_id": "sess_46c07d0d-fcdb-4dfa-9650-f90f19f3941b",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t08-rep3/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t08",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "16:12:42",
+      "status": "done",
+      "slot": 34,
+      "exit_code": 0,
+      "session_id": "sess_8c452409-36f8-4f4f-b3dc-f14c6dfe2b6c",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "minimax/meeting-minutes-t08-rep3/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t08",
+      "family": "minimax",
+      "rep": 3,
+      "ts_intent": "16:16:48",
+      "status": "done",
+      "slot": 35,
+      "exit_code": 0,
+      "session_id": "sess_f0dc37d4-ddea-4200-9710-0a87eb71848c",
+      "observed": {
+        "model_id": "Minimax-M3.1-Flash-Preview",
+        "provider_id": "minimax",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t03-rep3/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t03",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "16:22:44",
+      "status": "done",
+      "slot": 36,
+      "exit_code": 0,
+      "session_id": "sess_85d69d68-316f-47de-b4d7-5252569ead1b",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t05-rep1/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t05",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "16:25:43",
+      "status": "done",
+      "slot": 37,
+      "exit_code": 0,
+      "session_id": "sess_279d085a-f01e-4bbf-9f95-9dc9c0c2ee0f",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t05-rep1/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t05",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "16:34:33",
+      "status": "done",
+      "slot": 38,
+      "exit_code": 0,
+      "session_id": "sess_bda40b73-8607-4d58-b91e-ec773ee843c4",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t05-rep2/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t05",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "16:37:24",
+      "status": "done",
+      "slot": 39,
+      "exit_code": 0,
+      "session_id": "sess_a30f394d-6193-465b-b9f0-0dae82f20a25",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t05-rep2/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t05",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "16:46:48",
+      "status": "done",
+      "slot": 40,
+      "exit_code": 0,
+      "session_id": "sess_b37d9a77-0a03-4a94-a5c0-77e96ce8bed3",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t05-rep3/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t05",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "16:50:05",
+      "status": "done",
+      "slot": 41,
+      "exit_code": 0,
+      "session_id": "sess_0db74b61-1f03-4039-8961-ec400c532dfb",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t05-rep3/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t05",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "17:00:20",
+      "status": "done",
+      "slot": 42,
+      "exit_code": 0,
+      "session_id": "sess_dffc50e2-7eac-45fa-8cdb-096cbcfeec91",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t07-rep1/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t07",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "17:03:39",
+      "status": "done",
+      "slot": 43,
+      "exit_code": 0,
+      "session_id": "sess_9cb84372-e995-456e-81de-22e7883c9cd8",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t07-rep1/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t07",
+      "family": "glm",
+      "rep": 1,
+      "ts_intent": "17:15:13",
+      "status": "done",
+      "slot": 44,
+      "exit_code": 0,
+      "session_id": "sess_bfb941e9-8fca-4316-a64f-76572238237a",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t07-rep2/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t07",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "17:19:42",
+      "status": "done",
+      "slot": 45,
+      "exit_code": 0,
+      "session_id": "sess_ff7a6c72-04b5-42e5-8f69-a5bf9da32d8f",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t07-rep2/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t07",
+      "family": "glm",
+      "rep": 2,
+      "ts_intent": "17:30:19",
+      "status": "done",
+      "slot": 46,
+      "exit_code": 0,
+      "session_id": "sess_b2be7f7d-3571-4777-9170-49858d543008",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t07-rep3/baseline",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t07",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "17:32:58",
+      "status": "done",
+      "slot": 47,
+      "exit_code": 0,
+      "session_id": "sess_a51aec3d-0229-4fe7-8c0f-b731943be628",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    },
+    {
+      "arm": "glm/meeting-minutes-t07-rep3/treatment",
+      "kind": "arm",
+      "pkg": "meeting-minutes",
+      "task": "t07",
+      "family": "glm",
+      "rep": 3,
+      "ts_intent": "17:45:09",
+      "status": "done",
+      "slot": 48,
+      "exit_code": 0,
+      "session_id": "sess_eb36f3c0-498e-4cb7-955f-02ab1bc58f06",
+      "observed": {
+        "model_id": "GLM-5.3",
+        "provider_id": "account:bigmodel-individual-coding-plan",
+        "variant": null
+      },
+      "pin_verdict": "pass"
+    }
+  ]
+}

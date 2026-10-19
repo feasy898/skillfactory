@@ -1,0 +1,59 @@
+{
+  "family": "glm",
+  "arm": "baseline",
+  "mechanism": "m4",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t01-rep1/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 625344,
+  "started_at_ms": 1791529095480,
+  "session_id": "sess_f32a9de9-6d1a-45f5-bad2-17707d022f38",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/glm/meeting-minutes-t01-rep1/baseline",
+  "db_source": "global",
+  "model_id_observed": "GLM-5.3",
+  "provider_id_observed": "account:bigmodel-individual-coding-plan",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "GLM-5.3",
+      "provider_id": "account:bigmodel-individual-coding-plan",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 1123503,
+      "ot": 31277,
+      "dur": 583158,
+      "n": 19
+    }
+  ],
+  "input_tokens": 1123503,
+  "output_tokens": 31277,
+  "stdout_bytes": 2564,
+  "stderr_bytes": 196,
+  "stderr_head": "AI SDK Warning (anthropic.messages / GLM-5.3-Flash): The feature \"cacheControl breakpoint limit\" is not supported. Maximum 4 cache breakpoints exceeded (found 5). This breakpoint will be ignored.\n",
+  "stdout_tail": " logging, set the AI_SDK_LOG_WARNINGS global to false.\n{\n  \"sessionId\": \"sess_f32a9de9-6d1a-45f5-bad2-17707d022f38\",\n  \"traceId\": \"3d41b7d8-78b9-4ccd-a0c0-7e039deeb0ba\",\n  \"turnId\": \"turn_2438bdbe-9764-403d-8dc7-67a48119ae80\",\n  \"response\": \"任务完成，三份文件均已就位并通过校验。\\n\\n**交付物**\\n\\n- `shiguang_bakery_0912.txt` — 转写稿全文逐字保存（与 brief.md diff 零差异，含白板补充行）\\n- `out/纪要.docx` — 三段式会议纪要，公文风格（宋体加粗标题、仿宋正文、黑体节标题、固定 28 磅行距、\\\"— X —\\\"页码），共 2 页\\n- `out/summary.json` — 条数统计：`{\\\"决议事项\\\": 5, \\\"待办事项\\\": 9, \\\"风险与关注\\\": 3, \\\"合计\\\": 17}`\\n\\n**内容归类**\\n\\n- **一、决议事项（5 条）**：改用当天现熬枣泥馅；包装盒重新比价、9 月 20 日前定标且公示后下单；定价走高端线 68 元不变；财务已批复专项额度（会上通报）；品质问题一票否决\\n- **二、待办事项（9 行表格）**：每条含责任人、完成时限与来源时间戳——盯产能每日报数（闻人倩）、比价定标与公示后下单（糜若冰）、页面上新今晚（贡晓彤）、冷链车续约法务把关、人事发调休通知、试吃装明早到店、直播排期下月一号前报送、包装打样对照图纸 SG-09（白板补充，责任人未指明）\\n- **三、风险与关注（3 条）**：详情图烫金未定、冷链车租约 9 月 30 日到期续约有险、进口黄油报关可能压月底\\n\\n**质量验证**：postcheck 脚本 0 错误（唯一警告是正文 28 磅与表格紧凑行距的双档设计，属公文场景的有意安排）；两页渲染图经视觉验收均通过；summary.json 四键与 docx 实际条目逐项机核一致（5+9+3=17）。\\n\\n一处归类说明：财务批复专项额度（9:20）严格说是会上通报而非本会决议，因纪要只有三个板块，归入「决议事项」并在条目中注明「会上通报」以保留事实性质。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 19,\n    \"inputTokens\": 1123503,\n    \"outputTokens\": 31277,\n    \"totalTokens\": 1154780,\n    \"cacheReadTokens\": 1060544,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 26419,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 1154780,\n    \"contextUsed\": 78570,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "meeting-minutes",
+  "task": "t01",
+  "rep": 1,
+  "slot": 1
+}

@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t06-rep2/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 51532,
+  "started_at_ms": 1791531096645,
+  "session_id": "sess_481fa488-42d0-4a2e-837b-da62a3a9e79d",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t06-rep2/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 200643,
+      "ot": 3540,
+      "dur": 45873,
+      "n": 8
+    }
+  ],
+  "input_tokens": 200643,
+  "output_tokens": 3540,
+  "stdout_bytes": 2950,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "\\n**Verification performed.** All three success criteria hold (exit 0, the expected stdout line, both files present and non-empty). Beyond that: no `{{ }}` unfilled template-variable residue in either file (0 matches); both files are UTF-8 with LF endings; and a same-input rerun into a temp directory `diff -r`'d clean, so the output is byte-for-byte reproducible. Placeholder counts cross-check against the skill's own reference table — a full-3-point xhs skeleton is 7 open placeholders, and the one missing 卖点 slot adds exactly two (`价值点2` in 干货2 plus the same token in the recap), landing on 9 as emitted.\\n\\nTwo notes. First, `eval/runner.py` isn't present in this treatment package — the directory contains only `references/`, `requirements.txt`, `scripts/`, and `SKILL.md` — so the package's stated acceptance gate couldn't be run locally; the checks above are what I could verify. Second, per the skill's red line, I did not fill any of the 9 `【占位:…】` slots; those are the open slots left for the copywriter at expansion time.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 8,\n    \"inputTokens\": 200643,\n    \"outputTokens\": 3540,\n    \"totalTokens\": 204183,\n    \"cacheReadTokens\": 169260,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 908,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 204183,\n    \"contextUsed\": 32263,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

@@ -1,0 +1,195 @@
+{
+  "run": "hot-retest-20261009",
+  "taskset_frozen_sha256_100": "adae05f2ce966345b23f276bd6e37355cf2b511f02994d392bdfc0afb900c2a6",
+  "taskset_frozen_cmd": "find planning/taskset-redesign/merged -type f ! -name index.json ! -name selection.tsv ! -name 'BLIND-REVIEW*' ! -name 'REVISION-LOG.md' | sort | xargs sha256sum | sha256sum",
+  "packs": [
+    {
+      "task": "t01",
+      "pack": "evalkit/runs/hot-retest-20261009/packs/hot-templates-t01",
+      "source": "planning/taskset-redesign/merged/hot-templates-skill/t01/task.json.instruction（<outdir>→out 机械替换；merged brief.md≡instruction 逐字已核）",
+      "dim": "能力",
+      "pass_line": 8.0,
+      "instruction_sha256": "69c41451a952ad854cc6d104b3a49c632614b0a88cede7cb61fed77f3ef4737e",
+      "brief_sha256": "77333fd6caa9f47ba14c820a866d6c86e338c0ba62161104e65cd524ce53d8f5"
+    },
+    {
+      "task": "t02",
+      "pack": "evalkit/runs/hot-retest-20261009/packs/hot-templates-t02",
+      "source": "planning/taskset-redesign/merged/hot-templates-skill/t02/task.json.instruction（<outdir>→out 机械替换；merged brief.md≡instruction 逐字已核）",
+      "dim": "能力",
+      "pass_line": 8.0,
+      "instruction_sha256": "6dd3028045e1a3cca3dc24447eec35a36042ba0e8d305c42db5a0bdef9d78c90",
+      "brief_sha256": "386a70c9c2271cd72fd3323f0ba1e8634a024376f60b1338e31d00c3bb805c0f"
+    },
+    {
+      "task": "t03",
+      "pack": "evalkit/runs/hot-retest-20261009/packs/hot-templates-t03",
+      "source": "planning/taskset-redesign/merged/hot-templates-skill/t03/task.json.instruction（<outdir>→out 机械替换；merged brief.md≡instruction 逐字已核）",
+      "dim": "能力",
+      "pass_line": 8.0,
+      "instruction_sha256": "e0b13bc8b19a08878787c6f7ce45b7ac3430b3a1a19a2bf9ba7d8312c4c418b3",
+      "brief_sha256": "10e15a775ca9ecafca5fdd77601f1d7e9136373b983da32a06dd8825346c6a7d"
+    },
+    {
+      "task": "t04",
+      "pack": "evalkit/runs/hot-retest-20261009/packs/hot-templates-t04",
+      "source": "planning/taskset-redesign/merged/hot-templates-skill/t04/task.json.instruction（<outdir>→out 机械替换；merged brief.md≡instruction 逐字已核）",
+      "dim": "能力",
+      "pass_line": 8.0,
+      "instruction_sha256": "61f208ed22f4b155eeb6db420820bd7b83e183d4f7fc6f3adf915516c3e4b455",
+      "brief_sha256": "03c5d22e2df100bacf49e9ba5a7a3546707aba1e71df47014ee5838b0add9de3"
+    },
+    {
+      "task": "t05",
+      "pack": "evalkit/runs/hot-retest-20261009/packs/hot-templates-t05",
+      "source": "planning/taskset-redesign/merged/hot-templates-skill/t05/task.json.instruction（<outdir>→out 机械替换；merged brief.md≡instruction 逐字已核）",
+      "dim": "边界",
+      "pass_line": 8.0,
+      "instruction_sha256": "047f60e235568d108cde952742a6acd42a90497a123e501a65a36d12e0f1d356",
+      "brief_sha256": "d216fa218114d9620af63c40baa2335b9f45e62a4ad1cc5bbccc17fff289e421"
+    },
+    {
+      "task": "t06",
+      "pack": "evalkit/runs/hot-retest-20261009/packs/hot-templates-t06",
+      "source": "planning/taskset-redesign/merged/hot-templates-skill/t06/task.json.instruction（<outdir>→out 机械替换；merged brief.md≡instruction 逐字已核）",
+      "dim": "边界",
+      "pass_line": 8.0,
+      "instruction_sha256": "3fd424f346ee93196ea0318deadef7d7fb525ad70ededfa0a4230aa298b5e225",
+      "brief_sha256": "c6f9f67190bf099093d9b6075ecba50b91b6dc0bdf7aa5a9b6c4281ab8fbb66b"
+    },
+    {
+      "task": "t07",
+      "pack": "evalkit/runs/hot-retest-20261009/packs/hot-templates-t07",
+      "source": "planning/taskset-redesign/merged/hot-templates-skill/t07/task.json.instruction（<outdir>→out 机械替换；merged brief.md≡instruction 逐字已核）",
+      "dim": "陷阱",
+      "pass_line": 8.5,
+      "instruction_sha256": "32d99d2cf2e52580bff71b18dba0e9f641a704276c9fbdb7c9b74fa75d34cfae",
+      "brief_sha256": "325c2a4cd5b20052419dcbb9f2bca49e1c2b115bf10d995d1dfbfa1052828746"
+    },
+    {
+      "task": "t08",
+      "pack": "evalkit/runs/hot-retest-20261009/packs/hot-templates-t08",
+      "source": "planning/taskset-redesign/merged/hot-templates-skill/t08/task.json.instruction（<outdir>→out 机械替换；merged brief.md≡instruction 逐字已核）",
+      "dim": "陷阱",
+      "pass_line": 8.5,
+      "instruction_sha256": "8d97bf9c0e15664a812a0397df9766d60be68233a489b2adf59f344354e814e3",
+      "brief_sha256": "f081ed0227d4cf179fac3f16166f793096de0955cf88f623d9953b24c11e7c9c"
+    }
+  ],
+  "weights_crosscheck": {
+    "t01": {
+      "rubric_table": {
+        "正确性": 0.4,
+        "完整性": 0.3,
+        "可验证性": 0.3
+      },
+      "preregistered": {
+        "正确性": 0.4,
+        "完整性": 0.3,
+        "可验证性": 0.3
+      },
+      "match": true
+    },
+    "t02": {
+      "rubric_table": {
+        "正确性": 0.4,
+        "完整性": 0.3,
+        "可验证性": 0.3
+      },
+      "preregistered": {
+        "正确性": 0.4,
+        "完整性": 0.3,
+        "可验证性": 0.3
+      },
+      "match": true
+    },
+    "t03": {
+      "rubric_table": {
+        "正确性": 0.4,
+        "完整性": 0.3,
+        "可验证性": 0.3
+      },
+      "preregistered": {
+        "正确性": 0.4,
+        "完整性": 0.3,
+        "可验证性": 0.3
+      },
+      "match": true
+    },
+    "t04": {
+      "rubric_table": {
+        "正确性": 0.4,
+        "完整性": 0.3,
+        "可验证性": 0.3
+      },
+      "preregistered": {
+        "正确性": 0.4,
+        "完整性": 0.3,
+        "可验证性": 0.3
+      },
+      "match": true
+    },
+    "t05": {
+      "rubric_table": {
+        "正确性": 0.4,
+        "完整性": 0.3,
+        "可验证性": 0.3
+      },
+      "preregistered": {
+        "正确性": 0.4,
+        "完整性": 0.3,
+        "可验证性": 0.3
+      },
+      "match": true
+    },
+    "t06": {
+      "rubric_table": {
+        "正确性": 0.4,
+        "完整性": 0.3,
+        "可验证性": 0.3
+      },
+      "preregistered": {
+        "正确性": 0.4,
+        "完整性": 0.3,
+        "可验证性": 0.3
+      },
+      "match": true
+    },
+    "t07": {
+      "rubric_table": {
+        "正确性": 0.4,
+        "完整性": 0.3,
+        "可验证性": 0.3
+      },
+      "preregistered": {
+        "正确性": 0.4,
+        "完整性": 0.3,
+        "可验证性": 0.3
+      },
+      "match": true
+    },
+    "t08": {
+      "rubric_table": {
+        "正确性": 0.5,
+        "完整性": 0.3,
+        "可验证性": 0.2
+      },
+      "preregistered": {
+        "正确性": 0.5,
+        "完整性": 0.3,
+        "可验证性": 0.2
+      },
+      "match": true
+    }
+  },
+  "pass_lines": {
+    "t01": 8.0,
+    "t02": 8.0,
+    "t03": 8.0,
+    "t04": 8.0,
+    "t05": 8.0,
+    "t06": 8.0,
+    "t07": 8.5,
+    "t08": 8.5
+  }
+}

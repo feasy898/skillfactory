@@ -1,0 +1,41 @@
+{
+  "units": 24,
+  "arm_calls_planned": 48,
+  "cap_arms": 48,
+  "allocation": {
+    "task_order": [
+      "t01",
+      "t02",
+      "t03",
+      "t04",
+      "t05",
+      "t06",
+      "t07",
+      "t08"
+    ],
+    "glm_tasks": [
+      "t01",
+      "t03",
+      "t05",
+      "t07"
+    ],
+    "minimax_tasks": [
+      "t02",
+      "t04",
+      "t06",
+      "t08"
+    ],
+    "by_family": {
+      "glm": 24,
+      "minimax": 24
+    }
+  },
+  "mountable": [
+    "SKILL.md",
+    "references",
+    "scripts",
+    "requirements.txt"
+  ],
+  "mount_name": "hot-templates",
+  "opened_at": "2026-10-09T14:57:30+0800"
+}

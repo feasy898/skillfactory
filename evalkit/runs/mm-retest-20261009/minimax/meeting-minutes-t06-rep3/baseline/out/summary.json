@@ -1,0 +1,146 @@
+{
+  "task": "将口语化会议转写稿整理为正式会议纪要",
+  "source": {
+    "transcript_file": "botang_minsu_1011.txt",
+    "utterances": 10,
+    "time_span": "19:00-19:09",
+    "speakers": ["掌柜 岑晏", "管家 苏莞", "布草房 郁南"],
+    "other_persons_mentioned": ["小盛"]
+  },
+  "outputs": [
+    {
+      "path": "out/纪要.docx",
+      "type": "docx",
+      "pages": 2,
+      "template": "会议纪要（Template D：标题 / 会议基本情况 / 议定事项 / 待办事项 / 待明确事项 / 记录说明）",
+      "layout": {
+        "page": "A4 纵向，页边距 上下 2.54cm、左 3.0cm、右 2.5cm",
+        "fonts": {
+          "headings": "Noto Sans CJK SC（黑体系）",
+          "body": "Noto Serif CJK SC（宋体系）",
+          "latin": "Times New Roman",
+          "note": "按本机已安装字体选用；如在 Windows / WPS 环境打开可整体替换为 SimHei / SimSun"
+        },
+        "line_spacing": "312 twips（1.3 倍）",
+        "first_line_indent": "480 twips（2 字符）",
+        "color": "纯黑，无装饰色",
+        "footer": "居中页码「— N —」"
+      }
+    }
+  ],
+  "counts": {
+    "decided_items": 3,
+    "action_items": 2,
+    "open_items": 3,
+    "placeholders_to_confirm": 6
+  },
+  "decided_items": [
+    {
+      "no": 1,
+      "topic": "晨会时间",
+      "decision": "晨会自本次会议后固定于每周二上午召开，具体钟点另行确定。",
+      "source_ts": "19:01",
+      "decided_by": "掌柜 岑晏"
+    },
+    {
+      "no": 2,
+      "topic": "工装夹具制作",
+      "decision": "工装夹具先按现行图纸制作，不作修改。",
+      "source_ts": "19:04",
+      "decided_by": "掌柜 岑晏",
+      "caveat": "原话以举手方式征求同意，转写稿未记录表决结果，故未写「全员同意」。"
+    },
+    {
+      "no": 3,
+      "topic": "淡季房价",
+      "decision": "淡季房价方案于本次会议当场议定，工作日执行一口价。",
+      "source_ts": "19:07",
+      "decided_by": "掌柜 岑晏",
+      "caveat": "苏莞于 19:05 提出改日群内投票，两处表述的先后关系待确认。"
+    }
+  ],
+  "action_items": [
+    {
+      "no": 1,
+      "task": "物料清单梳理与核对",
+      "owner": "小盛（管家苏莞委托）",
+      "deadline_raw": "就这两天弄完",
+      "deadline_absolute": null,
+      "source_ts": "19:02"
+    },
+    {
+      "no": 2,
+      "task": "腊味礼盒包装重新选型",
+      "owner": null,
+      "deadline_raw": "截止到出样前定",
+      "deadline_absolute": null,
+      "source_ts": "19:08"
+    }
+  ],
+  "open_items": [
+    {
+      "no": 1,
+      "issue": "压胶工序仍是延期风险最大的环节，床罩已返工两次",
+      "raised_by": "布草房 郁南",
+      "resolution": "本次会议未形成处置意见，亦未指定责任人",
+      "source_ts": "19:03"
+    },
+    {
+      "no": 2,
+      "issue": "洗烘设备保修单据存放位置不明",
+      "raised_by": "布草房 郁南",
+      "resolution": "本次会议未明确归档位置与责任人",
+      "source_ts": "19:06"
+    },
+    {
+      "no": 3,
+      "issue": "淡季房价方案是否仍需群内投票（与 19:07 当场议定结论的关系）",
+      "raised_by": "管家 苏莞 / 掌柜 岑晏",
+      "resolution": "待确认",
+      "source_ts": "19:05 / 19:07"
+    }
+  ],
+  "editing": {
+    "principle": "仅做语言层面的清理，各条含义与原话一致，未作实质性增删。",
+    "filler_words_removed": [
+      { "ts": "19:00", "removed": ["啊", "咱们"] },
+      { "ts": "19:01", "removed": ["呃", "啊", "那个"] },
+      { "ts": "19:02", "removed": ["嘛"] },
+      { "ts": "19:03", "removed": ["说白了"] },
+      { "ts": "19:04", "removed": ["哈"] },
+      { "ts": "19:07", "removed": ["这个"] },
+      { "ts": "19:09", "removed": ["行", "到这儿"] }
+    ],
+    "register_normalizations": [
+      { "from": "老图纸", "to": "现行图纸" },
+      { "from": "返工了两回", "to": "返工两次" },
+      { "from": "改天发群投票", "to": "改日在群内发起投票" },
+      { "from": "截止到出样前定", "to": "须于出样前确定" },
+      { "from": "同意的举个手哈", "to": "以举手方式征求同意（表决结果未记录）" }
+    ],
+    "preserved_verbatim": ["就这两天弄完"]
+  },
+  "needs_confirmation": [
+    { "field": "会议具体日期", "status": "待补充", "note": "转写稿仅有 19:00-19:09 时段，未记录日期；未据文件名 1011 推定为 10 月 11 日。" },
+    { "field": "会议地点", "status": "待补充" },
+    { "field": "记录人", "status": "待补充" },
+    { "field": "晨会具体钟点", "status": "待补充", "note": "原话为「每周二早上」，未指明时间。" },
+    { "field": "物料清单梳理的绝对截止日期", "status": "待补充", "note": "原话为「就这两天」。" },
+    { "field": "腊味礼盒包装重新选型的负责人与绝对截止日期", "status": "待补充", "note": "原话未指定负责人，时限为「出样前」。" },
+    { "field": "工装夹具表决结果", "status": "待补充", "note": "举手表决，结果未记录。" },
+    { "field": "小盛是否在场", "status": "待补充", "note": "转写稿称「人齐了」，但未记录小盛是否到场。" }
+  ],
+  "not_inferred": [
+    "会议具体日期（未按文件名 1011 推定）",
+    "举手表决的同意票数或是否全票通过",
+    "小盛是否参会及其职务",
+    "洗烘设备保修单据的实际存放位置",
+    "压胶工序延期风险的处置方案与责任人",
+    "淡季房价的具体金额"
+  ],
+  "verification": {
+    "postcheck": "0 errors, 0 warnings（9 项检查中 8 项通过，字体项为本机 Noto CJK 提示）",
+    "render": "LibreOffice 转 PDF 并逐页查看：共 2 页，无空白页，无溢出与截断",
+    "json_valid": true
+  }
+}

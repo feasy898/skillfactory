@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "treatment",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t06-rep3/treatment",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 84698,
+  "started_at_ms": 1791533010333,
+  "session_id": "sess_5569758a-1a4a-448f-a35a-b27cc317357c",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t06-rep3/treatment",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 336048,
+      "ot": 3465,
+      "dur": 76351,
+      "n": 13
+    }
+  ],
+  "input_tokens": 336048,
+  "output_tokens": 3465,
+  "stdout_bytes": 2931,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "keyword), and the closing \\\"都早点休息\\\". The only deadline the extraction rules could pin down verbatim is \\\"出样前定\\\" for the gift-box packaging; the 物料清单 item's owner and deadline both came out 待定, because the rules forbid inferring an owner from \\\"需要小盛帮忙\\\" or a deadline from \\\"这两天\\\". I left those as 待定 rather than guessing.\\n\\n**One thing I did not do, deliberately.** You asked for the filler words — 呃、说白了、嘛、哈 — polished out. The skill forbids that: its first red line is that every entry must quote the transcript verbatim, no rewriting, no condensing, and it explicitly lists \\\"纪要改写\\\" as out of scope. The text stays as spoken, including 呃 and 说白了, because any edit would break the traceability requirement that each item map back to a source line. That's why the document reads more like a clean, structured transcript than a polished narrative. If you want a genuinely rewritten, prose-style version for circulation, say the word and I'll produce it as a separate file alongside these — it just can't be the `纪要.docx` deliverable.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 13,\n    \"inputTokens\": 336048,\n    \"outputTokens\": 3465,\n    \"totalTokens\": 339513,\n    \"cacheReadTokens\": 306459,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 906,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 339513,\n    \"contextUsed\": 30330,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

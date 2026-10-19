@@ -1,0 +1,44 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t06-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 540920,
+  "started_at_ms": 1791532113038,
+  "session_id": "sess_654133a2-b656-4a2e-917d-0b9bbec61b2b",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/mm-retest-20261009/minimax/meeting-minutes-t06-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 3431076,
+      "ot": 28842,
+      "dur": 492967,
+      "n": 67
+    }
+  ],
+  "input_tokens": 3431076,
+  "output_tokens": 28842,
+  "stdout_bytes": 2825,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "  \"turnId\": \"turn_c79f5e4a-1d17-4151-8772-778818a36e38\",\n  \"response\": \"会议纪要已整理完成，全部产物就位。\\n\\n**交付物**（均在 `baseline/` 下）：\\n- `botang_minsu_1011.txt` — 原始转写稿，逐字保存\\n- `out/纪要.docx` — 正式会议纪要，3 页，6 张表\\n- `out/summary.json` — 结构化摘要，与文档逐项一致\\n- `build_minutes.py` — 生成脚本，可复跑\\n\\n**纪要结构**：会议基本信息、会议概述、讨论要点、决议事项、待办事项、风险提示、待确认事项、备注，加落款栏。10 条发言全部覆盖，梳理出 3 项决议、3 项待办、2 项风险、3 项待确认。\\n\\n**口语清理**：剔除「呃」「嘛」「说白了」「哈」「那个」「咱们」六类赘词，并保留了它们作为元信息记录在备注和 `filler_words_removed` 字段里。我最初的删除规则会把「举个手哈，工装夹具」里的逗号一起吃掉，导致两句话粘连；改成零宽前瞻、不吞标点后修好了。\\n\\n**保真处理**：原记录里没写的东西一律留白，没有替掌柜补全。三处需要掌柜本人拍板的地方列进了待确认事项：\\n\\n1. 房价方案程序冲突 — 19:05 苏莞说「改天发群投票」，19:07 掌柜却说「就议定下来，工作日一口价」。我按后一条记为决议 D3，并把冲突本身标出来供确认。\\n2. 「同意的举个手」没记表决对象和结果 — 不清楚是同意压胶风险还是工装夹具按老图纸。\\n3. 洗烘设备保修单据没给归档时限 — 待办 A3 时限栏留「未明确」。\\n\\n**验证**：已渲染成 PDF 逐页目视检查，修正了列宽未生效、表格行跨页断开、落款独占一页三个排版问题；程序化核对了 docx 与 summary 的五类条目数完全一致、`statistics` 自洽、正文无口语残留。要点保真项（每周二、工作日一口价、两日内、出样前、床罩两回返工、小盛、老图纸）全部通过。\\n\\n环境上有一处需要说明：venv 里 `python-docx` 的元数据在但模块不可导入，我从 PyPI 装到 `/tmp/pylibs` 并通过 `PYTHONPATH` 引用，未改动共享 venv。若要复跑请带 `PYTHONPATH=/tmp/pylibs`。\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 67,\n    \"inputTokens\": 3431076,\n    \"outputTokens\": 28842,\n    \"totalTokens\": 3459918,\n    \"cacheReadTokens\": 3351078,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 5516,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 3459918,\n    \"contextUsed\": 80727,\n    \"contextWindow\": 200000\n  }\n}\n"
+}

@@ -1,0 +1,59 @@
+{
+  "family": "minimax",
+  "arm": "baseline",
+  "mechanism": "m2",
+  "command_shape": [
+    "node",
+    "zcode.cjs",
+    "-p",
+    "<PROMPT 逐字同 run_arm.py>",
+    "--cwd",
+    "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t08-rep2/baseline",
+    "--json"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_ms": 103926,
+  "started_at_ms": 1791531411835,
+  "session_id": "sess_c6fb6fe3-acae-432f-afe9-168fcff6d9cf",
+  "directory_matches_arm": true,
+  "session_directory": "/home/pan-ding/workspace/skill工厂/skillfactory/evalkit/runs/hot-retest-20261009/minimax/hot-templates-t08-rep2/baseline",
+  "db_source": "global",
+  "model_id_observed": "Minimax-M3.1-Flash-Preview",
+  "provider_id_observed": "minimax",
+  "variant_observed": null,
+  "model_usage_rows": 1,
+  "model_usage": [
+    {
+      "model_id": "Minimax-M3.1-Flash-Preview",
+      "provider_id": "minimax",
+      "status": "completed",
+      "attempt_index": 0,
+      "it": 310776,
+      "ot": 8411,
+      "dur": 97400,
+      "n": 12
+    }
+  ],
+  "input_tokens": 310776,
+  "output_tokens": 8411,
+  "stdout_bytes": 3678,
+  "stderr_bytes": 0,
+  "stderr_head": "",
+  "stdout_tail": "t just swapping names. The markdown's closing section has the four-step backfill procedure: replace the A/B/C bodies, flip each `origin` to `source_file` in the JSON, re-map `addresses_pain_points` since your real points may not line up one-to-one with the three pain points I wrote, and delete the disclosure.\\n\\n**The skeleton itself**, if you want the short version: it opens by attacking \\\"留着以后穿\\\" as a false default in the first 3 seconds, runs three fast pain beats, gives each selling point as *one conclusion → one action → one visible difference*, spends 5 seconds on a same-camera-position full-to-empty wardrobe shot as the highlight, closes on a binary comment question (囤 or 扔) since open-ended questions don't get replies, and marks the before/after cut with a single 0.5-second silence as an attention signal.\\n\\n**Suggested fix for the harness side:** if the selling-point file is meant to be mounted per-arm, it's missing from the pack, and rep-2 will keep reproducing this same fabrication fallback until it's added.\",\n  \"usage\": {\n    \"source\": \"provider\",\n    \"modelRequestCount\": 12,\n    \"inputTokens\": 310776,\n    \"outputTokens\": 8411,\n    \"totalTokens\": 319187,\n    \"cacheReadTokens\": 282328,\n    \"cacheWriteTokens\": 0,\n    \"reasoningTokens\": 0,\n    \"webFetchRequests\": 0,\n    \"webSearchRequests\": 0\n  },\n  \"eventCount\": 414,\n  \"projection\": {\n    \"status\": \"idle\",\n    \"turnCount\": 1,\n    \"totalTokenCount\": 319187,\n    \"contextUsed\": 36058,\n    \"contextWindow\": 200000\n  }\n}\n",
+  "pin_verdict": "pass",
+  "attempted": true,
+  "retried": false,
+  "classify": {
+    "bucket": "measured_failure",
+    "buckets_detail": [
+      "measured_failure"
+    ],
+    "classify_module": "evalkit/evaluators/classify.py classify_run（装置原函数实跑）",
+    "events_in": []
+  },
+  "pkg": "hot-templates",
+  "task": "t08",
+  "rep": 2,
+  "slot": 32
+}
